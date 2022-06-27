@@ -17,7 +17,6 @@
       "node_modules"
       "package-lock.json"
       "result"
-      "static"
       "tags"
       "www"
     ];
