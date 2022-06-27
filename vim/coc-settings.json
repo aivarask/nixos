@@ -1,0 +1,28 @@
+{
+  "languageserver": {
+    "nix": {
+      "command": "rnix-lsp",
+      "filetypes": ["nix"]
+    },
+    "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
+    }
+  },
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "nix": "rnix-lsp",
+    "nim": "nimlsp",
+    "email": "languagetool",
+    "markdown": ["write-good", "markdownlint"],
+    "sh": "shellcheck",
+    "elixir": ["mix_credo", "mix_credo_compile"],
+    "eelixir": ["mix_credo", "mix_credo_compile"],
+    "php": ["phpstan", "psalm"],
+    "yaml": ["yamllint"],
+    "cmake": ["cmake-lint", "cmakelint"],
+    "systemd": "systemd-analyze",
+    "svelte": "svelte-check",
+    "prisma": "prisma-language-server"
+  }
+}

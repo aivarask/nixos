@@ -1,0 +1,106 @@
+{
+  "import-playwright": {
+    "prefix": [
+      "import-playwright",
+      "ipl"
+    ],
+    "body": [
+      "import { expect, test } from '@playwright/test'",
+      "${0}"
+    ]
+  },
+  "describe-playwright": {
+    "prefix": [
+      "describe-playwright",
+      "test.describe",
+      "dpl",
+      "td"
+    ],
+    "body": [
+      "test.describe('${1:${TM_FILENAME_BASE}}', () => {",
+      "\t${0}",
+      "})"
+    ]
+  },
+  "beforeAll": {
+    "prefix": [
+      "test.beforeAll",
+      "tba",
+      "ba"
+    ],
+    "body": [
+      "test.beforeAll(async () => {",
+      "\t${0}",
+      "})"
+    ]
+  },
+  "import-prisma": {
+    "prefix": [
+      "test-prisma",
+      "import-prisma",
+      "const-prisma",
+      "ip"
+    ],
+    "body": [
+      "import PrismaScope, { type Prisma } from '@prisma/client'",
+      "const prisma = new PrismaScope.PrismaClient()",
+      "${0}"
+    ]
+  },
+  "test-playwright": {
+    "prefix": [
+      "test-playwright",
+      "test",
+      "tpl"
+    ],
+    "body": [
+      "test('${1}', async ({ page }) => {",
+      "\tawait page.goto('/${1}')",
+      "\t${0}",
+      "})"
+    ]
+  },
+  "test-async-empty": {
+    "prefix": [
+      "test"
+    ],
+    "body": [
+      "test('${1}', async (${2}) => {",
+      "\t${0}",
+      "})"
+    ]
+  },
+  "expect-visible": {
+    "prefix": [
+      "expect-visible",
+      "visible",
+      "ev"
+    ],
+    "body": [
+      "const ${1} = page.locator('${2}')",
+      "await expect(${1}).toBeVisible()",
+      "${0}"
+    ]
+  },
+  "expect-count": {
+    "prefix": [
+      "expect-count",
+      "count",
+      "ec"
+    ],
+    "body": [
+      "const ${1} = page.locator('${2}')",
+      "await expect(${1}).toHaveCount(${3})",
+      "${0}"
+    ]
+  },
+  "expect-true": {
+    "prefix": [
+      "expect-true"
+    ],
+    "body": [
+      "expect(true).toBeTruthy()",
+      "${0}"
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "script-module-typescript": {
+    "prefix": [
+      "script-module-typescript"
+    ],
+    "body": [
+      "<script context=\"module\" lang=\"ts\">",
+      "\t${0}",
+      "</script>"
+    ]
+  },
+  "script-typescript": {
+    "prefix": [
+      "script-typescript"
+    ],
+    "body": [
+      "<script lang=\"ts\">",
+      "\t${0}",
+      "</script>"
+    ]
+  },
+  "let className": {
+    "prefix": [
+      "let className"
+    ],
+    "body": [
+      "${1:let className = ''}",
+      "${2:export { className as class }}",
+      "${0}"
+    ]
+  },
+  "size": {
+    "prefix": [
+      "size"
+    ],
+    "body": [
+      "export let size: Size | undefined = 'sm'"
+    ]
+  },
+  "color": {
+    "prefix": [
+      "color"
+    ],
+    "body": [
+      "export let color: Color | undefined = 'neutral'"
+    ]
+  },
+  "pre JSON.stringify": {
+    "prefix": [
+      "pre"
+    ],
+    "body": [
+      "<pre>{JSON.stringify(${1} , null, 2)}</pre>"
+    ]
+  },
+  "const-dispatch": {
+    "prefix": [
+      "const-dispatch"
+    ],
+    "body": [
+      "import { createEventDispatcher } from 'svelte'",
+      "const dispatch = createEventDispatcher()",
+      "${0}"
+    ]
+  },
+  "console.log": {
+    "prefix": [
+      "console.log",
+      "log"
+    ],
+    "body": [
+      "console.log(${1})"
+    ]
+  },
+  "()=>()": {
+    "prefix": [
+      "()=>()"
+    ],
+    "body": [
+      "(${1}) => (${0})"
+    ]
+  },
+  "sts": {
+    "prefix": [
+      "sts"
+    ],
+    "body": [
+      "<script lang=\"ts\">",
+      "${0}",
+      "</script>"
+    ]
+  },
+  "export": {
+    "prefix": "export",
+    "body": [
+      "export let ${1}: ${2} | ${3:undefined} = ${4:undefined}",
+      "${0}"
+    ]
+  },
+  "tsa": {
+    "prefix": "tsa",
+    "body": [
+      "<script lang=\"ts\">",
+      "\t${1:let className = ''}",
+      "\t${2:export {className as class}}",
+      "\t${3:export let color: Color}",
+      "</script>",
+      "\n",
+      "<div class={`alert alert-\\${color} \\${className}`}>",
+      "\t${0}",
+      "\t<slot/>",
+      "</div>"
+    ]
+  },
+  "svelte-script": {
+    "prefix": "ats",
+    "body": [
+      "<script lang=\"ts\">",
+      "\t${1:export let items = []}",
+      "</script>",
+      "${2:<!-- type to replace -->}"
+    ],
+    "description": "add a script to your svelte file"
+  },
+  "sand": {
+    "prefix": "sand",
+    "body": [
+      "<script lang=\"ts\">",
+      "\t${1:// your script goes here}",
+      "\t${0:// Eaaaaaa}",
+      "</script>",
+      "${2:<!-- markup (zero or more items) goes here -->}"
+    ],
+    "description": "add a script to your svelte file"
+  }
+}

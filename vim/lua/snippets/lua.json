@@ -1,0 +1,20 @@
+{
+  "foo": {
+    "prefix": "foo",
+    "body": [
+      "bbb"
+    ]
+  },
+  "bar": {
+    "prefix": "bar",
+    "body": [
+      "BAR1"
+    ]
+  },
+  "greet": {
+    "prefix": "greet",
+    "body": [
+      "GREETaa"
+    ]
+  }
+}

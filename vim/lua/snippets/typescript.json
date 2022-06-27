@@ -1,0 +1,33 @@
+{
+  "foo": {
+    "prefix": [
+      "foo"
+    ],
+    "body": [
+      "bar"
+    ]
+  },
+  "RequestHandler": {
+    "prefix": [
+      "export const",
+      "rh"
+    ],
+    "body": [
+      "export const ${1}: RequestHandler = async ({ ${2} }) => {",
+      "\t${3}",
+      "\t${0}",
+      "\treturn { body: {${4}} }",
+      "}"
+    ]
+  },
+  "json": {
+    "prefix": [
+      "const-data-json",
+      "json"
+    ],
+    "body": [
+      "const data = await request.json()",
+      "${0}"
+    ]
+  }
+}

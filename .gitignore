@@ -1,0 +1,10 @@
+result
+result-*
+flake.lock
+
+.direnv/
+misc
+music
+.ip.*
+.weather.*
+
