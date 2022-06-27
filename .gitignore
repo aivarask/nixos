@@ -1,6 +1,4 @@
 result
-result-*
-flake.lock
 
 .direnv/
 misc
