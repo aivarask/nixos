@@ -205,7 +205,7 @@ in
       nixpkgs-fmt
       nmap
       # nodejs_latest
-      nodejs-18_x
+      nodejs
       numlockx
       odt2txt
       pass
