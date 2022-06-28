@@ -56,6 +56,23 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
+    ensureDatabases = [
+      "fixasparts"
+    ];
+    ensureUsers = [
+      {
+        name = "fixas";
+        ensurePermissions = {
+          "fixasparts.*" = "ALL PRIVILEGES";
+          # GRANT ALL PRIVILEGES ON fixasparts.* TO 'fixas'@'localhost';
+        };
+      }
+    ];
+    settings = {
+      mysql = {
+        auto-rehash = true;
+      };
+    };
   };
 
   services.postgresql = {
