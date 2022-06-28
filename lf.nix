@@ -67,6 +67,7 @@
       "gp" = ''$lf -remote "send $id cd ~/fixasparts/prisma"'';
       "gu" = ''$lf -remote "send $id cd ~/fixasparts/src/util"'';
       "gt" = ''$lf -remote "send $id cd ~/fixasparts/src/routes/_test"'';
+      "of" = ''!firefox $fx'';
 
     };
     cmdKeybindings = { };
