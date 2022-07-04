@@ -98,6 +98,8 @@ in
     php80Extensions ++
 
     [
+      aws
+      google-cloud-sdk
       patchelf
       # deno
       netlify-cli
