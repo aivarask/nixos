@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }: {
 
   services.nginx = {
-    enable = false;
+    enable = true;
     additionalModules = [ pkgs.nginxModules.pam ];
     # TLS reverse proxy
     # recommendedProxySettings = true;
@@ -16,14 +16,14 @@
     # };
   };
   services.nginx.virtualHosts = {
-    "deta.lt" = {
+    "localhost" = {
       addSSL = false;
       enableACME = false;
-      root = "/etc/nixos/deta.lt";
-      # locations."~ \.php$".extraConfig = ''
-      #   fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
-      #   fastcgi_index index.php;
-      # '';
+      root = "/home/ak/deta.lt";
+      locations."~ \.php$".extraConfig = ''
+        fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+        fastcgi_index index.php;
+      '';
       # extraConfig = ''
       #   auth_pam  "Password Required";
       #   auth_pam_service_name "nginx";
@@ -58,16 +58,16 @@
     #   };
     # };
   };
-  # services.phpfpm.pools.mypool = {
-  #   user = "nobody";
-  #   settings = {
-  #     pm = "dynamic";
-  #     "listen.owner" = config.services.nginx.user;
-  #     "pm.max_children" = 5;
-  #     "pm.start_servers" = 2;
-  #     "pm.min_spare_servers" = 1;
-  #     "pm.max_spare_servers" = 3;
-  #     "pm.max_requests" = 500;
-  #   };
-  # };
+  services.phpfpm.pools.mypool = {
+    user = "nobody";
+    settings = {
+      pm = "dynamic";
+      "listen.owner" = config.services.nginx.user;
+      "pm.max_children" = 5;
+      "pm.start_servers" = 2;
+      "pm.min_spare_servers" = 1;
+      "pm.max_spare_servers" = 3;
+      "pm.max_requests" = 500;
+    };
+  };
 }
