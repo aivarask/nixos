@@ -18,6 +18,7 @@
     ./security.nix
     ./networking.nix
     ./nginx.nix
+    ./phpfpm.nix
     ./environment.nix
     ./LF_ICONS.nix
     ./systemPackages.nix
