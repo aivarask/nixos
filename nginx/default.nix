@@ -1,6 +1,9 @@
 # https://nixos.wiki/wiki/Nginx
 { config, pkgs, lib, ... }: {
-  imports = [ ./localhost.nix ];
+  imports = [
+    ./localhost.nix
+    ./example.com
+  ];
 
   services.nginx = {
     enable = true;
