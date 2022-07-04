@@ -3,7 +3,8 @@ let
   app = "phpdemo";
   domain = "${app}.example.com";
   dataDir = "/srv/http/${domain}";
-in {
+in
+{
   services.phpfpm.pools.${app} = {
     user = app;
     settings = {
@@ -22,21 +23,30 @@ in {
   };
   services.nginx = {
     enable = true;
-    virtualHosts.${domain}.locations."/" = {
+    virtualHosts = {
+
       root = dataDir;
-      extraConfig = ''
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:${config.services.phpfpm.pools.${app}.socket};
-        include ${pkgs.nginx}/conf/fastcgi_params;
-        include ${pkgs.nginx}/conf/fastcgi.conf;
+      locations."~ \.php$".extraConfig = ''
+        fastcgi_pass  unix:${config.services.phpfpm.pools.${app}.socket};
+        fastcgi_index index.php;
       '';
-     };
+    };
+
+    # virtualHosts.${domain}.locations."/" = {
+    #   root = dataDir;
+    #   extraConfig = ''
+    #     fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    #     fastcgi_pass unix:${config.services.phpfpm.pools.${app}.socket};
+    #     include ${pkgs.nginx}/conf/fastcgi_params;
+    #     include ${pkgs.nginx}/conf/fastcgi.conf;
+    #   '';
+    #  };
   };
   users.users.${app} = {
     isSystemUser = true;
     createHome = true;
     home = dataDir;
-    group  = app;
+    group = app;
   };
-  users.groups.${app} = {};
+  users.groups.${app} = { };
 }

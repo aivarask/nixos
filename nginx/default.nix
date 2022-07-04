@@ -1,8 +1,9 @@
 # https://nixos.wiki/wiki/Nginx
 { config, pkgs, lib, ... }: {
   imports = [
-    ./localhost.nix
-    ./example.com
+    # ./localhost.nix
+    ./sandbox.nix
+    ./example.nix
   ];
 
   services.nginx = {
