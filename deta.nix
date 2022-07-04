@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 let
-  app = "www";
+  app = "mypool";
   domain = "${app}.deta.lt";
   dataDir = "/srv/http/${domain}";
 in
 {
-  services.phpfpm.pools.mypool = {
+  services.phpfpm.pools.${app} = {
     user = app;
     settings = {
       "listen.owner" = config.services.nginx.user;
@@ -17,13 +17,13 @@ in
       "pm.max_requests" = 500;
     };
   };
-  services.nginx.${domain} = {
-    "localhost" = {
+  services.nginx.virtualHosts = {
+    ${domain} = {
       addSSL = false;
       enableACME = false;
       root = dataDir;
       locations."~ \.php$".extraConfig = ''
-        fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+        fastcgi_pass  unix:${config.services.phpfpm.pools.${app}.socket};
         fastcgi_index index.php;
       '';
     };

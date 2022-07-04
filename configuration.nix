@@ -17,9 +17,7 @@
     ./config/tmux.nix
     ./security.nix
     ./networking.nix
-    ./nginx.nix
-    ./phpfpm.nix
-    ./deta.nix
+    ./nginx
     ./environment.nix
     ./LF_ICONS.nix
     ./systemPackages.nix
