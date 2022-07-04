@@ -13,8 +13,10 @@
       "pc"
       "pc.lan"
       "deta.lt"
+      "www.deta.lt"
       # "dev.deta.lt"
       "fix.deta.lt"
+      "phpdemo.example.com"
     ];
     # "88.118.15.237" = [
     "188.69.243.169" = [

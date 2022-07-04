@@ -30,6 +30,7 @@ in
         fastcgi_pass unix:${config.services.phpfpm.pools.${app}.socket};
         include ${pkgs.nginx}/conf/fastcgi_params;
         include ${pkgs.nginx}/conf/fastcgi.conf;
+        fastcgi_index index.php;
       '';
     };
   };
