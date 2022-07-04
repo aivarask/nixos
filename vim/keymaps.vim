@@ -66,6 +66,7 @@ vmap <C-l> gc
 
 nnoremap	<leader>li	:LspInfo<CR>
 nnoremap	<leader>lr	:LspRestart<CR>
+nnoremap  <leader>lg  :LazyGit<CR>
 
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>sm :Maps<CR>

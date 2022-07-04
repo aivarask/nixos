@@ -81,6 +81,7 @@ let
     nvim-autopairs
     nvim-web-devicons
     plenary-nvim
+    lazygit-nvim
     # UI:
     # bufferline-nvim
     nvim-tree-lua
