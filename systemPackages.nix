@@ -98,6 +98,7 @@ in
     php80Extensions ++
 
     [
+      libwebp
       aws
       google-cloud-sdk
       patchelf
