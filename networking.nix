@@ -14,6 +14,8 @@
       "pc.lan"
       "deta.lt"
       "www.deta.lt"
+      "blog.example.com"
+      "foo.example.com"
       # "dev.deta.lt"
       "fix.deta.lt"
       "phpdemo.example.com"
