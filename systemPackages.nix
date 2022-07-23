@@ -31,6 +31,7 @@ let
     prettier
     prisma
     pyright
+    serve
     speed-test
     stylelint
     svelte-check
@@ -98,6 +99,7 @@ in
     php80Extensions ++
 
     [
+      certbot-full
       libwebp
       aws
       google-cloud-sdk
