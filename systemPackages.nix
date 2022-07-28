@@ -99,6 +99,7 @@ in
     php80Extensions ++
 
     [
+      wiki-tui
       spotify
       spotify-tui
       certbot-full
