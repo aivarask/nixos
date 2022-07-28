@@ -57,6 +57,7 @@
     2234
     3000 # sveltekit dev
     4000
+    5173 # vite dev
     6006 # storybook
 
     2000 # fix PROD
