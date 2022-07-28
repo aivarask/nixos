@@ -9,6 +9,8 @@
     "nvidia-x11"
     "nvidia-settings"
     "joypixels"
+    "spotify"
+    "spotify-unwrapped"
     "steam"
     "steam-original"
     "steam-runtime"

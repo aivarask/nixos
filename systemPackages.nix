@@ -99,6 +99,8 @@ in
     php80Extensions ++
 
     [
+      spotify
+      spotify-tui
       certbot-full
       libwebp
       aws
