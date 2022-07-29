@@ -18,6 +18,7 @@ set foldlevel=4
 " set foldmethod=expr
 set foldmethod=manual
 set foldexpr=nvim_treesitter#foldexpr()
+set updatetime=300
 " set lcs+=space:·
 " set list
 " set nohlsearch
