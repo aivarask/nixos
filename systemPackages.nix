@@ -63,8 +63,8 @@ let
     pdftotext
     pip
     pynvim
-    python-lsp-black
-    python-lsp-server
+    # python-lsp-black
+    # python-lsp-server
     tomlkit
   ];
   prismaSpecific = with pkgs; [
