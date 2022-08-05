@@ -99,6 +99,8 @@ in
     php80Extensions ++
 
     [
+      zsh-autocomplete
+      inetutils
       wiki-tui
       spotify
       spotify-tui
