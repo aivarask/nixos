@@ -2,6 +2,7 @@ vim.cmd([[
 source /etc/nixos/vim/vimrc.vim
 ]])
 
+-- require("debug.init")
 require("ui")
 require("treesitter")
 require("misc")
