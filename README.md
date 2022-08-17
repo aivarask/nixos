@@ -26,3 +26,7 @@ nvidia-smi
 [HSTS Preload test](https://hstspreload.org/)
 
 ## DELL XPS 7590
+
+## Firefox
+
+https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly
