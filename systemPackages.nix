@@ -22,6 +22,7 @@ let
     eslint
     eslint_d
     fixjson
+    gulp
     js-beautify
     markdownlint-cli
     node2nix
