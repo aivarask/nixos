@@ -1,5 +1,5 @@
 local flags = {
-	debounce_text_changes = 200,
+	debounce_text_changes = 400,
 }
 
 return flags
