@@ -36,6 +36,7 @@
     nrs = "npm run start";
     nsb = "npm run storybook";
     nrt = "npm run test";
+    nrtu = "npm run test:unit";
     nrtd = "npm run test:dev";
     nrtw = "npm run test:watch";
     oras = "curl wttr.in/Vilnius";
