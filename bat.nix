@@ -11,6 +11,7 @@
         "*.mdx:Markdown"
         "*.nimble:Nim"
         "*.prisma:GraphQL"
+        "*.postcss:CSS"
       ];
 
     };
