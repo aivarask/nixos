@@ -13,6 +13,8 @@ http://mediaserv30.live-streams.nl:8086
 https://mediaserv33.live-streams.nl:8036
 #EXTINF:,Hi On Line Jazz Radio
 http://mediaserv38.live-streams.nl:8006
+#EXTINF:,SoftRockRadio.net
+https://stream5.thepuremix.net/softrock.mp3
 #EXTINF:,LRT Radijas
 http://lrt-cast.lrt.lt:8000/lrt_radijas
 #EXTINF:,LRT Opus
