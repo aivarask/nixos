@@ -11,7 +11,7 @@ dap.adapters.javascript = {
 	command = "node",
 	args = {
 		-- os.getenv("HOME") .. "/vscode-node-debug2/out/src/nodeDebug.js",
-		"/etc/nixos/vscode/vscode-node-debug2/out/src/nodeDebug.js",
+		"/etc/nixos/misc/vscode-node-debug2/out/src/nodeDebug.js",
 	},
 }
 dap.configurations.javascript = {

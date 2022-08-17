@@ -51,18 +51,21 @@ local scopes_widget = widgets.sidebar(widgets.scopes)
 function _G.toggle_scopes()
 	scopes_widget.toggle()
 end
+
 map("n", "<F10>", ":lua toggle_scopes()<CR>")
 -- Frames
 local frames_widget = widgets.sidebar(widgets.frames)
 function _G.toggle_frames()
 	frames_widget.toggle()
 end
+
 map("n", "<F9>", ":lua toggle_frames()<CR>")
 -- Expression
 local expression_widget = widgets.sidebar(widgets.expression)
 function _G.toggle_expression()
 	expression_widget.toggle()
 end
+
 map("n", "<F8>", ":lua toggle_expression()<CR>")
 
 require("nvim-dap-virtual-text").setup()
