@@ -1,24 +1,34 @@
 {
-  "foo": {
+  "import-type-request-handler": {
     "prefix": [
-      "foo"
+      "import type { RequestHandler } from '@sveltejs/kit'"
     ],
     "body": [
-      "bar"
+      "import type { RequestHandler } from '@sveltejs/kit'"
     ]
   },
-  "RequestHandler": {
+  "import-type-request-handler-generated": {
     "prefix": [
+      "import type { RequestHandler } from './__types/...'"
+    ],
+    "body": [
+      "import type { RequestHandler } from './__types/${1:${TM_FILENAME_BASE}}'"
+    ]
+  },
+  "svelte-endpoint": {
+    "prefix": [
+      "endpoint",
       "export const",
       "rh"
     ],
     "body": [
-      "export const ${1}: RequestHandler = async ({ ${2} }) => {",
+      "export const ${1}: RequestHandler = async (${2}) => {",
       "\t${3}",
       "\t${0}",
       "\treturn { body: {${4}} }",
       "}"
-    ]
+    ],
+    "description": "SvelteKit endpoint snippet"
   },
   "json": {
     "prefix": [
