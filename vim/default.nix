@@ -84,6 +84,7 @@ let
     lazygit-nvim
     # UI:
     # bufferline-nvim
+    neoscroll-nvim
     nvim-tree-lua
     nvim-colorizer-lua
     gitsigns-nvim
