@@ -67,6 +67,38 @@
           fetchSubmodules = true;
         };
       }
+      {
+        name = "zsh-better-pnpm-completion";
+        file = "zsh-better-pnpm-completion.plugin.zsh";
+        src = pkgs.fetchFromGitHub
+          {
+            owner = "akccakcctw";
+            repo = "zsh-better-pnpm-completion";
+            rev = "7696c67352b1607d84de9b649974f96acaca118c";
+            sha256 = "mGWFj8dFEmX2Oq4ljt8jGj/9icrFJSz3SmMsxCE+OH4=";
+          };
+      }
+      # {
+      #   name = "pnpm-zsh";
+      #   file = "pnpm.plugin.zsh";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "baliestri";
+      #     repo = "pnpm.plugin.zsh";
+      #     rev = "1eb815df8e3815af936dc0207969d86b838be3cb";
+      #     sha256 = "w1vsqWVUm3RlfIhy4cU+iVgt4q//TVtQzVSP1kI75ZE=";
+      #   };
+      # }
+      # {
+      #   name = "zsh-shortcut-pnpm";
+      #   file = "zsh-shortcut-pnpm.plugin.zsh";
+      #   src =
+      #     pkgs.fetchFromGitHub {
+      #       owner = "zhanghecool";
+      #       repo = "zsh-shortcut-pnpm";
+      #       rev = "099e3ba321220522c7dbcbbd63b452e0a8a105a6";
+      #       sha256 = "2WfF876H3dLi9GbACufnEwcRoe7NuN3hZTLZ+Dk8VK0=";
+      #     };
+      # }
     ];
   };
 }

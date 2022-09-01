@@ -15,17 +15,15 @@
       "import type { RequestHandler } from './__types/${1:${TM_FILENAME_BASE}}'"
     ]
   },
-  "svelte-endpoint": {
+  "svelte-action": {
     "prefix": [
-      "endpoint",
-      "export const",
-      "rh"
+      "export const"
     ],
     "body": [
-      "export const ${1}: RequestHandler = async (${2}) => {",
+      "export const ${1}: Action = async (${2}) => {",
       "\t${3}",
       "\t${0}",
-      "\treturn { body: {${4}} }",
+      "\treturn { ${4} }",
       "}"
     ],
     "description": "SvelteKit endpoint snippet"
@@ -38,6 +36,23 @@
     "body": [
       "const data = await request.json()",
       "${0}"
+    ]
+  },
+  "load": {
+    "prefix": [
+      "load"
+    ],
+    "body": [
+      "export const load: PageServerLoad = async () => {",
+      "}"
+    ]
+  },
+  "import-page-server-load": {
+    "prefix": [
+      "import-page-server-load"
+    ],
+    "body": [
+      "import type { PageServerLoad } from './\\$types'"
     ]
   }
 }

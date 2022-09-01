@@ -2,6 +2,7 @@
   environment.sessionVariables = {
     PATH = [
       "/etc/nixos/bin"
+      "$HOME/.pnpm-global"
       "$HOME/.node_modules/bin"
       "$HOME/.config/composer/vendor/bin"
     ];
@@ -22,6 +23,7 @@
     lt3 = "ls --tree --level=3";
     mc = "tmux split -h lf; lf";
     mcd = "tmux split -h nd; ndcw; ndtw";
+    pn = "pnpm";
     nd = "npm run dev";
     ndh = "npm run dev -- --host";
     ndo = "npm run dev -- --open";
@@ -60,6 +62,7 @@
     editor = "vim";
     BROWSER = "firefox";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    PNPM_HOME = "$HOME/.pnpm-global";
     NPM_CONFIG_PREFIX = "$HOME/.node_modules";
     # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
     NODE_OPTIONS = "--no-warnings";

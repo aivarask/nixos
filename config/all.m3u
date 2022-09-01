@@ -1,4 +1,8 @@
 #EXTM3U
+#EXTINF:,radiOzoraChill
+https://chill.out.airtime.pro/chill_a
+#EXTINF:,radiOzora Trance
+https://trance.out.airtime.pro/trance_a
 #EXTINF:,Chill Out Zone
 https://chillout.zone/chillout
 #EXTINF:,Chill Out Zone Plus
@@ -61,8 +65,6 @@ https://radio.m-1.fm/raduga/high
 https://plays.zw.lt/zw128
 #EXTINF:,Upso Radijas
 http://185.5.52.50:8000/upsas_320
-#EXTINF:,Sveikatos Radijas
-http://193.219.87.11:8080/stream
 #EXTINF:,XFM!
 http://88.119.151.74:8001/xfm
 #EXTINF:,ZIP FM

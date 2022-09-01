@@ -29,6 +29,7 @@ let
     nodemon
     npm-check-updates
     pm2
+    # pnpm
     prettier
     prisma
     pyright
@@ -83,11 +84,19 @@ let
     xorg.libX11
     xorg.libXrender
     dbus-glib
-
+    wayland
+    wayland-scanner
+    wayland-utils
+    wayland-protocols
+    waylandpp
+  ];
+  rubyPackages = with pkgs.rubyPackages; [
+    gemoji
   ];
 in
 {
   environment.systemPackages = with pkgs;
+    rubyPackages ++
     playwrightDependencies ++
     prismaSpecific ++
     python39Packages ++
@@ -98,8 +107,11 @@ in
     luajitPackages ++
     php80Packages ++
     php80Extensions ++
-
     [
+      zsh-better-npm-completion
+      luakit
+      gtk3
+      gtk3-x11
       zsh-autocomplete
       inetutils
       wiki-tui

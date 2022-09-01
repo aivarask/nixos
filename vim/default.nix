@@ -27,7 +27,7 @@ let
     vim-surround
     vim-expand-region
     vim-gitgutter
-    vim-gutentags
+    # vim-gutentags
     vim-floaterm
     fzf-vim
 

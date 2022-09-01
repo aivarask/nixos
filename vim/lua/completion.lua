@@ -15,9 +15,9 @@ local M = {}
 
 M.reload = function()
 	require("plenary.reload").reload_module("completion", true)
-	require("luasnip").cleanup()
-	require("luasnip.loaders.from_vscode").lazy_load()
-	require("luasnip.loaders.from_vscode").load({ paths = "/etc/nixos/vim/lua/snippets" })
+	-- require("luasnip").cleanup()
+	-- require("luasnip.loaders.from_vscode").lazy_load()
+	-- require("luasnip.loaders.from_vscode").load({ paths = "/etc/nixos/vim/lua/snippets" })
 	print("completion reloaded")
 end
 
