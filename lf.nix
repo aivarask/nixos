@@ -39,6 +39,8 @@
     commands = {
       get-mime-type = ''%xdg-mime query filetype "$f"'';
       open = "$$OPENER $f";
+      touch = ''%touch "$@"'';
+      mkdir = ''%mkdir "$@"'';
     };
     keybindings = {
       "." = "set hidden!";
@@ -47,8 +49,8 @@
       D = "%trash-put $fx";
       e = "$$EDITOR $fx";
       E = "$vim $fx";
-      a = "push %touch<space>";
-      A = "push %mkdir<space>";
+      a = "push :touch<space>";
+      A = "push :mkdir<space>";
       U = "!du -hs $fx";
       T = ":get-mime-type";
       ZZ = ":quit";
