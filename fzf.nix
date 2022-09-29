@@ -5,12 +5,13 @@
     defaultCommand = "fd --type f --ignore-file=$HOME/.config/git/ignore";
     defaultOptions = [
       "--layout=reverse"
-      "--preview 'pistol {}'"
+      # "--preview 'pistol {}'"
       "--bind 'ctrl-space:refresh-preview'"
       "--bind 'ctrl-e:execute($EDITOR {})'"
       "--bind 'ctrl-f:reload(fd --type f)'"
       "--bind 'ctrl-d:reload(fd --type d)'"
       "--bind 'ctrl-h:reload(fd --type f --hidden)'"
+      "--bind 'ctrl-p:toggle-preview'"
     ];
 
     fileWidgetCommand = "fd --type f";

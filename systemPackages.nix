@@ -21,6 +21,7 @@ let
     emoj
     eslint
     eslint_d
+    fast-cli
     fixjson
     gulp
     js-beautify
@@ -28,6 +29,7 @@ let
     node2nix
     nodemon
     npm-check-updates
+    patch-package
     pm2
     # pnpm
     prettier
@@ -39,8 +41,8 @@ let
     svelte-check
     svelte-language-server
     tailwindcss
-    typescript
-    typescript-language-server
+    # typescript
+    # typescript-language-server
     vim-language-server
     vscode-langservers-extracted
     write-good
@@ -108,6 +110,8 @@ in
     php80Packages ++
     php80Extensions ++
     [
+      ookla-speedtest
+      speedtest-cli
       zsh-better-npm-completion
       luakit
       gtk3
@@ -119,7 +123,7 @@ in
       spotify-tui
       certbot-full
       libwebp
-      aws
+      awscli2
       google-cloud-sdk
       patchelf
       # deno
@@ -172,6 +176,7 @@ in
       firefox
       fzy
       gcc
+      gdb
       gdu
       geoipWithDatabase
       git
@@ -201,6 +206,7 @@ in
       layan-gtk-theme
       lazygit
       lf
+      libbacktrace
       libimobiledevice
       libplist
       libva-utils
@@ -223,7 +229,6 @@ in
       nix-template
       nix-tour
       nix-tree
-      nixFlakes
       nixfmt
       nixpkgs-fmt
       nmap
@@ -255,7 +260,7 @@ in
       rustc
       rustfmt
       rustup
-      rustup-toolchain-install-master
+      # rustup-toolchain-install-master
       sassc
       shellcheck
       shellharden
@@ -298,6 +303,7 @@ in
       unzip
       usbmuxd
       valgrind # debugtooling
+      viber
       vim
       vim-vint
       w3m

@@ -14,8 +14,8 @@ nnoremap <F4> :set paste!<CR>
 
 map <F5> :so%<CR>
 inoremap <F5> <C-o>:so%<CR>
-map <C-b> :.so<CR>
-inoremap <C-b> <C-o>:.so<CR>
+" map <C-b> :.so<CR>
+" inoremap <C-b> <C-o>:.so<CR>
 
 map <F9> :vsplit /etc/nixos/vim/lua/snippets/svelte.json<CR>
 map <F21> :vsplit /etc/nixos/vim/lua/snippets/typescript.json<CR>
@@ -51,6 +51,7 @@ augroup END
 
 nnoremap <silent><C-s> :silent w<CR>
 inoremap <silent><C-s> <C-o>:silent w<CR>
+inoremap <C-b> <Cmd>lua require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })<CR>
 nnoremap <M-q> :Bclose<CR>
 
 map <TAB> :bn<CR>

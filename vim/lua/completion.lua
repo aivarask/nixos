@@ -79,13 +79,18 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s", "c" }),
-
-		["<C-Z>"] = cmp.mapping.complete({ sources = { name = "luasnip" } }),
+		["<C-b>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{ name = "luasnip" },
+				},
+			},
+		}),
 	},
 
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		-- { name = "luasnip" },
 		{ name = "path" },
 		-- { name = "emoji" },
 		-- { name = "treesitter" },

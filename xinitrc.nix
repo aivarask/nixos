@@ -14,7 +14,7 @@
     imwheel -b 45 &
 
     XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-    ssh-chat --bind 2022 &
+    # ssh-chat --bind 2022 &
     # wetty -b / -p 9999 &
 
     # sudo systemctl restart cron.service

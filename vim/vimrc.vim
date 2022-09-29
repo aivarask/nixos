@@ -4,6 +4,7 @@ aug Initial
 	au!
 	au BufWritePost vimrc :so %
 	autocmd VimResized * wincmd =
+  autocmd VimResized * FloatermUpdate
   " https://vim.fandom.com/wiki/Multiple_commands_at_once
   au BufWritePost schema.prisma :execute 'silent! !pg' | :LspRestart
 aug END

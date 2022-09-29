@@ -1,4 +1,13 @@
-precmd() {print -Pn "\e]0;${PWD/#$HOME/~} [$(history | tail -n1 | awk '{for (i=2;i<=NF-1;i++) printf $i " "; print $NF}')]\a"}
+# precmd() {print -Pn "\e]0;${PWD/#$HOME/~} [$(history | tail -n1 | awk '{for (i=2;i<=NF-1;i++) printf $i " "; print $NF}')]\a"}
+
+precmd() {
+  print -Pn "\e]83;title \"$1\"\a"
+  print -Pn "\e]0;$TERM\a"
+}
+preexec() {
+  print -Pn "\e]83;title \"$1\"\a"
+  print -Pn "\e]0;$TERM - $1\a"
+}
 
 source "$(fzf-share)/key-bindings.zsh"
 source "$(fzf-share)/completion.zsh"
@@ -39,4 +48,28 @@ function fzf_manix {
     sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' |
     fzf --preview="manix '{}'" |
     xargs manix
+}
+
+# USE LF TO SWITCH DIRECTORIES AND BIND IT TO CTRL-O
+lfcd() {
+  tmp="$(mktemp)"
+  lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    if [ "$dir" != "$(pwd)" ]; then
+      cd "$dir" || exit
+    fi
+  fi
+}
+
+lf() {
+  local tempfile
+  tempfile="$(mktemp)"
+  command lf -command "map Q \$echo \$PWD >$tempfile; lf -remote \"send \$id quit\"" "$@"
+
+  if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n "$(pwd)")" ]]; then
+    cd -- "$(cat "$tempfile")" || return
+  fi
+  command rm -f -- "$tempfile" 2>/dev/null
 }

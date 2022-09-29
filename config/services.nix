@@ -48,7 +48,8 @@
   services.transmission = {
     enable = true;
     settings = {
-      watch-dir = "/root/Downloads";
+      watch-dir = "/var/lib/transmission/watch-dir";
+      # watch-dir = "/root/Downloads";
       watch-dir-enabled = true;
     };
   };

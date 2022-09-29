@@ -28,6 +28,7 @@ set updatetime=300
 " set completeopt=menuone,noselect,preview
 set completeopt=menu,menuone,noselect
 
+set lazyredraw
 
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30
@@ -41,9 +42,10 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-let g:floaterm_wintype = 'vsplit'
+let g:floaterm_wintype = 'float'
 let g:floaterm_autoclose = 2
-let g:floaterm_width = 0.5
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.7
 
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8  }  }

@@ -72,5 +72,11 @@
     PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
+
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1";
+    QT_AUTO_SCREEN_SET_FACTOR = "0";
+    QT_SCALE_FACTOR = "1";
+    QT_FONT_DPI = "144";
   };
 }

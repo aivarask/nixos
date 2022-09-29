@@ -91,8 +91,6 @@ let
     # LSP:
     nvim-lspconfig
     nvim-lsp-ts-utils # NEW:
-    nvim-ts-autotag
-    nvim-treesitter-textobjects
     # nvim-treesitter-textsubjects
     null-ls-nvim
     symbols-outline-nvim
@@ -127,56 +125,58 @@ let
     # telescope-cheat-nvim
     telescope-symbols-nvim
 
-
     # TREE_SITTER:
-    nvim-treesitter
+    {
+      plugin = nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
+    }
     nvim-ts-context-commentstring
     nvim-ts-rainbow
+    nvim-treesitter-textobjects
+    nvim-ts-autotag
   ];
 in
 {
-
-  xdg.configFile."nvim/parser/bash.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser";
-  xdg.configFile."nvim/parser/c-sharp.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-c-sharp}/parser";
-  xdg.configFile."nvim/parser/c.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-c}/parser";
-  xdg.configFile."nvim/parser/comment.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-comment}/parser";
-  xdg.configFile."nvim/parser/cpp.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-cpp}/parser";
-  xdg.configFile."nvim/parser/css.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-css}/parser";
-  xdg.configFile."nvim/parser/dart.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-dart}/parser";
-  xdg.configFile."nvim/parser/dockerfile.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-dockerfile}/parser";
-  xdg.configFile."nvim/parser/elm.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-elm}/parser";
-  xdg.configFile."nvim/parser/fish.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-fish}/parser";
-  xdg.configFile."nvim/parser/go.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-go}/parser";
-  xdg.configFile."nvim/parser/graphql.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-graphql}/parser";
-  xdg.configFile."nvim/parser/haskell.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-haskell}/parser";
-  xdg.configFile."nvim/parser/html.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-html}/parser";
-  xdg.configFile."nvim/parser/http.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-http}/parser";
-  xdg.configFile."nvim/parser/java.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-java}/parser";
-  xdg.configFile."nvim/parser/javascript.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-javascript}/parser";
-  xdg.configFile."nvim/parser/jsdoc.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-jsdoc}/parser";
-  xdg.configFile."nvim/parser/json.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser";
-  xdg.configFile."nvim/parser/json5.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json5}/parser";
-  xdg.configFile."nvim/parser/lua.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-lua}/parser";
-  xdg.configFile."nvim/parser/make.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-make}/parser";
-  xdg.configFile."nvim/parser/markdown.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-markdown}/parser";
-  xdg.configFile."nvim/parser/nix.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-nix}/parser";
-  xdg.configFile."nvim/parser/perl.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-perl}/parser";
-  xdg.configFile."nvim/parser/php.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-php}/parser";
-  xdg.configFile."nvim/parser/python.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-python}/parser";
-  xdg.configFile."nvim/parser/ql.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-ql}/parser";
-  xdg.configFile."nvim/parser/query.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-query}/parser";
-  xdg.configFile."nvim/parser/regex.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-regex}/parser";
-  xdg.configFile."nvim/parser/rst.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rst}/parser";
-  xdg.configFile."nvim/parser/ruby.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-ruby}/parser";
-  xdg.configFile."nvim/parser/rust.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rust}/parser";
-  xdg.configFile."nvim/parser/scss.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-scss}/parser";
-  xdg.configFile."nvim/parser/svelte.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-svelte}/parser";
-  # xdg.configFile."nvim/parser/swift.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-swift}/parser";
-  xdg.configFile."nvim/parser/toml.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-toml}/parser";
-  xdg.configFile."nvim/parser/tsx.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-tsx}/parser";
-  xdg.configFile."nvim/parser/typescript.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-typescript}/parser";
-  xdg.configFile."nvim/parser/vue.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-vue}/parser";
-  xdg.configFile."nvim/parser/yaml.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-yaml}/parser";
+  # xdg.configFile."nvim/parser/bash.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser";
+  # xdg.configFile."nvim/parser/c-sharp.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-c-sharp}/parser";
+  # xdg.configFile."nvim/parser/c.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-c}/parser";
+  # xdg.configFile."nvim/parser/comment.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-comment}/parser";
+  # xdg.configFile."nvim/parser/cpp.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-cpp}/parser";
+  # xdg.configFile."nvim/parser/css.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-css}/parser";
+  # xdg.configFile."nvim/parser/dart.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-dart}/parser";
+  # xdg.configFile."nvim/parser/dockerfile.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-dockerfile}/parser";
+  # xdg.configFile."nvim/parser/elm.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-elm}/parser";
+  # xdg.configFile."nvim/parser/fish.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-fish}/parser";
+  # xdg.configFile."nvim/parser/go.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-go}/parser";
+  # xdg.configFile."nvim/parser/graphql.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-graphql}/parser";
+  # xdg.configFile."nvim/parser/haskell.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-haskell}/parser";
+  # xdg.configFile."nvim/parser/html.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-html}/parser";
+  # xdg.configFile."nvim/parser/http.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-http}/parser";
+  # xdg.configFile."nvim/parser/java.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-java}/parser";
+  # xdg.configFile."nvim/parser/javascript.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-javascript}/parser";
+  # xdg.configFile."nvim/parser/jsdoc.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-jsdoc}/parser";
+  # xdg.configFile."nvim/parser/json.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser";
+  # xdg.configFile."nvim/parser/json5.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json5}/parser";
+  # xdg.configFile."nvim/parser/lua.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-lua}/parser";
+  # xdg.configFile."nvim/parser/make.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-make}/parser";
+  # xdg.configFile."nvim/parser/markdown.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-markdown}/parser";
+  # xdg.configFile."nvim/parser/nix.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-nix}/parser";
+  # xdg.configFile."nvim/parser/perl.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-perl}/parser";
+  # xdg.configFile."nvim/parser/php.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-php}/parser";
+  # xdg.configFile."nvim/parser/python.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-python}/parser";
+  # xdg.configFile."nvim/parser/ql.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-ql}/parser";
+  # xdg.configFile."nvim/parser/query.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-query}/parser";
+  # xdg.configFile."nvim/parser/regex.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-regex}/parser";
+  # xdg.configFile."nvim/parser/rst.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rst}/parser";
+  # xdg.configFile."nvim/parser/ruby.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-ruby}/parser";
+  # xdg.configFile."nvim/parser/rust.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rust}/parser";
+  # xdg.configFile."nvim/parser/scss.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-scss}/parser";
+  # xdg.configFile."nvim/parser/svelte.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-svelte}/parser";
+  # # xdg.configFile."nvim/parser/swift.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-swift}/parser";
+  # xdg.configFile."nvim/parser/toml.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-toml}/parser";
+  # xdg.configFile."nvim/parser/tsx.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-tsx}/parser";
+  # xdg.configFile."nvim/parser/typescript.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-typescript}/parser";
+  # xdg.configFile."nvim/parser/vue.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-vue}/parser";
+  # xdg.configFile."nvim/parser/yaml.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-yaml}/parser";
 
   home.file.".vim/coc-settings.json".source = ./coc-settings.json;
   programs.vim = {
@@ -195,7 +195,7 @@ in
         EOF
       ''
     ];
-    extraPackages = with pkgs; [ ];
+    extraPackages = with pkgs; [ tree-sitter ];
     package = pkgs.neovim-nightly;
     plugins = vimPlugins ++ nvimPlugins;
     viAlias = true;
@@ -207,3 +207,4 @@ in
     withRuby = true;
   };
 }
+

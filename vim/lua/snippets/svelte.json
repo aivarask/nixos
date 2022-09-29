@@ -1,14 +1,4 @@
 {
-  "script-module-typescript": {
-    "prefix": [
-      "script-module-typescript"
-    ],
-    "body": [
-      "<script context=\"module\" lang=\"ts\">",
-      "\t${0}",
-      "</script>"
-    ]
-  },
   "script-typescript": {
     "prefix": [
       "script-typescript"

@@ -43,6 +43,12 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("v", "]f", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format({async=true})<CR>", opts)
+	buf_set_keymap(
+		"i",
+		"<C-b>",
+		"<cmd>lua require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })<CR>",
+		opts
+	)
 
 	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 

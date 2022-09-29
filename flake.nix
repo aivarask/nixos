@@ -3,10 +3,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-master.url = "nixpkgs/master";
-    # rust-overlay = {
-    #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
@@ -16,7 +16,6 @@
       flake = false;
     };
     nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     statix.url = "github:nerdypepper/statix";
@@ -40,7 +39,7 @@
     let
       home = import ./home.nix;
       overlays = with inputs;[
-        # rust-overlay.overlay
+        rust-overlay.overlays.default
         nur.overlay
         neovim-nightly-overlay.overlay
         statix.overlay
