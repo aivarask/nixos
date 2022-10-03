@@ -49,7 +49,7 @@
       D = "%trash-put $fx";
       e = "$$EDITOR $fx";
       E = "$vim $fx";
-      a = "push :touch<space>";
+      "aa" = "push :touch<space>";
       A = "push :mkdir<space>";
       U = "!du -hs $fx";
       T = ":get-mime-type";
@@ -63,13 +63,17 @@
       "<c-e>" = "$(fzf -m) | xargs -r $EDITOR";
       "<c-g>" = "$fzl";
       "g~" = ''$lf -remote "send $id cd $HOME"'';
-      "gc" = ''$lf -remote "send $id cd ~/fixasparts/src/comp"'';
-      "gl" = ''$lf -remote "send $id cd ~/fixasparts/src/lib"'';
-      "gr" = ''$lf -remote "send $id cd ~/fixasparts/src/routes"'';
-      "gp" = ''$lf -remote "send $id cd ~/fixasparts/prisma"'';
-      "gu" = ''$lf -remote "send $id cd ~/fixasparts/src/util"'';
-      "gt" = ''$lf -remote "send $id cd ~/fixasparts/src/routes/_test"'';
+      "gc" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/comp"'';
+      "gl" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/lib"'';
+      "gr" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/routes"'';
+      "gp" = ''$lf -remote "send $id cd ~/svelte-sandbox/prisma"'';
+      "gu" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/util"'';
+      "gt" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/routes/_test"'';
       "of" = ''!firefox $fx'';
+      "alt" = "$touch +layout.server.ts";
+      "als" = "$touch +layout.svelte";
+      "apt" = "$touch +page.server.ts";
+      "aps" = "$touch +page.svelte";
 
     };
     cmdKeybindings = { };

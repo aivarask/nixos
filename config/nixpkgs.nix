@@ -10,7 +10,7 @@
     "nvidia-settings"
     "joypixels"
     "spotify"
-    "spotify-unwrapped"
+    # "spotify-unwrapped"
     "steam"
     "steam-original"
     "steam-runtime"

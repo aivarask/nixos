@@ -101,7 +101,7 @@ in
     rubyPackages ++
     playwrightDependencies ++
     prismaSpecific ++
-    python39Packages ++
+    # python39Packages ++
     gitAndTools ++
     bat-extras ++
     haskellPackages ++
@@ -119,9 +119,9 @@ in
       zsh-autocomplete
       inetutils
       wiki-tui
-      spotify
-      spotify-tui
-      certbot-full
+      # spotify
+      # spotify-tui
+      # certbot-full
       libwebp
       awscli2
       google-cloud-sdk
@@ -217,6 +217,7 @@ in
       luajit
       lxappearance
       manix
+      mono
       mpc_cli
       mpd
       mpv
