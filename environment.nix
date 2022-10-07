@@ -23,7 +23,6 @@
     lt3 = "ls --tree --level=3";
     mc = "tmux split -h lf; lf";
     mcd = "tmux split -h nd; ndcw; ndtw";
-    pn = "pnpm";
     nd = "npm run dev";
     ndh = "npm run dev -- --host";
     ndo = "npm run dev -- --open";
@@ -36,17 +35,18 @@
     nrpr = "npm run prepare";
     nrr = "npm run run";
     nrs = "npm run start";
-    nsb = "npm run storybook";
     nrt = "npm run test";
-    nrtu = "npm run test:unit";
     nrtd = "npm run test:dev";
+    nrtu = "npm run test:unit";
     nrtw = "npm run test:watch";
+    nsb = "npm run storybook";
     oras = "curl wttr.in/Vilnius";
     pa = "prisma generate && prisma db push --accept-data-loss && prisma db seed";
     pdp = "prisma db push --accept-data-loss";
     pdr = "prisma db push --accept-data-loss --force-reset";
     pds = "prisma db seed";
     pg = "prisma generate";
+    pn = "pnpm";
     tre = "trans :en";
     trl = "trans :lt";
     up = "nixos-rebuild switch";
@@ -55,8 +55,6 @@
     x = "startx";
   };
   environment.variables = {
-    DOT = "/etc/nixos";
-    HM = "/etc/nixos/home";
     TERMINAL = "alacritty";
     EDITOR = "nvim";
     editor = "vim";
@@ -72,7 +70,6 @@
     PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SET_FACTOR = "0";

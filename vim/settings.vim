@@ -47,9 +47,6 @@ let g:floaterm_autoclose = 2
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.7
 
-let g:fzf_preview_window = ['up:60%', 'ctrl-/']
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8  }  }
-
 if !has('gui_running')
   set t_Co=256
   set guioptions-=e

@@ -1,21 +1,46 @@
 nnoremap <SPACE> <Nop>
+" inoremap <F1> <Nop>
+"inoremap II <Esc>I
+"inoremap AA <Esc>A
+"inoremap OO <Esc>O
+""
+"inoremap CC <Esc>C
+"inoremap SS <Esc>S
+"inoremap DD <Esc>dd
+"inoremap UU <Esc>u
 
-" nnoremap <F1> :exe 'vert bo h ' . expand('<cword>')<CR>
-map <F1> :exe 'h ' . expand('<cWORD>')<CR>
-" inoremap <F1> <C-o>:exe 'h ' . expand('<cWORD>')<CR>
-map <F13> :exe 'h ' . expand('<cword>')<CR>
-inoremap <F13> <C-o>:exe 'h ' . expand('<cword>')<CR>
-map <F25> :exe 'h ' . expand('<cword>')<CR>
-inoremap <F25> <C-o>:exe 'h ' . expand('<cword>')<CR>
+nnoremap HH <C-w>t<C-w>H
+nnoremap KK <C-w>t<C-w>K
+
+
+map   <F1>  :exe 'h ' . expand('<cword>')<CR>
+imap  <F1>  <C-o><F1>| " vim.lsp.buf.signature_help()
+map   <F13> :exe 'h ' . expand('<cWORD>')<CR>
+imap  <F13> <C-o><F13>
+map   <F25> :exe 'h ' . expand('<cexpr>')<CR>
+imap  <F25> <C-o><F25>
+
+map   <F5>  :source %<CR>
+imap  <F5>  <C-o><F5>
+map   <F29> :so /root/.config/nvim/init.lua<CR>
+
+
+function! Greet() abort
+  echo 'hello from keymaps.vim'
+endfunction
+" execute Greet()
+
+
+inoremap <F6> <C-o>:execute 'help ' . expand('<cword>')<CR>
+
 
 nnoremap <F2> :exe '!xdg-open https://github.com/' . expand('<cfile>')<CR>
 nnoremap <F3> :exe '!xdg-open https://github.com/search\?q\=' . expand('<cWORD>')<CR>
 nnoremap <F4> :set paste!<CR>
 
-map <F5> :so%<CR>
-inoremap <F5> <C-o>:so%<CR>
 " map <C-b> :.so<CR>
 " inoremap <C-b> <C-o>:.so<CR>
+" map <F29> :so /etc/nixos/vim/init.lua<CR>
 
 map <F9> :vsplit /etc/nixos/vim/lua/snippets/svelte.json<CR>
 map <F21> :vsplit /etc/nixos/vim/lua/snippets/typescript.json<CR>
@@ -69,15 +94,20 @@ nnoremap	<leader>li	:LspInfo<CR>
 nnoremap	<leader>lr	:LspRestart<CR>
 nnoremap  <leader>lg  :LazyGit<CR>
 
+nnoremap <space>4 ciw$<esc>P
+
+" https://github.com/junegunn/fzf.vim#preview-window
+let g:fzf_preview_window = ['up:60%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8  }  }
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>sm :Maps<CR>
-nnoremap <C-e> :Files<CR>
 " nnoremap <C-e>. :Files ..<CR>
 nnoremap <leader>sf :Files<CR>
+nnoremap <C-e> :Files<CR>
 nnoremap <leader>sc :Commands<CR>
 nnoremap <leader>sF :FZF<CR>
-
 nnoremap <C-g> :Rg <CR>
+
 nnoremap <C-h> ZZ
 nnoremap <leader>sr :Rg<CR>
 nnoremap <leader>sh :Helptags<CR>
@@ -87,6 +117,8 @@ nnoremap <leader>dd :Lexplore %:p:h<CR>
 nnoremap <Leader>da :Lexplore<CR>
 
 nnoremap <leader>lf :LfCurrentDirectory<CR>
+nnoremap <leader>lw :LfWorkingDirectory<CR>
+nnoremap <leader>lt :LfNewTab<CR>
 
 " SHIFT-ESC:
 " inoremap <Esc>[Z <Esc> :bn<CR>

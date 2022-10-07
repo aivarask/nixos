@@ -49,10 +49,11 @@
       D = "%trash-put $fx";
       e = "$$EDITOR $fx";
       E = "$vim $fx";
-      "aa" = "push :touch<space>";
+      a = "push :touch<space>";
       A = "push :mkdir<space>";
       U = "!du -hs $fx";
       T = ":get-mime-type";
+      "<esc>" = ":quit";
       ZZ = ":quit";
       lg = "!lazygit";
       "--" = "set ratios 1:2";
@@ -63,6 +64,7 @@
       "<c-e>" = "$(fzf -m) | xargs -r $EDITOR";
       "<c-g>" = "$fzl";
       "g~" = ''$lf -remote "send $id cd $HOME"'';
+      "gn" = ''$lf -remote "send $id cd /etc/nixos"'';
       "gc" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/comp"'';
       "gl" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/lib"'';
       "gr" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/routes"'';
@@ -70,16 +72,19 @@
       "gu" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/util"'';
       "gt" = ''$lf -remote "send $id cd ~/svelte-sandbox/src/routes/_test"'';
       "of" = ''!firefox $fx'';
-      "alt" = "$touch +layout.server.ts";
-      "als" = "$touch +layout.svelte";
-      "apt" = "$touch +page.server.ts";
-      "aps" = "$touch +page.svelte";
+      "oz" = ''!zathura $fx'';
+      "til" = "$touch init.lua";
+      "tlt" = "$touch +layout.server.ts";
+      "tls" = "$touch +layout.svelte";
+      "tpt" = "$touch +page.server.ts";
+      "tps" = "$touch +page.svelte";
 
     };
     cmdKeybindings = { };
     extraConfig = ''
       $mkdir -p ~/.trash
       set previewer pistol
+      map t
     '';
   };
 

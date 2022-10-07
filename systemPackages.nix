@@ -41,7 +41,7 @@ let
     svelte-check
     svelte-language-server
     tailwindcss
-    # typescript
+    typescript
     # typescript-language-server
     vim-language-server
     vscode-langservers-extracted
@@ -52,6 +52,7 @@ let
     inspect
     penlight
     std-_debug
+    plenary-nvim
   ];
   php80Packages = with pkgs.php80Packages; [ composer phpstan psalm ];
   php80Extensions = with pkgs.php80Extensions; [ xdebug ];

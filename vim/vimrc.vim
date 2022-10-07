@@ -1,4 +1,5 @@
-let &runtimepath.=','.'/etc/nixos/vim'.','.'/etc/nixos/vim/lua/lsp'
+let &runtimepath.=','.'/etc/nixos/vim'
+" .','.'/root/luamodules'
 
 aug Initial
 	au!
