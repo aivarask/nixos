@@ -66,6 +66,7 @@ require("lspconfig").tailwindcss.setup({
 			emmetCompletions = true,
 			classAttributes = {
 				"class",
+				"class:",
 				"classWrap",
 				"className",
 				"classInput",

@@ -41,8 +41,7 @@
     nrtw = "npm run test:watch";
     nsb = "npm run storybook";
     oras = "curl wttr.in/Vilnius";
-    pa = "prisma generate && prisma db push --accept-data-loss && prisma db seed";
-    pdp = "prisma db push --accept-data-loss";
+    pdp = "prisma db push";
     pdr = "prisma db push --accept-data-loss --force-reset";
     pds = "prisma db seed";
     pg = "prisma generate";

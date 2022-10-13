@@ -25,17 +25,6 @@ require("lspconfig").vimls.setup({
 		},
 		vimruntime = "",
 	},
-	root_dir = root_pattern(
-		"vimrc.vim"
-		-- "init.lua"
-		--
-		-- ".luarc.json",
-		-- ".luacheckrc",
-		-- ".stylua.toml",
-		-- "stylua.toml",
-		-- "selene.toml",
-		-- ".git"
-		--
-	),
+	root_dir = root_pattern("vimrc.vim"),
 	single_file_support = true,
 })

@@ -40,7 +40,7 @@
       "pre"
     ],
     "body": [
-      "<pre>{JSON.stringify(${1} , null, 2)}</pre>"
+      "<pre class=\"text-xs\">{JSON.stringify(${1} , null, 2)}</pre>"
     ]
   },
   "const-dispatch": {

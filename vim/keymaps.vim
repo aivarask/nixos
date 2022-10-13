@@ -1,5 +1,4 @@
 nnoremap <SPACE> <Nop>
-" inoremap <F1> <Nop>
 "inoremap II <Esc>I
 "inoremap AA <Esc>A
 "inoremap OO <Esc>O
@@ -7,45 +6,61 @@ nnoremap <SPACE> <Nop>
 "inoremap CC <Esc>C
 "inoremap SS <Esc>S
 "inoremap DD <Esc>dd
-"inoremap UU <Esc>u
+inoremap UU <Esc>u
 
 nnoremap HH <C-w>t<C-w>H
 nnoremap KK <C-w>t<C-w>K
 
-
-map   <F1>  :exe 'h ' . expand('<cword>')<CR>
-imap  <F1>  <C-o><F1>| " vim.lsp.buf.signature_help()
-map   <F13> :exe 'h ' . expand('<cWORD>')<CR>
+map   <F1>  :exe 'help ' . expand('<cword>')<CR>
+imap  <F1>  <C-o><F1>
+map   <F13> :exe 'help ' . expand('<cWORD>')<CR>
 imap  <F13> <C-o><F13>
-map   <F25> :exe 'h ' . expand('<cexpr>')<CR>
+map   <F25> :exe 'help ' . expand('<cexpr>')<CR>
 imap  <F25> <C-o><F25>
+
+map   <F2>  <cmd>lua vim.lsp.buf.hover()<CR>
+imap  <F2>  <C-o><F2>
+
+map   <F3>  <cmd>lua vim.lsp.buf.signature_help()<CR>
+imap  <F3>  <C-o><F3>
 
 map   <F5>  :source %<CR>
 imap  <F5>  <C-o><F5>
+map   <F17> :so /root/.config/nvim/init.lua<CR>
+imap  <F17> <C-o><F17>
 map   <F29> :so /root/.config/nvim/init.lua<CR>
+imap  <F29> <C-o><F29>
 
+map   <F6>  <cmd>lua ReloadModule('<cword>')<CR>
+map   <F18> <cmd>lua ReloadModule('<cWORD>')<CR>
+map   <F30> <cmd>lua ReloadModule('<cexpr>')<CR>
 
-function! Greet() abort
-  echo 'hello from keymaps.vim'
-endfunction
-" execute Greet()
+map   <F7>  <cmd>lua ReloadFile('<cword>')<CR>
+imap  <F7>  <C-o><F7>
 
-
-inoremap <F6> <C-o>:execute 'help ' . expand('<cword>')<CR>
-
-
-nnoremap <F2> :exe '!xdg-open https://github.com/' . expand('<cfile>')<CR>
-nnoremap <F3> :exe '!xdg-open https://github.com/search\?q\=' . expand('<cWORD>')<CR>
-nnoremap <F4> :set paste!<CR>
-
-" map <C-b> :.so<CR>
-" inoremap <C-b> <C-o>:.so<CR>
-" map <F29> :so /etc/nixos/vim/init.lua<CR>
+map <F8> :vsplit /etc/nixos/vim/init.lua<CR>
+map <F20> :vsplit /etc/nixos/vim/settings.vim<CR>
+map <F32> :vsplit /etc/nixos/vim/keymaps.vim<CR>
 
 map <F9> :vsplit /etc/nixos/vim/lua/snippets/svelte.json<CR>
 map <F21> :vsplit /etc/nixos/vim/lua/snippets/typescript.json<CR>
 map <F33> :vsplit /etc/nixos/vim/lua/snippets/test.json<CR>
 " map <F33> :lua require('completion').reload()<CR>
+
+
+" nnoremap <F2> :exe '!xdg-open https://github.com/' . expand('<cfile>')<CR>
+" nnoremap <F3> :exe '!xdg-open https://github.com/search\?q\=' . expand('<cWORD>')<CR>
+" nnoremap <F4> :set paste!<CR>
+
+" map <C-b> :.so<CR>
+" inoremap <C-b> <C-o>:.so<CR>
+
+
+map   qq    <cmd>NvimTreeToggle<CR> 
+function! Greet() abort
+  echo 'hello from keymaps.vim'
+endfunction
+" execute Greet()
 
 function! ToggleQuickFix()
   if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -65,7 +80,8 @@ else
   tnoremap	<silent>	<F12>	<C-\><C-n>:FloatermToggle<CR>
 endif
 
-nnoremap <leader>tt <cmd>Telescope<cr>
+nnoremap <leader>tt <cmd>Telescope<CR>
+nnoremap <leader>ds <cmd>Telescope lsp_document_symbols<CR>
 
 augroup aivarask
   autocmd!
@@ -94,7 +110,7 @@ nnoremap	<leader>li	:LspInfo<CR>
 nnoremap	<leader>lr	:LspRestart<CR>
 nnoremap  <leader>lg  :LazyGit<CR>
 
-nnoremap <space>4 ciw$<esc>P
+nnoremap <space>4 ciw$<esc>p
 
 " https://github.com/junegunn/fzf.vim#preview-window
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']

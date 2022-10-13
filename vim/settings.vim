@@ -42,10 +42,23 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
+function! FloatermResize() abort
+  let g:floaterm_width = get(g:, 'floaterm_width', &columns/2)
+  let g:floaterm_height = get(g:, 'floaterm_height', winheight(0)/2)
+endfunction
+
+command Resize :let g:floaterm_width=0.8
+
+augroup Settings
+  autocmd!
+  " autocmd VimResized * FloatermResize
+augroup END
+
 let g:floaterm_wintype = 'float'
 let g:floaterm_autoclose = 2
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.7
+
 
 if !has('gui_running')
   set t_Co=256
@@ -61,37 +74,3 @@ else
   let g:AutoPairsShortcutBackInsert = '<C-b>'
 
 endif
-" https://github.com/itchyny/lightline.vim
-" https://github.com/mengelbrecht/lightline-bufferline
-" https://github.com/josa42/nvim-lightline-lsp/
-" let g:lightline.enable = {
-" 		    \ 'statusline': 0,
-" 		    \ 'tabline': 0
-" 		    \ }
-
-" let g:lightline = {
-"   \ 'enable': 0
-"   \}
-
-" let g:lightline = {
-"       \ 'colorscheme': 'one',
-"       \ 'active': {
-"         \   'left': [ [ 'mode', 'paste' ],
-"         \             [ 'readonly', 'absolutepath', 'modified', 'helloworld' ],
-"         \             [ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ],
-"         \             [ 'lsp_status']
-"         \           ]
-"         \ },
-"         \ 'tabline': {
-"           \   'left': [ ['buffers'] ],
-"           \   'right': [ ['tabs', 'close'] ]
-"           \ },
-"           \ 'component_expand': {
-"             \   'buffers': 'lightline#bufferline#buffers'
-"             \ },
-"             \ 'component_type': {
-"               \   'buffers': 'tabsel'
-"               \ }
-"               \ }
-" call lightline#lsp#register()
-

@@ -3,7 +3,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-require("pairs")
 
 local luasnip = require("luasnip")
 
@@ -20,10 +19,6 @@ M.reload = function()
   -- require("luasnip.loaders.from_vscode").lazy_load()
   -- require("luasnip.loaders.from_vscode").load({ paths = "/etc/nixos/vim/lua/snippets" })
   print("completion reloaded")
-end
-
-M.greet = function()
-  print("hello h")
 end
 
 local cmp = require("cmp")
@@ -96,8 +91,12 @@ cmp.setup({
     { name = "path" },
     -- { name = "emoji" },
     -- { name = "treesitter" },
+    -- { name = 'nvim_lsp_signature_help' },
+    -- { name = "cmdline" },
   }),
 })
+
+
 
 cmp.setup.cmdline("/", {
   sources = {
@@ -106,14 +105,17 @@ cmp.setup.cmdline("/", {
 })
 
 cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = "path" },
     -- FIX: not working :%s/
     -- { name = "buffer" },
+    -- { name = 'nvim_lsp_signature_help' }
   }, {
     { name = "cmdline" },
     -- FIX: not working :%s/
     -- { name = "buffer" },
+    -- { name = 'nvim_lsp_signature_help' }
   }),
 })
 

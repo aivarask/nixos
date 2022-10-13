@@ -107,6 +107,7 @@ let
     cmp-emoji
     cmp-treesitter
     nvim-cmp
+    cmp-nvim-lsp-signature-help
     # VSNIP:
     cmp-vsnip
     vim-vsnip
