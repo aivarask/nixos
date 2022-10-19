@@ -20,9 +20,9 @@
       "};"
     ]
   },
-  "kit-action": {
+  "kit-actions": {
     "prefix": [
-      "kit-action"
+      "kit-actions"
     ],
     "body": [
       "export const actions: Actions = {",
@@ -33,6 +33,19 @@
       "\t}",
       "\t${0}",
       "};"
+    ]
+  },
+  "kit-action": {
+    "prefix": [
+      "kit-action"
+    ],
+    "body": [
+      "\t${1:default}: async (event) => {",
+      "\t\t${2:const fd = await event.request.formData();}",
+      "\t\t${3:const data = Object.fromEntries(fd.entries()) as Partial<${4}>;}",
+      "\t\treturn {};",
+      "\t},",
+      "\t${0}"
     ]
   },
   "kit-page": {
