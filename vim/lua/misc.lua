@@ -1,7 +1,6 @@
 require("nvim-web-devicons").setup()
 -- require("gitsigns").setup({})
--- vim.o.termguicolors = true
--- require("colorizer").setup()
+
 -- require("neoscroll").setup({
 -- 	-- All these keys will be mapped to their corresponding default scrolling animation
 -- 	mappings = {

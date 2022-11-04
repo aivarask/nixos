@@ -78,7 +78,6 @@ let
     tabline-nvim
 
     toggleterm-nvim
-    todo-comments-nvim
     nvim-autopairs
     nvim-web-devicons
     plenary-nvim
@@ -95,10 +94,12 @@ let
     # nvim-treesitter-textsubjects
     null-ls-nvim
     symbols-outline-nvim
+    diaglist-nvim
     # COMPLETION:
     # https://github.com/hrsh7th
     # ./lua/compl.lua
-    lua-dev-nvim
+    neodev-nvim # nixos-rebuild fails
+    # lua-dev.nvim
     cmp-nvim-lua
     cmp-nvim-lsp
     cmp-buffer
@@ -128,6 +129,8 @@ let
     telescope-fzy-native-nvim
     # telescope-cheat-nvim
     telescope-symbols-nvim
+    trouble-nvim # https://github.com/folke/trouble.nvim
+    todo-comments-nvim # https://github.com/folke/todo-comments.nvim
 
     # TREE_SITTER:
     {

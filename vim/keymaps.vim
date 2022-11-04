@@ -38,13 +38,13 @@ map   <F30> <cmd>lua ReloadModule('<cexpr>')<CR>
 map   <F7>  <cmd>lua ReloadFile('<cword>')<CR>
 imap  <F7>  <C-o><F7>
 
-map <F8> :vsplit /etc/nixos/vim/init.lua<CR>
-map <F20> :vsplit /etc/nixos/vim/settings.vim<CR>
-map <F32> :vsplit /etc/nixos/vim/keymaps.vim<CR>
+map <F8> :e /etc/nixos/vim/init.lua<CR>
+map <F20> :e /etc/nixos/vim/settings.vim<CR>
+map <F32> :e /etc/nixos/vim/keymaps.vim<CR>
 
-map <F9> :vsplit /etc/nixos/vim/lua/snippets/svelte.json<CR>
-map <F21> :vsplit /etc/nixos/vim/lua/snippets/typescript.json<CR>
-map <F33> :vsplit /etc/nixos/vim/lua/snippets/test.json<CR>
+map <F9> :e /etc/nixos/vim/lua/snippets/svelte.json<CR>
+map <F21> :e /etc/nixos/vim/lua/snippets/typescript.json<CR>
+map <F33> :e /etc/nixos/vim/lua/snippets/test.json<CR>
 " map <F33> :lua require('completion').reload()<CR>
 
 
@@ -94,6 +94,8 @@ nnoremap <silent><C-s> :silent w<CR>
 inoremap <silent><C-s> <C-o>:silent w<CR>
 inoremap <C-b> <Cmd>lua require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })<CR>
 nnoremap <M-q> :Bclose<CR>
+command BcloseRest :up | %bd | e#
+nnoremap <leader>dd :BcloseRest<CR>
 
 map <TAB> :bn<CR>
 map <S-TAB> :bp<CR>
@@ -110,7 +112,25 @@ nnoremap	<leader>li	:LspInfo<CR>
 nnoremap	<leader>lr	:LspRestart<CR>
 nnoremap  <leader>lg  :LazyGit<CR>
 
-nnoremap <space>4 ciw$<esc>p
+" $page $lang $store
+set iskeyword+=$
+function! ToggleDollar()
+    let l:pos = col('.')
+    if expand('<cword>') =~ '\$'
+    " if expand('<cword>') =~ '\v(\s+|\t+)?$'
+      echo 'contains'
+        exec 'normal! bx'
+        let l:pos -= 1
+    else
+      echo 'else'
+        exec 'normal! bi$'
+        let l:pos += 1
+    endif
+    call cursor(line("."), l:pos)
+endfunction
+
+nnoremap <leader>4 :call ToggleDollar()<CR>
+nnoremap <space>4 :call ToggleDollar()<CR>
 
 " https://github.com/junegunn/fzf.vim#preview-window
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']
@@ -129,8 +149,8 @@ nnoremap <leader>sr :Rg<CR>
 nnoremap <leader>sh :Helptags<CR>
 nnoremap <leader>sb :Buffers<CR>
 
-nnoremap <leader>dd :Lexplore %:p:h<CR>
-nnoremap <Leader>da :Lexplore<CR>
+" nnoremap <leader>dd :Lexplore %:p:h<CR>
+" nnoremap <Leader>da :Lexplore<CR>
 
 nnoremap <leader>lf :LfCurrentDirectory<CR>
 nnoremap <leader>lw :LfWorkingDirectory<CR>

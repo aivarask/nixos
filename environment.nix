@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
   environment.sessionVariables = {
+    # NIX_PATH = "$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays";
     PATH = [
       "/etc/nixos/bin"
       "$HOME/.pnpm-global"

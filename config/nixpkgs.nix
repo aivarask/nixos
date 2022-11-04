@@ -13,6 +13,7 @@
     # "spotify-unwrapped"
     "steam"
     "steam-original"
+    "steam-run"
     "steam-runtime"
     "steamcmd"
     "ookla-speedtest"

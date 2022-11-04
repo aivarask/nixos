@@ -1,6 +1,6 @@
 -- https://github.com/nanotee/nvim-lua-guide
 -- https://github.com/folke/lua-dev.nvim
-require("lua-dev").setup({})
+require("neodev").setup({})
 require("lspconfig").sumneko_lua.setup({
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 	capabilities = require("capabilities"),

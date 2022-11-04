@@ -5,6 +5,8 @@ require("lspconfig").emmet_ls.setup({
 	root_dir = function(fname)
 		return vim.loop.cwd()
 	end,
-
 	filetypes = { "html", "css", "pug", "jade" },
+	init_options = {
+		["bem.enabled"] = true,
+	},
 })

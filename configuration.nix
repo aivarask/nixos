@@ -10,7 +10,7 @@
     ./config/programs.nix
     ./config/services.nix
     ./systemd.nix
-    ./cron.nix
+    ./config/cron.nix
     ./config/users.nix
     ./config/virtualisation.nix
     ./config/mpd.nix

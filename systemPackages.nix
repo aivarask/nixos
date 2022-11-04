@@ -42,7 +42,7 @@ let
     svelte-language-server
     tailwindcss
     typescript
-    # typescript-language-server
+    typescript-language-server
     vim-language-server
     vscode-langservers-extracted
     write-good

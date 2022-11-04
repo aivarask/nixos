@@ -50,3 +50,13 @@ require("lsp.cssls")
 -- -- require("lsp.python")
 -- -- require("lsp.php")
 -- require("debug.init")
+
+-- PERF: fully optimized
+-- HACK: hmm, this looks a bit funny
+-- FIX: this needs fixing
+
+require("colorizer").setup() -- https://github.com/norcalli/nvim-colorizer.lua
+require("telescope").setup({}) -- https://github.com/nvim-telescope/telescope.nvim
+require("todo-comments").setup({}) -- https://github.com/folke/todo-comments.nvim
+require("trouble").setup({}) -- https://github.com/folke/trouble.nvim
+require("diaglist").init({}) -- https://github.com/onsails/diaglist.nvim

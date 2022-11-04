@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, options, ... }: {
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -18,5 +18,11 @@
     settings.allowed-users = [ "@wheel" "ak" ];
     settings.trusted-users = [ "root" "@wheel" "ak" ];
   };
+  nix.nixPath =
+    # Prepend default nixPath values.
+    options.nix.nixPath.default ++
+    # Append our nixpkgs-overlays.
+    [ "nixpkgs-overlays=/etc/nixos/overlays/" ]
+  ;
 }
 

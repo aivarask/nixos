@@ -13,5 +13,5 @@ require("lspconfig").tsserver.setup({
 		"typescript.tsx",
 		-- "svelte",
 	},
-	-- root_dir = util.root_pattern("package.json", ".git"),
+	root_dir = util.root_pattern("package.json", ".git"),
 })

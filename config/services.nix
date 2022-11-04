@@ -61,10 +61,12 @@
       "ak"
       "sand"
       "fixasparts"
+      "playground"
+      "johndoe"
     ];
     ensureUsers = [
       {
-        name = "ak";
+        name = "ak"; # l
         ensurePermissions = {
           "ak.*" = "ALL PRIVILEGES";
         };
@@ -81,6 +83,12 @@
           "fixasparts.*" = "ALL PRIVILEGES";
           "sand.*" = "ALL PRIVILEGES";
           # GRANT ALL PRIVILEGES ON fixasparts.* TO 'fixas'@'localhost';
+        };
+      }
+      {
+        name = "johndoe";
+        ensurePermissions = {
+          "johndoe.*" = "ALL PRIVILEGES";
         };
       }
     ];

@@ -13,11 +13,14 @@ aug END
 source /etc/nixos/vim/keymaps.vim 
 source /etc/nixos/vim/settings.vim 
 
-set background=dark
-if has('nvim')
-  colorscheme gruvbox-material
-else
-  colorscheme gruvbox8
+if has('termguicolors')
+  set termguicolors
 endif
+set background=dark
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_foreground = 'mix'
+" NOTE: Not working due to secured derivation path
+" Not needed btw
+" let g:gruvbox_material_better_performance = 1
 
-
+colorscheme gruvbox-material

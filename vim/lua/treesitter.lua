@@ -7,6 +7,9 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 		-- https://github.com/nvim-treesitter/nvim-treesitter#available-modules
+		-- TODO: lkajsdlkj
+		-- FIX: habada
+		additional_vim_regex_highlighting = true,
 	},
 	incremental_selection = {
 		enable = true,

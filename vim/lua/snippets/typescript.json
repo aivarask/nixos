@@ -48,9 +48,9 @@
       "\t${0}"
     ]
   },
-  "kit-page": {
+  "kit+page.svelte": {
     "prefix": [
-      "kit-page"
+      "kit+page.svelte"
     ],
     "body": [
       "<script lang=\"ts\">",
@@ -59,6 +59,30 @@
       "\t${1}",
       "</script>",
       "${0}"
+    ]
+  },
+  "kit-page-server-load": {
+    "prefix": [
+      "kit-page-server-load"
+    ],
+    "body": [
+      "${1:import type { PageServerLoad \\} from './\\$types';}",
+      "export const load: PageServerLoad = async (event) => {",
+      "\t${0}",
+      "\treturn {};",
+      "};"
+    ]
+  },
+  "kit-layout": {
+    "prefix": [
+      "kit-layout"
+    ],
+    "body": [
+      "${1:import type { LayoutServerLoad \\} from './\\$types';}",
+      "export const load: LayoutServerLoad = async (event) => {",
+      "\t${0}",
+      "\treturn {};",
+      "};"
     ]
   }
 }
