@@ -25,6 +25,7 @@
       "kit-actions"
     ],
     "body": [
+      "${6:import type { Actions \\} from './\\$types';}",
       "export const actions: Actions = {",
       "\t${1:default}: async (event) => {",
       "\t\t${2:const fd = await event.request.formData();}",

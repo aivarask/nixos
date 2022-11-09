@@ -17,6 +17,8 @@
     settings.auto-optimise-store = true; # nix-store --optimise This is a potentially long operation. 
     settings.allowed-users = [ "@wheel" "ak" ];
     settings.trusted-users = [ "root" "@wheel" "ak" ];
+    settings.max-jobs = 4; # https://nixos.org/manual/nix/stable/advanced-topics/cores-vs-jobs.html
+    settings.cores = 2;
   };
   nix.nixPath =
     # Prepend default nixPath values.

@@ -47,6 +47,8 @@ map <F21> :e /etc/nixos/vim/lua/snippets/typescript.json<CR>
 map <F33> :e /etc/nixos/vim/lua/snippets/test.json<CR>
 " map <F33> :lua require('completion').reload()<CR>
 
+imap <F12> <C-O>:FloatermToggle<CR>
+
 
 " nnoremap <F2> :exe '!xdg-open https://github.com/' . expand('<cfile>')<CR>
 " nnoremap <F3> :exe '!xdg-open https://github.com/search\?q\=' . expand('<cWORD>')<CR>

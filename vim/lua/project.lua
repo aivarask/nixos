@@ -9,7 +9,7 @@ require("project_nvim").setup({
 	-- order matters: if one is not detected, the other is used as fallback. You
 	-- can also delete or rearangne the detection methods.
 	detection_methods = {
-		-- "lsp",
+		"lsp",
 		"pattern",
 	},
 

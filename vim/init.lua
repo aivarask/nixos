@@ -10,7 +10,7 @@ function ReloadModule(arg)
 	print("reload ", target)
 end
 
-function ReloadFile(arg)
+function ReloadFile()
 	local module_name = vim.fn.expand("%:t:r")
 	if module_name == "init" then
 		module_name = vim.fn.expand("%:h:t")

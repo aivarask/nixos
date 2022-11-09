@@ -2,7 +2,21 @@ local npairs = require("nvim-autopairs")
 local cmp = require("cmp")
 
 npairs.setup({
-  fast_wrap = {}, -- https://github.com/windwp/nvim-autopairs#fastwrap
+	fast_wrap = {}, -- https://github.com/windwp/nvim-autopairs#fastwrap
+})
+
+-- change default fast_wrap
+npairs.setup({
+	fast_wrap = {
+		map = "<M-e>",
+		chars = { "{", "[", "(", '"', "'", "<" },
+		pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+		end_key = "$",
+		keys = "qwertyuiopzxcvbnmasdfghjkl",
+		check_comma = true,
+		highlight = "Search",
+		highlight_grey = "Comment",
+	},
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")

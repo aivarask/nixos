@@ -1,4 +1,22 @@
 {
+  "kit-import-enhance": {
+    "prefix": [
+      "kit-import-enhance"
+    ],
+    "body": [
+      "import { enhance } from '\\$app/forms';"
+    ]
+  },
+  "kit-form-enhance": {
+    "prefix": [
+      "kit-form-enhace"
+    ],
+    "body": [
+      "<form action=\"\" method=\"post\" use:enhance>",
+      "\t<button>Add</button>",
+      "</form>"
+    ]
+  },
   "script-typescript": {
     "prefix": [
       "script-typescript"
