@@ -56,6 +56,7 @@
     6600
     2234
     3000 # sveltekit dev
+    3306
     4000
     5173 # vite dev
     6006 # storybook

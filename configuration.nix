@@ -9,6 +9,7 @@
     ./config/powerManagement.nix
     ./config/programs.nix
     ./config/services.nix
+    ./mysql
     ./systemd.nix
     ./config/cron.nix
     ./config/users.nix

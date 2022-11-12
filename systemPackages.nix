@@ -277,6 +277,7 @@ in
       sqlite-replication
       sqlite-utils
       sqlite-web
+      sqls
       ssh-chat
       st
       statix
@@ -300,7 +301,9 @@ in
       ueberzug
       unclutter-xfixes
       universal-ctags
-      unoconv
+      # FIX: build fails
+      # libreoffice
+      # unoconv
       unrar
       unzip
       usbmuxd

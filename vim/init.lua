@@ -42,6 +42,8 @@ require("lsp.emmet-ls")
 require("lsp.json")
 require("lsp.rnix")
 require("lsp.bashls")
+require("lsp.sqlls")
+require("lsp.sqls")
 
 require("lsp.cssls")
 -- require("lsp.stylelint")
