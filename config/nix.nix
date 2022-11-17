@@ -3,8 +3,8 @@
     extraOptions = ''
       experimental-features = nix-command flakes
       # https://github.com/nix-community/nix-direnv#via-home-manager
-      # keep-outputs = true
-      # keep-derivations = true
+      keep-outputs = true
+      keep-derivations = true
     '';
     gc = {
       automatic = true;
@@ -18,7 +18,7 @@
     settings.allowed-users = [ "@wheel" "ak" ];
     settings.trusted-users = [ "root" "@wheel" "ak" ];
     settings.max-jobs = 4; # https://nixos.org/manual/nix/stable/advanced-topics/cores-vs-jobs.html
-    settings.cores = 2;
+    settings.cores = 4;
   };
   nix.nixPath =
     # Prepend default nixPath values.

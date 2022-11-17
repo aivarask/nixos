@@ -22,8 +22,11 @@
 
       profiles.root = {
         settings = {
+          # https://firefox-source-docs.mozilla.org/devtools-user/keyboard_shortcuts/index.html
+          # https://firefox-source-docs.mozilla.org/devtools-user/keyboard_shortcuts/index.html#source-editor
           # "network.stricttransportsecurity.preloadlist" = true; # not recommended
           # "browser.fixup.fallback-to-https" = true;
+          "devtools.editor.keymap" = "vim";
           # ---
           "app.shield.optoutstudies.enabled" = false;
           "beacon.enabled" = false;

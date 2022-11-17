@@ -11,6 +11,7 @@
 
       "application/pdf" = "firefox.desktop";
       "application/json" = "nvim.desktop";
+      "application/sql" = "nvim.desktop";
       "application/x-yaml" = "nvim.desktop";
       "application/x-shellscript" = "nvim.desktop";
       "application/javascript" = "nvim.desktop";

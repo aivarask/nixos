@@ -53,6 +53,7 @@ require("lspconfig").tailwindcss.setup({
 	root_dir = require("lspconfig.util").root_pattern(
 		"windi.config.ts",
 		"tailwind.config.js",
+		"tailwind.config.cjs",
 		"tailwind.config.ts",
 		"postcss.config.js",
 		"postcss.config.ts",

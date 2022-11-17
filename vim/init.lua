@@ -33,16 +33,16 @@ require("misc")
 
 require("lsp.sumneko")
 require("lsp.vimls")
-require("lsp.null-ls")
 require("lsp.tsserver")
 require("lsp.svelte")
 require("lsp.tailwind")
 require("lsp.prismals")
+require("lsp.null-ls")
 require("lsp.emmet-ls")
 require("lsp.json")
 require("lsp.rnix")
 require("lsp.bashls")
-require("lsp.sqlls")
+-- require("lsp.sqlls")
 require("lsp.sqls")
 
 require("lsp.cssls")
@@ -59,6 +59,12 @@ require("lsp.cssls")
 
 require("colorizer").setup() -- https://github.com/norcalli/nvim-colorizer.lua
 require("telescope").setup({}) -- https://github.com/nvim-telescope/telescope.nvim
-require("todo-comments").setup({}) -- https://github.com/folke/todo-comments.nvim
+require("todo-comments").setup({
+	keywords = {
+		-- TYPE:
+		TYPE = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+		-- TYPE = { icon = " ", color = "info" },
+	},
+}) -- https://github.com/folke/todo-comments.nvim
 require("trouble").setup({}) -- https://github.com/folke/trouble.nvim
 require("diaglist").init({}) -- https://github.com/onsails/diaglist.nvim

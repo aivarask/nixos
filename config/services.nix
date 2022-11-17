@@ -1,5 +1,11 @@
 { config, pkgs, ... }: {
 
+
+  # services.certbot = {
+  #   enable = true;
+  #   agreeTerms = true;
+  # };
+
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";

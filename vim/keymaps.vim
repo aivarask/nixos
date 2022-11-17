@@ -117,18 +117,18 @@ nnoremap  <leader>lg  :LazyGit<CR>
 " $page $lang $store
 set iskeyword+=$
 function! ToggleDollar()
-    let l:pos = col('.')
-    if expand('<cword>') =~ '\$'
+  let l:pos = col('.')
+  if expand('<cword>') =~ '\$'
     " if expand('<cword>') =~ '\v(\s+|\t+)?$'
-      echo 'contains'
-        exec 'normal! bx'
-        let l:pos -= 1
-    else
-      echo 'else'
-        exec 'normal! bi$'
-        let l:pos += 1
-    endif
-    call cursor(line("."), l:pos)
+    echo 'contains'
+    exec 'normal! bx'
+    let l:pos -= 1
+  else
+    echo 'else'
+    exec 'normal! bi$'
+    let l:pos += 1
+  endif
+  call cursor(line("."), l:pos)
 endfunction
 
 nnoremap <leader>4 :call ToggleDollar()<CR>
@@ -137,6 +137,17 @@ nnoremap <space>4 :call ToggleDollar()<CR>
 " https://github.com/junegunn/fzf.vim#preview-window
 let g:fzf_preview_window = ['up:60%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8  }  }
+
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --ignore-file "$HOME/.config/git/ignore" --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <leader>sm :Maps<CR>
 " nnoremap <C-e>. :Files ..<CR>
@@ -144,7 +155,7 @@ nnoremap <leader>sf :Files<CR>
 nnoremap <C-e> :Files<CR>
 nnoremap <leader>sc :Commands<CR>
 nnoremap <leader>sF :FZF<CR>
-nnoremap <C-g> :Rg <CR>
+nnoremap <C-g> :RG <CR>
 
 nnoremap <C-h> ZZ
 nnoremap <leader>sr :Rg<CR>

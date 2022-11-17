@@ -23,8 +23,8 @@
     };
   };
   programs.direnv = {
-    enable = false;
-    nix-direnv.enable = false;
+    enable = true;
+    nix-direnv.enable = true;
   };
   programs.nix-index.enable = true;
   programs.zsh = {
@@ -43,7 +43,7 @@
       autoload -Uz run-help
       source /etc/nixos/functions.zsh
       source /etc/nixos/bindings.zsh
-      # eval "$(direnv hook zsh)"
+      eval "$(direnv hook zsh)"
     '';
     plugins = [
       {

@@ -2,6 +2,7 @@
   # nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "bitwig-studio"
     "unrar"
     "soulseekqt"
     "google-chrome"

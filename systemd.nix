@@ -42,28 +42,28 @@
   };
 
 
-  systemd.services.serve = {
-    enable = true;
-    description = "Serve music";
-    # documentation = "https://pm2.keymetrics.io/";
-    after = [ "network.target" ];
-    serviceConfig = {
-      Type = "forking";
-      User = "root";
-      Group = "wheel";
-      LimitNOFILE = "infinity";
-      LimitNPROC = "infinity";
-      LimitCORE = "infinity";
-      # Environment = "PM2_HOME=/root/.pm2";
-      # PIDFile = "/root/.pm2/pm2.pid";
-      Restart = "on-failure";
-      ExecStart = "${pkgs.nodePackages.serve}/bin/serve";
-      ExecReload = "${pkgs.nodePackages.serve}/bin/serve";
-      ExecStop = "${pkgs.nodePackages.serve}/bin/serve";
+  # systemd.services.serve = {
+  #   enable = true;
+  #   description = "Serve music";
+  #   # documentation = "https://pm2.keymetrics.io/";
+  #   after = [ "network.target" ];
+  #   serviceConfig = {
+  #     Type = "forking";
+  #     User = "root";
+  #     Group = "wheel";
+  #     LimitNOFILE = "infinity";
+  #     LimitNPROC = "infinity";
+  #     LimitCORE = "infinity";
+  #     # Environment = "PM2_HOME=/root/.pm2";
+  #     # PIDFile = "/root/.pm2/pm2.pid";
+  #     Restart = "on-failure";
+  #     ExecStart = "${pkgs.nodePackages.serve}/bin/serve";
+  #     ExecReload = "${pkgs.nodePackages.serve}/bin/serve";
+  #     ExecStop = "${pkgs.nodePackages.serve}/bin/serve";
 
-      RuntimeDirectory = "music";
-      RootDirectory = "/etc/nixos/music";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
+  #     RuntimeDirectory = "music";
+  #     RootDirectory = "/etc/nixos/music";
+  #   };
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 }

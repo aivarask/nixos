@@ -15,6 +15,7 @@
     ./config/users.nix
     ./config/virtualisation.nix
     ./config/mpd.nix
+    ./config/pipeWire.nix
     ./config/tmux.nix
     ./security.nix
     ./networking.nix

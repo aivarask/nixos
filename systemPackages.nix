@@ -111,6 +111,10 @@ in
     php80Packages ++
     php80Extensions ++
     [
+
+      # http://tidalcycles.org/
+      bitwig-studio
+      # ---
       ookla-speedtest
       speedtest-cli
       zsh-better-npm-completion
@@ -122,7 +126,7 @@ in
       wiki-tui
       # spotify
       # spotify-tui
-      # certbot-full
+      certbot-full
       libwebp
       awscli2
       google-cloud-sdk
@@ -235,7 +239,7 @@ in
       nixpkgs-fmt
       nmap
       # nodejs_latest
-      nodejs
+      nodejs-19_x
       numlockx
       odt2txt
       pass
@@ -253,7 +257,7 @@ in
       psmisc
       pulsemixer
       puppeteer-cli
-      # python39Full
+      python39Full
       redshift
       remote-touchpad
       ripgrep
@@ -277,6 +281,7 @@ in
       sqlite-replication
       sqlite-utils
       sqlite-web
+      sqlint
       sqls
       ssh-chat
       st

@@ -29,6 +29,7 @@
     ndo = "npm run dev -- --open";
     npa = "npm run pa";
     nrb = "npm run build";
+    nrd = "npm run deploy";
     nrc = "npm run check";
     nrcw = "npm run check:watch";
     nrp = "npm run preview";
