@@ -23,6 +23,21 @@ function ReloadArg(arg)
 	reload.reload_module(arg)
 end
 
+-- https://github.com/rmagatti/auto-session/
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+require("auto-session").setup({
+	log_level = "info",
+	auto_session_enable_last_session = false,
+	auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
+	auto_session_enabled = true,
+	auto_save_enabled = nil,
+	auto_restore_enabled = nil,
+	auto_session_suppress_dirs = nil,
+	auto_session_use_git_branch = nil,
+	-- the configs below are lua only
+	bypass_session_save_file_types = nil,
+	-- log_level = "info", auto_save_enabled = true, auto_restore_enabled = true
+})
 require("treesitter")
 require("nvim_tree")
 require("completion")
@@ -57,7 +72,7 @@ require("lsp.cssls")
 -- HACK: hmm, this looks a bit funny
 -- FIX: this needs fixing
 
-require("colorizer").setup() -- https://github.com/norcalli/nvim-colorizer.lua
+require("colorizer").setup({}) -- https://github.com/norcalli/nvim-colorizer.lua
 require("telescope").setup({}) -- https://github.com/nvim-telescope/telescope.nvim
 require("todo-comments").setup({
 	keywords = {
@@ -65,6 +80,21 @@ require("todo-comments").setup({
 		TYPE = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
 		-- TYPE = { icon = " ", color = "info" },
 	},
+	search = {
+		command = "rg",
+		args = {
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--glob=!node_modules",
+			"--glob=!build",
+		},
+		pattern = [[\b(KEYWORDS):]],
+	},
 }) -- https://github.com/folke/todo-comments.nvim
-require("trouble").setup({}) -- https://github.com/folke/trouble.nvim
+require("trouble").setup({
+	height = 20,
+}) -- https://github.com/folke/trouble.nvim
 require("diaglist").init({}) -- https://github.com/onsails/diaglist.nvim

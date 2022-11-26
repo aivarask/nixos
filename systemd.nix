@@ -1,4 +1,10 @@
+# https://nixos.wiki/wiki/Systemd_Hardening
 { config, pkgs, lib, ... }: {
+
+  # SuspendState=freeze
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
 
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];
@@ -20,7 +26,7 @@
   };
 
   systemd.services.pm2 = {
-    enable = true;
+    enable = false;
     description = "PM2 process manager";
     # documentation = "https://pm2.keymetrics.io/";
     after = [ "network.target" ];

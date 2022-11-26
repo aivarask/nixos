@@ -12,7 +12,7 @@ set -euo pipefail
 # enable_network 0
 
 # Connect remote host over SSH
-# rsync -r /etc/nixos/ ${HOST}:/root/nixos --delete
+# rsync -r /etc/nixos/ ${HOST}:/root/nixos --delete --progress
 # export HOST=...
 # export DISK=/dev/disk/by-id/...
 

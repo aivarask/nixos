@@ -8,7 +8,6 @@
     ./firefox.nix
     ./zsh.nix
     ./fzf.nix
-    ./xinitrc.nix
     ./glow.nix
     ./pistol.nix
     ./vim
@@ -16,6 +15,7 @@
 
   # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
 
+  home.file.".xinitrc".text = builtins.readFile ./xinitrc;
 
   home.stateVersion = "18.09";
   services.redshift = {

@@ -14,6 +14,8 @@ aug Initial
   au!
   au BufWritePost vimrc :so %
   autocmd BufEnter *.postcss setlocal ft=css
+  autocmd BufEnter .env* setlocal ft=sh
+  autocmd BufEnter package.json,tsconfig.json setlocal ft=jsonc
   autocmd VimResized * wincmd =
   " autocmd VimResized * FloatermUpdate
   " https://vim.fandom.com/wiki/Multiple_commands_at_once

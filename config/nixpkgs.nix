@@ -18,7 +18,7 @@
     "steam-runtime"
     "steamcmd"
     "ookla-speedtest"
-    "viber"
+    # "viber"
   ];
   nixpkgs.config.joypixels.acceptLicense = true;
 

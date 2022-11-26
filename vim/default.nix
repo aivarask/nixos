@@ -11,6 +11,7 @@ let
     };
   plugin = pluginGit "HEAD";
   vimPlugins = with pkgs.vimPlugins; [
+    vim-obsession
     vim-devicons
     vim-hexokinase
 
@@ -52,7 +53,10 @@ let
 
     neoformat
     vim-pug
+    nginx-vim
+    sslsecure-vim
 
+    vim-svelte
     vim-nix
     nim-vim
     vim-toml
@@ -70,6 +74,7 @@ let
   nvimPlugins = with pkgs.vimPlugins; [
     # TOOLS:
 
+    auto-session
     project-nvim
     SchemaStore-nvim
 
@@ -133,9 +138,12 @@ let
     todo-comments-nvim # https://github.com/folke/todo-comments.nvim
 
     # TREE_SITTER:
-    {
-      plugin = nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
-    }
+    # {
+    # plugin = nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
+    # plugin = nvim-treesitter.builtGrammars;
+
+    # }
+    nvim-treesitter.withAllGrammars
     nvim-ts-context-commentstring
     nvim-ts-rainbow
     nvim-treesitter-textobjects

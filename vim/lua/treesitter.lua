@@ -6,10 +6,17 @@ require("nvim-treesitter.configs").setup({
 	},
 	highlight = {
 		enable = true,
+		disable = {
+			-- "sh",
+			-- "bash",
+			-- --
+			-- "typescript",
+			-- "svelte",
+		},
 		-- https://github.com/nvim-treesitter/nvim-treesitter#available-modules
 		-- TODO: Some todo
 		-- FIX: This needs to be fixed
-		additional_vim_regex_highlighting = true,
+		-- additional_vim_regex_highlighting = true,
 	},
 	incremental_selection = {
 		enable = true,

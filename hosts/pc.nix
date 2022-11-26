@@ -30,4 +30,15 @@
     # dpi = 168; # 96*1.75
     dpi = 144; # 96*1.5
   };
+  services.nginx.virtualHosts."live.fixasparts.com" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      proxyPass = "https://127.0.0.1:4173";
+      proxyWebsockets = true;
+      extraConfig = ''
+      '';
+    };
+
+  };
 }

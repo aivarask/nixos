@@ -22,6 +22,9 @@
   networking.extraHosts = ''
     127.0.0.2 other-localhost
     10.0.0.1 server
+    88.80.28.163 linkomanija.net
+    127.0.0.1 live.fixasparts.com
+    127.0.0.1 test.com
   '';
 
   networking.nameservers = [
