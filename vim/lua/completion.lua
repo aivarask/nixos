@@ -87,7 +87,13 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		-- { name = 'nvim_lua' },
 		{ name = "luasnip" },
-		{ name = "path" },
+		{
+			name = "path",
+			-- option = {
+			-- get_cwd = function() end,
+			-- }
+		},
+		{ name = "buffer" },
 		-- { name = "emoji" },
 		-- { name = "treesitter" },
 		-- { name = 'nvim_lsp_signature_help' },
@@ -106,12 +112,12 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
 		-- FIX: not working :%s/
-		-- { name = "buffer" },
+		{ name = "buffer" },
 		-- { name = 'nvim_lsp_signature_help' }
 	}, {
 		{ name = "cmdline" },
 		-- FIX: not working :%s/
-		-- { name = "buffer" },
+		{ name = "buffer" },
 		-- { name = 'nvim_lsp_signature_help' }
 	}),
 })

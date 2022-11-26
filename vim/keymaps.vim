@@ -24,6 +24,12 @@ imap  <F2>  <C-o><F2>
 map   <F3>  <cmd>lua vim.lsp.buf.signature_help()<CR>
 imap  <F3>  <C-o><F3>
 
+map <F4> :TodoTrouble<CR>
+map <F16> :TodoTelescope<CR>
+map <F28> :TodoQuickFix<CR>
+nnoremap <leader>tt :TodoTrouble<CR>
+
+
 map   <F5>  :source %<CR>
 imap  <F5>  <C-o><F5>
 map   <F17> :so /root/.config/nvim/init.lua<CR>
@@ -74,6 +80,9 @@ endfunction
 map tq :call ToggleQuickFix()<cr>
 map <F12> :FloatermToggle<CR>
 
+map <leader>df :call delete(expand('%'))<CR>
+
+
 if !has ('nvim')
   tnoremap <F12> <C-W>:FloatermToggle<CR>
 else
@@ -105,6 +114,9 @@ map <S-TAB> :bp<CR>
 map <C-w>f <C-w>vgf
 map <C-w>d <C-w>vgd
 map <silent>gF :vert bo e <cfile><CR>
+
+
+nmap <C-c> O/** */<C-o>B
 
 nmap <C-l> gc$
 imap <C-L> <C-o>gc$
@@ -165,6 +177,7 @@ nnoremap <leader>sb :Buffers<CR>
 " nnoremap <leader>dd :Lexplore %:p:h<CR>
 " nnoremap <Leader>da :Lexplore<CR>
 
+nnoremap <C-o> :LfCurrentDirectory<CR>
 nnoremap <leader>lf :LfCurrentDirectory<CR>
 nnoremap <leader>lw :LfWorkingDirectory<CR>
 nnoremap <leader>lt :LfNewTab<CR>

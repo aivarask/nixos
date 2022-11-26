@@ -74,6 +74,9 @@ require("lspconfig").tailwindcss.setup({
 				"classText",
 				"classAvatar",
 				"classList",
+				"divClass",
+				"navClass",
+				"ulClass",
 			},
 			lint = {
 				cssConflict = "warning",

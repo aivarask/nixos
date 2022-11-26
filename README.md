@@ -11,6 +11,8 @@ nvidia-smi
 
 # Nginx related
 
+<!-- https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/ -->
+
 [NixOS wiki nginx](https://nixos.wiki/wiki/Nginx)
 
 [ACME certificates](https://nixos.org/manual/nixos/unstable/#module-security-acme-nginx)
@@ -30,3 +32,5 @@ nvidia-smi
 ## Firefox
 
 https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly
+
+https://grahamc.com/blog/nixos-on-dell-9560

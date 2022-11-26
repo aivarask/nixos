@@ -1,4 +1,21 @@
 {
+  "kit-dispatch": {
+    "prefix": [
+      "kit-dispatch"
+    ],
+    "body": [
+      "import { createEventDispatcher } from 'svelte';",
+      "const dispatch = createEventDispatcher();"
+    ]
+  },
+  "kit-import-dispatch": {
+    "prefix": [
+      "kit-import-dispatch"
+    ],
+    "body": [
+      "import { createEventDispatcher } from 'svelte';"
+    ]
+  },
   "kit-import-enhance": {
     "prefix": [
       "kit-import-enhance"
@@ -23,6 +40,16 @@
     ],
     "body": [
       "<script lang=\"ts\">",
+      "\t${0}",
+      "</script>"
+    ]
+  },
+  "script-typescript-module": {
+    "prefix": [
+      "script-typescript-module"
+    ],
+    "body": [
+      "<script lang=\"ts\" context=\"module\">",
       "\t${0}",
       "</script>"
     ]

@@ -9,13 +9,14 @@
     ./config/powerManagement.nix
     ./config/programs.nix
     ./config/services.nix
+    ./xserver.nix
     ./mysql
     ./systemd.nix
     ./config/cron.nix
     ./config/users.nix
     ./config/virtualisation.nix
     ./config/mpd.nix
-    ./config/pipeWire.nix
+    # ./config/pipeWire.nix
     ./config/tmux.nix
     ./security.nix
     ./networking.nix

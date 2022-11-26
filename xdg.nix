@@ -7,6 +7,7 @@
       "text/html" = "nvim.desktop";
       "text/css" = "nvim.desktop";
       "text/x-lua" = "nvim.desktop";
+      "text/x-csrx" = "nvim.desktop";
       "text/*" = "nvim.desktop";
 
       "application/pdf" = "firefox.desktop";

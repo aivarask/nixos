@@ -74,12 +74,14 @@
     {
       overlay = import ./overlay.nix self.inputs;
       checks = self.packages;
-      nixosConfigurations.as = nixpkgs.lib.nixosSystem {
+
+      # PC
+      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix
-          ./hosts/as.nix
-          # ./misc/steam.nix
+          ./hosts/pc.nix
+          ./steam.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -93,12 +95,34 @@
         ];
         # extraArgs = { inputs = inputs; };
       };
-      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+
+      # DELL XPS 7590
+      nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration.nix
-          ./hosts/pc.nix
+          ./hosts/dell.nix
           ./steam.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.root = home;
+            home-manager.users.ak = home;
+          }
+          {
+            nixpkgs.overlays = overlays;
+          }
+        ];
+        # extraArgs = { inputs = inputs; };
+      };
+
+      nixosConfigurations.as = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration.nix
+          ./hosts/as.nix
+          # ./misc/steam.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

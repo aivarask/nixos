@@ -26,6 +26,7 @@ let
     gulp
     js-beautify
     markdownlint-cli
+    mermaid-cli
     node2nix
     nodemon
     npm-check-updates
@@ -84,8 +85,6 @@ let
     webkitgtk
     pango
     dbus
-    xorg.libX11
-    xorg.libXrender
     dbus-glib
     wayland
     wayland-scanner
@@ -96,9 +95,23 @@ let
   rubyPackages = with pkgs.rubyPackages; [
     gemoji
   ];
+  xorgP = with pkgs.xorg; [
+    # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
+    xorgserver
+    xf86inputevdev
+    xf86inputsynaptics
+    xf86inputlibinput
+    libX11
+    libXrender
+    xdpyinfo
+    xev
+    xmodmap
+    xmessage
+  ];
 in
 {
   environment.systemPackages = with pkgs;
+    xorgP ++
     rubyPackages ++
     playwrightDependencies ++
     prismaSpecific ++
@@ -112,6 +125,9 @@ in
     php80Extensions ++
     [
 
+      libxkbcommon
+      mkcert
+      nssTools
       # http://tidalcycles.org/
       bitwig-studio
       # ---
@@ -128,7 +144,8 @@ in
       # spotify-tui
       certbot-full
       libwebp
-      awscli2
+      nginx
+      # awscli2
       google-cloud-sdk
       patchelf
       # deno
@@ -313,7 +330,6 @@ in
       unzip
       usbmuxd
       valgrind # debugtooling
-      viber
       vim
       vim-vint
       w3m
@@ -323,8 +339,6 @@ in
       wkhtmltopdf
       xclip
       xh
-      xorg.xdpyinfo
-      xorg.xev
       yaml-language-server
       yaml-merge
       yaml2json
