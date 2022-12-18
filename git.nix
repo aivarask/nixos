@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+# https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix
 {
   programs.git = {
     enable = true;
@@ -8,7 +9,10 @@
       init = {
         defaultBranch = "main";
       };
-      pull.rebase = true;
+      pull.rebase = false;
+      core = {
+        hookspath = ".githooks";
+      };
     };
     ignores = [
       "*.lock"
@@ -20,6 +24,7 @@
       "result"
       "tags"
       "www"
+      "packages"
     ];
   };
 }

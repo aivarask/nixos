@@ -25,6 +25,9 @@
       "ctrl + alt + Return" = "tabbed -c alacritty --embed";
       # "super + {g,m}" = "$BROWSER {github.com,messenger.com}";
       # "super + m" = "$TERMINAL -e duf";
+      "XF86MonBrightnessDown" = "brightnessctl set 10%-";
+      "XF86MonBrightnessUp" = "brightnessctl set +10%";
+
     };
   };
 }

@@ -38,6 +38,6 @@
   };
 
   services.mongodb = {
-    enable = true;
+    enable = false;
   };
 }

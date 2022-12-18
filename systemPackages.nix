@@ -62,7 +62,7 @@ let
     gh
     git-crypt
   ];
-  python39Packages = with pkgs.python39Packages; [
+  python310Packages = with pkgs.python310Packages; [
     bcrypt
     debugpy
     pdf2image
@@ -78,25 +78,18 @@ let
     prismaPackages."@prisma/language-server"
   ];
   playwrightDependencies = with pkgs; [
-    icu66
-    cairo
+    playwright
+    playwright.browsers
     google-chrome-dev
     firefox-bin
     webkitgtk
-    pango
-    dbus
-    dbus-glib
-    wayland
-    wayland-scanner
-    wayland-utils
-    wayland-protocols
-    waylandpp
   ];
   rubyPackages = with pkgs.rubyPackages; [
     gemoji
   ];
   xorgP = with pkgs.xorg; [
     # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
+    xbacklight
     xorgserver
     xf86inputevdev
     xf86inputsynaptics
@@ -125,6 +118,9 @@ in
     php80Extensions ++
     [
 
+      yarn
+      python310Full
+      brightnessctl
       libxkbcommon
       mkcert
       nssTools
@@ -205,6 +201,7 @@ in
       git-lfs
       gitlab
       gitlab-shell
+      glab
       glib
       glibc
       libglibutil
@@ -219,6 +216,7 @@ in
       hicolor-icon-theme
       highlight
       htop
+      # FIX: build erro
       httpie
       icecast
       ifuse
@@ -248,6 +246,7 @@ in
       nimlsp
       # nix-du
       nix-index # + nix-locate
+      nix-prefetch-git
       nix-prefetch-github
       nix-template
       nix-tour
@@ -274,7 +273,6 @@ in
       psmisc
       pulsemixer
       puppeteer-cli
-      python39Full
       redshift
       remote-touchpad
       ripgrep
@@ -295,7 +293,6 @@ in
       sqlite-analyzer
       sqlite-interactive
       sqlite-jdbc
-      sqlite-replication
       sqlite-utils
       sqlite-web
       sqlint

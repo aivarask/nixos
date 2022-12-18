@@ -76,6 +76,7 @@ require("lspconfig").tailwindcss.setup({
 				"classList",
 				"divClass",
 				"navClass",
+        "navDivClass",
 				"ulClass",
 			},
 			lint = {

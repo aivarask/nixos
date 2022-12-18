@@ -1,6 +1,8 @@
 # https://nixos.wiki/wiki/Systemd_Hardening
 { config, pkgs, lib, ... }: {
 
+  # TODO: systemctl hibernate
+  # ZFS not recommend swap partition
   # SuspendState=freeze
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h

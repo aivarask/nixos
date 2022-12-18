@@ -30,6 +30,7 @@ static const struct arg args[] = {
     {datetime, "%s", "%B %d %A %R"},
     {separator, "%s", " ⌨️ "},
     {keymap, "%s"},
+    {battery_perc, "%s", "BAT0"}
 };
 
 /*

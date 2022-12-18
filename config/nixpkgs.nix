@@ -18,6 +18,7 @@
     "steam-runtime"
     "steamcmd"
     "ookla-speedtest"
+    # "mongodb"
     # "viber"
   ];
   nixpkgs.config.joypixels.acceptLicense = true;
