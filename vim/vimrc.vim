@@ -6,7 +6,7 @@ function Name() abort
 endfunction
 
 function Schema() abort
-  :FloatermNew --wintype=vsplit --width=0.4 --autoclose=1 prisma db push
+  :FloatermNew --wintype=vsplit --width=0.4 --autoclose=1 npx prisma db push
   :LspRestart
 endfunction
 

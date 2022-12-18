@@ -72,6 +72,7 @@
     PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}"; # packages.json @playwright/test
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SET_FACTOR = "0";

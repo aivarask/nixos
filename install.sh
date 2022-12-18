@@ -58,7 +58,7 @@ mount "$DISK"-part3 /mnt/boot
 
 mkdir /mnt/etc/nixos -p
 cp . /mnt/etc/nixos -r
-nixos-generate-config --root /mnt --show-hardware-config >/mnt/etc/nixos/hosts/"$HOST"-hardware.nix
+# nixos-generate-config --root /mnt --show-hardware-config >/mnt/etc/nixos/hosts/"$HOST"-hardware.nix
 #nixos-generate-config --root /mnt --force
 
-nix-shell -p git nixFlakes --run "nixos-install --root /mnt --flake /mnt/etc/nixos#${HOST}"
+# nix-shell -p git nixFlakes --run "nixos-install --root /mnt --flake /mnt/etc/nixos#${HOST}"

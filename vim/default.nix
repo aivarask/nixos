@@ -1,5 +1,15 @@
 { config, pkgs, lib, ... }:
 let
+  # typescript-nvim = pkgs.vimUtils.buildVimPlugin {
+  #   name = "typescript-nvim";
+  #   src = pkgs.fetchFromGitHub {
+  #     "owner" = "jose-elias-alvarez";
+  #     "repo" = "typescript.nvim";
+  #     "rev" = "b96b3f8db2c0e156a6f8734bf794cc7803454e21";
+  #     "sha256" = "4qNX9KyTKvTlP9GyQ7uam9gFHOwjZTU9kjtp1vyVzUI=";
+  #   };
+  # };
+  # NOTE: https://breuer.dev/blog/nixos-home-manager-neovim
   pluginGit = ref: repo:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -72,6 +82,8 @@ let
     vim-auto-save
   ];
   nvimPlugins = with pkgs.vimPlugins; [
+    # (plugin "jose-elias-alvarez/typescript.nvim")
+    typescript-nvim
     # TOOLS:
 
     auto-session

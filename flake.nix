@@ -22,7 +22,11 @@
     # devshell.url = "github:numtide/devshell";
     prisma = {
       url = "github:pimeys/nixos-prisma";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    typescript-nvim = {
+      url = "github:jose-elias-alvarez/typescript.nvim";
+      flake = false;
     };
   };
   outputs =
@@ -34,6 +38,7 @@
     , nur
     , statix
     , prisma
+    , typescript-nvim
     , ...
     } @ inputs:
     let
@@ -72,12 +77,14 @@
         # defaultPackage = py-hello;
       }) //
     {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       overlay = import ./overlay.nix self.inputs;
       checks = self.packages;
 
       # PC
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
           ./hosts/pc.nix
@@ -92,6 +99,7 @@
           {
             nixpkgs.overlays = overlays;
           }
+          { nix.registry.nixpkgs.flake = nixpkgs; }
         ];
         # extraArgs = { inputs = inputs; };
       };
@@ -99,6 +107,7 @@
       # DELL XPS 7590
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
           ./hosts/dell.nix
@@ -113,6 +122,7 @@
           {
             nixpkgs.overlays = overlays;
           }
+          { nix.registry.nixpkgs.flake = nixpkgs; }
         ];
         # extraArgs = { inputs = inputs; };
       };

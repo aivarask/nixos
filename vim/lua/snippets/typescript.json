@@ -6,7 +6,7 @@
     "body": [
       "import type { PageServerLoad, Actions } from './\\$types'\n",
       "${1:const target: Target = '${2}';}\n",
-      "export const load: PageServerLoad = async (${3:event}) => {",
+      "export const load = (async (${3:event}) => {",
       "\t${4}",
       "\treturn {};",
       "};\n",
@@ -17,7 +17,7 @@
       "\t\treturn {};",
       "\t}",
       "\t${0}",
-      "};"
+      "}) satisfies PageServerLoad;"
     ]
   },
   "kit-actions": {
@@ -68,10 +68,10 @@
     ],
     "body": [
       "${1:import type { PageServerLoad \\} from './\\$types';}",
-      "export const load: PageServerLoad = async (event) => {",
+      "export const load = (async (event) => {",
       "\t${0}",
       "\treturn {};",
-      "};"
+      "}) satisfies PageServerLoad;"
     ]
   },
   "kit-layout": {
@@ -80,10 +80,10 @@
     ],
     "body": [
       "${1:import type { LayoutServerLoad \\} from './\\$types';}",
-      "export const load: LayoutServerLoad = async (event) => {",
+      "export const load = (async (event) => {",
       "\t${0}",
       "\treturn {};",
-      "};"
+      "}) satisfies LayoutServerLoad;"
     ]
   }
 }

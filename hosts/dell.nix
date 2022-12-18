@@ -1,25 +1,32 @@
 { config, pkgs, lib, ... }:
+let
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
+in
 {
   imports =
     [
       ./dell-hardware.nix
       ./common.nix
     ];
-  networking.hostName = "dell";
-  networking.hostId = "8425e349";
-  networking.useDHCP = false;
-  networking.interfaces.wlp59s0.useDHCP = true;
+  # system.stateVersion = "23.?";
+  console.font = "ter-i32b";
 
-  networking.interfaces.wlp59s0.ipv4.addresses = [{
-    address = "192.168.1.222";
-    prefixLength = 24;
-  }];
-  networking.defaultGateway = "192.168.1.1";
-
-  # system.stateVersion = "22.05";
+  environment.systemPackages = [ nvidia-offload ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   # hardware.nvidia = { modesetting.enable = true; };
-  # hardware.video.hidpi.enable = lib.mkDefault true;
-  # services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    intelBusId = "PCI:0:2:0"; # lcpi
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
   services.xserver = {
     # https://nixos.wiki/wiki/Xorg
     dpi = 168; # 96*1.75
@@ -30,6 +37,25 @@
       touchpad.naturalScrolling = true;
     };
   };
+  services.xserver.screenSection = ''
+    Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+    Option         "AllowIndirectGLXProtocol" "off"
+    Option         "TripleBuffer" "on"
+  '';
+  programs.light.enable = true; # not in use because of brightnessctl
+  powerManagement.cpuFreqGovernor = "powersave";
   hardware.bluetooth.enable = false;
   services.blueman.enable = false;
+
+  networking.hostName = "dell";
+  networking.domain = "dell";
+  networking.hostId = "8425e349";
+  networking.useDHCP = false;
+  networking.interfaces.wlp59s0.useDHCP = true;
+  networking.interfaces.wlp59s0.ipv4.addresses = [{
+    address = "192.168.1.112";
+    prefixLength = 24;
+  }];
+  networking.defaultGateway = "192.168.1.1";
+
 }
