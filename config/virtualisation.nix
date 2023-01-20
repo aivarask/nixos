@@ -1,3 +1,3 @@
-{ config, ... }: {
+_: {
   virtualisation.docker.enable = false;
 }

@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{config, ...}: {
   programs.bat = {
     enable = true;
     config = {
@@ -13,7 +12,6 @@
         "*.prisma:GraphQL"
         "*.postcss:CSS"
       ];
-
     };
   };
 }

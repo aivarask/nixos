@@ -1,6 +1,1 @@
-{ config, pkgs, lib, ... }: {
-  security.sudo =
-    {
-      wheelNeedsPassword = false;
-    };
-}
+_: {security.sudo = {wheelNeedsPassword = false;};}

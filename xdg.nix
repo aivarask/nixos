@@ -1,4 +1,4 @@
-{ config, ... }: {
+_: {
   xdg.mime = {
     enable = true;
     defaultApplications = {

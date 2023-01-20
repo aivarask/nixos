@@ -1,31 +1,20 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
-  # typescript-nvim = pkgs.vimUtils.buildVimPlugin {
-  #   name = "typescript-nvim";
-  #   src = pkgs.fetchFromGitHub {
-  #     "owner" = "jose-elias-alvarez";
-  #     "repo" = "typescript.nvim";
-  #     "rev" = "b96b3f8db2c0e156a6f8734bf794cc7803454e21";
-  #     "sha256" = "4qNX9KyTKvTlP9GyQ7uam9gFHOwjZTU9kjtp1vyVzUI=";
-  #   };
-  # };
-  # NOTE: https://breuer.dev/blog/nixos-home-manager-neovim
-  pluginGit = ref: repo:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
-      pname = "${lib.strings.sanitizeDerivationName repo}";
-      version = ref;
-      src = builtins.fetchGit {
-        url = "https://github.com/${repo}.git";
-        inherit ref;
-      };
-    };
-  plugin = pluginGit "HEAD";
-  vimPlugins = with pkgs.vimPlugins; [
+  vimOnlyPlugins = with pkgs.vimPlugins; [
+    # LANG:
+    context_filetype-vim
+    vim-nix
+    vim-toml
+    vim-yaml
+    vim-json
+  ];
+  commonPlugins = with pkgs.vimPlugins; [
+    telescope-fzf-native-nvim
     vim-obsession
     vim-devicons
-    vim-hexokinase
+    vim-abolish
+    vim-dispatch
 
-    context_filetype-vim
     vim-cool
     vim-sensible
     vim-lastplace
@@ -34,7 +23,6 @@ let
     # auto-pairs
     vim-fugitive
     fugitive-gitlab-vim
-    vim-autoformat
     vim-surround
     vim-expand-region
     vim-gitgutter
@@ -43,104 +31,107 @@ let
     fzf-vim
 
     lf-vim
-    nerdtree
     vim-gruvbox8
     gruvbox-material
-    nord-nvim
-    onedark-vim
+    # nord-nvim
+    # onedark-vim
     vim-colors-solarized
-    vim-monokai
-    tokyonight-nvim
-    nightfox-nvim
-    # vim-airline
-    # vim-airline-themes
+    # vim-monokai
+    # tokyonight-nvim
+    # nightfox-nvim
     vim-highlightedyank
 
-    # lightline-vim
-    # lightline-bufferline
-    # nvim-lightline-lsp
-    # lightline-gruvbox-vim
-
-    neoformat
-    vim-pug
     nginx-vim
     sslsecure-vim
 
-    vim-svelte
-    vim-nix
-    nim-vim
-    vim-toml
-    vim-yaml
-    vim-json
     switch-vim
     vim-jsx-pretty
-    lspkind-nvim
-    vim-test
     vim-prisma
     # direnv-vim
     vim-matchup
     vim-auto-save
+    scss-syntax-vim
   ];
-  nvimPlugins = with pkgs.vimPlugins; [
-    # (plugin "jose-elias-alvarez/typescript.nvim")
-    typescript-nvim
-    # TOOLS:
+  nvimOnlyPlugins = with pkgs.vimPlugins; [
+    # FEAT: # https://github.com/bennypowers/nvim-regexplainer
 
-    auto-session
-    project-nvim
+    # NOT IN USE OR ABANDONED
+    neodev-nvim
+    # hologram-nvim
+
+    # https://github.com/itchyny/vim-cursorword/
+    vim-cursorword
+    # https://github.com/lfv89/vim-interestingwords
+    vim-interestingwords
+    indent-blankline-nvim
+
+    # LSP:
+    nvim-lsp-file-operations
+    nvim-lspconfig
+    null-ls-nvim
+    symbols-outline-nvim
     SchemaStore-nvim
+    diaglist-nvim
+    # TEST
+    vim-test
+    neotest
+    neotest-vim-test
+    neotest-vitest
+    neotest-plenary
+    neotest-playwright
+    # COMPLETION:
+    # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+    nvim-cmp
+    cmp-cmdline
+    cmp-nvim-lsp
+    cmp-buffer
+    cmp-path
+    cmp-emoji
+    cmp-zsh
+    cmp-npm
+    # cmp-treesitter
+    lspkind-nvim
+    nvim-autopairs
+    cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip
+    luasnip # https://github.com/L3MON4D3/LuaSnip
+    friendly-snippets # https://github.com/rafamadriz/friendly-snippets
+    # TREE_SITTER:
+    nvim-treesitter.withAllGrammars
+    nvim-ts-context-commentstring
+    nvim-ts-rainbow
+    nvim-treesitter-textobjects
+    nvim-ts-autotag
 
+    # OTHER
+    typescript-nvim
+    lazygit-nvim
+    pretty-fold
+
+    # UI/UX:
+    project-nvim
+    auto-session
+    session-lens
     lualine-nvim
     lualine-lsp-progress
     tabline-nvim
-
-    toggleterm-nvim
-    nvim-autopairs
     nvim-web-devicons
-    plenary-nvim
-    lazygit-nvim
-    # UI:
-    # bufferline-nvim
     neoscroll-nvim
     nvim-tree-lua
     nvim-colorizer-lua
     gitsigns-nvim
-    # LSP:
-    nvim-lspconfig
-    nvim-lsp-ts-utils # NEW:
-    # nvim-treesitter-textsubjects
-    null-ls-nvim
-    symbols-outline-nvim
-    diaglist-nvim
-    # COMPLETION:
-    # https://github.com/hrsh7th
-    # ./lua/compl.lua
-    neodev-nvim # nixos-rebuild fails
-    # lua-dev.nvim
-    cmp-nvim-lua
-    cmp-nvim-lsp
-    cmp-buffer
-    cmp-path
-    cmp-cmdline
-    cmp-emoji
-    cmp-treesitter
-    nvim-cmp
-    cmp-nvim-lsp-signature-help
-    # VSNIP:
-    cmp-vsnip
-    vim-vsnip
-    vim-vsnip-integ
-    friendly-snippets # https://github.com/rafamadriz/friendly-snippets
-    # LUSNIP:
-    luasnip # https://github.com/L3MON4D3/LuaSnip
-    cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip
+    toggleterm-nvim
+    plenary-nvim
+
     # DEBUG:
-    # ./lua/dmap.lua
     vimspector
     nvim-dap
+    nvim-dap-vscode-js
+    osv
+    # --
     nvim-dap-ui
     nvim-dap-virtual-text
 
+    # UI
     telescope-nvim
     telescope-dap-nvim
     telescope-fzy-native-nvim
@@ -148,27 +139,12 @@ let
     telescope-symbols-nvim
     trouble-nvim # https://github.com/folke/trouble.nvim
     todo-comments-nvim # https://github.com/folke/todo-comments.nvim
-
-    # TREE_SITTER:
-    # {
-    # plugin = nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
-    # plugin = nvim-treesitter.builtGrammars;
-
-    # }
-    nvim-treesitter.withAllGrammars
-    nvim-ts-context-commentstring
-    nvim-ts-rainbow
-    nvim-treesitter-textobjects
-    nvim-ts-autotag
   ];
 in
 {
-  # xdg.configFile."nvim/parser/bash.so".source = "${pkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser";
-
-  home.file.".vim/coc-settings.json".source = ./coc-settings.json;
   programs.vim = {
     enable = true;
-    plugins = vimPlugins ++ import ./cocPlugins.nix pkgs;
+    plugins = vimOnlyPlugins ++ commonPlugins;
     extraConfig = ''
       source /etc/nixos/vim/vimrc.vim
     '';
@@ -184,7 +160,7 @@ in
     ];
     extraPackages = with pkgs; [ tree-sitter ];
     package = pkgs.neovim-nightly;
-    plugins = vimPlugins ++ nvimPlugins;
+    plugins = nvimOnlyPlugins ++ commonPlugins;
     viAlias = true;
     vimAlias = false;
     vimdiffAlias = true;
@@ -194,4 +170,3 @@ in
     withRuby = true;
   };
 }
-

@@ -1,0 +1,20 @@
+{
+  "script-typescript": {
+    "prefix": ["script-typescript"],
+    "body": ["<script lang=\"ts\">", "\t${0}", "</script>"]
+  },
+  "script-typescript-module": {
+    "prefix": ["script-typescript-module"],
+    "body": ["<script lang=\"ts\" context=\"module\">", "\t${0}", "</script>"]
+  },
+  "s-input": {
+    "prefix": ["input", "s-input"],
+    "body": [
+      "<input value={${2}${1}} name=\"${1}\" id=\"${1}\" data-testid=\"${1}\"/>"
+    ]
+  },
+  "pre-json-stringify": {
+    "prefix": ["pre"],
+    "body": ["<pre class=\"text-xs\">{JSON.stringify(${1} , null, 2)}</pre>"]
+  }
+}

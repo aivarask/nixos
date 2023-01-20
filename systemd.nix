@@ -1,54 +1,85 @@
 # https://nixos.wiki/wiki/Systemd_Hardening
-{ config, pkgs, lib, ... }: {
+# TODO: systemctl hibernate
+# ZFS not recommend swap partition
+# SuspendState=freeze
+{ pkgs, lib, ... }: {
+  systemd = {
+    # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate
+    sleep.extraConfig = ''
+      HibernateDelaySec=1h
+    '';
 
-  # TODO: systemctl hibernate
-  # ZFS not recommend swap partition
-  # SuspendState=freeze
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
-
-  systemd.services.nginx.serviceConfig = {
-    SupplementaryGroups = [ "shadow" ];
-    NoNewPrivileges = lib.mkForce false;
-    PrivateDevices = lib.mkForce false;
-    ProtectHostname = lib.mkForce false;
-    ProtectKernelTunables = lib.mkForce false;
-    ProtectKernelModules = lib.mkForce false;
-    RestrictAddressFamilies = lib.mkForce [ ];
-    LockPersonality = lib.mkForce false;
-    MemoryDenyWriteExecute = lib.mkForce false;
-    RestrictRealtime = lib.mkForce false;
-    RestrictSUIDSGID = lib.mkForce false;
-    SystemCallArchitectures = lib.mkForce "";
-    ProtectClock = lib.mkForce false;
-    ProtectKernelLogs = lib.mkForce false;
-    RestrictNamespaces = lib.mkForce false;
-    SystemCallFilter = lib.mkForce "";
-  };
-
-  systemd.services.pm2 = {
-    enable = false;
-    description = "PM2 process manager";
-    # documentation = "https://pm2.keymetrics.io/";
-    after = [ "network.target" ];
-    serviceConfig = {
-      Type = "forking";
-      User = "root";
-      Group = "wheel";
-      LimitNOFILE = "infinity";
-      LimitNPROC = "infinity";
-      LimitCORE = "infinity";
-      Environment = "PM2_HOME=/root/.pm2";
-      PIDFile = "/root/.pm2/pm2.pid";
-      Restart = "on-failure";
-      ExecStart = "${pkgs.nodePackages.pm2}/bin/pm2 resurrect";
-      ExecReload = "${pkgs.nodePackages.pm2}/bin/pm2 reload all";
-      ExecStop = "${pkgs.nodePackages.pm2}/bin/pm2 kill";
+    # https://wiki.archlinux.org/title/Systemd
+    # https://wiki.archlinux.org/title/Systemd/Timers
+    # man systemd.timers
+    timers."slstatus" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnActiveSec = "3";
+        # OnBootSec = "10";
+        # OnStartupSec = "5";
+        OnUnitActiveSec = "1h";
+        Unit = "slstatus.service";
+        Persistent = true;
+      };
     };
-    wantedBy = [ "multi-user.target" ];
-  };
 
+    services = {
+      "slstatus" = {
+        script = ''
+          set -eu
+          # ${pkgs.coreutils}/bin/date > /tmp/ip
+          ${pkgs.dig}/bin/dig +short myip.opendns.com @resolver1.opendns.com > /tmp/ip
+          ${pkgs.curl}/bin/curl -s wttr.in/Vilnius?format=2 > /tmp/wttr
+        '';
+        serviceConfig = {
+          Type = "oneshot";
+          User = "root";
+        };
+      };
+
+      nginx.serviceConfig = {
+        SupplementaryGroups = [ "shadow" ];
+        NoNewPrivileges = lib.mkForce false;
+        PrivateDevices = lib.mkForce false;
+        ProtectHostname = lib.mkForce false;
+        ProtectKernelTunables = lib.mkForce false;
+        ProtectKernelModules = lib.mkForce false;
+        RestrictAddressFamilies = lib.mkForce [ ];
+        LockPersonality = lib.mkForce false;
+        MemoryDenyWriteExecute = lib.mkForce false;
+        RestrictRealtime = lib.mkForce false;
+        RestrictSUIDSGID = lib.mkForce false;
+        SystemCallArchitectures = lib.mkForce "";
+        ProtectClock = lib.mkForce false;
+        ProtectKernelLogs = lib.mkForce false;
+        RestrictNamespaces = lib.mkForce false;
+        SystemCallFilter = lib.mkForce "";
+      };
+
+      pm2 = {
+        enable = false;
+        description = "PM2 process manager";
+        # documentation = "https://pm2.keymetrics.io/";
+        after = [ "network.target" ];
+        serviceConfig = {
+          Type = "forking";
+          User = "root";
+          Group = "wheel";
+          LimitNOFILE = "infinity";
+          LimitNPROC = "infinity";
+          LimitCORE = "infinity";
+          Environment = "PM2_HOME=/root/.pm2";
+          PIDFile = "/root/.pm2/pm2.pid";
+          Restart = "on-failure";
+          ExecStart = "${pkgs.nodePackages.pm2}/bin/pm2 resurrect";
+          ExecReload = "${pkgs.nodePackages.pm2}/bin/pm2 reload all";
+          ExecStop = "${pkgs.nodePackages.pm2}/bin/pm2 kill";
+        };
+        wantedBy = [ "multi-user.target" ];
+      };
+    };
+  };
 
   # systemd.services.serve = {
   #   enable = true;

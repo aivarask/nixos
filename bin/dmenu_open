@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo -e 'https://github.com/nix-community/awesome-nix 
+https://mynixos.com/
+https://tailwindcss.com/docs/customizing-colors
+https://nixos.wiki/index.php?search=&go=Go' | dmenu -l 10 | xargs xdg-open

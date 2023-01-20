@@ -1,0 +1,72 @@
+{
+  "expect": {
+    "prefix": ["expect", "ex"],
+    "body": ["expect(${1}).${0}"]
+  },
+  "kit-request-handler": {
+    "prefix": ["kit-request-handler"],
+    "body": [
+      "export const ${1:GET} = (async (event) => {",
+      "\t // const data = await event.request.json();",
+      "\t${0}",
+      "\t // return json({});",
+      "}) satisfies RequestHandler;"
+    ]
+  },
+  "kit-test": {
+    "prefix": ["kit-test"],
+    "body": ["foo"]
+  },
+  "kit-layout-server-load": {
+    "prefix": ["kit-layout-server-load"],
+    "body": [
+      "${1:import type { LayoutServerLoad \\} from './\\$types';}",
+      "export const load = (async (event) => {",
+      "\t${0}",
+      "\treturn {};",
+      "}) satisfies LayoutServerLoad;"
+    ]
+  },
+  "kit-page-server-load": {
+    "prefix": ["kit-page-server-load"],
+    "body": [
+      "${1:import type { PageServerLoad \\} from './\\$types';}",
+      "export const load = (async (event) => {",
+      "\t${0}",
+      "\treturn {};",
+      "}) satisfies PageServerLoad;"
+    ]
+  },
+  "kit-actions": {
+    "prefix": ["kit-actions"],
+    "body": [
+      "export const actions: Actions = {",
+      "\t${1:default}: async (event) => {",
+      "\t\t${2:const fd = await event.request.formData();}",
+      "\t\treturn {};",
+      "\t}",
+      "\t${0}",
+      "};"
+    ]
+  },
+  "kit-action": {
+    "prefix": ["kit-action"],
+    "body": [
+      "\t${1:default}: async (event) => {",
+      "\t\t${2:const fd = await event.request.formData();}",
+      "\t\treturn {};",
+      "\t},",
+      "\t${0}"
+    ]
+  },
+  "kit-handle": {
+    "prefix": ["kit-handle"],
+    "body": [
+      "export const ${1:handle} = (async ({ event, resolve }) => {",
+      "\t${0}",
+      "\tconst response = await resolve(event);",
+      "\treturn response;",
+      "}) satisfies Handle;"
+    ]
+  }
+}

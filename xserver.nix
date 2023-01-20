@@ -1,6 +1,6 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   nixpkgs.config.permittedInsecurePackages = [
-    "qtwebkit-5.212.0-alpha4"
+    # "qtwebkit-5.212.0-alpha4"
   ];
   services.xserver = {
     # https://nixos.wiki/wiki/Keyboard_Layout_Customization
@@ -12,33 +12,29 @@
     xkbVariant = "qwerty"; # localectl list-x11-keymap-variants
     xkbOptions = "grp:menu_toggle"; # localectl list-x11-keymap-options
 
-    displayManager.startx.enable = true;
-    displayManager.sessionCommands = ''
-      xmessage \"Hello World!\" &\n
-      imwheel -b45
-    '';
-    # displayManager.gdm.enable = true;
-    # desktopManager.gnome.enable = true;
+    displayManager = {
+      startx.enable = true;
+      sessionCommands = ''
+        xmessage \"Hello World!\" &\n
+        imwheel -b45
+      '';
+      # displayManager.gdm.enable = true;
+      # desktopManager.gnome.enable = true;
 
-    # https://nixos.wiki/wiki/KDE
-    displayManager.sddm.enable = false;
+      # https://nixos.wiki/wiki/KDE
+      sddm.enable = false;
+    };
     desktopManager.plasma5.enable = true;
-    desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
-      elisa
-      gwenview
-      okular
-      oxygen
-      khelpcenter
-      konsole
-      plasma-browser-integration
-      print-manager
-      qtwebkit
-    ];
-
-    # displayManager.autoLogin = {
-    #   enable = true;
-    #   user = "ak";
-    # };
   };
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    elisa
+    gwenview
+    okular
+    oxygen
+    khelpcenter
+    konsole
+    plasma-browser-integration
+    print-manager
+    qtwebkit
+  ];
 }
-

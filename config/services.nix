@@ -1,8 +1,9 @@
-{ config, pkgs, ... }: {
-
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "yes";
+{pkgs, ...}: {
+  services = {
+    openssh = {
+      enable = true;
+      settings.PermitRootLogin = "yes";
+    };
   };
 
   services.gitolite = {

@@ -1,4 +1,4 @@
-{ config, ... }: {
+_: {
   xdg.configFile."glow/glow.yml".text = ''
     # style name or JSON path (default "auto")
     style: "dark"

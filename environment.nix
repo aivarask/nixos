@@ -1,12 +1,14 @@
-{ config, pkgs, ... }: {
-  environment.sessionVariables = {
-    # NIX_PATH = "$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays";
-    PATH = [
-      "/etc/nixos/bin"
-      "$HOME/.pnpm-global"
-      "$HOME/.node_modules/bin"
-      "$HOME/.config/composer/vendor/bin"
-    ];
+{ pkgs, ... }: {
+  environment = {
+    sessionVariables = {
+      # NIX_PATH = "$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays";
+      PATH = [
+        "/etc/nixos/bin"
+        "$HOME/.pnpm-global"
+        "$HOME/.node_modules/bin"
+        "$HOME/.config/composer/vendor/bin"
+      ];
+    };
   };
   environment.shellAliases = {
     ".." = "cd ..";
@@ -25,10 +27,13 @@
     lt3 = "ls --tree --level=3";
     mc = "tmux split -h lf; lf";
     mcd = "tmux split -h nd; ndcw; ndtw";
+    nu = "npm run update";
+    ni = "npm install";
     nd = "npm run dev";
     ndh = "npm run dev -- --host";
     ndo = "npm run dev -- --open";
     npa = "npm run pa";
+    nrpc = "npm run codegen";
     nrb = "npm run build";
     nrd = "npm run deploy";
     nrc = "npm run check";
@@ -57,6 +62,7 @@
     x = "startx";
   };
   environment.variables = {
+    MOZ_X11_EGL = "1";
     TERMINAL = "alacritty";
     EDITOR = "nvim";
     editor = "vim";
@@ -66,13 +72,17 @@
     NPM_CONFIG_PREFIX = "$HOME/.node_modules";
     # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
     NODE_OPTIONS = "--no-warnings";
-    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_LIBRARY =
+      "${pkgs.prisma-engines}/lib/libquery_engine.node";
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-    PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
-    PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
+    PRISMA_MIGRATION_ENGINE_BINARY =
+      "${pkgs.prisma-engines}/bin/migration-engine";
+    PRISMA_INTROSPECTION_ENGINE_BINARY =
+      "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}"; # packages.json @playwright/test
+    PLAYWRIGHT_BROWSERS_PATH =
+      "${pkgs.playwright.browsers}"; # packages.json @playwright/test
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SET_FACTOR = "0";

@@ -1,18 +1,13 @@
-{ config, pkgs, ... }:
 # https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix
-{
+_: {
   programs.git = {
     enable = true;
     userName = "Aivaras Kalesnykas";
     userEmail = "kalesnykas.aivaras@gmail.com";
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
+      init = {defaultBranch = "main";};
       pull.rebase = false;
-      core = {
-        hookspath = ".githooks";
-      };
+      core = {hookspath = ".githooks";};
     };
     ignores = [
       "*.lock"
@@ -25,6 +20,7 @@
       "tags"
       "www"
       "packages"
+      "!flake.lock"
     ];
   };
 }

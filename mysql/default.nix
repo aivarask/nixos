@@ -1,21 +1,31 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, ... }: {
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/databases/mysql.nix
-    ensureDatabases = [
-      "ak"
-      "sand"
-    ];
     ensureUsers = [
       {
         name = "ak"; # l
         # https://github.com/NixOS/nixpkgs/blob/nixos-22.05/nixos/modules/services/databases/mysql.nix#L201
         ensurePermissions = {
           "ak.*" = "ALL PRIVILEGES";
-          "sand.*" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "johndoe"; # l
+        ensurePermissions = {
+          "mydb.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
+    ensureDatabases = [
+      "ak"
+      "mydb"
+      "mydb_test"
+      "mydb_development"
+      "mydb_production"
+      "mydb_staging"
+      "mydb_e2e"
     ];
     initialScript = ./initialScript.sql;
     settings = {
@@ -25,4 +35,3 @@
     };
   };
 }
-

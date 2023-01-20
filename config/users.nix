@@ -1,8 +1,10 @@
-{ config, pkgs, lib, ... }: {
-  users.defaultUserShell = pkgs.zsh;
+{pkgs, ...}: {
+  users = {
+    defaultUserShell = pkgs.zsh;
+  };
   users.users.root = {
     shell = pkgs.zsh;
-    extraGroups = [ "http" ];
+    extraGroups = ["http"];
   };
   users.users.ak = {
     isNormalUser = true;

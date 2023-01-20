@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   bat-extras = with pkgs.bat-extras; [
-    batdiff
     batgrep
     batman
+    batpipe
     batwatch
+    batdiff
     prettybat
   ];
   haskellPackages = with pkgs.haskellPackages; [
@@ -12,15 +13,19 @@ let
     # tomlcheck
     # htoml-megaparsec
   ];
-  nodePackages = with pkgs.nodePackages; [
+  nodeList = with pkgs.nodePackages_latest; [
+    # emmet_ls
+    gulp
+    pyright
+    npm
     bash-language-server
     vercel
     coc-rust-analyzer
     degit
     diagnostic-languageserver
     emoj
-    eslint
-    eslint_d
+    # eslint
+    # eslint_d
     fast-cli
     fixjson
     gulp
@@ -50,29 +55,15 @@ let
     ts-node
   ];
   luajitPackages = with pkgs.luajitPackages; [
-    inspect
-    penlight
-    std-_debug
-    plenary-nvim
+    busted # https://lunarmodules.github.io/busted/
+    inspect # https://github.com/kikito/inspect.lua
+    penlight # https://github.com/lunarmodules/Penlight
+    std-_debug # https://lua-stdlib.github.io/_debug/
+    plenary-nvim # https://github.com/nvim-lua/plenary.nvim
   ];
   php80Packages = with pkgs.php80Packages; [ composer phpstan psalm ];
   php80Extensions = with pkgs.php80Extensions; [ xdebug ];
-  gitAndTools = with pkgs.gitAndTools; [
-    delta
-    gh
-    git-crypt
-  ];
-  python310Packages = with pkgs.python310Packages; [
-    bcrypt
-    debugpy
-    pdf2image
-    pdftotext
-    pip
-    pynvim
-    # python-lsp-black
-    # python-lsp-server
-    tomlkit
-  ];
+  gitAndTools = with pkgs.gitAndTools; [ delta gh git-crypt ];
   prismaSpecific = with pkgs; [
     prisma-engines
     prismaPackages."@prisma/language-server"
@@ -84,9 +75,7 @@ let
     firefox-bin
     webkitgtk
   ];
-  rubyPackages = with pkgs.rubyPackages; [
-    gemoji
-  ];
+  rubyPackages = with pkgs.rubyPackages; [ gemoji ];
   xorgP = with pkgs.xorg; [
     # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
     xbacklight
@@ -101,25 +90,96 @@ let
     xmodmap
     xmessage
   ];
+  myPython = with pkgs.python3Packages; [
+    # bcrypt
+    # debugpy
+    # pdf2image
+    # pdftotext
+    pip
+    pynvim
+    # python-lsp-black
+    python-lsp-server
+    # tomlkit
+    flake8
+    autopep8
+    setuptools
+    wheel
+    # from overlay
+    inotify_simple
+    tuimoji
+  ];
+
+  # https://github.com/nix-community/awesome-nix#command-line-tools
+  nixRelated = with pkgs; [
+    # https://github.com/nix-community/awesome-nix#development
+    alejandra
+    # comma
+    deadnix
+    manix
+
+    # nixfmt
+    # nixpkgs-fmt
+    # nixpkgs-hammering
+    # nix-alien
+    # nix-diff
+    # nix-du
+    nix-index
+    # nix-init
+    nix-prefetch
+    nix-tree
+    nurl
+    # nvd
+    statix
+
+    # https://github.com/nix-community/awesome-nix#development
+    rnix-lsp
+    nil
+    niv
+
+    # -- OTHER --
+    # nix-prefetch-git
+    # nix-prefetch-github
+    # nix-template
+    # nix-tour
+  ];
+
+  fzfTools = with pkgs; [ silver-searcher ];
 in
 {
   environment.systemPackages = with pkgs;
-    xorgP ++
-    rubyPackages ++
-    playwrightDependencies ++
-    prismaSpecific ++
-    # python39Packages ++
-    gitAndTools ++
-    bat-extras ++
-    haskellPackages ++
-    nodePackages ++
-    luajitPackages ++
-    php80Packages ++
-    php80Extensions ++
-    [
+    nixRelated
+    ++ fzfTools
+    ++ xorgP
+    # ++ over
+    ++ rubyPackages
+    ++ playwrightDependencies
+    ++ prismaSpecific
+    ++ myPython
+    ++ gitAndTools
+    ++ bat-extras
+    ++ haskellPackages
+    ++ nodeList
+    ++ luajitPackages
+    ++ php80Packages
+    ++ php80Extensions
+    ++ [
+      fontpreview
+      xdotool
+      marksman
 
+      lesspipe
+      emojipick
+      sl
+      libuv
+      st
+      slstatus
+      neovim-remote
+      # pkgs.nur.repos.mic92.hello-nur
+      iftop
+      python3Full
+
+      openssl
       yarn
-      python310Full
       brightnessctl
       libxkbcommon
       mkcert
@@ -129,11 +189,9 @@ in
       # ---
       ookla-speedtest
       speedtest-cli
-      zsh-better-npm-completion
       luakit
       gtk3
       gtk3-x11
-      zsh-autocomplete
       inetutils
       wiki-tui
       # spotify
@@ -232,11 +290,11 @@ in
       libva-utils
       lm_sensors
       loc
-      lua
+      ltrace
+      # lua
       luaformatter
       luajit
       lxappearance
-      manix
       mono
       mpc_cli
       mpd
@@ -244,15 +302,6 @@ in
       neofetch
       nicotine-plus
       nimlsp
-      # nix-du
-      nix-index # + nix-locate
-      nix-prefetch-git
-      nix-prefetch-github
-      nix-template
-      nix-tour
-      nix-tree
-      nixfmt
-      nixpkgs-fmt
       nmap
       # nodejs_latest
       nodejs-19_x
@@ -264,7 +313,6 @@ in
       perl534Packages.CPAN
       php
       pistol
-      pkgs.nur.repos.mic92.hello-nur
       poppler
       poppler_utils
       postgresql
@@ -276,7 +324,6 @@ in
       redshift
       remote-touchpad
       ripgrep
-      rnix-lsp
       rust-analyzer
       rustc
       rustfmt
@@ -286,7 +333,6 @@ in
       shellcheck
       shellharden
       shfmt
-      slstatus
       soulseekqt
       spaceship-prompt
       sqlite
@@ -298,11 +344,9 @@ in
       sqlint
       sqls
       ssh-chat
-      st
-      statix
       stripe-cli
       stylua
-      sumneko-lua-language-server
+      lua-language-server
       sxiv
       tabbed
       tiv
@@ -333,21 +377,18 @@ in
       watchman
       wget
       whois
-      wkhtmltopdf
+      # wkhtmltopdf # requires qtwebkit
       xclip
       xh
       yaml-language-server
       yaml-merge
       yaml2json
-      yamlfix
+      # yamlfix nixos-rebuild fails
       yamllint
       yapf
       youtube-dl
       ytfzf
       zathura
       zsh
-      zsh-completions
-      zsh-fzf-tab
-      zsh-nix-shell
     ];
 }

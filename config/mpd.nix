@@ -1,14 +1,13 @@
 # https://nixos.wiki/wiki/MPD
 # https://mpd.fandom.com/wiki/PulseAudio
-{ config, pkgs, ... }: {
+_: {
   sound.enable = true;
   # sound.mediaKeys.enable = true;
   hardware.pulseaudio = {
     enable = true;
     systemWide = true;
     support32Bit = true;
-    extraConfig =
-      "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
+    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
     tcp = {
       enable = true;
       anonymousClients.allowedIpRanges = [
@@ -27,8 +26,8 @@
     network.listenAddress = "any";
     extraConfig = ''
       auto_update "yes"
-      music_directory "/etc/nixos/music"
-      audio_output { 
+      music_directory "/var/music"
+      audio_output {
         type "pulse"
         name "Pulseaudio"
         server "0.0.0.0"

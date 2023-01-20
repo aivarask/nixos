@@ -1,4 +1,4 @@
-{ config, ... }: {
+_: {
   programs.zsh.enable = true;
   programs.mtr.enable = true;
   # programs.gnupg.agent = {

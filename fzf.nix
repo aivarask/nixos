@@ -1,12 +1,10 @@
-# [[ $(tput cols) -le 100 ]] && params+=(--preview-window=wrap:down:70%) || params+=(--preview-window=wrap:right:80)
-{ config, ... }: {
+_: {
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
   programs.fzf = {
     enable = true;
     defaultCommand = "fd --type f --ignore-file=$HOME/.config/git/ignore";
     defaultOptions = [
       "--layout=reverse"
-      # "--preview-window hidden"
       "--bind 'ctrl-space:refresh-preview'"
       "--bind 'ctrl-e:execute($EDITOR {})'"
       "--bind 'ctrl-f:reload(eval \"$FZF_DEFAULT_COMMAND\")'"
@@ -16,6 +14,7 @@
       # "--bind 'ctrl-/:preview:pistol {}'"
       "--bind 'ctrl-/:toggle-preview'"
       "--preview 'pistol {}'"
+      "--preview-window hidden"
     ];
 
     fileWidgetCommand = "fd --type f";

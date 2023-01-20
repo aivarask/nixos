@@ -1,8 +1,8 @@
-{ config, pkgs, ... }: {
+_: {
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ ./gruvbox.yml ];
+      import = [./gruvbox.yml];
       key_bindings = [
         {
           key = "Return";

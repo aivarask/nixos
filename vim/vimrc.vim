@@ -1,50 +1,24 @@
-let &runtimepath.=','.'/etc/nixos/vim'
-
-function Name() abort
-  " :FloatermToggle()
-  :FloatermNew --wintype=vsplit --width=0.4 --autoclose=1 neofetch
-endfunction
-
-function Schema() abort
-  :FloatermNew --wintype=vsplit --width=0.4 --autoclose=1 npx prisma db push
-  :LspRestart
-endfunction
+let &runtimepath.=',/etc/nixos/vim'
+" set rtp+=./neotest
 
 aug Initial
   au!
-  au BufWritePost vimrc :so %
-  autocmd BufEnter *.postcss setlocal ft=css
+  autocmd BufEnter *.postcss setlocal ft=scss
   autocmd BufEnter .env* setlocal ft=sh
-  autocmd BufEnter package.json,tsconfig.json setlocal ft=jsonc
+  autocmd BufEnter *.json,flake.lock setlocal ft=jsonc
   autocmd VimResized * wincmd =
-  " autocmd VimResized * FloatermUpdate
-  " https://vim.fandom.com/wiki/Multiple_commands_at_once
-  " au BufWritePost schema.prisma :execute 'silent! !prisma generate' | :execute '!prisma db push' | :LspRestart
-  " au BufWritePost schema.prisma :terminal 'prisma db push' | :LspRestart
-  " au BufWritePost schema.prisma :execute ':terminal prisma db push' 
-  " au BufWritePost schema.prisma :terminal prisma db push
-  " au BufWritePost schema.prisma :executae 'silent! :terminal prisma db push' 
-  " au BufWritePost vimrc.vim :call Name() | LspRestart
-  " INFO: https://stackoverflow.com/questions/3249275/multiple-commands-on-same-line
-  au BufWritePost schema.prisma :call Schema() 
+  autocmd VimResized * FloatermUpdate
+  autocmd BufEnter *svelte-kit/* set buftype=nowrite
+  autocmd FileType * autocmd TextChanged,CursorHoldI <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
+  autocmd BufWritePost *.vim,*.lua :call tj#save_and_exec()
+  autocmd FileType nix setlocal commentstring=#\ %s
 aug END
 
-source /etc/nixos/vim/keymaps.vim 
-source /etc/nixos/vim/settings.vim 
-
-set background=dark
-if has('nvim')
-  if has('termguicolors')
-    set termguicolors
-    let g:gruvbox_material_background = 'medium'
-    let g:gruvbox_material_foreground = 'mix'
-    " NOTE: Not working due to secured derivation path
-    " Not needed btw
-    " let g:gruvbox_material_better_performance = 1
+for buf in getbufinfo()
+  echo buf.name
+endfor
+for buf in getbufinfo({'buflisted':1})
+  if buf.changed
+    echo 'bufchanged'
   endif
-
-  colorscheme gruvbox-material
-else
-  colorscheme gruvbox-material
-endif
-
+endfor

@@ -1,7 +1,7 @@
-{ config, pkgs, ... }: {
+{pkgs, ...}: {
   console = {
     earlySetup = true;
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
 }

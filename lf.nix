@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+_: {
   programs.lf = {
     enable = true;
     settings = {
@@ -79,14 +79,13 @@
       "tpt" = "$touch +page.server.ts";
       "tps" = "$touch +page.svelte";
       "tst" = "$touch +server.ts";
-
     };
-    cmdKeybindings = { };
+    cmdKeybindings = {};
     extraConfig = ''
       $mkdir -p ~/.trash
+      # set previewer pistol
       set previewer pistol
       map t
     '';
   };
-
-} 
+}

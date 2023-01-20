@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -9,32 +9,26 @@ let
   '';
 in
 {
-  imports =
-    [
-      ./dell-hardware.nix
-      ./common.nix
-    ];
-  # system.stateVersion = "23.?";
+  imports = [
+    ./_networking.nix
+    ./dell-hardware.nix
+  ];
+  system.stateVersion = "23.05";
   console.font = "ter-i32b";
 
   environment.systemPackages = [ nvidia-offload ];
-  services.xserver.videoDrivers = [ "nvidia" ];
-  # hardware.nvidia = { modesetting.enable = true; };
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    intelBusId = "PCI:0:2:0"; # lcpi
-    nvidiaBusId = "PCI:1:0:0";
-  };
 
-  services.xserver = {
-    # https://nixos.wiki/wiki/Xorg
-    dpi = 168; # 96*1.75
-    # dpi = 144; # 96*1.5
-    # dpi = 120; # 96*1.25
-    libinput = {
-      enable = true;
-      touchpad.naturalScrolling = true;
+  services = {
+    xserver.videoDrivers = [ "nvidia" ];
+    xserver = {
+      # https://nixos.wiki/wiki/Xorg
+      dpi = 168; # 96*1.75
+      # dpi = 144; # 96*1.5
+      # dpi = 120; # 96*1.25
+      libinput = {
+        enable = true;
+        touchpad.naturalScrolling = true;
+      };
     };
   };
   services.xserver.screenSection = ''
@@ -47,14 +41,17 @@ in
   hardware.bluetooth.enable = false;
   services.blueman.enable = false;
 
-  networking.hostName = "dell";
-  networking.hostId = "8425e349";
-  networking.useDHCP = false;
-  networking.interfaces.wlp59s0.useDHCP = true;
-  networking.interfaces.wlp59s0.ipv4.addresses = [{
-    address = "192.168.1.112";
-    prefixLength = 24;
-  }];
-  networking.defaultGateway = "192.168.1.1";
-
+  networking = {
+    hostName = "dell";
+    hostId = "8425e349";
+    useDHCP = false;
+    interfaces.wlp59s0.useDHCP = true;
+    interfaces.wlp59s0.ipv4.addresses = [
+      {
+        address = "192.168.1.112";
+        prefixLength = 24;
+      }
+    ];
+    defaultGateway = "192.168.1.1";
+  };
 }

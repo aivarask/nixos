@@ -1,4 +1,4 @@
-{ config, ... }: {
+_: {
   # https://github.com/doronbehar/pistol
   xdg.configFile."pistol/pistol.conf".text = ''
     inode/directory exa --git --group --tree --level=1 --long --icons --group-directories-first %pistol-filename%

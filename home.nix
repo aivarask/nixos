@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ... }: {
+# https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
+{ ... }: {
   imports = [
     ./alacritty.nix
     ./sxhkd.nix
@@ -16,26 +17,26 @@
   # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
 
   home.file.".xinitrc".text = builtins.readFile ./xinitrc;
+  # xdg.configFile."nicotine/config".text = builtins.readFile ./nicotine/config;
 
   home.stateVersion = "18.09";
-  services.redshift = {
-    enable = true;
-    temperature = {
-      day = 6500; # 5500
-      night = 4500; # 3700
+
+  services = {
+    redshift = {
+      enable = true;
+      temperature = {
+        day = 6500; # 5500
+        night = 4500; # 3700
+      };
+      latitude = 54.0;
+      longitude = 25.0;
+      provider = "manual";
     };
-    latitude = 54.00;
-    longitude = 25.00;
-    provider = "manual";
-  };
-
-  services.dunst = {
-    enable = true;
-  };
-
-  services.unclutter = {
-    enable = true;
-    timeout = 2;
+    dunst = { enable = true; };
+    unclutter = {
+      enable = true;
+      timeout = 2;
+    };
   };
 
   programs.ncmpcpp = {
@@ -48,6 +49,4 @@
       song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
     };
   };
-
-
 }

@@ -1,0 +1,38 @@
+{
+  "test-each": {
+    "prefix": ["ite", "tee"],
+    "body": ["it.each([", "\t${1}", "])('${2}', (${3}) => {", "\t${4}", "})"]
+  },
+  "import-playwright": {
+    "prefix": ["import-playwright", "ipl"],
+    "body": ["import { expect, test } from '@playwright/test';", "${0}"]
+  },
+  "test.describe.configure": {
+    "prefix": ["test.describe.configure"],
+    "body": ["test.describe.configure({ ${1} });", "${0}"]
+  },
+  "test.beforeAll": {
+    "prefix": ["test.beforeAll"],
+    "body": ["test.beforeAll(async ({browser}) => {", "\t${0}", "})"]
+  },
+  "test.afterAll": {
+    "prefix": ["test.afterAll"],
+    "body": ["test.afterAll(async () => {", "\t${0}", "})"]
+  },
+  "test.decribe": {
+    "prefix": ["test.describe"],
+    "body": [
+      "test.describe('${1:${TM_FILENAME_BASE}}', () => {",
+      "\t${0}",
+      "})"
+    ]
+  },
+  "test": {
+    "prefix": ["test"],
+    "body": ["test('${1}', async () => {", "\t${0}", "})"]
+  },
+  "test-page": {
+    "prefix": ["test-page"],
+    "body": ["test('${1}', async ({page}) => {", "\t${0}", "})"]
+  }
+}

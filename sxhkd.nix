@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+_: {
   services.sxhkd = {
     enable = true;
     keybindings = {
@@ -12,22 +12,25 @@
       "XF86Calculator" = "$TERMINAL -e bandwhich";
       "XF86HomePage" = "google-chrome-stable --no-sandbox";
       "XF86Mail" = "brave --no-sandbox";
-      "alt + F12" = "$SHELL -c 'nixos-rebuild switch | xargs dunstify'";
-      "alt + F5" = "systemctl restart cron.service";
-      "alt + F6" = "xset r rate 200 50";
-      "alt + F7" = "kill -SIGUSR1 $(pidof sxhkd)";
-      "alt + XF86Audio{Lower,Raise}Volume" = "mpc {prev,next}";
-      "alt + XF86Mail" = "telegram-desktop";
-      "alt + w" = "$BROWSER";
-      "alt + W" = "firefox --private-window";
-      "ctrl + Pause" = "nicotine-plus";
+
+      "super + F1" = "TEXT=$(cat /etc/nixos/sxhkd.nix) && dunstify $TEXT";
+      "super + F2" = "dmenu_open";
+      "super + F3" = "emojipick";
+      "super + ctrl + F3" = "xdg-open https://emojifinder.com/";
+      "super + F6" = "xset r rate 200 50";
+      "super + F7" = "kill -SIGUSR1 $(pidof sxhkd) && dunstify '♻️  sxhkd reloaded'";
+      "super + XF86Audio{Lower,Raise}Volume" = "mpc {prev,next}";
+      "super + XF86Mail" = "telegram-desktop";
+      "super + w" = "$BROWSER";
+      "super + W" = "firefox --private-window";
+      "super + ctrl + Return" = "tabbed -c alacritty --embed";
+
+      "ctrl + Pause" = "nicotine";
       "ctrl + Print;" = "$TERMINAL -e duf &";
-      "ctrl + alt + Return" = "tabbed -c alacritty --embed";
       # "super + {g,m}" = "$BROWSER {github.com,messenger.com}";
       # "super + m" = "$TERMINAL -e duf";
       "XF86MonBrightnessDown" = "brightnessctl set 10%-";
       "XF86MonBrightnessUp" = "brightnessctl set +10%";
-
     };
   };
 }

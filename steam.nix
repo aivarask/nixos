@@ -1,5 +1,5 @@
-{ config, pkgs, ... }: {
-  programs.steam.enable = true;
+{pkgs, ...}: {
+  programs.steam.enable = false;
   environment.systemPackages = with pkgs; [
     # steam
     # steam-run
@@ -7,4 +7,3 @@
     # steamPackages.steam
   ];
 }
-

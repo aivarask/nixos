@@ -15,7 +15,7 @@ bindkey -s "^E" "fzf -m --preview 'pistol {}' | xargs -r $EDITOR \n"
 bindkey -s "^F" "fzf -m --preview 'pistol {}'\n"
 bindkey -s "^G" "fzl\n"
 
-bindkey -s "^O" "lf\n"
+bindkey -s "^N" "nvim\n"
 # showkey -a
 # infocmp -cL
 # bindkey -L

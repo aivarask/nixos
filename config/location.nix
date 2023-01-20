@@ -1,4 +1,4 @@
-{ config, ... }: {
+_: {
   location = {
     # provider = "geoclue2";
     provider = "manual";

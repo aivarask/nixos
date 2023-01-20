@@ -43,3 +43,7 @@ https://breuer.dev/blog/nixos-home-manager-neovim
 
 https://nixos.wiki/wiki/Vim
 https://nixos.wiki/wiki/Vim#Notes_Regarding_Plugins
+
+TODO = { icon = " ", color = "info" },
+
+⎙
