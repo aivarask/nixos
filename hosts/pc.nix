@@ -1,20 +1,16 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./pc-hardware.nix
     ./_networking.nix
   ];
-  system.stateVersion = "22.05";
-  console.font = "ter-i16b";
-
-  # optionName =
-  #   mkOption
-  #     {
-  #       type = types.bool;
-  #       # ...
-  #     };
-
-  environment.variables = {
-    IFACE = "wlp6s0";
+  system.stateVersion = "23.05";
+  console = {
+    # suggests kmscon https://discourse.nixos.org/t/need-help-setting-tty-font/16295/2
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-v14n.psf.gz";
+    packages = with pkgs; [
+      terminus_font
+      powerline-fonts
+    ];
   };
 
   networking = {
@@ -34,19 +30,18 @@
     wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
     defaultGateway = "192.168.1.1";
   };
-
-  # https://nixos.wiki/wiki/Nvidia#Installing_NVIDIA_official_drivers_on_NixOS
+  location = {
+    provider = "manual";
+    latitude = 54.0;
+    longitude = 25.0;
+  };
   services = {
     xserver = {
-      videoDrivers = [ "nvidia" ];
-      # https://nixos.wiki/wiki/Xorg
-      # dpi = 168; # 96*1.75
       dpi = 144; # 96*1.5
       imwheel = {
         enable = true;
         rules = {
-          # ".*" = ''
-          "^(vieb|firefox|brave-browser|google-chrome-stable|google-chrome|telegram-desktop)$" = ''
+          "^(firefox|brave-browser|google-chrome-stable|google-chrome|telegram-desktop)$" = ''
             None, Up, Button4, 2
             None, Down, Button5, 2
             Shift_L,   Up,   Shift_L|Button4, 2
@@ -55,13 +50,7 @@
             Control_L, Down, Control_L|Button5
           '';
         };
-        # extraOptions = [ "--buttons=45" ]; # default
       };
-      screenSection = ''
-        Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-        Option         "AllowIndirectGLXProtocol" "off"
-        Option         "TripleBuffer" "on"
-      '';
     };
   };
 

@@ -1,8 +1,4 @@
 _: {
-  # networking.nat.enable = true;
-  # networking.useDHCP = lib.mkDefault false;
-  # networking.interfaces.wlp59s0.useDHCP = lib.mkDefault true;
-
   networking = {
     hosts = {
       "127.0.0.1" = [ "live.fixasparts.com" ];
@@ -10,7 +6,6 @@ _: {
       "192.168.1.111" = [ "pc" ];
       "192.168.1.112" = [ "dell" ];
       "188.69.243.169" = [
-        # Telia STATIC
       ];
       "195.181.244.248" = [ "q0nr.l.dedikuoti.lt" "fixas" "new.fixasparts.com" ];
     };
@@ -44,7 +39,7 @@ _: {
     9000
     9100
   ];
-  # networking.firewall.allowedUDPPorts = [ ];
+
   networking.networkmanager = {
     enable = false;
     wifi.scanRandMacAddress = false;

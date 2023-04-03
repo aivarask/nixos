@@ -1,5 +1,5 @@
 # https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./sxhkd.nix
@@ -16,6 +16,7 @@
 
   # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
 
+  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
   home.file.".xinitrc".text = builtins.readFile ./xinitrc;
   # xdg.configFile."nicotine/config".text = builtins.readFile ./nicotine/config;
 

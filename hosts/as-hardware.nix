@@ -32,7 +32,8 @@
   };
 
   swapDevices = [ ];
-
-  hardware.bluetooth.enable = false;
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    nvidia.modesetting.enable = true;
+  };
 }

@@ -3,7 +3,7 @@
     ./_networking.nix
     ./as-hardware.nix
   ];
-  system.stateVersion = "22.05";
+  system.stateVersion = "23.05";
 
   networking = {
     hostName = "as";

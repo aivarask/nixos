@@ -1,5 +1,4 @@
 # DELL XPS 7590
-# https://github.com/NixOS/nixos-hardware/tree/master/dell/xps/15-7590
 { config
 , lib
 , modulesPath
@@ -10,7 +9,13 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "sd_mod"
+      "rtsx_pci_sdmmc"
+      "usb_storage" # added ssd
+    ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
@@ -39,14 +44,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    # video.hidpi.enable = lib.mkDefault true;
-    # nvidia = { modesetting.enable = true; };
-
-    nvidia.powerManagement.enable = true;
-    nvidia.prime = {
-      offload.enable = true;
-      intelBusId = "PCI:0:2:0"; # lcpi
-      nvidiaBusId = "PCI:1:0:0";
-    };
+    nvidia.modesetting.enable = true;
+    bluetooth.enable = false;
   };
 }
