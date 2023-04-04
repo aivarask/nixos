@@ -1,16 +1,15 @@
 { pkgs, ... }: {
   imports = [
+    ./common.nix
     ./pc-hardware.nix
     ./_networking.nix
   ];
   system.stateVersion = "23.05";
-  console = {
-    # suggests kmscon https://discourse.nixos.org/t/need-help-setting-tty-font/16295/2
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v14n.psf.gz";
-    packages = with pkgs; [
-      terminus_font
-      powerline-fonts
-    ];
+  services.kmscon = {
+    extraConfig = ''
+      font-size=12
+      font-dpi=72
+    '';
   };
 
   networking = {
@@ -52,16 +51,16 @@
         };
       };
     };
-  };
 
-  services.nginx.virtualHosts."live.fixasparts.com" = {
-    forceSSL = false;
-    enableACME = false;
-    locations."/" = {
-      proxyPass = "https://127.0.0.1:4173";
-      proxyWebsockets = true;
-      extraConfig = ''
-      '';
+    nginx.virtualHosts."live.fixasparts.com" = {
+      forceSSL = false;
+      enableACME = false;
+      locations."/" = {
+        proxyPass = "https://127.0.0.1:4173";
+        proxyWebsockets = true;
+        extraConfig = ''
+        '';
+      };
     };
   };
 }

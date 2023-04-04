@@ -14,14 +14,27 @@
     ./vim
   ];
 
-  # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
-
-  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
-  home.file.".xinitrc".text = builtins.readFile ./xinitrc;
+  home = {
+    stateVersion = "18.09";
+    # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
+    # Vanilla-DMZ
+    file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+    file.".xinitrc".text = builtins.readFile ./xinitrc;
+  };
   # xdg.configFile."nicotine/config".text = builtins.readFile ./nicotine/config;
 
-  home.stateVersion = "18.09";
-
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = [ "--no-sandbox" ];
+    extensions = [
+      {
+        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # uBlock Origin
+      }
+      {
+        id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # vimium
+      }
+    ];
+  };
   services = {
     redshift = {
       enable = true;

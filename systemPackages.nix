@@ -163,6 +163,7 @@ in
     ++ php80Packages
     ++ php80Extensions
     ++ [
+      libnotify
       fontpreview
       xdotool
       marksman

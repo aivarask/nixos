@@ -1,3 +1,7 @@
+local api = require('nvim-tree.api')
+vim.keymap.set('n', 'qs', function()
+  api.tree.toggle({ path = '', find_file = false, update_root = true, focus = false })
+end)
 -- https://github.com/ahmedkhalf/project.nvim#%EF%B8%8F-configuration
 require('project_nvim').setup({
   manual_mode = false,
@@ -27,6 +31,7 @@ require('auto-session').setup({
     '/etc/nixos/vim',
     '~/packages',
     '~/gh/*',
+    '~/lk/*',
     '~/fixpart',
   },
   -- cwd_change_handling = {

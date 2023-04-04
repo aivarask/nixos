@@ -1,9 +1,14 @@
-{ ... }: {
+{ pkgs
+, lib
+, ...
+}: {
   imports = [
+    ./common.nix
     ./_networking.nix
     ./dell-hardware.nix
   ];
   system.stateVersion = "23.05";
+  console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
 
   networking = {
     hostName = "dell";
@@ -20,9 +25,16 @@
   };
 
   location.provider = "geoclue2";
-
-  services.geoclue2.enable = true;
   services = {
+    kmscon = {
+      extraConfig = ''
+        font-size=12
+        font-dpi=288
+      '';
+    };
+
+    geoclue2.enable = true;
+
     xserver = {
       dpi = 168; # 96*1.75
       libinput = {

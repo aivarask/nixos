@@ -5,7 +5,6 @@
   imports = [
     ./config/boot.nix
     ./config/fonts.nix
-    ./config/location.nix
     ./config/nix.nix
     ./config/nixpkgs.nix
     ./config/powerManagement.nix

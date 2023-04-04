@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./common.nix
     ./_networking.nix
     ./as-hardware.nix
   ];
@@ -20,5 +21,4 @@
       touchpad.naturalScrolling = true;
     };
   };
-  services.blueman.enable = false;
 }

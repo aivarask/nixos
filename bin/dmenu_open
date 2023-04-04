@@ -1,6 +1,37 @@
 #!/usr/bin/env bash
 
-echo -e 'https://github.com/nix-community/awesome-nix 
-https://mynixos.com/
+echo -e '
+# News
+https://www.prisma.io/blog/satisfies-operator-ur8ys8ccq7zb
+
+# Javascript
+https://jsdoc.app/index.html
+https://vitejs.dev
+https://vitest.dev
+https://github.com/thenbe/neotest-playwright
+https://github.com/marilari88/neotest-vitest
+https://playwright.dev/docs/intro
+
+# Zod
+https://github.com/colinhacks/zod
+https://github.com/chrishoermann/zod-prisma-types#usage
+https://github.com/chrishoermann/zod-prisma-types#field-validators
+
+# Back
+https://kit.svelte.dev/docs/introduction
+https://www.prisma.io/docs/concepts/components/prisma-schema
+https://www.prisma.io/docs/concepts/components/prisma-client
+
+# Front
+https://svelte.dev/doc
+https://flowbite-svelte.com/
 https://tailwindcss.com/docs/customizing-colors
-https://nixos.wiki/index.php?search=&go=Go' | dmenu -l 10 | xargs xdg-open
+https://www.toptal.com/designers/htmlarrows/punctuation/
+
+# Nix
+https://mynixos.com/
+https://github.com/nix-community/awesome-nix 
+https://discourse.nixos.org/search
+https://nixos.wiki/index.php?search#ooui-1' |
+  grep -v '^#\|^$' |
+  dmenu -l 10 | xargs xdg-open

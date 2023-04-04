@@ -24,10 +24,8 @@ imwheel -b 45 &
 DISPLAY=:0 feh --bg-fill --randomize /etc/nixos/misc/wallpapers/abstract/*
 
 XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-# ssh-chat --bind 2022 &
 # wetty -b / -p 9999 &
 
-# https://wiki.archlinux.org/title/Xinit
 session=${1:-dwm}
 
 case $session in

@@ -42,6 +42,5 @@
   hardware = {
     cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
-    nvidia.modesetting.enable = true;
   };
 }

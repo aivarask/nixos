@@ -34,6 +34,5 @@
   swapDevices = [ ];
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    nvidia.modesetting.enable = true;
   };
 }

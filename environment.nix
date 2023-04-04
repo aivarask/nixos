@@ -15,7 +15,6 @@
     "..." = "../..";
     "colored-tree" = "${pkgs.tree}/bin/tree -C";
     bp = "bat package.json";
-    chromium = "chromium --no-sandbox";
     brave = "brave --no-sandbox";
     da = "direnv allow";
     dr = "direnv reload";

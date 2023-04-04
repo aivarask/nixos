@@ -133,9 +133,6 @@
             ./configuration.nix
             ./hosts/pc.nix
             ./steam.nix
-            # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix#L169
-            # nixos-hardware.nixosModules.common-cpu-amd
-
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             nixos-hardware.nixosModules.common-hidpi
@@ -161,9 +158,9 @@
             ./configuration.nix
             ./hosts/dell.nix
             ./steam.nix
-            nixos-hardware.nixosModules.common-hidpi
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+            nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
               home-manager = {

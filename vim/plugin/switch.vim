@@ -26,14 +26,15 @@ let g:switch_custom_definitions =
       \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
       \   },
       \   ['it(', 'it.skip(', 'it.only('],
+      \   ['test(', 'test.skip(', 'test.only('],
       \   ['describe(', 'describe.skip(', 'describe.only('],
       \   ['toBeTruthy', 'toBeFalsy'],
       \   ['toBe(', 'not.toBe('],
       \   ['TODO', 'DONE'],
       \   ['FIX', 'ISSUE', 'BUG'],
       \   ['NOTE', 'INFO'],
-      \   ['info', 'warning', 'error', 'hint', 'test'],
       \ ]
+      " \   ['info', 'warning', 'error', 'hint', 'test'],
 " \   ['string', 'number', 'bigint', 'symbol', 'object', 'boolean', 'function', 'undefined']
 
 " https://github.com/AndrewRadev/switch.vim/wiki/Switch-next-in-current-line

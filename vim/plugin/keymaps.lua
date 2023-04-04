@@ -13,8 +13,8 @@ vim.keymap.set('n', '<leader>dw', require('diaglist').open_all_diagnostics)
 vim.keymap.set('n', '<leader>d0', require('diaglist').open_buffer_diagnostics)
 vim.keymap.set({ 'n' }, '<leader>li', '<cmd>LspInfo<CR>')
 vim.keymap.set({ 'n' }, '<leader>lr', '<cmd>LspRestart<CR>')
-vim.keymap.set({ 'n', 't', 'i' }, '<F12>', '<cmd>ToggleTerm<CR>')
-vim.keymap.set({ 'n', 't', 'i' }, '<F24>', '<cmd>ToggleTerm direction=float<CR>')
+vim.keymap.set({ 'n', 't', 'i' }, '<F12>', '<cmd>ToggleTerm direction=horizontal<CR>')
+vim.keymap.set({ 'n', 't', 'i' }, '<F24>', '<cmd>ToggleTerm direction=vertical<CR>')
 vim.keymap.set('n', '<leader>pr', [[:ProjectRoot<CR>]])
 
 

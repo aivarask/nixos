@@ -21,10 +21,10 @@
 
     services = {
       "slstatus" = {
-        # ${pkgs.dig}/bin/dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com > /tmp/ip
         script = ''
           set -eu
-          ${pkgs.dig}/bin/dig +short myip.opendns.com @resolver1.opendns.com > /tmp/ip
+          ${pkgs.dig}/bin/dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com > /tmp/ip
+          # ${pkgs.dig}/bin/dig +short myip.opendns.com @resolver1.opendns.com > /tmp/ip
           ${pkgs.curl}/bin/curl -s wttr.in/Vilnius?format=2 > /tmp/wttr
         '';
         serviceConfig = {
