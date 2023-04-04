@@ -1,17 +1,12 @@
-# https://nixos.wiki/wiki/Systemd_Hardening
-# TODO: systemctl hibernate
-# ZFS not recommend swap partition
-# SuspendState=freeze
-{ pkgs, lib, ... }: {
+{ pkgs
+, lib
+, ...
+}: {
   systemd = {
-    # https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate
     sleep.extraConfig = ''
       HibernateDelaySec=1h
     '';
 
-    # https://wiki.archlinux.org/title/Systemd
-    # https://wiki.archlinux.org/title/Systemd/Timers
-    # man systemd.timers
     timers."slstatus" = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
@@ -26,9 +21,9 @@
 
     services = {
       "slstatus" = {
+        # ${pkgs.dig}/bin/dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com > /tmp/ip
         script = ''
           set -eu
-          # ${pkgs.coreutils}/bin/date > /tmp/ip
           ${pkgs.dig}/bin/dig +short myip.opendns.com @resolver1.opendns.com > /tmp/ip
           ${pkgs.curl}/bin/curl -s wttr.in/Vilnius?format=2 > /tmp/wttr
         '';

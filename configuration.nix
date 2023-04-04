@@ -4,7 +4,6 @@
 }: {
   imports = [
     ./config/boot.nix
-    ./config/console.nix
     ./config/fonts.nix
     ./config/location.nix
     ./config/nix.nix

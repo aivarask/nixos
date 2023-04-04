@@ -25,8 +25,6 @@
   services = {
     xserver = {
       dpi = 168; # 96*1.75
-      # dpi = 144; # 96*1.5
-      # dpi = 120; # 96*1.25
       libinput = {
         enable = true;
         touchpad.naturalScrolling = true;
