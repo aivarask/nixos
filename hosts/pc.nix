@@ -36,11 +36,11 @@
   };
   services = {
     xserver = {
-      dpi = 144; # 96*1.5
+      dpi = 144;
       imwheel = {
         enable = true;
         rules = {
-          "^(firefox|brave-browser|google-chrome-stable|google-chrome|telegram-desktop)$" = ''
+          "^(telegram-desktop|chromium)$" = ''
             None, Up, Button4, 2
             None, Down, Button5, 2
             Shift_L,   Up,   Shift_L|Button4, 2

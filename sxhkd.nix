@@ -10,8 +10,8 @@ _: {
       "XF86Audio{Play,Mute}" = "mpc {play,stop}";
       "XF86Audio{Prev,Next}" = "mpc {prev,next}";
       "XF86Calculator" = "$TERMINAL -e bandwhich";
-      "XF86HomePage" = "google-chrome-stable --no-sandbox";
-      "XF86Mail" = "brave --no-sandbox";
+      "XF86HomePage" = "chromium";
+      "XF86Mail" = "brave";
 
       "super + F1" = "TEXT=$(cat /etc/nixos/sxhkd.nix) && dunstify $TEXT";
       "super + F2" = "dmenu_open";

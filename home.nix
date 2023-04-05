@@ -1,17 +1,18 @@
 # https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
 { pkgs, ... }: {
   imports = [
+    ./browsers
+    ./vim
+    # --
     ./alacritty.nix
     ./sxhkd.nix
     ./bat.nix
     ./git.nix
     ./lf.nix
-    ./firefox.nix
     ./zsh.nix
     ./fzf.nix
     ./glow.nix
     ./pistol.nix
-    ./vim
   ];
 
   home = {
@@ -23,18 +24,6 @@
   };
   # xdg.configFile."nicotine/config".text = builtins.readFile ./nicotine/config;
 
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = [ "--no-sandbox" ];
-    extensions = [
-      {
-        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # uBlock Origin
-      }
-      {
-        id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # vimium
-      }
-    ];
-  };
   services = {
     redshift = {
       enable = true;

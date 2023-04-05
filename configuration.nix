@@ -11,7 +11,7 @@
     ./config/programs.nix
     ./config/services.nix
     ./xserver.nix
-    ./mysql
+    ./sql
     ./systemd.nix
     ./config/cron.nix
     ./config/users.nix
@@ -23,7 +23,7 @@
     ./nginx
     ./environment.nix
     ./LF_ICONS.nix
-    ./systemPackages.nix
+    ./systemPackages
     ./xdg.nix
   ];
 

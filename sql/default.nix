@@ -1,4 +1,15 @@
 { pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    sqlint
+    sqlite
+    sqlite-analyzer
+    sqlite-interactive
+    sqlite-jdbc
+    sqlite-utils
+    sqlite-web
+    sqls
+    postgresql
+  ];
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;

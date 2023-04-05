@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  home.sessionVariables = {
-    MOZ_USE_XINPUT2 = "1";
-  };
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;

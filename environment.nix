@@ -15,7 +15,6 @@
     "..." = "../..";
     "colored-tree" = "${pkgs.tree}/bin/tree -C";
     bp = "bat package.json";
-    brave = "brave --no-sandbox";
     da = "direnv allow";
     dr = "direnv reload";
     l = "ls -l --group-directories-first";
@@ -61,27 +60,21 @@
     x = "startx";
   };
   environment.variables = {
-    MOZ_X11_EGL = "1";
     TERMINAL = "alacritty";
     EDITOR = "nvim";
     editor = "vim";
-    BROWSER = "firefox";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     PNPM_HOME = "$HOME/.pnpm-global";
     NPM_CONFIG_PREFIX = "$HOME/.node_modules";
     # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
     NODE_OPTIONS = "--no-warnings";
-    PRISMA_QUERY_ENGINE_LIBRARY =
-      "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-    PRISMA_MIGRATION_ENGINE_BINARY =
-      "${pkgs.prisma-engines}/bin/migration-engine";
-    PRISMA_INTROSPECTION_ENGINE_BINARY =
-      "${pkgs.prisma-engines}/bin/introspection-engine";
+    PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
+    PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-    PLAYWRIGHT_BROWSERS_PATH =
-      "${pkgs.playwright.browsers}"; # packages.json @playwright/test
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}"; # packages.json @playwright/test
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SET_FACTOR = "0";

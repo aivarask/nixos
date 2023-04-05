@@ -5,13 +5,16 @@ null_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   sources = {
+    null_ls.builtins.diagnostics.phpstan,
+    null_ls.builtins.diagnostics.yamllint,
+    null_ls.builtins.diagnostics.zsh,
+    -- -
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.statix,
     null_ls.builtins.diagnostics.deadnix.with({
       args = { '--no-lambda-arg' },
     }),
     null_ls.builtins.code_actions.statix,
-    null_ls.builtins.diagnostics.phpstan,
     null_ls.builtins.formatting.alejandra,
     -- null_ls.builtins.formatting.nixfmt,
     -- null_ls.builtins.formatting.nixpkgs_fmt,
