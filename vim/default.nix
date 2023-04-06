@@ -29,6 +29,7 @@ let
     # vim-gutentags
     vim-floaterm
     fzf-vim
+    refactoring-nvim
 
     lf-vim
     vim-gruvbox8

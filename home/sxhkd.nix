@@ -21,6 +21,7 @@ _: {
       "super + F7" = "kill -SIGUSR1 $(pidof sxhkd) && dunstify '♻️  sxhkd reloaded'";
       "super + XF86Audio{Lower,Raise}Volume" = "mpc {prev,next}";
       "super + XF86Mail" = "telegram-desktop";
+      "super + y" = "youtube-watch";
       "super + w" = "$BROWSER";
       "super + W" = "firefox --private-window";
       "super + ctrl + Return" = "tabbed -c alacritty --embed";

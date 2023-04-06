@@ -8,6 +8,7 @@
     '';
 
     timers."slstatus" = {
+      enable = false;
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnActiveSec = "3";

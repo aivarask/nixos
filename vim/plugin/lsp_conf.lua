@@ -1,4 +1,8 @@
 local root_pattern = require('lspconfig.util').root_pattern
+
+-- https://github.com/ThePrimeagen/refactoring.nvim
+require('refactoring').setup({})
+
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md#filetypes
 local null_ls = require('null-ls')
 null_ls.setup({
@@ -9,6 +13,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.yamllint,
     null_ls.builtins.formatting.taplo,
     null_ls.builtins.diagnostics.zsh,
+    null_ls.builtins.code_actions.refactoring.with({ filetypes = { 'lua' } }),
     -- -
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.statix,
@@ -23,7 +28,6 @@ null_ls.setup({
     null_ls.builtins.formatting.fixjson,
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.prettierd.with({
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md#configuration
       extra_filetypes = { 'svelte' },
     }),
     null_ls.builtins.formatting.prismaFmt,

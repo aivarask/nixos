@@ -1,0 +1,1 @@
+order = ["audio", "cpu_load", "network", "time"]

@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?rev=7070f17bb65146f9f6cff012c0321cbc9c8c8def";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?rev=b0e03aec365db0fdf29d19da3cc6b6d229961494";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
     prisma.url = "github:pimeys/nixos-prisma";
@@ -35,6 +35,10 @@
       flake = false;
     };
     # VIM
+    refactoring-nvim = {
+      url = "github:ThePrimeagen/refactoring.nvim";
+      flake = false;
+    };
     vim-interestingwords = {
       url = "github:lfv89/vim-interestingwords";
       flake = false;
@@ -140,7 +144,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = home;
+                users.root = import ./home/_pc.nix;
                 users.ak = home;
               };
             }
@@ -164,7 +168,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = home;
+                users.root = import ./home/_dell.nix;
                 users.ak = home;
               };
             }

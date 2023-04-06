@@ -17,16 +17,27 @@
   networking = {
     hostName = "pc";
     hostId = "007f0200";
-    useDHCP = false;
+    useDHCP = true;
     interfaces = {
-      eno1.useDHCP = true;
-      wlp6s0.useDHCP = true;
-      wlp6s0.ipv4.addresses = [
-        {
-          address = "192.168.1.111";
-          prefixLength = 24;
-        }
-      ];
+      eno1 = {
+        wakeOnLan.enable = true;
+        useDHCP = true;
+        ipv4.addresses = [
+          {
+            address = "192.168.1.110";
+            prefixLength = 24;
+          }
+        ];
+      };
+      wlp6s0 = {
+        useDHCP = true;
+        ipv4.addresses = [
+          {
+            address = "192.168.1.111";
+            prefixLength = 24;
+          }
+        ];
+      };
     };
     wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
     defaultGateway = "192.168.1.1";
