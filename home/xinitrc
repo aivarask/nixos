@@ -19,7 +19,7 @@ unclutter &
 redshift &
 dunst &
 # slstatus &
-dwm-status /etc/nixos/home/status.toml
+dwm-status ~/.dwm-status.toml &
 sxhkd &
 imwheel -b 45 &
 DISPLAY=:0 feh --bg-fill --randomize /etc/nixos/misc/wallpapers/abstract/*

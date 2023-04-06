@@ -3,8 +3,9 @@ _: {
     hosts = {
       "127.0.0.1" = [ "live.fixasparts.com" ];
       "192.168.1.1" = [ "hw.lan" ];
+      "192.168.1.110" = [ "pcl" ];
       "192.168.1.111" = [ "pc" ];
-      "192.168.1.112" = [ "dell" ];
+      "192.168.1.120" = [ "dell" ];
       "188.69.243.169" = [
       ];
       "195.181.244.248" = [ "q0nr.l.dedikuoti.lt" "fixas" "new.fixasparts.com" ];
@@ -64,6 +65,16 @@ _: {
       zte = {
         # psk = "laikinas";
         pskRaw = "af597066be5a0c334db3681bf8a490fd25da82824f4984b4bfa6c18d60a3aa16";
+      };
+      "Aivaras's iPhone" = {
+        psk = "laikinas";
+        # pskRaw = "6fa09f66ff2c9a00eb98e22eb55048179a9c1fea981976ca9d228273160a98c8";
+        authProtocols = [
+          "WPA-PSK"
+          "WPA-EAP"
+          "IEEE8021X"
+          "WPA-PSK-SHA256"
+        ];
       };
     };
   };

@@ -18,6 +18,8 @@
     brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
   };
   environment.systemPackages = with pkgs; [
+    ethtool
+    wol
     brave
     webkitgtk
     playwright

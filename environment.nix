@@ -11,6 +11,7 @@
     };
   };
   environment.shellAliases = {
+    wol_pc = "wol b4:2e:99:61:09:cf";
     ".." = "cd ..";
     "..." = "../..";
     "colored-tree" = "${pkgs.tree}/bin/tree -C";

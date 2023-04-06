@@ -59,6 +59,10 @@
         })
       (_self: super:
         let
+          refactoring-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+            name = "refactoring-nvim";
+            src = inputs.refactoring-nvim;
+          };
           vim-interestingwords = super.vimUtils.buildVimPluginFrom2Nix {
             name = "vim-interestingwords";
             src = inputs.vim-interestingwords;
@@ -124,6 +128,7 @@
           vimPlugins =
             super.vimPlugins
             // {
+              inherit refactoring-nvim;
               inherit vim-interestingwords;
               inherit nvim-lspconfig;
               inherit nvim-lsp-file-operations;

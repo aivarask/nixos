@@ -36,14 +36,21 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+map <M-1> <C-w>h
+map <M-2> <C-w>l
+
+map <M-[> <C-w>h
+map <M-]> <C-w>l
+map <M-h> <C-w>h
+map <M-l> <C-w>l
 
 nnoremap <M-CR> :tabnew<CR>
 nnoremap <M-TAB> :tabnext<CR>
 nnoremap <M-Del> :tabclose<CR>
-inoremap <M-h> <Left>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-l> <Right>
+" inoremap <M-h> <Left>
+" inoremap <M-j> <Down>
+" inoremap <M-k> <Up>
+" inoremap <M-l> <Right>
 cnoremap <M-h> <Left>
 cnoremap <M-j> <Down>
 cnoremap <M-k> <Up>
