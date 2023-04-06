@@ -11,7 +11,7 @@ _: {
       "XF86Audio{Prev,Next}" = "mpc {prev,next}";
       "XF86Calculator" = "$TERMINAL -e bandwhich";
       "XF86HomePage" = "chromium";
-      "XF86Mail" = "brave";
+      "XF86Mail" = "brave --no-sandbox";
 
       "super + F1" = "TEXT=$(cat /etc/nixos/sxhkd.nix) && dunstify $TEXT";
       "super + F2" = "dmenu_open";

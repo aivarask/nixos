@@ -19,6 +19,10 @@ _: {
       "application/x-*" = "nvim.desktop";
       "application/*" = "nvim.desktop";
 
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      # "text/html" = "firefox.desktop";
+
       "image/png" = [
         "sxiv.desktop"
         "gimp.desktop"

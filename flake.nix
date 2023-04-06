@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?rev=7070f17bb65146f9f6cff012c0321cbc9c8c8def";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
     prisma.url = "github:pimeys/nixos-prisma";
@@ -102,7 +102,6 @@
     let
       inherit (nixpkgs) lib;
       system = "x86_64-linux";
-      home = import ./home.nix;
       overlays = with inputs; [
         rust-overlay.overlays.default
         nur.overlay
@@ -120,6 +119,7 @@
         (_self: _super: { inherit LS_COLORS; })
         # aiva.overlays.default
       ];
+      home = import ./home;
     in
     {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
@@ -132,7 +132,6 @@
           modules = [
             ./configuration.nix
             ./hosts/pc.nix
-            ./steam.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             nixos-hardware.nixosModules.common-hidpi
@@ -157,7 +156,6 @@
           modules = [
             ./configuration.nix
             ./hosts/dell.nix
-            ./steam.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
             nixos-hardware.nixosModules.common-hidpi

@@ -236,6 +236,8 @@
         "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2";
         # "browser.fixup.fallback-to-https" = true;
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
+        # "mousewheel.with_shift.action" = 0;
+        # "mousewheel.with_shift.action.override_x" = 1;
       };
 
       userChrome = ''

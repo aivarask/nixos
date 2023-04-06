@@ -7,6 +7,8 @@
       sxiv
       unclutter-xfixes
       numlockx
+      xautomation
+      xbindkeys
     ]
     ++ (with pkgs.xorg; [
       # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager

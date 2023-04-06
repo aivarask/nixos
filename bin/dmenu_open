@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 
 echo -e '
+#Files
+file:///etc/nixos/vim/plugin/lsp_conf.lua
+
+# Entertain
+https://www.youtube.com/
+
 # News
 https://www.prisma.io/blog/satisfies-operator-ur8ys8ccq7zb
 https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly
+https://wiki.archlinux.org/
 
 #Vim
-https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#built-in-sources
+https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 
 # nginx/ssl
 https://nixos.org/manual/nixos/unstable/#module-security-acme-nginx

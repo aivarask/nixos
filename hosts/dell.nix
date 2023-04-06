@@ -3,12 +3,14 @@
 , ...
 }: {
   imports = [
-    ./common.nix
-    ./_networking.nix
+    ./_common.nix
     ./dell-hardware.nix
   ];
   system.stateVersion = "23.05";
   console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
+  environment.variables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
 
   networking = {
     hostName = "dell";
@@ -38,7 +40,6 @@
     xserver = {
       dpi = 168; # 96*1.75
       libinput = {
-        enable = true;
         touchpad.naturalScrolling = true;
       };
     };

@@ -14,17 +14,14 @@
     ./gtkRelated.nix
     ./gitAndTools.nix
   ];
+  environment.shellAliases = {
+    brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
+  };
   environment.systemPackages = with pkgs; [
-    # browsers
-    firefox
-    chromium
     brave
     webkitgtk
     playwright
     playwright.browsers
-    # firefox-bin
-    # google-chrome
-    # google-chrome-dev
     prisma-engines
     prismaPackages."@prisma/language-server"
     # --

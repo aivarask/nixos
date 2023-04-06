@@ -2,7 +2,7 @@ set title titlelen=70
 set titlestring=%{getcwd()}
 set ignorecase modeline number
 set hidden
-set mouse=a noshowmode showcmd cmdheight=7 
+set mouse=a noshowmode showcmd cmdheight=4
 set cursorline showtabline=2
 set laststatus=2
 set statusline+=%F

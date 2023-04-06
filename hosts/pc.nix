@@ -1,10 +1,12 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [
-    ./common.nix
+    ./_common.nix
     ./pc-hardware.nix
-    ./_networking.nix
   ];
   system.stateVersion = "23.05";
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "vdpau";
+  };
   services.kmscon = {
     extraConfig = ''
       font-size=12
@@ -40,7 +42,7 @@
       imwheel = {
         enable = true;
         rules = {
-          "^(telegram-desktop|chromium)$" = ''
+          "^(telegram-desktop|chromium|brave|firefox).*" = ''
             None, Up, Button4, 2
             None, Down, Button5, 2
             Shift_L,   Up,   Shift_L|Button4, 2

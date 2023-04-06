@@ -1,10 +1,12 @@
 { ... }: {
   imports = [
-    ./common.nix
-    ./_networking.nix
+    ./_common.nix
     ./as-hardware.nix
   ];
   system.stateVersion = "23.05";
+  environment.variables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
 
   networking = {
     hostName = "as";
@@ -17,7 +19,6 @@
   services.xserver = {
     videoDrivers = [ "modesetting" ];
     libinput = {
-      enable = true;
       touchpad.naturalScrolling = true;
     };
   };

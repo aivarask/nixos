@@ -1,28 +1,42 @@
-# https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
 { pkgs, ... }: {
   imports = [
-    ./browsers
-    ./vim
-    # --
+    ../vim
     ./alacritty.nix
-    ./sxhkd.nix
     ./bat.nix
-    ./git.nix
-    ./lf.nix
-    ./zsh.nix
     ./fzf.nix
+    ./git.nix
     ./glow.nix
+    ./lf.nix
     ./pistol.nix
+    ./sxhkd.nix
+    ./zsh.nix
+    ./firefox.nix
   ];
-
   home = {
+    sessionVariables = {
+      BROWSER = "firefox";
+      MOZ_X11_EGL = "1";
+    };
     stateVersion = "18.09";
-    # TODO: https://rycee.gitlab.io/home-manager/options.html#opt-gtk.theme
-    # Vanilla-DMZ
     file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
     file.".xinitrc".text = builtins.readFile ./xinitrc;
   };
-  # xdg.configFile."nicotine/config".text = builtins.readFile ./nicotine/config;
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = [
+      "--no-sandbox"
+      "--enable-features=TouchpadOverscrollHistoryNavigation"
+      "--no-default-browser-check"
+    ];
+    extensions = [
+      {
+        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # uBlock Origin
+      }
+      {
+        id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # vimium
+      }
+    ];
+  };
 
   services = {
     redshift = {

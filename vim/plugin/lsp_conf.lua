@@ -7,6 +7,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.phpstan,
     null_ls.builtins.diagnostics.yamllint,
+    null_ls.builtins.formatting.taplo,
     null_ls.builtins.diagnostics.zsh,
     -- -
     null_ls.builtins.code_actions.gitsigns,

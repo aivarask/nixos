@@ -6,9 +6,9 @@ require('toggleterm').setup({
   shade_terminals = false,
   size = function(term)
     if term.direction == 'horizontal' then
-      return 30
+      return vim.o.lines * 0.2
     elseif term.direction == 'vertical' then
-      return vim.o.columns * 0.4
+      return vim.o.columns * 0.3
     elseif term.direction == 'float' then
       return vim.o.columns * 0.6
     end
