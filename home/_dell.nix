@@ -3,4 +3,5 @@ _: {
   home = {
     file.".dwm-status.toml".text = builtins.readFile ./dwm-status_dell.toml + builtins.readFile ./dwm-status.toml;
   };
+  services.blueman-applet.enable = true;
 }

@@ -42,5 +42,10 @@
   hardware = {
     cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
+    fancontrol = {
+      enable = false;
+      config = ''
+      '';
+    };
   };
 }

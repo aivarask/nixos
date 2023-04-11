@@ -2,6 +2,7 @@
   description = "NixOS config";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nixpkgs-master.url = "nixpkgs/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -99,6 +100,7 @@
   };
   outputs =
     { nixpkgs
+    , nixpkgs-master
     , nixos-hardware
     , home-manager
     , ...
@@ -106,7 +108,23 @@
     let
       inherit (nixpkgs) lib;
       system = "x86_64-linux";
+      mkPkgs = pkgs: extraOverlays:
+        import pkgs {
+          inherit system;
+          config.allowUnfree = true; # forgive me Stallman senpai
+          overlays = extraOverlays;
+        };
+      master = mkPkgs nixpkgs-master [ ];
       overlays = with inputs; [
+        (self: super: {
+          inherit
+            (master)
+            librewolf
+            phetch
+            playwright
+            ;
+          inherit master;
+        })
         rust-overlay.overlays.default
         nur.overlay
         neovim-nightly-overlay.overlay

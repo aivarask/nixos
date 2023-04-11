@@ -6,6 +6,25 @@
     nix-doc
   ];
   nix = {
+    # https://mynixos.com/nixpkgs/options/nix.registry.%3Cname%3E
+    registry = {
+      # https://github.com/aivarask/slstatus/blob/master/flake.nix
+      slstatus = {
+        to = {
+          owner = "aivarask";
+          repo = "slstatus";
+          type = "github";
+        };
+      };
+      # https://github.com/NixOS/nixpkgs/blob/master/flake.nix
+      master = {
+        to = {
+          owner = "NixOS";
+          repo = "nixpkgs";
+          type = "github";
+        };
+      };
+    };
     extraOptions = ''
       plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
         experimental-features = nix-command flakes

@@ -12,6 +12,7 @@ aug Initial
   autocmd FileType * autocmd TextChanged,CursorHoldI <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
   autocmd BufWritePost *.vim,*.lua :call tj#save_and_exec()
   autocmd FileType nix setlocal commentstring=#\ %s
+  autocmd FileType jsonc setlocal commentstring=//\ %s
 aug END
 
 for buf in getbufinfo()
