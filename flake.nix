@@ -118,10 +118,8 @@
         dmenu-flexipatch.overlays.default
         nil.overlays.default
         prisma.overlay
-        (import ./overlays/py.nix)
-        # (import ./overlays/play.nix)
         (_self: _super: { inherit LS_COLORS; })
-        # aiva.overlays.default
+        (import ./overlays/python.nix)
       ];
       home = import ./home;
     in

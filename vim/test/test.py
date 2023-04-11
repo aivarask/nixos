@@ -1,3 +1,4 @@
+from requests import get
 def foo():
     print('hi')
 

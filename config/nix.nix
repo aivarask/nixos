@@ -22,22 +22,17 @@
     package = pkgs.nixFlakes; # 21.11 maybe
     # maxJobs = lib.mkDefault 24;
     settings = {
-      auto-optimise-store =
-        true; # nix-store --optimise This is a potentially long operation.
+      auto-optimise-store = true;
     };
     settings.allowed-users = [ "@wheel" "ak" ];
     settings.trusted-users = [ "root" "@wheel" "ak" ];
-    settings.max-jobs =
-      4; # https://nixos.org/manual/nix/stable/advanced-topics/cores-vs-jobs.html
+    settings.max-jobs = 4;
     settings.cores = 4;
 
     nixPath =
-      # NIX_PATH
       options.nix.nixPath.default
-      ++
-      # Append our nixpkgs-overlays.
-      [
-        # "nixpkgs-overlays=/etc/nixos/overlays/"
+      ++ [
+        "nixpkgs-overlays=/etc/nixos/overlays/"
         # "nixos-config=/etc/nixos/configuration.nix"
       ];
   };
