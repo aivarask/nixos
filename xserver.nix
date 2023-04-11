@@ -4,7 +4,6 @@
   ];
   services.xserver = {
     enable = true;
-    # libinput.enable = true;
     layout = "us,lt";
     xkbVariant = "qwerty"; # localectl list-x11-keymap-variants
     xkbOptions = "grp:menu_toggle"; # localectl list-x11-keymap-options

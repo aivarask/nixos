@@ -38,9 +38,17 @@
     geoclue2.enable = true;
 
     xserver = {
+      # synaptics.enable = true;
+      # synaptics.accelFactor = "";
+      synaptics.minSpeed = "0.7";
       dpi = 168; # 96*1.75
       libinput = {
-        touchpad.naturalScrolling = true;
+        enable = true;
+        touchpad = {
+          # accelProfile = "flat";
+          naturalScrolling = true;
+          accelSpeed = "+7";
+        };
       };
     };
   };
