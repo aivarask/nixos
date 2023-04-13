@@ -20,6 +20,7 @@ redshift &
 dunst &
 # slstatus &
 dwm-status ~/.dwm-status.toml &
+# xcompmgr &
 sxhkd &
 imwheel -b 45 &
 DISPLAY=:0 feh --bg-fill --randomize /etc/nixos/misc/wallpapers/abstract/*

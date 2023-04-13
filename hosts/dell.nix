@@ -28,7 +28,7 @@
 
   location.provider = "geoclue2";
   services = {
-    blueman.enable = true;
+    # blueman.enable = true;
     kmscon = {
       extraConfig = ''
         font-size=12

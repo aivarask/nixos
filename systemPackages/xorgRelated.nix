@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;
     [
+      xcompmgr
       xdotool
       xsel
       xclip
@@ -23,5 +24,6 @@
       xev
       xmodmap
       xmessage
+      transset
     ]);
 }
