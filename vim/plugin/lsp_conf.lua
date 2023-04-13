@@ -20,7 +20,7 @@ null_ls.setup({
     null_ls.builtins.diagnostics.deadnix.with({
       args = { '--no-lambda-arg' },
     }),
-    null_ls.builtins.code_actions.statix,
+    -- null_ls.builtins.code_actions.statix,
     null_ls.builtins.formatting.alejandra,
     -- null_ls.builtins.formatting.nixfmt,
     -- null_ls.builtins.formatting.nixpkgs_fmt,
@@ -28,6 +28,7 @@ null_ls.setup({
     null_ls.builtins.formatting.fixjson,
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.prettierd.with({
+
       extra_filetypes = { 'svelte' },
     }),
     null_ls.builtins.formatting.prismaFmt,
@@ -192,10 +193,10 @@ require('lspconfig').pyright.setup({
 })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rnix
-require('lspconfig').rnix.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- require('lspconfig').rnix.setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rls
 require('lspconfig').rls.setup({

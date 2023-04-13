@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ../vim
     ./alacritty.nix
@@ -12,8 +12,16 @@
     ./zsh.nix
     ./firefox.nix
   ];
+  # https://mynixos.com/search?q=home+variables
+  systemd.user.sessionVariables = {
+    FOO = "home systemd.user.sessionVariables";
+  };
+  programs.zsh.localVariables = {
+    FOO = "zsh.localVariables";
+  };
   home = {
     sessionVariables = {
+      FOO = "home.sessionVariables1";
       BROWSER = "firefox";
       MOZ_X11_EGL = "1";
     };
@@ -49,7 +57,7 @@
       longitude = 25.0;
       provider = "manual";
     };
-    dunst = { enable = true; };
+    dunst = {enable = true;};
     unclutter = {
       enable = true;
       timeout = 2;

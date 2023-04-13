@@ -65,10 +65,10 @@
     file
     fontpreview
     fzy
-    gcc
+    geoipWithDatabase
+    # gcc
     gdb
     gdu
-    geoipWithDatabase
     glib
     glibc
     glow

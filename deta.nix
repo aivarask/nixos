@@ -1,8 +1,10 @@
-{config, ...}: let
+{ config, ... }:
+let
   app = "mypool";
   domain = "${app}.deta.lt";
   dataDir = "/srv/http/${domain}";
-in {
+in
+{
   services.phpfpm.pools.${app} = {
     user = app;
     settings = {
