@@ -128,7 +128,7 @@
         rust-overlay.overlays.default
         nur.overlay
         neovim-nightly-overlay.overlay
-        statix.overlays.default
+        # statix.overlays.default
         slstatus.overlays.default
         st-flexipatch.overlays.default
         tabbed-flexipatch.overlays.default

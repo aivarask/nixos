@@ -24,6 +24,17 @@
           type = "github";
         };
       };
+      # stable = {
+      #   to = {
+      #     owner = "NixOS";
+      #     repo = "nixpkgs";
+      #     type = "github";
+      #   };
+      #   from = {
+      #     id = "nixpkgs";
+      #     type = "indirect";
+      #   };
+      # };
     };
     extraOptions = ''
       plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
