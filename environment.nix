@@ -1,13 +1,18 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment = {
     sessionVariables = {
-      # NIX_PATH = "$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays";
       PATH = [
         "/etc/nixos/bin"
         "$HOME/.pnpm-global"
         "$HOME/.node_modules/bin"
         "$HOME/.config/composer/vendor/bin"
       ];
+      FOO = "environment.sessionVariables";
+      # PLAYWRIGHT
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
+      # PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
+      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}";
+      PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright.version}";
     };
   };
   environment.shellAliases = {
@@ -56,6 +61,7 @@
     tre = "trans :en";
     trl = "trans :lt";
     up = "nixos-rebuild switch";
+    uph = "nixos-rebuild switch && /etc/nixos/post-build-hook.sh";
     upb = "nixos-rebuild build";
     upt = "nixos-rebuild test";
     x = "startx";
@@ -74,8 +80,6 @@
     PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
     PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
     PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
-    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}"; # packages.json @playwright/test
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     QT_AUTO_SCREEN_SET_FACTOR = "0";

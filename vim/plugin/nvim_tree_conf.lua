@@ -1,50 +1,3 @@
-local api = require('nvim-tree.api')
-vim.keymap.set('n', 'qs', function()
-  api.tree.toggle({ path = '', find_file = false, update_root = true, focus = false })
-end)
--- https://github.com/ahmedkhalf/project.nvim#%EF%B8%8F-configuration
-require('project_nvim').setup({
-  manual_mode = false,
-  detection_methods = { 'lsp', 'pattern' },
-  patterns = { 'vimrc.vim', 'stylua.toml', 'flake.nix', 'package.json' },
-  ignore_lsp = { 'null-ls' },
-  exclude_dirs = {},
-  scope_chdir = 'global',
-})
--- require('telescope').load_extension('projects')
-
--- https://github.com/rmagatti/auto-session/
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal,localoptions'
-require('auto-session').setup({
-  log_level = 'error',
-  auto_save_enabled = true,
-  auto_restore_enabled = true,
-  pre_save_cmds = {
-    'NvimTreeClose',
-    'TroubleClose',
-    ':lua require("neotest").output_panel.close()',
-    ':lua require("neotest").summary.close()',
-  },
-  auto_session_allowed_dirs = {
-    '/etc/nixos',
-    '/etc/nixos/packages/*',
-    '/etc/nixos/vim',
-    '~/packages',
-    '~/gh/*',
-    '~/lk/*',
-    '~/fixpart',
-  },
-  -- cwd_change_handling = {
-  --   restore_upcoming_session = true, -- already the default, no need to specify like this, only here as an example
-  --   pre_cwd_changed_hook = nil, -- already the default, no need to specify like this, only here as an example
-  --   post_cwd_changed_hook = function() -- example refreshing the lualine status line _after_ the cwd changes
-  --     require('lualine').refresh() -- refresh lualine so the new session name is displayed in the status bar
-  --   end,
-  -- },
-})
--- https://github.com/rmagatti/session-lens#configuration
-require('session-lens').setup({})
-
 -- INFO: async rename and create file LSP rename
 -- https://github.com/nvim-tree/nvim-tree.lua/pull/1870
 -- https://github.com/antosha417/nvim-lsp-file-operations
@@ -60,6 +13,7 @@ local function open_nvim_tree(data)
   require('nvim-tree.api').tree.toggle({ focus = false, find_file = true })
 end
 vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
+
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- https://github.com/ahmedkhalf/project.nvim#-features
 require('nvim-tree').setup({

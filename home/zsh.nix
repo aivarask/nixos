@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     starship = {
       enable = true;
       enableZshIntegration = true;
-      settings = { add_newline = false; };
+      settings = {add_newline = false;};
     };
     direnv = {
       enable = true;
@@ -13,12 +13,15 @@
     zsh = {
       enable = true;
       autocd = true;
-      cdpath = [ "/etc/nixos" ];
+      cdpath = ["/etc/nixos"];
       completionInit = "autoload -U compinit && compinit"; # default value
       enableAutosuggestions = true;
       enableCompletion = true;
       enableSyntaxHighlighting = true;
-      history = { size = 10000; };
+      history = {
+        size = 10000;
+        extended = true;
+      };
       initExtra = ''
         unalias run-help
         autoload -Uz run-help

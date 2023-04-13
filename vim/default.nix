@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   vimOnlyPlugins = with pkgs.vimPlugins; [
     # LANG:
     context_filetype-vim
@@ -97,7 +96,11 @@ let
     luasnip # https://github.com/L3MON4D3/LuaSnip
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
     # TREE_SITTER:
-    nvim-treesitter.withAllGrammars
+    # FIX: gcc requires glibc
+    # glibc-2.35-224/lib/libc.so.6: version `GLIBC_2.36' not found (required by /nix/store/g012c53brxmb0if3lpmkjwmxk74hjflh-gcc-12.2.0-lib/lib/libstdc++.so.6
+    # nvim-treesitter.withAllGrammars
+    nvim-treesitter
+
     nvim-ts-context-commentstring
     nvim-ts-rainbow
     nvim-treesitter-textobjects
@@ -111,7 +114,7 @@ let
     # UI/UX:
     project-nvim
     auto-session
-    session-lens
+    # session-lens
     lualine-nvim
     lualine-lsp-progress
     tabline-nvim
@@ -141,8 +144,7 @@ let
     trouble-nvim # https://github.com/folke/trouble.nvim
     todo-comments-nvim # https://github.com/folke/todo-comments.nvim
   ];
-in
-{
+in {
   programs.vim = {
     enable = true;
     plugins = vimOnlyPlugins ++ commonPlugins;
@@ -159,7 +161,7 @@ in
         EOF
       ''
     ];
-    extraPackages = with pkgs; [ tree-sitter ];
+    # extraPackages = with pkgs; [ tree-sitter ];
     package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
     viAlias = true;
