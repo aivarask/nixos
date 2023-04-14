@@ -96,10 +96,7 @@
     luasnip # https://github.com/L3MON4D3/LuaSnip
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
     # TREE_SITTER:
-    # FIX: gcc requires glibc
-    # glibc-2.35-224/lib/libc.so.6: version `GLIBC_2.36' not found (required by /nix/store/g012c53brxmb0if3lpmkjwmxk74hjflh-gcc-12.2.0-lib/lib/libstdc++.so.6
-    # nvim-treesitter.withAllGrammars
-    nvim-treesitter
+    nvim-treesitter.withAllGrammars
 
     nvim-ts-context-commentstring
     nvim-ts-rainbow

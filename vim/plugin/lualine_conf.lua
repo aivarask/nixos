@@ -21,10 +21,10 @@ require('lualine').setup({
     },
   },
   sections = {
-    -- lualine_a = {
-    --   require('auto-session-library').current_session_name,
-    --   'mode',
-    -- },
+    lualine_a = {
+      require('auto-session-library').current_session_name,
+      'mode',
+    },
     lualine_b = { 'branch', 'diff', 'diagnostics', vim.loop.cwd },
     lualine_c = {
       { 'filename', path = 1 },

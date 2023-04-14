@@ -28,6 +28,8 @@
         source /etc/nixos/functions.zsh
         source /etc/nixos/bindings.zsh
         eval "$(direnv hook zsh)"
+        bindkey "''${key[Up]}" up-line-or-search
+        fpath=(${pkgs.zsh-completions.outPath}/share/zsh/site-functions $fpath)
       '';
       plugins = [
         {

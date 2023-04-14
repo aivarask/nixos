@@ -4,7 +4,7 @@
     "body": ["it.each([", "\t${1}", "])('${2}', (${3}) => {", "\t${4}", "})"]
   },
   "import-playwright": {
-    "prefix": ["import-playwright", "ipl"],
+    "prefix": ["import-playwright", "ipl", "test-playwright"],
     "body": ["import { expect, test } from '@playwright/test';", "${0}"]
   },
   "test.describe.configure": {

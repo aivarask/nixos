@@ -15,6 +15,7 @@
       PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright.version}";
     };
   };
+  environment.pathsToLink = ["/share/zsh"];
   environment.shellAliases = {
     wol_pc = "wol b4:2e:99:61:09:cf";
     ".." = "cd ..";
