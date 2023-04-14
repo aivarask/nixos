@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;
@@ -8,10 +8,26 @@
       search = {
         force = true;
         default = "DuckDuckGo";
-        order = [ "DuckDuckGo" "Google" ];
+        order = ["DuckDuckGo" "Google"];
         engines = {
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g";
+
+          "ArchWiki" = {
+            urls = [
+              {
+                template = "https://wiki.archlinux.org/index.php";
+                params = [
+                  {
+                    name = "search";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = ["@aw"];
+            iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
+          };
 
           "GitHub" = {
             urls = [
@@ -19,7 +35,7 @@
                 template = "https://github.com/search?q={searchTerms}";
               }
             ];
-            definedAliases = [ "@gh" ];
+            definedAliases = ["@gh"];
             iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
           };
 
@@ -29,7 +45,7 @@
                 template = "https://www.npmjs.com/search?q={searchTerms}";
               }
             ];
-            definedAliases = [ "@npm" ];
+            definedAliases = ["@npm"];
             iconUpdateURL = "https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png";
           };
 
@@ -50,7 +66,7 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+            definedAliases = ["@np"];
           };
 
           "NixOS Options" = {
@@ -70,7 +86,7 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@no" ];
+            definedAliases = ["@no"];
           };
 
           "NixOS Wiki" = {
@@ -81,14 +97,14 @@
             ];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@nw" ];
+            definedAliases = ["@nw"];
           };
 
           "MyNixOS" = {
-            urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
+            urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
             iconUpdateURL = "https://mynixos.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@mn" ];
+            definedAliases = ["@mn"];
           };
 
           "NixOS Discourse" = {
@@ -99,7 +115,7 @@
             ];
             iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@nd" ];
+            definedAliases = ["@nd"];
           };
         };
       };
@@ -180,7 +196,7 @@
         "devtools.cache.disabled" = true;
         "devtools.editor.keymap" = "vim";
         "devtools.responsive.html.displayedDeviceList" = {
-          added = [ "iPhone 6/7/8" "1080p Full HD Television (Custom)" "Fixasparts" ];
+          added = ["iPhone 6/7/8" "1080p Full HD Television (Custom)" "Fixasparts"];
           removed = [
             "Galaxy Note 20"
             "Galaxy Note 20 Ultra"
