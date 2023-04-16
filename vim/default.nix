@@ -57,6 +57,7 @@
 
     # NOT IN USE OR ABANDONED
     neodev-nvim
+    which-key-nvim
     # hologram-nvim
 
     # https://github.com/itchyny/vim-cursorword/

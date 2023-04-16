@@ -1,11 +1,3 @@
-vim.keymap.set({ 'n', 'i', 'v' }, '<F5>', '<cmd>Telescope keymaps<CR>')
-vim.keymap.set('n', '<leader>tk', [[:Telescope keymaps<CR>]])
-vim.keymap.set('n', '<leader>tp', [[:Telescope projects<CR>]])
-vim.keymap.set('n', '<leader>th', [[:Telescope help_tags<CR>]])
-vim.keymap.set('n', '<leader>ds', [[:Telescope lsp_document_symbols<CR>]])
-vim.keymap.set('n', '<leader>ws', [[:Telescope lsp_workspace_symbols<CR>]])
-vim.keymap.set('n', '<leader>dws', [[:Telescope lsp_dynamic_workspace_symbols<CR>]])
-
 require('telescope').setup({ -- https://github.com/nvim-telescope/telescope.nvim
   defaults = {
     layout_strategy = 'vertical',
@@ -27,11 +19,3 @@ require('telescope').setup({ -- https://github.com/nvim-telescope/telescope.nvim
 -- https://github.com/folke/trouble.nvim#telescope
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('projects')
-
--- TODO: telescope dap integration
--- nvim-telescope/telescope-dap.nvim
-require('telescope').load_extension('dap')
-vim.keymap.set('n', '<leader>tdf', ':Telescope dap frames<CR>')
--- map('n', '<leader>dc', ':Telescope dap commands<CR>')
-vim.keymap.set('n', '<leader>tlb', ':Telescope dap list_breakpoints<CR>')
-vim.keymap.set('n', '<leader>tdb', ':lua require"dap".step_back()<CR>')

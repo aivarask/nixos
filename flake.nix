@@ -55,6 +55,10 @@
       url = "github:folke/neodev.nvim";
       flake = false;
     };
+    which-key-nvim = {
+      url = "github:folke/which-key.nvim";
+      flake = false;
+    };
     typescript-nvim = {
       url = "github:jose-elias-alvarez/typescript.nvim";
       flake = false;

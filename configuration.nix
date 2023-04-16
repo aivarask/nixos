@@ -1,6 +1,7 @@
-{ inputs
-, pkgs
-, ...
+{
+  inputs,
+  pkgs,
+  ...
 }: {
   imports = [
     ./config/boot.nix
@@ -42,110 +43,111 @@
 
   nixpkgs = {
     overlays = [
-      (_self: super:
-        let
-          emmet-ls = super.buildNpmPackage rec {
-            # https://nixos.org/manual/nixpkgs/unstable/#javascript-tool-specific
-            pname = "emmet-ls";
-            src = inputs.emmet-ls;
+      (_self: super: let
+        emmet-ls = super.buildNpmPackage rec {
+          # https://nixos.org/manual/nixpkgs/unstable/#javascript-tool-specific
+          pname = "emmet-ls";
+          src = inputs.emmet-ls;
+        };
+      in {
+        nodePackages_latest =
+          super.nodePackages_latest
+          // {
+            inherit emmet-ls;
           };
-        in
-        {
-          nodePackages_latest =
-            super.nodePackages_latest
-            // {
-              inherit emmet-ls;
-            };
-        })
-      (_self: super:
-        let
-          refactoring-nvim = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "refactoring-nvim";
-            src = inputs.refactoring-nvim;
+      })
+      (_self: super: let
+        refactoring-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "refactoring-nvim";
+          src = inputs.refactoring-nvim;
+        };
+        vim-interestingwords = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "vim-interestingwords";
+          src = inputs.vim-interestingwords;
+        };
+        nvim-lspconfig = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "nvim-lspconfig";
+          src = inputs.nvim-lspconfig;
+        };
+        nvim-lsp-file-operations = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "nvim-lsp-file-operations";
+          src = inputs.nvim-lsp-file-operations;
+        };
+        neodev-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neodev-nvim";
+          src = inputs.neodev-nvim;
+        };
+        which-key-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "which-key-nvim";
+          src = inputs.which-key-nvim;
+        };
+        typescript-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "typescript-nvim";
+          src = inputs.typescript-nvim;
+        };
+        nvim-dap-vscode-js = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "nvim-dap-vscode-js";
+          src = inputs.nvim-dap-vscode-js;
+        };
+        osv = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "osv";
+          src = inputs.osv;
+        };
+        neotest = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neotest";
+          src = inputs.neotest;
+        };
+        neotest-playwright = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neotest-playwright";
+          src = inputs.neotest-playwright;
+        };
+        neotest-vim-test = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neotest-vim-test";
+          src = inputs.neotest-vim-test;
+        };
+        neotest-vitest = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neotest-vitest";
+          src = inputs.neotest-vitest;
+        };
+        neotest-plenary = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "neotest-plenary";
+          src = inputs.neotest-plenary;
+        };
+        session-lens = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "session-lens";
+          src = inputs.session-lens;
+        };
+        pretty-fold = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "pretty-fold";
+          src = inputs.pretty-fold;
+        };
+        nvim-tree-lua = super.vimUtils.buildVimPluginFrom2Nix {
+          name = "nvim-tree-lua";
+          src = inputs.nvim-tree-lua;
+        };
+      in {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            inherit refactoring-nvim;
+            inherit vim-interestingwords;
+            inherit nvim-lspconfig;
+            inherit nvim-lsp-file-operations;
+            inherit neodev-nvim;
+            inherit which-key-nvim;
+            inherit typescript-nvim;
+            inherit nvim-dap-vscode-js;
+            inherit osv;
+            inherit neotest;
+            inherit neotest-playwright;
+            inherit neotest-vim-test;
+            inherit neotest-vitest;
+            inherit neotest-plenary;
+            inherit session-lens;
+            inherit pretty-fold;
+            inherit nvim-tree-lua;
           };
-          vim-interestingwords = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "vim-interestingwords";
-            src = inputs.vim-interestingwords;
-          };
-          nvim-lspconfig = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "nvim-lspconfig";
-            src = inputs.nvim-lspconfig;
-          };
-          nvim-lsp-file-operations = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "nvim-lsp-file-operations";
-            src = inputs.nvim-lsp-file-operations;
-          };
-          neodev-nvim = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neodev-nvim";
-            src = inputs.neodev-nvim;
-          };
-          typescript-nvim = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "typescript-nvim";
-            src = inputs.typescript-nvim;
-          };
-          nvim-dap-vscode-js = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "nvim-dap-vscode-js";
-            src = inputs.nvim-dap-vscode-js;
-          };
-          osv = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "osv";
-            src = inputs.osv;
-          };
-          neotest = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neotest";
-            src = inputs.neotest;
-          };
-          neotest-playwright = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neotest-playwright";
-            src = inputs.neotest-playwright;
-          };
-          neotest-vim-test = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neotest-vim-test";
-            src = inputs.neotest-vim-test;
-          };
-          neotest-vitest = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neotest-vitest";
-            src = inputs.neotest-vitest;
-          };
-          neotest-plenary = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "neotest-plenary";
-            src = inputs.neotest-plenary;
-          };
-          session-lens = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "session-lens";
-            src = inputs.session-lens;
-          };
-          pretty-fold = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "pretty-fold";
-            src = inputs.pretty-fold;
-          };
-          nvim-tree-lua = super.vimUtils.buildVimPluginFrom2Nix {
-            name = "nvim-tree-lua";
-            src = inputs.nvim-tree-lua;
-          };
-        in
-        {
-          vimPlugins =
-            super.vimPlugins
-            // {
-              inherit refactoring-nvim;
-              inherit vim-interestingwords;
-              inherit nvim-lspconfig;
-              inherit nvim-lsp-file-operations;
-              inherit neodev-nvim;
-              inherit typescript-nvim;
-              inherit nvim-dap-vscode-js;
-              inherit osv;
-              inherit neotest;
-              inherit neotest-playwright;
-              inherit neotest-vim-test;
-              inherit neotest-vitest;
-              inherit neotest-plenary;
-              inherit session-lens;
-              inherit pretty-fold;
-              inherit nvim-tree-lua;
-            };
-        })
+      })
     ];
   };
 

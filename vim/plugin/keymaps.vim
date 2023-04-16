@@ -1,9 +1,9 @@
-map   <F1>  :exe 'help ' . expand('<cword>')<CR>
-imap  <F1>  <C-o><F1>
-map   <F13> :exe 'help ' . expand('<cWORD>')<CR>
-imap  <F13> <C-o><F13>
-map   <F25> :exe 'help ' . expand('<cexpr>')<CR>
-imap  <F25> <C-o><F25>
+" map   <F1>  :exe 'help ' . expand('<cword>')<CR>
+" imap  <F1>  <C-o><F1>
+" map   <F13> :exe 'help ' . expand('<cWORD>')<CR>
+" imap  <F13> <C-o><F13>
+" map   <F25> :exe 'help ' . expand('<cexpr>')<CR>
+" imap  <F25> <C-o><F25>
 " nnoremap <F5> :match Search /<C-R><C-W>/<CR>
 
 if !has ('nvim')
