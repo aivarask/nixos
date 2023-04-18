@@ -17,3 +17,5 @@
 --     assert(1, 'snother')
 --   end)
 -- end)
+
+print(person.name)

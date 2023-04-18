@@ -1,3 +1,0 @@
--- https://github.com/airblade/vim-gitgutter
--- https://github.com/lewis6991/gitsigns.nvim
--- require('gitsigns').setup({})

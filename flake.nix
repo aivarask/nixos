@@ -22,14 +22,6 @@
     dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
     st-flexipatch.url = "github:aivarask/st-flexipatch";
     tabbed-flexipatch.url = "github:aivarask/tabbed-flexipatch";
-    neotest = {
-      url = "github:aivarask/neotest";
-      flake = false;
-    };
-    neotest-playwright = {
-      url = "github:aivarask/neotest-playwright";
-      flake = false;
-    };
     # other
     devshell.url = "github:numtide/devshell";
     LS_COLORS = {
@@ -37,71 +29,8 @@
       flake = false;
     };
     # VIM
-    refactoring-nvim = {
-      url = "github:ThePrimeagen/refactoring.nvim";
-      flake = false;
-    };
-    vim-interestingwords = {
-      url = "github:lfv89/vim-interestingwords";
-      flake = false;
-    };
-    nvim-lspconfig.url = "github:neovim/nvim-lspconfig";
-    # LSP
-    nvim-lsp-file-operations = {
-      url = "github:antosha417/nvim-lsp-file-operations";
-      flake = false;
-    };
-    neodev-nvim = {
-      url = "github:folke/neodev.nvim";
-      flake = false;
-    };
-    which-key-nvim = {
-      url = "github:folke/which-key.nvim";
-      flake = false;
-    };
-    typescript-nvim = {
-      url = "github:jose-elias-alvarez/typescript.nvim";
-      flake = false;
-    };
-    emmet-ls = {
-      url = "github:aca/emmet-ls";
-      flake = false;
-    };
-    # DEBUGGING
-    nvim-dap-vscode-js = {
-      url = "github:mxsdev/nvim-dap-vscode-js";
-      flake = false;
-    };
-    osv = {
-      url = "github:jbyuki/one-small-step-for-vimkind";
-      flake = false;
-    };
     # TESTING
-    neotest-vim-test = {
-      url = "github:nvim-neotest/neotest-vim-test";
-      flake = false;
-    };
-    neotest-vitest = {
-      url = "github:aivarask/neotest-vitest";
-      flake = false;
-    };
-    neotest-plenary = {
-      url = "github:nvim-neotest/neotest-plenary";
-      flake = false;
-    };
-    # OTHER
-    session-lens = {
-      url = "github:rmagatti/session-lens";
-      flake = false;
-    };
-    pretty-fold = {
-      url = "github:anuvyklack/pretty-fold.nvim";
-      flake = false;
-    };
-    nvim-tree-lua = {
-      url = "github:nvim-tree/nvim-tree.lua";
-      flake = false;
-    };
+    vim.url = "path:./vim";
   };
   outputs = {
     nixpkgs,
@@ -129,6 +58,7 @@
           ;
         inherit mguentner;
       })
+
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
@@ -142,6 +72,7 @@
       prisma.overlay
       (_self: _super: {inherit LS_COLORS;})
       (import ./overlays/python.nix)
+      vim.overlays.default
     ];
     home = import ./home;
   in {

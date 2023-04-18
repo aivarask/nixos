@@ -7,12 +7,6 @@ luasnip.filetype_extend('typescript', { 'javascript' })
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/vim/snippets' })
 
--- https://github.com/David-Kunz/cmp-npm
-require('cmp-npm').setup({
-  ignore = {},
-  only_semantic_versions = true,
-  only_latest_version = true,
-})
 local cmp = require('cmp')
 cmp.setup({
   snippet = {

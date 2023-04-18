@@ -21,3 +21,20 @@ vim.api.nvim_create_autocmd('BufEnter', {
     vim.diagnostic.disable()
   end,
 })
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = { '/etc/nixos/vim/*' },
+  callback = function(ev)
+    -- persistence.load()
+    -- print(string.format('event fired: s', vim.inspect(ev)))
+  end,
+})
+
+require('persistence').setup({})
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('persistence', { clear = true }),
+  callback = vim.schedule(function()
+    require('persistence').load()
+  end),
+})

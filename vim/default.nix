@@ -58,7 +58,7 @@
     # NOT IN USE OR ABANDONED
     neodev-nvim
     which-key-nvim
-    # hologram-nvim
+    persistence-nvim
 
     # https://github.com/itchyny/vim-cursorword/
     vim-cursorword
@@ -89,7 +89,6 @@
     cmp-path
     cmp-emoji
     cmp-zsh
-    cmp-npm
     # cmp-treesitter
     lspkind-nvim
     nvim-autopairs
@@ -110,9 +109,7 @@
     pretty-fold
 
     # UI/UX:
-    project-nvim
-    auto-session
-    # session-lens
+    # auto-session
     lualine-nvim
     lualine-lsp-progress
     tabline-nvim
@@ -162,11 +159,10 @@ in {
     # extraPackages = with pkgs; [ tree-sitter ];
     package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
-    viAlias = true;
+    viAlias = false;
     vimAlias = false;
     vimdiffAlias = true;
     withNodeJs = true;
-    # withPython2 = true;
     withPython3 = true;
     withRuby = true;
   };

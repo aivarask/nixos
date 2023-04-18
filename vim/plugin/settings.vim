@@ -1,3 +1,20 @@
+" EXPERIMENT:
+set signcolumn=yes
+let g:gitgutter_enabled = 0
+
+" filetype plugin indent on
+set smartindent
+
+" FOLDING
+" set foldmethod=indent   
+" set foldnestmax=10
+" set nofoldenable
+" set foldlevel=2
+" set foldlevel=0
+" set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+" STABLE
 set title titlelen=70
 set titlestring=%{getcwd()}
 set ignorecase modeline number
