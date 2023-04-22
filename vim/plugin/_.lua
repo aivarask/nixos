@@ -1,43 +1,52 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-persistence = require('persistence')
+wk = require('which-key')
 wkr = require('which-key').register
+tree = require('nvim-tree.api').tree
+neotest = require('neotest')
+
 root_pattern = require('lspconfig.util').root_pattern
 capabilities = require('cmp_nvim_lsp').default_capabilities()
-flags = { debounce_text_changes = 150 }
-
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '?', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
   vim.keymap.set({ 'n', 'v' }, ']f', vim.lsp.buf.code_action, bufopts)
 end
+flags = { debounce_text_changes = 150 }
+
 -- https://github.com/antosha417/nvim-lsp-file-operations
 require('lsp-file-operations').setup()
 
-person = { name = 'Alice' }
+-- "github:nix-community/neovim-nightly-overlay";
+function GoGithub()
+  local pre = 'https://github.com/'
+  local word = vim.fn.expand('<cWORD>')
+  word = word:gsub('github:', pre)
+  word = word:gsub(';', '')
+  vim.cmd('!xdg-open ' .. word)
+end
 
--- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#recipes
--- local function open_nvim_tree(data)
---   local real_file = vim.fn.filereadable(data.file) == 1
---   local no_name = data.file == '' and vim.bo[data.buf].buftype == ''
---   if not real_file and not no_name then
---     return
---   end
---   require('nvim-tree.api').tree.toggle({ focus = false, find_file = true })
--- end
--- vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
+person = { nam = 'Alice' }
 
--- https://github.com/airblade/vim-gitgutter
--- https://github.com/lewis6991/gitsigns.nvim
--- require('gitsigns').setup({})
+local complete_snippets = function()
+  require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })
+end
+vim.keymap.set('i', '<C-b>', complete_snippets)
+vim.keymap.set('n', 'qq', require('nvim-tree.api').tree.toggle)
+
+vim.keymap.set({ 'n', 't', 'i' }, '<F12>', '<cmd>ToggleTerm direction=horizontal<CR>')
+vim.keymap.set({ 'n', 't', 'i' }, '<F24>', '<cmd>ToggleTerm direction=vertical<CR>')
+
+function _G.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'toggleterm',
+  callback = set_terminal_keymaps,
+})

@@ -1,10 +1,4 @@
-" map   <F1>  :exe 'help ' . expand('<cword>')<CR>
-" imap  <F1>  <C-o><F1>
-" map   <F13> :exe 'help ' . expand('<cWORD>')<CR>
-" imap  <F13> <C-o><F13>
-" map   <F25> :exe 'help ' . expand('<cexpr>')<CR>
-" imap  <F25> <C-o><F25>
-" nnoremap <F5> :match Search /<C-R><C-W>/<CR>
+nnoremap <F5> :match Search /<C-R><C-W>/<CR>
 
 if !has ('nvim')
   nnoremap <F12> :FloatermToggle<CR>
@@ -27,7 +21,6 @@ nnoremap <leader><leader>/ :History/<CR>
 " digraph
 inoremap <C-z> <C-k>
 
-
 nmap k gk
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -47,10 +40,7 @@ map <M-l> <C-w>l
 nnoremap <M-CR> :tabnew<CR>
 nnoremap <M-TAB> :tabnext<CR>
 nnoremap <M-Del> :tabclose<CR>
-" inoremap <M-h> <Left>
-" inoremap <M-j> <Down>
-" inoremap <M-k> <Up>
-" inoremap <M-l> <Right>
+
 cnoremap <M-h> <Left>
 cnoremap <M-j> <Down>
 cnoremap <M-k> <Up>
@@ -63,17 +53,6 @@ imap <M-y><M-y> <C-o>yy
 " imap <M-o>o <C-o>o
 imap <M-o> <C-o>o
 imap <M-O> <C-o>O
-
-" inoremap II <Esc>I
-
-" inoremap AA <Esc>A
-" inoremap OO <Esc>O
-" inoremap CC <Esc>C
-" inoremap SS <Esc>S
-" inoremap <M-d><M-d> <C-o>dd
-" inoremap UU <Esc>u
-" nnoremap HH <C-w>t<C-w>H
-" nnoremap KK <C-w>t<C-w>K
 
 nnoremap <leader>lg :LazyGit<CR>
 nnoremap <leader>lf :LfCurrentDirectory<CR>

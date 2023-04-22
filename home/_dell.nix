@@ -1,7 +1,8 @@
 _: {
-  imports = [ ./default.nix ];
+  imports = [./default.nix];
   home = {
     file.".dwm-status.toml".text = builtins.readFile ./dwm-status_dell.toml + builtins.readFile ./dwm-status.toml;
   };
-  services.blueman-applet.enable = true;
+  services.blueman-applet.enable = false;
+  programs.alacritty.settings.font.size = 8.0;
 }

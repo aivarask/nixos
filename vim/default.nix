@@ -53,12 +53,13 @@
     scss-syntax-vim
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [
-    # FEAT: # https://github.com/bennypowers/nvim-regexplainer
+    # Session
+    persistence-nvim
+    neovim-session-manager
 
     # NOT IN USE OR ABANDONED
     neodev-nvim
     which-key-nvim
-    persistence-nvim
 
     # https://github.com/itchyny/vim-cursorword/
     vim-cursorword
@@ -97,9 +98,7 @@
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
     # TREE_SITTER:
     nvim-treesitter.withAllGrammars
-
     nvim-ts-context-commentstring
-    nvim-ts-rainbow
     nvim-treesitter-textobjects
     nvim-ts-autotag
 

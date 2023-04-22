@@ -21,10 +21,10 @@ local matchers = {
   'nvim%-lspconfig',
   'nvim%-autopairs',
   'session%-lens',
+  'neovim%-session%-manager',
 }
 
 for _, path in ipairs(vim.api.nvim_get_runtime_file('', true)) do
-  -- print(path)
   for _, name in ipairs(matchers) do
     if string.find(path, name) then
       table.insert(library, path)

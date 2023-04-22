@@ -1,6 +1,5 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
-local nvim_tree = require('nvim-tree')
-nvim_tree.setup({
+require('nvim-tree').setup({
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true, -- default false
@@ -10,7 +9,6 @@ nvim_tree.setup({
   },
   git = { enable = false },
 })
-
 
 -- https://github.com/kdheepak/tabline.nvim#lualine-tabline-support
 require('tabline').setup({ enable = false })
@@ -27,7 +25,6 @@ require('lualine').setup({
         } },
       },
     },
-    -- lualine_z = { require('auto-session-library').current_session_name },
   },
   sections = {
     lualine_a = { 'mode' },

@@ -54,10 +54,6 @@
       url = "github:folke/which-key.nvim";
       flake = false;
     };
-    persistence-nvim = {
-      url = "github:folke/persistence.nvim";
-      flake = false;
-    };
     typescript-nvim = {
       url = "github:jose-elias-alvarez/typescript.nvim";
       flake = false;
@@ -73,6 +69,15 @@
     };
     osv = {
       url = "github:jbyuki/one-small-step-for-vimkind";
+      flake = false;
+    };
+    # Session
+    persistence-nvim = {
+      url = "github:folke/persistence.nvim";
+      flake = false;
+    };
+    neovim-session-manager = {
+      url = "github:Shatur/neovim-session-manager";
       flake = false;
     };
   };
@@ -142,10 +147,6 @@
             name = "which-key-nvim";
             src = inputs.which-key-nvim;
           };
-          persistence-nvim = buildVimPluginFrom2Nix {
-            name = "persistence-nvim";
-            src = inputs.persistence-nvim;
-          };
           typescript-nvim = buildVimPluginFrom2Nix {
             name = "typescript-nvim";
             src = inputs.typescript-nvim;
@@ -157,6 +158,15 @@
           osv = buildVimPluginFrom2Nix {
             name = "osv";
             src = inputs.osv;
+          };
+          # Session management
+          persistence-nvim = buildVimPluginFrom2Nix {
+            name = "persistence-nvim";
+            src = inputs.persistence-nvim;
+          };
+          neovim-session-manager = buildVimPluginFrom2Nix {
+            name = "neovim-session-manager";
+            src = inputs.neovim-session-manager;
           };
         };
     };

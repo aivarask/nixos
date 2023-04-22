@@ -1,7 +1,3 @@
--- https://github.com/airblade/vim-gitgutter
--- https://github.com/lewis6991/gitsigns.nvim
--- require('gitsigns').setup({})
-
 -- https://github.com/anuvyklack/pretty-fold.nvim
 require('pretty-fold').setup()
 
@@ -31,7 +27,7 @@ require('symbols-outline').setup({})
 require('nvim-web-devicons').setup()
 -- https://github.com/norcalli/nvim-colorizer.lua
 require('colorizer').setup()
--- https://github.co/onsails/diaglist.nvim
+-- https://github.com/onsails/diaglist.nvim
 require('diaglist').init()
--- https://github.com/karb94/neoscroll.nvim
+-- https://github.com/karb94/neoscroll.nvim#features
 require('neoscroll').setup()

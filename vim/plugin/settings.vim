@@ -1,25 +1,16 @@
-" EXPERIMENT:
-set signcolumn=yes
-let g:gitgutter_enabled = 0
-
-" filetype plugin indent on
-set smartindent
-
-" FOLDING
-" set foldmethod=indent   
-" set foldnestmax=10
-" set nofoldenable
-" set foldlevel=2
-" set foldlevel=0
-" set foldmethod=expr
+set timeout
+set timeoutlen=200
+set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
-" STABLE
+set nofoldenable
+" set foldlevel=2
+" set foldnestmax=10
+set smartindent
 set title titlelen=70
 set titlestring=%{getcwd()}
 set ignorecase modeline number
 set hidden
-set mouse=a noshowmode showcmd cmdheight=4
+set mouse=a noshowmode showcmd cmdheight=2
 set cursorline showtabline=2
 set laststatus=2
 set statusline+=%F
@@ -33,6 +24,7 @@ set updatetime=1500
 set completeopt=menu,menuone,noselect
 set lazyredraw
 set iskeyword+=$
+set signcolumn=yes
 
 set background=dark
 if has('nvim')
@@ -47,6 +39,11 @@ else
 endif
 
 
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+let g:gitgutter_enabled = 0
+let g:gitgutter_map_keys = 0
+let g:lf_map_keys = 0
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30
 let g:netrw_banner = 0

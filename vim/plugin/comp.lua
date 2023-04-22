@@ -70,7 +70,14 @@ cmp.setup({
       -- option = { show_autosnippets = true }
     },
     { name = 'path' }, -- https://github.com/hrsh7th/cmp-path
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
     { name = 'emoji' },
     -- { name = 'treesitter' },
     { name = 'npm', keyword_length = 4 },
@@ -81,14 +88,21 @@ cmp.setup({
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
   },
 })
 
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path', option = { trailing_slash = true } },
+    { name = 'path', option = { trailing_slash = false } },
     { name = 'zsh' },
   }, {
     {
@@ -117,22 +131,7 @@ npairs.setup({
     highlight = 'Search',
     highlight_grey = 'Comment',
   },
-  -- check_ts = false,
-  -- disable_in_replace_mode = false,
 })
--- https://github.com/windwp/nvim-autopairs/issues/301
--- local opt = require('nvim-autopairs').config
--- local basic = require('nvim-autopairs.rules.basic')
--- local utils = require('nvim-autopairs.utils')
--- local original_is_close_bracket = utils.is_close_bracket
--- function utils.is_close_bracket(char)
---   return original_is_close_bracket(char) or char == '>'
--- end
--- local bracket = basic.bracket_creator(opt)
--- npairs.add_rules({
---   bracket('<', '>'),
--- })
 
--- Completion
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

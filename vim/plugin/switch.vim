@@ -1,3 +1,6 @@
+nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
+nmap <leader>gs <Plug>(SwitchInLine)
+
 " https://github.com/AndrewRadev/switch.vim
 autocmd FileType markdown let b:switch_custom_definitions =
       \ [
@@ -63,5 +66,3 @@ fun! SwitchLine(cnt)
     call setpos('.', start)
 endfun
 
-nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
-nmap <leader>gs <Plug>(SwitchInLine)
