@@ -17,6 +17,10 @@ require('neotest').setup({
     -- https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/config/init.lua#L131
     require('neotest-vitest'),
     require('neotest-playwright').adapter({}),
+    -- https://github.com/nvim-neotest/neotest-plenary
+    require('neotest-plenary').setup({
+      min_init = './test_init.lua',
+    }),
   },
 })
 
