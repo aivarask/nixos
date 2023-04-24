@@ -1,11 +1,22 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
+  environment.variables = {
+    LUA_PATH = builtins.concatStringsSep ";" [
+      "lua/?.lua"
+      "lua/?/init.lua"
+      "${pkgs.luajitPackages.plenary-nvim.outPath}/share/lua/5.1/?.lua"
+      "${pkgs.luajitPackages.plenary-nvim.outPath}/share/lua/5.1/?/init.lua"
+      "${pkgs.luajitPackages.inspect.outPath}/share/lua/5.1/?.lua"
+      "${pkgs.luajitPackages.penlight.outPath}/share/lua/5.1/?.lua"
+      "${pkgs.luajitPackages.penlight.outPath}/share/lua/5.1/?/init.lua"
+    ];
+  };
   environment.systemPackages =
     (with pkgs; [
       stylua
       lua-language-server
       luaformatter
       luajit
-      luakit
+      luakit # web browser
     ])
     ++ (
       with pkgs.luajitPackages; [

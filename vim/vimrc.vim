@@ -1,5 +1,4 @@
 let &runtimepath.=',/etc/nixos/vim'
-" set rtp+=./neotest
 
 aug Initial
   au!
@@ -10,7 +9,7 @@ aug Initial
   autocmd VimResized * FloatermUpdate
   autocmd BufEnter *svelte-kit/* set buftype=nowrite
   autocmd FileType * autocmd TextChanged,CursorHoldI <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
-  autocmd BufWritePost *.vim,*.lua :call tj#save_and_exec()
+  " autocmd BufWritePost *.vim,*.lua,!*/spec/*.* :call tj#save_and_exec()
   autocmd FileType nix setlocal commentstring=#\ %s
   autocmd FileType jsonc setlocal commentstring=//\ %s
 aug END

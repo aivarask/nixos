@@ -18,8 +18,10 @@ require('neotest').setup({
     require('neotest-vitest'),
     require('neotest-playwright').adapter({}),
     -- https://github.com/nvim-neotest/neotest-plenary
+    -- https://github.com/nvim-lua/plenary.nvim
+    -- https://github.com/lunarmodules/busted
     require('neotest-plenary').setup({
-      min_init = './test_init.lua',
+      min_init = '/etc/nixos/vim/spec/test_init.lua',
     }),
   },
 })
@@ -47,4 +49,5 @@ wkr({
   S = { neotest.run.suite, 'suite' },
   b = { neotest.run.buffer, 'buffer' },
   d = { neotest.run.dap, 'dap' },
+  c = { [[:!busted<cr>]], '!busted' },
 }, { prefix = '<leader>n' })
