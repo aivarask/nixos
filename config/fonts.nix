@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   fonts = {
     fonts = with pkgs; [
       hack-font
@@ -28,10 +28,10 @@
       defaultFonts = {
         # fc-list --format="%{family}\n"|fzf
         # fc-match emoji
-        emoji = [ "JoyPixels" ];
-        monospace = [ "Hack Nerd Font Mono" "JoyPixels" ];
-        sansSerif = [ "NotoSans Nerd Font" "JoyPixels" ];
-        serif = [ "NotoSerif Nerd Font" "JoyPixels" ];
+        emoji = ["JoyPixels"];
+        monospace = ["Hack Nerd Font Mono" "JoyPixels"];
+        sansSerif = ["NotoSans Nerd Font" "JoyPixels"];
+        serif = ["NotoSerif Nerd Font" "JoyPixels"];
       };
     };
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 # let
 #   my-python-packages = ps:
 #     let
@@ -10,7 +10,7 @@
 # in
 {
   environment.systemPackages =
-    [ pkgs.python3 ]
+    [pkgs.python3]
     ++ (with pkgs.python3Packages; [
       requests
       tuimoji

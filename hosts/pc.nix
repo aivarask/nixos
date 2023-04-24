@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./_common.nix
     ./pc-hardware.nix
