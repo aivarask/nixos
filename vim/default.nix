@@ -118,7 +118,7 @@
     nvim-colorizer-lua
     gitsigns-nvim
     toggleterm-nvim
-    plenary-nvim
+    # plenary-nvim
 
     # DEBUG:
     vimspector
@@ -149,6 +149,7 @@ in {
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
+      # set rtp+=${pkgs}
       ''
         lua << EOF
         dofile("/etc/nixos/vim/init.lua")

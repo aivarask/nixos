@@ -14,6 +14,12 @@ require('nvim-tree').setup({
 require('tabline').setup({ enable = false })
 -- https://github.com/nvim-lualine/lualine.nvim
 require('lualine').setup({
+  options = {
+    disabled_filetypes = {
+      statusline = { 'NvimTree', 'neotest-summary', 'neotest-output-panel' },
+      winbar = { 'NvimTree', 'neotest-summary', 'neotest-output-panel' },
+    },
+  },
   tabline = {
     lualine_c = { require('tabline').tabline_buffers },
     lualine_x = { require('tabline').tabline_tabs },

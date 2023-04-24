@@ -10,7 +10,6 @@
       url = "github:anuvyklack/pretty-fold.nvim";
       flake = false;
     };
-
     # NEOTEST
     neotest = {
       url = "github:aivarask/neotest";

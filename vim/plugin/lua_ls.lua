@@ -7,6 +7,7 @@ local matchers = {
   'auto%-session',
   'nvim%-cmp',
   'neotest$',
+  'neotest%-plenary$',
   'neotest%-playwright$',
   'neotest%-vitest$',
   'nvim%-treesitter$',
@@ -30,6 +31,12 @@ for _, path in ipairs(vim.api.nvim_get_runtime_file('', true)) do
       table.insert(library, path)
     end
   end
+end
+
+table.insert(library, vim.loop.cwd())
+
+for _, value in pairs(vim.split(os.getenv('LUA_LIB'), ';')) do
+  table.insert(library, value)
 end
 
 local settings = {

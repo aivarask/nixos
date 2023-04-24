@@ -17,9 +17,7 @@ require('session_manager').setup({
   autosave_last_session = true,
   autosave_ignore_not_normal = true,
   autosave_ignore_dirs = {},
-  autosave_ignore_filetypes = {
-    'gitcommit',
-  },
+  autosave_ignore_filetypes = { 'gitcommit' },
   autosave_ignore_buftypes = {},
   autosave_only_in_session = false,
   max_path_length = 80,
@@ -31,23 +29,12 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   group = config_group,
   callback = function()
     tree.toggle(false, true)
+    neotest.summary.open()
   end,
 })
 
 vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = 'SessionSavePost',
   group = config_group,
-  callback = function()
-    require('nvim-tree.api').tree.open()
-  end,
-})
-
-local session_manager = require('session_manager')
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  group = config_group,
-  callback = function()
-    if vim.bo.filetype ~= 'git' and not vim.bo.filetype ~= 'gitcommit' then
-      session_manager.autosave_session()
-    end
-  end,
+  callback = function() end,
 })
