@@ -1,9 +1,9 @@
-{ buildPythonPackage
-, fetchPypi
-, requests
-, dataclasses-json
-, openapi-schema-pydantic
-,
+{
+  buildPythonPackage,
+  fetchPypi,
+  requests,
+  dataclasses-json,
+  openapi-schema-pydantic,
 }:
 buildPythonPackage rec {
   pname = "langchain";

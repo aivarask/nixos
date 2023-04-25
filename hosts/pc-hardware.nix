@@ -1,9 +1,10 @@
-{ config
-, lib
-, modulesPath
-, ...
+{
+  config,
+  lib,
+  modulesPath,
+  ...
 }: {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot = {
     initrd.availableKernelModules = [
@@ -14,9 +15,9 @@
       "usb_storage" # added ssd
       "sd_mod" # ?
     ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
   };
 
   fileSystems = {
@@ -36,7 +37,7 @@
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {

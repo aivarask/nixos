@@ -1,8 +1,9 @@
-{ lib
-, pkgs
-, ...
+{
+  lib,
+  pkgs,
+  ...
 }: {
-  imports = [ ./_networking.nix ];
+  imports = [./_networking.nix];
   hardware.nvidia.modesetting.enable = lib.mkDefault true;
   services = {
     blueman.enable = lib.mkDefault false;

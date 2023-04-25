@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   # nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.config.allowUnfreePredicate = pkg:

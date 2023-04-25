@@ -1,5 +1,4 @@
 let &runtimepath.=',/etc/nixos/vim'
-" set sessionoptions+=tabpages,globals
 
 aug Initial
   au!

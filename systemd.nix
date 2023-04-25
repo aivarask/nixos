@@ -1,6 +1,7 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }: {
   systemd = {
     sleep.extraConfig = ''
@@ -9,7 +10,7 @@
 
     timers."slstatus" = {
       enable = false;
-      wantedBy = [ "timers.target" ];
+      wantedBy = ["timers.target"];
       timerConfig = {
         OnActiveSec = "3";
         # OnBootSec = "10";
@@ -35,13 +36,13 @@
       };
 
       nginx.serviceConfig = {
-        SupplementaryGroups = [ "shadow" ];
+        SupplementaryGroups = ["shadow"];
         NoNewPrivileges = lib.mkForce false;
         PrivateDevices = lib.mkForce false;
         ProtectHostname = lib.mkForce false;
         ProtectKernelTunables = lib.mkForce false;
         ProtectKernelModules = lib.mkForce false;
-        RestrictAddressFamilies = lib.mkForce [ ];
+        RestrictAddressFamilies = lib.mkForce [];
         LockPersonality = lib.mkForce false;
         MemoryDenyWriteExecute = lib.mkForce false;
         RestrictRealtime = lib.mkForce false;
@@ -57,7 +58,7 @@
         enable = false;
         description = "PM2 process manager";
         # documentation = "https://pm2.keymetrics.io/";
-        after = [ "network.target" ];
+        after = ["network.target"];
         serviceConfig = {
           Type = "forking";
           User = "root";
@@ -72,7 +73,7 @@
           ExecReload = "${pkgs.nodePackages.pm2}/bin/pm2 reload all";
           ExecStop = "${pkgs.nodePackages.pm2}/bin/pm2 kill";
         };
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = ["multi-user.target"];
       };
     };
   };

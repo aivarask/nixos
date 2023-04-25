@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./_common.nix
     ./as-hardware.nix
@@ -17,7 +17,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "modesetting" ];
+    videoDrivers = ["modesetting"];
     libinput = {
       touchpad.naturalScrolling = true;
     };

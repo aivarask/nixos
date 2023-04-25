@@ -1,6 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 -- https://github.com/LuaLS/lua-language-server/wiki/Settings
-local library = {}
+local library = {
+  vim.loop.cwd(),
+}
 local matchers = {
   'neodev%-nvim',
   'which%-key%-nvim',
@@ -25,7 +27,10 @@ local matchers = {
   'neovim%-session%-manager',
 }
 
+-- require('pl.pretty')('hello', nil, 'world', { bye = 'world', true })
+
 for _, path in ipairs(vim.api.nvim_get_runtime_file('', true)) do
+  -- print(path)
   for _, name in ipairs(matchers) do
     if string.find(path, name) then
       table.insert(library, path)

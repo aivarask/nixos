@@ -11,7 +11,3 @@ describe('Busted unit testing framework', function()
     end)
   end)
 end)
-
-it('env', function()
-  assert((true == true), 'Mismatch')
-end)

@@ -1,7 +1,7 @@
-{ buildPythonPackage
-, fetchPypi
-, pydantic
-,
+{
+  buildPythonPackage,
+  fetchPypi,
+  pydantic,
 }:
 buildPythonPackage rec {
   pname = "openapi-schema-pydantic";

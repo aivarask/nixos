@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # https://github.com/nix-community/awesome-nix#command-line-tools
   environment.systemPackages = with pkgs; [
     # https://github.com/nix-community/awesome-nix#development

@@ -16,23 +16,23 @@ self: super: rec {
           inherit pname version;
           sha256 = "55f3cde3e153fabffd76a2fca3584b1304470a88888bb6d2c8d6d2f7fbef0e3a";
         };
-        propagatedBuildInputs = with self; [ urwid ];
+        propagatedBuildInputs = with self; [urwid];
       };
       openapi-schema-pydantic =
         super.buildPythonPackage
-          rec {
-            pname = "openapi-schema-pydantic";
-            version = "1.2.4";
-            src = super.fetchPypi {
-              inherit pname version;
-              sha256 = "3e22cf58b74a69f752cc7e5f1537f6e44164282db2700cbbcd3bb99ddd065196";
-            };
-            # doCheck = false;
-            propagatedBuildInputs = with python3.pkgs; [
-              pydantic
-              pytest
-            ];
+        rec {
+          pname = "openapi-schema-pydantic";
+          version = "1.2.4";
+          src = super.fetchPypi {
+            inherit pname version;
+            sha256 = "3e22cf58b74a69f752cc7e5f1537f6e44164282db2700cbbcd3bb99ddd065196";
           };
+          # doCheck = false;
+          propagatedBuildInputs = with python3.pkgs; [
+            pydantic
+            pytest
+          ];
+        };
       # sqlalchemy = super.buildPythonPackage rec {
       #   pname = "SQLAlchemy";
       #   version = "2.0.9";
@@ -44,29 +44,29 @@ self: super: rec {
       # };
       langchain =
         super.buildPythonPackage
-          rec {
-            pname = "langchain";
-            version = "0.0.137";
-            src = super.fetchPypi {
-              inherit pname version;
-              sha256 = "d8b7f45490c869d597a37e943fd8437f5414b063253e7e18a4228c51fb075bc5";
-            };
-            # doCheck = false;
-            propagatedBuildInputs = with python3.pkgs;
-              [
-                requests
-                dataclasses-json
-                aiohttp
-                numpy
-                pyyaml
-                tenacity
-                sqlalchemy
-              ]
-              ++ [
-                self.openapi-schema-pydantic
-                # self.sqlalchemy
-              ];
+        rec {
+          pname = "langchain";
+          version = "0.0.137";
+          src = super.fetchPypi {
+            inherit pname version;
+            sha256 = "d8b7f45490c869d597a37e943fd8437f5414b063253e7e18a4228c51fb075bc5";
           };
+          # doCheck = false;
+          propagatedBuildInputs = with python3.pkgs;
+            [
+              requests
+              dataclasses-json
+              aiohttp
+              numpy
+              pyyaml
+              tenacity
+              sqlalchemy
+            ]
+            ++ [
+              self.openapi-schema-pydantic
+              # self.sqlalchemy
+            ];
+        };
     };
   };
   python3Packages = python3.pkgs;

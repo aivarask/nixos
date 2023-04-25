@@ -1,8 +1,8 @@
-{ pkgs
-, py-hello
-, ...
+{
+  pkgs,
+  py-hello,
+  ...
 }:
-
 pkgs.mkShell {
-  buildInputs = with pkgs; [ py-hello ];
+  buildInputs = with pkgs; [py-hello];
 }
