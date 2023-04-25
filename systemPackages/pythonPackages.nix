@@ -11,10 +11,12 @@
 {
   environment.systemPackages =
     [pkgs.python3]
+    ++ (with pkgs.nodePackages_latest; [pyright])
     ++ (with pkgs.python3Packages; [
       requests
       tuimoji
       autopep8
+      debugpy
       # openapi-schema-pydantic
       # langchain
       # (python3.withPackages my-python-packages)

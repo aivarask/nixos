@@ -25,12 +25,18 @@ local matchers = {
   'nvim%-autopairs',
   'session%-lens',
   'neovim%-session%-manager',
+  'nvim%-dap',
+  'nvim%-dap%-ui',
+  'nvim%-dap%-virtual%-text',
+  'nvim%-dap%-vscode%-js',
+  'osv',
+  'nvim%-dap%-python',
+  'flatten%-nvim',
 }
 
--- require('pl.pretty')('hello', nil, 'world', { bye = 'world', true })
+-- require('pl.pretty')(vim.api.nvim_get_runtime_file('', true))
 
 for _, path in ipairs(vim.api.nvim_get_runtime_file('', true)) do
-  -- print(path)
   for _, name in ipairs(matchers) do
     if string.find(path, name) then
       table.insert(library, path)

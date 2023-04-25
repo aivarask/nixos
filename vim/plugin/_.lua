@@ -2,6 +2,14 @@ wk = require('which-key')
 wkr = require('which-key').register
 tree = require('nvim-tree.api').tree
 neotest = require('neotest')
+dap = require('dap')
+widgets = require('dap.ui.widgets')
+osv = require('osv')
+
+-- https://github.com/willothy/flatten.nvim
+-- require('flatten').setup({
+--   nest_if_no_args = true,
+-- })
 
 root_pattern = require('lspconfig.util').root_pattern
 capabilities = require('cmp_nvim_lsp').default_capabilities()

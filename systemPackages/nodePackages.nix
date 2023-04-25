@@ -7,7 +7,6 @@
     ++ (with pkgs.nodePackages_latest; [
       # emmet_ls
       gulp
-      pyright
       npm
       bash-language-server
       vercel
@@ -31,7 +30,6 @@
       # pnpm
       prettier
       prisma
-      pyright
       serve
       speed-test
       stylelint

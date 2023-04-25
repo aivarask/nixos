@@ -123,11 +123,13 @@
     # DEBUG:
     vimspector
     nvim-dap
-    nvim-dap-vscode-js
-    osv
-    # --
     nvim-dap-ui
     nvim-dap-virtual-text
+    osv
+    nvim-dap-vscode-js
+    nvim-dap-python
+    flatten-nvim
+    # --
 
     # UI
     telescope-nvim

@@ -1,4 +1,4 @@
-nnoremap <F5> :match Search /<C-R><C-W>/<CR>
+" nnoremap <F5> :match Search /<C-R><C-W>/<CR>
 
 if !has ('nvim')
   nnoremap <F12> :FloatermToggle<CR>

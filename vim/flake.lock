@@ -52,11 +52,11 @@
     "neodev-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1682201092,
-        "narHash": "sha256-2RFIitpy8XUUCstfvoNfuLeqW+LEJzHAN1IARjPkmRw=",
+        "lastModified": 1682316390,
+        "narHash": "sha256-5vLjGDHO3r1jKkeN7DYQbnNc28/H2F3laCsoYmyoas8=",
         "owner": "folke",
         "repo": "neodev.nvim",
-        "rev": "c44d78e9a04a6d5a150a14e83c1d5fc1ba209a82",
+        "rev": "3d14bd6cb967741b9705cd06f05bfd0e1ef141e8",
         "type": "github"
       },
       "original": {
@@ -163,10 +163,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1681920287,
-        "narHash": "sha256-+/d6XQQfhhXVfqfLROJoqj3TuG38CAeoT6jO1g9r1k0=",
-        "path": "/nix/store/26d6xg6m11gp22al1gxr1h8zdfmf9j94-source",
-        "rev": "645bc49f34fa8eff95479f0345ff57e55b53437e",
+        "lastModified": 1682362401,
+        "narHash": "sha256-/UMUHtF2CyYNl4b60Z2y4wwTTdIWGKhj9H301EDcT9M=",
+        "path": "/nix/store/q3l9x3ncgi0hppw0i65ki9jrxj8kmgac-source",
+        "rev": "884ac294018409e0d1adc0cae185439a44bd6b0b",
         "type": "path"
       },
       "original": {
@@ -226,11 +226,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1682128049,
-        "narHash": "sha256-mvDg+aT5lldqckQFpbiBsXjnwozzjKf+v3yBEyvcVLo=",
+        "lastModified": 1682405354,
+        "narHash": "sha256-9lNEdg1NhJPn8KdllMi0lLGs2fr+a2SSnJY6OyPodno=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "cf95480e876ef7699bf08a1d02aa0ae3f4d5f353",
+        "rev": "710c45bd13928c1f37ef0a714fd49b75f00d7d5e",
         "type": "github"
       },
       "original": {
@@ -306,11 +306,11 @@
     "refactoring-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1680652692,
-        "narHash": "sha256-ivu41D5iQHKrdsI1kT9cUfFYJgiaUuQAdnZe7tbcBVw=",
+        "lastModified": 1682434441,
+        "narHash": "sha256-rtyelkcfvS+kv0dP5rUnk9k4k40roR4IYlcxQWr564o=",
         "owner": "ThePrimeagen",
         "repo": "refactoring.nvim",
-        "rev": "e7c40818b2995016ede93c5620055206b1aba44f",
+        "rev": "47a1716a9020c0093a1c8af36c3f9434dae62bbd",
         "type": "github"
       },
       "original": {

@@ -18,7 +18,7 @@ require('session_manager').setup({
   autosave_ignore_not_normal = true,
   autosave_ignore_dirs = {},
   autosave_ignore_filetypes = { 'gitcommit' },
-  autosave_ignore_buftypes = {},
+  autosave_ignore_buftypes = { 'terminal' },
   autosave_only_in_session = false,
   max_path_length = 80,
 })
@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = { 'SessionLoadPost' },
   group = config_group,
   callback = function()
-    tree.toggle(false, true)
-    neotest.summary.open()
+    -- tree.toggle(false, true)
+    -- neotest.summary.open()
   end,
 })
 

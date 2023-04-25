@@ -61,15 +61,6 @@
       url = "github:aca/emmet-ls";
       flake = false;
     };
-    # DEBUGGING
-    nvim-dap-vscode-js = {
-      url = "github:mxsdev/nvim-dap-vscode-js";
-      flake = false;
-    };
-    osv = {
-      url = "github:jbyuki/one-small-step-for-vimkind";
-      flake = false;
-    };
     # Session
     persistence-nvim = {
       url = "github:folke/persistence.nvim";
@@ -77,6 +68,15 @@
     };
     neovim-session-manager = {
       url = "github:Shatur/neovim-session-manager";
+      flake = false;
+    };
+    # DEBUGGING
+    nvim-dap-vscode-js = {
+      url = "github:mxsdev/nvim-dap-vscode-js";
+      flake = false;
+    };
+    osv = {
+      url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
   };
@@ -150,14 +150,6 @@
             name = "typescript-nvim";
             src = inputs.typescript-nvim;
           };
-          nvim-dap-vscode-js = buildVimPluginFrom2Nix {
-            name = "nvim-dap-vscode-js";
-            src = inputs.nvim-dap-vscode-js;
-          };
-          osv = buildVimPluginFrom2Nix {
-            name = "osv";
-            src = inputs.osv;
-          };
           # Session management
           persistence-nvim = buildVimPluginFrom2Nix {
             name = "persistence-nvim";
@@ -166,6 +158,15 @@
           neovim-session-manager = buildVimPluginFrom2Nix {
             name = "neovim-session-manager";
             src = inputs.neovim-session-manager;
+          };
+          # DEBUGGING
+          nvim-dap-vscode-js = buildVimPluginFrom2Nix {
+            name = "nvim-dap-vscode-js";
+            src = inputs.nvim-dap-vscode-js;
+          };
+          osv = buildVimPluginFrom2Nix {
+            name = "osv";
+            src = inputs.osv;
           };
         };
     };
