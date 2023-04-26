@@ -46,18 +46,16 @@ wkr({
   x = { dap.run_to_cursor, 'run_to_cursor' },
   ['<F12>'] = { dap.repl.toggle, 'repl.toggle' },
   --
-  --
   S = { dap.status, 'status' },
   D = { dap.disconnect, 'disconnect' },
   C = { dap.close, 'close' },
   L = { dap.launch, 'launch' },
   A = { dap.attach, 'attach' },
-
   -- dap-widgets
   h = { widgets.hover, 'widgets.hover' },
   p = { widgets.preview, 'widgets.preview' },
   -- S = { [[:lua widgets.centered_float(widgets.scopes)<cr>]], 'widgets.scopes' },
-  -- t = { dapui.toggle, 'dapui.toggle' },
+  t = { dapui.toggle, 'dapui.toggle' },
 }, { prefix = '<leader>d' })
 
 wkr({

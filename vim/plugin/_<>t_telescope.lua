@@ -9,6 +9,7 @@ require('telescope').setup({
 })
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('dap')
 
 wkr({
   name = 'Telescope',

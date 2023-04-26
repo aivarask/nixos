@@ -17,6 +17,14 @@ local M = {
       mh('', '<cWORD>') -- prisma-engines
     end,
   },
+  luajitPackages = {
+    cword = function() -- busted
+      mh('luajitPackages.', '<cword>')
+    end,
+    cWORD = function() -- plenary-nvim
+      mh('luajitPackages.', '<cWORD>')
+    end,
+  },
   python3Packages = {
     cword = function() -- pynvim
       mh('python3Packages.', '<cword>')
@@ -52,6 +60,8 @@ wkr({
   name = 'GOTO',
   h = { M.homepage.cword, 'nixpkgs#<cword>.meta.homepage' },
   H = { M.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },
+  l = { M.luajitPackages.cword, 'luajitPackages.<cword>.meta.homepage' },
+  L = { M.luajitPackages.cWORD, 'luajitPackages.<cWORD>.meta.homepage' },
   p = { M.python3Packages.cword, 'python3Packages.<cword>.meta.homepage' },
   P = { M.python3Packages.cWORD, 'python3Packages.<cWORD>.meta.homepage' },
   n = { M.nodePackages.cword, 'nodePackages.<cword>.meta.homepage' },
