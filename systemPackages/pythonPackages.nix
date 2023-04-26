@@ -1,14 +1,4 @@
-{pkgs, ...}:
-# let
-#   my-python-packages = ps:
-#     let
-#       openapi-schema-pydantic = ps: ps.callPackage ./openapi-schema-pydantic { };
-#     in
-#     [
-#       (openapi-schema-pydantic ps)
-#     ];
-# in
-{
+{pkgs, ...}: {
   environment.systemPackages =
     [pkgs.python3]
     ++ (with pkgs.nodePackages_latest; [pyright])
@@ -17,24 +7,9 @@
       tuimoji
       autopep8
       debugpy
-      # openapi-schema-pydantic
-      # langchain
-      # (python3.withPackages my-python-packages)
-      # (python3.withPackages (ps:
-      #   with ps; [
-      #     pynvim
-      #     # python-lsp-black
-      #     python-lsp-server
-      #     # tomlkit
-      #     flake8
-      #     autopep8
-      #     setuptools
-      #     wheel
-      #     # from overlay
-      #     inotify_simple
-      #     tuimoji
-      #     pandas
-      #     requests
-      #   ]))
+      pynvim
+      python-lsp-server
+      flake8
+      tomlkit
     ]);
 }
