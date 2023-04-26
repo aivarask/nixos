@@ -1,4 +1,4 @@
-function mh(scope, expand)
+function homepage(scope, expand)
   local expanded = vim.fn.expand(expand)
   vim.cmd([[!nix eval nixpkgs\#]] .. scope .. expanded .. [[.meta.homepage | xargs xdg-open]])
 end
@@ -8,50 +8,63 @@ function xo(expand)
   vim.cmd([[!xdg-open ]] .. arg)
 end
 
+function mynixos(expand) -- pointerCursor home.pointerCursor
+  local arg = vim.fn.expand(expand)
+  vim.cmd([[!xdg-open "https://mynixos.com/search?q=]] .. arg .. '"')
+end
+
 local M = {
   homepage = {
     cword = function() -- bat
-      mh('', '<cword>')
+      homepage('', '<cword>')
     end,
     cWORD = function()
-      mh('', '<cWORD>') -- prisma-engines
+      homepage('', '<cWORD>') -- prisma-engines
     end,
   },
   luajitPackages = {
     cword = function() -- busted
-      mh('luajitPackages.', '<cword>')
+      homepage('luajitPackages.', '<cword>')
     end,
     cWORD = function() -- plenary-nvim
-      mh('luajitPackages.', '<cWORD>')
+      homepage('luajitPackages.', '<cWORD>')
     end,
   },
   python3Packages = {
     cword = function() -- pynvim
-      mh('python3Packages.', '<cword>')
+      homepage('python3Packages.', '<cword>')
     end,
     cWORD = function() -- python-lsp-server
-      mh('python3Packages.', '<cWORD>')
+      homepage('python3Packages.', '<cWORD>')
     end,
   },
   nodePackages = {
     cword = function() -- typescript
-      mh('nodePackages_latest.', '<cword>')
+      homepage('nodePackages_latest.', '<cword>')
     end,
     cWORD = function() -- npm-check-updates
-      mh('nodePackages_latest.', '<cWORD>')
+      homepage('nodePackages_latest.', '<cWORD>')
     end,
   },
   vimPlugins = {
     cword = function() -- neotest
-      mh('vimPlugins.', '<cword>')
+      homepage('vimPlugins.', '<cword>')
     end,
     cWORD = function() -- neotest-vitest
-      mh('vimPlugins.', '<cWORD>')
+      homepage('vimPlugins.', '<cWORD>')
     end,
   },
   xopen = {
     cfile = function() -- https://github.com/aivarask
       xo('<cfile>')
+    end,
+  },
+  mynixos = {
+    cword = function() -- pointerCursor
+      mynixos('<cword>')
+    end,
+    cWORD = function() -- home.pointerCursor
+      mynixos('<cWORD>')
     end,
   },
 }
@@ -69,6 +82,8 @@ wkr({
   v = { M.vimPlugins.cword, 'vimPlugins.<cword>.meta.homepage' },
   V = { M.vimPlugins.cWORD, 'vimPlugins.<cWORD>.meta.homepage' },
   x = { M.xopen.cfile, '!xdg-open <cfile>' },
+  m = { M.mynixos.cword, 'mynixos.org <cword>' },
+  M = { M.mynixos.cWORD, 'mynixos.org <cWORD>' },
   --
   g = { GoGithub, 'github:owner/repo' },
 }, { prefix = '<leader>g' })
