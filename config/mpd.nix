@@ -1,6 +1,6 @@
 # https://nixos.wiki/wiki/MPD
 # https://mpd.fandom.com/wiki/PulseAudio
-_: {
+{pkgs, ...}: {
   sound.enable = true;
   # sound.mediaKeys.enable = true;
   hardware.pulseaudio = {
@@ -17,6 +17,8 @@ _: {
         "0.0.0.0"
       ];
     };
+    # extraModules = [pkgs.pulseaudio-modules-bt];
+    package = pkgs.pulseaudioFull;
   };
   services.mpd = {
     enable = true;
