@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   group = config_group,
   callback = function()
     -- tree.toggle(false, true)
-    -- neotest.summary.open()
+    neotest.summary.open()
   end,
 })
 

@@ -1,6 +1,7 @@
 local neotest = require('neotest')
 
 -- https://github.com/nvim-neotest/neotest
+-- https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/config/init.lua#L131
 require('neotest').setup({
   output_panel = {
     enabled = true,
@@ -14,14 +15,46 @@ require('neotest').setup({
     open = false,
   },
   adapters = {
-    -- https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/config/init.lua#L131
-    require('neotest-vitest'),
-    require('neotest-playwright').adapter({}),
-    -- https://github.com/nvim-neotest/neotest-plenary
-    -- https://github.com/nvim-lua/plenary.nvim
-    -- https://github.com/lunarmodules/busted
-    require('neotest-plenary').setup({
-      min_init = '/etc/nixos/vim/spec/test_init.lua',
+    -- require('neotest-plenary').setup({
+    --   -- https://github.com/nvim-neotest/neotest-plenary
+    --   min_init = '/etc/nixos/vim/spec/test_init.lua',
+    -- }),
+    -- require('neotest-vitest'),
+    -- https://github.com/thenbe/neotest-playwright#configuration-1
+    require('neotest-playwright').adapter({
+      options = {
+        persist_project_selection = false,
+
+        enable_dynamic_test_discovery = false,
+
+        preset = 'none', -- "none" | "headed" | "debug"
+
+        -- get_playwright_binary = function()
+        --    return vim.loop.cwd() + "/node_modules/.bin/playwright"
+        -- end,
+
+        -- get_playwright_config = function()
+        --    return vim.loop.cwd() + "/playwright.config.ts"
+        -- end,
+
+        -- get_cwd = function()
+        --    return vim.loop.cwd()
+        -- end,
+
+        -- env = { },
+
+        -- Extra args to always pass to playwright.
+        -- These are merged with any extra_arg passed
+        -- to neotest's run command.
+        -- extra_args = { },
+
+        -- Filter directories when searching for test files,
+        -- useful in large projects (see performance notes).
+        filter_dir = function(name, rel_path, root)
+          print(name)
+          return name ~= 'src'
+        end,
+      },
     }),
   },
 })

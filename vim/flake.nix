@@ -15,16 +15,18 @@
       url = "github:aivarask/neotest";
       flake = false;
     };
-    neotest-playwright = {
-      url = "github:aivarask/neotest-playwright";
-      flake = false;
-    };
     neotest-vim-test = {
       url = "github:nvim-neotest/neotest-vim-test";
       flake = false;
     };
+    neotest-playwright = {
+      url = "github:thenbe/neotest-playwright";
+      # url = "github:aivarask/neotest-playwright";
+      flake = false;
+    };
     neotest-vitest = {
-      url = "github:aivarask/neotest-vitest";
+      url = "github:marilari88/neotest-vitest";
+      # url = "github:aivarask/neotest-vitest";
       flake = false;
     };
     neotest-plenary = {
@@ -87,6 +89,7 @@
     flake-utils,
     ...
   } @ inputs: {
+    # packages.x86_64-linux.default = "vimFlake";
     overlays.default = final: prev: let
       inherit (prev.vimUtils) buildVimPluginFrom2Nix;
     in {

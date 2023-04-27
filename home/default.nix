@@ -20,13 +20,24 @@
     FOO = "zsh.localVariables";
   };
   home = {
+    file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+    pointerCursor = {
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
+      size = 64;
+      x11 = {
+        enable = true;
+      };
+      gtk = {
+        enable = true;
+      };
+    };
     sessionVariables = {
       FOO = "home.sessionVariables1";
       BROWSER = "firefox";
       MOZ_X11_EGL = "1";
     };
     stateVersion = "18.09";
-    file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
     file.".xinitrc".text = builtins.readFile ./xinitrc;
   };
   programs.chromium = {

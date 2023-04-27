@@ -13,6 +13,7 @@
     ./suckless.nix
     ./gtkRelated.nix
     ./gitAndTools.nix
+    ./goRelated.nix
   ];
   environment.shellAliases = {
     brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
