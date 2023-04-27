@@ -1,14 +1,20 @@
+---@diagnostic disable: duplicate-set-field
 local neotest = require('neotest')
 
 local vitestAdapter = require('neotest-vitest')
----@diagnostic disable-next-line: duplicate-set-field
 vitestAdapter['filter_dir'] = function(name)
   return (name ~= 'node_modules' and name ~= 'tests' and name ~= '_tests')
+end
+vitestAdapter.is_test_file = function(file_path)
+  return file_path:match('test.ts')
 end
 
 local playwrightAdapter = require('neotest-playwright').adapter({})
 playwrightAdapter.filter_dir = function(name)
   return (name ~= 'node_modules' and name ~= 'src' and name ~= '_tests')
+end
+playwrightAdapter.is_test_file = function(file_path)
+  return file_path:match('spec.ts')
 end
 
 local plenaryAdapter = require('neotest-plenary').setup({

@@ -1,13 +1,9 @@
 -- https://github.com/nvim-lua/plenary.nvim/blob/master/TESTS_README.md#testing-guide
-local inspect = require('inspect')
 describe('Busted unit testing framework', function()
   describe('should be awesome', function()
     it('should be easy to use', function()
-      print('test_spec.lua')
-      assert.truthy('Yup.')
       assert(1, 1)
       assert.True(true)
-      assert(inspect({ 1, 2, 3, 4 }) == '{ 1, 2, 3, 4 }')
     end)
   end)
 end)

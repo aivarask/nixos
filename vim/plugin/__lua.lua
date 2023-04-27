@@ -5,6 +5,7 @@ dap.configurations.lua = {
     request = 'attach',
     name = 'Attach to running Neovim instance',
   },
+  { type = 'nlua', request = 'launch', name = 'Launch lua file', program = '${file}' },
 }
 
 local config = {
