@@ -11,8 +11,8 @@
       # PLAYWRIGHT
       PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
-      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}";
-      PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright.version}";
+      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.driver.browsers}";
+      PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright.driver.version}";
     };
   };
   environment.pathsToLink = ["/share/zsh"];

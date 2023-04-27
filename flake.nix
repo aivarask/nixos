@@ -12,6 +12,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    rnix.url = "gitlab:jD91mZM2/rnix";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
     prisma.url = "github:pimeys/nixos-prisma";
@@ -28,8 +29,6 @@
       url = "github:trapd00r/LS_COLORS";
       flake = false;
     };
-    # VIM
-    # TESTING
     vim.url = "path:./vim";
   };
   outputs = {
@@ -51,18 +50,17 @@
     # master = mkPkgs nixpkgs-master [];
     mguentner = mkPkgs nixpkgs-mguentner [];
     overlays = with inputs; [
-      (final: prev: {
-        inherit
-          (mguentner)
-          playwright
-          ;
-        inherit mguentner;
-      })
-
+      # (final: prev: {
+      #   inherit
+      #     (mguentner)
+      #     playwright
+      #     ;
+      #   inherit mguentner;
+      # })
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
-      # statix.overlays.default
+      rnix.overlay
       slstatus.overlays.default
       st-flexipatch.overlays.default
       tabbed-flexipatch.overlays.default

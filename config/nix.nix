@@ -38,7 +38,7 @@
       # };
     };
     extraOptions = ''
-      plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
+      # plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
       experimental-features = nix-command flakes
       # https://github.com/nix-community/nix-direnv#via-home-manager
       # keep-outputs = true

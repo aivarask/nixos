@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages =
     [
-      # pkgs.nodejs_latest
-      pkgs.nodejs-19_x
+      pkgs.nodejs_20
     ]
     ++ (with pkgs.nodePackages_latest; [
       # emmet_ls
@@ -14,8 +13,8 @@
       degit
       diagnostic-languageserver
       emoj
-      # eslint
-      # eslint_d
+      eslint
+      eslint_d
       fast-cli
       fixjson
       gulp

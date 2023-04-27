@@ -27,7 +27,6 @@
     brave
     webkitgtk
     playwright
-    playwright.browsers
     prisma-engines
     prismaPackages."@prisma/language-server"
     # --

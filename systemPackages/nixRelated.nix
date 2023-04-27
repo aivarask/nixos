@@ -20,8 +20,10 @@
     nurl
     # nvd
     statix
+    nixdoc
 
     # https://github.com/nix-community/awesome-nix#development
+    rnix-parser
     rnix-lsp
     nil
     niv

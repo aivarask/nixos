@@ -256,6 +256,21 @@
         "type": "github"
       }
     },
+    "import-cargo": {
+      "locked": {
+        "lastModified": 1594305518,
+        "narHash": "sha256-frtArgN42rSaEcEOYWg8sVPMUK+Zgch3c+wejcpX3DY=",
+        "owner": "edolstra",
+        "repo": "import-cargo",
+        "rev": "25d40be4a73d40a2572e0cc233b83253554f06c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "import-cargo",
+        "type": "github"
+      }
+    },
     "neodev-nvim": {
       "flake": false,
       "locked": {
@@ -480,6 +495,20 @@
         "type": "github"
       }
     },
+    "nixpkgs_10": {
+      "locked": {
+        "lastModified": 1659522808,
+        "narHash": "sha256-HBcM19nGhI3IWwPNVlYb0MZ8VW6iKp4JbAVkeIHVykc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "168d1c578909dc143ba52dbed661c36e76b12b36",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1682109806,
@@ -545,6 +574,22 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1656461576,
+        "narHash": "sha256-rlmmw6lIlkMQIiB+NsnO8wQYWTfle8TA41UREPLP5VY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cf3ab54b4afe2b7477faa1dd0b65bf74c055d70c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1681358109,
         "narHash": "sha256-eKyxW4OohHQx9Urxi7TQlFBTDWII+F+x2hklDOQPB50=",
         "owner": "NixOS",
@@ -559,7 +604,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1645013224,
         "narHash": "sha256-b7OEC8vwzJv3rsz9pwnTX2LQDkeOWz2DbKypkVvNHXc=",
@@ -575,27 +620,13 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_9": {
       "locked": {
         "lastModified": 1682362401,
         "narHash": "sha256-/UMUHtF2CyYNl4b60Z2y4wwTTdIWGKhj9H301EDcT9M=",
         "path": "/nix/store/q3l9x3ncgi0hppw0i65ki9jrxj8kmgac-source",
         "rev": "884ac294018409e0d1adc0cae185439a44bd6b0b",
         "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_9": {
-      "locked": {
-        "lastModified": 1659522808,
-        "narHash": "sha256-HBcM19nGhI3IWwPNVlYb0MZ8VW6iKp4JbAVkeIHVykc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "168d1c578909dc143ba52dbed661c36e76b12b36",
-        "type": "github"
       },
       "original": {
         "id": "nixpkgs",
@@ -652,7 +683,7 @@
     "nvim-lspconfig": {
       "inputs": {
         "flake-utils": "flake-utils_7",
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_10"
       },
       "locked": {
         "lastModified": 1682405354,
@@ -766,6 +797,26 @@
         "type": "github"
       }
     },
+    "rnix": {
+      "inputs": {
+        "import-cargo": "import-cargo",
+        "nixpkgs": "nixpkgs_6",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1661516911,
+        "narHash": "sha256-Wiq9LFMEkxSzD+7e065M22INcP62bE6yhrI/uFNfNMc=",
+        "owner": "jD91mZM2",
+        "repo": "rnix",
+        "rev": "97b438e34be5211a4b48aeed9cc3ded489b4d6da",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "jD91mZM2",
+        "repo": "rnix",
+        "type": "gitlab"
+      }
+    },
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
@@ -781,6 +832,7 @@
         "nixpkgs-mguentner": "nixpkgs-mguentner",
         "nur": "nur",
         "prisma": "prisma",
+        "rnix": "rnix",
         "rust-overlay": "rust-overlay_2",
         "slstatus": "slstatus",
         "st-flexipatch": "st-flexipatch",
@@ -834,7 +886,7 @@
     "rust-overlay_2": {
       "inputs": {
         "flake-utils": "flake-utils_5",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1682475596,
@@ -883,7 +935,7 @@
     "statix": {
       "inputs": {
         "fenix": "fenix",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1676888642,
@@ -990,6 +1042,21 @@
         "type": "github"
       }
     },
+    "utils": {
+      "locked": {
+        "lastModified": 1656065134,
+        "narHash": "sha256-oc6E6ByIw3oJaIyc67maaFcnjYOz1mMcOtHxbEf9NwQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "bee6a7250dd1b01844a2de7e02e4df7d8a0a206c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "vim": {
       "inputs": {
         "emmet-ls": "emmet-ls",
@@ -1001,7 +1068,7 @@
         "neotest-vim-test": "neotest-vim-test",
         "neotest-vitest": "neotest-vitest",
         "neovim-session-manager": "neovim-session-manager",
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_9",
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "nvim-lspconfig": "nvim-lspconfig",
