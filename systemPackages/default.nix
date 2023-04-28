@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./bat-extras.nix
     ./gitAndTools.nix
     ./haskellPackages.nix
     ./luaPackages.nix

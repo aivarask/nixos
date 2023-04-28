@@ -1,0 +1,40 @@
+_: {
+  programs.pistol = {
+    enable = true;
+    associations = [
+      {
+        mime = "application/json";
+        command = "jq %pistol-filename%";
+        # command = "sh: jq '.' %pistol-filename%";
+      }
+      {
+        mime = "application/pdf";
+        command = "zathura %pistol-filename%";
+      }
+      {
+        mime = "application/*";
+        command = "bat --color=always --style=plain --pager=never %pistol-filename%";
+      }
+      {
+        fpath = ".*.md$";
+        command = "sh: bat --paging=never --color=always %pistol-filename% | head -8";
+      }
+      {
+        mime = "text/html";
+        command = "w3m -T text/html -dump %pistol-filename%";
+      }
+      {
+        mime = "text/*";
+        command = "bat --color=always --style=plain --pager=never %pistol-filename%";
+      }
+      {
+        mime = "image/*";
+        command = "chafa %pistol-filename%";
+      }
+      {
+        mime = "inode/directory";
+        command = "exa --git --group --tree --level=1 --long --icons --group-directories-first %pistol-filename%";
+      }
+    ];
+  };
+}

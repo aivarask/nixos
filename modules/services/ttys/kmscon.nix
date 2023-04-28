@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  kmscon = {
+  services.kmscon = {
     enable = lib.mkDefault true;
     autologinUser = lib.mkDefault "root";
     hwRender = lib.mkDefault true;

@@ -1,4 +1,4 @@
-{config, ...}: {
+{pkgs, ...}: {
   programs.bat = {
     enable = true;
     config = {
@@ -13,5 +13,13 @@
         "*.postcss:CSS"
       ];
     };
+    extraPackages = with pkgs.bat-extras; [
+      batgrep
+      batman
+      batpipe
+      batwatch
+      batdiff
+      prettybat
+    ];
   };
 }

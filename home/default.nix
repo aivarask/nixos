@@ -1,16 +1,25 @@
 {pkgs, ...}: {
   imports = [
+    ./programs/alacritty.nix
+    ./programs/bat.nix
+    ./programs/chromium.nix
+    ./programs/direnv.nix
+    ./programs/firefox.nix
+    ./programs/fzf.nix
+    ./programs/git.nix
+    ./programs/lf.nix
+    ./programs/ncmpcpp.nix
+    ./programs/nix-index.nix
+    ./programs/pistol.nix
+    ./programs/starship.nix
+    ./programs/zsh.nix
+    ./services/dunst.nix
+    ./services/redshift-gammastep/redshift.nix
+    ./services/sxhkd.nix
+    ./services/unclutter.nix
+    # --
     ../vim
-    ./alacritty.nix
-    ./bat.nix
-    ./fzf.nix
-    ./git.nix
     ./glow.nix
-    ./lf.nix
-    ./pistol.nix
-    ./sxhkd.nix
-    ./zsh.nix
-    ./firefox.nix
   ];
   # https://mynixos.com/search?q=home+variables
   systemd.user.sessionVariables = {
@@ -39,50 +48,5 @@
     };
     stateVersion = "18.09";
     file.".xinitrc".text = builtins.readFile ./xinitrc;
-  };
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = [
-      "--no-sandbox"
-      "--enable-features=TouchpadOverscrollHistoryNavigation"
-      "--no-default-browser-check"
-    ];
-    extensions = [
-      {
-        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # uBlock Origin
-      }
-      {
-        id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # vimium
-      }
-    ];
-  };
-
-  services = {
-    redshift = {
-      enable = true;
-      temperature = {
-        day = 6500; # 5500
-        night = 4500; # 3700
-      };
-      latitude = 54.0;
-      longitude = 25.0;
-      provider = "manual";
-    };
-    dunst = {enable = true;};
-    unclutter = {
-      enable = true;
-      timeout = 2;
-    };
-  };
-
-  programs.ncmpcpp = {
-    enable = true;
-    settings = {
-      "allow_for_physical_item_deletion" = "yes";
-      "user_interface" = "alternative";
-      "alternative_header_first_line_format" = "$b$5«« {%a}|{%t} »»$9$/b";
-      alternative_header_second_line_format = "$b$5 {%b}|{%f} {%b} ({%y})$9$/b";
-      song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
-    };
   };
 }

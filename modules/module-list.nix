@@ -32,7 +32,7 @@
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
-  ./services/networking/firewall.nix.nix
+  ./services/networking/firewall.nix
   ./services/networking/networkmanager.nix
   ./services/networking/ssh/sshd.nix
   ./services/networking/wpa_supplicant.nix
