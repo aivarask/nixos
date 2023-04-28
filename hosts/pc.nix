@@ -1,8 +1,53 @@
-{...}: {
-  imports = [
-    ./_common.nix
-    ./pc-hardware.nix
-  ];
+{
+  config,
+  lib,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+
+  boot = {
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage" # added ssd
+      "sd_mod" # ?
+    ];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
+  };
+
+  fileSystems = {
+    "/" = {
+      device = "zroot/root/nixos";
+      fsType = "zfs";
+    };
+
+    "/home" = {
+      device = "zroot/home";
+      fsType = "zfs";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/32F7-914D";
+      fsType = "vfat";
+    };
+  };
+
+  swapDevices = [];
+
+  hardware = {
+    cpu.amd.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    fancontrol = {
+      enable = false;
+      config = ''
+      '';
+    };
+  };
   system.stateVersion = "23.05";
   environment.variables = {
     LIBVA_DRIVER_NAME = "vdpau";
@@ -48,23 +93,6 @@
     longitude = 25.0;
   };
   services = {
-    xserver = {
-      dpi = 144;
-      imwheel = {
-        enable = true;
-        rules = {
-          "^(telegram-desktop|chromium|brave|firefox).*" = ''
-            None, Up, Button4, 2
-            None, Down, Button5, 2
-            Shift_L,   Up,   Shift_L|Button4, 2
-            Shift_L,   Down, Shift_L|Button5, 2
-            Control_L, Up,   Control_L|Button4
-            Control_L, Down, Control_L|Button5
-          '';
-        };
-      };
-    };
-
     nginx.virtualHosts."live.fixasparts.com" = {
       forceSSL = false;
       enableACME = false;

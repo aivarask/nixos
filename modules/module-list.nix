@@ -3,6 +3,7 @@
   ./config/fonts
   ./config/i18n.nix
   ./config/locale.nix
+  ./config/networking.nix
   ./config/power-management.nix
   ./config/pulseaudio.nix
   ./config/shells-environments.nix
@@ -10,6 +11,7 @@
   ./config/system-path.nix
   ./config/users-groups.nix
   ./config/xdg/mime.nix
+  ./hardware/video/nvidia.nix
   ./misc/nixpkgs.nix
   ./programs/gnupg.nix
   ./programs/mtr.nix
@@ -24,19 +26,26 @@
   ./services/databases/mongodb.nix
   ./services/databases/mysql.nix
   ./services/databases/postgresql.nix
+  ./services/desktops/blueman.nix
   ./services/desktops/pipewire/pipewire.nix
   ./services/desktops/pipewire/wireplumber.nix
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
+  ./services/networking/firewall.nix.nix
+  ./services/networking/networkmanager.nix
   ./services/networking/ssh/sshd.nix
+  ./services/networking/wpa_supplicant.nix
   ./services/scheduling/cron.nix
   ./services/torrent/transmission.nix
+  ./services/ttys/kmscon.nix
   ./services/web-servers/nginx
   ./services/x11/desktop-managers/plasma5.nix
+  ./services/x11/imwheel.nix
   ./services/x11/xserver.nix
   ./system/boot/loader/efi.nix
   ./system/boot/loader/systemd-boot/systemd-boot.nix
   ./system/boot/systemd.nix
   ./system/boot/tmp.nix
+  ./tasks/network-interfaces.nix
 ]

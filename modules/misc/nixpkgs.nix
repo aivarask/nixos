@@ -1,4 +1,5 @@
 {lib, ...}: {
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [
     # "qtwebkit-5.212.0-alpha4"
   ];

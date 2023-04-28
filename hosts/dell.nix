@@ -1,12 +1,53 @@
+# DELL XPS 7590
 {
-  pkgs,
+  config,
   lib,
+  modulesPath,
+  pkgs,
   ...
 }: {
   imports = [
-    ./_common.nix
-    ./dell-hardware.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
   ];
+
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "sd_mod"
+      "rtsx_pci_sdmmc"
+      "usb_storage" # added ssd
+    ];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
+  };
+
+  fileSystems = {
+    "/" = {
+      device = "zroot/root/nixos";
+      fsType = "zfs";
+    };
+
+    "/home" = {
+      device = "zroot/home";
+      fsType = "zfs";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/CFAB-7FF4";
+      fsType = "vfat";
+    };
+  };
+
+  swapDevices = [];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    bluetooth.enable = true;
+  };
   system.stateVersion = "23.05";
   console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
   environment.variables = {
@@ -30,9 +71,6 @@
   location.provider = "geoclue2";
   services = {
     blueman.enable = true;
-    # Device B8:53:AC:C2:7F:24 Aivaras’s iPhone
-    # Device AC:90:85:C6:DA:FD AirPods
-    # Device D4:11:A3:98:B4:88 Galaxy A50
     kmscon = {
       extraConfig = ''
         font-size=12
