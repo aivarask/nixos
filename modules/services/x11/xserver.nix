@@ -1,5 +1,6 @@
-{pkgs, ...}: {
+{lib, ...}: {
   services.xserver = {
+    dpi = lib.mkDefault 144;
     enable = true;
     displayManager = {
       startx.enable = true;

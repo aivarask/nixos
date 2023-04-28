@@ -3,6 +3,9 @@
     # nativeMessagingHosts = { };
     enable = true;
 
+    # moz-extension://cd54c47b-5f75-4660-a7fb-767b63a96a36/home.html#initialize/seed-phrase
+    # lobster harbor kingdom combine filter base suggest badge wood measure pelican future
+
     profiles.root = {
       # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
       search = {

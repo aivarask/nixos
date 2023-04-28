@@ -1,8 +1,13 @@
 [
   ./config/console.nix
   ./config/fonts
+  ./config/i18n.nix
+  ./config/locale.nix
   ./config/power-management.nix
   ./config/pulseaudio.nix
+  ./config/shells-environments.nix
+  ./config/system-environment.nix
+  ./config/system-path.nix
   ./config/users-groups.nix
   ./config/xdg/mime.nix
   ./misc/nixpkgs.nix
@@ -10,13 +15,16 @@
   ./programs/mtr.nix
   ./programs/tmux.nix
   ./programs/zsh/zsh.nix
+  ./security/acme
+  ./security/pam.nix
   ./security/rtkit.nix
+  ./security/sudo.nix
   ./services/audio/alsa.nix
   ./services/audio/mpd.nix
   ./services/databases/mongodb.nix
   ./services/databases/mysql.nix
   ./services/databases/postgresql.nix
-  ./services/desktops/pipewire/pipeWire.nix
+  ./services/desktops/pipewire/pipewire.nix
   ./services/desktops/pipewire/wireplumber.nix
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
@@ -24,6 +32,7 @@
   ./services/networking/ssh/sshd.nix
   ./services/scheduling/cron.nix
   ./services/torrent/transmission.nix
+  ./services/web-servers/nginx
   ./services/x11/desktop-managers/plasma5.nix
   ./services/x11/xserver.nix
   ./system/boot/loader/efi.nix

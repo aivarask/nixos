@@ -16,12 +16,7 @@
     ./goRelated.nix
     ./sqlRelated.nix
   ];
-  environment.shellAliases = {
-    brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
-  };
   environment.systemPackages = with pkgs; [
-    # python3Packages.tuifimanager
-
     phetch
 
     ethtool

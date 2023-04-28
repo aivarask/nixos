@@ -1,22 +1,28 @@
 {pkgs, ...}: {
-  environment = {
-    sessionVariables = {
-      PATH = [
-        "/etc/nixos/bin"
-        "$HOME/.pnpm-global"
-        "$HOME/.node_modules/bin"
-        "$HOME/.config/composer/vendor/bin"
-      ];
-      FOO = "environment.sessionVariables";
-      # PLAYWRIGHT
-      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
-      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.driver.browsers}";
-      PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright.driver.version}";
-    };
+  imports = [./LF_ICONS.nix];
+
+  environment.variables = {
+    TERMINAL = "alacritty";
+    EDITOR = "nvim";
+    editor = "vim";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    PNPM_HOME = "$HOME/.pnpm-global";
+    NPM_CONFIG_PREFIX = "$HOME/.node_modules";
+    # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
+    NODE_OPTIONS = "--no-warnings";
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+    PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
+    PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
+    PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1";
+    QT_AUTO_SCREEN_SET_FACTOR = "0";
+    QT_SCALE_FACTOR = "1";
+    QT_FONT_DPI = "144";
   };
-  environment.pathsToLink = ["/share/zsh"];
   environment.shellAliases = {
+    brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
     wol_pc = "wol b4:2e:99:61:09:cf";
     ".." = "cd ..";
     "..." = "../..";
@@ -66,25 +72,5 @@
     upb = "nixos-rebuild build";
     upt = "nixos-rebuild test";
     x = "startx";
-  };
-  environment.variables = {
-    TERMINAL = "alacritty";
-    EDITOR = "nvim";
-    editor = "vim";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    PNPM_HOME = "$HOME/.pnpm-global";
-    NPM_CONFIG_PREFIX = "$HOME/.node_modules";
-    # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
-    NODE_OPTIONS = "--no-warnings";
-    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-    PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
-    PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
-    PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
-    GDK_SCALE = "1";
-    GDK_DPI_SCALE = "1";
-    QT_AUTO_SCREEN_SET_FACTOR = "0";
-    QT_SCALE_FACTOR = "1";
-    QT_FONT_DPI = "144";
   };
 }
