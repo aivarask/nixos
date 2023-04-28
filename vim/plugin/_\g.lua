@@ -81,6 +81,7 @@ local M = {
       vim.cmd([[!xdg-open ]] .. post)
     end,
   },
+  c = {},
 }
 
 wkr({

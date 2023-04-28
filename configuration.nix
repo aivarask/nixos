@@ -1,18 +1,11 @@
 {...}: {
   imports =
     [
-      ./config/services.nix
-      ./xserver.nix
-      ./sql
-      ./systemd.nix
-      ./config/virtualisation.nix
-      # ./config/pipeWire.nix
       ./security.nix
       ./nginx
       ./environment.nix
       ./LF_ICONS.nix
       ./systemPackages
-      ./xdg.nix
     ]
     ++ (import ./modules/module-list.nix);
 

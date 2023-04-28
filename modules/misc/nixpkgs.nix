@@ -1,4 +1,7 @@
 {lib, ...}: {
+  nixpkgs.config.permittedInsecurePackages = [
+    # "qtwebkit-5.212.0-alpha4"
+  ];
   nixpkgs.config.joypixels.acceptLicense = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

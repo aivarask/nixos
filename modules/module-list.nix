@@ -1,21 +1,33 @@
 [
-  ./config/fonts
   ./config/console.nix
-  ./config/users-groups.nix
+  ./config/fonts
   ./config/power-management.nix
   ./config/pulseaudio.nix
-  ./system/boot
-  ./services/scheduling/cron.nix
-  ./services/misc/nix-daemon.nix
-  ./services/misc/nix-gc.nix
+  ./config/users-groups.nix
+  ./config/xdg/mime.nix
+  ./misc/nixpkgs.nix
+  ./programs/gnupg.nix
+  ./programs/mtr.nix
+  ./programs/tmux.nix
+  ./programs/zsh/zsh.nix
+  ./security/rtkit.nix
   ./services/audio/alsa.nix
   ./services/audio/mpd.nix
-  ./misc/nixpkgs.nix
-  ./programs/zsh/zsh.nix
-  ./programs/mtr.nix
-  ./programs/gnupg.nix
-  ./programs/tmux.nix
-  ./security/rtkit.nix
+  ./services/databases/mongodb.nix
+  ./services/databases/mysql.nix
+  ./services/databases/postgresql.nix
   ./services/desktops/pipewire/pipeWire.nix
   ./services/desktops/pipewire/wireplumber.nix
+  ./services/misc/gitolite.nix
+  ./services/misc/nix-daemon.nix
+  ./services/misc/nix-gc.nix
+  ./services/networking/ssh/sshd.nix
+  ./services/scheduling/cron.nix
+  ./services/torrent/transmission.nix
+  ./services/x11/desktop-managers/plasma5.nix
+  ./services/x11/xserver.nix
+  ./system/boot/loader/efi.nix
+  ./system/boot/loader/systemd-boot/systemd-boot.nix
+  ./system/boot/systemd.nix
+  ./system/boot/tmp.nix
 ]

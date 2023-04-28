@@ -14,6 +14,7 @@
     ./gtkRelated.nix
     ./gitAndTools.nix
     ./goRelated.nix
+    ./sqlRelated.nix
   ];
   environment.shellAliases = {
     brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
