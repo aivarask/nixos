@@ -25,6 +25,7 @@ _: {
       "super + w" = "$BROWSER";
       "super + W" = "firefox --private-window";
       "super + ctrl + Return" = "tabbed -c alacritty --embed";
+      "ctrl + shift + Return" = "detach";
 
       "ctrl + Pause" = "nicotine";
       "ctrl + Print;" = "$TERMINAL -e duf &";

@@ -25,5 +25,6 @@
       xmodmap
       xmessage
       transset
+      xwininfo
     ]);
 }

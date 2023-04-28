@@ -29,12 +29,24 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   group = config_group,
   callback = function()
     -- tree.toggle(false, true)
-    neotest.summary.open()
+    -- if vim.tbl_contains({ '/root/fixpart' }, function(v)
+    --   return v == vim.loop.cwd()
+    -- end) then
+    --   print('success')
+    --   neotest.summary.open()
+    -- else
+    --   print('not')
+    -- end
+    if vim.loop.cwd() == '/root/fixpart' then
+      neotest.summary.open()
+    end
   end,
 })
 
 vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = 'SessionSavePost',
   group = config_group,
-  callback = function() end,
+  callback = function()
+    print('User autocmd')
+  end,
 })
