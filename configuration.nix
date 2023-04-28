@@ -1,18 +1,12 @@
 {...}: {
   imports =
     [
-      ./config/nix.nix
-      ./config/nixpkgs.nix
-      ./config/powerManagement.nix
-      ./config/programs.nix
       ./config/services.nix
       ./xserver.nix
       ./sql
       ./systemd.nix
       ./config/virtualisation.nix
-      ./config/mpd.nix
       # ./config/pipeWire.nix
-      ./config/tmux.nix
       ./security.nix
       ./nginx
       ./environment.nix

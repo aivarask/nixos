@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  # https://tmuxcheatsheet.com/
-  # https://wiki.archlinux.org/title/Tmux
   programs.tmux = {
     enable = true;
     plugins = [

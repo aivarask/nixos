@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  # nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.allowUnsupportedSystem = true;
+{lib, ...}: {
+  nixpkgs.config.joypixels.acceptLicense = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "bitwig-studio"
@@ -16,15 +11,11 @@
       "nvidia-settings"
       "joypixels"
       "spotify"
-      # "spotify-unwrapped"
       "steam"
       "steam-original"
       "steam-run"
       "steam-runtime"
       "steamcmd"
       "ookla-speedtest"
-      # "mongodb"
-      # "viber"
     ];
-  nixpkgs.config.joypixels.acceptLicense = true;
 }

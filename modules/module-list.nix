@@ -2,8 +2,20 @@
   ./config/fonts
   ./config/console.nix
   ./config/users-groups.nix
+  ./config/power-management.nix
+  ./config/pulseaudio.nix
   ./system/boot
   ./services/scheduling/cron.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
+  ./services/audio/alsa.nix
+  ./services/audio/mpd.nix
+  ./misc/nixpkgs.nix
+  ./programs/zsh/zsh.nix
+  ./programs/mtr.nix
+  ./programs/gnupg.nix
+  ./programs/tmux.nix
+  ./security/rtkit.nix
+  ./services/desktops/pipewire/pipeWire.nix
+  ./services/desktops/pipewire/wireplumber.nix
 ]
