@@ -67,6 +67,20 @@ local M = {
       mynixos('<cWORD>')
     end,
   },
+  github = {
+    source = function()
+      local pre = 'https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos'
+      local p = ''
+      print(vim.fn.expand('%:t'))
+      if vim.fn.expand('%:t') == 'default.nix' then
+        p = vim.fn.expand('%:p:h')
+      else
+        p = vim.fn.expand('%:p')
+      end
+      local post = p:gsub('/etc/nixos', pre)
+      vim.cmd([[!xdg-open ]] .. post)
+    end,
+  },
 }
 
 wkr({
@@ -84,6 +98,7 @@ wkr({
   x = { M.xopen.cfile, '!xdg-open <cfile>' },
   m = { M.mynixos.cword, 'mynixos.org <cword>' },
   M = { M.mynixos.cWORD, 'mynixos.org <cWORD>' },
+  s = { M.github.source, 'github.source' },
   --
   g = { GoGithub, 'github:owner/repo' },
 }, { prefix = '<leader>g' })

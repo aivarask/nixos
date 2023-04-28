@@ -1,28 +1,26 @@
 {...}: {
-  imports = [
-    ./config/boot.nix
-    ./config/fonts.nix
-    ./config/nix.nix
-    ./config/nixpkgs.nix
-    ./config/powerManagement.nix
-    ./config/programs.nix
-    ./config/services.nix
-    ./xserver.nix
-    ./sql
-    ./systemd.nix
-    ./config/cron.nix
-    ./config/users.nix
-    ./config/virtualisation.nix
-    ./config/mpd.nix
-    # ./config/pipeWire.nix
-    ./config/tmux.nix
-    ./security.nix
-    ./nginx
-    ./environment.nix
-    ./LF_ICONS.nix
-    ./systemPackages
-    ./xdg.nix
-  ];
+  imports =
+    [
+      ./config/nix.nix
+      ./config/nixpkgs.nix
+      ./config/powerManagement.nix
+      ./config/programs.nix
+      ./config/services.nix
+      ./xserver.nix
+      ./sql
+      ./systemd.nix
+      ./config/virtualisation.nix
+      ./config/mpd.nix
+      # ./config/pipeWire.nix
+      ./config/tmux.nix
+      ./security.nix
+      ./nginx
+      ./environment.nix
+      ./LF_ICONS.nix
+      ./systemPackages
+      ./xdg.nix
+    ]
+    ++ (import ./modules/module-list.nix);
 
   # moz-extension://cd54c47b-5f75-4660-a7fb-767b63a96a36/home.html#initialize/seed-phrase
   # lobster harbor kingdom combine filter base suggest badge wood measure pelican future

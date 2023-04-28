@@ -1,0 +1,9 @@
+[
+  ./config/fonts
+  ./config/console.nix
+  ./config/users-groups.nix
+  ./system/boot
+  ./services/scheduling/cron.nix
+  ./services/misc/nix-daemon.nix
+  ./services/misc/nix-gc.nix
+]

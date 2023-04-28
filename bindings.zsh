@@ -32,3 +32,6 @@ bindkey -s "^F" "fzf -m --preview 'pistol {}'\n"
 bindkey -s "^G" "fzl\n"
 bindkey -s "^O" "lf\n"
 bindkey -s "^N" "nvim\n"
+
+# TODO: backspace and others in console
+# https://superuser.com/questions/641095/bash-how-to-globally-fix-h-and-backspace-problems

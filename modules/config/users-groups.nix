@@ -16,6 +16,6 @@
       "disk"
       "networkmanager"
     ];
-    shell = pkgs.zsh; # optional
+    shell = pkgs.zsh;
   };
 }
