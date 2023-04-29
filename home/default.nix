@@ -1,5 +1,11 @@
-{pkgs, ...}: {
+_: {
   imports = [
+    ../vim
+    ./files.nix
+    ./home-cursor.nix
+    ./home-environment.nix
+    ./misc/version.nix
+    ./misc/xdg.nix
     ./programs/alacritty.nix
     ./programs/bat.nix
     ./programs/chromium.nix
@@ -17,36 +23,5 @@
     ./services/redshift-gammastep/redshift.nix
     ./services/sxhkd.nix
     ./services/unclutter.nix
-    # --
-    ../vim
-    ./glow.nix
   ];
-  # https://mynixos.com/search?q=home+variables
-  systemd.user.sessionVariables = {
-    FOO = "home systemd.user.sessionVariables";
-  };
-  programs.zsh.localVariables = {
-    FOO = "zsh.localVariables";
-  };
-  home = {
-    file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
-    pointerCursor = {
-      name = "Vanilla-DMZ";
-      package = pkgs.vanilla-dmz;
-      size = 64;
-      x11 = {
-        enable = true;
-      };
-      gtk = {
-        enable = true;
-      };
-    };
-    sessionVariables = {
-      FOO = "home.sessionVariables1";
-      BROWSER = "firefox";
-      MOZ_X11_EGL = "1";
-    };
-    stateVersion = "18.09";
-    file.".xinitrc".text = builtins.readFile ./xinitrc;
-  };
 }

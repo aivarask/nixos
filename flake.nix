@@ -2,16 +2,14 @@
   description = "NixOS config";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # nixpkgs-master.url = "nixpkgs/master";
-    # nixpkgs-aivarask.url = "github:aivarask/nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-mguentner.url = "github:mguentner/nixpkgs/playwright_1_30_0";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?rev=c57746e2b9e3b42c0be9d9fd1d765f245c3827b7";
     rnix.url = "gitlab:jD91mZM2/rnix";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
@@ -83,7 +81,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./configuration.nix
-          ./hosts/pc.nix
+          ./_pc.nix
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           nixos-hardware.nixosModules.common-hidpi
@@ -93,7 +91,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.root = import ./home/_pc.nix;
-              users.ak = home;
             };
           }
           {nixpkgs.overlays = overlays;}
@@ -107,7 +104,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./configuration.nix
-          ./hosts/dell.nix
+          ./_dell.nix
           nixos-hardware.nixosModules.dell-xps-15-7590
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           nixos-hardware.nixosModules.common-hidpi
@@ -117,7 +114,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.root = import ./home/_dell.nix;
-              users.ak = home;
             };
           }
           {nixpkgs.overlays = overlays;}
@@ -130,7 +126,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./configuration.nix
-          ./hosts/as.nix
+          ./_as.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

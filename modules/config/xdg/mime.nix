@@ -23,7 +23,7 @@ _: {
       "x-scheme-handler/https" = "firefox.desktop";
       # "text/html" = "firefox.desktop";
 
-      "image/png" = [
+      "image/*" = [
         "sxiv.desktop"
         "gimp.desktop"
       ];

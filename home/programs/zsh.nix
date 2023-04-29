@@ -9,6 +9,9 @@
     };
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
+    localVariables = {
+      FOO = "zsh.localVariables";
+    };
     initExtraBeforeCompInit = ''
     '';
     enableCompletion = false;

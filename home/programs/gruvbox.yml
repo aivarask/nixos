@@ -1,3 +1,4 @@
+---
 # Colors (Gruvbox dark)
 colors:
   primary:
@@ -56,4 +57,4 @@ colors:
     magenta: "#8f3f71"
     cyan: "#427b58"
     white: "#928374"
-  # indexed_colors: []
+    # indexed_colors: []

@@ -49,7 +49,7 @@
     bluetooth.enable = true;
   };
   system.stateVersion = "23.05";
-  console.font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
+  console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
