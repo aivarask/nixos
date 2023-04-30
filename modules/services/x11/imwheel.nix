@@ -1,6 +1,6 @@
-_: {
+{lib, ...}: {
   services.xserver.imwheel = {
-    enable = true;
+    enable = lib.mkDefault true;
     rules = {
       "^(telegram-desktop|chromium|brave|firefox).*" = ''
         None, Up, Button4, 2

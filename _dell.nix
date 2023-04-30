@@ -81,6 +81,7 @@
     geoclue2.enable = true;
 
     xserver = {
+      imwheel.enable = false;
       # synaptics.enable = true;
       # synaptics.accelFactor = "";
       synaptics.minSpeed = "0.7";
