@@ -1,20 +1,12 @@
 {lib, ...}: {
   services.xserver = {
-    dpi = lib.mkDefault 144;
-    enable = true;
-    displayManager = {
-      startx.enable = true;
-      sddm.enable = false;
-    };
     desktopManager.plasma5.enable = true;
-    windowManager = {
-      dwm = {
-        enable = true;
-      };
-    };
     autoRepeatDelay = 200;
     autoRepeatInterval = 50;
+    dpi = lib.mkDefault 144;
+    enable = true;
     enableCtrlAltBackspace = true;
+    enableTCP = true;
     layout = "us,lt";
     upscaleDefaultCursor = true;
     xkbOptions = "grp:menu_toggle"; # localectl list-x11-keymap-options
