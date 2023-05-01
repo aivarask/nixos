@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   # https://github.com/nix-community/awesome-nix#command-line-tools
   environment.systemPackages = with pkgs; [
+    nixos-generators
     # https://github.com/nix-community/awesome-nix#development
     alejandra
     # comma

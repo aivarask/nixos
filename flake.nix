@@ -2,6 +2,10 @@
   description = "NixOS config";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-mguentner.url = "github:mguentner/nixpkgs/playwright_1_30_0";
@@ -39,14 +43,14 @@
   } @ inputs: let
     inherit (nixpkgs) lib;
     system = "x86_64-linux";
-    mkPkgs = pkgs: extraOverlays:
-      import pkgs {
-        inherit system;
-        config.allowUnfree = true; # forgive me Stallman senpai
-        overlays = extraOverlays;
-      };
+    # mkPkgs = pkgs: extraOverlays:
+    #   import pkgs {
+    #     inherit system;
+    #     config.allowUnfree = true; # forgive me Stallman senpai
+    #     overlays = extraOverlays;
+    #   };
     # master = mkPkgs nixpkgs-master [];
-    mguentner = mkPkgs nixpkgs-mguentner [];
+    # mguentner = mkPkgs nixpkgs-mguentner [];
     overlays = with inputs; [
       # (final: prev: {
       #   inherit
@@ -72,6 +76,13 @@
     ];
     home = import ./home;
   in {
+    packages.${system} = {
+      iso = inputs.nixos-generators.nixosGenerate {
+        inherit system;
+        # modules = [./configuration.nix];
+        format = "iso";
+      };
+    };
     formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
 
     # PC B450 AORUS M
