@@ -1,4 +1,3 @@
-# https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix
 _: {
   programs.git = {
     enable = true;
@@ -22,5 +21,12 @@ _: {
       "packages"
       "!flake.lock"
     ];
+    aliases = {
+      ci = "commit";
+      pr = "pull --rebase";
+    };
+    delta = {
+      enable = true;
+    };
   };
 }

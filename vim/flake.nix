@@ -11,12 +11,12 @@
       flake = false;
     };
     # NEOTEST
-    neotest = {
-      url = "github:aivarask/neotest";
-      flake = false;
-    };
     neotest-vim-test = {
       url = "github:nvim-neotest/neotest-vim-test";
+      flake = false;
+    };
+    neotest = {
+      url = "github:aivarask/neotest";
       flake = false;
     };
     neotest-playwright = {

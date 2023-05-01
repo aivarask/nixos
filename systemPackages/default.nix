@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./gitAndTools.nix
+    ./gitAndTools.nix
+    ./goRelated.nix
+    ./gtkRelated.nix
     ./haskellPackages.nix
     ./luaPackages.nix
     ./nixRelated.nix
@@ -8,12 +11,10 @@
     ./phpRelated.nix
     ./pythonPackages.nix
     ./rustRelated.nix
-    ./xorgRelated.nix
-    ./suckless.nix
-    ./gtkRelated.nix
-    ./gitAndTools.nix
-    ./goRelated.nix
+    ./shells.nix
     ./sqlRelated.nix
+    ./suckless.nix
+    ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
     phetch

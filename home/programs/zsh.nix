@@ -35,6 +35,11 @@
         file = "nix-shell.plugin.zsh";
         src = pkgs.zsh-nix-shell;
       }
+      {
+        name = "zsh-forgit";
+        file = "forgit.plugin.zsh";
+        src = pkgs.zsh-forgit;
+      }
       # {
       #   # zsh-fzf-tab
       #   name = "fzf-tab";
