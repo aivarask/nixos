@@ -222,7 +222,7 @@
 
         "dom.event.clipboardevents.enabled" = false;
         "dom.security.https_only_mode_ever_enabled" = true;
-        "extensions.activeThemeID" = "firefox-compact-light@mozilla.org";
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
         "extensions.autoDisableScopes" = false;
         "extensions.pocket.enabled" = false;
         "gfx.webrender.all" = true;

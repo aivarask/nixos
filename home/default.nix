@@ -4,6 +4,7 @@ _: {
     ./files.nix
     ./home-cursor.nix
     ./home-environment.nix
+    ./misc/gtk.nix
     ./misc/version.nix
     ./misc/xdg.nix
     ./programs/alacritty.nix

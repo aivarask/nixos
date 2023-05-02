@@ -33,6 +33,8 @@ _: {
       # "super + m" = "$TERMINAL -e duf";
       "XF86MonBrightnessDown" = "brightnessctl set 10%-";
       "XF86MonBrightnessUp" = "brightnessctl set +10%";
+      "super + z" = "brightnessctl set 10%-";
+      "super + x" = "brightnessctl set 10%+";
     };
   };
 }
