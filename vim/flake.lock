@@ -68,11 +68,11 @@
     "neotest": {
       "flake": false,
       "locked": {
-        "lastModified": 1682144061,
-        "narHash": "sha256-ke/JdRxreKnb+ttChbjuenmQ/jw3hHy5VctZ0hU1CtQ=",
+        "lastModified": 1683004763,
+        "narHash": "sha256-ACl2nijgX2PjU7LLLG/bgXBpocpwPmbSG88mmGAifqo=",
         "owner": "aivarask",
         "repo": "neotest",
-        "rev": "16c18ca00269b4f08074c3338c876a4d810b3f90",
+        "rev": "bd3d57448211a4e967892bf0485cf3c03311ec9c",
         "type": "github"
       },
       "original": {
