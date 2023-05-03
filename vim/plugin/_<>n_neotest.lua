@@ -3,7 +3,7 @@ local neotest = require('neotest')
 
 local vitestAdapter = require('neotest-vitest')
 vitestAdapter['filter_dir'] = function(name)
-  return (name ~= 'node_modules' and name ~= 'tests' and name ~= '_tests')
+  return (name ~= 'node_modules' and name ~= 'tests' and name ~= '.tests' and name ~= 'coverage')
 end
 vitestAdapter.is_test_file = function(file_path)
   return file_path:match('test.ts')
@@ -11,7 +11,7 @@ end
 
 local playwrightAdapter = require('neotest-playwright').adapter({})
 playwrightAdapter.filter_dir = function(name)
-  return (name ~= 'node_modules' and name ~= 'src' and name ~= '_tests')
+  return (name ~= 'node_modules' and name ~= 'src' and name ~= '.tests')
 end
 playwrightAdapter.is_test_file = function(file_path)
   return file_path:match('spec.ts')
@@ -70,6 +70,7 @@ wkr({
 wkr({
   ['<leader>]'] = { require('neotest').summary.toggle, 'summary.toggle' },
   ['<leader>}'] = { require('neotest').output_panel.toggle, 'output_panel.toggle' },
+  ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
 })
 -- mappings = {
 --   attach = "a",

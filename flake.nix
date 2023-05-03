@@ -8,12 +8,12 @@
     };
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs-mguentner.url = "github:mguentner/nixpkgs/playwright_1_30_0";
+    # nixpkgs-mguentner.url = "github:mguentner/nixpkgs/playwright_1_30_0";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay?rev=c57746e2b9e3b42c0be9d9fd1d765f245c3827b7";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rnix.url = "gitlab:jD91mZM2/rnix";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
@@ -38,7 +38,7 @@
     # nixpkgs-master,
     nixos-hardware,
     home-manager,
-    nixpkgs-mguentner,
+    # nixpkgs-mguentner,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;

@@ -22,6 +22,7 @@ null_ls.setup({
     null_ls.builtins.formatting.alejandra,
     -- null_ls.builtins.formatting.nixfmt,
     -- null_ls.builtins.formatting.nixpkgs_fmt,
+    null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.fixjson,
     null_ls.builtins.formatting.autopep8,

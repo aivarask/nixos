@@ -226,11 +226,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1682947665,
-        "narHash": "sha256-T0urZXkaGjmO0bYbj2oKgviSYwbbWr0ZE1tH3yOFANQ=",
+        "lastModified": 1683031326,
+        "narHash": "sha256-R3k9wsW7Vtxa4eqQGTCFPHAw5yMRNt/7goVeEOLE4nA=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "5f7a8311dd6e67de74c12fa9ac2f1aa75f72b19e",
+        "rev": "05689b96fdad33fb01d4968089760d6886a65058",
         "type": "github"
       },
       "original": {
@@ -258,11 +258,11 @@
     "osv": {
       "flake": false,
       "locked": {
-        "lastModified": 1682174969,
-        "narHash": "sha256-xrOsi+2KMwf9amNFaV1TyA5yY6ghpPvBqYBQ9TOZ8PM=",
+        "lastModified": 1683047954,
+        "narHash": "sha256-eACRCRXDrkpPP4lq6n0PRK+LumhAFrktZ5DE+J7Q288=",
         "owner": "jbyuki",
         "repo": "one-small-step-for-vimkind",
-        "rev": "27e5f59edcba5bd2668422de8ae3e91a8a8e4380",
+        "rev": "f239ca0dc772f214e7ff0627ccbd45bceae88bf8",
         "type": "github"
       },
       "original": {

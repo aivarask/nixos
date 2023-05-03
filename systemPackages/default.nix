@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./cRelated.nix
     ./gitAndTools.nix
     ./gitAndTools.nix
     ./goRelated.nix
@@ -18,6 +19,7 @@
   ];
   environment.systemPackages = with pkgs; [
     phetch
+    tilda
 
     ethtool
     wol
