@@ -29,6 +29,7 @@
       pm2
       # pnpm
       prettier
+      prettier_d_slim
       prisma
       serve
       speed-test
