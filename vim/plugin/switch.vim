@@ -1,5 +1,6 @@
 nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
-nmap <leader>gs <Plug>(SwitchInLine)
+nmap <M-x> <Plug>(SwitchInLine)
+" const
 
 " https://github.com/AndrewRadev/switch.vim
 autocmd FileType markdown let b:switch_custom_definitions =
@@ -22,7 +23,7 @@ let g:switch_custom_definitions =
       \   ['foo', 'bar', 'baz'],
       \   ['Less', 'Greater'],
       \   ['Truthy', 'Falsy'],
-      \   ['const', 'let'],
+      \   ['const', 'export const'],
       \   ['Int', 'String', 'Boolean'],
       \   {
       \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
@@ -37,6 +38,7 @@ let g:switch_custom_definitions =
       \   ['FIX', 'ISSUE', 'BUG'],
       \   ['NOTE', 'INFO'],
       \ ]
+      " \   ['const', 'let'],
       " \   ['info', 'warning', 'error', 'hint', 'test'],
 " \   ['string', 'number', 'bigint', 'symbol', 'object', 'boolean', 'function', 'undefined']
 

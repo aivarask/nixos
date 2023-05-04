@@ -5,6 +5,7 @@
     ]
     ++ (with pkgs.nodePackages_latest; [
       # emmet_ls
+      mermaid-cli
       gulp
       npm
       bash-language-server
