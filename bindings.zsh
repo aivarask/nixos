@@ -18,7 +18,7 @@ fpath=(/root/.zsh/plugins/zsh-completions/share/zsh/site-functions $fpath)
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 
 bindkey '^ ' forward-word        # c-space
-bindkey '^H' backward-kill-word  # C-BS
+# bindkey '^H' backward-kill-word  # C-BS
 bindkey '^[[1;5C' autosuggest-accept # C-right
 bindkey '^[[3;5~' kill-word # c-del
 
