@@ -4,7 +4,10 @@
     systemWide = true;
     support32Bit = true;
     package = pkgs.pulseaudioFull;
-    extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
+    extraConfig = ''
+      # https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#pulseaudiomodules
+      load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
+    '';
     tcp = {
       enable = true;
       anonymousClients.allowedIpRanges = [

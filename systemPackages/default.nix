@@ -18,6 +18,8 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    libbs2b
+    ladspaPlugins
     phetch
     tilda
 

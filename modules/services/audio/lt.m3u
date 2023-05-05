@@ -1,24 +1,4 @@
 #EXTM3U
-#EXTINF:,Chill Out Zone
-https://chillout.zone/chillout
-#EXTINF:,Chill Out Zone Plus
-https://chillout.zone/chillout_plus
-#EXTINF:,Chill In Zone
-https://chillout.zone/chillin
-#EXTINF:,radiOzoraChill
-https://chill.out.airtime.pro/chill_a
-#EXTINF:,radiOzora Trance
-https://trance.out.airtime.pro/trance_a
-#EXTINF:,Hi Online
-http://mscp2.live-streams.nl:8100/flac.flac
-#EXTINF:,Hi On Line Radio
-http://mediaserv30.live-streams.nl:8086
-#EXTINF:,Hi On Line Lounge Radio
-https://mediaserv33.live-streams.nl:8036
-#EXTINF:,Hi On Line Jazz Radio
-http://mediaserv38.live-streams.nl:8006
-#EXTINF:,SoftRockRadio.net
-https://stream5.thepuremix.net/softrock.mp3
 #EXTINF:,LRT Radijas
 http://lrt-cast.lrt.lt:8000/lrt_radijas
 #EXTINF:,LRT Opus
@@ -41,8 +21,6 @@ https://stream.m-1.fm/m1/aacp64
 https://stream.m-1.fm/m1plius/aacp64
 #EXTINF:,Lietus
 https://stream.m-1.fm/lietus/aacp64
-#EXTINF:,LIFE CHILL MUSIC
-http://46.105.180.202:8053/live
 #EXTINF:,GerasFM
 http://82.135.234.195:8000/gerasfm.mp3
 #EXTINF:,LALUNA
@@ -74,7 +52,7 @@ https://stream.ehr.lt:8443/superfm
 #EXTINF:,RC
 https://stream2.rc.lt/rc128.mp3
 #EXTINF:,PMR.lt
-http://streamer.midiaudio.com:8000/pmr
+https://pmr.lt/streams/pmr-web
 #EXTINF:,TG FM Live
 https://play.tgfm.to/tgfm_192
 #EXTINF:,RELAX FM
@@ -88,5 +66,3 @@ http://radio.15min.lt:8000/neringafm.ogg
 #EXTINF:,Power Hit Radio
 https://powerhit.ls.lv/PHR_AAC
 
-# Patricia Barber
-# Chuck Loeb

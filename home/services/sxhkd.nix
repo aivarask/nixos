@@ -6,7 +6,7 @@ _: {
       "Pause" = "$TERMINAL -e ncmpcpp";
       "Print" = "$TERMINAL -e htop";
       "Scroll_Lock" = "$TERMINAL -e tremc";
-      "XF86Audio{Lower,Raise}Volume" = "pulsemixer --change-volume {-,+}2";
+      "XF86Audio{Lower,Raise}Volume" = "pulsemixer --change-volume {-,+}2 --max-volume 100";
       "XF86Audio{Play,Mute}" = "mpc {play,stop}";
       "XF86Audio{Prev,Next}" = "mpc {prev,next}";
       "XF86Calculator" = "$TERMINAL -e bandwhich";

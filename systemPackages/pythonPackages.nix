@@ -6,7 +6,7 @@
       requests
       tuimoji
       autopep8
-      debugpy
+      # debugpy
       pynvim
       python-lsp-server
       flake8
