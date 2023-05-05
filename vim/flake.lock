@@ -52,11 +52,11 @@
     "neodev-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1683093924,
-        "narHash": "sha256-d4GPt/fAsDwEBuJEicDK+Lrg8pxDO7UhijJrz8ol6Kw=",
+        "lastModified": 1683266726,
+        "narHash": "sha256-0yLFpqFOd9QGFE7uAMX1FggN7uLEdPsjhjQ03oQdWlA=",
         "owner": "folke",
         "repo": "neodev.nvim",
-        "rev": "ab4c68129b5fefe5c6bb6d7e92283d3f8bdf8566",
+        "rev": "6498a07601702349c31909005bb333003e4687d4",
         "type": "github"
       },
       "original": {
@@ -163,10 +163,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1683014792,
-        "narHash": "sha256-6Va9iVtmmsw4raBc3QKvQT2KT/NGRWlvUlJj46zN8B8=",
-        "path": "/nix/store/ycwxxfi2yv4nd8y66bxdc8pww9mhjwgj-source",
-        "rev": "1a411f23ba299db155a5b45d5e145b85a7aafc42",
+        "lastModified": 1682879489,
+        "narHash": "sha256-sASwo8gBt7JDnOOstnps90K1wxmVfyhsTPPNTGBPjjg=",
+        "path": "/nix/store/3rfn91lqch3wchpgqamxl8sazbpnxbm9-source",
+        "rev": "da45bf6ec7bbcc5d1e14d3795c025199f28e0de0",
         "type": "path"
       },
       "original": {

@@ -5,6 +5,7 @@ _: {
       "text/plain" = "nvim.desktop";
       "text/markdown" = "nvim.desktop";
       "text/html" = "nvim.desktop";
+      # "text/html" = "firefox.desktop";
       "text/css" = "nvim.desktop";
       "text/x-lua" = "nvim.desktop";
       "text/x-csrx" = "nvim.desktop";
@@ -21,7 +22,8 @@ _: {
 
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
-      # "text/html" = "firefox.desktop";
+      "application/x-xdg-protocol-tg" = "telegram.desktop";
+      "x-scheme-handler/tg" = "telegram.desktop";
 
       "image/*" = [
         "sxiv.desktop"
