@@ -51,4 +51,5 @@
   ./system/boot/systemd.nix
   ./system/boot/tmp.nix
   ./tasks/network-interfaces.nix
+  ./tasks/powertop.nix
 ]

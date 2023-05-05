@@ -18,6 +18,15 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    powertop
+    powerstat
+    s-tui
+    stress
+    firestarter
+
+    taskwarrior
+    taskwarrior-tui
+
     libbs2b
     ladspaPlugins
     phetch

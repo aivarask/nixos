@@ -1,8 +1,10 @@
 {
   pkgs,
   options,
+  lib,
   ...
 }: {
+  systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 40960;
   nix = {
     package = pkgs.nixFlakes;
     nixPath =
