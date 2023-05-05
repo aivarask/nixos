@@ -22,6 +22,7 @@
     QT_FONT_DPI = "144";
   };
   environment.shellAliases = {
+    nf = "";
     puppeteer = "puppeteer --no-sandbox";
     mmdc = "mmdc -p /etc/nixos/puppeteerConfigFile.json";
     brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";

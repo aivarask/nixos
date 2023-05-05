@@ -66,6 +66,12 @@ wkr({
   b = { neotest.run.buffer, 'run.buffer' },
   d = { neotest.run.dap, 'run.dap' },
   c = { [[:!busted<cr>]], '!busted' },
+  x = {
+    function()
+      neotest.summary:expand(vim.loop.cwd(), true)
+    end,
+    'expand',
+  },
 }, { prefix = '<leader>n' })
 wkr({
   ['<leader>]'] = { require('neotest').summary.toggle, 'summary.toggle' },
