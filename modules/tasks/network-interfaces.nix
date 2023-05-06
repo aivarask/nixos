@@ -1,12 +1,5 @@
 _: {
-  networking.nameservers = [
-    "127.0.0.1"
-    "::1"
-    # "192.168.1.1" # router
-    "1.1.1.1" # Cloudflare
-    # "8.8.8.8" # Google
-    # "8.8.4.4" # Google2
-  ];
+  networking.nameservers = ["127.0.0.1" "::1"];
   # https://nixos.wiki/wiki/Encrypted_DNS
   # modules/services/networking/dhcpd.nix
   services.dnscrypt-proxy2 = {
@@ -23,9 +16,6 @@ _: {
         cache_file = "/var/lib/dnscrypt-proxy2/public-resolvers.md";
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
-
-      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      # server_names = [ ... ];
     };
   };
 

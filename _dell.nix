@@ -54,14 +54,17 @@
     MOZ_USE_XINPUT2 = "1";
   };
 
+  # https://nixos.wiki/wiki/Systemd-networkd
+  # /etc/nixos/modules/system/boot/networkd.nix
+
   networking = {
     hostName = "dell";
     hostId = "8425e349";
     useDHCP = false;
-    interfaces.wlp59s0.useDHCP = true;
+    interfaces.wlp59s0.useDHCP = false;
     interfaces.wlp59s0.ipv4.addresses = [
       {
-        address = "192.168.1.112";
+        address = "192.168.1.120";
         prefixLength = 24;
       }
     ];
