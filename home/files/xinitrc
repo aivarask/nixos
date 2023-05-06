@@ -15,7 +15,7 @@ nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=
 numlockx
 xset r rate 200 50
 
-unclutter &
+# unclutter &
 redshift &
 dunst &
 # slstatus &
