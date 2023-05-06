@@ -33,6 +33,7 @@
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
   ./services/networking/dhcpd.nix
+  ./services/networking/dnscrypt-proxy2.nix
   ./services/networking/firewall.nix
   ./services/networking/networkmanager.nix
   ./services/networking/ssh/sshd.nix
@@ -49,6 +50,7 @@
   ./services/x11/xserver.nix
   ./system/boot/loader/efi.nix
   ./system/boot/loader/systemd-boot/systemd-boot.nix
+  ./system/boot/networkd.nix
   ./system/boot/systemd.nix
   ./system/boot/tmp.nix
   ./tasks/network-interfaces.nix

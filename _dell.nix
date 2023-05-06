@@ -57,18 +57,35 @@
   # https://nixos.wiki/wiki/Systemd-networkd
   # /etc/nixos/modules/system/boot/networkd.nix
 
+  systemd.network.networks."10-hw" = {
+    matchConfig.Name = "wlp59s0";
+    linkConfig.RequiredForOnline = "routable";
+    # networkConfig = {
+    #   DHCP = "ipv4";
+    #   IPv6AcceptRA = false;
+    # };
+    # STATIC
+    address = [
+      # "192.168.1.100/24"
+      "192.168.1.120"
+    ];
+    routes = [
+      {routeConfig.Gateway = "192.168.1.1";}
+    ];
+  };
+
   networking = {
     hostName = "dell";
     hostId = "8425e349";
-    useDHCP = false;
-    interfaces.wlp59s0.useDHCP = false;
-    interfaces.wlp59s0.ipv4.addresses = [
-      {
-        address = "192.168.1.120";
-        prefixLength = 24;
-      }
-    ];
-    defaultGateway = "192.168.1.1";
+    # useDHCP = false;
+    # interfaces.wlp59s0.useDHCP = false;
+    # interfaces.wlp59s0.ipv4.addresses = [
+    #   {
+    #     address = "192.168.1.120";
+    #     prefixLength = 24;
+    #   }
+    # ];
+    # defaultGateway = "192.168.1.1";
   };
 
   location.provider = "geoclue2";

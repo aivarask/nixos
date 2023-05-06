@@ -1,3 +1,3 @@
 _: {
-  systemd.networkd.enable = true;
+  systemd.network.enable = true;
 }

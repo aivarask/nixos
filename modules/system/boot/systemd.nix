@@ -22,6 +22,9 @@
     };
 
     services = {
+      dnscrypt-proxy2.serviceConfig = {
+        StateDirectory = "dnscrypt-proxy";
+      };
       "slstatus" = {
         script = ''
           set -eu
