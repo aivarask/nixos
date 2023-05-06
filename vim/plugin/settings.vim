@@ -73,6 +73,7 @@ endif
 if has ('nvim')
   set undodir=$HOME/.vim/undo
   set undofile 
+  set noswapfile
 else
   let g:AutoPairsFlyMode = 1
   let g:AutoPairsShortcutBackInsert = '<C-b>'

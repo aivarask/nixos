@@ -32,6 +32,7 @@
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
+  ./services/networking/dhcpd.nix
   ./services/networking/firewall.nix
   ./services/networking/networkmanager.nix
   ./services/networking/ssh/sshd.nix

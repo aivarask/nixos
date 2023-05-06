@@ -22,7 +22,9 @@
     QT_FONT_DPI = "144";
   };
   environment.shellAliases = {
-    nf = "";
+    nfu = "nix flake update";
+    nflu = "nix flake lock --update-input";
+    nfluv = "nix flake lock --update-input vim";
     puppeteer = "puppeteer --no-sandbox";
     mmdc = "mmdc -p /etc/nixos/puppeteerConfigFile.json";
     brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
