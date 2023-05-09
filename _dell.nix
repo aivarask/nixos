@@ -60,18 +60,18 @@
   systemd.network.networks."10-hw" = {
     matchConfig.Name = "wlp59s0";
     linkConfig.RequiredForOnline = "routable";
-    # networkConfig = {
-    #   DHCP = "ipv4";
-    #   IPv6AcceptRA = false;
-    # };
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = false;
+    };
     # STATIC
-    address = [
-      # "192.168.1.100/24"
-      "192.168.1.120"
-    ];
-    routes = [
-      {routeConfig.Gateway = "192.168.1.1";}
-    ];
+    # address = [
+    #   # "192.168.1.100/24"
+    #   "192.168.1.120"
+    # ];
+    # routes = [
+    #   {routeConfig.Gateway = "192.168.1.1";}
+    # ];
   };
 
   networking = {

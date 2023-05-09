@@ -22,6 +22,9 @@
     QT_FONT_DPI = "144";
   };
   environment.shellAliases = {
+    nf = "nvim -c 'Files'";
+    ng = "nvim -c 'Rg'";
+    nt = "nvim -c 'Telescope'";
     nfu = "nix flake update";
     nflu = "nix flake lock --update-input";
     nfluv = "nix flake lock --update-input vim";
