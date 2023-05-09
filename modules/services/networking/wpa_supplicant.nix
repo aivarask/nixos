@@ -1,6 +1,6 @@
-_: {
+{lib, ...}: {
   networking.wireless = {
-    enable = true;
+    enable = lib.mkDefault true;
     userControlled = {
       enable = true;
       group = "wheel";

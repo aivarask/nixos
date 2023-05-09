@@ -13,6 +13,11 @@
         name "Pulseaudio"
         server "0.0.0.0"
       }
+      playlist_plugin {
+        name "m3u"
+        enabled "true"
+      }
+      bind_to_address "0.0.0.0:6600"
     '';
   };
 }

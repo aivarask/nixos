@@ -2,10 +2,12 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
     initrd.availableKernelModules = [
       "nvme"
@@ -59,33 +61,32 @@
     '';
   };
 
+  systemd.network.networks."10-eno1" = {
+    name = "eno1";
+    matchConfig.Name = "eno1";
+    linkConfig.RequiredForOnline = "yes"; # or routable
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+  };
+
+  systemd.network.networks."20-wlp6s0" = {
+    name = "wlp6s0";
+    matchConfig.Name = "wlp6s0";
+    linkConfig.RequiredForOnline = "no";
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+  };
+
   networking = {
     hostName = "pc";
     hostId = "007f0200";
-    useDHCP = true;
-    interfaces = {
-      eno1 = {
-        wakeOnLan.enable = true;
-        useDHCP = true;
-        ipv4.addresses = [
-          {
-            address = "192.168.1.110";
-            prefixLength = 24;
-          }
-        ];
-      };
-      wlp6s0 = {
-        useDHCP = true;
-        ipv4.addresses = [
-          {
-            address = "192.168.1.111";
-            prefixLength = 24;
-          }
-        ];
-      };
-    };
+    wireless.enable = true;
     wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
-    defaultGateway = "192.168.1.1";
+    interfaces.eno1.wakeOnLan.enable = true;
   };
   location = {
     provider = "manual";

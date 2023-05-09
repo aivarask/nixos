@@ -1,15 +1,16 @@
 _: {
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
-    22
-    80
-    443
-    3000
-    3306
-    4173
-    5173
-    5434
-    9000
+    22 # ssh
+    80 # http
+    443 # https
+    3000 # serve
+    3306 # mysql
+    4173 # vite preview
+    5173 # vite dev
+    5434 # postgresql
+    6600 # mpd
+    9000 # remote-touchpad
     9100
   ];
 }
