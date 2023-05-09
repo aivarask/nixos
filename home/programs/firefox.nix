@@ -176,10 +176,13 @@
         "app.shield.optoutstudies.enabled" = false;
         "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
         "browser.download.lastDir" = "~/Downloads";
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
+        "browser.newtabpage.activity-stream.feeds.topsites" = true;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "DuckDuckGo";
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "DuckDuckGo";
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.pinned" = true;
         "browser.safebrowsing.downloads.remote.enabled" = false;
         "browser.search.suggest.enabled" = false;
         "browser.send_pings" = false;
