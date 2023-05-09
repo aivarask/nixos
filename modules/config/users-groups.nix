@@ -4,11 +4,12 @@
   };
   users.users.root = {
     shell = pkgs.zsh;
-    extraGroups = ["http"];
+    extraGroups = ["http" "adbusers"];
   };
   users.users.ak = {
     isNormalUser = true;
     extraGroups = [
+      "adbusers"
       "wheel"
       "audio"
       "pulse"

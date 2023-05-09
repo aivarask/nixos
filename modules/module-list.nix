@@ -13,6 +13,7 @@
   ./config/xdg/mime.nix
   ./hardware/video/nvidia.nix
   ./misc/nixpkgs.nix
+  ./programs/adb.nix
   ./programs/gnupg.nix
   ./programs/mtr.nix
   ./programs/tmux.nix
@@ -29,6 +30,7 @@
   ./services/desktops/blueman.nix
   ./services/desktops/pipewire/pipewire.nix
   ./services/desktops/pipewire/wireplumber.nix
+  ./services/hardware/udev.nix
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix

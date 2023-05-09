@@ -18,6 +18,7 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    usbutils
     powertop
     powerstat
     s-tui
