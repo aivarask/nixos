@@ -8,6 +8,7 @@ _: {
     3306 # mysql
     4173 # vite preview
     5173 # vite dev
+    6173 # vite e2e
     5434 # postgresql
     6600 # mpd
     9000 # remote-touchpad

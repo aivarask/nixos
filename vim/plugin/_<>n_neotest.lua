@@ -37,7 +37,7 @@ require('neotest').setup({
   },
   adapters = {
     vitestAdapter,
-    playwrightAdapter,
+    -- playwrightAdapter,
     plenaryAdapter,
   },
 })

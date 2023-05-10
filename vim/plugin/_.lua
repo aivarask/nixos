@@ -5,6 +5,7 @@ neotest = require('neotest')
 dap = require('dap')
 widgets = require('dap.ui.widgets')
 osv = require('osv')
+pretty = require('pl.pretty')
 
 -- https://github.com/willothy/flatten.nvim
 -- require('flatten').setup({
