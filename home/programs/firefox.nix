@@ -125,6 +125,10 @@
 
       bookmarks = [
         {
+          name = "pcw.local:9000";
+          url = "http://pcw.local:9000/#pc";
+        }
+        {
           name = "Sofascore Euroleague";
           url = "https://www.sofascore.com/tournament/basketball/international/euroleague/138";
         }
