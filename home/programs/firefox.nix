@@ -125,6 +125,10 @@
 
       bookmarks = [
         {
+          name = "pcl.local:9000";
+          url = "http://pcl.local:9000/#pc";
+        }
+        {
           name = "pcw.local:9000";
           url = "http://pcw.local:9000/#pc";
         }
