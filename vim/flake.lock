@@ -226,11 +226,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1683705550,
-        "narHash": "sha256-aXjcBRx01BFKKs+JAUbtfZZLAUw6xcsTDA6JOvsKyQk=",
+        "lastModified": 1683788438,
+        "narHash": "sha256-yfjiU6SN2X8CHCE9IRR5IRanDpfQQFYZ9x3hRu5qVPo=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "84717430fb6f51c9e9cc8d63da10cceafc91500c",
+        "rev": "32f0c0465ac3ee53a1a9c0f72602a7b9cecb31d3",
         "type": "github"
       },
       "original": {
