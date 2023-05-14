@@ -1,6 +1,5 @@
 {lib, ...}: {
   services.xserver = {
-    desktopManager.plasma5.enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 50;
     dpi = lib.mkDefault 144;

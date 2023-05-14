@@ -143,8 +143,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.root = home;
-              users.ak = home;
+              users.root = import ./home/_as.nix;
+              users.vytas = import ./home/_as.nix;
             };
           }
           {nixpkgs.overlays = overlays;}

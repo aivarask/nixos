@@ -10,5 +10,7 @@
     plasma-browser-integration
     print-manager
     qtwebkit
+    # kwallet
+    # kded
   ];
 }

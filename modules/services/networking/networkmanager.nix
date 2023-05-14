@@ -1,11 +1,11 @@
-_: {
+{lib, ...}: {
   networking.networkmanager = {
-    enable = false;
+    enable = lib.mkDefault false;
     wifi.scanRandMacAddress = false;
-    unmanaged = [
-      "*"
-      "except:type:wwan"
-      "except:type:gsm"
-    ];
+    # unmanaged = [
+    #   "*"
+    #   "except:type:wwan"
+    #   "except:type:gsm"
+    # ];
   };
 }

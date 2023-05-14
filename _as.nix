@@ -50,9 +50,14 @@
   };
 
   services.xserver = {
+    dpi = 120;
     videoDrivers = ["modesetting"];
     libinput = {
       touchpad.naturalScrolling = true;
     };
   };
+
+  services.xserver.displayManager.sddm.enable = true;
+  networking.wireless.enable = false;
+  networking.networkmanager.enable = true;
 }

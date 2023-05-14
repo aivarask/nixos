@@ -100,4 +100,9 @@
       };
     };
   };
+  # services.xserver.displayManager.sddm.enable = true;
+  # networking.wireless.enable = false;
+  # networking.networkmanager.enable = true;
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "root";
 }
