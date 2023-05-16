@@ -23,7 +23,7 @@ command_aliases = {}
 
 [transfers]
 incompletedir = /var/music/_incomplete
-downloaddir = /var/music/_donwloads
+downloaddir = /var/music/_downloads
 uploaddir = /var/music/.received
 usernamesubfolders = False
 shared = [('/var/music')]

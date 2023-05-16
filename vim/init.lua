@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = 'test.prisma,schema.prisma',
-  command = 'TermExec cmd="npx prisma db push" | LspRestart',
+  command = 'TermExec cmd="npx prisma db push && dotenv -e .env.e2e -- npx prisma db push" | LspRestart',
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {
