@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({ 'User' }, {
       neotest.summary.open()
       neotest.summary:expand(vim.loop.cwd(), true)
     end
-    pretty(neotest.summary)
+    -- pretty(neotest.summary)
   end,
 })
 

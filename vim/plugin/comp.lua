@@ -64,11 +64,11 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    {
-      name = 'luasnip',
-      -- https://github.com/saadparwaiz1/cmp_luasnip
-      -- option = { show_autosnippets = true }
-    },
+    -- {
+    --   name = 'luasnip',
+    --   -- https://github.com/saadparwaiz1/cmp_luasnip
+    --   option = { show_autosnippets = false, use_show_condition = false },
+    -- },
     { name = 'path' }, -- https://github.com/hrsh7th/cmp-path
     {
       name = 'buffer',
@@ -80,7 +80,7 @@ cmp.setup({
     },
     { name = 'emoji' },
     -- { name = 'treesitter' },
-    { name = 'npm', keyword_length = 4 },
+    -- { name = 'npm', keyword_length = 4 },
   }),
 })
 

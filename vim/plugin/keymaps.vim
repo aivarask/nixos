@@ -84,8 +84,8 @@ imap <C-l> <C-o>gc$
 vmap <C-l> gc
 
 " windows/panels/buffers
-map <TAB> :bn<CR>
-map <S-TAB> :bp<CR>
+map <silent> <TAB> :bn<CR>
+map <silent> <S-TAB> :silent bp<CR>
 
 map <C-w>f <C-w>vgf
 map <C-w>d <C-w>vgd

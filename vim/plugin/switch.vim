@@ -23,6 +23,7 @@ let g:switch_custom_definitions =
       \   ['foo', 'bar', 'baz'],
       \   ['Less', 'Greater'],
       \   ['Truthy', 'Falsy'],
+      \   ['export let', 'export const'],
       \   ['const', 'export const'],
       \   ['Int', 'String', 'Boolean'],
       \   {

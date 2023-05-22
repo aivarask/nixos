@@ -15,7 +15,16 @@ pretty = require('pl.pretty')
 root_pattern = require('lspconfig.util').root_pattern
 capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
-on_attach = function(_, bufnr)
+on_attach = function(client, bufnr)
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { '*.js', '*.ts' },
+    callback = function(ctx)
+      print('Happened')
+      if client.name == 'svelte' then
+        client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
+      end
+    end,
+  })
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('i', '<F2>', vim.lsp.buf.hover, bufopts)
