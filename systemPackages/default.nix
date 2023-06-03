@@ -125,7 +125,7 @@
     nssTools
     odt2txt
     ookla-speedtest
-    openssl
+    # openssl
     pango
     pass
     patchelf
