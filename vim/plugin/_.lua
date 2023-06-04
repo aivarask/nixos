@@ -27,9 +27,9 @@ on_attach = function(client, bufnr)
   })
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('i', '<F2>', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set({ 'i', 'n' }, '<F2>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '?', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('i', '<F3>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set({ 'i', 'n' }, '<F3>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set({ 'n', 'v' }, ']f', vim.lsp.buf.code_action, bufopts)
 end
 flags = { debounce_text_changes = 150 }

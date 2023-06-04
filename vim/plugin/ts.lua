@@ -25,9 +25,12 @@ require('nvim-treesitter.configs').setup({
       enable = true,
       swap_next = {
         ['<leader>a'] = '@parameter.inner',
+        -- TODO: svelte textobjects
+        ['<leader>>'] = '@element.inner',
       },
       swap_previous = {
         ['<leader>A'] = '@parameter.inner',
+        ['<leader><'] = '@element.inner',
       },
     },
     move = {

@@ -6,17 +6,17 @@ if !has ('nvim')
 endif
 
 " https://github.com/junegunn/fzf.vim#commands
-nnoremap <leader><leader>m :Maps<CR>
-nnoremap <leader><leader>f :Files<CR>
-nnoremap <leader><leader>c :Commands<CR>
-nnoremap <leader><leader>F :FZF<CR>
-nnoremap <leader><leader>g :Rg<CR>
-nnoremap <leader><leader>G :Rg <C-r><C-w><CR>
-nnoremap <leader><leader>o :SymbolsOutline<CR>
-nnoremap <leader><leader>h :Helptags<CR>
-nnoremap <leader><leader>b :Buffers<CR>
-nnoremap <leader><leader>: :History:<CR>
 nnoremap <leader><leader>/ :History/<CR>
+nnoremap <leader><leader>: :History:<CR>
+nnoremap <leader><leader>F :FZF<CR>
+nnoremap <leader><leader>G :Rg <C-r><C-w><CR>
+nnoremap <leader><leader>a :call tj#save_and_exec()<CR>
+nnoremap <leader><leader>b :Buffers<CR>
+nnoremap <leader><leader>c :Commands<CR>
+nnoremap <leader><leader>f :Files<CR>
+nnoremap <leader><leader>g :Rg<CR>
+nnoremap <leader><leader>h :Helptags<CR>
+nnoremap <leader><leader>m :Maps<CR>
 
 " digraph
 inoremap <C-z> <C-k>
@@ -60,7 +60,6 @@ nnoremap <leader>lw :LfWorkingDirectory<CR>
 nnoremap <leader>lt :LfNewTab<CR>
 
 " various
-nnoremap <leader><leader>x :call tj#save_and_exec()<CR>
 nnoremap <leader>q :quitall<CR>
 map tq :call ak#toggle_quickfix()<cr>
 
