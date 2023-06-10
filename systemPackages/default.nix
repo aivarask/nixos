@@ -18,6 +18,9 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    scrot
+    xorg.xwd
+    CuboCore.coreshot
     usbutils
     powertop
     powerstat

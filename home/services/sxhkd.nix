@@ -19,6 +19,8 @@ _: {
       "super + ctrl + F3" = "xdg-open https://emojifinder.com/";
       "super + F6" = "xset r rate 200 50";
       "super + F7" = "kill -SIGUSR1 $(pidof sxhkd) && dunstify '♻️  sxhkd reloaded'";
+      "super + F8" = "scrot";
+
       "super + XF86Audio{Lower,Raise}Volume" = "mpc {prev,next}";
       "super + XF86Mail" = "telegram-desktop";
       "super + y" = "youtube-watch";
