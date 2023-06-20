@@ -2,10 +2,11 @@
   config,
   lib,
   modulesPath,
-  pkgs,
   ...
 }: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
@@ -14,8 +15,8 @@
       "xhci_pci"
       "ahci"
       "usbhid"
-      "usb_storage" # added ssd
-      "sd_mod" # ?
+      "usb_storage"
+      "sd_mod"
     ];
     initrd.kernelModules = [];
     kernelModules = ["kvm-amd"];
@@ -34,13 +35,14 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/32F7-914D";
+      device = "/dev/disk/by-uuid/28F4-CFD7";
       fsType = "vfat";
     };
   };
 
   swapDevices = [];
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -12,7 +12,7 @@ set -euo pipefail
 # enable_network 0
 
 # Connect remote host over SSH
-# rsync -r /etc/nixos/ ${HOST}:/root/nixos --delete --progress
+# rsync -r /etc/nixos/ ${HOST}:/root --delete --progress
 # export HOST=...
 # export DISK=/dev/disk/by-id/...
 
@@ -20,7 +20,7 @@ set -euo pipefail
 # umount -a 2> /dev/null
 # zpool destroy zroot
 
-if [ -z "$DISK" ] || [ -z "$HOST" ]; then
+if [ "$DISK" = "" ] || [ "$HOST" = "" ]; then
   echo "DISK or HOST variables are empty"
   exit 1
 fi
@@ -58,7 +58,7 @@ mount "$DISK"-part3 /mnt/boot
 
 mkdir /mnt/etc/nixos -p
 cp . /mnt/etc/nixos -r
-# nixos-generate-config --root /mnt --show-hardware-config >/mnt/etc/nixos/hosts/"$HOST"-hardware.nix
-#nixos-generate-config --root /mnt --force
+# nixos-generate-config --root /mnt --force
 
-# nix-shell -p git nixFlakes --run "nixos-install --root /mnt --flake /mnt/etc/nixos#${HOST}"
+nixos-generate-config --root /mnt --show-hardware-config
+echo "!!!DONT FORGET TO CHANGE /boot device /dev/disk/by-uuid"
