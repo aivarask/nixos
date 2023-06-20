@@ -23,7 +23,7 @@ dwm-status ~/.dwm-status.toml &
 # xcompmgr &
 sxhkd &
 imwheel -b 45 &
-DISPLAY=:0 feh --bg-fill --randomize ~/.wallpaper/super/*
+DISPLAY=:0 feh --bg-fill --randomize ~/.wallpaper/*
 
 XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 # wetty -b / -p 9999 &
