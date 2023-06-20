@@ -16,5 +16,13 @@
   "pre-json-stringify": {
     "prefix": ["pre"],
     "body": ["<pre class=\"text-xs\">{JSON.stringify(${1} , null, 2)}</pre>"]
+  },
+    "s-key": {
+    "prefix": ["key","s-key"],
+    "body": [
+      "{#key ${1}}",
+      "\t${0}",
+      "{/key}"
+    ]
   }
 }
