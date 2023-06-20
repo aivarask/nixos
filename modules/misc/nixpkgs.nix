@@ -24,5 +24,6 @@
       "steam-runtime"
       "steamcmd"
       "ookla-speedtest"
+      "vscode"
     ];
 }

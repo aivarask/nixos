@@ -31,7 +31,8 @@
       url = "github:trapd00r/LS_COLORS";
       flake = false;
     };
-    vim.url = "path:./vim";
+    # vim.url = "path:./vim";
+    vim.url = "gitlab:aivarask/vim";
   };
   outputs = {
     nixpkgs,
