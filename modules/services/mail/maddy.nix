@@ -5,15 +5,25 @@
     primaryDomain = "localhost";
     ensureAccounts = [
       "test@localhost"
-      "postmaster@example.org"
-      "test@localhost"
     ];
     ensureCredentials = {
-      # Do not use this in production. This will make passwords world-readable
-      # in the Nix store
-      "user1@example.org".passwordFile = "${pkgs.writeText "postmaster" "test"}";
-      "postmaster@example.org".passwordFile = "${pkgs.writeText "postmaster" "test"}";
       "test@localhost".passwordFile = "${pkgs.writeText "postmaster" "test"}";
     };
   };
+  # https://nixos.wiki/wiki/Maddy#Autoconfig
+  # services.go-autoconfig = {
+  #   enable = true;
+  #   settings = {
+  #     service_addr = ":1323";
+  #     domain = "autoconfig.example.org";
+  #     imap = {
+  #       server = "example.org";
+  #       port = 993;
+  #     };
+  #     smtp = {
+  #       server = "example.org";
+  #       port = 587;
+  #     };
+  #   };
+  # };
 }

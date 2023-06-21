@@ -29,8 +29,15 @@ on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set({ 'i', 'n' }, '<F2>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '?', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set({ 'i', 'n' }, '<F3>', vim.lsp.buf.signature_help, bufopts)
+  -- vim.keymap.set({ 'i', 'n' }, '<F3>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set({ 'i', 'n' }, '<F3>', require('lsp_signature').toggle_float_win, bufopts)
   vim.keymap.set({ 'n', 'v' }, ']f', vim.lsp.buf.code_action, bufopts)
+
+  -- https://github.com/ray-x/lsp_signature.nvim
+  require('lsp_signature').on_attach({
+    hint_prefix = '🚀 ',
+    floating_window_off_y = -1,
+  }, bufnr)
 end
 flags = { debounce_text_changes = 150 }
 

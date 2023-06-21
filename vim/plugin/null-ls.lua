@@ -29,7 +29,7 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier_d_slim.with({
       extra_filetypes = { 'svelte' },
     }),
-    null_ls.builtins.formatting.prismaFmt,
+    -- null_ls.builtins.formatting.prismaFmt,
     null_ls.builtins.formatting.shfmt.with({
       filetypes = { 'sh', 'zsh' },
       command = 'shfmt',

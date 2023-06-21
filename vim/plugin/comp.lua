@@ -79,6 +79,8 @@ cmp.setup({
       },
     },
     { name = 'emoji' },
+    -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
+    { name = 'nvim_lsp_signature_help' },
     -- { name = 'treesitter' },
     -- { name = 'npm', keyword_length = 4 },
   }),

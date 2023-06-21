@@ -68,6 +68,7 @@
     indent-blankline-nvim
 
     # LSP:
+    lsp_signature-nvim
     nvim-lsp-file-operations
     nvim-lspconfig
     null-ls-nvim
@@ -83,6 +84,7 @@
     neotest-playwright
     # COMPLETION:
     # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+    cmp-nvim-lsp-signature-help
     nvim-cmp
     cmp-cmdline
     cmp-nvim-lsp
