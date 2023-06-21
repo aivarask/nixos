@@ -57,8 +57,8 @@ mkdir /mnt/boot
 mount "$DISK"-part3 /mnt/boot
 
 mkdir /mnt/etc/nixos -p
-cp . /mnt/etc/nixos -r
-# nixos-generate-config --root /mnt --force
+nixos-generate-config --root /mnt --force
 
-nixos-generate-config --root /mnt --show-hardware-config
-echo "!!!DONT FORGET TO CHANGE /boot device /dev/disk/by-uuid"
+# cp . /mnt/etc/nixos -r
+# nixos-generate-config --root /mnt --show-hardware-config
+# echo "!!!DONT FORGET TO CHANGE /boot device /dev/disk/by-uuid"
