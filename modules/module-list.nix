@@ -31,6 +31,7 @@
   ./services/desktops/pipewire/pipewire.nix
   ./services/desktops/pipewire/wireplumber.nix
   ./services/hardware/udev.nix
+  ./services/mail/maddy.nix
   ./services/misc/gitolite.nix
   ./services/misc/nix-daemon.nix
   ./services/misc/nix-gc.nix
