@@ -1,0 +1,45 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "@ajmnz/prisma-language-server": {
+      "version": "4.16.0",
+      "overridden": false
+    },
+    "@inlang/cli": {
+      "version": "0.11.1",
+      "overridden": false
+    },
+    "@tailwindcss/language-server": {
+      "version": "0.0.13",
+      "overridden": false
+    },
+    "c8": {
+      "version": "7.14.0",
+      "overridden": false
+    },
+    "chokidar-cli": {
+      "version": "3.0.0",
+      "overridden": false
+    },
+    "cssmodules-language-server": {
+      "version": "1.2.1",
+      "overridden": false
+    },
+    "dotenv-cli": {
+      "version": "7.2.1",
+      "overridden": false
+    },
+    "emmet-ls": {
+      "version": "0.4.2",
+      "overridden": false
+    },
+    "prisma-import": {
+      "version": "1.0.4",
+      "overridden": false
+    },
+    "stylelint-lsp": {
+      "version": "1.2.4",
+      "overridden": false
+    }
+  }
+}
