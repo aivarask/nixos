@@ -1275,11 +1275,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1687375119,
-        "narHash": "sha256-3uvoNHikVVm0J2Jil0ESzpLfdoi1JIAXEH5LvbQIcdw=",
+        "lastModified": 1687376576,
+        "narHash": "sha256-M3+xsk4iu4gg/bT1uZicdHu19HiV/qAShFxqjS2KVPU=",
         "owner": "aivarask",
         "repo": "vim",
-        "rev": "0017df350ca2a5b0f8d5cb2a2ebe1a72bdc49200",
+        "rev": "a35827e7a27d165265f0c3c055c20c6b55cf1bae",
         "type": "gitlab"
       },
       "original": {
