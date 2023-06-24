@@ -8,6 +8,7 @@ local matchers = {
   'which%-key%-nvim',
   'auto%-session',
   'lsp_signature.nvim',
+  'lsp%-overloads',
   'nvim%-cmp',
   'neotest$',
   'neotest%-plenary$',

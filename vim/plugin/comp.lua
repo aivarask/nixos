@@ -23,10 +23,20 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.None,
   mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping(cmp.mapping.abort(), { 'i', 'c' }),
+
+    ['<F4>'] = cmp.mapping.complete({
+      config = {
+        sources = {
+          { name = 'luasnip' },
+        },
+      },
+    }),
     ['<C-b>'] = cmp.mapping.complete({
       config = {
         sources = {
@@ -34,6 +44,13 @@ cmp.setup({
         },
       },
     }),
+    ['<F5>'] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
+      { 'i', 'c' }
+    ),
     ['<CR>'] = cmp.mapping(
       cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
@@ -80,7 +97,7 @@ cmp.setup({
     },
     { name = 'emoji' },
     -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
-    { name = 'nvim_lsp_signature_help' },
+    -- { name = 'nvim_lsp_signature_help' },
     -- { name = 'treesitter' },
     -- { name = 'npm', keyword_length = 4 },
   }),

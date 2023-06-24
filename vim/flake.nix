@@ -10,6 +10,10 @@
       url = "github:anuvyklack/pretty-fold.nvim";
       flake = false;
     };
+    fold-preview = {
+      url = "github:anuvyklack/fold-preview.nvim";
+      flake = false;
+    };
     # NEOTEST
     neotest-vim-test = {
       url = "github:nvim-neotest/neotest-vim-test";
@@ -104,6 +108,10 @@
           pretty-fold = buildVimPluginFrom2Nix {
             name = "pretty-fold";
             src = inputs.pretty-fold;
+          };
+          fold-preview = buildVimPluginFrom2Nix {
+            name = "fold-preview";
+            src = inputs.fold-preview;
           };
           neotest = buildVimPluginFrom2Nix {
             name = "neotest";

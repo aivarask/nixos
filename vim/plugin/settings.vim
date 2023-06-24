@@ -1,10 +1,9 @@
 set timeout
 set timeoutlen=200
+set foldlevel=3
+set foldnestmax=5
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable
-" set foldlevel=2
-" set foldnestmax=10
 set smartindent
 set title titlelen=70
 set titlestring=%{getcwd()}

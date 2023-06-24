@@ -14,6 +14,8 @@ nnoremap <leader><leader>a :call tj#save_and_exec()<CR>
 nnoremap <leader><leader>b :Buffers<CR>
 nnoremap <leader><leader>c :Commands<CR>
 nnoremap <leader><leader>f :Files<CR>
+nnoremap <leader><leader>r :Files src/routes<CR>
+nnoremap <leader><leader>l :Files src/lib<CR>
 nnoremap <leader><leader>g :Rg<CR>
 nnoremap <leader><leader>h :Helptags<CR>
 nnoremap <leader><leader>m :Maps<CR>

@@ -24,11 +24,13 @@ null_ls.setup({
     -- null_ls.builtins.formatting.nixpkgs_fmt,
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.fixjson,
-    null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.prettier_d_slim.with({
-      extra_filetypes = { 'svelte' },
+    null_ls.builtins.formatting.fixjson.with({
+      filetypes = { 'json', 'jsonc' },
     }),
+    null_ls.builtins.formatting.autopep8,
+    -- null_ls.builtins.formatting.prettier_d_slim.with({
+    --   extra_filetypes = { 'svelte' },
+    -- }),
     -- null_ls.builtins.formatting.prismaFmt,
     null_ls.builtins.formatting.shfmt.with({
       filetypes = { 'sh', 'zsh' },

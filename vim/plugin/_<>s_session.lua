@@ -37,10 +37,10 @@ vim.api.nvim_create_autocmd({ 'User' }, {
     -- else
     --   print('not')
     -- end
-    if vim.loop.cwd() == '/root/fixpart' then
-      neotest.summary.open()
-      neotest.summary:expand(vim.loop.cwd(), true)
-    end
+    -- if vim.loop.cwd() == '/root/fixpart' then
+    --   neotest.summary.open()
+    --   neotest.summary:expand(vim.loop.cwd(), true)
+    -- end
     -- pretty(neotest.summary)
   end,
 })

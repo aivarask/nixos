@@ -1,6 +1,13 @@
 -- https://github.com/anuvyklack/pretty-fold.nvim
 require('pretty-fold').setup()
 
+-- https://github.com/anuvyklack/fold-preview.nvim
+local fp = require('fold-preview')
+fp.setup({
+  auto = false,
+  default_keybindings = false,
+})
+
 -- https://github.com/akinsho/toggleterm.nvim#setup
 require('toggleterm').setup({
   shade_terminals = false,

@@ -40,7 +40,8 @@
       typescript
       typescript-language-server
       vim-language-server
-      # vscode-langservers-extracted
+      vscode-langservers-extracted
+      # vscode-css-languageserver-bin
       yaml-language-server
       write-good
       ts-node

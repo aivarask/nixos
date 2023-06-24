@@ -49,14 +49,30 @@
         "type": "github"
       }
     },
+    "fold-preview": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1674838720,
+        "narHash": "sha256-FLzZGbbeUk3354Q8vbFonw57f6GbSDisRs43djTjX8I=",
+        "owner": "anuvyklack",
+        "repo": "fold-preview.nvim",
+        "rev": "b7920cb0aba2b48a6b679bff45f98c3ebc0f0b89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anuvyklack",
+        "repo": "fold-preview.nvim",
+        "type": "github"
+      }
+    },
     "neodev-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1687241156,
-        "narHash": "sha256-1ZPXEqCdvpXphrkDV+264LkDIvhmq+pRw+bua1ualQI=",
+        "lastModified": 1687500395,
+        "narHash": "sha256-N+NbRASk9prPLyHvd99CBzetkbQuuY3PCo0p/RYt9JQ=",
         "owner": "folke",
         "repo": "neodev.nvim",
-        "rev": "78f1c370173e7689bd58d64229b4d92c5dfb2793",
+        "rev": "412776d881d7aa2bedbe8a2572e700f740440cad",
         "type": "github"
       },
       "original": {
@@ -132,11 +148,11 @@
     "neotest-vitest": {
       "flake": false,
       "locked": {
-        "lastModified": 1681675334,
-        "narHash": "sha256-UGWAsY9Q/3jRh3VZwqV1DzP3+AGy7ECyBMySLF54cCU=",
+        "lastModified": 1687524495,
+        "narHash": "sha256-OJP1PrZIrb7l/86mRTd/O/HKZYx+etu6cNIzBCuA5i8=",
         "owner": "marilari88",
         "repo": "neotest-vitest",
-        "rev": "f9efe9524ccba1284d5f4e41d0dc6ff91951cfcc",
+        "rev": "41bf2f6b743f2ac5c5e9bd0949cee77ca7f2372c",
         "type": "github"
       },
       "original": {
@@ -226,11 +242,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1687249304,
-        "narHash": "sha256-3KRxf0ukEY0gsYvPoqZk9IoCq+Cwr5pmvhbtTbGj3Qs=",
+        "lastModified": 1687509658,
+        "narHash": "sha256-t3b57T/Pc0F+rLe954gNk7cfi0L76eTrDOfiNCt14Yo=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "a51892484c2002c083a8b0a9dfcefb3a569be36d",
+        "rev": "b6b34b9acf84949f0ac1c00747765e62b81fb38d",
         "type": "github"
       },
       "original": {
@@ -323,6 +339,7 @@
       "inputs": {
         "emmet-ls": "emmet-ls",
         "flake-utils": "flake-utils",
+        "fold-preview": "fold-preview",
         "neodev-nvim": "neodev-nvim",
         "neotest": "neotest",
         "neotest-playwright": "neotest-playwright",

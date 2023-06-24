@@ -19,25 +19,43 @@ on_attach = function(client, bufnr)
   vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = { '*.js', '*.ts' },
     callback = function(ctx)
-      print('Happened')
+      print('plugin/_.lua svelte lsp $/onDidChangeTsOrJsFile')
       if client.name == 'svelte' then
         client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
       end
     end,
   })
+
+  -- https://github.com/Issafalcon/lsp-overloads.nvim
+  -- if client.server_capabilities.signatureHelpProvider then
+  --   require('lsp-overloads').setup(client, {
+  --     keymaps = {
+  --       next_signature = '<F7>',
+  --       previous_signature = '<F6>',
+  --       next_parameter = '<C-l>',
+  --       previous_parameter = '<C-h>',
+  --       close_signature = '<A-s>',
+  --     },
+  --   })
+  -- end
+
+  -- https://github.com/ray-x/lsp_signature.nvim
+  local lsp_signature = require('lsp_signature')
+  lsp_signature.on_attach({
+    hint_enable = true,
+    hint_prefix = '🚀 ',
+    floating_window = false,
+    -- floating_window_off_y = -1,
+    -- floating_window_above_cur_line = false,
+    close_timeout = 1000,
+  }, bufnr)
+
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set({ 'i', 'n' }, '<F2>', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '?', vim.lsp.buf.signature_help, bufopts)
-  -- vim.keymap.set({ 'i', 'n' }, '<F3>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set({ 'i', 'n' }, '<F3>', require('lsp_signature').toggle_float_win, bufopts)
+  vim.keymap.set('n', '?', require('fold-preview').toggle_preview, bufopts)
+  vim.keymap.set({ 'i', 'n' }, '<F3>', lsp_signature.toggle_float_win, bufopts)
   vim.keymap.set({ 'n', 'v' }, ']f', vim.lsp.buf.code_action, bufopts)
-
-  -- https://github.com/ray-x/lsp_signature.nvim
-  require('lsp_signature').on_attach({
-    hint_prefix = '🚀 ',
-    floating_window_off_y = -1,
-  }, bufnr)
 end
 flags = { debounce_text_changes = 150 }
 
@@ -52,8 +70,6 @@ function GoGithub()
   word = word:gsub(';', '')
   vim.cmd('!xdg-open ' .. word)
 end
-
-person = { nam = 'Alice' }
 
 local complete_snippets = function()
   require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })

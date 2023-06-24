@@ -40,13 +40,13 @@
   "kit-actions": {
     "prefix": ["kit-actions"],
     "body": [
-      "export const actions: Actions = {",
+      "export const actions = {",
       "\t${1:default}: async (event) => {",
       "\t\t${2:const fd = await event.request.formData();}",
       "\t\treturn {};",
       "\t}",
       "\t${0}",
-      "};"
+      "} satisfies Actions"
     ]
   },
   "kit-action": {

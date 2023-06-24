@@ -69,6 +69,7 @@
 
     # LSP:
     lsp_signature-nvim
+    lsp-overloads-nvim
     nvim-lsp-file-operations
     nvim-lspconfig
     null-ls-nvim
@@ -108,6 +109,7 @@
     typescript-nvim
     lazygit-nvim
     pretty-fold
+    fold-preview
 
     # UI/UX:
     # auto-session

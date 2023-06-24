@@ -1,28 +1,62 @@
 {
   "script-typescript": {
-    "prefix": ["script-typescript"],
-    "body": ["<script lang=\"ts\">", "\t${0}", "</script>"]
+    "prefix": [
+      "script-typescript"
+    ],
+    "body": [
+      "<script lang=\"ts\">",
+      "\t${0}",
+      "</script>"
+    ]
   },
   "script-typescript-module": {
-    "prefix": ["script-typescript-module"],
-    "body": ["<script lang=\"ts\" context=\"module\">", "\t${0}", "</script>"]
+    "prefix": [
+      "script-typescript-module"
+    ],
+    "body": [
+      "<script lang=\"ts\" context=\"module\">",
+      "\t${0}",
+      "</script>"
+    ]
   },
   "s-input": {
-    "prefix": ["input", "s-input"],
+    "prefix": [
+      "input",
+      "s-input"
+    ],
     "body": [
       "<input value={${2}${1}} name=\"${1}\" id=\"${1}\" data-testid=\"${1}\"/>"
     ]
   },
   "pre-json-stringify": {
-    "prefix": ["pre"],
-    "body": ["<pre class=\"text-xs\">{JSON.stringify(${1} , null, 2)}</pre>"]
+    "prefix": [
+      "pre"
+    ],
+    "body": [
+      "<pre class=\"text-xs\">{JSON.stringify(${1} , null, 2)}</pre>"
+    ]
   },
-    "s-key": {
-    "prefix": ["key","s-key"],
+  "s-key": {
+    "prefix": [
+      "key",
+      "s-key"
+    ],
     "body": [
       "{#key ${1}}",
       "\t${0}",
       "{/key}"
+    ]
+  },
+  "s-style-postcss": {
+    "prefix": [
+      "s-style-postcss",
+      "s-postcss",
+      "postcss"
+    ],
+    "body": [
+      "<style lang=\"postcss\">",
+      "\t${0}",
+      "</style>"
     ]
   }
 }
