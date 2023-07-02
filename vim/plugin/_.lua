@@ -7,42 +7,59 @@ widgets = require('dap.ui.widgets')
 osv = require('osv')
 pretty = require('pl.pretty')
 
--- https://github.com/willothy/flatten.nvim
--- require('flatten').setup({
---   nest_if_no_args = true,
--- })
-
 root_pattern = require('lspconfig.util').root_pattern
 capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '.env*',
+  callback = function()
+    vim.diagnostic.disable()
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Format before write',
+  group = vim.api.nvim_create_augroup('format', { clear = true }),
+  callback = function(opts)
+    local buf_filetype = vim.bo[opts.buf].filetype
+    local t = {
+      svelte = 'svelte',
+      prisma = 'prismals',
+    }
+    for filetype, client_name in pairs(t) do
+      if buf_filetype == filetype then
+        vim.lsp.buf.format({
+          filter = function(client)
+            return client.name == client_name
+          end,
+        })
+        return
+      end
+    end
+    vim.lsp.buf.format({
+      filter = function(client)
+        return client.name == 'null-ls'
+      end,
+    })
+  end,
+})
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 on_attach = function(client, bufnr)
-  vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = { '*.js', '*.ts' },
-    callback = function(ctx)
-      print('plugin/_.lua svelte lsp $/onDidChangeTsOrJsFile')
-      if client.name == 'svelte' then
-        client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
-      end
-    end,
-  })
-
-  -- https://github.com/Issafalcon/lsp-overloads.nvim
-  -- if client.server_capabilities.signatureHelpProvider then
-  --   require('lsp-overloads').setup(client, {
-  --     keymaps = {
-  --       next_signature = '<F7>',
-  --       previous_signature = '<F6>',
-  --       next_parameter = '<C-l>',
-  --       previous_parameter = '<C-h>',
-  --       close_signature = '<A-s>',
-  --     },
-  --   })
-  -- end
+  -- vim.api.nvim_create_autocmd('BufWritePost', {
+  --   group = vim.api.nvim_create_augroup('inform', { clear = true }),
+  --   pattern = { '*.js', '*.ts' },
+  --   callback = function(ctx)
+  --     if client.name == 'svelte' then
+  --       print('svelte client $/onDidChangeTsOrJsFile')
+  --       client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
+  --     end
+  --   end,
+  -- })
 
   -- https://github.com/ray-x/lsp_signature.nvim
   local lsp_signature = require('lsp_signature')
   lsp_signature.on_attach({
-    hint_enable = true,
+    hint_enable = false,
     hint_prefix = '🚀 ',
     floating_window = false,
     -- floating_window_off_y = -1,
@@ -55,7 +72,7 @@ on_attach = function(client, bufnr)
   vim.keymap.set({ 'i', 'n' }, '<F2>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '?', require('fold-preview').toggle_preview, bufopts)
   vim.keymap.set({ 'i', 'n' }, '<F3>', lsp_signature.toggle_float_win, bufopts)
-  vim.keymap.set({ 'n', 'v' }, ']f', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, bufopts)
 end
 flags = { debounce_text_changes = 150 }
 

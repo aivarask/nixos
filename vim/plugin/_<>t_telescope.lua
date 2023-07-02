@@ -13,12 +13,6 @@ require('telescope').load_extension('dap')
 
 wkr({
   name = 'Telescope',
-  s = {
-    function()
-      require('telescope.builtin').find_files({ cwd = '/root' })
-    end,
-    'find_files sessions-manager',
-  },
   x = {
     function()
       require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim/plugin' })
@@ -39,3 +33,4 @@ wkr({
     x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
   },
 }, { prefix = '<leader>t' })
+

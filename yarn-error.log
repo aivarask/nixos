@@ -1,0 +1,78 @@
+Arguments: 
+  /nix/store/p0f8i04zwf1dd66n2qkazk5x0fbsy7mp-nodejs-18.16.1/bin/node /run/current-system/sw/bin/yarn info neovim --json
+
+PATH: 
+  /run/wrappers/bin:/etc/nixos/bin:/root/.pnpm-global:/root/.node_modules/bin:/root/.config/composer/vendor/bin:/root/.nix-profile/bin:/etc/profiles/per-user/root/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/root/.zsh/plugins/zsh-completions:/root/.zsh/plugins/zsh-nix-shell:/root/.zsh/plugins/zsh-forgit:/nix/store/g5xa7bj47n4g8721ik1ryzppqz7asw3r-neovim-ruby-env/bin:/nix/store/p0f8i04zwf1dd66n2qkazk5x0fbsy7mp-nodejs-18.16.1/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received [Object: null prototype]
+      at new NodeError (node:internal/errors:399:5)
+      at validateString (node:internal/validators:163:11)
+      at Object.isAbsolute (node:path:1157:5)
+      at module.exports.exports.default (/nix/store/blxbc0yv1qm3zfyjm4cpsnkay9lw4mhb-yarn-1.22.19/libexec/yarn/lib/cli.js:97087:16)
+      at /nix/store/blxbc0yv1qm3zfyjm4cpsnkay9lw4mhb-yarn-1.22.19/libexec/yarn/lib/cli.js:51330:63
+      at Generator.next (<anonymous>)
+      at step (/nix/store/blxbc0yv1qm3zfyjm4cpsnkay9lw4mhb-yarn-1.22.19/libexec/yarn/lib/cli.js:310:30)
+      at /nix/store/blxbc0yv1qm3zfyjm4cpsnkay9lw4mhb-yarn-1.22.19/libexec/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "lib",
+    "dependencies": {
+      "@ajmnz/prisma-language-server": {
+        "version": "4.16.0",
+        "overridden": false
+      },
+      "@inlang/cli": {
+        "version": "0.11.1",
+        "overridden": false
+      },
+      "@tailwindcss/language-server": {
+        "version": "0.0.13",
+        "overridden": false
+      },
+      "c8": {
+        "version": "7.14.0",
+        "overridden": false
+      },
+      "chokidar-cli": {
+        "version": "3.0.0",
+        "overridden": false
+      },
+      "cssmodules-language-server": {
+        "version": "1.2.1",
+        "overridden": false
+      },
+      "dotenv-cli": {
+        "version": "7.2.1",
+        "overridden": false
+      },
+      "emmet-ls": {
+        "version": "0.4.2",
+        "overridden": false
+      },
+      "prisma-import": {
+        "version": "1.0.4",
+        "overridden": false
+      },
+      "stylelint-lsp": {
+        "version": "1.2.4",
+        "overridden": false
+      }
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

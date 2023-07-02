@@ -43,11 +43,16 @@ https://www.prisma.io/docs/concepts/components/prisma-schema
 https://www.prisma.io/docs/concepts/components/prisma-client
 
 # Front
-https://svelte.dev/doc
+https://svelte.dev/docs/introduction
 https://flowbite-svelte.com/
 https://www.skeleton.dev/
 https://tailwindcss.com/docs/customizing-colors
 https://www.toptal.com/designers/htmlarrows/punctuation/
+
+#Svelte
+https://github.com/ciscoheat/sveltekit-flash-message
+https://github.com/kbrgl/svelte-french-toast
+https://superforms-web.vercel.app/
 
 # Nix
 https://mynixos.com/

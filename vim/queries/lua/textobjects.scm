@@ -1,0 +1,3 @@
+; extends
+
+(field) @attribute.outer

@@ -207,7 +207,7 @@
         "browser.urlbar.suggest.history" = true;
         "browser.urlbar.suggest.openpage" = false;
         "browser.urlbar.suggest.topsites" = false;
-        "devtools.cache.disabled" = true;
+        "devtools.cache.disabled" = false;
         "devtools.editor.keymap" = "vim";
         "devtools.responsive.html.displayedDeviceList" = {
           added = ["iPhone 6/7/8" "1080p Full HD Television (Custom)" "Fixasparts"];

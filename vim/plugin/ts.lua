@@ -9,10 +9,12 @@ require('nvim-treesitter.configs').setup({
       enable = true,
       lookahead = true,
       keymaps = {
+        ['ax'] = '@attribute.outer',
+        ['aX'] = '@block.outer',
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
         ['ac'] = '@class.outer',
-        ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
+        ['ic'] = '@class.inner',
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
@@ -24,44 +26,35 @@ require('nvim-treesitter.configs').setup({
     swap = {
       enable = true,
       swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-        -- TODO: svelte textobjects
-        ['<leader>>'] = '@element.inner',
+        ['>x'] = '@attribute.outer',
+        ['>X'] = '@block.outer',
+        ['>p'] = '@parameter.inner',
+        ['>c'] = '@class.outer',
+        ['>f'] = '@function.outer',
       },
       swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-        ['<leader><'] = '@element.inner',
+        ['<x'] = '@attribute.outer',
+        ['<X'] = '@block.outer',
+        ['<p'] = '@parameter.inner',
+        ['<c'] = '@class.outer',
+        ['<f'] = '@function.outer',
       },
     },
     move = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects#text-objects-move
       enable = true,
       set_jumps = true,
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = { query = '@class.outer' },
-        [']o'] = '@loop.*',
-        [']s'] = { query = '@scope', query_group = 'locals' },
-        [']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+        [']x'] = '@attribute.outer',
+        [']X'] = '@block.outer',
+        [']c'] = '@class.outer',
+        [']f'] = '@function.outer',
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-        ['[o'] = '@loop.*',
-        ['[z'] = { query = '@fold', query_group = 'folds', desc = 'Previous fold' },
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-      goto_next = {
-        [']c'] = '@conditional.outer',
-      },
-      goto_previous = {
-        ['[c'] = '@conditional.outer',
+        ['[x'] = '@attribute.outer',
+        ['[X'] = '@block.outer',
+        ['[c'] = '@class.outer',
+        ['[f'] = '@function.outer',
       },
     },
   },

@@ -1,6 +1,6 @@
 _: {
   services.transmission = {
-    enable = true;
+    enable = false;
     settings = {
       watch-dir = "/var/lib/transmission/watch-dir";
       watch-dir-enabled = true;
