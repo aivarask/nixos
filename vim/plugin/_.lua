@@ -23,8 +23,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(opts)
     local buf_filetype = vim.bo[opts.buf].filetype
     local t = {
-      svelte = 'svelte',
+      -- svelte = 'svelte',
       prisma = 'prismals',
+      -- typescript = 'tsserver',
     }
     for filetype, client_name in pairs(t) do
       if buf_filetype == filetype then

@@ -1,0 +1,6 @@
+{
+  "form": {
+    "prefix": ["form"],
+    "body": ["<form method=\"post\" ${1:use:enhace}>", "\t${0}", "</form>"]
+  }
+}

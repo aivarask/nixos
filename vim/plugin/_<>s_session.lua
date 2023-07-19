@@ -49,6 +49,6 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   pattern = 'SessionSavePost',
   group = config_group,
   callback = function()
-    print('User autocmd')
+    print('User autocmd pattern SessionSavePost')
   end,
 })

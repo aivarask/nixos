@@ -27,7 +27,7 @@
       "}) satisfies LayoutServerLoad;"
     ]
   },
-  "kit-page-server-load": {
+  "kit-page-server-load-satisfies": {
     "prefix": ["kit-page-server-load"],
     "body": [
       "${1:import type { PageServerLoad \\} from './\\$types';}",

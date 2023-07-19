@@ -163,7 +163,8 @@ in {
       ''
     ];
     # extraPackages = with pkgs; [ tree-sitter ];
-    package = pkgs.neovim-nightly;
+    # package = pkgs.neovim;
+    # package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
     viAlias = false;
     vimAlias = false;

@@ -50,6 +50,12 @@ wkr({
   D = { dap.disconnect, 'disconnect' },
   C = { dap.close, 'close' },
   L = { dap.launch, 'launch' },
+  -- L = {
+  --   function()
+  --     require('dap.ext.vscode').load_launchjs('launch.json')
+  --   end,
+  --   'launch.json',
+  -- },
   A = { dap.attach, 'attach' },
   -- dap-widgets
   h = { widgets.hover, 'widgets.hover' },

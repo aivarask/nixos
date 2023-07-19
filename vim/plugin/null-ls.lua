@@ -29,7 +29,7 @@ null_ls.setup({
     }),
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.prettier.with({
-      -- extra_filetypes = { 'svelte' },
+      extra_filetypes = { 'svelte' },
     }),
     -- null_ls.builtins.formatting.prettier_d_slim.with({
     --   extra_filetypes = { 'svelte' },

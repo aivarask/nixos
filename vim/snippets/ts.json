@@ -1,0 +1,12 @@
+{
+  "asaf": {
+    "prefix": ["asaf"],
+    "body": ["async () => {", "\t${0}", "}"],
+    "description": "async arrow function"
+  },
+  "foo": {
+    "prefix": ["foo"],
+    "body": ["foo"],
+    "description": "Foo description in real"
+  }
+}
