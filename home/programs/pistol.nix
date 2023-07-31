@@ -4,8 +4,7 @@ _: {
     associations = [
       {
         mime = "application/json";
-        command = "jq %pistol-filename%";
-        # command = "sh: jq '.' %pistol-filename%";
+        command = "sh: jq '.' %pistol-filename% -C";
       }
       {
         mime = "application/pdf";
@@ -21,7 +20,7 @@ _: {
       }
       {
         mime = "text/html";
-        command = "w3m -T text/html -dump %pistol-filename%";
+        command = "w3m -T text/html -dump_source %pistol-filename%";
       }
       {
         mime = "text/*";

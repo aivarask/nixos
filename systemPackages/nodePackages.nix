@@ -5,11 +5,12 @@
     ]
     ++ (with pkgs.nodePackages_latest; [
       # emmet_ls
-      mermaid-cli
-      gulp
-      npm
+      # pnpm
+      # vercel
+      # vscode-css-languageserver-bin
+      # vscode-langservers-extracted
+      # --
       bash-language-server
-      vercel
       coc-rust-analyzer
       degit
       diagnostic-languageserver
@@ -22,14 +23,14 @@
       js-beautify
       markdownlint-cli
       mermaid-cli
+      mermaid-cli
       node2nix
       nodemon
+      npm
       npm-check-updates
       patch-package
       pm2
-      # pnpm
       prettier
-      prettier_d_slim
       prisma
       serve
       speed-test
@@ -37,13 +38,11 @@
       svelte-check
       svelte-language-server
       tailwindcss
+      ts-node
       typescript
       typescript-language-server
       vim-language-server
-      # vscode-langservers-extracted
-      # vscode-css-languageserver-bin
-      yaml-language-server
       write-good
-      ts-node
+      yaml-language-server
     ]);
 }

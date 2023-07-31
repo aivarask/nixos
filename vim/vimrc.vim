@@ -4,6 +4,7 @@ aug Initial
   au!
   autocmd BufEnter *.postcss setlocal ft=scss
   autocmd BufEnter .env* setlocal ft=sh
+  autocmd BufEnter .yamllint* setlocal ft=yaml
   autocmd BufEnter *.json,flake.lock setlocal ft=jsonc
   autocmd VimResized * wincmd =
   autocmd VimResized * FloatermUpdate

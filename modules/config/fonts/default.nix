@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       hack-font
       # fira-code
       # fira-code-symbols
@@ -35,6 +35,6 @@
       };
     };
 
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
   };
 }

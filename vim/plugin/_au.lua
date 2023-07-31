@@ -7,6 +7,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = 'en.json',
+  pattern = { 'en.json', 'en.yml' },
   command = 'TermExec open=1 cmd="npx @inlang/cli machine translate -f && exit"',
 })

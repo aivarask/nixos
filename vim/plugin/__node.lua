@@ -16,75 +16,85 @@ for _, language in ipairs({ 'typescript', 'javascript' }) do
       cwd = '${workspaceFolder}',
     },
     {
-      -- https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_how-do-i-debug-ecmascript-modules
+      -- https://vitest.dev/guide/debugging.html#debugging
       type = 'pwa-node',
       request = 'launch',
-      name = 'ESM',
-      -- runtimeArgs = { '--experimental-modules' },
-      -- runtimeArgs = { '-r', 'esm' },
-      program = '${file}',
-      cwd = '${workspaceFolder}',
-    },
-    {
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'node -r ts-node/register ${file} (Typescript)',
-      runtimeArgs = { '-r', 'ts-node/register' },
-      program = '${file}',
-      cwd = '${workspaceFolder}',
-    },
-    {
-      -- TODO: Way to launch typescript file
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'node --loader ts-node/esm',
-      -- runtimeExecutable = 'node',
-      runtimeArgs = { '--loader', 'ts-node/esm' },
-      port = 9229,
-      program = '${file}',
-      cwd = '${workspaceFolder}',
-    },
-    {
-      -- TODO: vite
-      type = 'node-terminal',
-      request = 'launch',
-      runtimeExecutable = 'vavite-loader',
-      runtimeArgs = { 'vite', 'dev' },
-      name = '???',
-      rootPath = '${workspaceFolder}',
-      cwd = '${workspaceFolder}',
-      console = 'integratedTerminal',
-    },
-    {
-      -- Launch npm script
-      -- type = 'node-terminal',
-      type = 'pwa-node',
-      request = 'launch',
+      name = 'vavite test:unit',
       runtimeExecutable = 'npm',
-      runtimeArgs = { 'run', 'debug' },
-      name = 'pwa-node launch npm run debug',
-      -- port = 9229,
-      rootPath = '${workspaceFolder}',
-      cwd = '${workspaceFolder}',
-      console = 'integratedTerminal',
-      -- internalConsoleOptions = 'neverOpen',
-    },
-    {
-      -- Launch file
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'pwa-node launch file',
-      program = '${file}',
+      runtimeArgs = { 'run', 'test:unit' },
       cwd = '${workspaceFolder}',
     },
-    {
-      -- Attach to process
-      type = 'pwa-node',
-      request = 'attach',
-      name = 'pwa-node attach',
-      processId = require('dap.utils').pick_process,
-      cwd = '${workspaceFolder}',
-    },
+    -- {
+    --   -- https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_how-do-i-debug-ecmascript-modules
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'ESM',
+    --   -- runtimeArgs = { '--experimental-modules' },
+    --   -- runtimeArgs = { '-r', 'esm' },
+    --   program = '${file}',
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- {
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'node -r ts-node/register ${file} (Typescript)',
+    --   runtimeArgs = { '-r', 'ts-node/register' },
+    --   program = '${file}',
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- {
+    --   -- TODO: Way to launch typescript file
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'node --loader ts-node/esm',
+    --   -- runtimeExecutable = 'node',
+    --   runtimeArgs = { '--loader', 'ts-node/esm' },
+    --   port = 9229,
+    --   program = '${file}',
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- {
+    --   -- TODO: vite
+    --   type = 'node-terminal',
+    --   request = 'launch',
+    --   runtimeExecutable = 'vavite-loader',
+    --   runtimeArgs = { 'vite', 'dev' },
+    --   name = '???',
+    --   rootPath = '${workspaceFolder}',
+    --   cwd = '${workspaceFolder}',
+    --   console = 'integratedTerminal',
+    -- },
+    -- {
+    --   -- Launch npm script
+    --   -- type = 'node-terminal',
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   runtimeExecutable = 'npm',
+    --   runtimeArgs = { 'run', 'debug' },
+    --   name = 'pwa-node launch npm run debug',
+    --   -- port = 9229,
+    --   rootPath = '${workspaceFolder}',
+    --   cwd = '${workspaceFolder}',
+    --   console = 'integratedTerminal',
+    --   -- internalConsoleOptions = 'neverOpen',
+    -- },
+    -- {
+    --   -- Launch file
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'pwa-node launch file',
+    --   program = '${file}',
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- {
+    --   -- Attach to process
+    --   type = 'pwa-node',
+    --   request = 'attach',
+    --   name = 'pwa-node attach',
+    --   processId = require('dap.utils').pick_process,
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- NOTE: OLDER config
     -- {
     --   -- https://vitest.dev/guide/debugging.html#vscode
     --   -- https://github.com/mxsdev/nvim-dap-vscode-js/issues/19

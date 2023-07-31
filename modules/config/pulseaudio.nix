@@ -7,6 +7,7 @@
     extraConfig = ''
       # https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#pulseaudiomodules
       load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1
+      load-module module-combine-sink
     '';
     tcp = {
       enable = true;

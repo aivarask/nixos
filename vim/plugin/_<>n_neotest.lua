@@ -1,25 +1,44 @@
----@diagnostic disable: duplicate-set-field
 local neotest = require('neotest')
 
-local vitestAdapter = require('neotest-vitest')
-vitestAdapter['filter_dir'] = function(name)
-  return (name ~= 'node_modules' and name ~= 'tests' and name ~= '.tests' and name ~= 'coverage')
-end
-vitestAdapter.is_test_file = function(file_path)
-  return file_path:match('test.ts')
-end
+-- https://github.com/thenbe/neotest-playwright
+playwrightAdapter = require('neotest-playwright').adapter({
+  options = {
+    persist_project_selection = false,
+    enable_dynamic_test_discovery = true,
 
-local playwrightAdapter = require('neotest-playwright').adapter({})
-playwrightAdapter.filter_dir = function(name)
-  return (name ~= 'node_modules' and name ~= 'src' and name ~= '.tests')
-end
+    -- preset = 'none', -- "none" | "headed" | "debug"
+    preset = 'none',
+
+    -- get_playwright_binary = function()
+    --    return vim.loop.cwd() + "/node_modules/.bin/playwright"
+    -- end,
+
+    -- get_playwright_config = function()
+    --    return vim.loop.cwd() + "/playwright.config.ts"
+    -- end,
+
+    -- get_cwd = function()
+    --    return vim.loop.cwd()
+    -- end,
+
+    -- env = { },
+
+    -- Extra args to always pass to playwright.
+    -- These are merged with any extra_arg passed
+    -- to neotest's run command.
+    -- extra_args = { },
+
+    filter_dir = function(name, rel_path, root)
+      return (name ~= 'node_modules' and name == 'tests')
+    end,
+  },
+})
+
 playwrightAdapter.is_test_file = function(file_path)
   return file_path:match('spec.ts')
 end
 
-local plenaryAdapter = require('neotest-plenary').setup({
-  min_init = '/etc/nixos/vim/spec/test_init.lua',
-})
+playwrightConsumers = require('neotest-playwright.consumers').consumers
 
 -- https://github.com/nvim-neotest/neotest
 -- https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/config/init.lua#L131
@@ -36,9 +55,14 @@ require('neotest').setup({
     open = false,
   },
   adapters = {
-    vitestAdapter,
-    -- playwrightAdapter,
-    plenaryAdapter,
+    require('neotest-plenary').setup({
+      min_init = '/etc/nixos/vim/spec/test_init.lua',
+    }),
+    playwrightAdapter,
+    -- vitest,
+  },
+  consumers = {
+    playwright = playwrightConsumers,
   },
 })
 
@@ -77,6 +101,15 @@ wkr({
   ['<leader>]'] = { require('neotest').summary.toggle, 'summary.toggle' },
   ['<leader>}'] = { require('neotest').output_panel.toggle, 'output_panel.toggle' },
   ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
+  ['<F7>'] = { neotest.run.dap, 'run.dap' },
+  ['<leader>pa'] = {
+    function()
+      require('neotest').playwright.attachment()
+    end,
+    'Attachment',
+  },
+  ['<leader>pr'] = { [[:NeotestPlaywrightRefresh<CR>]], 'Refresh' },
+  ['<leader>pp'] = { [[:NeotestPlaywrightPreset<CR>]], 'Preset' },
 })
 -- mappings = {
 --   attach = "a",

@@ -87,14 +87,14 @@ cmp.setup({
     --   option = { show_autosnippets = false, use_show_condition = false },
     -- },
     { name = 'path' }, -- https://github.com/hrsh7th/cmp-path
-    {
-      name = 'buffer',
-      option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
-      },
-    },
+    -- {
+    --   name = 'buffer',
+    --   option = {
+    --     get_bufnrs = function()
+    --       return vim.api.nvim_list_bufs()
+    --     end,
+    --   },
+    -- },
     { name = 'emoji' },
     -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
     -- { name = 'nvim_lsp_signature_help' },
