@@ -33,4 +33,3 @@ wkr({
     x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
   },
 }, { prefix = '<leader>t' })
-

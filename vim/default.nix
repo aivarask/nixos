@@ -76,6 +76,7 @@
     symbols-outline-nvim
     SchemaStore-nvim
     diaglist-nvim
+    hover-nvim
     # TEST
     vim-test
     neotest

@@ -1,9 +1,9 @@
 wkr({
-  name = 'Yank ...',
+  name = 'Yank',
   ['%'] = {
     function()
       vim.fn.setreg('"', vim.fn.expand('%'))
     end,
-    '%',
+    'let @"= expand("%:p")',
   },
-}, { prefix = 'y<leader>' })
+}, { prefix = '<leader>y' })

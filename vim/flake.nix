@@ -24,8 +24,8 @@
       flake = false;
     };
     neotest-playwright = {
-      url = "github:thenbe/neotest-playwright";
-      # url = "github:aivarask/neotest-playwright";
+      # url = "github:thenbe/neotest-playwright";
+      url = "github:aivarask/neotest-playwright";
       flake = false;
     };
     neotest-vitest = {

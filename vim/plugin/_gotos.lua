@@ -13,6 +13,15 @@ function mynixos(expand) -- pointerCursor home.pointerCursor
   vim.cmd([[!xdg-open "https://mynixos.com/search?q=]] .. arg .. '"')
 end
 
+function GoGithub()
+  -- "github:nix-community/neovim-nightly-overlay";
+  local pre = 'https://github.com/'
+  local word = vim.fn.expand('<cWORD>')
+  word = word:gsub('github:', pre)
+  word = word:gsub(';', '')
+  vim.cmd('!xdg-open ' .. word)
+end
+
 local M = {
   homepage = {
     cword = function() -- bat

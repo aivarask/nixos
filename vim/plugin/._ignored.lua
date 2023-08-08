@@ -29,3 +29,18 @@ print('ignored.lua actually active')
 --     -- end
 --   end,
 -- })
+
+-- ['<F4>'] = cmp.mapping.complete({
+--   config = {
+--     sources = {
+--       { name = 'luasnip' },
+--     },
+--   },
+-- }),
+-- ['<F5>'] = cmp.mapping(
+--   cmp.mapping.confirm({
+--     behavior = cmp.ConfirmBehavior.Replace,
+--     select = true,
+--   }),
+--   { 'i', 'c' }
+-- ),

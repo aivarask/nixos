@@ -8,22 +8,52 @@ require('dap-vscode-js').setup({
 for _, language in ipairs({ 'typescript', 'javascript' }) do
   require('dap').configurations[language] = {
     {
+      -- https://vitest.dev/guide/debugging.html#vscode
+      -- https://github.com/mxsdev/nvim-dap-vscode-js/issues/19
+      name = 'vitest file (pwa-node)',
       type = 'pwa-node',
       request = 'launch',
-      name = 'vavite',
-      runtimeExecutable = 'npm',
-      runtimeArgs = { 'run', 'debug' },
-      cwd = '${workspaceFolder}',
+      cwd = vim.fn.getcwd(),
+      program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+      args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
+      autoAttachChildProcesses = true,
+      smartStep = true,
+      console = 'integratedTerminal',
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
-    {
-      -- https://vitest.dev/guide/debugging.html#debugging
-      type = 'pwa-node',
-      request = 'launch',
-      name = 'vavite test:unit',
-      runtimeExecutable = 'npm',
-      runtimeArgs = { 'run', 'test:unit' },
-      cwd = '${workspaceFolder}',
-    },
+    -- {
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'Launch Test Program (pwa-node with vitest) NEW',
+    --   cwd = '${workspaceFolder}/src',
+    --   program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+    --   args = {
+    --     '--threads',
+    --     'false',
+    --   },
+    --   autoAttachChildProcesses = false,
+    --   trace = true,
+    --   console = 'integratedTerminal',
+    --   sourceMaps = true,
+    --   smartStep = true,
+    -- },
+    -- {
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   name = 'npm run debug > vavite-loader vite dev',
+    --   runtimeExecutable = 'npm',
+    --   runtimeArgs = { 'run', 'debug' },
+    --   cwd = '${workspaceFolder}',
+    -- },
+    -- {
+    --   -- https://vitest.dev/guide/debugging.html#debugging
+    --   type = 'pwa-node',
+    --   request = 'launch',
+    --   runtimeExecutable = 'npm',
+    --   runtimeArgs = { 'run', 'test:unit' },
+    --   name = 'npm run test:unit > vavite-loader vitest',
+    --   cwd = '${workspaceFolder}',
+    -- },
     -- {
     --   -- https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_how-do-i-debug-ecmascript-modules
     --   type = 'pwa-node',
@@ -95,20 +125,6 @@ for _, language in ipairs({ 'typescript', 'javascript' }) do
     --   cwd = '${workspaceFolder}',
     -- },
     -- NOTE: OLDER config
-    -- {
-    --   -- https://vitest.dev/guide/debugging.html#vscode
-    --   -- https://github.com/mxsdev/nvim-dap-vscode-js/issues/19
-    --   name = 'vitest (pwa-node)',
-    --   type = 'pwa-node',
-    --   request = 'launch',
-    --   cwd = vim.fn.getcwd(),
-    --   program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
-    --   args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
-    --   autoAttachChildProcesses = true,
-    --   smartStep = true,
-    --   console = 'integratedTerminal',
-    --   skipFiles = { '<node_internals>/**', 'node_modules/**' },
-    -- },
     -- {
     --   name = 'SvelteKit',
     --   program = 'npm run dev',
