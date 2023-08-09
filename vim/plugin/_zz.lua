@@ -4,14 +4,14 @@ wkr({
   K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },
   qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
   ['<C-b>'] = { cmp_complete_luasnip, 'cmp.complete.luasnip', mode = 'i' },
-  -- vim.keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, bufopts)
+  gK = { require('hover').hover, 'hover-nvim.hover' },
 })
 
 wkr({
   name = '1L',
   ['?'] = { wk.show, 'wk.show()' },
   [']'] = { neotest.summary.toggle, 'neotest.summary.toggle()' },
-  a = { vim.lsp.buf.code_action, 'vim.lsp.buf.conde_action', mode = { 'n', 'v' } },
+  a = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
   li = { '<cmd>LspInfo<cr>', 'LspInfo' },
   lr = { '<cmd>LspRestart<cr>', 'LspRestart' },
   it = { vim.treesitter.inspect_tree, 'vim.treesitter.inspect_tree' },

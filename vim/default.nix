@@ -77,6 +77,7 @@
     SchemaStore-nvim
     diaglist-nvim
     hover-nvim
+    goto-preview
     # TEST
     vim-test
     neotest
