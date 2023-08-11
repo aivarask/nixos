@@ -1,81 +1,58 @@
 wkr({
-  -- ['?'] = { require('fold-preview').toggle_preview, 'fold-preview.toggle_preview' },
-  ['?'] = { vim.lsp.util.open_floating_preview, 'open_floating_preview' },
+  ['<C-b>'] = { cmp_complete_luasnip, 'cmp.complete.luasnip', mode = 'i' },
   K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },
   qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
-  ['<C-b>'] = { cmp_complete_luasnip, 'cmp.complete.luasnip', mode = 'i' },
-  gK = { require('hover').hover, 'hover-nvim.hover' },
 })
+
+wkr({
+  name = 'g',
+  D = { vim.lsp.buf.declaration, 'vim.lsp.buf.declaration' },
+  d = { vim.lsp.buf.definition, 'vim.lsp.buf.definition' },
+  i = { vim.lsp.buf.implementation, 'vim.lsp.buf.implementation' },
+  r = { vim.lsp.buf.references, 'vim.lsp.buf.references' },
+  t = { vim.lsp.buf.type_definition, 'vim.lsp.buf.type_definition' },
+  x = { [[\gx]], '!xdg-open <cfile>', noremap = false },
+}, { prefix = 'g' })
 
 wkr({
   name = '1L',
+  -- d = ./_dap_keys.lua
+  -- g = ./_goto_keys.lua
+  -- n = ./_neotest_keys.lua
+  -- r = ./_rename.lua
+  -- s = ./_session_config.lua
+  -- t = ./_telescope_config.lua
+  -- x = ./_x_trouble_config.lua
+  -- y = ./_yank.lua
+  ['='] = { sveltekit_file, 'sveltekit_file' },
+  ['4'] = { [[:call ak#toggle_dollar()<CR>]], 'ak#toggle_dollar' },
   ['?'] = { wk.show, 'wk.show()' },
   [']'] = { neotest.summary.toggle, 'neotest.summary.toggle()' },
+  S = { [[:'<,'>sort<CR>]], ':sort', noremap = false, mode = { 'v' } },
   a = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
-  li = { '<cmd>LspInfo<cr>', 'LspInfo' },
-  lr = { '<cmd>LspRestart<cr>', 'LspRestart' },
-  it = { vim.treesitter.inspect_tree, 'vim.treesitter.inspect_tree' },
+  T = {
+    name = 'Treesitter',
+    i = { vim.treesitter.inspect_tree, 'vim.treesitter.inspect_tree' },
+  },
+  b = {
+    name = 'Buffers',
+    D = { [[:CloseRestBuffers]], 'CloseRestBuffers' },
+  },
+  l = {
+    name = 'Lsp,LazyGit,Lf',
+    i = { [[:LspInfo<CR>]], 'LspInfo' },
+    l = { [[:LspLog<CR>]], 'LspLog' },
+    r = { [[:LspRestart<CR>]], 'LspRestart' },
+    g = { [[:Lazygit<CR>]], 'LazyGit' },
+    f = { [[:LfCurrentDirectory<CR>]], 'LfCurrentDirectory' },
+    t = { [[:LfNewTab<CR>]], 'LfNewTab' },
+    w = { [[:LfWorkingDirectory<CR>]], 'LfWorkingDirectory' },
+  },
+  p = {
+    name = 'Playwright',
+    ---@diagnostic disable-next-line: undefined-field
+    a = { neotest.playwright.attachment, 'playwright.attachment' },
+    p = { [[:NeotestPlaywrightPreset<CR>]], 'PlaywrightPreset' },
+    r = { [[:NeotestPlaywrightRefresh<CR>]], 'PlaywrightRefresh' },
+  },
 }, { prefix = '<leader>' })
-
-wkr({
-  name = '2L',
-  [']'] = { neotest.output_panel.toggle, 'neotest.output_panel.toggle' },
-}, { prefix = '<leader><leader>' })
-
-wkr({
-  name = '3L',
-  [']'] = { '<cmd>SymbolsOutline<cr>' },
-  ['1'] = { '<cmd>e languages/en.yml<cr>' },
-  ['2'] = { '<cmd>e languages/lt.yml<cr>' },
-  ['8'] = { '<cmd>e src/app.d.ts<cr>' },
-  ['9'] = { '<cmd>e src/app.postcss<cr>' },
-  ['p'] = { '<cmd>e package.json<cr>' },
-  --
-}, { prefix = '<leader><leader><leader>' })
-
-wkr({
-  name = '=',
-  ['='] = { sveltekit_file, 'sveltekit_file' },
-}, { prefix = '<leader>=' })
-
-wkr({
-  ['<S-Tab>'] = { '<cmd>bn<CR>', 'bn', mode = { 'i' } },
-  ['<F1>'] = { help_cword, 'help_cword' },
-  ['<F13>'] = { help_cWORD, 'help_cWORD' },
-  ['<F25>'] = { help_cexpr, 'help_cexpr' },
-  ['<F2>'] = { vim.lsp.buf.hover, 'vim.lsp.buf.hover', mode = 'i' },
-  ['<F3>'] = { require('lsp_signature').toggle_float_win, 'lsp_signature.toggle_float_win', mode = { 'n', 'i' } },
-  ['<F4>'] = { dap.restart_frame, 'dap.restart_frame' },
-  ['<F5>'] = { dap.continue, 'dap.continue' },
-  ['<F6>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
-  ['<F7>'] = { neotest.run.dap, 'neotest.run.dap' },
-  ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
-  ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
-  ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
-  ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
-})
-
-wkr({
-  ---@diagnostic disable-next-line: undefined-field
-  ['<leader>pa'] = { neotest.playwright.attachment, 'playwright.attachment' },
-  ['<leader>pr'] = { [[:NeotestPlaywrightRefresh<CR>]], 'Refresh' },
-  ['<leader>pp'] = { [[:NeotestPlaywrightPreset<CR>]], 'Preset' },
-})
-
--- wkr({
---   name = 'Inspect',
---   t = { [[:InspectTree<cr>]], 'InspectTree' },
--- }, { prefix = '<leader>i' })
-
-wkr({
-  ['['] = {
-    name = 'Previous',
-    t = { require('todo-comments').jump_prev, 'todo-comments.jump_prev' },
-    d = { vim.diagnostic.goto_prev, 'vim.diagnostic.goto_prev' },
-  },
-  [']'] = {
-    name = 'Next',
-    t = { require('todo-comments').jump_next, 'todo-comments.jump_next' },
-    d = { vim.diagnostic.goto_next, 'vim.diagnostic.goto_next' },
-  },
-})

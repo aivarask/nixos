@@ -1,4 +1,8 @@
+-- https://github.com/antosha417/nvim-lsp-file-operations
+require('lsp-file-operations').setup()
+
 wk = require('which-key')
+wk.setup({})
 wkr = require('which-key').register
 tree = require('nvim-tree.api').tree
 widgets = require('dap.ui.widgets')
@@ -10,16 +14,16 @@ capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 on_attach = function(client, bufnr)
-  -- vim.api.nvim_create_autocmd('BufWritePost', {
-  --   group = vim.api.nvim_create_augroup('inform', { clear = true }),
-  --   pattern = { '*.js', '*.ts' },
-  --   callback = function(ctx)
-  --     if client.name == 'svelte' then
-  --       print('svelte client $/onDidChangeTsOrJsFile')
-  --       client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
-  --     end
-  --   end,
-  -- })
+  -- https://github.com/neovim/nvim-lspconfig/issues/725#issuecomment-1539822348
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    group = vim.api.nvim_create_augroup('inform', { clear = false }),
+    pattern = { '*.js', '*.ts' },
+    callback = function(ctx)
+      if client.name == 'svelte' then
+        client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
+      end
+    end,
+  })
 
   -- https://github.com/ray-x/lsp_signature.nvim
   local lsp_signature = require('lsp_signature')
@@ -32,15 +36,6 @@ on_attach = function(client, bufnr)
     close_timeout = 1000,
   }, bufnr)
 
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  -- vim.keymap.set({ 'i', 'n' }, '<F2>', vim.lsp.buf.hover, bufopts)
-  -- vim.keymap.set('n', '?', require('fold-preview').toggle_preview, bufopts)
-  -- vim.keymap.set({ 'i', 'n' }, '<F3>', lsp_signature.toggle_float_win, bufopts)
-  -- vim.keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, bufopts)
+  -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
 end
 flags = { debounce_text_changes = 150 }
-
--- https://github.com/antosha417/nvim-lsp-file-operations
-require('lsp-file-operations').setup()
-

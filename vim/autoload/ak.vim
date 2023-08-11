@@ -43,3 +43,5 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
+" https://salferrarello.com/vim-close-all-buffers-except-the-current-one/
+command! CloseRestBuffers execute 'up|%bd|e#|normal`"'

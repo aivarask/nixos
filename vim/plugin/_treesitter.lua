@@ -2,6 +2,19 @@ if not pcall(require, 'nvim-treesitter') then
   return
 end
 
+wkr({
+  ['['] = {
+    name = 'Previous',
+    t = { require('todo-comments').jump_prev, 'todo-comments.jump_prev' },
+    d = { vim.diagnostic.goto_prev, 'vim.diagnostic.goto_prev' },
+  },
+  [']'] = {
+    name = 'Next',
+    t = { require('todo-comments').jump_next, 'todo-comments.jump_next' },
+    d = { vim.diagnostic.goto_next, 'vim.diagnostic.goto_next' },
+  },
+})
+
 require('nvim-treesitter.configs').setup({
   textobjects = {
     -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects

@@ -5,7 +5,8 @@ local library = {
 }
 -- NOTE: % is escape char in Lua
 local matchers = {
-  'hover%.nvim',
+  'hover%.nvim$',
+  'goto%-preview',
   'auto%-session',
   'flatten%-nvim',
   'lsp%-overloads',

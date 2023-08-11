@@ -29,7 +29,6 @@ cmp.setup({
     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping(cmp.mapping.abort(), { 'i', 'c' }),
-
     ['<C-b>'] = cmp.mapping.complete({
       config = {
         sources = {
@@ -39,8 +38,8 @@ cmp.setup({
     }),
     ['<CR>'] = cmp.mapping(
       cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
         select = false,
+        behavior = cmp.ConfirmBehavior.Replace,
       }),
       { 'i', 'c' }
     ),

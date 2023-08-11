@@ -8,9 +8,9 @@ require('nvim-tree').setup({
   on_attach = my_on_attach,
   sync_root_with_cwd = true,
   root_dirs = {
-    '/root/fixpart',
-    '/etc/nixos/vim',
     '/etc/nixos',
+    '/etc/nixos/vim',
+    '/root/fixpart',
   },
   update_focused_file = {
     enable = true, -- default false

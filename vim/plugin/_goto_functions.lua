@@ -22,7 +22,7 @@ function GoGithub()
   vim.cmd('!xdg-open ' .. word)
 end
 
-local M = {
+Go = {
   homepage = {
     cword = function() -- bat
       homepage('', '<cword>')
@@ -92,23 +92,3 @@ local M = {
   },
   c = {},
 }
-
-wkr({
-  name = 'GOTO',
-  h = { M.homepage.cword, 'nixpkgs#<cword>.meta.homepage' },
-  H = { M.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },
-  l = { M.luajitPackages.cword, 'luajitPackages.<cword>.meta.homepage' },
-  L = { M.luajitPackages.cWORD, 'luajitPackages.<cWORD>.meta.homepage' },
-  p = { M.python3Packages.cword, 'python3Packages.<cword>.meta.homepage' },
-  P = { M.python3Packages.cWORD, 'python3Packages.<cWORD>.meta.homepage' },
-  n = { M.nodePackages.cword, 'nodePackages.<cword>.meta.homepage' },
-  N = { M.nodePackages.cWORD, 'nodePackages.<cWORD>.meta.homepage' },
-  v = { M.vimPlugins.cword, 'vimPlugins.<cword>.meta.homepage' },
-  V = { M.vimPlugins.cWORD, 'vimPlugins.<cWORD>.meta.homepage' },
-  x = { M.xopen.cfile, '!xdg-open <cfile>' },
-  m = { M.mynixos.cword, 'mynixos.org <cword>' },
-  M = { M.mynixos.cWORD, 'mynixos.org <cWORD>' },
-  s = { M.github.source, 'github.source' },
-  --
-  g = { GoGithub, 'github:owner/repo' },
-}, { prefix = '<leader>g' })

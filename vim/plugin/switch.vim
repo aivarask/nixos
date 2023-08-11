@@ -1,6 +1,4 @@
-nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
-nmap <M-x> <Plug>(SwitchInLine)
-" const
+let g:switch_mapping = ""
 
 " https://github.com/AndrewRadev/switch.vim
 autocmd FileType markdown let b:switch_custom_definitions =

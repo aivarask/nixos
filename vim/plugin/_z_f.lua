@@ -1,0 +1,16 @@
+wkr({
+  ['<F1>'] = { help_cword, 'help_cword' },
+  ['<F13>'] = { help_cWORD, 'help_cWORD' },
+  ['<F25>'] = { help_cexpr, 'help_cexpr' },
+  ['<F2>'] = { vim.lsp.buf.hover, 'vim.lsp.buf.hover', mode = { 'n', 'i' } },
+  ['<F3>'] = { require('lsp_signature').toggle_float_win, 'lsp_signature.toggle_float_win', mode = { 'n', 'i' } },
+  ['<F4>'] = { dap.restart_frame, 'dap.restart_frame' },
+  ['<F5>'] = { dap.continue, 'dap.continue' },
+  ['<F6>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
+  ['<F7>'] = { neotest.run.dap, 'neotest.run.dap' },
+  ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
+  ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
+  ['<F10>'] = { [[:match Search /<C-R><C-W>/<CR>]], ':match Search' },
+  ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
+  ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
+})
