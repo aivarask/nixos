@@ -50,6 +50,7 @@
   ./services/x11/display-managers/startx.nix
   ./services/x11/imwheel.nix
   ./services/x11/window-managers/dwm.nix
+  ./services/x11/window-managers/awesome.nix
   ./services/x11/xserver.nix
   ./system/boot/loader/efi.nix
   ./system/boot/loader/systemd-boot/systemd-boot.nix
