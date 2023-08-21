@@ -1,4 +1,6 @@
 wkr({
+  ['<M-Tab>'] = { [[<cmd>tabnext<cr>]], 'tabnext', mode = { 'n', 'i', 't' } },
+  ['<M-Del>'] = { [[<cmd>tabclose<cr>]], 'tabclose', mode = { 'n', 'i', 't' } },
   ['<C-b>'] = { cmp_complete_luasnip, 'cmp.complete.luasnip', mode = 'i' },
   K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },
   qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
@@ -43,7 +45,7 @@ wkr({
     i = { [[:LspInfo<CR>]], 'LspInfo' },
     l = { [[:LspLog<CR>]], 'LspLog' },
     r = { [[:LspRestart<CR>]], 'LspRestart' },
-    g = { [[:Lazygit<CR>]], 'LazyGit' },
+    g = { [[:LazyGit<CR>]], 'LazyGit' },
     f = { [[:LfCurrentDirectory<CR>]], 'LfCurrentDirectory' },
     t = { [[:LfNewTab<CR>]], 'LfNewTab' },
     w = { [[:LfWorkingDirectory<CR>]], 'LfWorkingDirectory' },

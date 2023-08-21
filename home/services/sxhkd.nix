@@ -12,33 +12,37 @@ _: {
       "XF86Calculator" = "$TERMINAL -e bandwhich";
       "XF86HomePage" = "chromium";
       "XF86Mail" = "brave --no-sandbox";
-
-      "super + F1" = "TEXT=$(cat /etc/nixos/sxhkd.nix) && dunstify $TEXT";
+      "XF86MonBrightnessDown" = "brightnessctl set 10%-";
+      "XF86MonBrightnessUp" = "brightnessctl set +10%";
+      "ctrl + Pause" = "nicotine";
+      "ctrl + Print;" = "$TERMINAL -e duf &";
+      "ctrl + shift + Return" = "detach";
+      "super + F1" = "TEXT=$(cat /etc/nixos/home/services/sxhkd.nix) && dunstify $TEXT";
       "super + F2" = "dmenu_open";
       "super + F3" = "emojipick";
-      "super + ctrl + F3" = "xdg-open https://emojifinder.com/";
+      "super + F4" = "dmenu_go";
+      "super + F5" = "$TERMINAL -e dmenu_run";
       "super + F6" = "xset r rate 200 50";
       "super + F7" = "kill -SIGUSR1 $(pidof sxhkd) && dunstify '♻️  sxhkd reloaded'";
       "super + F8" = "scrot";
-
+      "super + F9" = "";
+      "super + F10" = "";
+      "super + F11" = "";
+      "super + F12" = "";
+      "super + W" = "firefox --private-window";
       "super + XF86Audio{Lower,Raise}Volume" = "mpc {prev,next}";
       "super + XF86Mail" = "telegram-desktop";
-      "super + y" = "youtube-watch";
-      "super + w" = "$BROWSER";
-      "super + W" = "firefox --private-window";
+      "super + ctrl + F3" = "xdg-open https://emojifinder.com/";
       "super + ctrl + Return" = "tabbed -c alacritty --embed";
-      "ctrl + shift + Return" = "detach";
-
-      "ctrl + Pause" = "nicotine";
-      "ctrl + Print;" = "$TERMINAL -e duf &";
-      # "super + {g,m}" = "$BROWSER {github.com,messenger.com}";
-      # "super + m" = "$TERMINAL -e duf";
-      "XF86MonBrightnessDown" = "brightnessctl set 10%-";
-      "XF86MonBrightnessUp" = "brightnessctl set +10%";
-      # alias
-      "super + {a,s}" = "pulsemixer --change-volume {-,+}2 --max-volume 100";
-      "super + z" = "brightnessctl set 10%-";
+      "super + r" = "dmenu_go";
+      "super + w" = "$BROWSER";
       "super + x" = "brightnessctl set 10%+";
+      "super + y" = "youtube-watch";
+      "super + z" = "brightnessctl set 10%-";
+      "super + {a,s}" = "pulsemixer --change-volume {-,+}2 --max-volume 100";
+      # "super + m" = "$TERMINAL -e duf";
+      # "super + {g,m}" = "$BROWSER {github.com,messenger.com}";
+      # alias
     };
   };
 }

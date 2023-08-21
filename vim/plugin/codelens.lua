@@ -7,10 +7,15 @@ require('goto-preview').setup({
   debug = false, -- Print debug information
   opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
   resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
-  post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+  post_open_hook = function(_, win)
+    -- Close the current preview window with <Esc>
+    vim.keymap.set('n', '<Esc>', function()
+      vim.api.nvim_win_close(win, true)
+    end, { buffer = true })
+  end,
   post_close_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
   references = { -- Configure the telescope UI for slowing the references cycling window.
-    telescope = require('telescope.themes').get_dropdown({ hide_preview = false }),
+    -- telescope = require('telescope.themes').get_dropdown({ hide_preview = false }),
   },
   -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
   focus_on_open = true, -- Focus the floating window when opening it.

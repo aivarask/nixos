@@ -3,6 +3,7 @@ wkr({
   -- " https://github.com/junegunn/fzf.vim#commands
   F = { [[:FZF<CR>]], ':FZF' },
   G = { [[:Rg <C-r><C-w><CR>]], ':Rg <C-r><C-w>' },
+  M = { [[:Maps<CR>]], ':Maps' },
   ['/'] = { [[:History/<CR>]], ':History/' },
   [':'] = { [[:History:<CR>]], ':History:' },
   [']'] = { neotest.output_panel.toggle, 'neotest.output_panel.toggle' },
@@ -14,7 +15,7 @@ wkr({
   g = { [[:Rg<CR>]], ':Rg' },
   h = { [[:Helptags<CR>]], ':Helptags' },
   j = { [[:Jumps<CR>]], ':Jumps' },
-  m = { [[:Maps<CR>]], ':Maps' },
+  m = { [[:Marks<CR>]], ':Marks' },
 }, { prefix = '<leader><leader>' })
 
 wkr({

@@ -22,6 +22,8 @@
     QT_AUTO_SCREEN_SET_FACTOR = "0";
     QT_SCALE_FACTOR = "1";
     QT_FONT_DPI = "144";
+    XINITRC = "/etc/nixos/home/files/xinitrc";
+    # XSERVERRC = "/etc/X11/xinit/xserverrc";
   };
   environment.shellAliases = {
     nf = "nvim -c 'Files'";
@@ -82,5 +84,6 @@
     upb = "nixos-rebuild build";
     upt = "nixos-rebuild test";
     x = "startx";
+    xs = "xinit $XINITRC -- $XSERVERRC";
   };
 }

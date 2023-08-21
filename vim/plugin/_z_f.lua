@@ -13,4 +13,5 @@ wkr({
   ['<F10>'] = { [[:match Search /<C-R><C-W>/<CR>]], ':match Search' },
   ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
   ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
+  ['<F36>'] = { '<cmd>ToggleTerm direction=tab<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
 })

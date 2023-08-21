@@ -10,5 +10,6 @@
     upscaleDefaultCursor = true;
     xkbOptions = "grp:menu_toggle"; # localectl list-x11-keymap-options
     xkbVariant = "qwerty"; # localectl list-x11-keymap-variants
+    tty = null;
   };
 }
