@@ -3,7 +3,10 @@
   lib,
   ...
 }: {
-  imports = [./timers/hello-world.nix];
+  imports = [
+    ./timers/hello-world.nix
+    ./timers/wallpaper.nix
+  ];
   systemd = {
     sleep.extraConfig = ''
       HibernateDelaySec=1h

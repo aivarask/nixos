@@ -6,15 +6,16 @@
   systemd.timers."wallpaper" = {
     wantedBy = ["timers.target"];
     timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
+      OnBootSec = "1m";
+      OnUnitActiveSec = "1m";
       Unit = "wallpaper.service";
     };
   };
   systemd.services."wallpaper" = {
     script = ''
-      set -eu
-      ${pkgs.feh} --bg-fill --randomize ~/.wallpaper/*
+      /etc/nixos/bin/wallpaper
+        # set -eu
+        # DISPLY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize ~/.wallpaper/*
     '';
     serviceConfig = {
       Type = "oneshot";
