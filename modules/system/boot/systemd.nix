@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+  imports = [./timers/hello-world.nix];
   systemd = {
     sleep.extraConfig = ''
       HibernateDelaySec=1h
