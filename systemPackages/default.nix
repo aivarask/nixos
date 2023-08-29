@@ -70,6 +70,7 @@
     exa
     exiftool
     expat
+    expect
     fasd
     fd
     feh

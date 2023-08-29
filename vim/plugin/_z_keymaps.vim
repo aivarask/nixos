@@ -8,10 +8,19 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+map <M--> :wincmd <<CR>
+tmap <M--> <C-\><C-n>:wincmd <<CR>
+map <M-=> :wincmd ><CR>
+tmap <M-=> <C-\><C-n>:wincmd ><CR>
+
 map <M-h> :wincmd h<CR>
+tmap <M-h> <C-\><C-n>:wincmd h<CR>
 map <M-j> :wincmd j<CR>
+tmap <M-j> <C-\><C-n>:wincmd j<CR>
 map <M-k> :wincmd k<CR>
+tmap <M-k> <C-\><C-n>:wincmd k<CR>
 map <M-l> :wincmd l<CR>
+tmap <M-l> <C-\><C-n>:wincmd l<CR>
 
 map <M-H> :wincmd H<CR>
 map <M-J> :wincmd J<CR>

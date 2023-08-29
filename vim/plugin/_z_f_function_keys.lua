@@ -11,6 +11,17 @@ wkr({
   ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
   ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
   ['<F10>'] = { [[:match Search /<C-R><C-W>/<CR>]], ':match Search' },
+  -- NOTE: F11 fullscreen functionality
+  ['<F23>'] = {
+    "<cmd>exec 'ToggleTerm direction=vertical dir=' .. expand('%:p:h')<CR>",
+    'ToggleTerm relative vertical',
+    mode = { 'n', 'i', 't' },
+  },
+  ['<F35>'] = {
+    "<cmd>exec 'ToggleTerm direction=tab dir=' .. expand('%:p:h')<CR>",
+    'ToggleTerm relative tab',
+    mode = { 'n', 'i', 't' },
+  },
   ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
   ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
   ['<F36>'] = { '<cmd>ToggleTerm direction=tab<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },

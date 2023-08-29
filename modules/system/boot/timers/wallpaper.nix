@@ -1,25 +1,20 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  systemd.timers."wallpaper" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnBootSec = "1m";
-      OnUnitActiveSec = "1m";
-      Unit = "wallpaper.service";
-    };
-  };
+{pkgs, ...}: {
   systemd.services."wallpaper" = {
-    script = ''
-      /etc/nixos/bin/wallpaper
-        # set -eu
-        # DISPLY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize ~/.wallpaper/*
-    '';
     serviceConfig = {
       Type = "oneshot";
       User = "root";
     };
+    script = ''
+      set -eu
+      DISPLAY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize ~/.wallpaper/abstract/
+    '';
+  };
+  systemd.timers."wallpaper" = {
+    timerConfig = {
+      # OnBootSec = "1h";
+      OnUnitActiveSec = "1h";
+      Unit = "wallpaper.service";
+    };
+    wantedBy = ["timers.target"];
   };
 }

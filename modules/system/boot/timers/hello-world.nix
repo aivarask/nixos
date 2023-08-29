@@ -1,16 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  systemd.timers."hello-world" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
-      Unit = "hello-world.service";
-    };
-  };
+{pkgs, ...}: {
   systemd.services."hello-world" = {
     script = ''
       set -eu
@@ -19,6 +7,17 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
+    };
+  };
+  systemd.timers."hello-world" = {
+    description = ''
+      Simple greeting timer for testing purposes.
+    '';
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "5m";
+      Unit = "hello-world.service";
     };
   };
 }

@@ -28,6 +28,7 @@
   ./services/databases/mysql.nix
   ./services/databases/postgresql.nix
   ./services/desktops/blueman.nix
+  ./services/desktops/geoclue2.nix
   ./services/desktops/pipewire/pipewire.nix
   ./services/desktops/pipewire/wireplumber.nix
   ./services/hardware/udev.nix
@@ -52,6 +53,7 @@
   ./services/x11/window-managers/dwm.nix
   ./services/x11/window-managers/awesome.nix
   ./services/x11/xserver.nix
+  ./services/x11/redshift.nix
   ./system/boot/loader/efi.nix
   ./system/boot/loader/systemd-boot/systemd-boot.nix
   ./system/boot/networkd.nix

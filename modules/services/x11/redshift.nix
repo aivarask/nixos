@@ -1,8 +1,8 @@
 {lib, ...}: {
   location = {
     provider = lib.mkDefault "geoclue2"; # manual
-    latitude = 54.0;
-    longitude = 25.0;
+    # latitude = 54.0;
+    # longitude = 25.0;
   };
   services.redshift = {
     enable = true;

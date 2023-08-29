@@ -14,6 +14,13 @@ wkr({
   r = { vim.lsp.buf.references, 'vim.lsp.buf.references' },
   t = { vim.lsp.buf.type_definition, 'vim.lsp.buf.type_definition' },
   x = { [[\gx]], '!xdg-open <cfile>', noremap = false },
+  q = {
+    -- TODO: focus <cfile> in nvim-tree
+    function()
+      require('nvim-tree.api').tree.find_file({ 'modules/services/x11/redshift.nix', true })
+    end,
+    'nvim-tree.api.tree.find_file',
+  },
 }, { prefix = 'g' })
 
 wkr({

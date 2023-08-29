@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo -e '
+https://nixos.org/manual/nix/unstable/language/values
+https://nixos.org/manual/nix/unstable/language/constructs
+https://nixos.org/manual/nix/unstable/language/operators
+https://nixos.org/manual/nix/unstable/language/derivations
+https://nixos.org/manual/nix/unstable/language/builtin-constants
+https://nixos.org/manual/nix/unstable/language/builtins
+
+https://nixos.wiki/wiki/Nix_command/repl
+' |
+  grep -v '^#\|^$' |
+  dmenu -l 10 | xargs xdg-open

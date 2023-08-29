@@ -63,7 +63,7 @@
     linkConfig.RequiredForOnline = "yes";
     networkConfig = {
       DHCP = "ipv4";
-      IPv6AcceptRA = false;
+      IPv6AcceptRA = true;
     };
   };
 
@@ -81,8 +81,6 @@
         font-dpi=288
       '';
     };
-
-    geoclue2.enable = true;
 
     xserver = {
       imwheel.enable = false;

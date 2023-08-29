@@ -21,8 +21,6 @@ _: {
     ./programs/starship.nix
     ./programs/zsh.nix
     ./services/dunst.nix
-    ./services/redshift-gammastep/redshift.nix
     ./services/sxhkd.nix
-    ./services/unclutter.nix
   ];
 }

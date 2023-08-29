@@ -14,16 +14,20 @@ nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=
 
 numlockx
 xset r rate 200 50
-
-# unclutter &
-redshift &
-dunst &
-# slstatus &
-dwm-status ~/.dwm-status.toml &
-# xcompmgr &
-sxhkd &
 imwheel -b 45 &
-# DISPLAY=:0 feh --bg-fill --randomize ~/.wallpaper/*
+
+unclutter --timeout 2 & # not work as a service, WantedBy graphical-session.target
+dwm-status ~/.dwm-status.toml &
+
+# Timers
+systemctl start wallpaper.service & # ../../modules/system/boot/timers/wallpaper.nix
+# slstatus & # ../../modules/system/boot/timers/slstatus.nix
+
+systemctl --user start dunst.service & # ../services/dunst.nix
+sxhkd &                                # ../services/sxhkd.nix not work as a service unit, but makes config
+# taskwarrior
+
+systemctl --user start redshift.service & # ../../modules/services/x11/redshift.nix
 
 # XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 # wetty -b / -p 9999 &

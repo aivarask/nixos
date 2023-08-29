@@ -39,6 +39,7 @@ _: {
       "super + x" = "brightnessctl set 10%+";
       "super + y" = "youtube-watch";
       "super + z" = "brightnessctl set 10%-";
+      "super + n" = "nix_manual";
       "super + {a,s}" = "pulsemixer --change-volume {-,+}2 --max-volume 100";
       # "super + m" = "$TERMINAL -e duf";
       # "super + {g,m}" = "$BROWSER {github.com,messenger.com}";

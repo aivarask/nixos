@@ -6,16 +6,11 @@
     after = ["network.target"];
     serviceConfig = {
       Type = "simple";
+      Restart = "always";
       User = "root";
       Group = "wheel";
+      WorkingDirectory = "/var/music";
       ExecStart = "${pkgs.nodePackages.serve}/bin/serve";
-      ExecReload = "${pkgs.nodePackages.serve}/bin/serve";
-      Restart = "on-failure";
-      StartLimitBurst = 2;
-      StartLimitInterval = 10;
-
-      RuntimeDirectory = "/var/music";
-      RootDirectory = "/var/music";
     };
     wantedBy = ["multi-user.target"];
   };

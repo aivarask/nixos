@@ -26,7 +26,7 @@
     # https://github.com/nix-community/awesome-nix#development
     rnix-parser
     rnix-lsp
-    # nil
+    nil
     niv
 
     # -- OTHER --

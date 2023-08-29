@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 echo -e '
 #Files
 file:///etc/nixos/vim/plugin/lsp_conf.lua
