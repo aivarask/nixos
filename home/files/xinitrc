@@ -39,6 +39,7 @@ case $session in
   kde) exec startplasma-x11 ;;
   xfce | xfce4) exec startxfce4 ;;
   dwm) exec dwm ;;
-  awe) exec awesome ;;
+  awesome) exec awesome -c ~/awesome/awesomerc.lua ;;
+
   *) exec "$1" ;;
 esac

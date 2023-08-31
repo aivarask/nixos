@@ -42,6 +42,9 @@ require('lualine').setup({
         } },
       },
     },
+    lualine_z = {
+      'searchcount',
+    },
   },
   sections = {
     lualine_a = { 'mode' },
@@ -49,11 +52,21 @@ require('lualine').setup({
     lualine_c = { { 'filename', path = 1 } },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
-    lualine_z = { 'location' },
+    lualine_z = {
+      function()
+        return vim.api.nvim_buf_line_count(0)
+      end,
+      'location',
+    },
   },
   inactive_sections = {
     lualine_c = { 'filename' },
-    lualine_x = { 'location' },
+    lualine_x = {
+      'location',
+      function()
+        return vim.api.nvim_buf_line_count(0)
+      end,
+    },
   },
   extensions = { 'quickfix', 'nvim-tree', 'fzf', 'symbols-outline', 'toggleterm', 'man', 'trouble' },
 })

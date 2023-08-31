@@ -1,6 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 -- https://github.com/LuaLS/lua-language-server/wiki/Settings
 local library = {
+  -- TODO: Check lua_ls changes in lspconfig configuration
+  -- vim.env.VIMRUNTIME,
   vim.loop.cwd(),
 }
 -- NOTE: % is escape char in Lua

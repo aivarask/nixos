@@ -11,6 +11,8 @@
     ];
     LUA_LIB = builtins.concatStringsSep ";" [
       "${pkgs.luajitPackages.penlight.outPath}/share/lua/5.1"
+      "${pkgs.luajitPackages.inspect.outPath}/share/lua/5.1"
+      "${pkgs.awesome.outPath}/share/awesome/lib"
     ];
   };
   environment.systemPackages =
@@ -28,6 +30,8 @@
         penlight # https://github.com/lunarmodules/Penlight
         std-_debug # https://lua-stdlib.github.io/_debug/
         plenary-nvim # https://github.com/nvim-lua/plenary.nvim
+        # REL:
+        # modules/services/x11/window-managers/awesome.nix
       ]
     );
 }

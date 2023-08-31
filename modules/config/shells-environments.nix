@@ -85,5 +85,6 @@
     upt = "nixos-rebuild test";
     x = "startx";
     xs = "xinit $XINITRC -- $XSERVERRC";
+    xa = "xinit $XINITRC awesome";
   };
 }

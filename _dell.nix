@@ -67,6 +67,27 @@
     };
   };
 
+  # https://github.com/NixOS/nixos-hardware/blob/master/dell/xps/15-7590/nvidia/default.nix
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    prime = {
+      sync.enable = false; # gpu always
+      offload.enable = true; # gpu on demand
+      #nvidiaBusId = "PCI:10:0:0"; #epgu
+      nvidiaBusId = "PCI:1:0:0"; # dedicated gpu
+      intelBusId = "PCI:0:2:0";
+    };
+  };
+  # https://discourse.nixos.org/t/using-internal-external-monitor-with-nvidia-offload/22504/5
+  specialisation = {
+    external-display.configuration = {
+      system.nixos.tags = ["external-display"];
+      hardware.nvidia.prime.offload.enable = lib.mkForce true;
+      hardware.nvidia.powerManagement.enable = lib.mkForce false;
+    };
+  };
+
   networking = {
     hostName = "dell";
     hostId = "8425e349";

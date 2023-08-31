@@ -25,6 +25,7 @@ end
 
 -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
 -- https://discourse.nixos.org/t/nix-repl-add-builtins-to-global-scope/2678
+-- https://nixos.wiki/wiki/Nix_command/repl
 wkr({
   name = 'REPL',
   n = { '<cmd>lua _nix_repl_toggle()<CR>', '_nix_repl_toggle' },

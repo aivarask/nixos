@@ -5,5 +5,6 @@ _: {
     recursive = false;
   };
 
+  # TODO Finish using tilda (dropdown terminal)
   home.file.".config/tilda/config_0".text = builtins.readFile ./files/tilda;
 }
