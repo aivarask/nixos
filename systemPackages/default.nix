@@ -135,7 +135,7 @@
     patchelf
     pciutils
     perl
-    perl534Packages.CPAN
+    perl538Packages.CPAN
     pistol
     poppler
     poppler_utils
