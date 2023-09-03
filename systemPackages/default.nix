@@ -18,6 +18,7 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    inotify-tools
     scrot
     xorg.xwd
     CuboCore.coreshot

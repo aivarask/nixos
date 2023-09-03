@@ -1,0 +1,3 @@
+{...}: {
+  documentation.man.generateCaches = true;
+}

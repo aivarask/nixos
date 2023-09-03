@@ -68,7 +68,6 @@
   };
 
   # https://github.com/NixOS/nixos-hardware/blob/master/dell/xps/15-7590/nvidia/default.nix
-
   hardware.nvidia = {
     modesetting.enable = true;
     prime = {

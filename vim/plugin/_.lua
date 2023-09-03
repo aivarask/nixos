@@ -7,7 +7,6 @@ wkr = require('which-key').register
 tree = require('nvim-tree.api').tree
 widgets = require('dap.ui.widgets')
 osv = require('osv')
-pretty = require('pl.pretty')
 
 root_pattern = require('lspconfig.util').root_pattern
 capabilities = require('cmp_nvim_lsp').default_capabilities()

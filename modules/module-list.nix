@@ -1,4 +1,5 @@
-[
+map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
+++ [
   ./config/console.nix
   ./config/fonts
   ./config/i18n.nix
@@ -12,7 +13,6 @@
   ./config/users-groups.nix
   ./config/xdg/mime.nix
   ./hardware/video/nvidia.nix
-  ./misc/nixpkgs.nix
   ./programs/adb.nix
   ./programs/gnupg.nix
   ./programs/mtr.nix

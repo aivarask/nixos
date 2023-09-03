@@ -39,7 +39,8 @@ case $session in
   kde) exec startplasma-x11 ;;
   xfce | xfce4) exec startxfce4 ;;
   dwm) exec dwm ;;
-  awesome) exec awesome -c ~/awesome/awesomerc.lua ;;
+  # Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
+  awesome) exec awesome -c /etc/nixos/vim/lua/awesome_rc.lua ;;
 
   *) exec "$1" ;;
 esac

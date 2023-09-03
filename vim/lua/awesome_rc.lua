@@ -27,6 +27,16 @@ if awesome.startup_errors then
     title = 'Oops, there were errors during startup!',
     text = awesome.startup_errors,
   })
+else
+  -- https://github.com/awesomeWM/awesome
+  -- https://awesomewm.org/apidoc/index.html
+
+  -- naughty.notify({
+  --   title = 'Achtung! we are new',
+  --   message = "You're idling",
+  --   timeout = 1,
+  -- })
+  require('aiva').greet()
 end
 
 -- Handle runtime errors after startup
@@ -67,8 +77,8 @@ modkey = 'Mod4'
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-  awful.layout.suit.floating,
   awful.layout.suit.tile,
+  awful.layout.suit.floating,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile.bottom,
   awful.layout.suit.tile.top,
@@ -258,8 +268,18 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+local aiva = require('aiva')
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+  awful.key({ modkey }, 'g', function()
+    -- naughty.notify({
+    --   title = 'Hello!',
+    --   message = 'We are happy to greet you',
+    --   timeout = 10,
+    -- })
+    aiva.greet()
+  end, { description = 'TEST greet', group = 'TEST' }),
   awful.key({ modkey }, 's', hotkeys_popup.show_help, { description = 'show help', group = 'awesome' }),
   awful.key({ modkey }, 'Left', awful.tag.viewprev, { description = 'view previous', group = 'tag' }),
   awful.key({ modkey }, 'Right', awful.tag.viewnext, { description = 'view next', group = 'tag' }),
