@@ -43,7 +43,7 @@
     webkitgtk
     playwright
     prisma-engines
-    prismaPackages."@prisma/language-server"
+    # prismaPackages."@prisma/language-server"
     # --
     silver-searcher
     SDL2

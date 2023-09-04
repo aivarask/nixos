@@ -1,12 +1,12 @@
 {
   "name": "lib",
   "dependencies": {
-    "@ajmnz/prisma-language-server": {
-      "version": "4.16.0",
-      "overridden": false
-    },
     "@inlang/cli": {
       "version": "0.11.1",
+      "overridden": false
+    },
+    "@prisma/language-server": {
+      "version": "5.2.0",
       "overridden": false
     },
     "@tailwindcss/language-server": {
@@ -31,10 +31,6 @@
     },
     "emmet-ls": {
       "version": "0.4.2",
-      "overridden": false
-    },
-    "prisma-import": {
-      "version": "1.0.4",
       "overridden": false
     },
     "stylelint-lsp": {

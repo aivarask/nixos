@@ -1,3 +1,6 @@
 {...}: {
-  documentation.man.generateCaches = true;
+  documentation = {
+    dev.enable = false;
+    man.generateCaches = false;
+  };
 }

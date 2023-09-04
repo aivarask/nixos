@@ -1,0 +1,5 @@
+model Foo {
+  id   String @unique
+  name String
+  age  Int
+}
