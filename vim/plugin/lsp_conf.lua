@@ -56,9 +56,19 @@ require('lspconfig').marksman.setup({
 })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#nil_ls
+-- https://github.com/oxalica/nil/blob/main/docs/configuration.md
 require('lspconfig').nil_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    ['nil'] = {
+      testSetting = 42,
+      formatting = {
+        command = { 'alejandra' },
+      },
+      flake = { autoEvalInputs = true },
+    },
+  },
 })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#psalm

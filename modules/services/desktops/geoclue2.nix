@@ -1,6 +1,6 @@
-_: {
+{lib, ...}: {
   services.geoclue2 = {
-    enable = true;
-    appConfig.redshift.isAllowed = true;
+    enable = false;
+    # appConfig.redshift.isAllowed = true;
   };
 }

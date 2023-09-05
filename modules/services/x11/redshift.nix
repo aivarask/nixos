@@ -1,11 +1,9 @@
-{lib, ...}: {
-  location = {
-    provider = lib.mkDefault "geoclue2"; # manual
-    # latitude = 54.0;
-    # longitude = 25.0;
-  };
+# REL:
+# modules/services/desktops/geoclue2.nix
+# /etc/nixos/modules/config/location.nix
+{...}: {
   services.redshift = {
-    enable = true;
+    enable = false;
     temperature = {
       day = 6500; # 5500
       night = 4500; # 3700

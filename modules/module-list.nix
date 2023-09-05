@@ -1,17 +1,18 @@
-map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
+map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
+++ map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
 ++ [
-  ./config/console.nix
-  ./config/fonts
-  ./config/i18n.nix
-  ./config/locale.nix
-  ./config/networking.nix
-  ./config/power-management.nix
-  ./config/pulseaudio.nix
-  ./config/shells-environments.nix
-  ./config/system-environment.nix
-  ./config/system-path.nix
-  ./config/users-groups.nix
-  ./config/xdg/mime.nix
+  # ./config/console.nix
+  # ./config/fonts
+  # ./config/i18n.nix
+  # ./config/locale.nix
+  # ./config/networking.nix
+  # ./config/power-management.nix
+  # ./config/pulseaudio.nix
+  # ./config/shells-environments.nix
+  # ./config/system-environment.nix
+  # ./config/system-path.nix
+  # ./config/users-groups.nix
+  # ./config/xdg/mime.nix
   ./hardware/video/nvidia.nix
   ./programs/adb.nix
   ./programs/gnupg.nix
