@@ -18,6 +18,7 @@
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [
+    bun
     inotify-tools
     scrot
     xorg.xwd
@@ -68,7 +69,7 @@
     duf
     emojione
     emote
-    exa
+    eza # exa replacement
     exiftool
     expat
     expect

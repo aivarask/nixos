@@ -41,6 +41,12 @@ nnoremap <M-Del> :tabclose<CR>
 nnoremap <M-q> :Bclose<CR>
 nnoremap <M-Q> :Bclose!<CR>
 
+map <silent> [q :cp<CR>
+map <silent> ]q :cn<CR>
+
+map <silent> <leader>. :vertical resize +5<CR>
+map <silent> <leader>, :vertical resize -5<CR>
+
 nmap <C-l> gc$
 imap <C-l> <C-o>gc$
 vmap <C-l> gc

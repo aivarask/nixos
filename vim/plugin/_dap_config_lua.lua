@@ -11,10 +11,10 @@ dap.configurations.lua = {
 local config = {
   host = '127.0.0.1',
   port = 8086,
-  flatten_nvim = true,
+  -- flatten_nvim = true,
 }
 
-dap.adapters.nlua = function(callback)
+dap.adapters.nlua = function(callback, config)
   print([[Let's start a server]])
   callback({ type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 })
 end

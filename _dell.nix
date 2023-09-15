@@ -46,7 +46,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    bluetooth.enable = true;
+    bluetooth.enable = false;
   };
   system.stateVersion = "23.05";
   console.font = lib.mkForce "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
@@ -92,9 +92,9 @@
     hostId = "8425e349";
   };
 
-  location.provider = "geoclue2";
+  # location.provider = "geoclue2";
   services = {
-    blueman.enable = true;
+    blueman.enable = false;
     kmscon = {
       extraConfig = ''
         font-size=12

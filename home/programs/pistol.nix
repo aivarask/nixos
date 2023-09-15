@@ -32,7 +32,7 @@ _: {
       }
       {
         mime = "inode/directory";
-        command = "exa --git --group --tree --level=1 --long --icons --group-directories-first %pistol-filename%";
+        command = "eza --git --group --tree --level=1 --long --icons --group-directories-first %pistol-filename%";
       }
     ];
   };

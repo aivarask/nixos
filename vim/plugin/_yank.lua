@@ -1,9 +1,15 @@
 wkr({
   name = 'Yank',
-  ['%'] = {
+  p = {
     function()
-      vim.fn.setreg('"', vim.fn.expand('%'))
+      vim.fn.setreg('p', vim.fn.expand('%:p'))
     end,
-    'let @"= expand("%:p")',
+    'let @p=expand("%:p")',
+  },
+  ['r'] = {
+    function()
+      vim.fn.setreg('r', vim.fn.expand('%'))
+    end,
+    'let @p=expand("%")',
   },
 }, { prefix = '<leader>y' })

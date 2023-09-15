@@ -14,6 +14,9 @@
         penlight # https://github.com/lunarmodules/Penlight
         plenary-nvim # https://github.com/nvim-lua/plenary.nvim
         std-_debug # https://lua-stdlib.github.io/_debug/
+        vicious # https://vicious.readthedocs.io/en/latest/index.html
+        luarepl # https://github.com/hoelzro/lua-repl
+        linenoise # https://github.com/hoelzro/lua-linenoise
         # REL:
         # modules/services/x11/window-managers/awesome.nix
         # lgi # https://github.com/lgi-devs/lgi
@@ -34,6 +37,8 @@
       "${pkgs.luajitPackages.plenary-nvim.outPath}/share/lua/5.1/?/init.lua"
       "${pkgs.luajitPackages.std-_debug.outPath}/share/lua/5.1/?.lua"
       "${pkgs.luajitPackages.std-_debug.outPath}/share/lua/5.1/?/init.lua"
+      "${pkgs.luajitPackages.vicious.outPath}/lib/lua/5.1/?.lua"
+      "${pkgs.luajitPackages.vicious.outPath}/lib/lua/5.1/?/init.lua"
       # awesome
       "${pkgs.awesome.outPath}/share/awesome/lib/?.lua"
       "${pkgs.awesome.outPath}/share/awesome/lib/?/init.lua"
@@ -47,6 +52,7 @@
       "${pkgs.luajitPackages.penlight.outPath}/share/lua/5.1"
       "${pkgs.luajitPackages.plenary-nvim.outPath}/share/lua/5.1"
       "${pkgs.luajitPackages.std-_debug.outPath}/share/lua/5.1"
+      "${pkgs.luajitPackages.vicious.outPath}/lib/lua/5.1"
       # awesome
       "${pkgs.awesome.outPath}/share/awesome/lib"
       # "${pkgs.luajitPackages.lgi.outPath}/share/lua/5.1"

@@ -4,7 +4,8 @@ _: {
     22 # ssh
     80 # http
     443 # https
-    3000 # serve
+    # 3000 # serve
+    # 3001 modules/system/boot/services/serve-music.nix
     3306 # mysql
     4173 # vite preview
     5173 # vite dev

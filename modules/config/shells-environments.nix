@@ -45,7 +45,7 @@
     l = "ls -l --group-directories-first";
     la = "ls -la";
     lg = "lazygit";
-    ls = "exa --icons --git";
+    ls = "eza --icons --git";
     lt = "ls --tree --level=2";
     lt3 = "ls --tree --level=3";
     mc = "tmux split -h lf; lf";
