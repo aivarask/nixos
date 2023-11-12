@@ -5,12 +5,12 @@ set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
 set foldexpr=nvim_treesitter#foldexpr()
-set foldlevel=3
+set foldlevel=99
 set foldmethod=expr
 set foldnestmax=5
 set hidden
 set ignorecase 
-set iskeyword+=$
+" set iskeyword+=$
 set laststatus=2
 set lazyredraw
 set modeline 

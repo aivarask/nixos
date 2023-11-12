@@ -29,7 +29,7 @@
         "language": [
           "typescript"
         ],
-        "path": "./test.json"
+        "path": "./testing.json"
       },
       {
         "language": [

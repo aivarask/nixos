@@ -104,16 +104,12 @@
 
     xserver = {
       imwheel.enable = false;
-      # synaptics.enable = true;
-      # synaptics.accelFactor = "";
-      synaptics.minSpeed = "0.7";
       dpi = 168; # 96*1.75
       libinput = {
         enable = true;
         touchpad = {
-          # accelProfile = "flat";
           naturalScrolling = true;
-          accelSpeed = "+7";
+          accelSpeed = "+10";
         };
       };
     };

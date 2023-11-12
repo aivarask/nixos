@@ -108,6 +108,7 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path', option = { trailing_slash = false } },
     { name = 'zsh' },
+    { name = 'buffer' },
   }, {
     {
       name = 'cmdline',

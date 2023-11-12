@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    sqlint
+    # sqlint # failed to build
     sqlite
     sqlite-analyzer
     sqlite-interactive

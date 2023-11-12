@@ -9,11 +9,14 @@ fp.setup({
 })
 
 -- https://github.com/lukas-reineke/indent-blankline.nvim
-require('indent_blankline').setup({
-  show_current_context = true,
-  show_current_context_start = true,
+require('ibl').setup({
+  -- show_current_context = true,
+  -- show_current_context_start = true,
 })
-require('symbols-outline').setup({})
+-- https://github.com/simrat39/symbols-outline.nvim
+require('symbols-outline').setup({
+  lsp_blacklist = { 'null-ls' },
+})
 -- https://github.com/nvim-tree/nvim-web-devicons
 require('nvim-web-devicons').setup()
 -- https://github.com/norcalli/nvim-colorizer.lua

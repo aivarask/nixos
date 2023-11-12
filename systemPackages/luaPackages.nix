@@ -10,6 +10,7 @@
     ++ (
       with pkgs.luajitPackages; [
         busted # https://lunarmodules.github.io/busted/
+        luassert # https://github.com/lunarmodules/luassert
         inspect # https://github.com/kikito/inspect.lua
         penlight # https://github.com/lunarmodules/Penlight
         plenary-nvim # https://github.com/nvim-lua/plenary.nvim
@@ -17,6 +18,7 @@
         vicious # https://vicious.readthedocs.io/en/latest/index.html
         luarepl # https://github.com/hoelzro/lua-repl
         linenoise # https://github.com/hoelzro/lua-linenoise
+        libluv # https://github.com/luvit/luv
         # REL:
         # modules/services/x11/window-managers/awesome.nix
         # lgi # https://github.com/lgi-devs/lgi
@@ -28,6 +30,7 @@
       "lua/?/init.lua"
       "/etc/nixos/vim/lua/?.lua"
       "/etc/nixos/vim/lua/?/init.lua"
+      "/etc/nixos/vim/lua/nvim-lsp-file-operations/lua/?.lua"
       "${pkgs.luajitPackages.busted.outPath}/share/lua/5.1/?.lua"
       "${pkgs.luajitPackages.busted.outPath}/share/lua/5.1/?/init.lua"
       "${pkgs.luajitPackages.inspect.outPath}/share/lua/5.1/?.lua"
@@ -47,6 +50,7 @@
       #
     ];
     LUA_LIB = builtins.concatStringsSep ";" [
+      "${pkgs.luajitPackages.luassert.outPath}/share/lua/5.1" # NOTE: Not included in LUA_PATH
       "${pkgs.luajitPackages.busted.outPath}/share/lua/5.1"
       "${pkgs.luajitPackages.inspect.outPath}/share/lua/5.1"
       "${pkgs.luajitPackages.penlight.outPath}/share/lua/5.1"
@@ -56,7 +60,6 @@
       # awesome
       "${pkgs.awesome.outPath}/share/awesome/lib"
       # "${pkgs.luajitPackages.lgi.outPath}/share/lua/5.1"
-      #
     ];
   };
 }

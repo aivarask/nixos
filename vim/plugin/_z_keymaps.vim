@@ -38,7 +38,7 @@ nnoremap <M-CR> :tabnew<CR>
 nnoremap <M-TAB> :tabnext<CR>
 tnoremap <M-TAB> :tabnext<CR>
 nnoremap <M-Del> :tabclose<CR>
-nnoremap <M-q> :Bclose<CR>
+nnoremap <silent> <M-q> :Bclose<CR>
 nnoremap <M-Q> :Bclose!<CR>
 
 map <silent> [q :cp<CR>

@@ -20,6 +20,7 @@
     initExtra = ''
       source /etc/nixos/functions.zsh
       source /etc/nixos/bindings.zsh
+      source ~/.config/tabtab/zsh/__tabtab.zsh
       eval "$(direnv hook zsh)"
     '';
     plugins = [

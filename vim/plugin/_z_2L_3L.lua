@@ -3,6 +3,7 @@ wkr({
   -- " https://github.com/junegunn/fzf.vim#commands
   F = { [[:FZF<CR>]], ':FZF' },
   G = { [[:Rg <C-r><C-w><CR>]], ':Rg <C-r><C-w>' },
+  H = { [[:Rg https<CR>]], ':Rg https url links' },
   M = { [[:Maps<CR>]], ':Maps' },
   ['/'] = { [[:History/<CR>]], ':History/' },
   [':'] = { [[:History:<CR>]], ':History:' },
@@ -16,6 +17,8 @@ wkr({
   h = { [[:Helptags<CR>]], ':Helptags' },
   j = { [[:Jumps<CR>]], ':Jumps' },
   m = { [[:Marks<CR>]], ':Marks' },
+  n = { [[:Files /etc/nixos<CR>]], ':Files /etc/nixos' },
+  v = { [[:Files /etc/nixos/vim<CR>]], ':Files /etc/nixos/vim' },
 }, { prefix = '<leader><leader>' })
 
 wkr({

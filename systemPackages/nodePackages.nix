@@ -5,7 +5,7 @@
     ]
     ++ (with pkgs.nodePackages_latest; [
       # emmet_ls
-      # pnpm
+      pnpm
       # vercel
       # vscode-css-languageserver-bin
       vscode-langservers-extracted
@@ -35,8 +35,8 @@
       serve
       speed-test
       stylelint
-      svelte-check
-      svelte-language-server
+      # svelte-check
+      # svelte-language-server
       tailwindcss
       ts-node
       typescript

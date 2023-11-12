@@ -20,14 +20,14 @@ unclutter --timeout 2 & # not work as a service, WantedBy graphical-session.targ
 dwm-status ~/.dwm-status.toml &
 
 # Timers
-systemctl start wallpaper.service & # ../../modules/system/boot/timers/wallpaper.nix
+systemctl restart wallpaper.service & # ../../modules/system/boot/timers/wallpaper.nix
 # slstatus & # ../../modules/system/boot/timers/slstatus.nix
 
-systemctl --user start dunst.service & # ../services/dunst.nix
-sxhkd &                                # ../services/sxhkd.nix not work as a service unit, but makes config
+systemctl --user restart dunst.service & # ../services/dunst.nix
+sxhkd &                                  # ../services/sxhkd.nix not work as a service unit, but makes config
 # taskwarrior
 
-systemctl --user start redshift.service & # ../../modules/services/x11/redshift.nix
+systemctl --user restart redshift.service & # ../../modules/services/x11/redshift.nix
 
 # XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 # wetty -b / -p 9999 &

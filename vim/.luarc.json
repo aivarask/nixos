@@ -1,9 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "diagnostics.disable": [
-    "lowercase-global",
-    "missing-fields",
-    "lowercase-global"
-  ],
+  "diagnostics.disable": ["lowercase-global", "missing-fields", "unused-local",
+        "inject-field"],
   "workspace.checkThirdParty": false
 }

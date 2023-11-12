@@ -63,6 +63,10 @@
       url = "github:jose-elias-alvarez/typescript.nvim";
       flake = false;
     };
+    typescript-tools-nvim = {
+      url = "github:pmizio/typescript-tools.nvim";
+      flake = false;
+    };
     emmet-ls = {
       url = "github:aca/emmet-ls";
       flake = false;
@@ -95,87 +99,91 @@
   } @ inputs: {
     # packages.x86_64-linux.default = "vimFlake";
     overlays.default = final: prev: let
-      inherit (prev.vimUtils) buildVimPluginFrom2Nix;
+      inherit (prev.vimUtils) buildVimPlugin;
     in {
       vimPlugins =
         prev.vimPlugins
         // {
-          nvim-tree-lua = buildVimPluginFrom2Nix {
+          nvim-tree-lua = buildVimPlugin {
             name = "nvim-tree-lua";
             src = inputs.nvim-tree-lua;
           };
 
-          pretty-fold = buildVimPluginFrom2Nix {
+          pretty-fold = buildVimPlugin {
             name = "pretty-fold";
             src = inputs.pretty-fold;
           };
-          fold-preview = buildVimPluginFrom2Nix {
+          fold-preview = buildVimPlugin {
             name = "fold-preview";
             src = inputs.fold-preview;
           };
-          neotest = buildVimPluginFrom2Nix {
+          neotest = buildVimPlugin {
             name = "neotest";
             src = inputs.neotest;
           };
-          neotest-playwright = buildVimPluginFrom2Nix {
+          neotest-playwright = buildVimPlugin {
             name = "neotest-playwright";
             src = inputs.neotest-playwright;
           };
-          neotest-vim-test = buildVimPluginFrom2Nix {
+          neotest-vim-test = buildVimPlugin {
             name = "neotest-vim-test";
             src = inputs.neotest-vim-test;
           };
-          neotest-vitest = buildVimPluginFrom2Nix {
+          neotest-vitest = buildVimPlugin {
             name = "neotest-vitest";
             src = inputs.neotest-vitest;
           };
-          neotest-plenary = buildVimPluginFrom2Nix {
+          neotest-plenary = buildVimPlugin {
             name = "neotest-plenary";
             src = inputs.neotest-plenary;
           };
-          refactoring-nvim = buildVimPluginFrom2Nix {
+          refactoring-nvim = buildVimPlugin {
             name = "refactoring-nvim";
             src = inputs.refactoring-nvim;
           };
-          vim-interestingwords = buildVimPluginFrom2Nix {
+          vim-interestingwords = buildVimPlugin {
             name = "vim-interestingwords";
             src = inputs.vim-interestingwords;
           };
-          nvim-lspconfig = buildVimPluginFrom2Nix {
+          nvim-lspconfig = buildVimPlugin {
             name = "nvim-lspconfig";
             src = inputs.nvim-lspconfig;
           };
-          nvim-lsp-file-operations = buildVimPluginFrom2Nix {
+          nvim-lsp-file-operations = buildVimPlugin {
             name = "nvim-lsp-file-operations";
             src = inputs.nvim-lsp-file-operations;
           };
-          neodev-nvim = buildVimPluginFrom2Nix {
+          neodev-nvim = buildVimPlugin {
             name = "neodev-nvim";
             src = inputs.neodev-nvim;
           };
-          which-key-nvim = buildVimPluginFrom2Nix {
+          which-key-nvim = buildVimPlugin {
             name = "which-key-nvim";
             src = inputs.which-key-nvim;
           };
-          typescript-nvim = buildVimPluginFrom2Nix {
+          typescript-nvim = buildVimPlugin {
             name = "typescript-nvim";
             src = inputs.typescript-nvim;
           };
+          typescript-tools-nvim = buildVimPlugin {
+            name = "typescript-tools-nvim";
+            src = inputs.typescript-tools-nvim;
+          };
           # Session management
-          persistence-nvim = buildVimPluginFrom2Nix {
+          persistence-nvim = buildVimPlugin {
             name = "persistence-nvim";
             src = inputs.persistence-nvim;
           };
-          neovim-session-manager = buildVimPluginFrom2Nix {
+          neovim-session-manager = buildVimPlugin {
             name = "neovim-session-manager";
             src = inputs.neovim-session-manager;
           };
           # DEBUGGING
-          nvim-dap-vscode-js = buildVimPluginFrom2Nix {
+          nvim-dap-vscode-js = buildVimPlugin {
             name = "nvim-dap-vscode-js";
             src = inputs.nvim-dap-vscode-js;
           };
-          osv = buildVimPluginFrom2Nix {
+          osv = buildVimPlugin {
             name = "osv";
             src = inputs.osv;
           };

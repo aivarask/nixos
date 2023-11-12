@@ -1,12 +1,22 @@
 {
   "kit-page-server-load": {
-    "prefix": ["kit-page-server-load"],
+    "prefix": [
+      "kit-page-server-load"
+    ],
     "body": [
       "/** @type import('./\\$types').PageServerLoad */",
       "export async function load(event) {",
       "${0}",
       "\treturn {};",
       "}"
+    ]
+  },
+  "export": {
+    "prefix": [
+      "export"
+    ],
+    "body": [
+      "export { ${2} } from \"${1}\";"
     ]
   }
 }

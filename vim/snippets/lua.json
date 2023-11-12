@@ -2,5 +2,17 @@
   "foo": {
     "prefix": "foo",
     "body": ["foo bar"]
+  },
+  "describe": {
+    "prefix": ["describe"],
+    "body": ["describe('${1}', function()", "\t${0}", "end)"]
+  },
+  "it": {
+    "prefix": ["it"],
+    "body": ["it('${1}', function()", "\t${0}", "end)"]
+  },
+  "assert": {
+    "prefix": ["assert"],
+    "body": ["assert(${1}, ${2})"]
   }
 }

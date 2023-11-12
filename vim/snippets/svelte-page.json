@@ -1,6 +1,8 @@
 {
   "kit-layout-data": {
-    "prefix": ["kit-layout-data"],
+    "prefix": [
+      "kit-layout-data"
+    ],
     "body": [
       "<script lang=\"ts\">",
       "\timport type { LayoutData } from './\\$types';",
@@ -10,7 +12,9 @@
     ]
   },
   "kit-page-data": {
-    "prefix": ["kit-page-data"],
+    "prefix": [
+      "kit-page-data"
+    ],
     "body": [
       "<script lang=\"ts\">",
       "\timport type { PageData } from './\\$types';",

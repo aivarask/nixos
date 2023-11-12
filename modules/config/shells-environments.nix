@@ -2,10 +2,12 @@
   imports = [./LF_ICONS.nix];
 
   environment.variables = {
+    BAT_THEME = "gruvbox-dark";
     TERMINAL = "alacritty";
     EDITOR = "nvim";
     editor = "vim";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    # MANPAGER = modules/misc/documentation.nix
+    # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     PNPM_HOME = "$HOME/.pnpm-global";
     NPM_CONFIG_PREFIX = "$HOME/.node_modules";
     # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
@@ -26,6 +28,9 @@
     # XSERVERRC = "/etc/X11/xinit/xserverrc";
   };
   environment.shellAliases = {
+    less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
+    man = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
+    codium = "codium --no-sandbox --user-data-dir ~/.codium";
     nf = "nvim -c 'Files'";
     ng = "nvim -c 'Rg'";
     nt = "nvim -c 'Telescope'";

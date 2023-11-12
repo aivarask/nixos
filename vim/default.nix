@@ -33,6 +33,11 @@
     lf-vim
     vim-gruvbox8
     gruvbox-material
+    vim-monokai-tasty
+    vim-monokai
+    vim-monokai-pro
+    monokai-pro-nvim
+
     # nord-nvim
     # onedark-vim
     vim-colors-solarized
@@ -72,9 +77,10 @@
     # LSP:
     lsp_signature-nvim
     lsp-overloads-nvim
-    nvim-lsp-file-operations
+    # nvim-lsp-file-operations
     nvim-lspconfig
     null-ls-nvim
+    none-ls-nvim
     symbols-outline-nvim
     SchemaStore-nvim
     diaglist-nvim
@@ -87,6 +93,7 @@
     neotest-vitest
     neotest-plenary
     neotest-playwright
+    neotest-jest
     # COMPLETION:
     # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     cmp-nvim-lsp-signature-help
@@ -111,6 +118,7 @@
 
     # OTHER
     typescript-nvim
+    typescript-tools-nvim
     lazygit-nvim
     pretty-fold
     fold-preview
@@ -142,6 +150,7 @@
     # --
 
     # UI
+    glow-nvim
     telescope-nvim
     telescope-dap-nvim
     telescope-fzy-native-nvim
@@ -170,7 +179,7 @@ in {
     ];
     # extraPackages = with pkgs; [ tree-sitter ];
     # package = pkgs.neovim;
-    # package = pkgs.neovim-nightly;
+    package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
     viAlias = false;
     vimAlias = false;

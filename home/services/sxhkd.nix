@@ -1,4 +1,5 @@
 _: {
+  # https://github.com/baskerville/sxhkd
   services.sxhkd = {
     enable = true;
     keybindings = {
@@ -18,7 +19,7 @@ _: {
       "ctrl + Print;" = "$TERMINAL -e duf &";
       "ctrl + shift + Return" = "detach";
       "super + F1" = "TEXT=$(cat /etc/nixos/home/services/sxhkd.nix) && dunstify $TEXT";
-      "super + F2" = "dmenu_open";
+      "super + F2" = "dmenu_url"; # bin/dmenu_url
       "super + F3" = "emojipick";
       "super + F4" = "dmenu_go";
       "super + F5" = "$TERMINAL -e dmenu_run";
@@ -34,6 +35,7 @@ _: {
       "super + XF86Mail" = "telegram-desktop";
       "super + ctrl + F3" = "xdg-open https://emojifinder.com/";
       "super + ctrl + Return" = "tabbed -c alacritty --embed";
+      "super + ctrl + m; {a,c,l}" = "mpc clear && mpc load {chill lt, chill, lt}";
       "super + r" = "dmenu_go";
       "super + w" = "$BROWSER";
       "super + x" = "brightnessctl set 10%+";

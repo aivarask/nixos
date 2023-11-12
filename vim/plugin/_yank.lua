@@ -10,6 +10,6 @@ wkr({
     function()
       vim.fn.setreg('r', vim.fn.expand('%'))
     end,
-    'let @p=expand("%")',
+    'let @r=expand("%")',
   },
 }, { prefix = '<leader>y' })

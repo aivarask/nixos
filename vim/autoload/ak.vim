@@ -19,16 +19,40 @@ function! ak#toggle_quickfix()
   endif
 endfunction
 
-function! ak#toogle_dollar()
+
+function! ak#toggle_help()
+  if empty(filter(getwininfo(), 'v:val.help'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+
+
+
+" $state
+" _
+" a
+" ab
+" __
+" {}
+" {_('welcome')}
+" $: console.log(_)
+" set iskeyword-=_
+set iskeyword+=$
+function! ak#toggle_dollar()
+  let l:val = expand('<cword>')
   let l:pos = col('.')
-  if expand('<cword>') =~ '\$'
-    " if expand('<cword>') =~ '\v(\s+|\t+)?$'
-    echo 'contains'
-    exec 'normal! bx'
+  let l:back = strchars(val)
+  let inner = ''
+  if strchars(val) > 1
+    let inner .= 'b'
+  endif
+  if val =~ '\$'
+    exec 'normal! '.inner.'x'
     let l:pos -= 1
   else
-    echo 'else'
-    exec 'normal! bi$'
+    exec 'normal! '.inner.'i$'
     let l:pos += 1
   endif
   call cursor(line("."), l:pos)

@@ -38,7 +38,7 @@ require('todo-comments').setup({
     -- FIX:
     FIX = { icon = '🐞', color = 'red', { alt = { 'ISSUE', 'BUG' } } },
     -- NOTE:
-    NOTE = { icon = 'ℹ️ ', color = 'cyan', alt = { 'INFO' } },
+    NOTE = { icon = 'ℹ️ ', color = 'cyan', alt = { 'INFO', 'USE' } },
     -- TEST: Fire
     TEST = { icon = '🔥', color = 'amber' },
     -- FEAT: Robot
