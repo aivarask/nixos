@@ -1,37 +1,36 @@
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-require('ts_context_commentstring').setup({
-  languages = {
-    css = '/* %s */',
-    postcss = '/* %s */',
-    scss = '/* %s */',
-    javascript = {
-      __default = '// %s',
-      __multiline = '{/* %s */}',
-      jsx_element = '{/* %s */}',
-      jsx_fragment = '{/* %s */}',
-      jsx_attribute = '// %s',
-      comment = '// %s',
-    },
-    --     javascript = { __default = '/// %s', __multiline = '/* %s */' },
-    --     -- typescript = { __default = '// %s', __multiline = '/* %s */' },
-    --     -- https://github.com/Himujjal/tree-sitter-svelte/#usage
-    --     -- svelte = {
-    --     -- __default = '<!-- %s -->',
-    --     -- comment = '<!-- %s -->',
-    --     -- element = '<!-- %s -->',
-    --     -- https://github.com/tpope/vim-commentary/issues/145
-    --     -- https://github.com/sveltejs/svelte/issues/5213
-    --     -- attribute_name = '--%s',
-    --     -- text = '// %s',
-    --     -- },
-  },
-})
+-- require('ts_context_commentstring').setup({
+--   languages = {
+--     css = '/* %s */',
+--     postcss = '/* %s */',
+--     scss = '/* %s */',
+--     -- javascript = {
+--     --   __default = '// %s',
+--     --   __multiline = '{/* %s */}',
+--     --   jsx_element = '{/* %s */}',
+--     --   jsx_fragment = '{/* %s */}',
+--     --   jsx_attribute = '// %s',
+--     --   comment = '// %s',
+--     -- },
+--     --     javascript = { __default = '/// %s', __multiline = '/* %s */' },
+--     --     -- typescript = { __default = '// %s', __multiline = '/* %s */' },
+--     --     -- https://github.com/Himujjal/tree-sitter-svelte/#usage
+--     --     -- svelte = {
+--     --     -- __default = '<!-- %s -->',
+--     --     -- comment = '<!-- %s -->',
+--     --     -- element = '<!-- %s -->',
+--     --     -- https://github.com/tpope/vim-commentary/issues/145
+--     --     -- https://github.com/sveltejs/svelte/issues/5213
+--     --     -- attribute_name = '--%s',
+--     --     -- text = '// %s',
+--     --     -- },
+--   },
+-- })
 
 -- https://github.com/tpope/vim-commentary/issues/145
 -- autocmd FileType * :let b:commentary_format = &commentstring
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = '*',
-  command = [[:let b:commentary_format = &commentstring]],
-  -- command = [[]],
-})
-
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = '*',
+--   command = [[:let b:commentary_format = &commentstring]],
+--   -- command = [[]],
+-- })

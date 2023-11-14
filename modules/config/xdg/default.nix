@@ -32,6 +32,10 @@ _: {
       "text/vnd.trolltech.linguist" = "nvim.desktop";
     };
     removedAssociations = {
+      "audio/mpeg" = [
+        "mpv.desktop"
+
+      ];
       "audio/mp3" = [
         "mpv.desktop"
         "umpv.desktop"

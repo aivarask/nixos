@@ -4,12 +4,25 @@
       pkgs.nodejs_20
     ]
     ++ (with pkgs.nodePackages_latest; [
-      # emmet_ls
+      # ~/.pnpm-global
+      # @prisma/language-server
+      # @tailwindcss/language-server
+      # c8
+      # chokidar-cli
+      # cssmodules-language-server
+      # emmet-ls
+      # stylelint-lsp
+      # svelte-language-server
       pnpm
+
+      # NOT IN USE
       # vercel
       # vscode-css-languageserver-bin
-      vscode-langservers-extracted
+      # svelte-check
+
       # --
+      vscode-langservers-extracted
+      dotenv-cli
       bash-language-server
       coc-rust-analyzer
       degit
@@ -23,7 +36,6 @@
       js-beautify
       markdownlint-cli
       mermaid-cli
-      mermaid-cli
       node2nix
       nodemon
       npm
@@ -35,8 +47,6 @@
       serve
       speed-test
       stylelint
-      # svelte-check
-      # svelte-language-server
       tailwindcss
       ts-node
       typescript

@@ -71,6 +71,26 @@ require('nvim-treesitter.configs').setup({
       },
     },
   },
+  context_commentstring = {
+    -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+    enable = true,
+    config = {
+      css = '/* %s */',
+      postcss = '/* %s */',
+      scss = '/* %s */',
+      -- typescript = { __default = '// %s', __multiline = '/* %s */' },
+      -- https://github.com/Himujjal/tree-sitter-svelte/#usage
+      -- svelte = {
+      -- __default = '<!-- %s -->',
+      -- comment = '<!-- %s -->',
+      -- element = '<!-- %s -->',
+      -- https://github.com/tpope/vim-commentary/issues/145
+      -- https://github.com/sveltejs/svelte/issues/5213
+      -- attribute_name = '--%s',
+      -- text = '// %s',
+      -- },
+    },
+  },
   -- https://github.com/nvim-treesitter/nvim-treesitter
   highlight = {
     enable = true,
@@ -96,4 +116,3 @@ require('nvim-treesitter.configs').setup({
     enable = true,
   },
 })
-

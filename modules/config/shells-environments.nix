@@ -28,6 +28,7 @@
     # XSERVERRC = "/etc/X11/xinit/xserverrc";
   };
   environment.shellAliases = {
+    pm = "pulsemixer";
     less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
     man = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
     codium = "codium --no-sandbox --user-data-dir ~/.codium";

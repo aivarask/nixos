@@ -21,6 +21,7 @@
       }
       # bind_to_address "0.0.0.0:6600"
       # bind_to_address "/var/lib/mpd/socket"
+      bind_to_address "/run/mpd/socket"
     '';
   };
 }
