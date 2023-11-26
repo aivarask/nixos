@@ -7,9 +7,7 @@ inspect = require('inspect') -- https://github.com/kikito/inspect.lua#examples-o
 assert(inspect(1) == '1')
 assert(inspect({ 1, 2, 3, 4 }) == '{ 1, 2, 3, 4 }')
 pretty = require('pl.pretty') -- https://github.com/lunarmodules/Penlight#module-overview
-function pp(any)
-  print(pretty(any))
-end
+function pp(any) print(pretty(any)) end
 
 plenary = require('plenary') -- https://github.com/nvim-lua/plenary.nvim
 p = require('plenary.path')

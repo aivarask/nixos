@@ -1,4 +1,7 @@
+" let mapleader = '\'
+" let maplocalleader = '<C-\>'
 let &runtimepath.=',/etc/nixos/vim'
+
 
 aug Initial
   au!

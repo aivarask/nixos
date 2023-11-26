@@ -3,51 +3,22 @@
     "snippets": [
       {
         "language": [
+          "html",
+          "svelte"
+        ],
+        "path": "./_html.json"
+      },
+      {
+        "language": [
+          "svelte"
+        ],
+        "path": "./_svelte.json"
+      },
+      {
+        "language": [
           "javascript"
         ],
         "path": "./javascript.json"
-      },
-      {
-        "language": [
-          "typescript"
-        ],
-        "path": "./ts.json"
-      },
-      {
-        "language": [
-          "typescript"
-        ],
-        "path": "./typescript.json"
-      },
-      {
-        "language": [
-          "typescript"
-        ],
-        "path": "./typescript-page.json"
-      },
-      {
-        "language": [
-          "typescript"
-        ],
-        "path": "./testing.json"
-      },
-      {
-        "language": [
-          "svelte"
-        ],
-        "path": "./svelte.json"
-      },
-      {
-        "language": [
-          "svelte"
-        ],
-        "path": "./html.json"
-      },
-      {
-        "language": [
-          "svelte"
-        ],
-        "path": "./svelte-page.json"
       },
       {
         "language": [

@@ -8,19 +8,6 @@ wkr({
   p = { require('telescope').extensions.projects.projects, 'projects' },
 }, { prefix = '<leader>s' })
 
--- https://github.com/kyazdani42/nvim-tree.lua
-require('nvim-tree').setup({
-  on_attach = require('nvim-tree.api').config.mappings.default_on_attach,
-  sync_root_with_cwd = true,
-  update_focused_file = {
-    enable = true, -- default false
-    update_root = true, -- default false
-    debounce_delay = 15,
-    ignore_list = {},
-  },
-  git = { enable = false },
-})
-
 local Path = require('plenary.path')
 -- https://github.com/Shatur/neovim-session-manager
 require('session_manager').setup({
@@ -47,6 +34,7 @@ local options = {
     '.luarc.json',
     '>packages',
     '>proj',
+    '>sb',
     '!>.cache',
     '!/nix/store',
   },

@@ -1,6 +1,8 @@
 {
   "kit-page-server-load-type": {
-    "prefix": ["kit-page-server-load-type"],
+    "prefix": [
+      "kit-page-server-load-type"
+    ],
     "body": [
       "${1:import type { PageServerLoad \\} from './\\$types';}",
       "export const load: PageServerLoad = async (event) => {",
@@ -10,7 +12,9 @@
     ]
   },
   "kit-layout-server-load-type": {
-    "prefix": ["kit-layout-server-load-type"],
+    "prefix": [
+      "kit-layout-server-load-type"
+    ],
     "body": [
       "${1:import type { LayoutServerLoad \\} from './\\$types';}",
       "export const load: LayoutServerLoad = async (event) => {",

@@ -1,13 +1,15 @@
 vim.api.nvim_create_autocmd('BufWritePre', {
   desc = 'Format before write',
-  group = vim.api.nvim_create_augroup('format', { clear = true }),
+  group = vim.api.nvim_create_augroup('UserLspFormat', { clear = true }),
   callback = function(opts)
+    print('will format')
     local buf_filetype = vim.bo[opts.buf].filetype
     local t = {
       -- ISSUE: vim.lsp.buf.format() opens all folds.
       typescript = 'tsserver',
-      javascript = 'tsserver',
+      javascript = 'null-ls',
       prisma = 'prismals', -- Fold not found
+      -- sql = 'sqlls',
       -- json = 'jsonls',
       -- jsonc = 'jsonls',
       -- BAD:
@@ -18,17 +20,15 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     for filetype, client_name in pairs(t) do
       if buf_filetype == filetype then
         vim.lsp.buf.format({
-          filter = function(client)
-            return client.name == client_name
-          end,
+          async = true,
+          filter = function(client) return client.name == client_name end,
         })
         return
       end
     end
     vim.lsp.buf.format({
-      filter = function(client)
-        return client.name == 'null-ls'
-      end,
+      async = true,
+      filter = function(client) return client.name == 'null-ls' end,
     })
   end,
 })

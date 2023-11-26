@@ -10,7 +10,9 @@ require('toggleterm').setup({
       return vim.o.columns * 0.6
     end
   end,
-  open_mapping = [[<c-\>]],
+  -- open_mapping = [[<c-\>]],
+  -- insert_mappings = true,
+
   float_opts = {
     height = 50,
   },

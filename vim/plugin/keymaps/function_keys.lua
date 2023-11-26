@@ -2,8 +2,8 @@ wkr({
   ['<F1>'] = { help_cword, 'help_cword' },
   ['<F13>'] = { help_cWORD, 'help_cWORD' },
   ['<F25>'] = { help_cexpr, 'help_cexpr' },
-  ['<F2>'] = { vim.lsp.buf.hover, 'vim.lsp.buf.hover', mode = { 'n', 'i' } },
-  ['<F3>'] = { require('lsp_signature').toggle_float_win, 'lsp_signature.toggle_float_win', mode = { 'n', 'i' } },
+  -- ['<F2>'] = ../_lsp/~.lua
+  -- ['<F3>'] = ../_lsp/~.lua
   ['<F4>'] = { dap.restart_frame, 'dap.restart_frame' },
   ['<F5>'] = {
     function()

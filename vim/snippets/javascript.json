@@ -1,22 +1,15 @@
 {
-  "kit-page-server-load": {
+  "s-load": {
+    "description": "sveltekit async load function",
     "prefix": [
-      "kit-page-server-load"
+      "alf",
+      "s-load",
+      "load"
     ],
     "body": [
-      "/** @type import('./\\$types').PageServerLoad */",
-      "export async function load(event) {",
-      "${0}",
-      "\treturn {};",
+      "export async function load(e) {",
+      "\t${0}",
       "}"
-    ]
-  },
-  "export": {
-    "prefix": [
-      "export"
-    ],
-    "body": [
-      "export { ${2} } from \"${1}\";"
     ]
   }
 }

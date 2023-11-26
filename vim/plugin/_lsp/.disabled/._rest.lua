@@ -72,12 +72,6 @@ require('lspconfig').rust_analyzer.setup({
   on_attach = on_attach,
 })
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sqlls
-require('lspconfig').sqlls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#stylelint_lsp
 -- require('lspconfig').stylelint_lsp.setup({
 --   capabilities = capabilities,

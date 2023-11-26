@@ -29,7 +29,7 @@ sxhkd &                                  # ../services/sxhkd.nix not work as a s
 
 systemctl --user restart redshift.service & # ../../modules/services/x11/redshift.nix
 
-# XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
+XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 # wetty -b / -p 9999 &
 
 session=${1:-dwm}

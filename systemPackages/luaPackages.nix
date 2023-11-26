@@ -22,6 +22,7 @@
         # REL:
         # modules/services/x11/window-managers/awesome.nix
         # lgi # https://github.com/lgi-devs/lgi
+        ldoc # https://keplerproject.github.io/luadoc/index.html
       ]
     );
   environment.variables = {

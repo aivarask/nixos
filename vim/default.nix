@@ -8,8 +8,9 @@
     vim-json
   ];
   commonPlugins = with pkgs.vimPlugins; [
+    vim-jsdoc
     telescope-fzf-native-nvim
-    vim-obsession
+    # vim-obsession
     vim-devicons
     vim-abolish
     vim-dispatch
@@ -79,7 +80,7 @@
     lsp-overloads-nvim
     # nvim-lsp-file-operations
     nvim-lspconfig
-    null-ls-nvim
+    # null-ls-nvim
     none-ls-nvim
     symbols-outline-nvim
     SchemaStore-nvim
@@ -104,6 +105,7 @@
     cmp-path
     cmp-emoji
     cmp-zsh
+    cmp-git
     # cmp-treesitter
     lspkind-nvim
     nvim-autopairs
@@ -129,7 +131,7 @@
     dressing-nvim
     lualine-nvim
     lualine-lsp-progress
-    tabline-nvim
+    # tabline-nvim archived
     nvim-web-devicons
     neoscroll-nvim
     nvim-tree-lua

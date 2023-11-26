@@ -26,12 +26,3 @@ require('goto-preview').setup({
   preview_window_title = { enable = true, position = 'left' }, -- Whether to set the preview window title as the filename
 })
 
--- https://github.com/lewis6991/hover.nvim/
-require('hover').setup({
-  init = function()
-    require('hover.providers.lsp')
-  end,
-  preview_opts = { border = nil },
-  preview_window = false,
-  title = true,
-})

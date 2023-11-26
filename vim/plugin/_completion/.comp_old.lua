@@ -10,9 +10,7 @@ require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/vim/snippets' 
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
+    expand = function(args) require('luasnip').lsp_expand(args.body) end,
   },
   -- https://github.com/onsails/lspkind.nvim
   formatting = {
@@ -95,9 +93,7 @@ cmp.setup.cmdline('/', {
     {
       name = 'buffer',
       option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
+        get_bufnrs = function() return vim.api.nvim_list_bufs() end,
       },
     },
   },
@@ -121,22 +117,3 @@ cmp.setup.cmdline(':', {
     },
   }),
 })
-
--- https://github.com/windwp/nvim-autopairs
-local npairs = require('nvim-autopairs')
--- FastWrap
-npairs.setup({
-  fast_wrap = {
-    map = '<M-e>',
-    chars = { '{', '[', '(', '"', "'", '<' },
-    pattern = [=[[%'%"%)%>%]%)%}%,]]=],
-    end_key = '$',
-    keys = 'qwertyuiopzxcvbnmasdfghjkl',
-    check_comma = true,
-    highlight = 'Search',
-    highlight_grey = 'Comment',
-  },
-})
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

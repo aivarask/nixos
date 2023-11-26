@@ -13,10 +13,9 @@ wkr({
   ['?'] = { wk.show, 'wk.show()' },
   [']'] = { neotest.summary.toggle, 'neotest.summary.toggle()' },
   ['}'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
-  D = { [[O/** */ <ESC>Bi]], 'JSDOC' },
+
   G = { [[:Glow<CR>]], ':Glow' },
   S = { [[:'<,'>sort<CR>]], ':sort', noremap = false, mode = { 'v' } },
-  a = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
   T = {
     name = 'Treesitter',
     i = { vim.treesitter.inspect_tree, 'vim.treesitter.inspect_tree' },

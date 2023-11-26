@@ -21,6 +21,7 @@
       # svelte-check
 
       # --
+      jsdoc
       vscode-langservers-extracted
       dotenv-cli
       bash-language-server
@@ -30,13 +31,13 @@
       emoj
       eslint
       eslint_d
-      fast-cli
+      # fast-cli # Test your download and upload speed using fast.com
       fixjson
       gulp
       js-beautify
       markdownlint-cli
       mermaid-cli
-      node2nix
+      # node2nix
       nodemon
       npm
       npm-check-updates

@@ -19,6 +19,14 @@
       "</script>"
     ]
   },
+  "s-input-test": {
+    "prefix": [
+      "s-input-test"
+    ],
+    "body": [
+      "<input value={${1}} name=\"${2}\" id=\"${3}\" data-testid=\"${4}\"/>"
+    ]
+  },
   "s-input": {
     "prefix": [
       "input",
