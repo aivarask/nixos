@@ -66,7 +66,7 @@
   systemd.network.networks."10-eno1" = {
     name = "eno1";
     matchConfig.Name = "eno1";
-    linkConfig.RequiredForOnline = "yes"; # or routable
+    # linkConfig.RequiredForOnline = "yes"; # or routable
     networkConfig = {
       DHCP = "ipv4";
       IPv6AcceptRA = true;
@@ -76,7 +76,7 @@
   systemd.network.networks."20-wlp6s0" = {
     name = "wlp6s0";
     matchConfig.Name = "wlp6s0";
-    linkConfig.RequiredForOnline = "no";
+    # linkConfig.RequiredForOnline = "no";
     networkConfig = {
       DHCP = "ipv4";
       IPv6AcceptRA = true;
