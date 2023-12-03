@@ -15,11 +15,17 @@ wkr({
   name = 'Telescope find_files',
   e = { [[:Telescope find_files<CR>]], '.' },
   v = {
-    function() require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim' }) end,
+    function()
+      require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim' })
+    end,
     '/etc/nixos/vim',
   },
   s = {
-    function() require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim/snippets' }) end,
+    function()
+      require('telescope.builtin').find_files({
+        cwd = '/etc/nixos/vim/snippets',
+      })
+    end,
     '/etc/nixos/vim/snippets',
   },
   n = {
@@ -31,10 +37,15 @@ wkr({
 wkr({
   name = 'Telescope',
   ['?'] = {
-    r = { [[:!xdg-open https://github.com/nvim-telescope/telescope.nvim <CR>]], '@gh/telescope.nvim' },
+    r = {
+      [[:!xdg-open https://github.com/nvim-telescope/telescope.nvim <CR>]],
+      '@gh/telescope.nvim',
+    },
   },
   v = {
-    function() require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim' }) end,
+    function()
+      require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim' })
+    end,
     'find_files vim',
   },
   n = {
@@ -42,7 +53,11 @@ wkr({
     'find_files nixos',
   },
   s = {
-    function() require('telescope.builtin').find_files({ cwd = '/etc/nixos/vim/snippets' }) end,
+    function()
+      require('telescope.builtin').find_files({
+        cwd = '/etc/nixos/vim/snippets',
+      })
+    end,
     'find_files snippets',
   },
   p = { [[:Telescope ak paths<CR>]], 'ak paths' },
@@ -57,6 +72,9 @@ wkr({
     name = 'LSP',
     d = { [[:Telescope lsp_document_symbols<CR>]], 'lsp_document_symbols' },
     w = { [[:Telescope lsp_workspace_symbols<CR>]], 'lsp_workspace_symbols' },
-    x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
+    x = {
+      [[:Telescope lsp_dynamic_workspace_symbols<CR>]],
+      'lsp_dynamic_workspace_symbols',
+    },
   },
 }, { prefix = '<leader>t' })

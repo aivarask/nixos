@@ -1,18 +1,25 @@
 -- https://github.com/mfussenegger/nvim-dap
 dap = require('dap')
 dap.defaults.fallback.terminal_win_cmd = '60vsplit new'
-vim.fn.sign_define('DapBreakpoint', { text = '🟢', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = '🟡', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '🔴', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define(
+  'DapBreakpoint',
+  { text = '🟢', texthl = '', linehl = '', numhl = '' }
+)
+vim.fn.sign_define(
+  'DapBreakpointRejected',
+  { text = '🟡', texthl = '', linehl = '', numhl = '' }
+)
+vim.fn.sign_define(
+  'DapStopped',
+  { text = '🔴', texthl = '', linehl = '', numhl = '' }
+)
 
 widgets = require('dap.ui.widgets')
 
 -- https://github.com/rcarriga/nvim-dap-ui
 dapui = require('dapui')
 
-function dapui.toggle_reset(args)
-  dapui.toggle({ reset = true })
-end
+function dapui.toggle_reset(args) dapui.toggle({ reset = true }) end
 
 require('dapui').setup({
   controls = {

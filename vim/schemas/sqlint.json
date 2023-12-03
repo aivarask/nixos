@@ -1,0 +1,73 @@
+{
+  // https://github.com/joe-re/sql-language-server/tree/release/packages/sqlint
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "/etc/nixos/vim/schemas/sqlint.json",
+  "title": "sqlintrc",
+  "description": "Sqlintrc schema",
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "object",
+      "description": "Rules object",
+      "properties": {
+        "align-column-to-the-first": {
+          "description": "Aligns to the first",
+          "default": "error",
+          "$ref": "#err"
+        },
+        "column-new-line": {
+          "description": "Column new line",
+          "default": "error",
+          "$ref": "#err"
+        },
+        "linebreak-after-clause-keyword": {
+          "default": "error",
+          "$ref": "#err"
+        },
+        "reserved-word-case": {
+          "type": "array",
+          "items": [
+            {
+              "$ref": "#err"
+            },
+            {
+              "$ref": "#case"
+            }
+          ]
+        },
+        "space-surrounding-operators": {
+          "default": "error",
+          "$ref": "#err"
+        },
+        "where-clause-new-line": {
+          "default": "error",
+          "$ref": "#err"
+        },
+        "align-where-clause-to-the-first": {
+          "default": "error",
+          "$ref": "#err"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "err": {
+      "$id": "#err",
+      "type": "string",
+      "enum": [
+        "error",
+        "warn",
+        "off"
+      ]
+    },
+    "case": {
+      "$id": "#case",
+      "type": "string",
+      "default": "upper",
+      "enum": [
+        "upper",
+        "lower"
+      ]
+    }
+  }
+}

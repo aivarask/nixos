@@ -9,15 +9,9 @@
 ---@type neotest.Adapter
 local adapter = {
   name = 'neotest-bun',
-  root = function(dir)
-    return vim.uv.cwd()
-  end,
-  filter_dir = function(name, rel_path, root)
-    return name ~= 'node_modules'
-  end,
-  is_test_file = function(file_path)
-    return file_path:match('math.test.js')
-  end,
+  root = function(dir) return vim.uv.cwd() end,
+  filter_dir = function(name, rel_path, root) return name ~= 'node_modules' end,
+  is_test_file = function(file_path) return file_path:match('math.test.js') end,
 }
 
 return adapter

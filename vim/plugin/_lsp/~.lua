@@ -28,7 +28,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- })
 
     wkr({
-      a = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
+      a = {
+        vim.lsp.buf.code_action,
+        'vim.lsp.buf.code_action',
+        mode = { 'n', 'v' },
+      },
     }, { prefix = '<leader>', buffer = buffer })
 
     wkr({
@@ -53,8 +57,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
       D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
       rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
       f = {
-        function() vim.lsp.buf.format({ async = true }) end,
-        'vim.lsp.buf.format',
+        function()
+          vim.lsp.buf.format({
+            async = true,
+            filter = function(client) return client.name ~= 'null-ls' end,
+          })
+        end,
+        'vim.lsp.buf.format ~= null-ls',
+      },
+      F = {
+        function()
+          vim.lsp.buf.format({
+            async = true,
+            filter = function(client)
+              print('Format using = null-ls ')
+              return client.name == 'null-ls'
+            end,
+          })
+        end,
+        'vim.lsp.buf.format NULL-LS',
       },
     }, { prefix = '<space>', buffer = buffer })
 

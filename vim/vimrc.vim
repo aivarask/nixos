@@ -2,7 +2,6 @@
 " let maplocalleader = '<C-\>'
 let &runtimepath.=',/etc/nixos/vim'
 
-
 aug Initial
   au!
   autocmd BufEnter *.mdx setlocal ft=markdown

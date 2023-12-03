@@ -5,5 +5,5 @@ _: {
   };
   services.blueman-applet.enable = true;
   services.mpris-proxy.enable = true;
-  programs.alacritty.settings.font.size = 8.0;
+  programs.alacritty.settings.font.size = 7.0;
 }

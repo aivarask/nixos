@@ -6,7 +6,12 @@ require('lsp-file-operations').setup({ debug = false })
 require('nvim-tree').setup({
   on_attach = function(bufnr)
     require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
-    vim.keymap.set('n', '<C-Space>', tree_actions_menu, { buffer = bufnr, noremap = true, silent = true })
+    vim.keymap.set(
+      'n',
+      '<C-Space>',
+      tree_actions_menu,
+      { buffer = bufnr, noremap = true, silent = true }
+    )
   end,
   sync_root_with_cwd = true,
   update_focused_file = {
@@ -16,4 +21,5 @@ require('nvim-tree').setup({
     ignore_list = {},
   },
   git = { enable = false },
+  view = { width = 25, signcolumn = 'no' },
 })

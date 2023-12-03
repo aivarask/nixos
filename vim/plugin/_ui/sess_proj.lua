@@ -3,8 +3,14 @@ wkr({
   s = { '<cmd>:SessionManager load_session<cr>', 'load_session' },
   d = { '<cmd>:SessionManager delete_session<cr>', 'delete_session' },
   l = { '<cmd>:SessionManager load_last_session<cr>', 'load_last_session' },
-  w = { '<cmd>:SessionManager save_current_session<cr>', 'save_current_session' },
-  ['.'] = { '<cmd>:SessionManager load_current_dir_session<cr>', 'load_current_dir_session' },
+  w = {
+    '<cmd>:SessionManager save_current_session<cr>',
+    'save_current_session',
+  },
+  ['.'] = {
+    '<cmd>:SessionManager load_current_dir_session<cr>',
+    'load_current_dir_session',
+  },
   p = { require('telescope').extensions.projects.projects, 'projects' },
 }, { prefix = '<leader>s' })
 

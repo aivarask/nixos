@@ -42,7 +42,19 @@ wkr({
     'ToggleTerm relative tab',
     mode = { 'n', 'i', 't' },
   },
-  ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
-  ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
-  ['<F36>'] = { '<cmd>ToggleTerm direction=tab<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
+  ['<F12>'] = {
+    '<cmd>ToggleTerm direction=horizontal<CR>',
+    'ToggleTerm',
+    mode = { 'n', 'i', 't' },
+  },
+  ['<F24>'] = {
+    '<cmd>ToggleTerm direction=vertical<CR>',
+    'ToggleTerm',
+    mode = { 'n', 'i', 't' },
+  },
+  ['<F36>'] = {
+    '<cmd>ToggleTerm direction=tab<CR>',
+    'ToggleTerm',
+    mode = { 'n', 'i', 't' },
+  },
 })

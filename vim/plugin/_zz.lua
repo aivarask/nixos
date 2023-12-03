@@ -4,4 +4,3 @@ wkr({
   qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
   QQ = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
 })
-

@@ -1,5 +1,5 @@
 {
-  "name": "vim-sqlite3-project",
+  "name": "vim-foo",
   "adapter": "sqlite3",
   "filename": "/etc/nixos/vim/foo.db"
 }

@@ -50,9 +50,12 @@ require('lualine').setup({
     lualine_x = {
       {
         'lsp_progress',
-        display_components = { 'lsp_client_name', {
-          'percentage',
-        } },
+        display_components = {
+          'lsp_client_name',
+          {
+            'percentage',
+          },
+        },
       },
       'encoding',
       'fileformat',
@@ -71,5 +74,13 @@ require('lualine').setup({
       function() return vim.api.nvim_buf_line_count(0) end,
     },
   },
-  extensions = { 'quickfix', 'nvim-tree', 'fzf', 'symbols-outline', 'toggleterm', 'man', 'trouble' },
+  extensions = {
+    'quickfix',
+    'nvim-tree',
+    'fzf',
+    'symbols-outline',
+    'toggleterm',
+    'man',
+    'trouble',
+  },
 })

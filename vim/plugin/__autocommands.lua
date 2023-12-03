@@ -13,9 +13,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '.env*',
-  callback = function()
-    vim.diagnostic.disable()
-  end,
+  callback = function() vim.diagnostic.disable() end,
 })
 
 function _G.set_terminal_keymaps()

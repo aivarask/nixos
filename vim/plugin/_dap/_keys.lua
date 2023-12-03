@@ -2,9 +2,7 @@
 wkr({
   name = 'DAP',
   c = {
-    function()
-      return dap.continue
-    end,
+    function() return dap.continue end,
     'continue',
   },
   r = { dap.run, 'run' },

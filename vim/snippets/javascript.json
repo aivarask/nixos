@@ -11,5 +11,53 @@
       "\t${0}",
       "}"
     ]
+  },
+  "s-action": {
+    "description": "sveltekit action",
+    "prefix": [
+      "s-action"
+    ],
+    "body": [
+      "${1:default}: async (e) => {",
+      "\t${0}",
+      "}"
+    ]
+  },
+  "s-formData": {
+    "description": "destructure FormData",
+    "prefix": [
+      "s-form-data"
+    ],
+    "body": [
+      "const {${0}} = Object.fromEntries((await e.request.formData()).entries())"
+    ]
+  },
+  "s-searchParams": {
+    "description": "dest e.url.searchParams",
+    "prefix": [
+      "s-searchParams"
+    ],
+    "body": [
+      "const {${0}} = Object.fromEntries(e.url.searchParams.entries())"
+    ]
+  },
+  "foo": {
+    "prefix": [
+      "foo"
+    ],
+    "body": [
+      "console.log('hello from foo')"
+    ],
+    "description": "example"
+  },
+  "trycatch": {
+    "prefix": [
+      "trycatch"
+    ],
+    "body": [
+      "try {${0}}",
+      "catch (e) {\n\tconsole.log(e)\n}"
+    ],
+    "description": ""
   }
 }

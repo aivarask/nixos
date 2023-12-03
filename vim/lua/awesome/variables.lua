@@ -1,5 +1,7 @@
 -- beautiful.init(gears.filesystem.get_themes_dir() .. 'default/theme.lua')
-beautiful.init(gears.filesystem.get_configuration_dir() .. 'themes/gruvbox/theme.lua')
+beautiful.init(
+  gears.filesystem.get_configuration_dir() .. 'themes/gruvbox/theme.lua'
+)
 
 terminal = os.getenv('TERMINAL') or 'xterm'
 editor = os.getenv('EDITOR') or 'nano'

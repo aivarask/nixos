@@ -74,5 +74,7 @@ function tree_actions_menu(node)
   }
 
   -- Opening the menu
-  require('telescope.pickers').new({ prompt_title = 'Tree menu' }, default_options):find()
+  require('telescope.pickers')
+    .new({ prompt_title = 'Tree menu' }, default_options)
+    :find()
 end

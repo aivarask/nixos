@@ -1,6 +1,4 @@
-if not pcall(require, 'nvim-treesitter') then
-  return
-end
+if not pcall(require, 'nvim-treesitter') then return end
 
 wkr({
   ['['] = {

@@ -4,7 +4,10 @@ vim.g.jsdoc_lehre_path = 'lehre'
 wkr({
   name = 'JsDoc',
   ['?'] = {
-    v = { [[:!xdg-open 'https://github.com/heavenshell/vim-jsdoc' <CR>]], '@gh/vim-jsdoc' },
+    v = {
+      [[:!xdg-open 'https://github.com/heavenshell/vim-jsdoc' <CR>]],
+      '@gh/vim-jsdoc',
+    },
     j = { [[:!xdg-open https://jsdoc.app <CR>]], 'www.jsdoc.app' },
   },
   j = { [[:JsDoc<CR>]], ':JsDoc' },
@@ -12,7 +15,10 @@ wkr({
   J = { [[O/** */ <ESC>Bi]], 'JsDoc snippet' },
   t = {
     name = '$types',
-    l = { [[a @type {import('./$types').LayoutServerLoad} <ESC>Bi]], '@type {import("./$types").LayoutServerLoad}' },
+    l = {
+      [[a @type {import('./$types').LayoutServerLoad} <ESC>Bi]],
+      '@type {import("./$types").LayoutServerLoad}',
+    },
   },
   k = {
     name = 'kit',

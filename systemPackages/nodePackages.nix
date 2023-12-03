@@ -25,7 +25,7 @@
       vscode-langservers-extracted
       dotenv-cli
       bash-language-server
-      coc-rust-analyzer
+      # coc-rust-analyzer
       degit
       diagnostic-languageserver
       emoj
@@ -38,18 +38,18 @@
       markdownlint-cli
       mermaid-cli
       # node2nix
-      nodemon
+      # nodemon
       npm
       npm-check-updates
       patch-package
       pm2
       prettier
-      prisma
+      # prisma
       serve
       speed-test
       stylelint
-      tailwindcss
-      ts-node
+      # tailwindcss
+      # ts-node
       typescript
       typescript-language-server
       vim-language-server

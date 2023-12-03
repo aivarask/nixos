@@ -2,9 +2,7 @@ function sveltekit_file()
   local api = require('nvim-tree.api')
   return vim.ui.select({ '+page.server.ts', '+page.svelte', '+server.ts' }, {
     prompt = 'New file',
-    format_item = function(item)
-      return item
-    end,
+    format_item = function(item) return item end,
   }, function(item)
     if item == nil then
       return
@@ -25,17 +23,11 @@ function sveltekit_file()
   end)
 end
 
-function help_cword()
-  vim.cmd.help(vim.fn.expand('<cword>'))
-end
+function help_cword() vim.cmd.help(vim.fn.expand('<cword>')) end
 
-function help_cWORD()
-  vim.cmd.help(vim.fn.expand('<cWORD>'))
-end
+function help_cWORD() vim.cmd.help(vim.fn.expand('<cWORD>')) end
 
-function help_cexpr()
-  vim.cmd.help(vim.fn.expand('<cexpr>'))
-end
+function help_cexpr() vim.cmd.help(vim.fn.expand('<cexpr>')) end
 
 function cmp_complete_luasnip()
   require('cmp').complete({ config = { sources = { { name = 'luasnip' } } } })

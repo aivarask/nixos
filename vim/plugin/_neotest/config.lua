@@ -49,21 +49,15 @@ neotest.setup({
   },
 })
 
-neotest.run.buffer = function()
-  neotest.run.run(vim.fn.expand('%'))
-end
+neotest.run.buffer = function() neotest.run.run(vim.fn.expand('%')) end
 
 neotest.run.buffer_dap = function()
   neotest.run.run({ vim.fn.expand('%'), strategy = 'dap' })
 end
 
-neotest.run.suite = function()
-  neotest.run.run({ suite = true })
-end
+neotest.run.suite = function() neotest.run.run({ suite = true }) end
 
-neotest.run.dap = function()
-  neotest.run.run({ strategy = 'dap' })
-end
+neotest.run.dap = function() neotest.run.run({ strategy = 'dap' }) end
 
 wkr({
   name = 'Neotest',
@@ -79,9 +73,7 @@ wkr({
   d = { neotest.run.dap, 'run.dap' },
   c = { [[:!busted<cr>]], '!busted' },
   x = {
-    function()
-      neotest.summary:expand(vim.uv.cwd(), true)
-    end,
+    function() neotest.summary:expand(vim.uv.cwd(), true) end,
     'expand',
   },
 }, { prefix = '<leader>n' })

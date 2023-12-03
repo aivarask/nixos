@@ -1,8 +1,18 @@
-require('lspconfig').sqlls.setup({})
-
 local null_ls = require('null-ls')
 null_ls.register({
+  --- @see https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#sql_formatter
+  --- @see https://github.com/sql-formatter-org/sql-formatter
   null_ls.builtins.formatting.sql_formatter,
+})
+
+require('lspconfig').sqlls.setup({
+  settings = {
+    lint = {
+      rules = {
+        ['reserved-word-case'] = { 'error', 'lower' },
+      },
+    },
+  },
 })
 
 -- https://www.sqlitetutorial.net/

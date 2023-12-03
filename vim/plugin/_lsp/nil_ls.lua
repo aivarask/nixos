@@ -17,7 +17,6 @@ require('lspconfig').nil_ls.setup({
   -- on_attach = on_attach,
   settings = {
     ['nil'] = {
-      testSetting = 42,
       formatting = {
         command = { 'alejandra' }, -- https://github.com/kamadorueda/alejandra
         -- command = { 'nixpkgs-fmt' }, -- https://github.com/nix-community/nixpkgs-fmt

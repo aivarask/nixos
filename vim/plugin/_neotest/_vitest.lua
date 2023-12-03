@@ -13,8 +13,6 @@ adapter['filter_dir'] = function(name)
   )
 end
 
-adapter.is_test_file = function(file_path)
-  return file_path:match('test.js')
-end
+adapter.is_test_file = function(file_path) return file_path:match('test.js') end
 
 vitest = adapter

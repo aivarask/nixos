@@ -8,7 +8,11 @@ dap.configurations.lua = {
 }
 
 dap.adapters.nlua = function(callback, config)
-  callback({ type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 })
+  callback({
+    type = 'server',
+    host = config.host or '127.0.0.1',
+    port = config.port or 8086,
+  })
 end
 
 dap.configurations.lua = {
@@ -23,23 +27,17 @@ wkr({
   o = {
     name = 'osv',
     s = {
-      function()
-        osv.start_server('127.0.0.1', 8086)
-      end,
+      function() osv.start_server('127.0.0.1', 8086) end,
       'start_server',
     },
     ['?'] = { osv.is_running, 'is_running' },
     r = { osv.run_this, 'run_this' },
     m = {
-      function()
-        require('pl.pretty')(osv.server_messages)
-      end,
+      function() require('pl.pretty')(osv.server_messages) end,
       'server_messages',
     },
     l = {
-      function()
-        osv.launch(config)
-      end,
+      function() osv.launch(config) end,
       'launch()',
     },
   },

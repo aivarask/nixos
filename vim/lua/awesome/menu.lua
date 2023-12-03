@@ -3,9 +3,7 @@
 myawesomemenu = {
   {
     'hotkeys',
-    function()
-      hotkeys_popup.show_help(nil, awful.screen.focused())
-    end,
+    function() hotkeys_popup.show_help(nil, awful.screen.focused()) end,
   },
   { 'manual', terminal .. ' -e man awesome' },
   { 'edit config', editor_cmd .. ' ' .. awesome.conffile },
@@ -26,7 +24,8 @@ mymainmenu = awful.menu({
   },
 })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
+mylauncher =
+  awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it

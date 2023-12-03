@@ -3,7 +3,9 @@ local cmp = require('cmp')
 -- https://github.com/L3MON4D3/LuaSnip
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
-require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/vim/snippets' })
+require('luasnip.loaders.from_vscode').load({
+  paths = '/etc/nixos/vim/snippets',
+})
 
 ---@type cmp.ConfigSchema
 cmp.setup({
@@ -26,7 +28,10 @@ cmp.setup({
       },
     }),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false, cmp.ConfirmBehavior.Replace }),
+    ['<CR>'] = cmp.mapping.confirm({
+      select = false,
+      cmp.ConfirmBehavior.Replace,
+    }),
 
     ['<Tab>'] = function(fallback)
       if cmp.visible() then

@@ -1,6 +1,11 @@
 function homepage(scope, expand)
   local expanded = vim.fn.expand(expand)
-  vim.cmd([[!nix eval nixpkgs\#]] .. scope .. expanded .. [[.meta.homepage | xargs xdg-open]])
+  vim.cmd(
+    [[!nix eval nixpkgs\#]]
+      .. scope
+      .. expanded
+      .. [[.meta.homepage | xargs xdg-open]]
+  )
 end
 
 function xo(expand)

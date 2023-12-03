@@ -5,4 +5,3 @@ describe('Matches', function()
     assert.Nil(('a'):match('b'), 'a b matches')
   end)
 end)
-

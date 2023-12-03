@@ -21,9 +21,7 @@ require('toggleterm').setup({
 local Terminal = require('toggleterm.terminal').Terminal
 local nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true })
 
-function _nix_repl_toggle()
-  nix_repl:toggle()
-end
+function _nix_repl_toggle() nix_repl:toggle() end
 
 -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
 -- https://discourse.nixos.org/t/nix-repl-add-builtins-to-global-scope/2678
@@ -32,9 +30,7 @@ wkr({
   name = 'REPL',
   n = { '<cmd>lua _nix_repl_toggle()<CR>', '_nix_repl_toggle' },
   t = {
-    function()
-      Terminal:new({ cmd = 'nix repl' }):toggle()
-    end,
+    function() Terminal:new({ cmd = 'nix repl' }):toggle() end,
     'nix repl test function',
   },
   f = {

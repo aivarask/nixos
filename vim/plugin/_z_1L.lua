@@ -14,7 +14,6 @@ wkr({
   [']'] = { neotest.summary.toggle, 'neotest.summary.toggle()' },
   ['}'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
 
-  G = { [[:Glow<CR>]], ':Glow' },
   S = { [[:'<,'>sort<CR>]], ':sort', noremap = false, mode = { 'v' } },
   T = {
     name = 'Treesitter',
