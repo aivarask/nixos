@@ -60,7 +60,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         function()
           vim.lsp.buf.format({
             async = true,
-            filter = function(client) return client.name ~= 'null-ls' end,
+            filter = function(client)
+              return client.name ~= 'null-ls'
+            end,
           })
         end,
         'vim.lsp.buf.format ~= null-ls',
@@ -70,7 +72,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
           vim.lsp.buf.format({
             async = true,
             filter = function(client)
-              print('Format using = null-ls ')
               return client.name == 'null-ls'
             end,
           })
@@ -90,7 +91,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         'vim.lsp.buf.remove_workspace_folder',
       },
       l = {
-        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
         'vim.lsp.list_workspace_folders',
       },
     }, { prefix = '<space>w', buffer = buffer })

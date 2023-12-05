@@ -59,5 +59,14 @@
       "catch (e) {\n\tconsole.log(e)\n}"
     ],
     "description": ""
+  },
+  "for": {
+    "prefix": [
+      "for10"
+    ],
+    "body": [
+      "for (let i = 0; i < 10; index++) {}"
+    ],
+    "description": "Iterate 10 times"
   }
 }

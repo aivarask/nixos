@@ -78,7 +78,7 @@
     # LSP:
     lsp_signature-nvim
     lsp-overloads-nvim
-    # nvim-lsp-file-operations
+    nvim-lsp-file-operations
     nvim-lspconfig
     # null-ls-nvim
     none-ls-nvim

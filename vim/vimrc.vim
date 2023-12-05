@@ -8,7 +8,7 @@ aug Initial
   autocmd BufEnter *.postcss setlocal ft=scss
   autocmd BufEnter .env* setlocal ft=sh
   autocmd BufEnter .yamllint* setlocal ft=yaml
-  autocmd BufEnter *.json,flake.lock setlocal ft=jsonc
+  autocmd BufEnter *.json,flake.lock,.prettierrc setlocal ft=jsonc
   autocmd VimResized * wincmd =
   autocmd VimResized * FloatermUpdate
   autocmd BufEnter *svelte-kit/* set buftype=nowrite

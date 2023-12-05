@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
       typescript = 'tsserver',
       javascript = 'null-ls',
       prisma = 'prismals',
-      sql = 'sqlls',
+      -- sql = 'sqlls',
       json = 'jsonls',
       jsonc = 'jsonls',
       -- BAD:

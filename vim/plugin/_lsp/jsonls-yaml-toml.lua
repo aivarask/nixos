@@ -30,12 +30,11 @@ local function json()
           description = 'sqlint config',
           fileMatch = '*/.sqlintrc.json',
           name = 'sqlintrc',
-          -- url = 'file:///etc/nixos/vim/schemas/sqlint.json',
           url = '/etc/nixos/vim/schemas/sqlint.json',
         },
         {
           description = 'Snippet configuration',
-          fileMatch = { 'snippets/*.json', '!snippets/package.json' },
+          fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
           name = 'snippets',
           url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
         },
@@ -70,3 +69,6 @@ require('lspconfig').yamlls.setup({
     },
   },
 })
+
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#taplo
+require('lspconfig').taplo.setup({})
