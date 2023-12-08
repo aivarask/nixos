@@ -20,17 +20,17 @@ wkr({
   ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
   ['<F9>'] = { neotest.run.buffer, 'run.buffer' },
   -- ['<F10>'] = { [[:match Search /<C-R><C-W>/<CR>]], ':match Search' },
-  ['<F10>'] = {
-    function()
-      pp('Yeah, maybe it will work')
-      require('naughty').notify({
-        title = 'Fooo',
-        message = "You're idling",
-        timeout = 0,
-      })
-    end,
-    'some cool stuff',
-  },
+  -- ['<F10>'] = {
+  --   function()
+  --     pp('Yeah, maybe it will work')
+  --     require('naughty').notify({
+  --       title = 'Fooo',
+  --       message = "You're idling",
+  --       timeout = 0,
+  --     })
+  --   end,
+  --   'some cool stuff',
+  -- },
   -- NOTE: F11 fullscreen functionality
   ['<F23>'] = {
     "<cmd>exec 'ToggleTerm direction=vertical dir=' .. expand('%:p:h')<CR>",

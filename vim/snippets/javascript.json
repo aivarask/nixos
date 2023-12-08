@@ -41,15 +41,6 @@
       "const {${0}} = Object.fromEntries(e.url.searchParams.entries())"
     ]
   },
-  "foo": {
-    "prefix": [
-      "foo"
-    ],
-    "body": [
-      "console.log('hello from foo')"
-    ],
-    "description": "example"
-  },
   "trycatch": {
     "prefix": [
       "trycatch"
@@ -62,11 +53,20 @@
   },
   "for": {
     "prefix": [
-      "for10"
+      "for"
     ],
     "body": [
-      "for (let i = 0; i < 10; index++) {}"
+      "for (let i = 0; i < 3; i++) {\n$0}"
     ],
-    "description": "Iterate 10 times"
+    "description": "Iterate n times"
+  },
+  "af": {
+    "prefix": [
+      "af"
+    ],
+    "body": [
+      "(${1}) => {${0}}"
+    ],
+    "scope": "javascript,svelte"
   }
 }

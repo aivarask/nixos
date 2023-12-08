@@ -40,6 +40,7 @@
           }
         ];
     })
+    screen
     hyperfine
     bun
     inotify-tools

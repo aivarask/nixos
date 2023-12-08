@@ -26,9 +26,15 @@
     ],
     "description": ""
   },
-  "tmpl": {
-    "prefix": [],
-    "body": [],
-    "description": ""
+  "form": {
+    "prefix": [
+      "form",
+      "s-form"
+    ],
+    "body": [
+      "<form method=\"post\" action=\"${1}\" ${use:enhace:2}>",
+      "\t${0}",
+      "</form>"
+    ]
   }
 }

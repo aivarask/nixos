@@ -10,7 +10,9 @@ require('luasnip.loaders.from_vscode').load({
 ---@type cmp.ConfigSchema
 cmp.setup({
   snippet = {
-    expand = function(args) require('luasnip').lsp_expand(args.body) end,
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
   },
   window = {
     -- completion = cmp.config.window.bordered(),
@@ -66,6 +68,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
   }, {
     { name = 'path' },
+    { name = 'emoji' },
     -- { name = 'luasnip' },
     -- { name = 'buffer' },
   }),

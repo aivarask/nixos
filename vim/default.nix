@@ -59,6 +59,7 @@
     scss-syntax-vim
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [
+    ChatGPT-nvim
     # Session
     persistence-nvim
     neovim-session-manager

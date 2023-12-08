@@ -3,7 +3,8 @@ local Terminal = require('toggleterm.terminal').Terminal
 
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = 'schema.prisma',
-  command = 'TermExec open=1 cmd="npx prisma db push && dotenv -e .env.e2e -- npx prisma db push && exit" | LspRestart',
+  -- command = 'TermExec open=1 cmd="npx prisma db push && dotenv -e .env.e2e -- npx prisma db push && exit" | LspRestart',
+  command = 'TermExec open=1 cmd="pnpx prisma db push && exit" | LspRestart',
 })
 
 -- vim.api.nvim_create_autocmd('BufWritePost', {
@@ -13,7 +14,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '.env*',
-  callback = function() vim.diagnostic.disable() end,
+  callback = function()
+    vim.diagnostic.disable()
+  end,
 })
 
 function _G.set_terminal_keymaps()
