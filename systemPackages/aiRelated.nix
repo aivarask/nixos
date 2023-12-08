@@ -10,5 +10,9 @@
     aichat
     tgpt # no API key needed
     yai
+    #
+    # https://github.com/mudler/LocalAI
+    # https://github.com/eugeneyan/open-llms
+    ollama
   ];
 }

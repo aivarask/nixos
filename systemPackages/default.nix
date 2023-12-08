@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./aiRelated.nix
     ./cRelated.nix
     ./gitAndTools.nix
     ./gitAndTools.nix

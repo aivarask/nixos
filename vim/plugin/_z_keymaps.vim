@@ -60,3 +60,4 @@ imap <C-s> <C-o><C-s>
 
 nmap <leader>q :quitall<CR>
 nnoremap tq :call ak#toggle_quickfix()<CR>
+" nnoremap th :call ak#toggle_help()<CR>

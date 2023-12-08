@@ -22,4 +22,5 @@ require('nvim-tree').setup({
   },
   git = { enable = false },
   view = { width = 25, signcolumn = 'no' },
+  ui = { confirm = { trash = false } },
 })
