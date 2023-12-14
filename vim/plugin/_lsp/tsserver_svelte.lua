@@ -5,6 +5,8 @@ null_ls.register({
     extra_filetypes = { 'svelte' },
   }),
 })
+
+local pr = require('pl.pretty')
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#svelte
 require('lspconfig').tsserver.setup({})
 

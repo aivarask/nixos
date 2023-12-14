@@ -1,6 +1,6 @@
 set autoindent
 set background=dark
-set cmdheight=2
+set cmdheight=4
 set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab

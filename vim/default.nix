@@ -118,6 +118,7 @@
     nvim-ts-context-commentstring
     nvim-treesitter-textobjects
     nvim-ts-autotag
+    nvim-treesitter-endwise
 
     # OTHER
     typescript-nvim

@@ -12,6 +12,10 @@ wkr({
     end,
     '',
   },
+  -- https://github.com/tpope/vim-abolish#substitution
+  S = { [[:%Subvert/<C-r><C-w>//g<Left><Left>]], 'Subvert %' },
+  s = { [[:Subvert/<C-r><C-w>//g<Left><Left>]], 'Subvert' },
+  -- <input name="foo" placeholder="Foo" />
 }, { prefix = '<space>' })
 
 -- local keys =

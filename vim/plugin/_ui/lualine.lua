@@ -15,8 +15,14 @@ require('lualine').setup({
   tabline = {
     -- https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
     lualine_a = { 'tabs' },
-    lualine_b = { { 'buffers', show_filename_only = false } },
-    lualine_c = {},
+    lualine_b = {
+      {
+        'buffers',
+        show_filename_only = false,
+        max_length = vim.o.columns * 4 / 3,
+      },
+    },
+    -- lualine_c = {},
     lualine_x = {
       -- {
       --   'filename',

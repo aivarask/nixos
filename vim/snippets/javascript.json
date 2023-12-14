@@ -68,5 +68,23 @@
       "(${1}) => {${0}}"
     ],
     "scope": "javascript,svelte"
+  },
+  "afn": {
+    "scope": "javascript,svelte",
+    "prefix": [
+      "afn"
+    ],
+    "body": [
+      "() => ${0}"
+    ]
+  },
+  "boo": {
+    "scope": "javascript,svelte",
+    "prefix": [
+      "boo"
+    ],
+    "body": [
+      "boooo"
+    ]
   }
 }

@@ -1,7 +1,3 @@
--- https://github.com/antosha417/nvim-lsp-file-operations
--- ~/.cache/nvim/nvim-lsp-file-operations
-require('lsp-file-operations').setup({ debug = false })
-
 -- https://github.com/kyazdani42/nvim-tree.lua
 require('nvim-tree').setup({
   on_attach = function(bufnr)

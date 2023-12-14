@@ -26,7 +26,7 @@ local matchers = {
   'none%-ls.nvim',
   -- COMPLETION
   'nvim%-cmp',
-  'nvim%-autopairs',
+  -- 'nvim%-autopairs',
   --   NEOTEST
   'neotest$',
   'neotest%-plenary$',

@@ -1,3 +1,7 @@
+-- https://github.com/antosha417/nvim-lsp-file-operations
+-- ~/.cache/nvim/nvim-lsp-file-operations.log
+require('lsp-file-operations').setup({ debug = false })
+
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 
 wkr({
@@ -10,12 +14,80 @@ wkr({
   q = { vim.diagnostic.setloclist, 'vim.diagnostic.setloclist' },
 }, { prefix = '<space>' })
 
+local function get_keys(t)
+  local keys = {}
+  for key, _ in pairs(t) do
+    table.insert(keys, key)
+  end
+  return keys
+end
+
+function inspect_lsp_client()
+  local pretty = require('pl.pretty')
+  local bufnr = vim.api.nvim_get_current_buf()
+  local clients = vim.lsp.get_clients({ bufnr = bufnr })
+
+  vim.ui.select(clients, {
+    prompt = 'Select LSP client',
+    format_item = function(client)
+      return client.name
+    end,
+  }, function(selected_client)
+    if selected_client then
+      local client = vim.lsp.get_client_by_id(selected_client.id)
+      local keys = get_keys(client)
+
+      vim.ui.select(keys, _, function(key)
+        if key and client[key] then
+          pretty(client[key])
+        else
+          pretty(client)
+        end
+      end)
+    end
+  end)
+end
+
+local function rename_file()
+  -- https://github.com/neovim/neovim/pull/26516
+  -- https://github.com/tpope/vim-eunuch
+  -- https://github.com/neovim/neovim/issues/20784
+  local source_file = vim.api.nvim_buf_get_name(0)
+
+  vim.ui.input({
+    prompt = 'Rename: ',
+    default = source_file,
+  }, function(input)
+    local params = {
+      title = '',
+      command = '_typescript.applyRenameFile',
+      -- command = 'workspace/willRename',
+      arguments = {
+        {
+          sourceUri = source_file,
+          targetUri = input,
+        },
+      },
+    }
+    if input then
+      print(source_file, input)
+      vim.lsp.util.rename(source_file, input, {})
+      vim.lsp.buf.execute_command(params)
+    end
+  end)
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local buffer = ev.buf
+  callback = function(args)
+    local buffer = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    -- require('pl.pretty')(ev)
+    -- vim.api.nvim_create_user_command(
+    --   'RenameFile',
+    --   rename_file,
+    --   { desc = 'RenameFile' }
+    -- )
 
     -- vim.api.nvim_create_autocmd('BufWritePost', {
     --   group = vim.api.nvim_create_augroup('inform', { clear = false }),
@@ -56,6 +128,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     wkr({
       D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
       rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
+      rc = {
+        inspect_lsp_client,
+        'Inspect LSP client',
+      },
+      rf = { [[:RenameFile<CR>]], 'vim.lsp.util.rename' },
       f = {
         function()
           vim.lsp.buf.format({

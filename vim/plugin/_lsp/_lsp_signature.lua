@@ -16,7 +16,7 @@ require('lsp_signature').setup({
   max_width = 80, -- max_width of signature floating_window, line will be wrapped if exceed max_width
   -- the value need >= 40
   wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long
-  floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+  floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
 
   floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
   -- will set to true when fully tested, set to false will use whichever side has more space
@@ -27,7 +27,7 @@ require('lsp_signature').setup({
   floating_window_off_y = 0, -- adjust float windows y position. e.g -2 move window up 2 lines; 2 move down 2 lines
   -- can be either number or function, see examples
 
-  close_timeout = 4000, -- close floating window after ms when laster parameter is entered
+  close_timeout = 1000, -- close floating window after ms when laster parameter is entered
   fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
   hint_enable = true, -- virtual hint enable
   hint_prefix = '🚀 ', -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
@@ -59,6 +59,6 @@ require('lsp_signature').setup({
   -- false: floating_windows setup will not change, toggle_key will pop up signature helper, but signature
   -- may not popup when typing depends on floating_window setting
 
-  select_signature_key = nil, -- cycle to next signature, e.g. '<M-n>' function overloading
+  select_signature_key = '<M-n>', -- cycle to next signature, e.g. '<M-n>' function overloading
   move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
 })

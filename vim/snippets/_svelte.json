@@ -32,9 +32,34 @@
       "s-form"
     ],
     "body": [
-      "<form method=\"post\" action=\"${1}\" ${use:enhace:2}>",
+      "<form method=\"post\" action=\"${1}\" ${2:use:enhance}${3}>",
       "\t${0}",
       "</form>"
+    ]
+  },
+  "input": {
+    "prefix": [
+      "input",
+      "s-input"
+    ],
+    "body": [
+      "<input name=\"${1}\" placeholder=\"${1}\" ${0}/>"
+    ]
+  },
+  "button": {
+    "prefix": [
+      "button-submit"
+    ],
+    "body": [
+      "<button type=\"submit\">${1:Submit}</button>"
+    ]
+  },
+  "input-submit": {
+    "prefix": [
+      "input-submit"
+    ],
+    "body": [
+      "<input type=\"submit\" value=\"${1:submit}\" />"
     ]
   }
 }

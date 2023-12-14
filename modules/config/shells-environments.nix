@@ -28,7 +28,6 @@
     # XSERVERRC = "/etc/X11/xinit/xserverrc";
   };
   environment.shellAliases = {
-    pm = "pulsemixer";
     less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
     man = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
     codium = "codium --no-sandbox --user-data-dir ~/.codium";
@@ -56,39 +55,12 @@
     lt3 = "ls --tree --level=3";
     mc = "tmux split -h lf; lf";
     mcd = "tmux split -h nd; ndcw; ndtw";
-    nu = "npm run update";
-    ni = "npm install";
-    nd = "npm run dev";
-    ndh = "npm run dev -- --host";
-    ndo = "npm run dev -- --open";
-    npa = "npm run pa";
-    nrpc = "npm run codegen";
-    nrb = "npm run build";
-    nrd = "npm run deploy";
-    nrc = "npm run check";
-    nrcw = "npm run check:watch";
-    nrp = "npm run preview";
-    nrpo = "npm run preview -- --open";
-    nrpr = "npm run prepare";
-    nrr = "npm run run";
-    nrs = "npm run start";
-    nrt = "npm run test";
-    nrtd = "npm run test:dev";
-    nrtu = "npm run test:unit";
-    nrtw = "npm run test:watch";
-    nsb = "npm run storybook";
     oras = "curl wttr.in/Vilnius";
-    pdp = "prisma db push";
-    pdr = "prisma db push --accept-data-loss --force-reset";
-    pds = "prisma db seed";
-    pg = "prisma generate";
     pn = "pnpm";
     tre = "trans :en";
     trl = "trans :lt";
     up = "nixos-rebuild switch";
     uph = "nixos-rebuild switch && /etc/nixos/post-build-hook.sh";
-    upb = "nixos-rebuild build";
-    upt = "nixos-rebuild test";
     x = "startx";
     xs = "xinit $XINITRC -- $XSERVERRC";
     xa = "startx $XINITRC awesome";

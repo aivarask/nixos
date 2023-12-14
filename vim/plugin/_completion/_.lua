@@ -7,6 +7,16 @@ require('luasnip.loaders.from_vscode').load({
   paths = '/etc/nixos/vim/snippets',
 })
 
+wkr({
+  name = 'Completion',
+  e = {
+    function()
+      cmp.complete({ config = { sources = { name = 'emoji' } } })
+    end,
+    'emoji',
+  },
+}, { prefix = '<Space>i' })
+
 ---@type cmp.ConfigSchema
 cmp.setup({
   snippet = {
@@ -22,18 +32,38 @@ cmp.setup({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-b>'] = cmp.mapping.complete({
-      config = {
-        sources = {
-          { name = 'luasnip' },
-        },
-      },
-    }),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({
       select = false,
       cmp.ConfirmBehavior.Replace,
     }),
+    -- ['<CR>'] = cmp.mapping({
+    --   -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
+    --   i = function(fallback)
+    --     if cmp.visible() and cmp.get_active_entry() then
+    --       cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+    --     else
+    --       fallback()
+    --     end
+    --   end,
+    --   s = cmp.mapping.confirm({ select = true }),
+    --   c = cmp.mapping.confirm({
+    --     behavior = cmp.ConfirmBehavior.Replace,
+    --     select = true,
+    --   }),
+    -- }),
+    -- ['<C-b>'] = cmp.mapping.confirm({
+    --   cmp.ConfirmBehavior.Insert,
+    --   select = true,
+    -- }),
+
+    -- ['<C-b>'] = cmp.mapping.complete({
+    --   config = {
+    --     sources = {
+    --       { name = 'luasnip' },
+    --     },
+    --   },
+    -- }),
 
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
@@ -65,10 +95,11 @@ cmp.setup({
     end, { 'i', 's', 'c' }),
   }),
   sources = cmp.config.sources({
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
+    { name = 'emoji' },
   }, {
     { name = 'path' },
-    { name = 'emoji' },
     -- { name = 'luasnip' },
     -- { name = 'buffer' },
   }),

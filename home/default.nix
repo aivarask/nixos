@@ -19,6 +19,7 @@ _: {
     ./programs/nix-index.nix
     ./programs/pistol.nix
     ./programs/starship.nix
+    ./programs/vscode.nix
     ./programs/zsh.nix
     ./services/dunst.nix
     ./services/sxhkd.nix
