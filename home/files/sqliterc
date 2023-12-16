@@ -1,0 +1,5 @@
+headers = on
+mode = box
+separator = "|"
+main prompt = "sqliteak> "
+continue prompt = "   ...> "

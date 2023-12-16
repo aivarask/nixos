@@ -13,7 +13,9 @@ null_ls.register({
   }),
 })
 
-require('lspconfig').sqlls.setup({})
+require('lspconfig').sqlls.setup({
+  root_dir = require('lspconfig.util').root_pattern('dev.db'),
+})
 
 -- https://www.sqlitetutorial.net/
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sqlls

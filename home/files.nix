@@ -13,6 +13,8 @@
 
       ".config/sql-language-server/.sqllsrc.json".text = builtins.readFile ./files/.sqllsrc.json;
       ".config/sql-language-server/.sqlintrc.json".text = builtins.readFile ./files/.sqlintrc.json;
+
+      ".config/sqlite3/sqliterc".text = builtins.readFile ./files/sqliterc;
     };
   };
 }
