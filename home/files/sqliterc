@@ -1,5 +1,4 @@
-headers = on
-mode = box
-separator = "|"
-main prompt = "sqliteak> "
-continue prompt = "   ...> "
+.headers on
+.mode box
+.separator "|"
+.prompt "sqliteak> " "...> "
