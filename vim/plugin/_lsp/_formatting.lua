@@ -15,16 +15,22 @@ vim.api.nvim_create_autocmd('BufWritePre', {
       -- BAD:
       -- svelte = 'svelte',
       nix = 'nil_ls',
+      -- go = 'gopls',
+      -- go = 'gofmt'
       -- lua = 'lua_ls',
     }
     for filetype, client_name in pairs(t) do
-      if buf_filetype == filetype then formatter = client_name end
+      if buf_filetype == filetype then
+        formatter = client_name
+      end
     end
 
     print('_formatting ', buf_filetype, formatter)
     vim.lsp.buf.format({
       async = true,
-      filter = function(client) return client.name == formatter end,
+      filter = function(client)
+        return client.name == formatter
+      end,
     })
   end,
 })

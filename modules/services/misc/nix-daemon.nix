@@ -15,6 +15,11 @@
       ];
     settings = {
       auto-optimise-store = true;
+      substituters = [
+        "http://binarycache.example.com"
+        # "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
     };
     settings.allowed-users = ["@wheel" "ak"];
     settings.trusted-users = ["root" "@wheel" "ak"];

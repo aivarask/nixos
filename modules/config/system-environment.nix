@@ -8,16 +8,17 @@
       XDG_STATE_HOME = "$HOME/.local/state";
 
       XDG_BIN_HOME = "$HOME/.local/bin";
+
+      GOPATH = "$HOME/go";
       PATH = [
         "${XDG_BIN_HOME}"
+        "${GOPATH}/bin"
         "/etc/nixos/bin"
         "$HOME/.pnpm-global"
         "$HOME/.node_modules/bin"
         "$HOME/.config/composer/vendor/bin"
       ];
 
-      # FOO = "environment.sessionVariables";
-      # PLAYWRIGHT
       # PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
       PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";

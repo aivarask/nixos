@@ -7,6 +7,13 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   -- command = 'TermExec open=1 cmd="npx prisma db push && dotenv -e .env.e2e -- npx prisma db push && exit" | LspRestart',
 })
 
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*.templ',
+  callback = function()
+    vim.cmd(':!templ generate')
+  end,
+})
+
 -- vim.api.nvim_create_autocmd('BufWritePost', {
 --   pattern = { 'en.json', 'en.yml' },
 --   command = 'TermExec open=1 cmd="npx @inlang/cli machine translate -f && exit"',

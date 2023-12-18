@@ -28,6 +28,7 @@ map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
   ./services/networking/dhcpd.nix
   ./services/networking/dnscrypt-proxy2.nix
   ./services/networking/firewall.nix
+  ./services/networking/nix-serve.nix
   ./services/networking/networkmanager.nix
   ./services/networking/ssh/sshd.nix
   ./services/networking/wpa_supplicant.nix

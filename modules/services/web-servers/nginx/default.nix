@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   # https://nixos.wiki/wiki/Nginx
   # https://nixos.org/manual/nixos/stable/#module-security-acme-nginx
   services.nginx.enable = true;

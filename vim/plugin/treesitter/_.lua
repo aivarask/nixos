@@ -112,6 +112,26 @@ require('nvim-treesitter.configs').setup({
   autotag = {
     -- https://github.com/windwp/nvim-ts-autotag
     enable = true,
+    filetypes = {
+      'templ', -- added
+      'html',
+      'javascript',
+      'typescript',
+      'javascriptreact',
+      'typescriptreact',
+      'svelte',
+      'vue',
+      'tsx',
+      'jsx',
+      'rescript',
+      'xml',
+      'php',
+      'markdown',
+      'astro',
+      'glimmer',
+      'handlebars',
+      'hbs',
+    },
   },
   endwise = {
     enable = true,

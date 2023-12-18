@@ -96,6 +96,7 @@
     neotest-plenary
     neotest-playwright
     neotest-jest
+    neotest-go
     # COMPLETION:
     # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     cmp-nvim-lsp-signature-help

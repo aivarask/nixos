@@ -1,15 +1,24 @@
-neotest = require('neotest')
+local neotest = require('neotest')
+
+--- @type neotest.AdapterGroup
+local adapters = {
+  neotest_plenary,
+  -- bun,
+  -- jest,
+  -- playwright,
+  vitest,
+  require('neotest-go')({
+    experimental = {
+      test_table = true,
+    },
+    args = { '-count=1', '-timeout=60s' },
+  }),
+}
 
 -- https://github.com/nvim-neotest/neotest
 -- https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/config/init.lua#L131
 neotest.setup({
-  adapters = {
-    neotest_plenary,
-    bun,
-    -- jest,
-    playwright,
-    vitest,
-  },
+  adapters = adapters,
   output_panel = {
     enabled = true,
     open = 'botright vsplit | vertical resize 60 | set winfixwidth',
@@ -49,15 +58,21 @@ neotest.setup({
   },
 })
 
-neotest.run.buffer = function() neotest.run.run(vim.fn.expand('%')) end
+neotest.run.buffer = function()
+  neotest.run.run(vim.fn.expand('%'))
+end
 
 neotest.run.buffer_dap = function()
   neotest.run.run({ vim.fn.expand('%'), strategy = 'dap' })
 end
 
-neotest.run.suite = function() neotest.run.run({ suite = true }) end
+neotest.run.suite = function()
+  neotest.run.run({ suite = true })
+end
 
-neotest.run.dap = function() neotest.run.run({ strategy = 'dap' }) end
+neotest.run.dap = function()
+  neotest.run.run({ strategy = 'dap' })
+end
 
 wkr({
   name = 'Neotest',
@@ -73,7 +88,21 @@ wkr({
   d = { neotest.run.dap, 'run.dap' },
   c = { [[:!busted<cr>]], '!busted' },
   x = {
-    function() neotest.summary:expand(vim.uv.cwd(), true) end,
+    function()
+      neotest.summary:expand(vim.uv.cwd(), true)
+    end,
     'expand',
+  },
+  w = {
+    name = 'Watch',
+    w = { neotest.watch.watch, 'neotest.watch.watch' },
+    t = { neotest.watch.toggle, 'neotest.watch.toggle' },
+    s = { neotest.watch.stop, 'neotest.watch.stop' },
+    ['?'] = {
+      function()
+        print(neotest.watch.is_watching())
+      end,
+      'neotest.watch.is_watching',
+    },
   },
 }, { prefix = '<leader>n' })

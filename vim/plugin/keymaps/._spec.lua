@@ -4,6 +4,7 @@ describe('Matches', function()
   it('match', function()
     assert(('a'):match('a'), 'a a match fails')
     assert.Nil(('a'):match('b'), 'a b matches')
+    assert.True(true, 'this is wrong')
   end)
 end)
 

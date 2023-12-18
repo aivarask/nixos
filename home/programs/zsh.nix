@@ -10,7 +10,7 @@
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
     localVariables = {
-      FOO = "zsh.localVariables";
+      # FOO = "zsh.localVariables";
     };
     initExtraBeforeCompInit = ''
     '';

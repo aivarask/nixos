@@ -4,7 +4,7 @@ _: {
     hosts = {
       "192.168.1.1" = ["hw.local"];
       # --
-      "127.0.0.1" = ["live.fixasparts.com"];
+      "127.0.0.1" = ["live.fixasparts.com" "example.com" "binarycache.example.com"];
       "192.168.1.190" = ["pcl" "pcl.local"];
       "192.168.1.195" = ["pcw" "pcw.local"];
       "192.168.1.180" = ["dell" "dell.local"];

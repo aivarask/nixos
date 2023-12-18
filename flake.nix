@@ -1,6 +1,8 @@
 {
   description = "NixOS config";
   inputs = {
+    # Go related
+    templ.url = "github:a-h/templ";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -60,6 +62,7 @@
       #     ;
       #   inherit mguentner;
       # })
+      templ.overlays.default
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
