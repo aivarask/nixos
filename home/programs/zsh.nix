@@ -2,7 +2,15 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    cdpath = ["/etc/nixos"];
+    cdpath = [
+      "/etc/nixos"
+      "/etc/nixos/vim"
+    ];
+    dirHashes = {
+      docs = "$HOME/Documents";
+      vids = "$HOME/Videos";
+      dl = "$HOME/Downloads";
+    };
     history = {
       size = 10000;
       extended = true;
@@ -10,16 +18,18 @@
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
     localVariables = {
-      # FOO = "zsh.localVariables";
     };
     initExtraBeforeCompInit = ''
     '';
-    enableCompletion = false;
-    # completionInit = "autoload -U compinit";
-    completionInit = "";
+    enableCompletion = true;
+    completionInit = ''
+      autoload -U compinit && compinit
+      # autoload bashcompinit && bashcompinit
+      # source ~/wp-completion.bash
+    '';
     initExtra = ''
-      source /etc/nixos/functions.zsh
-      source /etc/nixos/bindings.zsh
+      source /etc/nixos/home/programs/zsh_functions.zsh
+      source /etc/nixos/home/programs/zsh_bindings.zsh
       source ~/.config/tabtab/zsh/__tabtab.zsh
       eval "$(direnv hook zsh)"
     '';
@@ -41,6 +51,7 @@
         file = "forgit.plugin.zsh";
         src = pkgs.zsh-forgit;
       }
+
       # {
       #   # zsh-fzf-tab
       #   name = "fzf-tab";
@@ -48,12 +59,15 @@
       #   src = pkgs.zsh-fzf-tab;
       # }
     ];
-    # zplug = {
-    #   enable = true;
-    #   plugins = [
-    #   # zsh-autocomplete
-    #     {name = "marlonrichert/zsh-autocomplete";}
-    #   ];
-    # };
+
+    zplug = {
+      enable = false;
+      plugins = [
+        # https://github.com/willghatch/zsh-cdr
+        {name = "willghatch/zsh-cdr";}
+        #   # zsh-autocomplete
+        #     {name = "marlonrichert/zsh-autocomplete";}
+      ];
+    };
   };
 }

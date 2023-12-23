@@ -1,5 +1,11 @@
-_: {
+{...}: {
+  home.sessionVariables = {
+    FZF_COMPLETION_TRIGGER = "~~";
+    FZF_COMPLETION_OPTS = "--border --info=inline";
+  };
+
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
+# https://github.com/junegunn/fzf/wiki
   programs.fzf = {
     enable = true;
     defaultCommand = "fd --type f --ignore-file=$HOME/.config/git/ignore";
