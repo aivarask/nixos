@@ -35,6 +35,7 @@
     };
     # vim.url = "path:./vim";
     vim.url = "gitlab:aivarask/vim";
+    musnix = {url = "github:musnix/musnix";};
   };
   outputs = {
     nixpkgs,
@@ -42,6 +43,7 @@
     nixos-hardware,
     home-manager,
     # nixpkgs-mguentner,
+    musnix,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -74,6 +76,7 @@
       dmenu-flexipatch.overlays.default
       nil.overlays.default
       prisma.overlay
+
       (_self: _super: {inherit LS_COLORS;})
       (import ./overlays/python.nix)
       vim.overlays.default
@@ -120,6 +123,7 @@
         modules = [
           ./configuration.nix
           ./_dell.nix
+          musnix.nixosModules.musnix
           nixos-hardware.nixosModules.dell-xps-15-7590
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           nixos-hardware.nixosModules.common-hidpi
