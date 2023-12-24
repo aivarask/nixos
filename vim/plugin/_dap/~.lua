@@ -1,10 +1,7 @@
 -- dap-mappings
 wkr({
   name = 'DAP',
-  c = {
-    function() return dap.continue end,
-    'continue',
-  },
+  c = { dap.continue, 'continue' },
   r = { dap.run, 'run' },
   l = { dap.run_last, 'run_last' },
   R = { dap.restart, 'restart' },

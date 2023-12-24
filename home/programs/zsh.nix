@@ -2,72 +2,44 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    cdpath = [
-      "/etc/nixos"
-      "/etc/nixos/vim"
-    ];
-    dirHashes = {
-      docs = "$HOME/Documents";
-      vids = "$HOME/Videos";
-      dl = "$HOME/Downloads";
-    };
+    syntaxHighlighting.enable = true;
+    enableAutosuggestions = true;
     history = {
       size = 10000;
       extended = true;
     };
-    enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
-    localVariables = {
+    dotDir = ".config/zsh";
+    cdpath = [
+      "/etc/nixos"
+    ];
+    dirHashes = {
+      dl = "$HOME/Downloads";
     };
     initExtraBeforeCompInit = ''
+      # <<< initExtraBeforeCompinit
+      # >>>
     '';
     enableCompletion = true;
     completionInit = ''
+      # <<< completionInit
       autoload -U compinit && compinit
-      # autoload bashcompinit && bashcompinit
-      # source ~/wp-completion.bash
+      # >>>
     '';
     initExtra = ''
-      source /etc/nixos/home/programs/zsh_functions.zsh
-      source /etc/nixos/home/programs/zsh_bindings.zsh
-      source ~/.config/tabtab/zsh/__tabtab.zsh
-      eval "$(direnv hook zsh)"
+      # <<< initExtra
+      source /etc/nixos/zsh/main.zsh
+      # source ~/.config/tabtab/zsh/__tabtab.zsh # https://github.com/denosaurs/tabtab
+      # eval "$(direnv hook zsh)" # https://github.com/direnv/direnv
+      # >>>
     '';
     plugins = [
       {
-        # zsh-completions
-        name = "zsh-completions";
-        file = "zsh-completions.plugin.zsh";
-        src = pkgs.zsh-completions;
-      }
-      {
-        # zsh-nix-shell
+        # https://github.com/chisui/zsh-nix-shell
         name = "zsh-nix-shell";
         file = "nix-shell.plugin.zsh";
         src = pkgs.zsh-nix-shell;
       }
-      {
-        name = "zsh-forgit";
-        file = "forgit.plugin.zsh";
-        src = pkgs.zsh-forgit;
-      }
-
-      # {
-      #   # zsh-fzf-tab
-      #   name = "fzf-tab";
-      #   file = "fzf-tab.plugin.zsh";
-      #   src = pkgs.zsh-fzf-tab;
-      # }
+      # zsh-forgit zsh-fzf-tab
     ];
-
-    zplug = {
-      enable = false;
-      plugins = [
-        # https://github.com/willghatch/zsh-cdr
-        {name = "willghatch/zsh-cdr";}
-        #   # zsh-autocomplete
-        #     {name = "marlonrichert/zsh-autocomplete";}
-      ];
-    };
   };
 }

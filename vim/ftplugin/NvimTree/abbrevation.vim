@@ -7,5 +7,7 @@ iab ls +layout.svelte
 iab lj +layout.js
 iab lsj +layout.server.js
 
+iab mg main.go
+
 
 

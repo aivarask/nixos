@@ -4,6 +4,7 @@ let &runtimepath.=',/etc/nixos/vim'
 
 aug Initial
   au!
+  autocmd BufEnter */zsh/* setlocal ft=zsh
   autocmd BufEnter *.templ setlocal ft=templ
   autocmd BufEnter *.mdx setlocal ft=markdown
   autocmd BufEnter *.postcss setlocal ft=scss

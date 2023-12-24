@@ -97,6 +97,7 @@
     neotest-playwright
     neotest-jest
     neotest-go
+    neotest-phpunit
     # COMPLETION:
     # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     cmp-nvim-lsp-signature-help
@@ -127,6 +128,7 @@
     lazygit-nvim
     pretty-fold
     fold-preview
+    template-string-nvim
 
     # UI/UX:
     # auto-session
@@ -152,6 +154,7 @@
     nvim-dap-vscode-js
     nvim-dap-python
     flatten-nvim
+    nvim-dap-go
     # --
 
     # UI

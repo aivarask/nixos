@@ -7,6 +7,8 @@ local adapters = {
   -- jest,
   -- playwright,
   vitest,
+  -- https://github.com/olimorris/neotest-phpunit
+  require('neotest-phpunit'),
   require('neotest-go')({
     experimental = {
       test_table = true,

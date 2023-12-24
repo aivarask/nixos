@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./aiRelated.nix
+    ./audioRelated.nix
     ./cRelated.nix
     ./gitAndTools.nix
     ./gitAndTools.nix
@@ -80,7 +81,6 @@
     bashdb
     bat
     bind
-    bitwig-studio
     brightnessctl
     catdoc
     certbot-full

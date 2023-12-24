@@ -10,27 +10,42 @@ null_ls.register({
   }),
 })
 
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*.nix' },
+  callback = function()
+    vim.lsp.buf.format({
+      async = true,
+      filter = function(client)
+        return client.name ~= 'null_ls'
+      end,
+    })
+  end,
+})
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#nil_ls
--- https://github.com/oxalica/nil/blob/main/docs/configuration.md
+-- ../modules/services/misc/nix-daemon.nix
 require('lspconfig').nil_ls.setup({
-  -- capabilities = capabilities,
-  -- on_attach = on_attach,
+  -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
   settings = {
     ['nil'] = {
       formatting = {
         command = { 'alejandra' }, -- https://github.com/kamadorueda/alejandra
         -- command = { 'nixpkgs-fmt' }, -- https://github.com/nix-community/nixpkgs-fmt
         -- command = { 'nixfmt' }, -- https://github.com/serokell/nixfmt
+        -- command = nil,
       },
-      maxMemoryMB = nil,
-      flake = {
-        --
-        autoArchive = true,
-        autoEvalInputs = true,
-        -- TODO:
-        -- ../modules/services/misc/nix-daemon.nix
-        -- nixpkgsInputName = 'nixos',
-        nixpkgsInputName = 'home-manager',
+      nix = {
+
+        binary = 'nix',
+        maxMemoryMB = nil,
+        flake = {
+          --
+          autoArchive = false,
+          autoEvalInputs = false,
+          -- nixpkgsInputName = 'nixos',
+          nixpkgsInputName = 'nixpkgs',
+          -- nixpkgsInputName = 'home-manager',
+        },
       },
     },
   },

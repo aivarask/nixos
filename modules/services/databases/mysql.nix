@@ -15,8 +15,15 @@
           "mydb.*" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "root";
+        ensurePermissions = {
+          "wpcli.*" = "ALL PRIVILEGES";
+        };
+      }
     ];
     ensureDatabases = [
+      "wpclidemo"
       "ak"
       "mydb"
       "mydb_test"

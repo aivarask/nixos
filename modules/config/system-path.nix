@@ -1,3 +1,6 @@
 _: {
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [
+    #
+    # "/share/zsh"
+  ];
 }

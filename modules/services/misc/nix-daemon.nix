@@ -16,7 +16,7 @@
     settings = {
       auto-optimise-store = true;
       substituters = [
-        "http://binarycache.example.com"
+        # "http://binarycache.example.com"
         # "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
       ];

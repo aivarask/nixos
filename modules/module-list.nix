@@ -36,6 +36,7 @@ map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
   ./services/torrent/transmission.nix
   ./services/ttys/kmscon.nix
   ./services/web-servers/nginx
+  ./services/web-servers/caddy
   ./services/x11/desktop-managers/plasma5.nix
   ./services/x11/display-managers/sddm.nix
   ./services/x11/display-managers/startx.nix

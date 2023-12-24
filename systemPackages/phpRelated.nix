@@ -1,10 +1,51 @@
+# https://nixos.wiki/wiki/PHP
+# https://search.nixos.org/packages?channel=unstable&type=packages&query=php
+# https://xdebug.org/
 {pkgs, ...}: {
+  environment.sessionVariables = {
+    COMPOSER_ALLOW_SUPERUSER = "1";
+  };
   environment.systemPackages =
-    (with pkgs; [php])
-    ++ (with pkgs.php82Packages; [
+    [
+      (pkgs.php83.buildEnv {
+        extensions = {
+          enabled,
+          all,
+        }:
+          enabled
+          ++ (with all; [
+            # php83extensions
+            xdebug
+            yaml
+          ]);
+        extraConfig = ''
+          memory_limit = 2G
+          xdebug.mode = debug
+          xdebug.start_with_request = yes
+        '';
+      })
+    ]
+    ++ (with pkgs.php83Packages; [
       composer
-      # phpstan # failed to validate
+      box
+      # diagnostics
+      phpcs
+      phpmd
+      phpstan
       psalm
+      # format
+      phpcbf
+      php-cs-fixer
+      #
+      phan # lspconfig
+      phive
     ])
-    ++ (with pkgs.php82Extensions; [xdebug]);
+    ++ (with pkgs.nodePackages_latest; [
+      intelephense
+    ])
+    ++ (with pkgs; [
+      phpactor # lspconfig
+      phpunit
+      wp-cli
+    ]);
 }

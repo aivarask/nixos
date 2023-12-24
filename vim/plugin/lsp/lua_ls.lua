@@ -4,6 +4,18 @@ null_ls.register({
   null_ls.builtins.code_actions.refactoring.with({ filetypes = { 'lua' } }),
 })
 
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*.lua' },
+  callback = function()
+    vim.lsp.buf.format({
+      async = true,
+      filter = function(client)
+        return client.name ~= 'null_ls'
+      end,
+    })
+  end,
+})
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 -- https://github.com/LuaLS/lua-language-server/wiki/Settings
 

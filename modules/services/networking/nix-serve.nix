@@ -1,17 +1,12 @@
 {config, ...}: {
   # https://nixos.wiki/wiki/Binary_Cache
+  # https://github.com/NixOS/nix/issues/1990
+  # nixos-rebuild switch --fallback --show-trace --option binary-caches https://cache.nixos.org/
+  # ../web-servers/nginx/default.nix
+  # ../web-servers/caddy/default.nix
   services.nix-serve = {
-    enable = true;
+    enable = false;
     secretKeyFile = "/var/cache-priv-key.pem";
-  };
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    virtualHosts = {
-      # ... existing hosts config etc. ...
-      "binarycache.example.com" = {
-        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
-      };
-    };
+    # port = 5000; # default 5000
   };
 }
