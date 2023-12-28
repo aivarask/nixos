@@ -24,4 +24,5 @@ _: {
     ./services/dunst.nix
     ./services/sxhkd.nix
   ];
+  programs.home-manager.enable = true;
 }

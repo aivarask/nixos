@@ -170,7 +170,6 @@
     pscale
     psmisc
     pulsemixer
-    puppeteer-cli
     redshift
     remarshal
     remote-touchpad

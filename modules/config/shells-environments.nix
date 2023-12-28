@@ -3,6 +3,7 @@
   # https://github.com/NixOS/nixpkgs/blob/592047fc9e4f7b74a4dc85d1b9f5243dfe4899e3/nixos/modules/config/shells-environment.nix
   environment = {
     profiles = [
+      # $NIX_PROFILES
       "${pkgs.zsh-completions}"
       "/etc/nixos"
     ];
@@ -33,6 +34,7 @@
       # XSERVERRC = "/etc/X11/xinit/xserverrc";
     };
     shellAliases = {
+      pm = "pulsemixer";
       wp = "wp --allow-root";
       less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
       man = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
@@ -43,8 +45,6 @@
       nfu = "nix flake update";
       nflu = "nix flake lock --update-input";
       nfluv = "nix flake lock --update-input vim";
-      puppeteer = "puppeteer --no-sandbox";
-      mmdc = "mmdc -p /etc/nixos/puppeteerConfigFile.json";
       brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";

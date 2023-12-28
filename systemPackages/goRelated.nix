@@ -10,7 +10,6 @@
     golines
     goimports-reviser
     gofumpt
-    checkmake
     # debug
     delve
   ];

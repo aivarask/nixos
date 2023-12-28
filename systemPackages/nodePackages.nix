@@ -36,7 +36,6 @@
       gulp
       js-beautify
       markdownlint-cli
-      mermaid-cli
       # node2nix
       # nodemon
       npm

@@ -33,6 +33,7 @@ local options = {
   detection_methods = { 'pattern' },
   patterns = {
     --
+    '_.nix',
     'flake.nix',
     'stylua.toml',
     -- '^lua',

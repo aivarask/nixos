@@ -52,6 +52,16 @@
             iconUpdateURL = "https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png";
           };
 
+          "Nix Manual" = {
+            urls = [
+              {
+                template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}";
+              }
+            ];
+            definedAliases = ["@nm"];
+            iconUpdateURL = "https://nixos.org/manual/nix/unstable/favicon.svg";
+          };
+
           "NixOS Packages" = {
             urls = [
               {

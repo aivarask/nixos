@@ -12,7 +12,7 @@
         }
       ];
 
-      font.size = lib.mkDefault 8.0;
+      font.size = lib.mkDefault 10.0;
       # window.opacity = 0.9;
       # window.decorations = "none";
     };

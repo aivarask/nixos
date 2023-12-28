@@ -8,6 +8,8 @@
   nixpkgs.config.joypixels.acceptLicense = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
+      "vital"
+      "vital-1.5.5"
       "bitwig-studio"
       "unrar"
       "soulseekqt"

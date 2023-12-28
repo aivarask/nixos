@@ -1,12 +1,17 @@
-{...}: {
-  # manpages
+# https://nixos.wiki/wiki/Man_pages
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.man-pages pkgs.man-pages-posix];
   documentation = {
-    dev.enable = false;
-    doc.enable = true; # default true
-    info.enable = true; # default true
+    nixos.enable = true;
+    nixos.includeAllModules = true;
+
+    enable = true;
+    dev.enable = true;
+    doc.enable = true;
+    info.enable = true;
     man = {
       enable = true;
-      generateCaches = false;
+      generateCaches = true;
       man-db = {
         enable = false;
       };
@@ -14,6 +19,5 @@
         enable = true;
       };
     };
-    nixos = {};
   };
 }
