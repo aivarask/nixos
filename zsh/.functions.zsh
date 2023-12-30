@@ -1,16 +1,3 @@
-precmd() {
-  print -Pn "\e]83;title \"$1\"\a"
-  print -Pn "\e]0;$TERM\a"
-}
-preexec() {
-  print -Pn "\e]83;title \"$1\"\a"
-  print -Pn "\e]0;$TERM - $1\a"
-}
-
-source "$(fzf-share)/key-bindings.zsh"
-source "$(fzf-share)/completion.zsh"
-
-
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }

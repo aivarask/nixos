@@ -1,11 +1,20 @@
 # https://nixos.wiki/wiki/Man_pages
+# https://wiki.archlinux.org/title/Man_page
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.man-pages pkgs.man-pages-posix];
-  documentation = {
-    nixos.enable = true;
-    nixos.includeAllModules = true;
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
+    # nixos-option
+    groff
+  ];
+  environment.variables = {
+    # Escape char issue
+    # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+  };
 
+  documentation = {
     enable = true;
+
     dev.enable = true;
     doc.enable = true;
     info.enable = true;
@@ -13,10 +22,10 @@
       enable = true;
       generateCaches = true;
       man-db = {
-        enable = false;
+        enable = true;
       };
       mandoc = {
-        enable = true;
+        enable = false;
       };
     };
   };

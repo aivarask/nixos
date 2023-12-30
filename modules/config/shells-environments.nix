@@ -4,11 +4,9 @@
   environment = {
     profiles = [
       # $NIX_PROFILES
-      "${pkgs.zsh-completions}"
-      "/etc/nixos"
+      # "/etc/nixos"
     ];
     variables = {
-      BAT_THEME = "gruvbox-dark";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
       editor = "vim";
@@ -36,8 +34,6 @@
     shellAliases = {
       pm = "pulsemixer";
       wp = "wp --allow-root";
-      less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
-      man = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
       codium = "codium --no-sandbox --user-data-dir ~/.codium";
       nf = "nvim -c 'Files'";
       ng = "nvim -c 'Rg'";

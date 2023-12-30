@@ -7,7 +7,7 @@
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
 
-# 4 Tips and Tricks 
+# 4 Tips and Tricks
 # https://wiki.archlinux.org/title/Zsh#Tips_and_tricks
 
 # 4.4 Help command
@@ -30,21 +30,21 @@ bindkey '^[\' ncmpcppShow
 # https://wiki.archlinux.org/title/Zsh#File_manager_key_binds
 cdUndoKey() {
   popd
-  zle       reset-prompt
+  zle reset-prompt
   print
   ls
-  zle       reset-prompt
+  zle reset-prompt
 }
 
 cdParentKey() {
   pushd ..
-  zle      reset-prompt
+  zle reset-prompt
   print
   ls
-  zle       reset-prompt
+  zle reset-prompt
 }
 
-zle -N                 cdParentKey
-zle -N                 cdUndoKey
-bindkey '^[[1;3A'      cdParentKey
-bindkey '^[[1;3D'      cdUndoKey
+zle -N cdParentKey
+zle -N cdUndoKey
+bindkey '^[[1;3A' cdParentKey
+bindkey '^[[1;3D' cdUndoKey
