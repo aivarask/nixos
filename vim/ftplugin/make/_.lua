@@ -6,3 +6,6 @@ null_ls.register({
     null_ls.builtins.diagnostics.checkmake,
   },
 })
+
+-- TODO: Makefile LSP integration. [Needs python package]
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#autotools_ls
