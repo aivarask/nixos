@@ -3,31 +3,6 @@
     "snippets": [
       {
         "language": [
-          "html",
-          "svelte"
-        ],
-        "path": "./_html.json"
-      },
-      {
-        "language": [
-          "svelte"
-        ],
-        "path": "./_svelte.json"
-      },
-      {
-        "language": [
-          "javascript"
-        ],
-        "path": "./javascript.json"
-      },
-      {
-        "language": [
-          "lua"
-        ],
-        "path": "./lua.json"
-      },
-      {
-        "language": [
           "json",
           "jsonc"
         ],

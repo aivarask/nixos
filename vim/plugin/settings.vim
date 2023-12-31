@@ -28,7 +28,9 @@ set statusline+=%F
 set tabstop=2
 set timeoutlen=200
 set title 
-set titlestring=%{getcwd()}\ \ \ %{expand('%')}
+" set titlestring=%{expand('%:h')}
+" set titlestring=%{getcwd()}\ \ \ %{expand('%')}
+set titlestring=%{expand('%:h')}\ %{getcwd()}
 set updatetime=1500
 
 hi! link netrwMarkFile Search

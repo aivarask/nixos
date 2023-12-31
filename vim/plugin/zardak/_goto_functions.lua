@@ -56,7 +56,7 @@ Go = {
     cword = function() -- typescript
       homepage('nodePackages_latest.', '<cword>')
     end,
-    cWORD = function() -- npm-check-updates
+    cWORD = function()
       homepage('nodePackages_latest.', '<cWORD>')
     end,
   },

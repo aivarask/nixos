@@ -48,34 +48,6 @@ function inspect_lsp_client()
   end)
 end
 
-local function rename_file()
-  -- https://github.com/neovim/neovim/pull/26516
-  -- https://github.com/tpope/vim-eunuch
-  -- https://github.com/neovim/neovim/issues/20784
-  local source_file = vim.api.nvim_buf_get_name(0)
-
-  vim.ui.input({
-    prompt = 'Rename: ',
-    default = source_file,
-  }, function(input)
-    local params = {
-      title = '',
-      command = '_typescript.applyRenameFile',
-      -- command = 'workspace/willRename',
-      arguments = {
-        {
-          sourceUri = source_file,
-          targetUri = input,
-        },
-      },
-    }
-    if input then
-      print(source_file, input)
-      vim.lsp.util.rename(source_file, input, {})
-      vim.lsp.buf.execute_command(params)
-    end
-  end)
-end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),

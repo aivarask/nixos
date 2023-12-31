@@ -3,5 +3,6 @@
     ./make
     ./vim
     ./nix
+    ./javascript
   ];
 }

@@ -58,7 +58,9 @@ local matchers = {
 
 for _, path in ipairs(vim.api.nvim_get_runtime_file('', true)) do
   for _, name in ipairs(matchers) do
-    if string.find(path, name) then table.insert(library, path) end
+    if string.find(path, name) then
+      table.insert(library, path)
+    end
   end
 end
 
@@ -95,8 +97,6 @@ local settings = {
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup({
-  -- capabilities = capabilities,
-  -- on_attach = on_attach,
   settings = settings,
   root_dir = require('lspconfig.util').root_pattern(
     '.luarc.json',

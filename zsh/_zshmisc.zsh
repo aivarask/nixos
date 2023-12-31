@@ -2,9 +2,9 @@
 
 precmd() {
   print -Pn "\e]83;title \"$1\"\a"
-  print -Pn "\e]0;$TERM $PWD\a"
+  print -Pn "\e]0;$PWD $TERM\a"
 }
 preexec() {
   print -Pn "\e]83;title \"$1\"\a"
-  print -Pn "\e]0;$1 $PWD\a"
+  print -Pn "\e]0;$PWD $1\a"
 }

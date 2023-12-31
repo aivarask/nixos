@@ -61,6 +61,7 @@ wkr({
     'find_files snippets',
   },
   p = { [[:Telescope ak paths<CR>]], 'ak paths' },
+  r = {'<cmd>Telescope registers<CR>', 'registers'},
   c = { '<cmd>Telescope commands<cr>', 'commands' },
   t = { '<cmd>Telescope<cr>', 'Telescope' },
   b = { [[:Telescope buffers <CR>]], 'buffers' },

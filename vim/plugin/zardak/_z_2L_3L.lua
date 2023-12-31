@@ -8,7 +8,7 @@ wkr({
   ['/'] = { [[:History/<CR>]], ':History/' },
   [':'] = { [[:History:<CR>]], ':History:' },
   [']'] = { neotest.output_panel.toggle, 'neotest.output_panel.toggle' },
-  a = { [[:call tj#save_and_exec()<CR>]], ':call tj#save_and_exec()' },
+  a = { [[:call _#save_and_exec()<CR>]], ':call _#save_and_exec()' },
   b = { [[:Buffers<CR>]], ':Buffers' },
   c = { [[:Commands<CR>]], ':Commands' },
   d = { dapui.toggle_reset, 'dapui.toggle_reset' },

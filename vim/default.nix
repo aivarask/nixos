@@ -66,8 +66,6 @@
     project-nvim
     telescope-project-nvim
 
-    # NOT IN USE OR ABANDONED
-    neodev-nvim
     which-key-nvim
 
     # https://github.com/itchyny/vim-cursorword/
@@ -123,8 +121,6 @@
     nvim-treesitter-endwise
 
     # OTHER
-    typescript-nvim
-    typescript-tools-nvim
     lazygit-nvim
     pretty-fold
     fold-preview

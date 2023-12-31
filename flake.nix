@@ -16,7 +16,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    rnix.url = "gitlab:jD91mZM2/rnix";
     statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
     prisma.url = "github:pimeys/nixos-prisma";
@@ -35,7 +34,7 @@
     };
     # vim.url = "path:./vim";
     vim.url = "gitlab:aivarask/vim";
-    musnix = {url = "github:musnix/musnix";};
+      musnix = {url = "github:musnix/musnix";};
   };
   outputs = {
     nixpkgs,
@@ -68,7 +67,6 @@
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
-      rnix.overlay
       slstatus.overlays.default
       st-flexipatch.overlays.default
       tabbed-flexipatch.overlays.default

@@ -51,20 +51,8 @@
       url = "github:antosha417/nvim-lsp-file-operations";
       flake = false;
     };
-    neodev-nvim = {
-      url = "github:folke/neodev.nvim";
-      flake = false;
-    };
     which-key-nvim = {
       url = "github:folke/which-key.nvim";
-      flake = false;
-    };
-    typescript-nvim = {
-      url = "github:jose-elias-alvarez/typescript.nvim";
-      flake = false;
-    };
-    typescript-tools-nvim = {
-      url = "github:pmizio/typescript-tools.nvim";
       flake = false;
     };
     emmet-ls = {
@@ -153,21 +141,9 @@
             name = "nvim-lsp-file-operations";
             src = inputs.nvim-lsp-file-operations;
           };
-          neodev-nvim = buildVimPlugin {
-            name = "neodev-nvim";
-            src = inputs.neodev-nvim;
-          };
           which-key-nvim = buildVimPlugin {
             name = "which-key-nvim";
             src = inputs.which-key-nvim;
-          };
-          typescript-nvim = buildVimPlugin {
-            name = "typescript-nvim";
-            src = inputs.typescript-nvim;
-          };
-          typescript-tools-nvim = buildVimPlugin {
-            name = "typescript-tools-nvim";
-            src = inputs.typescript-tools-nvim;
           };
           # Session management
           persistence-nvim = buildVimPlugin {
