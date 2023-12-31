@@ -4,5 +4,6 @@
     ./vim
     ./nix
     ./javascript
+    ./toml
   ];
 }
