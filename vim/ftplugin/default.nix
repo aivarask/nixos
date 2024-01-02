@@ -1,5 +1,6 @@
-{...}: {
+{ ... }: {
   imports = [
+    ./lua
     ./make
     ./vim
     ./nix

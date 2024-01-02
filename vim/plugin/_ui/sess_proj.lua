@@ -30,6 +30,7 @@ require('session_manager').setup({
 ---@type ProjectOptions
 local options = {
   -- https://github.com/ahmedkhalf/project.nvim#pattern-matching
+  manual_mode = true,
   detection_methods = { 'pattern' },
   patterns = {
     --

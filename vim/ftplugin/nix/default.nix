@@ -13,6 +13,7 @@
     nixfmt
     nixpkgs-fmt
     nil
+    nixd
     # manuals
     manix
     nix-doc

@@ -8,6 +8,7 @@
     vim-json
   ];
   commonPlugins = with pkgs.vimPlugins; [
+    vim-log-highlighting
     vim-jsdoc
     telescope-fzf-native-nvim
     # vim-obsession

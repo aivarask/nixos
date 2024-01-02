@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./aiRelated.nix
     ./audioRelated.nix
@@ -8,7 +8,6 @@
     ./goRelated.nix
     ./gtkRelated.nix
     ./haskellPackages.nix
-    ./luaPackages.nix
     ./nixRelated.nix
     ./nodePackages.nix
     ./phpRelated.nix

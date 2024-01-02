@@ -34,129 +34,131 @@
     };
     # vim.url = "path:./vim";
     vim.url = "gitlab:aivarask/vim";
-      musnix = {url = "github:musnix/musnix";};
+    musnix = { url = "github:musnix/musnix"; };
   };
-  outputs = {
-    nixpkgs,
-    # nixpkgs-master,
-    nixos-hardware,
-    home-manager,
-    # nixpkgs-mguentner,
-    musnix,
-    ...
-  } @ inputs: let
-    inherit (nixpkgs) lib;
-    system = "x86_64-linux";
-    # mkPkgs = pkgs: extraOverlays:
-    #   import pkgs {
-    #     inherit system;
-    #     config.allowUnfree = true; # forgive me Stallman senpai
-    #     overlays = extraOverlays;
-    #   };
-    # master = mkPkgs nixpkgs-master [];
-    # mguentner = mkPkgs nixpkgs-mguentner [];
-    overlays = with inputs; [
-      # (final: prev: {
-      #   inherit
-      #     (mguentner)
-      #     playwright
-      #     ;
-      #   inherit mguentner;
-      # })
-      templ.overlays.default
-      rust-overlay.overlays.default
-      nur.overlay
-      neovim-nightly-overlay.overlay
-      slstatus.overlays.default
-      st-flexipatch.overlays.default
-      tabbed-flexipatch.overlays.default
-      dwm-flexipatch.overlays.default
-      dmenu-flexipatch.overlays.default
-      nil.overlays.default
-      prisma.overlay
+  outputs =
+    { nixpkgs
+    , # nixpkgs-master,
+      nixos-hardware
+    , home-manager
+    , # nixpkgs-mguentner,
+      musnix
+    , ...
+    } @ inputs:
+    let
+      inherit (nixpkgs) lib;
+      system = "x86_64-linux";
+      # mkPkgs = pkgs: extraOverlays:
+      #   import pkgs {
+      #     inherit system;
+      #     config.allowUnfree = true; # forgive me Stallman senpai
+      #     overlays = extraOverlays;
+      #   };
+      # master = mkPkgs nixpkgs-master [];
+      # mguentner = mkPkgs nixpkgs-mguentner [];
+      overlays = with inputs; [
+        # (final: prev: {
+        #   inherit
+        #     (mguentner)
+        #     playwright
+        #     ;
+        #   inherit mguentner;
+        # })
+        templ.overlays.default
+        rust-overlay.overlays.default
+        nur.overlay
+        neovim-nightly-overlay.overlay
+        slstatus.overlays.default
+        st-flexipatch.overlays.default
+        tabbed-flexipatch.overlays.default
+        dwm-flexipatch.overlays.default
+        dmenu-flexipatch.overlays.default
+        nil.overlays.default
+        prisma.overlay
 
-      (_self: _super: {inherit LS_COLORS;})
-      (import ./overlays/python.nix)
-      vim.overlays.default
-    ];
-    home = import ./home;
-  in {
-    packages.${system} = {
-      iso = inputs.nixos-generators.nixosGenerate {
-        inherit system;
-        # modules = [./configuration.nix];
-        format = "iso";
+        (_self: _super: { inherit LS_COLORS; })
+        (import ./overlays/python.nix)
+        vim.overlays.default
+      ];
+      home = import ./home;
+    in
+    {
+      packages.${system} = {
+        iso = inputs.nixos-generators.nixosGenerate {
+          inherit system;
+          # modules = [./configuration.nix];
+          format = "iso";
+        };
+      };
+      formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
+
+      # PC B450 AORUS M
+      nixosConfigurations = {
+        pc = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./_pc.nix
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+            nixos-hardware.nixosModules.common-hidpi
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.root = import ./home/_pc.nix;
+              };
+            }
+            { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs; }
+          ];
+        };
+
+        # DELL XPS 7590
+        dell = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./_dell.nix
+            musnix.nixosModules.musnix
+            nixos-hardware.nixosModules.dell-xps-15-7590
+            nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+            nixos-hardware.nixosModules.common-hidpi
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.root = import ./home/_dell.nix;
+              };
+            }
+            { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs; }
+          ];
+        };
+
+        as = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./_as.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.root = import ./home/_as.nix;
+                users.vytas = import ./home/_as.nix;
+              };
+            }
+            { nixpkgs.overlays = overlays; }
+            { nix.registry.nixpkgs.flake = nixpkgs; }
+          ];
+        };
       };
     };
-    formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
-
-    # PC B450 AORUS M
-    nixosConfigurations = {
-      pc = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./configuration.nix
-          ./_pc.nix
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nixos-hardware.nixosModules.common-hidpi
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.root = import ./home/_pc.nix;
-            };
-          }
-          {nixpkgs.overlays = overlays;}
-          {nix.registry.nixpkgs.flake = nixpkgs;}
-        ];
-      };
-
-      # DELL XPS 7590
-      dell = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./configuration.nix
-          ./_dell.nix
-          musnix.nixosModules.musnix
-          nixos-hardware.nixosModules.dell-xps-15-7590
-          nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-          nixos-hardware.nixosModules.common-hidpi
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.root = import ./home/_dell.nix;
-            };
-          }
-          {nixpkgs.overlays = overlays;}
-          {nix.registry.nixpkgs.flake = nixpkgs;}
-        ];
-      };
-
-      as = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./configuration.nix
-          ./_as.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.root = import ./home/_as.nix;
-              users.vytas = import ./home/_as.nix;
-            };
-          }
-          {nixpkgs.overlays = overlays;}
-          {nix.registry.nixpkgs.flake = nixpkgs;}
-        ];
-      };
-    };
-  };
 }

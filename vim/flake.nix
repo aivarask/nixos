@@ -77,6 +77,10 @@
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
+    vim-log-highlighting = {
+      url = "github:MTDL9/vim-log-highlighting";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -92,6 +96,11 @@
       vimPlugins =
         prev.vimPlugins
         // {
+          vim-log-highlighting = buildVimPlugin {
+            name = "vim-log-highlighting";
+            src = inputs.vim-log-highlighting;
+          };
+
           nvim-tree-lua = buildVimPlugin {
             name = "nvim-tree-lua";
             src = inputs.nvim-tree-lua;

@@ -1,7 +1,6 @@
 local null_ls = require('null-ls')
 null_ls.register({
   null_ls.builtins.diagnostics.yamllint,
-  null_ls.builtins.formatting.taplo,
   null_ls.builtins.formatting.fixjson.with({
     filetypes = { 'json', 'jsonc' },
   }),
@@ -70,5 +69,3 @@ require('lspconfig').yamlls.setup({
   },
 })
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#taplo
-require('lspconfig').taplo.setup({})

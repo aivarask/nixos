@@ -1,4 +1,3 @@
-
 local root_pattern = require('lspconfig.util').root_pattern
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#vimls
 require('lspconfig').vimls.setup({

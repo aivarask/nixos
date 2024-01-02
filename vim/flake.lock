@@ -166,10 +166,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1703438236,
-        "narHash": "sha256-aqVBq1u09yFhL7bj1/xyUeJjzr92fXVvQSSEx6AdB1M=",
-        "path": "/nix/store/5acdh8xyry0kdvp6xla2hw7wf3zkphkl-source",
-        "rev": "5f64a12a728902226210bf01d25ec6cbb9d9265b",
+        "lastModified": 1703637592,
+        "narHash": "sha256-8MXjxU0RfFfzl57Zy3OfXCITS0qWDNLzlBAdwxGZwfY=",
+        "path": "/nix/store/lf2dq57rqn8d03ybrxxi6l8gg27a4av0-source",
+        "rev": "cfc3698c31b1fb9cdcf10f36c9643460264d0ca8",
         "type": "path"
       },
       "original": {
@@ -230,11 +230,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1703988228,
-        "narHash": "sha256-GEKoQk6eD281wJQFTcOYLUW58cTDqsmoZxoGekHgd8g=",
+        "lastModified": 1704161570,
+        "narHash": "sha256-l210yCCmIfNMNy89oxhqj/lE7jXW2nUE9U6Edw6hl+0=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "9bedcfed749755e43fc8bed46f85ce2044fe3b77",
+        "rev": "ce0e625df61be77abe1340fbc9afe9ad39b31dd8",
         "type": "github"
       },
       "original": {
@@ -246,11 +246,11 @@
     "nvim-tree-lua": {
       "flake": false,
       "locked": {
-        "lastModified": 1703998347,
-        "narHash": "sha256-kK0OtWmh6V/HmnumVSpENbkXd8MRoW2498FflgZeo08=",
+        "lastModified": 1704073600,
+        "narHash": "sha256-D+wCJQuRj9mvgLd0DaiYgqghDYDwfux9zlEb/vIvaqA=",
         "owner": "nvim-tree",
         "repo": "nvim-tree.lua",
-        "rev": "f779abaf2a6aba20107cb84bb468599327128202",
+        "rev": "f1b3e6a7eb92da492bd693257367d9256839ed3d",
         "type": "github"
       },
       "original": {
@@ -344,6 +344,7 @@
         "pretty-fold": "pretty-fold",
         "refactoring-nvim": "refactoring-nvim",
         "vim-interestingwords": "vim-interestingwords",
+        "vim-log-highlighting": "vim-log-highlighting",
         "which-key-nvim": "which-key-nvim"
       }
     },
@@ -390,6 +391,22 @@
       "original": {
         "owner": "lfv89",
         "repo": "vim-interestingwords",
+        "type": "github"
+      }
+    },
+    "vim-log-highlighting": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1598771411,
+        "narHash": "sha256-DqYSCtndUNIZsd9zpTFBhESXw3graNrjGC3WhcZ9uTA=",
+        "owner": "MTDL9",
+        "repo": "vim-log-highlighting",
+        "rev": "1037e26f3120e6a6a2c0c33b14a84336dee2a78f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MTDL9",
+        "repo": "vim-log-highlighting",
         "type": "github"
       }
     },
