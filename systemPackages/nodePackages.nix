@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages =
     [
       pkgs.nodejs_20
@@ -33,7 +33,6 @@
       # ts-node
       typescript
       typescript-language-server
-      vim-language-server
       write-good
       yaml-language-server
     ]);

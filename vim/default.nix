@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   vimOnlyPlugins = with pkgs.vimPlugins; [
     # LANG:
     context_filetype-vim
@@ -8,6 +9,7 @@
     vim-json
   ];
   commonPlugins = with pkgs.vimPlugins; [
+    vim-projectionist
     vim-log-highlighting
     vim-jsdoc
     telescope-fzf-native-nvim
@@ -164,7 +166,11 @@
     trouble-nvim # https://github.com/folke/trouble.nvim
     todo-comments-nvim # https://github.com/folke/todo-comments.nvim
   ];
-in {
+in
+{
+  imports = [
+    ./lsp
+  ];
   programs.vim = {
     enable = true;
     plugins = vimOnlyPlugins ++ commonPlugins;
@@ -182,8 +188,6 @@ in {
         EOF
       ''
     ];
-    # extraPackages = with pkgs; [ tree-sitter ];
-    # package = pkgs.neovim;
     package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
     viAlias = false;

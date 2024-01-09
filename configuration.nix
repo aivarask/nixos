@@ -1,8 +1,8 @@
-{...}: {
+{ ... }: {
   imports =
     [
       ./systemPackages
-      ./vim/ftplugin
+      ./vim/nix
     ]
     ++ (import ./modules/module-list.nix);
 }

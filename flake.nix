@@ -1,6 +1,7 @@
 {
   description = "NixOS config";
   inputs = {
+    systems.url = "github:nix-systems/x86_64-linux";
     # Go related
     templ.url = "github:a-h/templ";
     nixpkgs.url = "nixpkgs/nixos-unstable";

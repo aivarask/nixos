@@ -1,8 +1,7 @@
-{
-  pkgs,
-  options,
-  lib,
-  ...
+{ pkgs
+, options
+, lib
+, ...
 }: {
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 40960;
   # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
@@ -29,13 +28,15 @@
         "https://cache.nixos.org/"
       ];
     };
-    settings.allowed-users = ["@wheel" "ak"];
-    settings.trusted-users = ["root" "@wheel" "ak"];
+    settings.allowed-users = [ "@wheel" "ak" ];
+    settings.trusted-users = [ "root" "@wheel" "ak" ];
     settings.max-jobs = 4;
     settings.cores = 4;
     extraOptions = ''
       experimental-features = nix-command flakes
       # post-build-hook = /etc/nixos/post-build-hook.sh
+      keep-outputs = false
+      keep-derivations = false
     '';
     registry = {
       slstatus = {
