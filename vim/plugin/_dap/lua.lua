@@ -23,6 +23,8 @@ dap.configurations.lua = {
   },
 }
 
+local osv = require('osv')
+
 wkr({
   o = {
     name = 'osv',

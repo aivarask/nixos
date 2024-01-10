@@ -3,8 +3,12 @@ vim.cmd([[
 ]])
 
 vim.loader.enable()
+require('which-key').setup({})
+wkr = require('which-key').register
 
 require('lsp._null')
+require('lsp._signature')
+require('lsp.go')
 require('lsp.json')
 require('lsp.lua')
 require('lsp.make')

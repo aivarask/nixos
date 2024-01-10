@@ -15,7 +15,8 @@ local getLibrary = function()
     for _, name in ipairs({
       'plenary.nvim',
       'nvim%-lspconfig',
-      'none%-ls.nvim'
+      'none%-ls.nvim',
+      'lsp_signature.nvim'
     }) do
       if string.find(path, name) then
         table.insert(library, path)

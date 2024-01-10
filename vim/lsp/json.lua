@@ -1,6 +1,5 @@
 local null_ls = require('null-ls')
 null_ls.register({
-  null_ls.builtins.diagnostics.yamllint,
   null_ls.builtins.formatting.fixjson.with({
     filetypes = { 'json', 'jsonc' },
   }),
@@ -10,11 +9,6 @@ null_ls.register({
   -- }),
 })
 
---- [plugin](https://github.com/b0o/SchemaStore.nvim)
---- [repo](https://github.com/SchemaStore/schemastore)
---- [web](https://www.schemastore.org/json/)
---- [docs](https://json-schema.org/learn/getting-started-step-by-step)
---- [catalog](https://github.com/SchemaStore/schemastore/blob/master/src/api/json/catalog.json)
 local function json()
   return {
     schemas = require('schemastore').json.schemas({

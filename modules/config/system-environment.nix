@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment = {
     sessionVariables = rec {
       # https://nixos.wiki/wiki/Environment_variables
@@ -9,10 +9,8 @@
 
       XDG_BIN_HOME = "$HOME/.local/bin";
 
-      GOPATH = "$HOME/go";
       PATH = [
         "${XDG_BIN_HOME}"
-        "${GOPATH}/bin"
         "/etc/nixos/bin"
         "$HOME/.pnpm-global"
         "$HOME/.node_modules/bin"

@@ -5,7 +5,6 @@
     ./cRelated.nix
     ./gitAndTools.nix
     ./gitAndTools.nix
-    ./goRelated.nix
     ./gtkRelated.nix
     ./haskellPackages.nix
     ./nixRelated.nix
@@ -181,7 +180,6 @@
     wget
     whois
     wiki-tui
-    yamllint
     yapf
     yarn
     youtube-dl

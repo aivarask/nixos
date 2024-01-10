@@ -1,4 +1,19 @@
--- dap-mappings
+wkr({
+  ['<F5>'] = {
+    function()
+      if vim.bo.ft == 'lua' then
+        require('osv').run_this()
+      else
+        dap.continue()
+      end
+    end,
+    'dap.continue',
+  },
+  ['<F6>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
+  -- ['<F7>'] = { require 'neotest'.run.dap, 'neotest.run.dap' },
+  ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
+})
+
 wkr({
   name = 'DAP',
   c = { dap.continue, 'continue' },

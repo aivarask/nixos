@@ -2,7 +2,7 @@
   imports =
     [
       ./systemPackages
-      ./vim/nix
+      ./vim/lsp
     ]
     ++ (import ./modules/module-list.nix);
 }

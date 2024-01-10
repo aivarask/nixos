@@ -1,0 +1,16 @@
+# title
+name: Martin D'vloper
+languages:
+  perl: Elite
+  python: Elite
+  pascal: Lame
+
+foods:
+  - Apple
+  - Orange
+  - Strawberry
+  - Mango
+
+employed: true
+
+foo: "bar"

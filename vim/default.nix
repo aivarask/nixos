@@ -1,12 +1,7 @@
 { pkgs, ... }:
 let
   vimOnlyPlugins = with pkgs.vimPlugins; [
-    # LANG:
     context_filetype-vim
-    vim-nix
-    vim-toml
-    vim-yaml
-    vim-json
   ];
   commonPlugins = with pkgs.vimPlugins; [
     vim-projectionist
@@ -168,21 +163,19 @@ let
   ];
 in
 {
-  imports = [
-    ./lsp
-  ];
   programs.vim = {
     enable = true;
     plugins = vimOnlyPlugins ++ commonPlugins;
     extraConfig = ''
+      let &runtimepath.=',/etc/nixos/vim'
       source /etc/nixos/vim/vimrc.vim
     '';
   };
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
-      # set rtp+=${pkgs}
       ''
+        let &runtimepath.=',/etc/nixos/vim'
         lua << EOF
         dofile("/etc/nixos/vim/init.lua")
         EOF

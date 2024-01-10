@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium.fhs;
@@ -22,7 +22,6 @@
         ms-python.python
         # ms-azuretools.vscode-docker
         ms-vscode-remote.remote-ssh
-        svelte.svelte-vscode
         # vscodevim.vim
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [

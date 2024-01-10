@@ -10,7 +10,6 @@ wkr({
   -- y = ./_yank.lua
   ['='] = { sveltekit_file, 'sveltekit_file' },
   ['4'] = { [[:call ak#toggle_dollar()<CR>]], 'ak#toggle_dollar' },
-  ['?'] = { wk.show, 'wk.show()' },
   [']'] = { neotest.summary.toggle, 'neotest.summary.toggle()' },
   ['}'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
 

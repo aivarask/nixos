@@ -16,7 +16,6 @@
           ++ (with all; [
             # php83extensions
             xdebug
-            yaml
           ]);
         extraConfig = ''
           memory_limit = 2G

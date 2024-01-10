@@ -9,7 +9,6 @@
 
       # --
       jsdoc
-      vscode-langservers-extracted
       dotenv-cli
       bash-language-server
       # coc-rust-analyzer
@@ -34,6 +33,5 @@
       typescript
       typescript-language-server
       write-good
-      yaml-language-server
     ]);
 }

@@ -1,64 +1,13 @@
 #!/usr/bin/env bash
 
-
 echo -e '
 #Files
 file:///etc/nixos/vim/plugin/lsp_conf.lua
 
-# Entertain
+# Bookmarks
 https://www.youtube.com/
+https://delfi.lt/
 
-# News
-https://www.prisma.io/blog/satisfies-operator-ur8ys8ccq7zb
-https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly
-https://wiki.archlinux.org/
-
-#Vim
-https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-
-# nginx/ssl
-https://nixos.org/manual/nixos/unstable/#module-security-acme-nginx
-https://imagineer.in/blog/https-on-localhost-with-nginx
-https://stackoverflow.com/questions/3893839/how-do-i-redirect-https-to-http-on-nginx
-https://www.ssllabs.com/ssltest/analyze.html
-https://hstspreload.org/
-
-# Javascript
-https://jsdoc.app/index.html
-https://vitejs.dev
-https://vitest.dev
-https://github.com/thenbe/neotest-playwright
-https://github.com/marilari88/neotest-vitest
-https://playwright.dev/docs/intro
-https://lodash.com/docs/4.17.15
-
-# Zod
-https://github.com/colinhacks/zod
-https://github.com/chrishoermann/zod-prisma-types#usage
-https://github.com/chrishoermann/zod-prisma-types#field-validators
-
-# Back
-https://kit.svelte.dev/docs/introduction
-https://www.prisma.io/docs/concepts/components/prisma-schema
-https://www.prisma.io/docs/concepts/components/prisma-client
-
-# Front
-https://svelte.dev/docs/introduction
-https://flowbite-svelte.com/
-https://www.skeleton.dev/
-https://tailwindcss.com/docs/customizing-colors
-https://www.toptal.com/designers/htmlarrows/punctuation/
-
-#Svelte
-https://github.com/ciscoheat/sveltekit-flash-message
-https://github.com/kbrgl/svelte-french-toast
-https://superforms-web.vercel.app/
-
-# Nix
-https://mynixos.com/
-https://github.com/nix-community/awesome-nix 
-https://discourse.nixos.org/search
-https://nixos.wiki/index.php?search#ooui-1' |
+' |
   grep -v '^#\|^$' |
   dmenu -l 10 | xargs xdg-open
