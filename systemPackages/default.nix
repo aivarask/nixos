@@ -13,11 +13,10 @@
     ./pythonPackages.nix
     ./rustRelated.nix
     ./shells.nix
-    ./sqlRelated.nix
     ./suckless.nix
     ./xorgRelated.nix
   ];
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ gcc ] ++ [
     screen
     hyperfine
     bun
@@ -83,7 +82,6 @@
     fontpreview
     fzy
     geoipWithDatabase
-    # gcc
     gdb
     gdu
     glib

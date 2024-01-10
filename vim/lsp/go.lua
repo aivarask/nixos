@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
-
 require('lspconfig').gopls.setup({})
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {

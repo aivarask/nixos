@@ -1,0 +1,13 @@
+lowercaseKeywords: false
+connections:
+  - alias: dsn_mysql
+    driver: mysql
+    dataSourceName: ak:l@tcp(127.0.0.1:3306)/ak
+  # - alias: individual_mysql
+  #   driver: mysql
+  #   proto: tcp
+  #   user: ak
+  #   passwd: l
+  #   host: 127.0.0.1
+  #   port: 3306
+  #   dbName: ak

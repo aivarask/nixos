@@ -1,5 +1,5 @@
 map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
-++ map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
+  ++ map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
 ++ [
   ./hardware/video/nvidia.nix
   ./programs/adb.nix
@@ -13,9 +13,6 @@ map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
   ./security/sudo.nix
   ./services/audio/alsa.nix
   ./services/audio/mpd.nix
-  ./services/databases/mongodb.nix
-  ./services/databases/mysql.nix
-  ./services/databases/postgresql.nix
   ./services/desktops/blueman.nix
   ./services/desktops/geoclue2.nix
   ./services/desktops/pipewire/pipewire.nix

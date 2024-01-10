@@ -53,9 +53,3 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     })
   end,
 })
-
-return {
-  foo = function()
-    print('two')
-  end
-}

@@ -5,6 +5,7 @@
     ./lua.nix
     ./make.nix
     ./nix.nix
+    ./sql.nix
     ./svelte.nix
     ./toml.nix
     ./vim.nix
