@@ -36,6 +36,7 @@
     # vim.url = "path:./vim";
     vim.url = "gitlab:aivarask/vim";
     musnix = { url = "github:musnix/musnix"; };
+    echo = { url = "github:labstack/echo"; flake = false; };
   };
   outputs =
     { nixpkgs
@@ -77,7 +78,7 @@
         nil.overlays.default
         prisma.overlay
 
-        (_self: _super: { inherit LS_COLORS; })
+        (_self: _super: { inherit LS_COLORS; FOO = "FOO HELLO"; })
         (import ./overlays/python.nix)
         vim.overlays.default
       ];
@@ -153,7 +154,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = import ./home/_as.nix;
-                users.vytas = import ./home/_as.nix;
               };
             }
             { nixpkgs.overlays = overlays; }

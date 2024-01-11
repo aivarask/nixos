@@ -19,5 +19,18 @@ lualib+=(
 )
 
 hi(){
-  echo 'hi'
+  echo "\"hi my\""
+}
+
+edit() {
+  echo '"foo.vim:3"'
+}
+
+foo() {
+  echo $1
+  return 2
+}
+
+move() {
+mv foo bar
 }

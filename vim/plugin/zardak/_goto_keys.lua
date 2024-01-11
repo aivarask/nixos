@@ -1,5 +1,6 @@
 wkr({
   name = 'GOTO',
+
   h = { Go.homepage.cword, 'nixpkgs#<cword>.meta.homepage' },
   H = { Go.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },
   l = { Go.luajitPackages.cword, 'luajitPackages.<cword>.meta.homepage' },

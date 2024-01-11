@@ -1,9 +1,9 @@
-{lib, ...}: {
+{ lib, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
       # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
-      import = [./gruvbox.yml];
+      import = [ ./gruvbox.toml ];
       key_bindings = [
         {
           key = "Return";

@@ -166,10 +166,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1703637592,
-        "narHash": "sha256-8MXjxU0RfFfzl57Zy3OfXCITS0qWDNLzlBAdwxGZwfY=",
-        "path": "/nix/store/lf2dq57rqn8d03ybrxxi6l8gg27a4av0-source",
-        "rev": "cfc3698c31b1fb9cdcf10f36c9643460264d0ca8",
+        "lastModified": 1704722960,
+        "narHash": "sha256-mKGJ3sPsT6//s+Knglai5YflJUF2DGj7Ai6Ynopz0kI=",
+        "path": "/nix/store/0g53xyh39z3y90p4d8r341wbqyjy1zhl-source",
+        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
         "type": "path"
       },
       "original": {
@@ -230,11 +230,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1704161570,
-        "narHash": "sha256-l210yCCmIfNMNy89oxhqj/lE7jXW2nUE9U6Edw6hl+0=",
+        "lastModified": 1704517718,
+        "narHash": "sha256-CsMf78TIzvB9OETUOSxj2lFPdZFnIna1keCotq8SvZw=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "ce0e625df61be77abe1340fbc9afe9ad39b31dd8",
+        "rev": "796394fd19fb878e8dbc4fd1e9c9c186ed07a5f4",
         "type": "github"
       },
       "original": {
@@ -246,11 +246,11 @@
     "nvim-tree-lua": {
       "flake": false,
       "locked": {
-        "lastModified": 1704073600,
-        "narHash": "sha256-D+wCJQuRj9mvgLd0DaiYgqghDYDwfux9zlEb/vIvaqA=",
+        "lastModified": 1704704944,
+        "narHash": "sha256-82mEVcnrhPuuBGeZCnB/srRkVeSM+3Q66CWiR2gqdW0=",
         "owner": "nvim-tree",
         "repo": "nvim-tree.lua",
-        "rev": "f1b3e6a7eb92da492bd693257367d9256839ed3d",
+        "rev": "b8c3a23e76f861d5f0ff3f6714b9b56388984d0b",
         "type": "github"
       },
       "original": {
@@ -310,11 +310,11 @@
     "refactoring-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1699460078,
-        "narHash": "sha256-yPl7xGnai5WXZiJU8F6OIOGppRABlonQOV9Lsb7zrw8=",
+        "lastModified": 1704900881,
+        "narHash": "sha256-tWboNwzRI29o1uvKLjo2fIl9wXytN1OFgpW2kSOggws=",
         "owner": "ThePrimeagen",
         "repo": "refactoring.nvim",
-        "rev": "156532476deb10b1b2a32cb38e1078b3f9951c42",
+        "rev": "c067e44b8171494fc1b5206ab4c267cd74c043b1",
         "type": "github"
       },
       "original": {

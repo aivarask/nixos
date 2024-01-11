@@ -83,96 +83,98 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    ...
-  } @ inputs: {
-    # packages.x86_64-linux.default = "vimFlake";
-    overlays.default = final: prev: let
-      inherit (prev.vimUtils) buildVimPlugin;
-    in {
-      vimPlugins =
-        prev.vimPlugins
-        // {
-          vim-log-highlighting = buildVimPlugin {
-            name = "vim-log-highlighting";
-            src = inputs.vim-log-highlighting;
-          };
+  outputs =
+    { self
+    , nixpkgs
+    , flake-utils
+    , ...
+    } @ inputs: {
+      # packages.x86_64-linux.default = "vimFlake";
+      overlays.default = final: prev:
+        let
+          inherit (prev.vimUtils) buildVimPlugin;
+        in
+        {
+          vimPlugins =
+            prev.vimPlugins
+            // {
+              vim-log-highlighting = buildVimPlugin {
+                name = "vim-log-highlighting";
+                src = inputs.vim-log-highlighting;
+              };
 
-          nvim-tree-lua = buildVimPlugin {
-            name = "nvim-tree-lua";
-            src = inputs.nvim-tree-lua;
-          };
+              nvim-tree-lua = buildVimPlugin {
+                name = "nvim-tree-lua";
+                src = inputs.nvim-tree-lua;
+              };
 
-          pretty-fold = buildVimPlugin {
-            name = "pretty-fold";
-            src = inputs.pretty-fold;
-          };
-          fold-preview = buildVimPlugin {
-            name = "fold-preview";
-            src = inputs.fold-preview;
-          };
-          neotest = buildVimPlugin {
-            name = "neotest";
-            src = inputs.neotest;
-          };
-          neotest-playwright = buildVimPlugin {
-            name = "neotest-playwright";
-            src = inputs.neotest-playwright;
-          };
-          neotest-vim-test = buildVimPlugin {
-            name = "neotest-vim-test";
-            src = inputs.neotest-vim-test;
-          };
-          neotest-vitest = buildVimPlugin {
-            name = "neotest-vitest";
-            src = inputs.neotest-vitest;
-          };
-          neotest-plenary = buildVimPlugin {
-            name = "neotest-plenary";
-            src = inputs.neotest-plenary;
-          };
-          refactoring-nvim = buildVimPlugin {
-            name = "refactoring-nvim";
-            src = inputs.refactoring-nvim;
-          };
-          vim-interestingwords = buildVimPlugin {
-            name = "vim-interestingwords";
-            src = inputs.vim-interestingwords;
-          };
-          nvim-lspconfig = buildVimPlugin {
-            name = "nvim-lspconfig";
-            src = inputs.nvim-lspconfig;
-          };
-          nvim-lsp-file-operations = buildVimPlugin {
-            name = "nvim-lsp-file-operations";
-            src = inputs.nvim-lsp-file-operations;
-          };
-          which-key-nvim = buildVimPlugin {
-            name = "which-key-nvim";
-            src = inputs.which-key-nvim;
-          };
-          # Session management
-          persistence-nvim = buildVimPlugin {
-            name = "persistence-nvim";
-            src = inputs.persistence-nvim;
-          };
-          neovim-session-manager = buildVimPlugin {
-            name = "neovim-session-manager";
-            src = inputs.neovim-session-manager;
-          };
-          # DEBUGGING
-          nvim-dap-vscode-js = buildVimPlugin {
-            name = "nvim-dap-vscode-js";
-            src = inputs.nvim-dap-vscode-js;
-          };
-          osv = buildVimPlugin {
-            name = "osv";
-            src = inputs.osv;
-          };
+              pretty-fold = buildVimPlugin {
+                name = "pretty-fold";
+                src = inputs.pretty-fold;
+              };
+              fold-preview = buildVimPlugin {
+                name = "fold-preview";
+                src = inputs.fold-preview;
+              };
+              neotest = buildVimPlugin {
+                name = "neotest";
+                src = inputs.neotest;
+              };
+              neotest-playwright = buildVimPlugin {
+                name = "neotest-playwright";
+                src = inputs.neotest-playwright;
+              };
+              neotest-vim-test = buildVimPlugin {
+                name = "neotest-vim-test";
+                src = inputs.neotest-vim-test;
+              };
+              neotest-vitest = buildVimPlugin {
+                name = "neotest-vitest";
+                src = inputs.neotest-vitest;
+              };
+              neotest-plenary = buildVimPlugin {
+                name = "neotest-plenary";
+                src = inputs.neotest-plenary;
+              };
+              refactoring-nvim = buildVimPlugin {
+                name = "refactoring-nvim";
+                src = inputs.refactoring-nvim;
+              };
+              vim-interestingwords = buildVimPlugin {
+                name = "vim-interestingwords";
+                src = inputs.vim-interestingwords;
+              };
+              nvim-lspconfig = buildVimPlugin {
+                name = "nvim-lspconfig";
+                src = inputs.nvim-lspconfig;
+              };
+              nvim-lsp-file-operations = buildVimPlugin {
+                name = "nvim-lsp-file-operations";
+                src = inputs.nvim-lsp-file-operations;
+              };
+              which-key-nvim = buildVimPlugin {
+                name = "which-key-nvim";
+                src = inputs.which-key-nvim;
+              };
+              # Session management
+              persistence-nvim = buildVimPlugin {
+                name = "persistence-nvim";
+                src = inputs.persistence-nvim;
+              };
+              neovim-session-manager = buildVimPlugin {
+                name = "neovim-session-manager";
+                src = inputs.neovim-session-manager;
+              };
+              # DEBUGGING
+              nvim-dap-vscode-js = buildVimPlugin {
+                name = "nvim-dap-vscode-js";
+                src = inputs.nvim-dap-vscode-js;
+              };
+              osv = buildVimPlugin {
+                name = "osv";
+                src = inputs.osv;
+              };
+            };
         };
     };
-  };
 }

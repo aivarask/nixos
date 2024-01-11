@@ -2,6 +2,7 @@
 let
   vimOnlyPlugins = with pkgs.vimPlugins; [
     context_filetype-vim
+    # vim-expand-region
   ];
   commonPlugins = with pkgs.vimPlugins; [
     vim-projectionist
@@ -22,7 +23,6 @@ let
     vim-fugitive
     fugitive-gitlab-vim
     vim-surround
-    vim-expand-region
     vim-gitgutter
     # vim-gutentags
     vim-floaterm
