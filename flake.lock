@@ -22,11 +22,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1704648272,
-        "narHash": "sha256-zCDhWGl3bVpBKpDZ0p3NuGksZVg69BAChsY5W4KARL4=",
+        "lastModified": 1705004965,
+        "narHash": "sha256-yUy8bGvjopODhGgPN3gmwt8D1XxKpy88rtIB0qCbAFg=",
         "owner": "numtide",
         "repo": "devshell",
-        "rev": "f54745fd4aae92443817ddc566ce06572b178b5a",
+        "rev": "d45f45b634c624d2be705973b2af3b9bec29deff",
         "type": "github"
       },
       "original": {
@@ -352,6 +352,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
+    "gow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698317540,
+        "narHash": "sha256-NmjJd3GVImCtYo5CxGnQHHPERx5R0sD4bzBsbxNGc3o=",
+        "owner": "mitranim",
+        "repo": "gow",
+        "rev": "af11a6e1e9ebccdcdace2a6df619355b85494d74",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mitranim",
+        "repo": "gow",
         "type": "github"
       }
     },
@@ -802,11 +818,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1704998439,
-        "narHash": "sha256-a3xXFl2oPhFrWoKc9FFkAfuKn8O40jsnvFX5o+GMMtw=",
+        "lastModified": 1705002794,
+        "narHash": "sha256-kOd7hd8A1sGFZSYJGn+cEH3RSpGVAQ004Pd1lZabuIo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e39159c36817a9993b927ebf503be1d3ed4bacdc",
+        "rev": "753418854902ccec235420cf3ee6b8bb9da3de67",
         "type": "github"
       },
       "original": {
@@ -972,6 +988,7 @@
         "dwm-flexipatch": "dwm-flexipatch",
         "echo": "echo",
         "flake-utils": "flake-utils_2",
+        "gow": "gow",
         "home-manager": "home-manager",
         "musnix": "musnix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
@@ -1281,11 +1298,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1704999150,
-        "narHash": "sha256-qr3l2Az5S9B1n6nRKdcrPAm0BO4i1Ys4tAsZSlqOIx0=",
+        "lastModified": 1705008240,
+        "narHash": "sha256-BuI4WIbMv+g9Z01VO9ECrTuOtHXx9NDU/h7wgp5J1MY=",
         "owner": "aivarask",
         "repo": "vim",
-        "rev": "bd5052a798e0113f5a5659959fdf8bb49d67315c",
+        "rev": "225e169a08a54e59edf760a4d5d2c23ddafce65f",
         "type": "gitlab"
       },
       "original": {

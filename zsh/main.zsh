@@ -34,3 +34,8 @@ foo() {
 move() {
 mv foo bar
 }
+
+# for p in $NIX_PROFILES; do
+# ls "$p/share/go"
+    # GOPATH="$p/share/go:$GOPATH"
+# done

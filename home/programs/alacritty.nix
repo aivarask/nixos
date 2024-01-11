@@ -4,13 +4,15 @@
     settings = {
       # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
       import = [ ./gruvbox.toml ];
-      key_bindings = [
-        {
-          key = "Return";
-          mods = "Control";
-          action = "SpawnNewInstance";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            key = "Return";
+            mods = "Control";
+            action = "SpawnNewInstance";
+          }
+        ];
+      };
 
       font.size = lib.mkDefault 10.0;
       # window.opacity = 0.9;
