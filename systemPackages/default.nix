@@ -9,17 +9,14 @@
     ./haskellPackages.nix
     ./nixRelated.nix
     ./nodePackages.nix
-    ./phpRelated.nix
     ./pythonPackages.nix
     ./rustRelated.nix
-    ./shells.nix
     ./suckless.nix
     ./xorgRelated.nix
   ];
   environment.systemPackages = with pkgs; [ gcc ] ++ [
     screen
     hyperfine
-    bun
     inotify-tools
     scrot
     xorg.xwd
@@ -58,7 +55,7 @@
     bind
     brightnessctl
     catdoc
-    certbot-full
+    # certbot-full
     chafa
     cheat
     conky

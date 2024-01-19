@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   # https://nixos.wiki/wiki/Audio_production
   # https://github.com/musnix/musnix

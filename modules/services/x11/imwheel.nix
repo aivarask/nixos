@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   services.xserver.imwheel = {
     enable = lib.mkDefault true;
     rules = {

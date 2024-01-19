@@ -9,7 +9,7 @@
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles
   # https://nixos.org/manual/nix/stable/command-ref/files/channels
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixUnstable;
     nixPath =
       options.nix.nixPath.default
       ++ [
@@ -34,11 +34,20 @@
     settings.cores = 4;
     extraOptions = ''
       experimental-features = nix-command flakes
-      # post-build-hook = /etc/nixos/post-build-hook.sh
+      keep-derivations = true
       keep-outputs = false
-      keep-derivations = false
+      # post-build-hook = /etc/nixos/post-build-hook.sh
     '';
     registry = {
+      # nix registry list
+      # https://github.com/NixOS/flake-registry
+      hm = {
+        to = {
+          owner = "nix-community";
+          repo = "home-manager";
+          type = "github";
+        };
+      };
       slstatus = {
         to = {
           owner = "aivarask";

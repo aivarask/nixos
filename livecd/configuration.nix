@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -45,7 +46,7 @@
   # services.xserver.enable = true;
 
 
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -95,7 +96,7 @@
   services.sshd.enable = true;
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = lib.mkDefault "yes";
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.package = pkgs.nixFlakes;
 
 

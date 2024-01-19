@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-# https://www.youtube.com/watch?v=GH3kpsbbERo
+{ pkgs, ... }: {
+  # https://www.youtube.com/watch?v=GH3kpsbbERo
   programs.tmux = {
     enable = true;
     plugins = [

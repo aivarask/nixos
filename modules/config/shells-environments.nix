@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  imports = [./LF_ICONS.nix];
+{ pkgs, ... }: {
+  imports = [ ./LF_ICONS.nix ];
   # https://github.com/NixOS/nixpkgs/blob/592047fc9e4f7b74a4dc85d1b9f5243dfe4899e3/nixos/modules/config/shells-environment.nix
   environment = {
     profiles = [

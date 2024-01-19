@@ -11,7 +11,6 @@
       jsdoc
       dotenv-cli
       bash-language-server
-      # coc-rust-analyzer
       degit
       diagnostic-languageserver
       emoj

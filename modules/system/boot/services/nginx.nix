@@ -1,12 +1,12 @@
-{lib, ...}: {
+{ lib, ... }: {
   systemd.services.nginx.serviceConfig = {
-    SupplementaryGroups = ["shadow"];
+    SupplementaryGroups = [ "shadow" ];
     NoNewPrivileges = lib.mkForce false;
     PrivateDevices = lib.mkForce false;
     ProtectHostname = lib.mkForce false;
     ProtectKernelTunables = lib.mkForce false;
     ProtectKernelModules = lib.mkForce false;
-    RestrictAddressFamilies = lib.mkForce [];
+    RestrictAddressFamilies = lib.mkForce [ ];
     LockPersonality = lib.mkForce false;
     MemoryDenyWriteExecute = lib.mkForce false;
     RestrictRealtime = lib.mkForce false;

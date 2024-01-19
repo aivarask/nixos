@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   services.xserver = {
     autoRepeatDelay = 200;
     autoRepeatInterval = 50;
@@ -13,6 +13,6 @@
     tty = null;
     # LINKS:
     # https://wiki.archlinux.org/title/Multihead
-    xrandrHeads = [];
+    xrandrHeads = [ ];
   };
 }

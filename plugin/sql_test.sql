@@ -3,7 +3,7 @@ alter table Address
   add column if not exists STREET tinytext;
 
 describe Address;
-SELECT street, city FROM Address;
+SELECT street FROM Address;
   
 alter table User
   add column if not exists id integer,

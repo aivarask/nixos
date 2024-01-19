@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   systemd.services."hello-world" = {
     script = ''
       set -eu
@@ -13,7 +13,7 @@
     description = ''
       Simple greeting timer for testing purposes.
     '';
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "5m";
       OnUnitActiveSec = "5m";

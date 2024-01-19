@@ -1,9 +1,11 @@
-{...}: let
+{ ... }:
+let
   foo = "foo val";
   boo = "boo";
   home = builtins.getEnv "HOME";
   config = builtins.dirOf (builtins.findFile builtins.nixPath "nixos-config");
-in {
+in
+{
   foo = "im interpolated ${foo}";
   home = "this is home: ${home}";
   boo = "im the booing: ${boo}";

@@ -15,7 +15,7 @@ null_ls.register({
   -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#phpcbf
   -- null_ls.builtins.formatting.phpcbf,
   -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#phpcsfixer
-  null_ls.builtins.formatting.phpcsfixer,
+  -- null_ls.builtins.formatting.phpcsfixer,
   -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#pint
   -- null_ls.builtins.formatting.pint,
 })

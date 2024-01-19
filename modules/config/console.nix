@@ -1,7 +1,6 @@
-{
-  lib,
-  pkgs,
-  ...
+{ lib
+, pkgs
+, ...
 }: {
   console = {
     packages = lib.mkDefault (with pkgs; [

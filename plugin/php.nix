@@ -1,17 +1,18 @@
 # https://nixos.wiki/wiki/PHP
 # https://search.nixos.org/packages?channel=unstable&type=packages&query=php
 # https://xdebug.org/
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
   };
   environment.systemPackages =
     [
       (pkgs.php83.buildEnv {
-        extensions = {
-          enabled,
-          all,
-        }:
+        extensions =
+          { enabled
+          , all
+          ,
+          }:
           enabled
           ++ (with all; [
             # php83extensions

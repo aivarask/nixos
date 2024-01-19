@@ -7,7 +7,6 @@ _: {
     sleep.extraConfig = ''
       HibernateDelaySec=1h
     '';
-    services = {
-    };
+    services = { };
   };
 }

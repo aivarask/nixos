@@ -1,10 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   users = {
     defaultUserShell = pkgs.zsh;
   };
   users.users.root = {
     shell = pkgs.zsh;
-    extraGroups = ["http" "adbusers"];
+    extraGroups = [ "http" "adbusers" ];
   };
   users.users.ak = {
     isNormalUser = true;

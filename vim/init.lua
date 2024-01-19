@@ -12,16 +12,3 @@ function LspLogClear()
 end
 
 LspLogClear()
-
-require('lsp._null')
-require('lsp._signature')
-require('lsp.go')
-require('lsp.json')
-require('lsp.lua')
-require('lsp.make')
-require('lsp.nix')
-require('lsp.sql')
-require('lsp.svelte')
-require('lsp.toml')
-require('lsp.vim')
-require('lsp.yaml')

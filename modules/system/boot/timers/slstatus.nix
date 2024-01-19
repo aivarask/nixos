@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   systemd.timers."slstatus" = {
     enable = false;
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnActiveSec = "3";
       # OnBootSec = "10";

@@ -1,4 +1,4 @@
 _: {
-  imports = [./default.nix];
+  imports = [ ./default.nix ];
   home.pointerCursor.size = 32;
 }

@@ -1,18 +1,17 @@
-{
-  config,
-  lib,
-  modulesPath,
-  ...
+{ config
+, lib
+, modulesPath
+, ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   boot = {
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
-    initrd.kernelModules = [];
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = {
@@ -32,7 +31,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
@@ -53,7 +52,7 @@
 
   services.xserver = {
     dpi = 120;
-    videoDrivers = ["modesetting"];
+    videoDrivers = [ "modesetting" ];
     libinput = {
       touchpad.naturalScrolling = true;
     };

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # https://mynixos.com/nixpkgs/options/services.mpd
   services.mpd = {
     enable = true;

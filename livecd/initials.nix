@@ -1,13 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   services.sshd.enable = true;
   services.nginx.enable = true;
 
-  networking.firewall.allowedTCPPorts = [80];
+  networking.firewall.allowedTCPPorts = [ 80 ];
 
   users.users.root.password = "l";
   services.openssh.settings.PermitRootLogin = lib.mkDefault "yes";
@@ -21,5 +20,5 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.systemd-boot.enable = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

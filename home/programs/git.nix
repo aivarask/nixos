@@ -4,9 +4,9 @@ _: {
     userName = "Aivaras Kalesnykas";
     userEmail = "kalesnykas.aivaras@gmail.com";
     extraConfig = {
-      init = {defaultBranch = "main";};
+      init = { defaultBranch = "main"; };
       pull.rebase = false;
-      core = {hookspath = ".githooks";};
+      core = { hookspath = ".githooks"; };
     };
     ignores = [
       "*.lock"

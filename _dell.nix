@@ -1,10 +1,9 @@
 # DELL XPS 7590
-{
-  config,
-  lib,
-  modulesPath,
-  pkgs,
-  ...
+{ config
+, lib
+, modulesPath
+, pkgs
+, ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -19,9 +18,9 @@
       "rtsx_pci_sdmmc"
       "usb_storage" # added ssd
     ];
-    initrd.kernelModules = [];
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    initrd.kernelModules = [ ];
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = {
@@ -41,7 +40,7 @@
     };
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
@@ -82,7 +81,7 @@
   # https://discourse.nixos.org/t/using-internal-external-monitor-with-nvidia-offload/22504/5
   specialisation = {
     external-display.configuration = {
-      system.nixos.tags = ["external-display"];
+      system.nixos.tags = [ "external-display" ];
       hardware.nvidia.prime.offload.enable = lib.mkForce true;
       hardware.nvidia.powerManagement.enable = lib.mkForce false;
     };

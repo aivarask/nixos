@@ -6,3 +6,7 @@ local null_ls = require('null-ls')
 --   },
 --   diagnostics_format = 'NLS (#{s}) [#{c}] #{m}',
 -- })
+
+local ft_map = require('null-ls.builtins._meta.filetype_map')
+
+require 'lspconfig'

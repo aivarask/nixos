@@ -2,9 +2,7 @@
   imports =
     [
       ./systemPackages
-      ./vim/lsp
+      ./plugin
     ]
     ++ (import ./modules/module-list.nix);
-  environment.systemPackages = with pkgs; [
-  ];
 }

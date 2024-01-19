@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   # https://caddyserver.com/docs/caddyfile/options#http-port
   # https://mynixos.com/nixpkgs/options/services.caddy
   services.caddy = {

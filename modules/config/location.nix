@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   location = {
     # provider = lib.mkDefault "geoclue2"; # manual
     provider = lib.mkDefault "manual";

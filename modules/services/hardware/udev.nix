@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.udev.packages = [
     pkgs.mixxx
     pkgs.bitwig-studio

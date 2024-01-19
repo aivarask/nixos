@@ -1,6 +1,6 @@
 # https://nixos.wiki/wiki/Man_pages
 # https://wiki.archlinux.org/title/Man_page
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     man-pages
     man-pages-posix

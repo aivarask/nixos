@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.variables = {
     OPENAI_API_KEY = "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";
   };

@@ -36,8 +36,6 @@
     # vim.url = "path:./vim";
     vim.url = "gitlab:aivarask/vim";
     musnix = { url = "github:musnix/musnix"; };
-    gow = { url = "github:mitranim/gow"; flake = false; };
-    echo = { url = "github:labstack/echo"; flake = false; };
   };
   outputs =
     { nixpkgs
@@ -47,7 +45,6 @@
     , ...
     } @ inputs:
     let
-      inherit (nixpkgs) lib;
       system = "x86_64-linux";
       overlays = with inputs; [
         templ.overlays.default
@@ -65,55 +62,10 @@
         # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
         (final: prev: with prev; {
           inherit LS_COLORS;
-          gow = buildGoModule {
-            name = "gow";
-            src = inputs.gow;
-            vendorHash = "sha256-Xw9V7bYaSfu5kA2505wmef2Ns/Y0RHKbZHUkvCtVNSM=";
-            meta = with lib; {
-              description = ''
-                Missing watch mode for Go commands. Watch Go files and execute a command like "go run" or "go test"
-              '';
-              homepage = "https://github.com/mitranim/gow";
-              license = licenses.unlicense;
-            };
-          };
-          echo = buildGoModule
-            {
-              name = "echo";
-              src = inputs.echo;
-              vendorHash = "sha256-0faUrbv2+fwyk5Z2aj/Nzlnrn25/WmlPLDGx5M3H2xI=";
-              meta = with lib; {
-                description = "High performance, minimalist Go web framework";
-                homepage = "https://github.com/labstack/echo";
-                license = licenses.mit;
-              };
-            };
-          pet = buildGoModule
-            rec {
-              pname = "pet";
-              version = "0.3.4";
-
-              src = fetchFromGitHub {
-                owner = "knqyf263";
-                repo = "pet";
-                rev = "v${version}";
-                hash = "sha256-Gjw1dRrgM8D3G7v6WIM2+50r4HmTXvx0Xxme2fH9TlQ=";
-              };
-
-              vendorHash = "sha256-6hCgv2/8UIRHw1kCe3nLkxF23zE/7t5RDwEjSzX3pBQ=";
-
-              meta = with lib; {
-                description = "Simple command-line snippet manager, written in Go";
-                homepage = "https://github.com/knqyf263/pet";
-                license = licenses.mit;
-                maintainers = with maintainers; [ kalbasit ];
-              };
-            };
         })
         (import ./overlays/python.nix)
         vim.overlays.default
       ];
-      home = import ./home;
     in
     {
       packages.${system} = {
@@ -123,7 +75,7 @@
           format = "iso";
         };
       };
-      formatter."${system}" = nixpkgs.legacyPackages."${system}".alejandra;
+      formatter."${system}" = nixpkgs.legacyPackages."${system}".nixpkgs-fmt;
 
       # PC B450 AORUS M
       nixosConfigurations = {

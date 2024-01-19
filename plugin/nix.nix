@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.shellAliases = {
     ncl = "nix-channel --list";
     ncu = "nix-channel --update";

@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   networking.wireless = {
     enable = lib.mkDefault true;
     userControlled = {

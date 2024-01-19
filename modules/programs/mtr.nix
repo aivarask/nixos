@@ -1,3 +1,3 @@
-{...}: {
+{ ... }: {
   programs.mtr.enable = true;
 }

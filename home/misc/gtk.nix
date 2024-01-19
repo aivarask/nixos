@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # gtk = {
   #   cursorTheme = {
   #     name = "Vanilla-DMZ";

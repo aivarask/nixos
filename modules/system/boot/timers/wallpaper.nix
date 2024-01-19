@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   systemd.services."wallpaper" = {
     serviceConfig = {
       Type = "oneshot";
@@ -15,6 +15,6 @@
       OnUnitActiveSec = "1h";
       Unit = "wallpaper.service";
     };
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
   };
 }
