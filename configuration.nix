@@ -6,9 +6,9 @@ in
 {
   imports =
     [
-      # ./systemPackages
+      ./systemPackages
     ]
-    ++ include ./systemPackages
+    # ++ include ./systemPackages
     ++ include ./plugin
     ++ (import ./modules/module-list.nix);
 }
