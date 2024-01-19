@@ -1,15 +1,7 @@
 { pkgs, ... }: {
-  environment.systemPackages =
-    [ pkgs.python3 ]
-    ++ (with pkgs.nodePackages_latest; [ pyright ])
-    ++ (with pkgs.python3Packages; [
-      requests
-      tuimoji
-      autopep8
-      # debugpy
-      pynvim
-      python-lsp-server
-      flake8
-      tomlkit
-    ]);
+  # https://nixos.wiki/wiki/Python#Libraries
+  # https://nixos.org/manual/nixpkgs/stable/#python
+  environment.systemPackages = with pkgs; [
+    (python3.withPackages (ps: with ps; [ requests ]))
+  ];
 }
