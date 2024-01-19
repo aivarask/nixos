@@ -1,8 +1,14 @@
-{ pkgs, ... }: {
+{ ... }:
+let
+  include = p: with builtins;
+    map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
+in
+{
   imports =
     [
-      ./systemPackages
-      ./plugin
+      # ./systemPackages
     ]
+    ++ include ./systemPackages
+    ++ include ./plugin
     ++ (import ./modules/module-list.nix);
 }

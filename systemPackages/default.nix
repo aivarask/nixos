@@ -1,20 +1,5 @@
 { pkgs, ... }: {
-  imports = [
-    ./aiRelated.nix
-    ./audioRelated.nix
-    ./cRelated.nix
-    ./gitAndTools.nix
-    ./gitAndTools.nix
-    ./gtkRelated.nix
-    ./haskellPackages.nix
-    ./nixRelated.nix
-    ./nodePackages.nix
-    ./pythonPackages.nix
-    ./rustRelated.nix
-    ./suckless.nix
-    ./xorgRelated.nix
-  ];
-  environment.systemPackages = with pkgs; [ gcc ] ++ [
+  environment.systemPackages = with pkgs;  [
     screen
     hyperfine
     inotify-tools

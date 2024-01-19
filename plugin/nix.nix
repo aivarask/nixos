@@ -9,8 +9,6 @@
   environment.systemPackages = with pkgs; [
     statix
     deadnix
-    alejandra
-    nixfmt
     nixpkgs-fmt
     nil
     nixd

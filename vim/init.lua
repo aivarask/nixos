@@ -1,5 +1,6 @@
 vim.cmd([[
- source /etc/nixos/vim/vimrc.vim
+  let &runtimepath.=',/etc/nixos'
+  source /etc/nixos/vim/vimrc.vim
 ]])
 
 vim.loader.enable()

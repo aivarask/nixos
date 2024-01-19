@@ -34,6 +34,7 @@
     settings.cores = 4;
     extraOptions = ''
       experimental-features = nix-command flakes
+      extra-experimental-features = auto-allocate-uids configurable-impure-env
       keep-derivations = true
       keep-outputs = false
       # post-build-hook = /etc/nixos/post-build-hook.sh
