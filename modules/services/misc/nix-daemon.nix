@@ -33,7 +33,7 @@
     settings.max-jobs = 4;
     settings.cores = 4;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes auto-allocate-uids
       # extra-experimental-features = auto-allocate-uids configurable-impure-env
       keep-derivations = true
       keep-outputs = false

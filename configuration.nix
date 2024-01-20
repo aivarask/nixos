@@ -6,7 +6,7 @@ in
 {
   imports =
     [
-      ./systemPackages
+      # ./systemPackages
     ]
     # ++ include ./systemPackages
     ++ include ./spackages

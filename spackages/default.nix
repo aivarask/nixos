@@ -1,11 +1,11 @@
 { pkgs, ... }: {
   imports = [
     # ./ai.nix
-    ./audio.nix
-    ./git.nix
-    ./gtk.nix
-    ./suckless.nix
-    ./xorg.nix
+    # ./audio.nix
+    # ./git.nix
+    # ./gtk.nix
+    # ./suckless.nix
+    # ./xorg.nix
   ];
   environment.systemPackages = with pkgs;  [
     gcc
