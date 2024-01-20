@@ -4,6 +4,6 @@ let
 in
 rec {
   # config = with builtins; dirOf (findFile nixPath "nixos-config");
-  res = include ./plugin;
+  res = include ./spackages;
 }
 

@@ -172,7 +172,7 @@
         "browser.urlbar.shortcuts.history" = false;
         "browser.urlbar.shortcuts.tabs" = false;
         "browser.urlbar.speculativeConnect.enabled" = false;
-        "browser.urlbar.suggest.bookmark" = false;
+        "browser.urlbar.suggest.bookmark" = true;
         "browser.urlbar.suggest.engines" = false;
         "browser.urlbar.suggest.history" = true;
         "browser.urlbar.suggest.openpage" = false;
