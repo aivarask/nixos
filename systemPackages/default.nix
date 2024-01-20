@@ -145,7 +145,6 @@
     sl
     soulseekqt
     spaceship-prompt
-    speedtest-cli
     ssh-chat
     tdesktop
     tiv

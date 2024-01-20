@@ -9,7 +9,7 @@
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles
   # https://nixos.org/manual/nix/stable/command-ref/files/channels
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixFlakes;
     nixPath =
       options.nix.nixPath.default
       ++ [

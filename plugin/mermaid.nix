@@ -6,7 +6,7 @@
     ];
     shellAliases = {
       puppeteer = "puppeteer --no-sandbox";
-      mmdc = "mmdc -p ${builtins.toString ./.}/puppeteerConfigFile.json";
+      # mmdc = "mmdc -p ${builtins.toString ./.}/puppeteerConfigFile.json";
     };
   };
 }
