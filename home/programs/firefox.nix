@@ -16,119 +16,79 @@
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g";
 
-          "ArchWiki" = {
-            urls = [
-              {
-                template = "https://wiki.archlinux.org/index.php";
-                params = [
-                  {
-                    name = "search";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
+          "ArchWiki @aw" = {
             definedAliases = [ "@aw" ];
             iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
+            urls = [{ template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; }];
           };
 
-          "GitHub" = {
-            urls = [
-              {
-                template = "https://github.com/search?q={searchTerms}";
-              }
-            ];
+          "GitHub @gh" = {
             definedAliases = [ "@gh" ];
             iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
+            urls = [{ template = "https://github.com/search?q={searchTerms}"; }];
           };
 
-          "npmjs" = {
-            urls = [
-              {
-                template = "https://www.npmjs.com/search?q={searchTerms}";
-              }
-            ];
+          "npm @npm" = {
             definedAliases = [ "@npm" ];
             iconUpdateURL = "https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png";
+            urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
           };
 
-          "Nix Manual" = {
-            urls = [
-              {
-                template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}";
-              }
-            ];
+          "Nix Manual @nm" = {
             definedAliases = [ "@nm" ];
             iconUpdateURL = "https://nixos.org/manual/nix/unstable/favicon.svg";
+            urls = [{ template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}"; }];
           };
 
-          "NixOS Packages" = {
+          "NixOS Packages @np" = {
+            definedAliases = [ "@np" ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             urls = [
               {
                 template = "https://search.nixos.org/packages";
                 params = [
-                  {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
+                  { name = "channel"; value = "unstable"; }
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
                 ];
               }
             ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
           };
 
-          "NixOS Options" = {
+          "NixOS Options @no" = {
+            definedAliases = [ "@no" ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             urls = [
               {
                 template = "https://search.nixos.org/options";
                 params = [
-                  {
-                    name = "type";
-                    value = "options";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
+                  { name = "channel"; value = "unstable"; }
+                  { name = "type"; value = "options"; }
+                  { name = "query"; value = "{searchTerms}"; }
                 ];
               }
             ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@no" ];
           };
 
-          "NixOS Wiki" = {
-            urls = [
-              {
-                template = "https://nixos.wiki/index.php?search={searchTerms}";
-              }
-            ];
+          "NixOS Wiki @nw" = {
+            definedAliases = [ "@nw" ];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@nw" ];
+            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
           };
 
-          "MyNixOS" = {
-            urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
+          "MyNixOS @mn" = {
+            definedAliases = [ "@mn" ];
             iconUpdateURL = "https://mynixos.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@mn" ];
+            urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
           };
 
-          "NixOS Discourse" = {
-            urls = [
-              {
-                template = "https://discourse.nixos.org/search?q={searchTerms}";
-              }
-            ];
+          "NixOS Discourse @nd" = {
+            definedAliases = [ "@nd" ];
             iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = [ "@nd" ];
+            urls = [{ template = "https://discourse.nixos.org/search?q={searchTerms}"; }];
           };
         };
       };

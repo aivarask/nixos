@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./ai.nix
+    # ./ai.nix
     ./audio.nix
     ./git.nix
     ./gtk.nix

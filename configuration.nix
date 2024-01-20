@@ -9,6 +9,7 @@ in
       ./systemPackages
     ]
     # ++ include ./systemPackages
+    # ++ include ./packages
     ++ include ./plugin
     ++ (import ./modules/module-list.nix);
 }
