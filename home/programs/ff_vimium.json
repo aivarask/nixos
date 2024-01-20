@@ -1,0 +1,6 @@
+{
+  "keyMappings": "unmap f\nmap \\ LinkHints.activateMode",
+  "scrollStepSize": 40,
+  "searchEngines": "qw: https://www.qwant.com/?q=%s Qwant",
+  "settingsVersion": "2.0.6"
+}

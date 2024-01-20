@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+
+  imports = [ ./ff_search.nix ];
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;
@@ -8,126 +10,36 @@
 
     profiles.root = {
       # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
-      search = {
-        force = true;
-        default = "DuckDuckGo";
-        order = [ "DuckDuckGo" "Google" ];
-        engines = {
-          "Bing".metaData.hidden = true;
-          "Google".metaData.alias = "@g";
 
-          "ArchWiki @aw" = {
-            definedAliases = [ "@aw" ];
-            iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
-            urls = [{ template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; }];
-          };
-
-          "GitHub @gh" = {
-            definedAliases = [ "@gh" ];
-            iconUpdateURL = "https://github.githubassets.com/favicons/favicon.svg";
-            urls = [{ template = "https://github.com/search?q={searchTerms}"; }];
-          };
-
-          "npm @npm" = {
-            definedAliases = [ "@npm" ];
-            iconUpdateURL = "https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png";
-            urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
-          };
-
-          "Nix Manual @nm" = {
-            definedAliases = [ "@nm" ];
-            iconUpdateURL = "https://nixos.org/manual/nix/unstable/favicon.svg";
-            urls = [{ template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}"; }];
-          };
-
-          "NixOS Packages @np" = {
-            definedAliases = [ "@np" ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            urls = [
-              {
-                template = "https://search.nixos.org/packages";
-                params = [
-                  { name = "channel"; value = "unstable"; }
-                  { name = "type"; value = "packages"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }
-            ];
-          };
-
-          "NixOS Options @no" = {
-            definedAliases = [ "@no" ];
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            urls = [
-              {
-                template = "https://search.nixos.org/options";
-                params = [
-                  { name = "channel"; value = "unstable"; }
-                  { name = "type"; value = "options"; }
-                  { name = "query"; value = "{searchTerms}"; }
-                ];
-              }
-            ];
-          };
-
-          "NixOS Wiki @nw" = {
-            definedAliases = [ "@nw" ];
-            iconUpdateURL = "https://nixos.wiki/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
-            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-          };
-
-          "MyNixOS @mn" = {
-            definedAliases = [ "@mn" ];
-            iconUpdateURL = "https://mynixos.com/favicon.ico";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
-            urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
-          };
-
-          "NixOS Discourse @nd" = {
-            definedAliases = [ "@nd" ];
-            iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
-            urls = [{ template = "https://discourse.nixos.org/search?q={searchTerms}"; }];
-          };
-        };
-      };
 
       bookmarks = [
+        { name = "pcl.local:9000"; url = "http://pcl.local:9000/#pc"; }
+        { name = "pcw.local:9000"; url = "http://pcw.local:9000/#pc"; }
+        # Manuals
         {
-          name = "pcl.local:9000";
-          url = "http://pcl.local:9000/#pc";
+          name = "Nix Manual";
+          url = "https://nixos.org/manual/nix/unstable/";
+          tags = [ "nix" "man" ];
         }
         {
-          name = "pcw.local:9000";
-          url = "http://pcw.local:9000/#pc";
+          name = "Nixpkgs Manual";
+          tags = [ "nix" "man" ];
+          url = "https://nixos.org/manual/nixpkgs/unstable";
         }
         {
-          name = "Sofascore Euroleague";
-          url = "https://www.sofascore.com/tournament/basketball/international/euroleague/138";
+          name = "NixOS Manual";
+          tags = [ "nix" "man" ];
+          url = "https://nixos.org/manual/nixos/unstable/";
         }
-        {
-          name = "wikipedia";
-          keyword = "wiki";
-          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&amp;go=Go";
-        }
-        {
-          name = "kernel.org";
-          url = "https://www.kernel.org";
-        }
+        # Sites
         {
           name = "Nix sites";
           bookmarks = [
-            {
-              name = "homepage";
-              url = "https://nixos.org/";
-            }
-            {
-              name = "wiki";
-              url = "https://nixos.wiki/";
-            }
+            { name = "NixOS Home"; url = "https://nixos.org"; }
+            { name = "NixOS Wiki"; url = "https://nixos.wiki"; }
           ];
         }
+        { name = "Sofascore Euroleague"; url = "https://www.sofascore.com/tournament/basketball/international/euroleague/138"; }
       ];
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -143,7 +55,6 @@
         h264ify
         browserpass
         vimium
-        metamask
       ];
 
       # https://discourse.nixos.org/t/hardware-acceleration-on-firefox/7947/18
