@@ -2,11 +2,7 @@
   home.sessionVariables = {
     BAT_THEME = "gruvbox-dark";
   };
-  home.shellAliases = {
-    less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
-    bm = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
-
-  };
+  home.shellAliases = { };
   programs.bat = {
     enable = true;
     config = {

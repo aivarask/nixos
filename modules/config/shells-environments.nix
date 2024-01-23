@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [ ./LF_ICONS.nix ];
-  # https://github.com/NixOS/nixpkgs/blob/592047fc9e4f7b74a4dc85d1b9f5243dfe4899e3/nixos/modules/config/shells-environment.nix
   environment = {
     profiles = [
       # $NIX_PROFILES
@@ -10,19 +9,12 @@
       TERMINAL = "alacritty";
       EDITOR = "nvim";
       editor = "vim";
-      # MANPAGER = modules/misc/documentation.nix
-      # MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       PNPM_HOME = "$HOME/.pnpm-global";
       NPM_CONFIG_PREFIX = "$HOME/.node_modules";
-      # NODE_OPTIONS = "--loader ts-node/esm --experimental-specifier-resolution=node --no-warnings";
       NODE_OPTIONS = "--no-warnings";
-      # PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
       PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
       PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
       PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-      # PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
-      # PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
-      # PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = 1;
       GDK_SCALE = "1";
       GDK_DPI_SCALE = "1";
       QT_AUTO_SCREEN_SET_FACTOR = "0";
@@ -47,7 +39,6 @@
       lg = "lazygit";
       ls = "eza --icons --git";
       lt = "ls --tree --level=2";
-      lt3 = "ls --tree --level=3";
       mc = "tmux split -h lf; lf";
       mcd = "tmux split -h nd; ndcw; ndtw";
       oras = "curl wttr.in/Vilnius";

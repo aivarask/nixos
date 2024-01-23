@@ -80,7 +80,6 @@
     inetutils
     jq
     kmon
-    lesspipe
     lf
     libbacktrace
     libglibutil
