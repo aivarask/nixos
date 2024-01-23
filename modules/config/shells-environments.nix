@@ -33,22 +33,15 @@
     };
     shellAliases = {
       pm = "pulsemixer";
-      wp = "wp --allow-root";
       codium = "codium --no-sandbox --user-data-dir ~/.codium";
       nf = "nvim -c 'Files'";
       ng = "nvim -c 'Rg'";
       nt = "nvim -c 'Telescope'";
-      nfu = "nix flake update";
-      nflu = "nix flake lock --update-input";
-      nfluv = "nix flake lock --update-input vim";
       brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";
       "..." = "../..";
       "colored-tree" = "${pkgs.tree}/bin/tree -C";
-      bp = "bat package.json";
-      da = "direnv allow";
-      dr = "direnv reload";
       l = "ls -l --group-directories-first";
       la = "ls -la";
       lg = "lazygit";
@@ -61,8 +54,6 @@
       pn = "pnpm";
       tre = "trans :en";
       trl = "trans :lt";
-      up = "nixos-rebuild switch";
-      uph = "nixos-rebuild switch && /etc/nixos/post-build-hook.sh";
       x = "startx";
       xs = "xinit $XINITRC -- $XSERVERRC";
       xa = "startx $XINITRC awesome";

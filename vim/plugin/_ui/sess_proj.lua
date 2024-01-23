@@ -36,7 +36,6 @@ local options = {
     --
     -- '_.nix',
     'flake.nix',
-    'stylua.toml',
     -- '^lua',
     -- 'package.json',
     '.luarc.json',

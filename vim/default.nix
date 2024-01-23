@@ -163,14 +163,14 @@ let
   ];
 in
 {
-  programs.vim = {
-    enable = true;
-    plugins = vimOnlyPlugins ++ commonPlugins;
-    extraConfig = ''
-      let &runtimepath.=',/etc/nixos/vim'
-      source /etc/nixos/vim/vimrc.vim
-    '';
-  };
+  # programs.vim = {
+  #   enable = true;
+  #   plugins = vimOnlyPlugins ++ commonPlugins;
+  #   extraConfig = ''
+  #     let &runtimepath.=',/etc/nixos/vim'
+  #     source /etc/nixos/vim/vimrc.vim
+  #   '';
+  # };
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [

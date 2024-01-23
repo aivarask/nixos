@@ -13,7 +13,6 @@
   services.getty.autologinUser = lib.mkDefault "root";
   environment.systemPackages = with pkgs; [
     git
-    vim
     lazygit
     lf
   ];

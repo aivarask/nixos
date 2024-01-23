@@ -29,7 +29,7 @@ end
 
 Go = {
   homepage = {
-    cword = function() -- bat
+    cword = function()
       homepage('', '<cword>')
     end,
     cWORD = function()

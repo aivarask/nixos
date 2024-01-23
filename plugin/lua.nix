@@ -22,7 +22,6 @@ in
 {
   environment.systemPackages = with pkgs;
     [
-      stylua
       selene
       lua-language-server
       myLuaPackages

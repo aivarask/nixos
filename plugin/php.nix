@@ -5,6 +5,9 @@
   environment.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
   };
+  environment.shellAliases = {
+    wp = "wp --allow-root";
+  };
   environment.systemPackages =
     [
       (pkgs.php83.buildEnv {

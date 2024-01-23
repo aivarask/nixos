@@ -39,3 +39,4 @@ mv foo bar
 # ls "$p/share/go"
     # GOPATH="$p/share/go:$GOPATH"
 # done
+

@@ -1,48 +1,17 @@
 { pkgs, ... }: {
-
-  imports = [ ./ff_search.nix ];
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;
-
     # moz-extension://cd54c47b-5f75-4660-a7fb-767b63a96a36/home.html#initialize/seed-phrase
     # lobster harbor kingdom combine filter base suggest badge wood measure pelican future
 
+    # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
     profiles.root = {
-      # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
-
-
-      bookmarks = [
-        { name = "pcl.local:9000"; url = "http://pcl.local:9000/#pc"; }
-        { name = "pcw.local:9000"; url = "http://pcw.local:9000/#pc"; }
-        # Manuals
-        {
-          name = "Nix Manual";
-          url = "https://nixos.org/manual/nix/unstable/";
-          tags = [ "nix" "man" ];
-        }
-        {
-          name = "Nixpkgs Manual";
-          tags = [ "nix" "man" ];
-          url = "https://nixos.org/manual/nixpkgs/unstable";
-        }
-        {
-          name = "NixOS Manual";
-          tags = [ "nix" "man" ];
-          url = "https://nixos.org/manual/nixos/unstable/";
-        }
-        # Sites
-        {
-          name = "Nix sites";
-          bookmarks = [
-            { name = "NixOS Home"; url = "https://nixos.org"; }
-            { name = "NixOS Wiki"; url = "https://nixos.wiki"; }
-          ];
-        }
-        { name = "Sofascore Euroleague"; url = "https://www.sofascore.com/tournament/basketball/international/euroleague/138"; }
-      ];
+      search = (import ./ff_search.nix) pkgs;
+      bookmarks = import ./ff_bookmarks.nix;
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        vimium # ./ff_vimium.json
         # https://nur.nix-community.org/repos/rycee
         darkreader
         df-youtube
@@ -54,7 +23,6 @@
         sponsorblock
         h264ify
         browserpass
-        vimium
       ];
 
       # https://discourse.nixos.org/t/hardware-acceleration-on-firefox/7947/18

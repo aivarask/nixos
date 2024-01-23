@@ -17,7 +17,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    statix.url = "github:nerdypepper/statix";
     nil.url = "github:oxalica/nil";
     prisma.url = "github:pimeys/nixos-prisma";
     # aivarask
@@ -33,8 +32,8 @@
       url = "github:trapd00r/LS_COLORS";
       flake = false;
     };
-    # vim.url = "path:./vim";
-    vim.url = "gitlab:aivarask/vim";
+    vim.url = "path:./vim";
+    # vim.url = "gitlab:aivarask/vim";
     musnix = { url = "github:musnix/musnix"; };
   };
   outputs =

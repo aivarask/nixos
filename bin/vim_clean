@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-rm -rf ~/.local/share/nvim/sessions/*
-rm -rf ~/.local/share/nvim/project_nvim/*

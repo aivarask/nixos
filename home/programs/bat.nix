@@ -5,6 +5,7 @@
   home.shellAliases = {
     less = "batpipe"; # https://github.com/eth-p/bat-extras/blob/master/doc/batpipe.md
     bm = "batman"; # https://github.com/eth-p/bat-extras/blob/master/doc/batman.md
+
   };
   programs.bat = {
     enable = true;

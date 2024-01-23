@@ -1,15 +1,5 @@
 { pkgs, ... }: {
-  imports = [
-    # ./ai.nix
-    # ./audio.nix
-    # ./git.nix
-    # ./gtk.nix
-    # ./suckless.nix
-    # ./xorg.nix
-  ];
   environment.systemPackages = with pkgs;  [
-    gcc
-    screen
     hyperfine
     inotify-tools
     scrot
@@ -158,18 +148,14 @@
     tremc
     udevil
     ueberzug
-    universal-ctags
     unrar
     unzip
     usbmuxd
-    vim
     w3m
     watchman
     wget
     whois
     wiki-tui
-    yapf
-    yarn
     youtube-dl
     ytfzf
     zathura

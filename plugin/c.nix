@@ -9,5 +9,6 @@
     cmake-format
     cmake-language-server
     valgrind
+    universal-ctags
   ];
 }
