@@ -17,6 +17,11 @@
     tags = [ "nix" "man" ];
     url = "https://nixos.org/manual/nixos/unstable/";
   }
+  {
+    name = "Home Manager Options";
+    url = "https://nix-community.github.io/home-manager/nixos-options.xhtml";
+  }
+
   # Sites
   {
     name = "Nix sites";

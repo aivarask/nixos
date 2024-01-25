@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  environment.variables = {
+    MANPAGER = "less -R --use-color -Dd+r -Du+b";
+    MANROFFOPT = "-P -c";
+  };
   environment.systemPackages = with pkgs; [
     man-pages
     man-pages-posix

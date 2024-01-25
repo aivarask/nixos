@@ -49,19 +49,19 @@
           type = "github";
         };
       };
-      slstatus = {
-        to = {
-          owner = "aivarask";
-          repo = "slstatus";
-          type = "github";
-        };
+      # nixos = {
+      #   to = {
+      #     owner = "NixOS";
+      #     repo = "nixpkgs";
+      #     type = "github";
+      #     ref = "nixos-unstable";
+      #   };
+      # };
+      snow = {
+        to = { type = "path"; path = /root/snow; };
       };
-      master = {
-        to = {
-          owner = "NixOS";
-          repo = "nixpkgs";
-          type = "github";
-        };
+      config = {
+        to = { type = "path"; path = /etc/nixos; };
       };
     };
   };

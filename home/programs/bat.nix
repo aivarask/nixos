@@ -1,13 +1,14 @@
 { pkgs, ... }: {
+  # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.bat.enable
   home.sessionVariables = {
     BAT_THEME = "gruvbox-dark";
   };
-  home.shellAliases = { };
+  # home.shellAliases = { };
   programs.bat = {
     enable = true;
     config = {
       style = "numbers,changes,header";
-      pager = "less -FR";
+      # pager = "less -FR";
       map-syntax = [
         "*.postcss:CSS"
         "*.prisma:GraphQL"

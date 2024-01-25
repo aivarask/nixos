@@ -1,4 +1,5 @@
 require('lspconfig').nil_ls.setup({
+  autostart = true,
   settings = {
     ['nil'] = {
       formatting = {
@@ -8,12 +9,13 @@ require('lspconfig').nil_ls.setup({
   },
 })
 
--- require('lspconfig').nixd.setup({})
+require('lspconfig').nixd.setup({
+  autostart = false,
+})
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.nix' },
   callback = function()
-    print('pre')
     vim.lsp.buf.format({
       async = true,
       -- filter = function(client)

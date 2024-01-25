@@ -35,6 +35,7 @@
     vim.url = "path:./vim";
     # vim.url = "gitlab:aivarask/vim";
     musnix = { url = "github:musnix/musnix"; };
+    nixd = { url = "github:nix-community/nixd"; };
   };
   outputs =
     { nixpkgs
@@ -64,6 +65,7 @@
         })
         (import ./overlays/python.nix)
         vim.overlays.default
+        nixd.overlays.default
       ];
     in
     {
