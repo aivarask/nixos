@@ -63,7 +63,6 @@
         (final: prev: with prev; {
           inherit LS_COLORS;
         })
-        (import ./overlays/python.nix)
         vim.overlays.default
         nixd.overlays.default
       ];

@@ -18,7 +18,7 @@
         # "nixos-config=/etc/nixos/configuration.nix"
         # "/nix/var/nix/profiles/per-user/root/channels"
         # >>>
-        "nixpkgs-overlays=/etc/nixos/overlays/"
+        # "nixpkgs-overlays=/etc/nixos/overlays/"
       ];
     settings = {
       auto-optimise-store = true;
