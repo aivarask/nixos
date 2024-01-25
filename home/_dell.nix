@@ -1,5 +1,8 @@
-_: {
-  imports = [ ./default.nix ];
+{ pkgs, inputs, ... }: {
+  imports = [
+    ./default.nix
+    ./colors.nix
+  ];
   home = {
     file.".dwm-status.toml".text = builtins.readFile ./files/dwm-status_dell.toml + builtins.readFile ./files/dwm-status.toml;
   };

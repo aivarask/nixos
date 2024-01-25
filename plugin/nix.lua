@@ -1,5 +1,6 @@
 require('lspconfig').nil_ls.setup({
   autostart = true,
+  -- log_level = vim.lsp.log_levels.INFO,
   settings = {
     ['nil'] = {
       formatting = {

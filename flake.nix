@@ -5,13 +5,13 @@
     # Go related
     templ.url = "github:a-h/templ";
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-colors.url = "github:misterio77/nix-colors";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # nixpkgs-mguentner.url = "github:mguentner/nixpkgs/playwright_1_30_0";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
@@ -39,13 +39,12 @@
   };
   outputs =
     { nixpkgs
-    , nixos-hardware
     , home-manager
+    , nixos-hardware
     , musnix
     , ...
     } @ inputs:
     let
-      system = "x86_64-linux";
       overlays = with inputs; [
         templ.overlays.default
         rust-overlay.overlays.default
@@ -66,6 +65,8 @@
         vim.overlays.default
         nixd.overlays.default
       ];
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       packages.${system} = {
@@ -75,11 +76,35 @@
           format = "iso";
         };
       };
-      formatter."${system}" = nixpkgs.legacyPackages."${system}".nixpkgs-fmt;
+      formatter."${system}" = pkgs.nixpkgs-fmt;
 
-      # PC B450 AORUS M
+
       nixosConfigurations = {
+        dell = nixpkgs.lib.nixosSystem {
+          # DELL XPS 7590
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./_dell.nix
+            musnix.nixosModules.musnix
+            nixos-hardware.nixosModules.dell-xps-15-7590
+            nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+            nixos-hardware.nixosModules.common-hidpi
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = false;
+                users.root = import ./home/_dell.nix;
+              };
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+            { nixpkgs.overlays = overlays; }
+          ];
+        };
         pc = nixpkgs.lib.nixosSystem {
+          # PC B450 AORUS M
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
@@ -94,49 +119,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = import ./home/_pc.nix;
-              };
-            }
-            { nixpkgs.overlays = overlays; }
-            { nix.registry.nixpkgs.flake = nixpkgs; }
-          ];
-        };
-
-        # DELL XPS 7590
-        dell = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./configuration.nix
-            ./_dell.nix
-            musnix.nixosModules.musnix
-            nixos-hardware.nixosModules.dell-xps-15-7590
-            nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-            nixos-hardware.nixosModules.common-hidpi
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = import ./home/_dell.nix;
-              };
-            }
-            { nixpkgs.overlays = overlays; }
-            { nix.registry.nixpkgs.flake = nixpkgs; }
-          ];
-        };
-
-        as = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./configuration.nix
-            ./_as.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = import ./home/_as.nix;
               };
             }
             { nixpkgs.overlays = overlays; }

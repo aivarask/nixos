@@ -40,8 +40,6 @@
       # post-build-hook = /etc/nixos/post-build-hook.sh
     '';
     registry = {
-      # nix registry list
-      # https://github.com/NixOS/flake-registry
       hm = {
         to = {
           owner = "nix-community";
@@ -49,14 +47,6 @@
           type = "github";
         };
       };
-      # nixos = {
-      #   to = {
-      #     owner = "NixOS";
-      #     repo = "nixpkgs";
-      #     type = "github";
-      #     ref = "nixos-unstable";
-      #   };
-      # };
       snow = {
         to = { type = "path"; path = /root/snow; };
       };
