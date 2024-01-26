@@ -7,10 +7,12 @@ in
   imports = [
     # ./paging.nix
   ]
+
   ++ include ./config
+  ++ include ./config/services
   ++ include ./spackages
   ++ include ./plugin
-  ++ (import ./modules/module-list.nix);
+  ;
 
   environment.shellAliases = { };
 
