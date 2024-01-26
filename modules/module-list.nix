@@ -1,6 +1,5 @@
-map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config))
-  ++ map (n: "${./misc}/${n}") (builtins.attrNames (builtins.readDir ./misc))
-++ [
+# map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config)) ++
+[
   ./hardware/video/nvidia.nix
   ./programs/adb.nix
   ./programs/gnupg.nix

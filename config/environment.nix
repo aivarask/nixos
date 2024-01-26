@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  imports = [ ./LF_ICONS.nix ];
   environment = {
     profiles = [
       # $NIX_PROFILES

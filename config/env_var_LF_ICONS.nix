@@ -1,4 +1,4 @@
-_: {
+{}: {
   environment.variables.LF_ICONS = ''
     tw=:\
     st=:\
@@ -161,4 +161,6 @@ _: {
     *.pdf=:\
     *.nix=:\
   '';
+}
+
 }

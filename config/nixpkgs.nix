@@ -1,5 +1,4 @@
 { inputs, lib, ... }: {
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [
     # "openssl-1.1.1v"

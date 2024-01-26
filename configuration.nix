@@ -8,6 +8,7 @@ in
     # ./paging.nix
   ]
   ++ include ./config
+  ++ include ./config/hardware
   ++ include ./spackages
   ++ include ./plugin
   ++ (import ./modules/module-list.nix);
