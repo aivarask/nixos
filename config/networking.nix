@@ -1,5 +1,6 @@
 _: {
   networking = {
+    nameservers = [ "127.0.0.1" "::1" ];
     useNetworkd = true;
     hosts = {
       "192.168.1.1" = [ "hw.local" ];

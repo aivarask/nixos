@@ -29,7 +29,6 @@
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";
       "..." = "../..";
-      "colored-tree" = "${pkgs.tree}/bin/tree -C";
       l = "ls -l --group-directories-first";
       la = "ls -la";
       lg = "lazygit";

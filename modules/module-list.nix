@@ -1,10 +1,8 @@
 # map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config)) ++
 [
-  ./hardware/video/nvidia.nix
   ./programs/adb.nix
   ./programs/gnupg.nix
   ./programs/mtr.nix
-  ./programs/tmux.nix
   ./programs/zsh/zsh.nix
   ./security/acme
   ./security/pam.nix
@@ -46,6 +44,4 @@
   ./system/boot/networkd.nix
   ./system/boot/systemd.nix
   ./system/boot/tmp.nix
-  ./tasks/network-interfaces.nix
-  ./tasks/powertop.nix
 ]

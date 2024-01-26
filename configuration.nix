@@ -9,6 +9,7 @@ in
   ]
   ++ include ./config
   ++ include ./config/hardware
+  ++ include ./config/programs
   ++ include ./spackages
   ++ include ./plugin
   ++ (import ./modules/module-list.nix);

@@ -1,4 +1,4 @@
-{}: {
+{ ... }: {
   environment.variables.LF_ICONS = ''
     tw=:\
     st=:\
@@ -163,4 +163,3 @@
   '';
 }
 
-}
