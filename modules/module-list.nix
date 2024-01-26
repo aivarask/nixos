@@ -1,9 +1,5 @@
 # map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config)) ++
 [
-  ./programs/adb.nix
-  ./programs/gnupg.nix
-  ./programs/mtr.nix
-  ./programs/zsh/zsh.nix
   ./security/acme
   ./security/pam.nix
   ./security/rtkit.nix

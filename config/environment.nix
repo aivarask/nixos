@@ -3,6 +3,7 @@
     profiles = [
       # $NIX_PROFILES
       # "/etc/nixos"
+      "${pkgs.zsh-completions}"
     ];
     variables = {
       TERMINAL = "alacritty";
