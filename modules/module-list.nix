@@ -1,40 +1,5 @@
 # map (n: "${./config}/${n}") (builtins.attrNames (builtins.readDir ./config)) ++
 [
-  ./security/acme
-  ./security/pam.nix
-  ./security/rtkit.nix
-  ./security/sudo.nix
-  ./services/audio/alsa.nix
-  ./services/audio/mpd.nix
-  ./services/desktops/blueman.nix
-  ./services/desktops/geoclue2.nix
-  ./services/desktops/pipewire/pipewire.nix
-  ./services/desktops/pipewire/wireplumber.nix
-  ./services/hardware/udev.nix
-  ./services/mail/maddy.nix
-  ./services/misc/gitolite.nix
-  ./services/misc/nix-daemon.nix
-  ./services/misc/nix-gc.nix
-  ./services/networking/dhcpd.nix
-  ./services/networking/dnscrypt-proxy2.nix
-  ./services/networking/firewall.nix
-  ./services/networking/nix-serve.nix
-  ./services/networking/networkmanager.nix
-  ./services/networking/ssh/sshd.nix
-  ./services/networking/wpa_supplicant.nix
-  ./services/scheduling/cron.nix
-  ./services/torrent/transmission.nix
-  ./services/ttys/kmscon.nix
-  ./services/web-servers/nginx
-  ./services/web-servers/caddy
-  ./services/x11/desktop-managers/plasma5.nix
-  ./services/x11/display-managers/sddm.nix
-  ./services/x11/display-managers/startx.nix
-  ./services/x11/imwheel.nix
-  ./services/x11/window-managers/dwm.nix
-  ./services/x11/window-managers/awesome.nix
-  ./services/x11/xserver.nix
-  ./services/x11/redshift.nix
   ./system/boot/loader/efi.nix
   ./system/boot/loader/systemd-boot/systemd-boot.nix
   ./system/boot/networkd.nix

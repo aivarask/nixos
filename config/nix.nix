@@ -1,14 +1,18 @@
 { pkgs
 , options
-, lib
 , ...
 }: {
-  systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 40960;
+  # systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 40960;
   # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
   # https://nixos.org/manual/nix/stable/command-ref/env-common
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles
   # https://nixos.org/manual/nix/stable/command-ref/files/channels
   nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
     package = pkgs.nixUnstable;
     nixPath =
       options.nix.nixPath.default
