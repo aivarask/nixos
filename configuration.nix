@@ -7,6 +7,7 @@ in
   imports = [
     # ./paging.nix
   ]
+  ++ include ./config
   ++ include ./spackages
   ++ include ./plugin
   ++ (import ./modules/module-list.nix);

@@ -50,7 +50,6 @@ let
 
     switch-vim
     vim-jsx-pretty
-    vim-prisma
     # direnv-vim
     vim-matchup
     vim-auto-save

@@ -25,8 +25,6 @@
     brave
     webkitgtk
     playwright
-    prisma-engines
-    # prismaPackages."@prisma/language-server"
     # --
     silver-searcher
     SDL2

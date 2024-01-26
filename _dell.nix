@@ -7,7 +7,6 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./_audio.nix
   ];
 
   boot = {

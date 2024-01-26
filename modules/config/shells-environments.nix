@@ -12,9 +12,6 @@
       PNPM_HOME = "$HOME/.pnpm-global";
       NPM_CONFIG_PREFIX = "$HOME/.node_modules";
       NODE_OPTIONS = "--no-warnings";
-      PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
-      PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-      PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
       GDK_SCALE = "1";
       GDK_DPI_SCALE = "1";
       QT_AUTO_SCREEN_SET_FACTOR = "0";
