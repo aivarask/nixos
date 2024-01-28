@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./ff_bookmarks.nix ./ff_search.nix ];
+  imports = [ ./ff/ff_bookmarks.nix ./ff/ff_search.nix ];
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;
@@ -9,20 +9,20 @@
     # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
     profiles.root = {
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        vimium # ./ff_vimium.json
-        # https://nur.nix-community.org/repos/rycee
-        darkreader
-        df-youtube
-        ublock-origin
-        # https-everywhere
-        privacy-badger
-        decentraleyes
-        clearurls
-        sponsorblock
-        h264ify
-        browserpass
-      ];
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      #   vimium # ./ff_vimium.json
+      #   # https://nur.nix-community.org/repos/rycee
+      #   darkreader
+      #   df-youtube
+      #   ublock-origin
+      #   # https-everywhere
+      #   privacy-badger
+      #   decentraleyes
+      #   clearurls
+      #   sponsorblock
+      #   h264ify
+      #   browserpass
+      # ];
 
       # https://discourse.nixos.org/t/hardware-acceleration-on-firefox/7947/18
       # https://firefox-source-docs.mozilla.org/devtools-user/keyboard_shortcuts/index.html
