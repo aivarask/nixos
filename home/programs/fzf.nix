@@ -1,6 +1,6 @@
 { ... }: {
   home.sessionVariables = {
-    FZF_COMPLETION_TRIGGER = "~~";
+   FZF_COMPLETION_TRIGGER = "~~";
     FZF_COMPLETION_OPTS = "--border --info=inline";
   };
 

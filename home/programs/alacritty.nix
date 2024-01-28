@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
-      import = [ ./gruvbox.toml ];
+      import = [ /etc/nixos/home/files/gruvbox.toml ];
       keyboard = {
         bindings = [
           {
@@ -14,7 +14,8 @@
         ];
       };
 
-      font.size = lib.mkDefault 10.0;
+      font.size = lib.mkDefault 7.0;
+      # font.size = lib.mkDefault 10.0;
       # window.opacity = 0.9;
       # window.decorations = "none";
       # colors = with config.colorScheme.colors; {

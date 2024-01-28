@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  imports = [ ./ff_bookmarks.nix ./ff_search.nix ];
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;
@@ -7,8 +8,6 @@
 
     # https://mynixos.com/home-manager/options/programs.firefox.profiles.%3Cname%3E
     profiles.root = {
-      search = (import ./ff_search.nix) pkgs;
-      bookmarks = import ./ff_bookmarks.nix;
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         vimium # ./ff_vimium.json

@@ -2,7 +2,6 @@
 , options
 , ...
 }: {
-  # systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 40960;
   # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
   # https://nixos.org/manual/nix/stable/command-ref/env-common
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles
@@ -30,14 +29,16 @@
         # "http://binarycache.example.com"
         # "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
+        "https://hyprland.cachix.org"
       ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     settings.allowed-users = [ "@wheel" "ak" ];
     settings.trusted-users = [ "root" "@wheel" "ak" ];
     settings.max-jobs = 4;
     settings.cores = 4;
     extraOptions = ''
-      experimental-features = nix-command flakes auto-allocate-uids
+      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
       # extra-experimental-features = auto-allocate-uids configurable-impure-env
       keep-derivations = true
       keep-outputs = false

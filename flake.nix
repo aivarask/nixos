@@ -6,6 +6,11 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -35,6 +40,8 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      include = p: with builtins;
+        map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
     in
     {
       packages.${system} = { };
@@ -44,8 +51,12 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit include;
+          };
           modules = [
+            { programs.hyprland = { enable = true; }; }
             ./configuration.nix
             ./_dell.nix
             ./_audio.nix
@@ -58,9 +69,13 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = false;
-                users.root = import ./home/_dell.nix;
+                users.root = import ./home;
+                verbose = true;
               };
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit include;
+              };
             }
           ];
         };
@@ -80,7 +95,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = import ./home/_pc.nix;
+                users.root = import ./home;
               };
             }
           ];
