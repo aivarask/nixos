@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  programs.firefox.profiles.root.seach =
+  programs.firefox.profiles.root.search =
     {
       force = true;
       default = "DuckDuckGo";

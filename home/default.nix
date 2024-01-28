@@ -1,6 +1,7 @@
 { pkgs, lib, inputs, config, include, ... }: {
   imports = [
     ./colors.nix
+    ./wayland.nix
     ../vim
   ]
   ++ include ./programs
