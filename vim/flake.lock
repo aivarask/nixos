@@ -51,11 +51,11 @@
     "neovim-session-manager": {
       "flake": false,
       "locked": {
-        "lastModified": 1705767424,
-        "narHash": "sha256-BTVhCevq40A7yOYp2fLg6N9A+yarIWJM83Z2bfvlQuU=",
+        "lastModified": 1706379108,
+        "narHash": "sha256-HB6Vdkg+gKTcg2s/Wfn4xceMazcZw50Bdr5++vAgvSc=",
         "owner": "Shatur",
         "repo": "neovim-session-manager",
-        "rev": "b8a22f2c88429a11272117a901db66055abf3e7f",
+        "rev": "07bb62583769abd9d32f88f428ea58248730ac7a",
         "type": "github"
       },
       "original": {
@@ -66,11 +66,12 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1705856552,
-        "narHash": "sha256-JXfnuEf5Yd6bhMs/uvM67/joxYKoysyE3M2k6T3eWbg=",
-        "path": "/nix/store/rqdf3gfjq8zh488msnv62h03kkzr308q-source",
-        "rev": "612f97239e2cc474c13c9dafa0df378058c5ad8d",
-        "type": "path"
+        "lastModified": 1706173671,
+        "narHash": "sha256-lciR7kQUK2FCAYuszyd7zyRRmTaXVeoZsCyK6QFpGdk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4fddc9be4eaf195d631333908f2a454b03628ee5",
+        "type": "github"
       },
       "original": {
         "id": "nixpkgs",
@@ -160,11 +161,11 @@
     "refactoring-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1705890452,
-        "narHash": "sha256-jTvS4ns0q2hnaD6aRr8UeqxoBXfs5ryHyjZxbC0aBKQ=",
+        "lastModified": 1706279936,
+        "narHash": "sha256-yzjyXWs3GDP+gczqGVNaZxTMQkqu7RwLC/0f81Wncgw=",
         "owner": "ThePrimeagen",
         "repo": "refactoring.nvim",
-        "rev": "f4546284059f7dc01f65be93d03f6c850fd2aba1",
+        "rev": "aff2e21e2f1a19d302adceb4e7d0fafbb3ae59a9",
         "type": "github"
       },
       "original": {

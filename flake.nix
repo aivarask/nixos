@@ -23,6 +23,7 @@
       flake = false;
     };
     vim.url = "path:./vim";
+    vim.inputs.nixpkgs.follows = "nixpkgs";
     musnix = { url = "github:musnix/musnix"; };
   };
   outputs =
@@ -32,22 +33,6 @@
     , ...
     } @ inputs:
     let
-      overlays = with inputs; [
-        rust-overlay.overlays.default
-        nur.overlay
-        neovim-nightly-overlay.overlay
-        slstatus.overlays.default
-        st-flexipatch.overlays.default
-        tabbed-flexipatch.overlays.default
-        dwm-flexipatch.overlays.default
-        dmenu-flexipatch.overlays.default
-
-        # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
-        (final: prev: with prev; {
-          inherit LS_COLORS;
-        })
-        vim.overlays.default
-      ];
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in

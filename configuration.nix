@@ -9,6 +9,7 @@ in
   ]
 
   ++ include ./config
+  ++ include ./config/systemd
   ++ include ./config/services
   ++ include ./spackages
   ++ include ./plugin

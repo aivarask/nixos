@@ -53,9 +53,6 @@
     MOZ_USE_XINPUT2 = "1";
   };
 
-  # https://nixos.wiki/wiki/Systemd-networkd
-  # /etc/nixos/modules/system/boot/networkd.nix
-
   systemd.network.networks."10-hw" = {
     name = "wlp59s0";
     matchConfig.Name = "wlp59s0";
