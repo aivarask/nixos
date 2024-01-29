@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, config, include, ... }: {
   imports = [
-    ./colors.nix
+    ./colorScheme.nix
     ./pointerCursor.nix
     ./xdg.nix
     ../vim
@@ -10,8 +10,7 @@
 
   home.stateVersion = "23.05";
 
-  home.shellAliases = {
-  };
+  home.shellAliases = { };
 
   home.sessionVariables = {
     BROWSER = "firefox";

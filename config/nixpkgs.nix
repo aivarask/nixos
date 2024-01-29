@@ -29,7 +29,6 @@
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
-      slstatus.overlays.default
       st-flexipatch.overlays.default
       tabbed-flexipatch.overlays.default
       dwm-flexipatch.overlays.default

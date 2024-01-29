@@ -17,7 +17,6 @@
     nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # aivarask
-    slstatus.url = "github:aivarask/slstatus";
     dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
     dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
     st-flexipatch.url = "github:aivarask/st-flexipatch";
@@ -42,6 +41,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       include = p: with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
+      common = { inherit inputs; inherit include; };
     in
     {
       packages.${system} = { };
@@ -51,9 +51,9 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit include;
+          specialArgs = common // {
+            # inherit inputs;
+            # inherit include;
           };
           modules = [
             ./configuration.nix

@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ ... }: {
   xdg.configFile = {
     "nicotine/config_def" = {
-      source = ../files/nicotine_config;
+      source = ./xdg_nicotine;
       enable = true;
       recursive = true;
       onChange = ''

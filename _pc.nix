@@ -41,7 +41,6 @@
 
   swapDevices = [ ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -54,12 +53,6 @@
   system.stateVersion = "23.05";
   environment.variables = {
     LIBVA_DRIVER_NAME = "vdpau";
-  };
-  services.kmscon = {
-    extraConfig = ''
-      font-size=12
-      font-dpi=72
-    '';
   };
 
   systemd.network.networks."10-eno1" = {

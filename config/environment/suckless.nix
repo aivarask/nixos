@@ -5,7 +5,6 @@
     st
     dwm
     dwm-status
-    slstatus
     emojipick
   ];
 }
