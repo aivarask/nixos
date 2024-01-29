@@ -7,6 +7,12 @@
           "jsonc"
         ],
         "path": "./snippet.json"
+      },
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
       }
     ]
   }

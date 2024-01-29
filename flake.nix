@@ -56,7 +56,6 @@
             inherit include;
           };
           modules = [
-            { programs.hyprland = { enable = true; }; }
             ./configuration.nix
             ./_dell.nix
             ./_audio.nix

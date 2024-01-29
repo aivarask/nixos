@@ -17,15 +17,12 @@
       QT_AUTO_SCREEN_SET_FACTOR = "0";
       QT_SCALE_FACTOR = "1";
       QT_FONT_DPI = "144";
-      XINITRC = "/etc/nixos/home/files/xinitrc";
+      XINITRC = "/etc/nixos/files/xinitrc";
       # XSERVERRC = "/etc/X11/xinit/xserverrc";
     };
     shellAliases = {
       pm = "pulsemixer";
       codium = "codium --no-sandbox --user-data-dir ~/.codium";
-      nf = "nvim -c 'Files'";
-      ng = "nvim -c 'Rg'";
-      nt = "nvim -c 'Telescope'";
       brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";

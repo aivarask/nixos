@@ -1,7 +1,6 @@
 { pkgs, lib, inputs, config, include, ... }: {
   imports = [
     ./colors.nix
-    ./wayland.nix
     ../vim
   ]
   ++ include ./programs
@@ -17,15 +16,15 @@
   home.stateVersion = "23.05";
   home = {
     file = {
-      ".wallpaper" = { source = ../images/wallpaper; recursive = false; };
-      ".config/tilda/config_0".text = builtins.readFile ./files/tilda;
-      ".dwm-status.toml".text = builtins.readFile ./files/dwm-status_dell.toml + builtins.readFile ./files/dwm-status.toml;
-      # ".dwm-status.toml".text = builtins.readFile ./files/dwm-status_pc.toml + builtins.readFile ./files/dwm-status.toml;
+      ".wallpaper" = { source = ../files/images/wallpaper; recursive = false; };
+      ".config/tilda/config_0".text = builtins.readFile ../files/tilda;
+      ".dwm-status.toml".text = builtins.readFile ../files/dwm-status_dell.toml + builtins.readFile ../files/dwm-status.toml;
+      # ".dwm-status.toml".text = builtins.readFile ../files/dwm-status_pc.toml + builtins.readFile ../files/dwm-status.toml;
     };
   };
   xdg.configFile."nicotine/config_example" = {
     enable = true;
-    source = ./files/nicotine_config;
+    source = ../files/nicotine_config;
   };
   # Dell
   home.pointerCursor = {

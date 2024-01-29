@@ -12,8 +12,6 @@
     stress
     firestarter
 
-    taskwarrior
-    taskwarrior-tui
 
     libbs2b
     ladspaPlugins
@@ -97,7 +95,6 @@
     mkcert
     mono
     mpc_cli
-    mpd
     mpv
     neofetch
     nginx

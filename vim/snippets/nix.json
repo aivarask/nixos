@@ -1,0 +1,10 @@
+{
+  "nixosModule": {
+    "prefix": [
+      "nixosModule"
+    ],
+    "body": [
+      "{ ${1}... }: {${0}}"
+    ]
+  }
+}

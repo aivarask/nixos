@@ -1,7 +1,4 @@
-{ lib
-, pkgs
-, ...
-}: {
+{ lib, pkgs, ... }: {
   console = {
     packages = lib.mkDefault (with pkgs; [
       terminus_font

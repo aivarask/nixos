@@ -1,7 +1,4 @@
-{ pkgs
-, options
-, ...
-}: {
+{ pkgs, options, ... }: {
   # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
   # https://nixos.org/manual/nix/stable/command-ref/env-common
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles

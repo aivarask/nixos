@@ -20,4 +20,9 @@
       bind-key M-` send-prefix
     '';
   };
+
+  programs.hyprland = {
+    enable = false;
+    xwayland.enable = false;
+  };
 }

@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
-      import = [ /etc/nixos/home/files/gruvbox.toml ];
+      import = [ /etc/nixos/files/gruvbox.toml ];
       keyboard = {
         bindings = [
           {
