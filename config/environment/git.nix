@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    lazygit
     git
     git-lfs
+    lazygit
     gitlab
     gitlab-shell
     glab
