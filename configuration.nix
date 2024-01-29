@@ -16,7 +16,10 @@ in
   ++ include ./plugin
   ;
 
-  environment.shellAliases = { };
+  environment.shellAliases = {
+    tilda = "tilda -g /etc/nixos/home/tilda";
+  };
+
 
   # https://nixos.org/manual/nixpkgs/unstable/#vim
   environment.systemPackages = with pkgs; [

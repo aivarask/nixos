@@ -10,6 +10,9 @@
 
   home.stateVersion = "23.05";
 
+  home.shellAliases = {
+  };
+
   home.sessionVariables = {
     BROWSER = "firefox";
     MOZ_X11_EGL = "1";

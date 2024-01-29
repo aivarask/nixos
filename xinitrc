@@ -16,18 +16,17 @@ numlockx
 xset r rate 200 50
 imwheel -b 45 &
 
-unclutter --timeout 2 & # not work as a service, WantedBy graphical-session.target
+# unclutter --timeout 2 & # not work as a service, WantedBy graphical-session.target
 dwm-status ~/.dwm-status.toml &
 
 # Timers
-systemctl restart wallpaper.service & # ../../modules/system/boot/timers/wallpaper.nix
-# slstatus & # ../../modules/system/boot/timers/slstatus.nix
+systemctl --user restart redshift.service & # ./config/services/redshift.nix
+systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
+systemctl --user restart dunst.service & # ./home/services/dunst.nix
+sxhkd &                                  # ./home/services/sxhkd.nix
 
-systemctl --user restart dunst.service & # ../services/dunst.nix
-sxhkd &                                  # ../services/sxhkd.nix not work as a service unit, but makes config
-# taskwarrior
 
-systemctl --user restart redshift.service & # ../../modules/services/x11/redshift.nix
+tilda &
 
 XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 # wetty -b / -p 9999 &

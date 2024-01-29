@@ -8,9 +8,5 @@
         cat /root/.config/nicotine/config_def > /root/.config/nicotine/config
       '';
     };
-    "tilda/config_0" = {
-      source = ../files/tilda_config_0;
-      enable = true;
-    };
   };
 }

@@ -17,7 +17,7 @@
       QT_AUTO_SCREEN_SET_FACTOR = "0";
       QT_SCALE_FACTOR = "1";
       QT_FONT_DPI = "144";
-      XINITRC = "/etc/nixos/files/xinitrc";
+      XINITRC = "/etc/nixos/xinitrc";
       # XSERVERRC = "/etc/X11/xinit/xserverrc";
     };
     shellAliases = {
