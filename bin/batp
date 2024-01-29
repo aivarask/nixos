@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
-
-#tr -d "\""
-
 echo $1 | sed "s/:.*//" | xargs bat

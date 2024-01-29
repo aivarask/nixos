@@ -1,4 +1,0 @@
-#!/bin/sh
-
-set -eu
-DISPLY=:0 feh --bg-fill --randomize /etc/nixos/images/wallpaper/abstract/*

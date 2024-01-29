@@ -1,4 +1,4 @@
-{ pkgs, options, ... }: {
+{ pkgs, options, inputs, ... }: {
   # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
   # https://nixos.org/manual/nix/stable/command-ref/env-common
   # https://nixos.org/manual/nix/stable/command-ref/files/profiles
@@ -42,6 +42,7 @@
       # post-build-hook = /etc/nixos/post-build-hook.sh
     '';
     registry = {
+      nixpkgs.flake = inputs.nixpkgs;
       hm = {
         to = {
           owner = "nix-community";
