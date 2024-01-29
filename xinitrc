@@ -14,25 +14,25 @@ nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=
 
 numlockx
 xset r rate 200 50
-imwheel -b 45 &
 
-# unclutter --timeout 2 & # not work as a service, WantedBy graphical-session.target
-dwm-status ~/.dwm-status.toml &
-
-# Timers
+# NixOS
+imwheel -b 45 &                       # ./config/services/xserver.nix
+systemctl --user restart unclutter.service & # ./config/services/unclutter.nix
 systemctl --user restart redshift.service & # ./config/services/redshift.nix
+systemctl --user restart dwm-status.service & # ./config/services/dwm-status.nix
+# custom
 systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
+# Home manager
 systemctl --user restart dunst.service & # ./home/services/dunst.nix
 sxhkd &                                  # ./home/services/sxhkd.nix
 
 
-tilda &
+# tilda -g /etc/nixos/tilda &
 
 XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-# wetty -b / -p 9999 &
+
 
 session=${1:-dwm}
-
 case $session in
   i3 | i3wm) exec i3 ;;
   kde) exec startplasma-x11 ;;

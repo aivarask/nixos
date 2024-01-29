@@ -21,7 +21,7 @@
 
   home = {
     file = {
-      ".dwm-status.toml".text = builtins.readFile ../files/dwm-status_dell.toml + builtins.readFile ../files/dwm-status.toml;
+      # ".dwm-status.toml".text = builtins.readFile ../files/dwm-status_dell.toml + builtins.readFile ../files/dwm-status.toml;
     };
   };
 
