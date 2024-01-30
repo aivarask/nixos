@@ -113,7 +113,6 @@
     pistol
     poppler
     poppler_utils
-    pre-commit
     pscale
     psmisc
     pulsemixer
@@ -126,15 +125,11 @@
     shellcheck
     shellharden
     shfmt
-    sl
     soulseekqt
     spaceship-prompt
     ssh-chat
     tdesktop
     tiv
-    tmux
-    tmuxPlugins.resurrect
-    tmuxPlugins.tmux-fzf
     translate-shell
     trash-cli
     tree

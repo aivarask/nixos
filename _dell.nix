@@ -81,31 +81,21 @@
     hostId = "8425e349";
   };
 
-  # location.provider = "geoclue2";
-  services = {
-    blueman.enable = false;
-    kmscon = {
-      extraConfig = ''
-        font-size=12
-        font-dpi=288
-      '';
-    };
-
-    xserver = {
-      imwheel.enable = false;
-      dpi = 168; # 96*1.75
-      libinput = {
-        enable = true;
-        touchpad = {
-          naturalScrolling = true;
-          accelSpeed = "+10";
-        };
+  services.kmscon = {
+    extraConfig = ''
+      font-size=12
+      font-dpi=288
+    '';
+  };
+  services.xserver = {
+    imwheel.enable = false;
+    dpi = 168; # 96*1.75
+    libinput = {
+      enable = true;
+      touchpad = {
+        naturalScrolling = true;
+        accelSpeed = "+10";
       };
     };
   };
-  # services.xserver.displayManager.sddm.enable = true;
-  # networking.wireless.enable = false;
-  # networking.networkmanager.enable = true;
-  # services.xserver.displayManager.autoLogin.enable = true;
-  # services.xserver.displayManager.autoLogin.user = "root";
 }

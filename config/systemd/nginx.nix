@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ nginx ];
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];
     NoNewPrivileges = lib.mkForce false;

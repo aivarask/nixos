@@ -32,8 +32,6 @@
       lg = "lazygit";
       ls = "eza --icons --git";
       lt = "ls --tree --level=2";
-      mc = "tmux split -h lf; lf";
-      mcd = "tmux split -h nd; ndcw; ndtw";
       oras = "curl wttr.in/Vilnius";
       pn = "pnpm";
       tre = "trans :en";

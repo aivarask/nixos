@@ -9,5 +9,6 @@
     delta
     gh
     git-crypt
+    pre-commit
   ];
 }
