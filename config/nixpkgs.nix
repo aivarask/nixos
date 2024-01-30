@@ -35,11 +35,11 @@
       dmenu-flexipatch.overlays.default
 
       # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
-      (final: prev: with prev; {
+      (_final: prev: with prev; {
         inherit LS_COLORS;
       })
       # vim.overlays.default
-      (final: prev:
+      (_final: prev:
         let
           inherit (prev.vimUtils) buildVimPlugin;
         in

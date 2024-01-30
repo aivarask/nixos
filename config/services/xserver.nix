@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }: {
-
+{ lib, ... }: {
   services.xserver = {
     displayManager.sddm.enable = lib.mkDefault false;
     windowManager.awesome.enable = lib.mkDefault false;

@@ -1,14 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
-  pgx = pkgs.buildGoModule {
-    name = "pgx";
-    src = builtins.fetchGit {
-      url = "https://github.com/jackc/pgx.git";
-      # ref = "refs/tags/v5.5.1"; # impure not locked
-      rev = "b7de418d46878f65f91c377297d98b8b1a9c406d";
-    };
-    vendorHash = "sha256-ahGZ7ABG7SDTvObDC//nadIfGEBQrzJlgm5nQlAUPLE=";
-  };
   gow = pkgs.buildGoModule
     {
       name = "gow";
@@ -19,17 +10,6 @@ let
       };
       vendorHash = "sha256-Xw9V7bYaSfu5kA2505wmef2Ns/Y0RHKbZHUkvCtVNSM=";
     };
-  go-sqlite3 = pkgs.buildGoModule {
-    name = "go-sqlite3";
-    src = builtins.fetchGit {
-      url = "https://github.com/mattn/go-sqlite3";
-      rev = "bce3773726b3f7ef4609661a0f0f4fb00a0df761";
-    };
-    CGO_ENABLED = true;
-    vendorHash = null;
-    # proxyVendor = true;
-    buildFlags = "-tags 'linux'";
-  };
 in
 {
   environment.shellAliases = {
@@ -47,8 +27,5 @@ in
     templ
     #
     gow
-    # pgx
-
-    # go-sqlite3
   ];
 }

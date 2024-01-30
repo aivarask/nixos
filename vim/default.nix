@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let
-  vimOnlyPlugins = with pkgs.vimPlugins; [
-    context_filetype-vim
-    # vim-expand-region
-  ];
+  # _vimOnlyPlugins = with pkgs.vimPlugins; [
+  #   # context_filetype-vim
+  #   # vim-expand-region
+  # ];
   commonPlugins = with pkgs.vimPlugins; [
     vim-projectionist
     vim-log-highlighting

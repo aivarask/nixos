@@ -1,8 +1,4 @@
-{ pkgs
-, config
-, options
-, ...
-}: {
+{ pkgs, ... }: {
   # https://nixos.wiki/wiki/Maddy
   services.maddy = {
     enable = true;
