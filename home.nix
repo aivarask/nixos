@@ -3,14 +3,11 @@
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    ./pointerCursor.nix
-    ./xdg.nix
-    ../vim
+    ./vim
   ]
-  ++ include ./programs
-  ++ include ./services;
-
-
+  ++ include ./home
+  ++ include ./home/programs
+  ++ include ./home/services;
 
   home.shellAliases = { };
 

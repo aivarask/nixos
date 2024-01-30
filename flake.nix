@@ -64,7 +64,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = false;
-                users.root = import ./home;
+                users.root = import ./home.nix;
                 verbose = true;
               };
               home-manager.extraSpecialArgs = common // { };
@@ -87,7 +87,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = false;
-                users.root = import ./home;
+                users.root = import ./home.nix;
                 verbose = true;
               };
               home-manager.extraSpecialArgs = common // { };
