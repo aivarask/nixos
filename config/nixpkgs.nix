@@ -38,6 +38,66 @@
       (final: prev: with prev; {
         inherit LS_COLORS;
       })
-      vim.overlays.default
+      # vim.overlays.default
+      (final: prev:
+        let
+          inherit (prev.vimUtils) buildVimPlugin;
+        in
+        {
+          vimPlugins = with inputs;
+            prev.vimPlugins
+            // {
+              vim-log-highlighting = buildVimPlugin {
+                name = "vim-log-highlighting";
+                src = vim-log-highlighting;
+              };
+              pretty-fold = buildVimPlugin {
+                name = "pretty-fold";
+                src = pretty-fold;
+              };
+              fold-preview = buildVimPlugin {
+                name = "fold-preview";
+                src = fold-preview;
+              };
+              neotest-playwright = buildVimPlugin {
+                name = "neotest-playwright";
+                src = neotest-playwright;
+              };
+              neotest-vim-test = buildVimPlugin {
+                name = "neotest-vim-test";
+                src = neotest-vim-test;
+              };
+              refactoring-nvim = buildVimPlugin {
+                name = "refactoring-nvim";
+                src = refactoring-nvim;
+              };
+              vim-interestingwords = buildVimPlugin {
+                name = "vim-interestingwords";
+                src = vim-interestingwords;
+              };
+              nvim-lsp-file-operations = buildVimPlugin {
+                name = "nvim-lsp-file-operations";
+                src = nvim-lsp-file-operations;
+              };
+              # Session management
+              persistence-nvim = buildVimPlugin {
+                name = "persistence-nvim";
+                src = persistence-nvim;
+              };
+              neovim-session-manager = buildVimPlugin {
+                name = "neovim-session-manager";
+                src = neovim-session-manager;
+              };
+              # DEBUGGING
+              nvim-dap-vscode-js = buildVimPlugin {
+                name = "nvim-dap-vscode-js";
+                src = nvim-dap-vscode-js;
+              };
+              osv = buildVimPlugin {
+                name = "osv";
+                src = osv;
+              };
+            };
+        })
     ];
 }

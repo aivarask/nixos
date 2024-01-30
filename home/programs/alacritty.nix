@@ -14,42 +14,29 @@
       };
       font.size = lib.mkDefault 7.0;
 
+      import = [ ./a_gruvbox.toml ];
 
-      # import = [ ./a_gruvbox.toml ];
-
-      colors = with config.colorScheme.colors; rec {
-        cursor = { text = "CellBackground"; cursor = "CellForeground"; };
-        vim_mode_cursor = cursor;
-        selection = cursor;
-        primary = {
-          background = "0x${base00}"; #282828
-          foreground = "0x${base06}"; #ebdbb2
-          bright_foreground = "0x${base07}"; #fbf1c7
-          dim_foreground = "0x${base04}"; #bdae93
-        };
-        normal = {
-
-          black = "0x${base00}";
-          red = "0x${base08}";
-          green = "0x${base0B}";
-          yellow = "0x${base0A}";
-          blue = "0x${base0D}";
-          magenta = "0x${base0E}";
-          cyan = "0x${base0C}";
-          white = "0x${base07}";
-        };
-
-        #   bright = {
-        #     black = "0x${base00}";
-        #     blue = "0x${base0D}";
-        #     cyan = "0x${base0C}";
-        #     green = "0x${base0B}";
-        #     magenta = "0x${base0E}";
-        #     red = "0x${base08}";
-        #     white = "0x${base06}";
-        #     yellow = "0x${base09}";
-        #   };
-      };
+      # colors = with config.colorScheme.colors; rec {
+      #   cursor = { text = "CellBackground"; cursor = "CellForeground"; };
+      #   vi_mode_cursor = cursor;
+      #   selection = cursor;
+      #   primary = {
+      #     background = "0x${base00}"; #282828
+      #     foreground = "0x${base06}"; #ebdbb2
+      #     bright_foreground = "0x${base07}"; #fbf1c7
+      #     dim_foreground = "0x${base04}"; #bdae93
+      #   };
+      #   normal = {
+      #     black = "0x${base00}";
+      #     red = "0x${base08}";
+      #     green = "0x${base0B}";
+      #     yellow = "0x${base0A}";
+      #     blue = "0x${base0D}";
+      #     magenta = "0x${base0E}";
+      #     cyan = "0x${base0C}";
+      #     white = "0x${base07}";
+      #   };
+      # };
     };
   };
 }

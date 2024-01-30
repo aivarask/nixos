@@ -1,6 +1,8 @@
-{ pkgs, lib, inputs, config, include, ... }: {
+{ inputs, include, ... }: {
+  home.stateVersion = "23.05";
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
-    ./colorScheme.nix
+    inputs.nix-colors.homeManagerModules.default
     ./pointerCursor.nix
     ./xdg.nix
     ../vim
@@ -8,7 +10,7 @@
   ++ include ./programs
   ++ include ./services;
 
-  home.stateVersion = "23.05";
+
 
   home.shellAliases = { };
 
@@ -17,11 +19,5 @@
     MOZ_X11_EGL = "1";
     # SYSTEM = config.system.name;
   };
-
-  home = {
-    file = {
-      # ".dwm-status.toml".text = builtins.readFile ../files/dwm-status_dell.toml + builtins.readFile ../files/dwm-status.toml;
-    };
-  };
-
+  home.file = { };
 }

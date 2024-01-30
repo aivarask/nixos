@@ -1,34 +1,33 @@
 {
-  # nixos-generators
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # aivarask
     dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
     dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
     st-flexipatch.url = "github:aivarask/st-flexipatch";
     tabbed-flexipatch.url = "github:aivarask/tabbed-flexipatch";
-    # other
-    LS_COLORS = {
-      url = "github:trapd00r/LS_COLORS";
-      flake = false;
-    };
-    vim.url = "path:./vim";
-    vim.inputs.nixpkgs.follows = "nixpkgs";
     musnix = { url = "github:musnix/musnix"; };
+    LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
+    pretty-fold = { url = "github:anuvyklack/pretty-fold.nvim"; flake = false; };
+    fold-preview = { url = "github:anuvyklack/fold-preview.nvim"; flake = false; };
+    neotest-vim-test = { url = "github:nvim-neotest/neotest-vim-test"; flake = false; };
+    neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
+    refactoring-nvim = { url = "github:ThePrimeagen/refactoring.nvim"; flake = false; };
+    vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
+    nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
+    persistence-nvim = { url = "github:folke/persistence.nvim"; flake = false; };
+    neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
+    nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
+    osv = { url = "github:jbyuki/one-small-step-for-vimkind"; flake = false; };
   };
   outputs =
     { nixpkgs
@@ -51,10 +50,7 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = common // {
-            # inherit inputs;
-            # inherit include;
-          };
+          specialArgs = common // { };
           modules = [
             ./configuration.nix
             ./_dell.nix
@@ -71,10 +67,7 @@
                 users.root = import ./home;
                 verbose = true;
               };
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit include;
-              };
+              home-manager.extraSpecialArgs = common // { };
             }
           ];
         };
@@ -82,7 +75,7 @@
         pc = nixpkgs.lib.nixosSystem {
           # PC B450 AORUS M
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = common // { };
           modules = [
             ./configuration.nix
             ./_pc.nix
@@ -93,9 +86,11 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
-                useUserPackages = true;
+                useUserPackages = false;
                 users.root = import ./home;
+                verbose = true;
               };
+              home-manager.extraSpecialArgs = common // { };
             }
           ];
         };
