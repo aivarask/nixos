@@ -15,7 +15,6 @@
     nil
     nurl
     deadnix
-    nixd
     nixos-generators
     nix-index
   ];

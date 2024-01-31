@@ -36,9 +36,7 @@
       # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
       (_final: prev: with prev; {
         inherit LS_COLORS;
-        # nixd = inputs.nixd;
       })
-      # vim.overlays.default
       (_final: prev:
         let
           inherit (prev.vimUtils) buildVimPlugin;

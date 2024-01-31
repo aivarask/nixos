@@ -5,7 +5,7 @@
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-    # package = pkgs.nixUnstable;
+    package = pkgs.nixUnstable;
     nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
       auto-optimise-store = true;
@@ -22,9 +22,8 @@
       experimental-features = nix-command flakes 
     '';
     registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      home-manager.flake = inputs.home-manager;
-      config = { to = { type = "path"; path = /etc/nixos; }; };
+      # nixpkgs.flake = inputs.nixpkgs;
+      # config = { to = { type = "path"; path = /etc/nixos; }; };
     };
   };
 }

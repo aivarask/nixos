@@ -1,5 +1,5 @@
 require('lspconfig').nil_ls.setup({
-  autostart = false,
+  autostart = true,
   -- log_level = vim.lsp.log_levels.INFO,
   settings = {
     ['nil'] = {
@@ -8,11 +8,6 @@ require('lspconfig').nil_ls.setup({
       },
     },
   },
-})
-
--- https://github.com/nix-community/nixd/blob/main/nixd/docs/nixd-schema.json
-require('lspconfig').nixd.setup({
-  autostart = true,
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
