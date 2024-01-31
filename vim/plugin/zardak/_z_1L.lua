@@ -33,11 +33,4 @@ wkr({
     t = { [[:LfNewTab<CR>]], 'LfNewTab' },
     w = { [[:LfWorkingDirectory<CR>]], 'LfWorkingDirectory' },
   },
-  p = {
-    name = 'Playwright',
-    ---@diagnostic disable-next-line: undefined-field
-    a = { neotest.playwright.attachment, 'playwright.attachment' },
-    p = { [[:NeotestPlaywrightPreset<CR>]], 'PlaywrightPreset' },
-    r = { [[:NeotestPlaywrightRefresh<CR>]], 'PlaywrightRefresh' },
-  },
 }, { prefix = '<leader>' })

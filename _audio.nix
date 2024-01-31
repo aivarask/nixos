@@ -7,6 +7,8 @@
   environment.systemPackages = with pkgs; [
     # https://github.com/NixOS/nixpkgs/blob/d65bceaee0fb1e64363f7871bc43dc1c6ecad99f/pkgs/applications/audio/vital/default.nix#L59
     # https://vital.audio/
+    libbs2b
+    ladspaPlugins
     vital
     bitwig-studio
     mixxx

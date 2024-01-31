@@ -10,7 +10,6 @@
       EDITOR = "nvim";
       editor = "vim";
       PNPM_HOME = "$HOME/.pnpm-global";
-      NPM_CONFIG_PREFIX = "$HOME/.node_modules";
       NODE_OPTIONS = "--no-warnings";
       GDK_SCALE = "1";
       GDK_DPI_SCALE = "1";
@@ -33,7 +32,6 @@
       ls = "eza --icons --git";
       lt = "ls --tree --level=2";
       oras = "curl wttr.in/Vilnius";
-      pn = "pnpm";
       tre = "trans :en";
       trl = "trans :lt";
       x = "startx";
@@ -57,10 +55,6 @@
         "$HOME/.config/composer/vendor/bin"
       ];
 
-      # PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
-      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
-      PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright-driver.version}";
     };
     variables.LF_ICONS = ''
       tw=:\

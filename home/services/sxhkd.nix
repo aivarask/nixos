@@ -5,13 +5,13 @@ _: {
     keybindings = {
       "Break" = "$TERMINAL -e pulsemixer";
       "Pause" = "$TERMINAL -e ncmpcpp";
-      "Print" = "$TERMINAL -e htop";
+      # "Print" = "$TERMINAL -e htop";
       "Scroll_Lock" = "$TERMINAL -e tremc";
       "XF86Audio{Lower,Raise}Volume" = "pulsemixer --change-volume {-,+}2 --max-volume 100";
       "XF86Audio{Play,Mute}" = "mpc {play,stop}";
       "XF86Audio{Prev,Next}" = "mpc {prev,next}";
       "XF86Calculator" = "$TERMINAL -e bandwhich";
-      "XF86HomePage" = "chromium";
+      # "XF86HomePage" = "chromium";
       "XF86Mail" = "brave --no-sandbox";
       "XF86MonBrightnessDown" = "brightnessctl set 10%-";
       "XF86MonBrightnessUp" = "brightnessctl set +10%";

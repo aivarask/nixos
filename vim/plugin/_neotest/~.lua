@@ -3,9 +3,7 @@ local neotest = require('neotest')
 --- @type neotest.AdapterGroup
 local adapters = {
   neotest_plenary,
-  -- bun,
   -- jest,
-  -- playwright,
   vitest,
   -- https://github.com/olimorris/neotest-phpunit
   require('neotest-phpunit'),

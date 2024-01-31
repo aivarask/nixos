@@ -16,6 +16,5 @@
     nurl
     deadnix
     nixos-generators
-    nix-index
   ];
 }

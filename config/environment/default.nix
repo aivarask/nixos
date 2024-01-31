@@ -7,74 +7,49 @@ with pkgs; let
 in
 {
   environment.systemPackages = with pkgs;  [
-    inotify-tools
-    scrot
-    CuboCore.coreshot
+
+    # hardware
+    brightnessctl
     usbutils
-    powertop
-    powerstat
-    s-tui
-    stress
-    firestarter
 
-
-    libbs2b
-    ladspaPlugins
-    phetch
-    tilda
-
+    # network
     ethtool
     wol
-    brave
-    webkitgtk
-    playwright
-    # --
-    silver-searcher
-    SDL2
-    _7zz
-    atool
-    autofs5
-    bat
     bind
-    brightnessctl
-    catdoc
-    # certbot-full
-    cheat
-    conky
-    cypress
+    drill
     dig
     dnsx
-    drill
+    geoipWithDatabase
+
+    # browser
+    brave
+
+    # terminal
+    inotify-tools
+    scrot
+    tilda
+    bat
     duf
-    exiftool
-    expat
-    expect
-    fasd
+    cheat
     fd
     feh
+    gdu
+    jq
+    glow
+    httpie
+    lf
+
+    # --
     ffmpeg
     ffmpegthumbnailer
-    file
-    fontpreview
     fzy
-    geoipWithDatabase
-    gdb
-    gdu
-    glib
     glibc
-    glow
     gnumeric
     hicolor-icon-theme
     highlight
-    htop
-    httpie
-    icecast
-    iftop
-    ifuse
     imagemagick
     inetutils
     kmon
-    lf
     libbacktrace
     libglibutil
     libimobiledevice
@@ -95,7 +70,6 @@ in
     ookla-speedtest
     openssl
     pango
-    pass
     patchelf
     pciutils
     perl
@@ -120,15 +94,11 @@ in
     watchman
     wget
     whois
-    wiki-tui
-    youtube-dl
-    ytfzf
     # pistol
     pistol
     w3m
     zathura
     eza # exa replacement
     chafa
-    jq
   ];
 }
