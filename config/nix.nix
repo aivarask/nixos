@@ -16,15 +16,17 @@
       ];
       trusted-public-keys = [ ];
     };
-    settings.allowed-users = [ "@wheel" "ak" ];
-    settings.trusted-users = [ "root" "@wheel" "ak" ];
+    # settings.allowed-users = [ "@wheel" "ak" ];
+    # settings.trusted-users = [ "root" "@wheel" "ak" ];
     settings.max-jobs = 4;
     settings.cores = 4;
     extraOptions = ''
       keep-outputs = false
       keep-derivations = true
-      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
+      experimental-features = nix-command flakes 
     '';
+    # auto-allocate-uids 
+    # configurable-impure-env
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
       home-manager.flake = inputs.home-manager;
