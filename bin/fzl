@@ -4,6 +4,7 @@ IFS=: read -ra selected < <(
   rg --color=always --line-number --no-heading --smart-case \
     -L "${*:-}" \
     -g "!/{dev,nix,proc,run,sys,tmp}" \
+    -g "!*.lock" \
     --ignore-file "$HOME/.config/git/ignore" |
     fzf --ansi \
       --color "hl:-1:underline,hl+:-1:underline:reverse" \

@@ -106,7 +106,6 @@ let
 
     # UI/UX:
     # auto-session
-    # TODO: initialize and config https://github.com/stevearc/dressing.nvim
     dressing-nvim
     lualine-nvim
     lualine-lsp-progress

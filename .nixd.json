@@ -1,12 +1,10 @@
 {
-  "formatting": {
-    "command": "nixpkgs-fmt"
-  },
-  "options": {
-    "enable": true,
+  "eval": {
     "target": {
-      "args": [],
-      "installable": "config#nixosConfigurations.dell.options"
+      "args": [
+        "--expr",
+        "with import <nixpkgs> { }; callPackage ./package.nix { }"
+      ]
     }
   }
 }

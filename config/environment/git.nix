@@ -3,12 +3,13 @@
     git
     git-lfs
     lazygit
-    gitlab
-    gitlab-shell
-    glab
     delta
     gh
     git-crypt
     pre-commit
+    # ruby env wrapped
+    # gitlab
+    # gitlab-shell
+    # glab
   ];
 }

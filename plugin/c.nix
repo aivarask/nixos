@@ -5,10 +5,8 @@
     ccls
     clang
     clang-tools
-    clang_13
-    cmake-format
-    cmake-language-server
-    valgrind
-    universal-ctags
+    # cmake-format
+    # cmake-language-server
+    # universal-ctags
   ];
 }
