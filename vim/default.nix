@@ -92,7 +92,6 @@ let
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
     # TREE_SITTER:
     nvim-treesitter.withAllGrammars
-    # (nvim-treesitter.withPlugins (p: with p; [ c nix lua json ini bash ]))
     nvim-ts-context-commentstring
     nvim-treesitter-textobjects
     nvim-ts-autotag

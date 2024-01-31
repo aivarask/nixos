@@ -1,6 +1,12 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs;  [
+{ pkgs, ... }:
+with pkgs; let
+  bench = [
     hyperfine
+  ];
+
+in
+{
+  environment.systemPackages = with pkgs;  [
     inotify-tools
     scrot
     CuboCore.coreshot
@@ -28,8 +34,6 @@
     _7zz
     atool
     autofs5
-    bandwhich
-    bashdb
     bat
     bind
     brightnessctl
