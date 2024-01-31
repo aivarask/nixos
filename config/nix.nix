@@ -1,11 +1,12 @@
 { pkgs, options, inputs, ... }: {
+
   nix = {
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-    package = pkgs.nixUnstable;
+    # package = pkgs.nixUnstable;
     nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
       auto-optimise-store = true;
@@ -18,8 +19,8 @@
     };
     # settings.allowed-users = [ "@wheel" "ak" ];
     # settings.trusted-users = [ "root" "@wheel" "ak" ];
-    settings.max-jobs = 4;
-    settings.cores = 4;
+    settings.max-jobs = 3;
+    settings.cores = 3;
     extraOptions = ''
       keep-outputs = false
       keep-derivations = true
