@@ -3,7 +3,6 @@
     hyperfine
     inotify-tools
     scrot
-    xorg.xwd
     CuboCore.coreshot
     usbutils
     powertop
@@ -36,7 +35,6 @@
     brightnessctl
     catdoc
     # certbot-full
-    chafa
     cheat
     conky
     cypress
@@ -44,9 +42,6 @@
     dnsx
     drill
     duf
-    emojione
-    emote
-    eza # exa replacement
     exiftool
     expat
     expect
@@ -74,7 +69,6 @@
     ifuse
     imagemagick
     inetutils
-    jq
     kmon
     lf
     libbacktrace
@@ -88,17 +82,9 @@
     libxkbcommon
     lm_sensors
     loc
-    ltrace
-    lxappearance
-    lynx
-    marksman
     mkcert
-    mono
-    mpc_cli
     mpv
     neofetch
-    nginx
-    nicotine-plus
     nmap
     nssTools
     odt2txt
@@ -110,25 +96,13 @@
     pciutils
     perl
     perl538Packages.CPAN
-    pistol
     poppler
     poppler_utils
-    pscale
     psmisc
-    pulsemixer
-    redshift
     remarshal
     remote-touchpad
     ripgrep
-    rubyPackages.gemoji
     sassc
-    shellcheck
-    shellharden
-    shfmt
-    soulseekqt
-    spaceship-prompt
-    ssh-chat
-    tdesktop
     tiv
     translate-shell
     trash-cli
@@ -136,18 +110,21 @@
     tree-sitter
     tremc
     udevil
-    ueberzug
     unrar
     unzip
     usbmuxd
-    w3m
     watchman
     wget
     whois
     wiki-tui
     youtube-dl
     ytfzf
+    # pistol
+    pistol
+    w3m
     zathura
-    zsh
+    eza # exa replacement
+    chafa
+    jq
   ];
 }

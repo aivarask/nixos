@@ -26,5 +26,6 @@
       xmessage
       transset
       xwininfo
+      xwd
     ]);
 }

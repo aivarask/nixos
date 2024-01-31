@@ -4,18 +4,11 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').load({
-  paths = '/etc/nixos/vim/snippets',
+  paths = '/etc/nixos/snippets',
 })
 
-wkr({
-  name = 'Completion',
-  e = {
-    function()
-      cmp.complete({ config = { sources = { name = 'emoji' } } })
-    end,
-    'emoji',
-  },
-}, { prefix = '<Space>i' })
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 ---@type cmp.ConfigSchema
 cmp.setup({
@@ -23,10 +16,6 @@ cmp.setup({
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -37,33 +26,6 @@ cmp.setup({
       select = false,
       cmp.ConfirmBehavior.Replace,
     }),
-    -- ['<CR>'] = cmp.mapping({
-    --   -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
-    --   i = function(fallback)
-    --     if cmp.visible() and cmp.get_active_entry() then
-    --       cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-    --     else
-    --       fallback()
-    --     end
-    --   end,
-    --   s = cmp.mapping.confirm({ select = true }),
-    --   c = cmp.mapping.confirm({
-    --     behavior = cmp.ConfirmBehavior.Replace,
-    --     select = true,
-    --   }),
-    -- }),
-    -- ['<C-b>'] = cmp.mapping.confirm({
-    --   cmp.ConfirmBehavior.Insert,
-    --   select = true,
-    -- }),
-
-    -- ['<C-b>'] = cmp.mapping.complete({
-    --   config = {
-    --     sources = {
-    --       { name = 'luasnip' },
-    --     },
-    --   },
-    -- }),
 
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
@@ -100,19 +62,9 @@ cmp.setup({
     { name = 'emoji' },
   }, {
     { name = 'path' },
-    -- { name = 'luasnip' },
     -- { name = 'buffer' },
   }),
 })
-
--- Set configuration for specific filetype.
--- cmp.setup.filetype('gitcommit', {
---   sources = cmp.config.sources({
---     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
---   }, {
---     { name = 'buffer' },
---   }),
--- })
 
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
@@ -129,3 +81,12 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
   }),
 })
+
+-- Set configuration for specific filetype.
+-- cmp.setup.filetype('gitcommit', {
+--   sources = cmp.config.sources({
+--     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+--   }, {
+--     { name = 'buffer' },
+--   }),
+-- })

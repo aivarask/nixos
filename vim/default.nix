@@ -1,9 +1,5 @@
 { pkgs, ... }:
 let
-  # _vimOnlyPlugins = with pkgs.vimPlugins; [
-  #   # context_filetype-vim
-  #   # vim-expand-region
-  # ];
   commonPlugins = with pkgs.vimPlugins; [
     vim-projectionist
     vim-log-highlighting
@@ -27,33 +23,17 @@ let
     # vim-gutentags
     vim-floaterm
     fzf-vim
-    refactoring-nvim
 
     lf-vim
     vim-gruvbox8
     gruvbox-material
-    vim-monokai-tasty
-    vim-monokai
-    vim-monokai-pro
-    monokai-pro-nvim
 
-    # nord-nvim
-    # onedark-vim
     vim-colors-solarized
-    # vim-monokai
-    # tokyonight-nvim
-    # nightfox-nvim
     vim-highlightedyank
-
-    nginx-vim
-    sslsecure-vim
 
     switch-vim
     vim-jsx-pretty
-    # direnv-vim
     vim-matchup
-    vim-auto-save
-    scss-syntax-vim
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [
     ChatGPT-nvim
@@ -62,7 +42,6 @@ let
     neovim-session-manager
     project-nvim
     telescope-project-nvim
-
     which-key-nvim
 
     # https://github.com/itchyny/vim-cursorword/
@@ -72,6 +51,7 @@ let
     indent-blankline-nvim
 
     # LSP:
+    refactoring-nvim
     lsp_signature-nvim
     lsp-overloads-nvim
     nvim-lsp-file-operations
@@ -188,6 +168,6 @@ in
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
-    withRuby = true;
+    withRuby = false;
   };
 }

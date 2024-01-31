@@ -1,5 +1,5 @@
 require('lspconfig').nil_ls.setup({
-  autostart = true,
+  autostart = false,
   -- log_level = vim.lsp.log_levels.INFO,
   settings = {
     ['nil'] = {
@@ -10,19 +10,14 @@ require('lspconfig').nil_ls.setup({
   },
 })
 
+-- https://github.com/nix-community/nixd/blob/main/nixd/docs/nixd-schema.json
 require('lspconfig').nixd.setup({
-  autostart = false,
+  autostart = true,
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.nix' },
   callback = function()
-    vim.lsp.buf.format({
-      async = true,
-      -- filter = function(client)
-      --   return client.name == 'nixd'
-      --   -- return client.name == 'nil_ls'
-      -- end,
-    })
+    vim.lsp.buf.format({ async = true })
   end,
 })

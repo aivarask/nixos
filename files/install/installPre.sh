@@ -11,7 +11,6 @@ set -euo pipefail
 # set_network 0 key_mgmt WPA-PSK or WPA2-PSK
 # enable_network 0
 
-# Connect remote host over SSH
 # rsync -r /etc/nixos/ ${HOST}:/root --delete --progress
 # export HOST=...
 # export DISK=/dev/disk/by-id/...

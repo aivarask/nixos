@@ -21,7 +21,6 @@
       "joypixels"
       "ookla-speedtest"
       "vscode"
-      "vscode-extension-ms-vscode-remote-remote-ssh"
       "intelephense"
     ];
   nixpkgs.overlays =

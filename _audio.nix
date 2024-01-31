@@ -10,6 +10,9 @@
     vital
     bitwig-studio
     mixxx
+    soulseekqt
+    nicotine-plus
+    slskd
   ];
   services.udev.packages = [
     pkgs.mixxx

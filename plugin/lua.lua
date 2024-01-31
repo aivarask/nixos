@@ -16,7 +16,8 @@ local getLibrary = function()
       'plenary.nvim',
       'nvim%-lspconfig',
       'none%-ls.nvim',
-      'lsp_signature.nvim'
+      'lsp_signature.nvim',
+      'nvim%-cmp',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -37,9 +38,9 @@ require('lspconfig').lua_ls.setup({
       workspace = {
         checkThirdParty = false,
         library = getLibrary(),
-      }
+      },
     },
-  }
+  },
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {

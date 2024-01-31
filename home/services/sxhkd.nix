@@ -15,7 +15,7 @@ _: {
       "XF86Mail" = "brave --no-sandbox";
       "XF86MonBrightnessDown" = "brightnessctl set 10%-";
       "XF86MonBrightnessUp" = "brightnessctl set +10%";
-      "ctrl + Pause" = "nicotine";
+      # "ctrl + Pause" = "ni";
       "ctrl + Print;" = "$TERMINAL -e duf &";
       "ctrl + shift + Return" = "detach";
       "super + F1" = "TEXT=$(cat /etc/nixos/home/services/sxhkd.nix) && dunstify $TEXT";

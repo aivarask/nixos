@@ -1,8 +1,4 @@
 { pkgs, options, inputs, ... }: {
-  # https://aldoborrero.com/posts/2022/12/02/learn-how-to-use-the-nix-repl-effectively/
-  # https://nixos.org/manual/nix/stable/command-ref/env-common
-  # https://nixos.org/manual/nix/stable/command-ref/files/profiles
-  # https://nixos.org/manual/nix/stable/command-ref/files/channels
   nix = {
     gc = {
       automatic = true;
@@ -10,16 +6,7 @@
       options = "--delete-older-than 14d";
     };
     package = pkgs.nixUnstable;
-    nixPath =
-      options.nix.nixPath.default
-      ++ [
-        # <<< defaults
-        # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
-        # "nixos-config=/etc/nixos/configuration.nix"
-        # "/nix/var/nix/profiles/per-user/root/channels"
-        # >>>
-        # "nixpkgs-overlays=/etc/nixos/overlays/"
-      ];
+    nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
       auto-optimise-store = true;
       substituters = [
@@ -34,21 +21,13 @@
     settings.max-jobs = 4;
     settings.cores = 4;
     extraOptions = ''
-      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
-      # extra-experimental-features = auto-allocate-uids configurable-impure-env
-      keep-derivations = true
       keep-outputs = false
-      # post-build-hook = /etc/nixos/post-build-hook.sh
+      keep-derivations = true
+      experimental-features = nix-command flakes auto-allocate-uids configurable-impure-env
     '';
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
-      hm = {
-        to = {
-          owner = "nix-community";
-          repo = "home-manager";
-          type = "github";
-        };
-      };
+      home-manager.flake = inputs.home-manager;
       snow = {
         to = { type = "path"; path = /root/snow; };
       };
