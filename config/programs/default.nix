@@ -6,9 +6,10 @@
   programs.iftop.enable = true;
   programs.kbdlight.enable = false;
   programs.nix-index.enable = true;
+  programs.command-not-found.enable = false;
   programs.nix-ld.enable = true;
   programs.npm.enable = true; # check other files
-  programs.screen.enable = true;
+  programs.screen.enable = false;
   programs.sharing.enable = true;
   programs.wireshark.enable = false;
 

@@ -5,8 +5,9 @@
     ccls
     clang
     clang-tools
-    # cmake-format
-    # cmake-language-server
-    # universal-ctags
+    glibc
+    libuv
+    glib
+    libglibutil
   ];
 }

@@ -1,16 +1,19 @@
-{ pkgs, ... }:
-with pkgs; let
-  bench = [
-    hyperfine
-  ];
-
-in
-{
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
+    # programs
+    brave
+    tremc
+    mpv
+    telegram-desktop
 
     # hardware
+    kmon
     brightnessctl
     usbutils
+    lm_sensors
+    udevil
+    pciutils
+    libxkbcommon
 
     # network
     ethtool
@@ -20,85 +23,54 @@ in
     dig
     dnsx
     geoipWithDatabase
-
-    # browser
-    brave
-
-    # terminal
-    inotify-tools
-    scrot
-    tilda
-    bat
-    duf
-    cheat
-    fd
-    feh
-    gdu
-    jq
-    glow
-    httpie
-    lf
-
-    # --
-    ffmpeg
-    ffmpegthumbnailer
-    fzy
-    glibc
-    gnumeric
-    hicolor-icon-theme
-    highlight
-    imagemagick
-    inetutils
-    kmon
-    libbacktrace
-    libglibutil
-    libimobiledevice
-    libnotify
-    libplist
-    libuv
-    libva-utils
-    libwebp
-    libxkbcommon
-    lm_sensors
-    loc
     mkcert
-    mpv
-    neofetch
     nmap
-    nssTools
-    odt2txt
-    ookla-speedtest
-    openssl
-    pango
-    patchelf
-    pciutils
-    perl
-    perl538Packages.CPAN
-    poppler
-    poppler_utils
-    psmisc
-    remarshal
-    remote-touchpad
-    ripgrep
-    sassc
-    tiv
-    translate-shell
-    trash-cli
-    tree
-    tree-sitter
-    tremc
-    udevil
-    unrar
-    unzip
-    usbmuxd
-    watchman
     wget
     whois
-    # pistol
-    pistol
+    inetutils
+    openssl
+    nss
+
+    # terminal
+    libnotify
+    tilda
+    cheat
+    feh
+    gdu
+    duf
+    glow
+    scrot
+    httpie
+    lf
+    loc
+    tree
+    fd
+    ripgrep
+    trash-cli
+    neofetch
+    ookla-speedtest
+    translate-shell
+    remote-touchpad
+    remarshal # json2yaml...
     w3m
     zathura
-    eza # exa replacement
+    eza
     chafa
+    tiv
+    bat
+
+    # utils
+    psmisc # fuser killall prtstat pslog pstree peekfd
+    inotify-tools # inotifywait inotifywatch
+    watchman
+    tree-sitter
+    unrar
+    unzip
+    jq
+    ffmpeg
+    highlight
+    hicolor-icon-theme
+    imagemagick
+    libwebp
   ];
 }

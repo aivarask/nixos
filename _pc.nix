@@ -1,7 +1,7 @@
 { config
 , lib
 , modulesPath
-, ...
+, pkgs, ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -51,6 +51,7 @@
     };
   };
   system.stateVersion = "23.05";
+environment.systemPackages = with pkgs; [ libva_utils ]; 
   environment.variables = {
     LIBVA_DRIVER_NAME = "vdpau";
   };
@@ -62,6 +63,7 @@
     networkConfig = {
       DHCP = "ipv4";
       IPv6AcceptRA = true;
+
     };
   };
 
