@@ -15,24 +15,9 @@
     pciutils
     libxkbcommon
 
-    # network
-    ethtool
-    wol
-    bind
-    drill
-    dig
-    dnsx
-    geoipWithDatabase
-    mkcert
-    nmap
-    wget
-    whois
-    inetutils
-    openssl
-    nss
 
     # terminal
-    libnotify
+    ollama
     tilda
     cheat
     feh
@@ -50,7 +35,6 @@
     neofetch
     ookla-speedtest
     translate-shell
-    remote-touchpad
     remarshal # json2yaml...
     w3m
     zathura
@@ -60,6 +44,7 @@
     bat
 
     # utils
+    libnotify
     psmisc # fuser killall prtstat pslog pstree peekfd
     inotify-tools # inotifywait inotifywatch
     watchman

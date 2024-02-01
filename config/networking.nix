@@ -1,4 +1,21 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    ethtool
+    wol
+    bind
+    drill
+    dig
+    dnsx
+    geoipWithDatabase
+    mkcert
+    nmap
+    wget
+    whois
+    inetutils
+    openssl
+    nss
+    remote-touchpad
+  ];
   networking.dhcpcd.extraConfig = "nohook resolv.conf"; # purpose?
   networking.networkmanager = {
     enable = lib.mkDefault false;

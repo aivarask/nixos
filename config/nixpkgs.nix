@@ -26,7 +26,7 @@
       rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
-      # st-flexipatch.overlays.default
+      st-flexipatch.overlays.default
       tabbed-flexipatch.overlays.default
       dwm-flexipatch.overlays.default
       dmenu-flexipatch.overlays.default
@@ -34,12 +34,6 @@
       # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
       (_final: prev: with prev; {
         inherit LS_COLORS;
-        st =
-          prev.st.overrideAttrs
-            (_oldAttrs: {
-              # src = ./.;
-              conf = ./config.h;
-            });
       })
       (_final: prev:
         let

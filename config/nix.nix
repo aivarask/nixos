@@ -1,4 +1,4 @@
-{ pkgs, options, inputs, ... }: {
+{ pkgs, options, ... }: {
   nix = {
     gc = {
       automatic = true;

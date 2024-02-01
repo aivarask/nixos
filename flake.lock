@@ -601,11 +601,11 @@
     },
     "st-flexipatch": {
       "locked": {
-        "lastModified": 1676403787,
-        "narHash": "sha256-Ej+4qWeqjOmWG2vd99255H9BqAcP/wehXWoev+rPWps=",
+        "lastModified": 1706776003,
+        "narHash": "sha256-be7kBLQCrPeSih+SNwnrXFv6GXoKAxGA0tx2spgyBGk=",
         "owner": "aivarask",
         "repo": "st-flexipatch",
-        "rev": "ba8d507cdd393211239c497143bb0995cdf750dd",
+        "rev": "def11a7998ee8a574148b77b34a7233c5a0ce4ad",
         "type": "github"
       },
       "original": {

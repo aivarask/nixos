@@ -60,7 +60,6 @@ let
     none-ls-nvim
     symbols-outline-nvim
     SchemaStore-nvim
-    diaglist-nvim
     hover-nvim
     goto-preview
     # TEST

@@ -54,15 +54,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local buffer = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
+
     wkr({
-      a = {
+      [']a'] = {
         vim.lsp.buf.code_action,
         'vim.lsp.buf.code_action',
         mode = { 'n', 'v' },
       },
-    }, { prefix = '<leader>', buffer = buffer })
-
-    wkr({
       gD = { vim.lsp.buf.declaration, 'vim.lsp.buf.declaration' },
       gd = { vim.lsp.buf.definition, 'vim.lsp.buf.definition' },
       K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },

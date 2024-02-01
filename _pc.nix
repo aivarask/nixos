@@ -1,7 +1,8 @@
 { config
 , lib
 , modulesPath
-, pkgs, ...
+, pkgs
+, ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -51,7 +52,7 @@
     };
   };
   system.stateVersion = "23.05";
-environment.systemPackages = with pkgs; [ libva_utils ]; 
+  environment.systemPackages = with pkgs; [ libva_utils ];
   environment.variables = {
     LIBVA_DRIVER_NAME = "vdpau";
   };

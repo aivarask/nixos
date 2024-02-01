@@ -1,31 +1,3 @@
-function homepage(scope, expand)
-  local expanded = vim.fn.expand(expand)
-  vim.cmd(
-    [[!nix eval nixpkgs\#]]
-    .. scope
-    .. expanded
-    .. [[.meta.homepage | xargs xdg-open]]
-  )
-end
-
-function xo(expand)
-  local arg = vim.fn.escape(vim.fn.expand(expand), '#')
-  vim.cmd([[!xdg-open ]] .. arg)
-end
-
-function mynixos(expand) -- pointerCursor home.pointerCursor
-  local arg = vim.fn.expand(expand)
-  vim.cmd([[!xdg-open "https://mynixos.com/search?q=]] .. arg .. '"')
-end
-
-function GoGithub()
-  -- "github:nix-community/neovim-nightly-overlay";
-  local pre = 'https://github.com/'
-  local word = vim.fn.expand('<cWORD>')
-  word = word:gsub('github:', pre)
-  word = word:gsub(';', '')
-  vim.cmd('!xdg-open ' .. word)
-end
 
 Go = {
   homepage = {
@@ -97,3 +69,21 @@ Go = {
   },
   c = {},
 }
+wkr({
+  name = 'GOTO',
+  h = { Go.homepage.cword, 'nixpkgs#<cword>.meta.homepage' },
+  H = { Go.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },
+  l = { Go.luajitPackages.cword, 'luajitPackages.<cword>.meta.homepage' },
+  L = { Go.luajitPackages.cWORD, 'luajitPackages.<cWORD>.meta.homepage' },
+  p = { Go.python3Packages.cword, 'python3Packages.<cword>.meta.homepage' },
+  P = { Go.python3Packages.cWORD, 'python3Packages.<cWORD>.meta.homepage' },
+  n = { Go.nodePackages.cword, 'nodePackages.<cword>.meta.homepage' },
+  N = { Go.nodePackages.cWORD, 'nodePackages.<cWORD>.meta.homepage' },
+  v = { Go.vimPlugins.cword, 'vimPlugins.<cword>.meta.homepage' },
+  V = { Go.vimPlugins.cWORD, 'vimPlugins.<cWORD>.meta.homepage' },
+  x = { Go.xopen.cfile, '!xdg-open <cfile>' },
+  m = { Go.mynixos.cword, 'mynixos.org <cword>' },
+  M = { Go.mynixos.cWORD, 'mynixos.org <cWORD>' },
+  s = { Go.github.source, 'github.source' },
+  g = { GoGithub, 'github:owner/repo' },
+}, { prefix = '<leader>g' })

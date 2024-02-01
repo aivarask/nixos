@@ -20,14 +20,3 @@ wkr({
   n = { [[:Files /etc/nixos<CR>]], ':Files /etc/nixos' },
   v = { [[:Files /etc/nixos/vim<CR>]], ':Files /etc/nixos/vim' },
 }, { prefix = '<leader><leader>' })
-
-wkr({
-  name = '3L',
-  [']'] = { '<cmd>SymbolsOutline<cr>' },
-  ['1'] = { '<cmd>e languages/en.yml<cr>' },
-  ['2'] = { '<cmd>e languages/lt.yml<cr>' },
-  ['8'] = { '<cmd>e src/app.d.ts<cr>' },
-  ['9'] = { '<cmd>e src/app.postcss<cr>' },
-  ['p'] = { '<cmd>e package.json<cr>' },
-  --
-}, { prefix = '<leader><leader><leader>' })
