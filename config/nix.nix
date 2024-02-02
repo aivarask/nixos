@@ -1,4 +1,4 @@
-{ pkgs, options, ... }: {
+{ pkgs, inputs, options, ... }: {
   nix = {
     gc = {
       automatic = true;
@@ -21,9 +21,10 @@
     extraOptions = ''
       experimental-features = nix-command flakes 
     '';
+    # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake
     registry = {
-      # nixpkgs.flake = inputs.nixpkgs;
-      # config = { to = { type = "path"; path = /etc/nixos; }; };
+      nixpkgs.flake = inputs.nixpkgs;
+      nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
     };
   };
 }

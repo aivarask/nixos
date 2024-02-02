@@ -1,4 +1,4 @@
-{ inputs, lib, ... }: {
+{ inputs, lib, pkgs, ... }: {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [ ];
   nixpkgs.config.joypixels.acceptLicense = true;
@@ -21,9 +21,26 @@
       "vscode"
       "intelephense"
     ];
+  environment.shellAliases = {
+    ncl = "nix-channel --list";
+    ncu = "nix-channel --update";
+    nr = "nixos-rebuild";
+    nrs = "nixos-rebuild switch";
+    nrt = "nixos-rebuild test";
+    nrl = "nix registry list";
+    nfu = "nix flake update";
+    nfl = "nix flake lock";
+    ncg = "nix-collect-garbage";
+  };
+  environment.systemPackages = with pkgs; [
+    nixpkgs-fmt
+    nil
+    nurl
+    deadnix
+    nixos-generators
+  ];
   nixpkgs.overlays =
     with inputs; [
-      rust-overlay.overlays.default
       nur.overlay
       neovim-nightly-overlay.overlay
       st-flexipatch.overlays.default

@@ -7,7 +7,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     nur.url = "github:nix-community/NUR";
     dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
     dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
@@ -41,9 +40,7 @@
       common = { inherit inputs; inherit include; };
     in
     {
-      packages.${system} = { };
       formatter."${system}" = pkgs.nixpkgs-fmt;
-
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
@@ -53,6 +50,7 @@
             ./configuration.nix
             ./_dell.nix
             ./_audio.nix
+            # inputs.nix-index-database.nixosModules.nix-index
             inputs.musnix.nixosModules.musnix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
