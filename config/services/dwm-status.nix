@@ -40,7 +40,7 @@
     '';
     order = [
       # "audio"
-      "backlight"
+      # "backlight"
       "battery"
       "cpu_load"
       "network"
