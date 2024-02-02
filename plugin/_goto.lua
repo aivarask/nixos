@@ -1,4 +1,3 @@
-
 Go = {
   homepage = {
     cword = function()
@@ -36,7 +35,7 @@ Go = {
     cword = function() -- neotest
       homepage('vimPlugins.', '<cword>')
     end,
-    cWORD = function() -- neotest-vitest
+    cWORD = function()
       homepage('vimPlugins.', '<cWORD>')
     end,
   },

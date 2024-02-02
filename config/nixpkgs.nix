@@ -55,14 +55,6 @@
                 name = "fold-preview";
                 src = fold-preview;
               };
-              neotest-playwright = buildVimPlugin {
-                name = "neotest-playwright";
-                src = neotest-playwright;
-              };
-              neotest-vim-test = buildVimPlugin {
-                name = "neotest-vim-test";
-                src = neotest-vim-test;
-              };
               refactoring-nvim = buildVimPlugin {
                 name = "refactoring-nvim";
                 src = refactoring-nvim;

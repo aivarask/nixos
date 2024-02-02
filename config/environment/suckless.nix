@@ -4,7 +4,6 @@
     dmenu
     st
     dwm
-    dwm-status
     emojipick
   ];
 }

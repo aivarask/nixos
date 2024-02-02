@@ -13,7 +13,7 @@
       [backlight]
       device = "intel_backlight"
       template = "{ICO} {BL}"
-      icons = ["🔅", "🔆", "☀️"]
+      icons = ["🔅", "🔆", "😎"]
 
       [battery]
       charging = "▲"

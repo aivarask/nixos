@@ -1,23 +1,33 @@
 wkr({
-  name = '1L',
-  -- d = ./_dap_keys.lua
-  -- g = ./_goto_keys.lua
-  -- n = ./_neotest_keys.lua
-  -- r = ./_rename.lua
-  -- s = ./_session_config.lua
-  -- t = ./_telescope_config.lua
-  -- x = ./_x_trouble_config.lua
-  [']'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
-
-  S = { [[:'<,'>sort<CR>]], ':sort', noremap = false, mode = { 'v' } },
-  T = {
-    name = 'Treesitter',
-    i = { vim.treesitter.inspect_tree, 'vim.treesitter.inspect_tree' },
-  },
-}, { prefix = '<leader>' })
-
-wkr({
   ['<M-Tab>'] = { [[<cmd>tabnext<cr>]], 'tabnext', mode = { 'n', 'i', 't' } },
   ['<M-Del>'] = { [[<cmd>tabclose<cr>]], 'tabclose', mode = { 'n', 'i', 't' } },
   qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
 })
+
+wkr({
+  name = '1L',
+  [']'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
+}, { prefix = '<leader>' })
+
+wkr({
+  name = '2L',
+  -- " https://github.com/junegunn/fzf.vim#commands
+  F = { [[:FZF<CR>]], ':FZF' },
+  G = { [[:Rg <C-r><C-w><CR>]], ':Rg <C-r><C-w>' },
+  H = { [[:Rg https<CR>]], ':Rg https url links' },
+  M = { [[:Maps<CR>]], ':Maps' },
+  ['/'] = { [[:History/<CR>]], ':History/' },
+  [':'] = { [[:History:<CR>]], ':History:' },
+  [']'] = { neotest.output_panel.toggle, 'neotest.output_panel.toggle' },
+  a = { [[:call _#save_and_exec()<CR>]], ':call _#save_and_exec()' },
+  b = { [[:Buffers<CR>]], ':Buffers' },
+  c = { [[:Commands<CR>]], ':Commands' },
+  d = { dapui.toggle_reset, 'dapui.toggle_reset' },
+  f = { [[:Files<CR>]], ':Files' },
+  g = { [[:Rg<CR>]], ':Rg' },
+  h = { [[:Helptags<CR>]], ':Helptags' },
+  j = { [[:Jumps<CR>]], ':Jumps' },
+  m = { [[:Marks<CR>]], ':Marks' },
+  n = { [[:Files /etc/nixos<CR>]], ':Files /etc/nixos' },
+  v = { [[:Files /etc/nixos/vim<CR>]], ':Files /etc/nixos/vim' },
+}, { prefix = '<leader><leader>' })

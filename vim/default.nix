@@ -36,7 +36,6 @@ let
     vim-matchup
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [
-    ChatGPT-nvim
     # Session
     persistence-nvim
     neovim-session-manager
@@ -63,15 +62,8 @@ let
     hover-nvim
     goto-preview
     # TEST
-    vim-test
     neotest
-    neotest-vim-test
-    neotest-vitest
     neotest-plenary
-    neotest-playwright
-    neotest-jest
-    neotest-go
-    neotest-phpunit
     # COMPLETION:
     # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     cmp-nvim-lsp-signature-help
@@ -107,14 +99,11 @@ let
     dressing-nvim
     lualine-nvim
     lualine-lsp-progress
-    # tabline-nvim archived
     nvim-web-devicons
     neoscroll-nvim
     nvim-tree-lua
     nvim-colorizer-lua
-    gitsigns-nvim
     toggleterm-nvim
-    # plenary-nvim
 
     # DEBUG:
     vimspector
@@ -160,8 +149,6 @@ in
     ];
     package = pkgs.neovim-nightly;
     plugins = nvimOnlyPlugins ++ commonPlugins;
-    viAlias = false;
-    vimAlias = false;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
