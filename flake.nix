@@ -25,6 +25,7 @@
     neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     osv = { url = "github:jbyuki/one-small-step-for-vimkind"; flake = false; };
+    lobster.url = "github:justchokingaround/lobster";
   };
   outputs =
     { nixpkgs
@@ -47,22 +48,21 @@
           inherit system;
           specialArgs = common // { };
           modules = [
+            inputs.musnix.nixosModules.musnix
+            {
+              environment.systemPackages = [
+                inputs.lobster.packages.${system}.lobster
+              ];
+            }
             ./configuration.nix
             ./_dell.nix
             ./_audio.nix
-            # inputs.nix-index-database.nixosModules.nix-index
-            inputs.musnix.nixosModules.musnix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = false;
-                users.root = import ./home.nix;
-                verbose = true;
-              };
+              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = import ./home.nix; };
               home-manager.extraSpecialArgs = common // { };
             }
           ];
@@ -80,12 +80,7 @@
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = false;
-                users.root = import ./home.nix;
-                verbose = true;
-              };
+              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = import ./home.nix; };
               home-manager.extraSpecialArgs = common // { };
             }
           ];

@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   programs.zsh = {
+    sessionVariables = { };
     enable = true;
     autocd = true;
     syntaxHighlighting.enable = true;

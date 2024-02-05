@@ -6,6 +6,7 @@
       "${pkgs.zsh-completions}"
     ];
     variables = {
+      FOO = "10";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
       editor = "vim";

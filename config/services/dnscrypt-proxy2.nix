@@ -1,4 +1,5 @@
 { ... }: {
+  # https://nixos.wiki/wiki/Encrypted_DNS
   services.dnscrypt-proxy2 = {
     enable = true;
     # settings = {

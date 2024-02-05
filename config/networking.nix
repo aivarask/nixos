@@ -16,7 +16,6 @@
     nss
     remote-touchpad
   ];
-  networking.dhcpcd.extraConfig = "nohook resolv.conf"; # purpose?
   networking.networkmanager = {
     enable = lib.mkDefault false;
     wifi.scanRandMacAddress = false;
@@ -28,6 +27,7 @@
   };
   networking = {
     nameservers = [ "127.0.0.1" "::1" ];
+    dhcpcd.extraConfig = "nohook resolv.conf"; # /etc/nixos/config/services/dnscrypt-proxy2.nix
     useNetworkd = true;
     hosts = {
       "192.168.1.1" = [ "hw.local" ];

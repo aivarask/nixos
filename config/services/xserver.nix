@@ -10,10 +10,12 @@
     enable = true;
     enableCtrlAltBackspace = true;
     enableTCP = true;
-    layout = "us,lt";
     upscaleDefaultCursor = true;
-    xkbOptions = "grp:menu_toggle"; # localectl list-x11-keymap-options
-    xkbVariant = "qwerty"; # localectl list-x11-keymap-variants
+    xkb = {
+      layout = "us,lt";
+      options = "grp:menu_toggle"; # localectl list-x11-keymap-options
+      variant = "qwerty"; # localectl list-x11-keymap-variants
+    };
     tty = null;
     # LINKS:
     # https://wiki.archlinux.org/title/Multihead

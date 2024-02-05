@@ -24,6 +24,7 @@
     # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
+      home-manager.flake = inputs.home-manager;
       nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
     };
   };

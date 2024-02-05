@@ -7,12 +7,9 @@
       "--no-default-browser-check"
     ];
     extensions = [
-      {
-        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # uBlock Origin
-      }
-      {
-        id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # vimium
-      }
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
+      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium 
+      { id = "aghfnjkcakhmadgdomlmlhhaocbkloab"; } # just-black
     ];
   };
 }

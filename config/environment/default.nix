@@ -15,8 +15,9 @@
     pciutils
     libxkbcommon
 
-
     # terminal
+    ytfzf
+    ueberzugpp
     ollama
     tilda
     cheat
