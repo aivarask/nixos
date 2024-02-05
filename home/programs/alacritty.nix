@@ -11,7 +11,7 @@
           }
         ];
       };
-      font.size = lib.mkDefault 7.0;
+      font.size = lib.mkDefault 10.0;
       import = [ ./a_gruvbox.toml ];
     };
   };
