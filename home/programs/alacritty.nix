@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ lib, osConfig, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -11,7 +11,7 @@
           }
         ];
       };
-      font.size = lib.mkDefault 10.0;
+      font.size = if osConfig.networking.hostName == "dell" then 7.0 else 12;
       import = [ ./a_gruvbox.toml ];
     };
   };
