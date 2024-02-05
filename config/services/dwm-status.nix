@@ -1,4 +1,5 @@
-{ ... }: {
+{ lib, config, ... }:
+{
   services.dwm-status = {
     enable = true;
     extraConfig = ''
@@ -33,18 +34,19 @@
       no_value = "🌑"
       template = "🌐 {IPv4} 📶 {ESSID}"
 
-
       [time]
       format = "📆 %Y-%m-%d %H:%M"
       update_seconds = false
     '';
-    order = [
+    # https://stackoverflow.com/questions/75668045/nix-coding-pattern-merging-two-conditional-lists-created-with-mkif
+    order = lib.mkMerge [
       # "audio"
-      # "backlight"
-      "battery"
-      "cpu_load"
-      "network"
-      "time"
+      (lib.mkIf (config.networking.hostName == "dell") [ "backlight" "battery" ])
+      [
+        "cpu_load"
+        "network"
+        "time"
+      ]
     ];
   };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   programs.mtr.enable = true;
   programs.bandwhich.enable = true;
   programs.browserpass.enable = false;

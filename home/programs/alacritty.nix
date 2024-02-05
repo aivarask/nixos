@@ -1,4 +1,4 @@
-{ lib, osConfig, ... }: {
+{ osConfig, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
