@@ -12,7 +12,6 @@
   home.shellAliases = { };
 
   home.sessionVariables = {
-    FOO = "";
     BROWSER = "firefox";
     MOZ_X11_EGL = "1";
     # SYSTEM = config.system.name;

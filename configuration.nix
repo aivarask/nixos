@@ -1,4 +1,4 @@
-{ pkgs, include, ... }:
+{ pkgs, include, config, ... }:
 {
   imports = [
     # ./paging.nix
@@ -10,6 +10,9 @@
   ++ include ./config/systemd
   ++ include ./plugin
   ;
+  environment.variables = {
+    #
+  };
 
   environment.shellAliases = {
     tilda = "tilda -g /etc/nixos/tilda";

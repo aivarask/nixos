@@ -6,7 +6,6 @@
       "${pkgs.zsh-completions}"
     ];
     variables = {
-      FOO = "10";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
       editor = "vim";
@@ -21,7 +20,6 @@
       # XSERVERRC = "/etc/X11/xinit/xserverrc";
     };
     shellAliases = {
-      pm = "pulsemixer";
       codium = "codium --no-sandbox --user-data-dir ~/.codium";
       brave = "brave --no-sandbox --enable-features=TouchpadOverscrollHistoryNavigation";
       wol_pc = "wol b4:2e:99:61:09:cf";

@@ -2,7 +2,6 @@
   programs.mtr.enable = true;
   programs.bandwhich.enable = true;
   programs.browserpass.enable = false;
-  programs.htop.enable = true;
   programs.iftop.enable = true;
   programs.kbdlight.enable = false;
   programs.npm.enable = true; # check other files

@@ -9,14 +9,16 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
   dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
-# https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
-nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
-
-numlockx
-xset r rate 200 50
+if [ "$HOSTNAME" = pc ]; then
+  # https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
+  nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
+  imwheel -b 45 &                       # ./config/services/xserver.nix
+  XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
+elif [[ "$HOSTNAME" = dell ]]; then
+  echo '';
+fi
 
 # NixOS
-imwheel -b 45 &                       # ./config/services/xserver.nix
 systemctl --user restart unclutter.service & # ./config/services/unclutter.nix
 systemctl --user restart redshift.service & # ./config/services/redshift.nix
 systemctl --user restart dwm-status.service & # ./config/services/dwm-status.nix
@@ -26,11 +28,10 @@ systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
 systemctl --user restart dunst.service & # ./home/services/dunst.nix
 sxhkd &                                  # ./home/services/sxhkd.nix
 
-
 # tilda -g /etc/nixos/tilda &
 
-XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-
+numlockx
+xset r rate 200 50
 
 session=${1:-dwm}
 case $session in
@@ -40,6 +41,5 @@ case $session in
   dwm) exec dwm ;;
   # Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
   awesome) exec awesome -c /etc/nixos/vim/lua/awesome_rc.lua ;;
-
   *) exec "$1" ;;
 esac

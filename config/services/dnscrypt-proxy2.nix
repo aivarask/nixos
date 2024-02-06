@@ -1,5 +1,6 @@
 { ... }: {
   # https://nixos.wiki/wiki/Encrypted_DNS
+  # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
   services.dnscrypt-proxy2 = {
     enable = true;
     # settings = {

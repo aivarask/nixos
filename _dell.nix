@@ -5,33 +5,16 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "sd_mod"
-      "rtsx_pci_sdmmc"
-      "usb_storage" # added ssd
-    ];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" "usb_storage" ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
 
   fileSystems = {
-    "/" = {
-      device = "zroot/root/nixos";
-      fsType = "zfs";
-    };
-
-    "/home" = {
-      device = "zroot/home";
-      fsType = "zfs";
-    };
-
-    "/boot" = {
-      device = "/dev/disk/by-uuid/CFAB-7FF4";
-      fsType = "vfat";
-    };
+    "/" = { device = "zroot/root/nixos"; fsType = "zfs"; };
+    "/home" = { device = "zroot/home"; fsType = "zfs"; };
+    "/boot" = { device = "/dev/disk/by-uuid/CFAB-7FF4"; fsType = "vfat"; };
   };
 
   swapDevices = [ ];
@@ -81,21 +64,8 @@
     hostId = "8425e349";
   };
 
-  services.kmscon = {
-    extraConfig = ''
-      font-size=12
-      font-dpi=288
-    '';
-  };
   services.xserver = {
-    imwheel.enable = false;
     dpi = 168; # 96*1.75
-    libinput = {
-      enable = true;
-      touchpad = {
-        naturalScrolling = true;
-        accelSpeed = "+10";
-      };
-    };
+    libinput = { touchpad = { naturalScrolling = true; accelSpeed = "+10"; }; };
   };
 }
