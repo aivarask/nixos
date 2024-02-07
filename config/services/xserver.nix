@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, ... }: {
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = lib.mkDefault false;

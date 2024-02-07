@@ -1,4 +1,4 @@
-{ pkgs, include, config, ... }:
+{ pkgs, include, ... }:
 {
   imports = [
     # ./paging.nix

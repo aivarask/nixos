@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   programs.zsh = {
     sessionVariables = { };
     enable = true;
@@ -25,15 +25,6 @@
       source /etc/nixos/zsh/_initAfter.zsh
       # >>>
     '';
-    plugins = [
-      # pkgs.zsh-autocomplete
-      # {
-      #   # https://github.com/chisui/zsh-nix-shell
-      #   name = "zsh-nix-shell";
-      #   file = "nix-shell.plugin.zsh";
-      #   src = pkgs.zsh-nix-shell;
-      # }
-      # zsh-forgit zsh-fzf-tab
-    ];
+    plugins = [ ];
   };
 }

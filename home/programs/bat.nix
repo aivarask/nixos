@@ -13,6 +13,7 @@
         "*.postcss:CSS"
         "*.prisma:GraphQL"
         "*.mdx:Markdown"
+        "flake.lock:JSON"
       ];
     };
     extraPackages = with pkgs.bat-extras; [

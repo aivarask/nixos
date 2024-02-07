@@ -20,6 +20,7 @@
     settings.cores = 3;
     extraOptions = ''
       experimental-features = nix-command flakes 
+      warn-dirty = false
     '';
     # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake
     registry = {

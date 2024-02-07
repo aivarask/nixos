@@ -20,8 +20,6 @@ let
     vim-fugitive
     fugitive-gitlab-vim
     vim-surround
-    vim-gitgutter
-    # vim-gutentags
     vim-floaterm
     fzf-vim
 

@@ -13,6 +13,5 @@ bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"        # F1
 bindkey -s "^[[15~" "exec zsh\n" # F5
 
-bindkey -s "^E" "fzf -m --preview 'pistol {}' | xargs -r $EDITOR \n"
 bindkey -s "^F" "fzf -m --preview 'pistol {}'\n"
-bindkey -s "^G" "fzl\n"
+bindkey -s "^G" "Rg\n"

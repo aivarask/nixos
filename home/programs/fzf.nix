@@ -1,40 +1,23 @@
 { ... }: {
-  home.sessionVariables = {
-    FZF_COMPLETION_TRIGGER = "~~";
-    FZF_COMPLETION_OPTS = "--border --info=inline";
-  };
-
+  # https://github.com/junegunn/fzf#usage
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
-  # https://github.com/junegunn/fzf/wiki
+  # --ignore-file=$HOME/.config/git/ignore
   programs.fzf = {
     enable = true;
-    defaultCommand = "fd --type f --ignore-file=$HOME/.config/git/ignore";
+    defaultCommand = "fd -tf";
     defaultOptions = [
       "--layout=reverse"
-      "--bind 'ctrl-space:refresh-preview'"
-      "--bind 'ctrl-e:execute($EDITOR {})'"
-      "--bind 'ctrl-f:reload(eval \"$FZF_DEFAULT_COMMAND\")'"
-      "--bind 'ctrl-d:reload(fd --type d)'"
-      "--bind 'ctrl-g:execute(eval \"fzl\")'"
-      "--bind 'ctrl-h:reload(fd --type f --hidden)'"
-      # "--bind 'ctrl-/:preview:pistol {}'"
-      "--bind 'ctrl-]:toggle-preview'"
-      "--preview 'pistol {}'"
-      "--preview-window hidden"
+      "--bind 'f1:execute(bat {})'"
+      "--bind ']:toggle-preview'"
+      "--bind 'ctrl-]:change-preview-window(up|right)'"
+      "--bind 'ctrl-y:execute-silent(echo {} | xclip -selection clipboard)+abort'"
+      "--bind 'ctrl-e:become(nvim {})'"
+      "--bind 'ctrl-f:reload(fd -tf)'"
+      "--bind 'ctrl-d:reload(fd -td)'"
     ];
-
-    fileWidgetCommand = "fd --type f";
-    # fileWidgetOptions = [ "--preview 'pistol {}'" ];
-
-    changeDirWidgetCommand = "fd --type d";
-    # changeDirWidgetOptions = [
-    # "--height=90%"
-    # "--preview='pistol {}'"
-    # "--preview-window=wrap:down:70%"
-    # ];
-
-    historyWidgetOptions = [
-      "--preview ''"
-    ];
+    fileWidgetCommand = "fd --type f"; # Ctrl-t
+    fileWidgetOptions = [ "--preview 'pistol {}'" ];
+    changeDirWidgetCommand = "fd --type d"; # Alt-c
+    changeDirWidgetOptions = [ "--preview 'pistol {}'" ];
   };
 }
