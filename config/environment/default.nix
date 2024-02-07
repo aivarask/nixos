@@ -16,7 +16,7 @@
     libxkbcommon
 
     # terminal
-    ytfzf
+    tdrop
     ueberzugpp
     ollama
     tilda

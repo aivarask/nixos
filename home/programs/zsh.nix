@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.zsh = {
     sessionVariables = { };
     enable = true;
@@ -26,6 +26,7 @@
       # >>>
     '';
     plugins = [
+      # pkgs.zsh-autocomplete
       # {
       #   # https://github.com/chisui/zsh-nix-shell
       #   name = "zsh-nix-shell";

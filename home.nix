@@ -1,4 +1,4 @@
-{ inputs, include, ... }: {
+{ inputs, include, pkgs, ... }: {
   home.stateVersion = "23.05";
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
@@ -17,4 +17,8 @@
     # SYSTEM = config.system.name;
   };
   home.file = { };
+  home.packages = with pkgs; [
+    ytfzf
+
+  ];
 }

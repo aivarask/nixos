@@ -62,7 +62,11 @@
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = import ./home.nix; };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.root = import ./home.nix;
+              };
               home-manager.extraSpecialArgs = common // { };
             }
           ];
@@ -80,7 +84,11 @@
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = import ./home.nix; };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.root = import ./home.nix;
+              };
               home-manager.extraSpecialArgs = common // { };
             }
           ];

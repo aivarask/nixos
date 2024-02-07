@@ -26,7 +26,7 @@
       hinting.enable = true;
       hinting.autohint = true;
       defaultFonts = {
-        # fc-list --format="%{family}\n"|fzf
+        # fc-list --format="%{family}\n"
         # fc-match emoji
         emoji = [ "JoyPixels" ];
         monospace = [ "Hack Nerd Font Mono" "JoyPixels" ];

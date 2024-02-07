@@ -18,7 +18,7 @@
       "--bind 'ctrl-g:execute(eval \"fzl\")'"
       "--bind 'ctrl-h:reload(fd --type f --hidden)'"
       # "--bind 'ctrl-/:preview:pistol {}'"
-      "--bind 'ctrl-/:toggle-preview'"
+      "--bind 'ctrl-]:toggle-preview'"
       "--preview 'pistol {}'"
       "--preview-window hidden"
     ];

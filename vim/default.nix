@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   commonPlugins = with pkgs.vimPlugins; [
+    # ack-vim # 2018
     vim-projectionist
     vim-log-highlighting
     vim-jsdoc

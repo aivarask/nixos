@@ -1,0 +1,44 @@
+# https://github.com/baskerville/sxhkd
+super + ctrl + Return
+  tabbed -c alacritty --embed
+super + c
+  alacritty
+super + q
+  tdrop alacritty
+super + F1
+  notify-send ' 🚀 Keymaps' "$(cat /etc/nixos/sxhkdrc)"
+super + F2
+  alacritty -e htop # 🧬
+super + F3
+  alacritty -e ncmpcpp # ⏯️
+super + F4
+  alacritty -e pulsemixer # 🔉
+super + F5
+  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  Hotkeys reloaded'
+super + F6
+  alacritty -e tmux new-session lf \; split-window -h lf \; attach
+super + F7
+  telegram-desktop
+super + F9
+  notify-send ' ♻️  nixos-rebuild switch' "$(nixos-rebuild switch)"
+super + F10
+  dunstctl close
+
+super + {w,e,r}
+  {$BROWSER,alacritty --working-directory=/etc/nixos -e nvim,}
+super + {a,s}
+  pulsemixer --change-volume {-,+}2 --max-volume 100
+super + {z,x,v}
+  {brightnessctl set 10%-,brightnessctl set 10%+,alacritty -e pulsemixer
+
+super + {W,E,Y}
+  {firefox --private-window,firefox messenger.com,firefox youtube.com}
+
+XF86Audio{Play,Mute,Prev,Next}
+  mpc {play,stop,prev,next}
+XF86Audio{Lower,Raise}Volume
+  pulsemixer --change-volume {-,+}2 --max-volume 100
+XF86MonBrightness{Down,Up}
+  brightnessctl set 10%{-,+}
+
+# Break Pause Print Scroll_Lock XF86Calculator XF86HomePage XF86Mail XF86Search

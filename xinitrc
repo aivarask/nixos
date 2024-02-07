@@ -25,8 +25,8 @@ systemctl --user restart dwm-status.service & # ./config/services/dwm-status.nix
 # custom
 systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
 # Home manager
-systemctl --user restart dunst.service & # ./home/services/dunst.nix
-sxhkd &                                  # ./home/services/sxhkd.nix
+systemctl --user restart dunst.service &
+sxhkd -c /etc/nixos/sxhkdrc &
 
 # tilda -g /etc/nixos/tilda &
 

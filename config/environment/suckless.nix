@@ -5,5 +5,6 @@
     st
     dwm
     emojipick
+    wmname
   ];
 }
