@@ -1,37 +1,27 @@
 { pkgs, ... }:
 let
   commonPlugins = with pkgs.vimPlugins; [
-    # ack-vim # 2018
+    # vim-obsession
+    # auto-pairs
     vim-projectionist
     vim-log-highlighting
     vim-jsdoc
     telescope-fzf-native-nvim
-    # vim-obsession
     vim-devicons
     vim-abolish
     vim-dispatch
-
     vim-cool
     vim-sensible
     vim-lastplace
     bclose-vim
     vim-commentary
-    # auto-pairs
-    vim-fugitive
-    fugitive-gitlab-vim
     vim-surround
     vim-floaterm
     fzf-vim
-
     lf-vim
-    vim-gruvbox8
     gruvbox-material
-
-    vim-colors-solarized
     vim-highlightedyank
-
     switch-vim
-    vim-jsx-pretty
     vim-matchup
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [

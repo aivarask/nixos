@@ -10,6 +10,5 @@ wkr({
 }, { prefix = '<leader>' })
 
 wkr({
-  name = '2L',
-  a = { [[:call _#save_and_exec()<CR>]], ':call _#save_and_exec()' },
+  name = 'Leader Leader',
 }, { prefix = '<leader><leader>' })

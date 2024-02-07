@@ -78,6 +78,27 @@ map <silent> <leader>, :vertical resize -5<CR>
 
 
 nmap <leader>q :quitall<CR>
-nnoremap tq :call ak#toggle_quickfix()<CR>
-" nnoremap th :call ak#toggle_help()<CR>
+
+if !exists('*SaveExec')
+  function! SaveExec() abort
+    if &filetype == 'vim'
+      :silent! write
+      :source %
+    elseif &filetype == 'lua'
+      :silent! write
+      :luafile %
+    endif
+    return
+  endfunction
+endif
+nmap <leader><leader>a :call SaveExec()<CR>
+
+function! Ctoggle()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+nnoremap tq :call Ctoggle()<CR>
 

@@ -5,3 +5,4 @@ nnoremap <leader>lw :LfWorkingDirectory<CR>
 
 nnoremap <C-s> :silent w<CR>
 inoremap <silent><C-s> <C-o>:silent w<CR>
+
