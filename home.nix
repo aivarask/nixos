@@ -3,7 +3,7 @@
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    ./vim
+    ./neovim.nix
   ]
   ++ include ./home
   ++ include ./home/programs

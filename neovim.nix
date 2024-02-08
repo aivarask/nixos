@@ -201,9 +201,9 @@ in
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
       ''
-        let &runtimepath.=',/etc/nixos/vim'
+        let &runtimepath.=',/etc/nixos'
         lua << EOF
-        dofile("/etc/nixos/vim/init.lua")
+        dofile("/etc/nixos/init.lua")
         EOF
       ''
     ];
