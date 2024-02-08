@@ -1,49 +1,115 @@
 { pkgs, ... }:
 let
+  # https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix
   commonPlugins = with pkgs.vimPlugins; [
-    # vim-obsession
-    # auto-pairs
-    vim-projectionist
-    vim-log-highlighting
-    vim-jsdoc
-    telescope-fzf-native-nvim
+    vim-log-highlighting # https://github.com/MTDL9/vim-log-highlighting
+    {
+      plugin = vim-interestingwords; # https://github.com/lfv89/vim-interestingwords
+      config = "let g:interestingWordsDefaultMappings = 1";
+    }
+    vim-highlightedyank
+    vim-cursorword
     vim-devicons
-    vim-abolish
-    vim-dispatch
     vim-cool
     vim-sensible
     vim-lastplace
-    bclose-vim
     vim-commentary
-    vim-surround
-    vim-floaterm
-    fzf-vim
-    lf-vim
-    gruvbox-material
-    vim-highlightedyank
-    switch-vim
-    vim-matchup
+    {
+      plugin = bclose-vim;
+      config = ''
+        let g:bclose_no_plugin_maps=1
+        nnoremap <silent> <M-q> :Bclose<CR>
+        nnoremap <M-Q> :Bclose!<CR>
+      '';
+    }
+    {
+      plugin = vim-abolish;
+      config = ''
+        nmap <leader><leader>s :Subvert/<C-r><C-w>//g<Left><Left>
+        nmap <leader><leader>S :%Subvert/<C-r><C-w>//g<Left><Left>
+      '';
+    }
+    {
+      plugin = auto-pairs;
+      config = ''
+        let g:AutoPairsFlyMode = 1
+        let g:AutoPairsShortcutBackInsert = '<C-b>'
+      '';
+    }
+    {
+      plugin = vim-floaterm;
+      config = ''
+        let g:floaterm_autoclose = 2
+        let g:floaterm_height = 0.7
+        let g:floaterm_width = 0.8
+        let g:floaterm_wintype = 'float'
+        autocmd VimResized * FloatermUpdate
+        if !has('nvim')
+          nnoremap <F12> :FloatermToggle<CR>
+          tnoremap <F12> <C-W>:FloatermToggle<CR>
+        endif
+      '';
+    }
+    {
+      plugin = lf-vim;
+      config = "let g:lf_map_keys = 0";
+    }
+    {
+      plugin = gruvbox-material;
+      config = ''
+        if has('termguicolors')
+          set termguicolors
+        endif
+        set background=dark
+        let g:gruvbox_material_background = 'medium'
+        let g:gruvbox_material_foreground = 'mix'
+        colorscheme gruvbox-material
+      '';
+    }
+    {
+      plugin = switch-vim; # _switch.vim
+      config = ''
+        let g:switch_mapping = ""
+        nnoremap <silent> <Plug>(SwitchInLine) :<C-U>call SwitchLine(v:count1)<CR>
+        nmap <M-s> <Plug>(SwitchInLine)
+        imap <M-s> <C-O><M-s>
+      '';
+    }
+    fzf-vim # _fzf.vim
+    vim-surround # _surround.vim
+    vim-matchup # _treesitter.lua
   ];
   nvimOnlyPlugins = with pkgs.vimPlugins; [
+    neovim-session-manager # https://github.com/Shatur/neovim-session-manager
+    telescope-nvim
+    telescope-fzf-native-nvim
+    telescope-dap-nvim
+    telescope-symbols-nvim
+    #
+    trouble-nvim
+    todo-comments-nvim
     # Session
-    persistence-nvim
-    neovim-session-manager
-    project-nvim
-    telescope-project-nvim
-    which-key-nvim
-
-    # https://github.com/itchyny/vim-cursorword/
-    vim-cursorword
-    # https://github.com/lfv89/vim-interestingwords
-    vim-interestingwords
-    indent-blankline-nvim
+    {
+      plugin = which-key-nvim;
+      type = "lua";
+      config = ''
+        require('which-key').setup({})
+        wkr = require('which-key').register
+      '';
+    }
+    {
+      plugin = indent-blankline-nvim;
+      config = "require('ibl').setup({})";
+      type = "lua";
+    }
+    lazygit-nvim
 
     # LSP:
+    nvim-lspconfig
     refactoring-nvim
     lsp_signature-nvim
     lsp-overloads-nvim
     nvim-lsp-file-operations
-    nvim-lspconfig
     # null-ls-nvim
     none-ls-nvim
     symbols-outline-nvim
@@ -65,33 +131,27 @@ let
     cmp-zsh
     cmp-git
     # cmp-treesitter
-    lspkind-nvim
     nvim-autopairs
     cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip
     luasnip # https://github.com/L3MON4D3/LuaSnip
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
     # TREE_SITTER:
     nvim-treesitter.withAllGrammars
-    nvim-ts-context-commentstring
+    { plugin = nvim-ts-context-commentstring; type = "lua"; config = "require('ts_context_commentstring').setup({})"; }
     nvim-treesitter-textobjects
     nvim-ts-autotag
     nvim-treesitter-endwise
 
     # OTHER
-    lazygit-nvim
     pretty-fold
     fold-preview
-    template-string-nvim
 
     # UI/UX:
     # auto-session
-    dressing-nvim
     lualine-nvim
     lualine-lsp-progress
-    nvim-web-devicons
-    neoscroll-nvim
     nvim-tree-lua
-    nvim-colorizer-lua
+
     toggleterm-nvim
 
     # DEBUG:
@@ -106,26 +166,37 @@ let
     nvim-dap-go
     # --
 
-    # UI
-    glow-nvim
-    telescope-nvim
-    telescope-dap-nvim
-    telescope-fzy-native-nvim
-    # telescope-cheat-nvim
-    telescope-symbols-nvim
-    trouble-nvim # https://github.com/folke/trouble.nvim
-    todo-comments-nvim # https://github.com/folke/todo-comments.nvim
+  ];
+  lsp = with pkgs.vimPlugins; [ ];
+  completion = with pkgs.vimPlugins; [ ];
+  misc = with pkgs.vimPlugins; [
+    { plugin = dressing-nvim; type = "lua"; config = "require('dressing').setup({})"; }
+    { plugin = neoscroll-nvim; type = "lua"; config = "require('neoscroll').setup({})"; }
+    { plugin = nvim-colorizer-lua; type = "lua"; config = "require('colorizer').setup({})"; }
+    { plugin = nvim-web-devicons; type = "lua"; config = "require('nvim-web-devicons').setup({})"; }
+    {
+      plugin = glow-nvim;
+      type = "lua";
+      config = ''
+        require('glow').setup({
+          width = 80,
+          height = 100,
+          width_ratio = 0.9,
+          height_ratio = 0.9,
+        })
+      '';
+    }
   ];
 in
 {
-  # programs.vim = {
-  #   enable = true;
-  #   plugins = vimOnlyPlugins ++ commonPlugins;
-  #   extraConfig = ''
-  #     let &runtimepath.=',/etc/nixos/vim'
-  #     source /etc/nixos/vim/vimrc.vim
-  #   '';
-  # };
+  programs.vim = {
+    enable = true;
+    # plugins = commonPlugins;
+    extraConfig = ''
+      let &runtimepath.=',/etc/nixos'
+      source /etc/nixos/vimrc.vim
+    '';
+  };
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
@@ -137,7 +208,7 @@ in
       ''
     ];
     package = pkgs.neovim-nightly;
-    plugins = nvimOnlyPlugins ++ commonPlugins;
+    plugins = commonPlugins ++ nvimOnlyPlugins ++ completion ++ misc;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
