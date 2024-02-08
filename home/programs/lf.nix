@@ -30,7 +30,7 @@
       T = ":get-mime-type";
       "<esc>" = ":quit";
       ZZ = ":quit";
-      lg = "!lazygit";
+      "\\lg" = "!lazygit"; # not recognised
       "--" = "set ratios 1:2";
       "++" = "set ratios 1:2:3";
       "+x" = "$chmod +x $fx";
