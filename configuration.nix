@@ -1,4 +1,4 @@
-{ pkgs, include, ... }:
+{ include, ... }:
 {
   imports = [
     # ./paging.nix
@@ -17,11 +17,4 @@
   environment.shellAliases = {
     tilda = "tilda -g /etc/nixos/tilda";
   };
-
-  # https://nixos.org/manual/nixpkgs/unstable/#vim
-  environment.systemPackages = with pkgs; [
-    # https://nixos.org/manual/nixpkgs/unstable/#vim
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/editors/vim/plugins/vim-utils.nix
-    vim-full
-  ];
 }
