@@ -9,6 +9,5 @@
       serve
       pm2
       dotenv-cli
-      jsdoc
     ]);
 }
