@@ -16,12 +16,12 @@
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
+    vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
+    # --
     pretty-fold = { url = "github:anuvyklack/pretty-fold.nvim"; flake = false; };
     fold-preview = { url = "github:anuvyklack/fold-preview.nvim"; flake = false; };
     refactoring-nvim = { url = "github:ThePrimeagen/refactoring.nvim"; flake = false; };
-    vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
-    persistence-nvim = { url = "github:folke/persistence.nvim"; flake = false; };
     neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     osv = { url = "github:jbyuki/one-small-step-for-vimkind"; flake = false; };
