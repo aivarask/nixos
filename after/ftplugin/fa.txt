@@ -1,6 +1,0 @@
-fa
-fa-2x
-fa-3x
-fa-4x
-fa-500px
-fa-5x
