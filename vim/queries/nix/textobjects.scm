@@ -1,4 +1,0 @@
-; extends
-
-(binding) @class.outer
-
