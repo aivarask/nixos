@@ -16,6 +16,7 @@
     libxkbcommon
 
     # terminal
+    lazygit
     tdrop
     ueberzugpp
     ollama

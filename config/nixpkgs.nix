@@ -64,6 +64,10 @@
                 name = "vim-log-highlighting";
                 src = vim-log-highlighting;
               };
+              vim-interestingwords = buildVimPlugin {
+                name = "vim-interestingwords";
+                src = vim-interestingwords;
+              };
               pretty-fold = buildVimPlugin {
                 name = "pretty-fold";
                 src = pretty-fold;
@@ -76,19 +80,11 @@
                 name = "refactoring-nvim";
                 src = refactoring-nvim;
               };
-              vim-interestingwords = buildVimPlugin {
-                name = "vim-interestingwords";
-                src = vim-interestingwords;
-              };
               nvim-lsp-file-operations = buildVimPlugin {
                 name = "nvim-lsp-file-operations";
                 src = nvim-lsp-file-operations;
               };
               # Session management
-              persistence-nvim = buildVimPlugin {
-                name = "persistence-nvim";
-                src = persistence-nvim;
-              };
               neovim-session-manager = buildVimPlugin {
                 name = "neovim-session-manager";
                 src = neovim-session-manager;
