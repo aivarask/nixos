@@ -1,8 +1,3 @@
-{pkgs, ...}: {
-
+{ pkgs, ... }: {
+  programs.neovim.plugins = with pkgs.vimPlugins; [ neotest neotest-plenary ];
 }
-  # neotestPlugins = with pkgs.vimPlugins; [
-  #   neotest # plugin/__neotest.lua
-  #   neotest-plenary
-  # ];
-

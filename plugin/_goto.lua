@@ -32,7 +32,7 @@ Go = {
     end,
   },
   vimPlugins = {
-    cword = function() -- neotest
+    cword = function()
       homepage('vimPlugins.', '<cword>')
     end,
     cWORD = function()

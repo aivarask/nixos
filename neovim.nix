@@ -155,14 +155,7 @@ let
     { plugin = nvim-colorizer-lua; type = "lua"; config = "require('colorizer').setup({})"; }
     { plugin = nvim-web-devicons; type = "lua"; config = "require('nvim-web-devicons').setup({})"; }
   ];
-  telescope = with pkgs.vimPlugins; [
-    telescope-nvim # plugin/__telescope.lua
-    telescope-fzf-native-nvim
-    telescope-dap-nvim
-    telescope-symbols-nvim
-    trouble-nvim
-    todo-comments-nvim
-  ];
+
   treesitter = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars # plugin/__treesitter.lua
     { plugin = nvim-ts-context-commentstring; type = "lua"; config = "require('ts_context_commentstring').setup({})"; }
@@ -191,8 +184,6 @@ in
       ++ dap
       ++ lsp
       ++ misc
-      # ++ neotestPlugins
-      ++ telescope
       ++ treesitter;
     vimdiffAlias = true;
     withNodeJs = true;

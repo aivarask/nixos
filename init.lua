@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-neotest = require('neotest')
 
 dap = require('dap')
 widgets = require('dap.ui.widgets')
