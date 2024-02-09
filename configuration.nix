@@ -8,7 +8,7 @@
   ++ include ./config/programs
   ++ include ./config/services
   ++ include ./config/systemd
-  ++ include ./plugin
+  ++ include ./plugin/lang
   ;
   environment.variables = {
     #
