@@ -102,13 +102,7 @@ let
     nvim-tree-lua # plugin/_nvim-tree.lua
     toggleterm-nvim # plugin/_terminal.lua
   ];
-  codelens = with pkgs.vimPlugins; [
-    # plugin/__codelens.lua
-    fold-preview
-    goto-preview
-    hover-nvim
-    pretty-fold
-  ];
+  
   completion = with pkgs.vimPlugins; [
     # plugin/__completion.lua
     nvim-autopairs # _autopairs.lua
@@ -179,7 +173,6 @@ in
     package = pkgs.neovim-nightly;
     plugins = vimPlugins
       ++ nvimPlugins
-      ++ codelens
       ++ completion
       ++ dap
       ++ lsp
