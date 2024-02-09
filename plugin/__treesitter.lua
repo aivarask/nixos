@@ -2,7 +2,7 @@ if not pcall(require, 'nvim-treesitter') then
   return
 end
 
-wkr({
+require('which-key').register({
   ['['] = {
     name = 'Previous',
     t = { require('todo-comments').jump_prev, 'todo-comments.jump_prev' },

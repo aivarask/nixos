@@ -1,10 +1,6 @@
 local wkr = require('which-key').register
 
 wkr({
-  qq = { require('nvim-tree.api').tree.toggle, 'nvim-tree.toggle' },
-})
-
-wkr({
   name = '1L',
   [']'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
 }, { prefix = '<leader>' })

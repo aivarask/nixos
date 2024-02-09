@@ -16,8 +16,8 @@
       ];
       trusted-public-keys = [ ];
     };
-    settings.max-jobs = 3;
-    settings.cores = 3;
+    settings.max-jobs = 2;
+    settings.cores = 4;
     extraOptions = ''
       experimental-features = nix-command flakes 
       warn-dirty = false

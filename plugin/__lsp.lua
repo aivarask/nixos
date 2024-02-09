@@ -1,9 +1,13 @@
--- https://github.com/antosha417/nvim-lsp-file-operations
--- ~/.cache/nvim/nvim-lsp-file-operations.log
-require('lsp-file-operations').setup({ debug = false })
+require('lsp_signature').setup({
+  -- lsp_signature-configure
+  floating_window = false,
+  close_timeout = 1000,
+  hint_prefix = '🚀 ',
+  toggle_key = '<M-x>',
+})
 
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
-
+local wkr = require('which-key').register
 wkr({
   ['[d'] = { vim.diagnostic.goto_prev, 'vim.diagnostic.goto_prev' },
   [']d'] = { vim.diagnostic.goto_next, 'vim.diagnostic.goto_next' },

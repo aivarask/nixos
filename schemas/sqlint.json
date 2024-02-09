@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "/etc/nixos/vim/schemas/sqlint.json",
+  "$id": "/etc/nixos/schemas/sqlint.json",
   "title": "sqlintrc",
   "description": "Sqlintrc schema",
   "type": "object",

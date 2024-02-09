@@ -1,3 +1,5 @@
+vim.api.nvim_set_keymap('n', 'qq', [[:NvimTreeOpen<CR>]], { noremap = true, silent = true })
+
 -- https://github.com/kyazdani42/nvim-tree.lua
 require('nvim-tree').setup({
   on_attach = function(bufnr)
@@ -20,6 +22,32 @@ require('nvim-tree').setup({
   view = { width = 25, signcolumn = 'no' },
   ui = { confirm = { trash = false } },
 })
+
+
+function sveltekit_file()
+  local api = require('nvim-tree.api')
+  return vim.ui.select({ '+page.server.ts', '+page.svelte', '+server.ts' }, {
+    prompt = 'New file',
+    format_item = function(item) return item end,
+  }, function(item)
+    if item == nil then
+      return
+    else
+      local node = api.tree.get_node_under_cursor()
+      local path
+      if node.fs_stat.type == 'directory' then
+        if node then
+          path = node.absolute_path .. '/' .. item
+        else
+          path = node.parent.absolute_path .. '/' .. item
+        end
+      else
+        path = vim.fn.expand('%:h') .. '/' .. item
+      end
+      vim.cmd.edit(path)
+    end
+  end)
+end
 
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#h-j-k-l-style-navigation-and-editing

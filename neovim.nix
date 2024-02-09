@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
-  # https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix
-  commonPlugins = with pkgs.vimPlugins; [
+  vimPlugins = with pkgs.vimPlugins; [
     vim-log-highlighting # https://github.com/MTDL9/vim-log-highlighting
     {
       plugin = vim-interestingwords; # https://github.com/lfv89/vim-interestingwords
@@ -78,17 +77,12 @@ let
     fzf-vim # _fzf.vim
     vim-surround # _surround.vim
     vim-matchup # _treesitter.lua
+    # vimspector
   ];
-  nvimOnlyPlugins = with pkgs.vimPlugins; [
-    neovim-session-manager # https://github.com/Shatur/neovim-session-manager
-    telescope-nvim
-    telescope-fzf-native-nvim
-    telescope-dap-nvim
-    telescope-symbols-nvim
-    #
-    trouble-nvim
-    todo-comments-nvim
-    # Session
+  nvimPlugins = with pkgs.vimPlugins; [
+    # auto-session
+    # https://github.com/Shatur/neovim-session-manager
+    neovim-session-manager # plugin/_session.lua 
     {
       plugin = which-key-nvim;
       type = "lua";
@@ -103,26 +97,22 @@ let
       type = "lua";
     }
     lazygit-nvim
-
-    # LSP:
-    nvim-lspconfig
-    refactoring-nvim
-    lsp_signature-nvim
-    lsp-overloads-nvim
-    nvim-lsp-file-operations
-    # null-ls-nvim
-    none-ls-nvim
-    symbols-outline-nvim
-    SchemaStore-nvim
-    hover-nvim
+    lualine-nvim # plugin/_lualine.lua
+    lualine-lsp-progress
+    nvim-tree-lua # plugin/_nvim-tree.lua
+    toggleterm-nvim # plugin/_terminal.lua
+  ];
+  codelens = with pkgs.vimPlugins; [
+    # plugin/__codelens.lua
+    fold-preview
     goto-preview
-    # TEST
-    neotest
-    neotest-plenary
-    # COMPLETION:
-    # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-    cmp-nvim-lsp-signature-help
-    nvim-cmp
+    hover-nvim
+    pretty-fold
+  ];
+  completion = with pkgs.vimPlugins; [
+    # plugin/__completion.lua
+    nvim-autopairs # _autopairs.lua
+    nvim-cmp # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
     cmp-cmdline
     cmp-nvim-lsp
     cmp-buffer
@@ -130,46 +120,35 @@ let
     cmp-emoji
     cmp-zsh
     cmp-git
-    # cmp-treesitter
-    nvim-autopairs
     cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip
     luasnip # https://github.com/L3MON4D3/LuaSnip
     friendly-snippets # https://github.com/rafamadriz/friendly-snippets
-    # TREE_SITTER:
-    nvim-treesitter.withAllGrammars
-    { plugin = nvim-ts-context-commentstring; type = "lua"; config = "require('ts_context_commentstring').setup({})"; }
-    nvim-treesitter-textobjects
-    nvim-ts-autotag
-    nvim-treesitter-endwise
-
-    # OTHER
-    pretty-fold
-    fold-preview
-
-    # UI/UX:
-    # auto-session
-    lualine-nvim
-    lualine-lsp-progress
-    nvim-tree-lua
-
-    toggleterm-nvim
-
-    # DEBUG:
-    vimspector
+    # cmp-treesitter
+  ];
+  dap = with pkgs.vimPlugins; [
+    # plugin/__dap.lua
     nvim-dap
     nvim-dap-ui
     nvim-dap-virtual-text
     osv
     nvim-dap-vscode-js
     nvim-dap-python
-    flatten-nvim
     nvim-dap-go
-    # --
-
   ];
-  lsp = with pkgs.vimPlugins; [ ];
-  completion = with pkgs.vimPlugins; [ ];
+  lsp = with pkgs.vimPlugins; [
+    # plugin/__lsp.lua
+    nvim-lspconfig
+    refactoring-nvim
+    lsp_signature-nvim
+    lsp-overloads-nvim
+    { plugin = nvim-lsp-file-operations; type = "lua"; config = "require('lsp-file-operations').setup({ debug = false })"; }
+    none-ls-nvim
+    SchemaStore-nvim
+  ];
   misc = with pkgs.vimPlugins; [
+    # plugin/__misc.lua
+    symbols-outline-nvim
+    flatten-nvim
     { plugin = dressing-nvim; type = "lua"; config = "require('dressing').setup({})"; }
     { plugin = neoscroll-nvim; type = "lua"; config = "require('neoscroll').setup({})"; }
     { plugin = nvim-colorizer-lua; type = "lua"; config = "require('colorizer').setup({})"; }
@@ -178,25 +157,30 @@ let
       plugin = glow-nvim;
       type = "lua";
       config = ''
-        require('glow').setup({
-          width = 80,
-          height = 100,
-          width_ratio = 0.9,
-          height_ratio = 0.9,
-        })
       '';
     }
   ];
+  neotestPlugins = with pkgs.vimPlugins; [
+    neotest # plugin/__neotest.lua
+    neotest-plenary
+  ];
+  telescope = with pkgs.vimPlugins; [
+    telescope-nvim # plugin/__telescope.lua
+    telescope-fzf-native-nvim
+    telescope-dap-nvim
+    telescope-symbols-nvim
+    trouble-nvim
+    todo-comments-nvim
+  ];
+  treesitter = with pkgs.vimPlugins; [
+    nvim-treesitter.withAllGrammars # plugin/__treesitter.lua
+    { plugin = nvim-ts-context-commentstring; type = "lua"; config = "require('ts_context_commentstring').setup({})"; }
+    nvim-treesitter-textobjects
+    nvim-ts-autotag
+    nvim-treesitter-endwise
+  ];
 in
 {
-  programs.vim = {
-    enable = true;
-    # plugins = commonPlugins;
-    extraConfig = ''
-      let &runtimepath.=',/etc/nixos'
-      source /etc/nixos/vimrc.vim
-    '';
-  };
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
@@ -208,10 +192,27 @@ in
       ''
     ];
     package = pkgs.neovim-nightly;
-    plugins = commonPlugins ++ nvimOnlyPlugins ++ completion ++ misc;
+    plugins = vimPlugins
+      ++ nvimPlugins
+      ++ codelens
+      ++ completion
+      ++ dap
+      ++ lsp
+      ++ misc
+      ++ neotestPlugins
+      ++ telescope
+      ++ treesitter;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
+  };
+  programs.vim = {
+    enable = true;
+    # plugins = commonPlugins;
+    extraConfig = ''
+      let &runtimepath.=',/etc/nixos'
+      source /etc/nixos/vimrc.vim
+    '';
   };
 }

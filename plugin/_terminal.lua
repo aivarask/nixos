@@ -12,7 +12,6 @@ require('toggleterm').setup({
   end,
   -- open_mapping = [[<c-\>]],
   -- insert_mappings = true,
-
   float_opts = {
     height = 50,
   },
@@ -22,22 +21,3 @@ local Terminal = require('toggleterm.terminal').Terminal
 local nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true })
 
 function _nix_repl_toggle() nix_repl:toggle() end
-
--- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
--- https://discourse.nixos.org/t/nix-repl-add-builtins-to-global-scope/2678
--- https://nixos.wiki/wiki/Nix_command/repl
-wkr({
-  name = 'REPL',
-  n = { '<cmd>lua _nix_repl_toggle()<CR>', '_nix_repl_toggle' },
-  t = {
-    function() Terminal:new({ cmd = 'nix repl' }):toggle() end,
-    'nix repl test function',
-  },
-  f = {
-    function()
-      print(vim.fn.expand('%'))
-      Terminal:new({ cmd = 'nix repl --file ' .. vim.fn.expand('%') }):toggle()
-    end,
-    'nix repl --file',
-  },
-}, { prefix = '<leader>R' })

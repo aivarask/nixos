@@ -40,6 +40,6 @@ case $session in
   xfce | xfce4) exec startxfce4 ;;
   dwm) exec dwm ;;
   # Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
-  awesome) exec awesome -c /etc/nixos/vim/lua/awesome_rc.lua ;;
+  awesome) exec awesome -c awesome_rc.lua ;;
   *) exec "$1" ;;
 esac

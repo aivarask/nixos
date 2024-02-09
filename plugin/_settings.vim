@@ -4,6 +4,8 @@ set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
 set foldexpr=nvim_treesitter#foldexpr()
+" set foldlevelstart=2
+" set foldlevel=3
 set foldlevel=99
 set foldmethod=expr
 set foldnestmax=5

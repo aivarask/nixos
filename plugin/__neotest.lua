@@ -28,7 +28,7 @@ neotest.run.dap = function()
   neotest.run.run({ strategy = 'dap' })
 end
 
-wkr({
+require('which-key').register({
   name = 'Neotest',
   ['1'] = { neotest.run.buffer_dap, 'run.buffer_dap' },
   r = { neotest.run.run, 'run.run' },

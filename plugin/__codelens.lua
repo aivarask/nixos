@@ -1,17 +1,3 @@
--- https://github.com/rmagatti/goto-preview
--- no doc
-require('goto-preview').setup({
-  -- border = false,
-})
-
-function foo()
-  print('hi')
-end
-
-foo()
-
--- https://github.com/anuvyklack/pretty-fold.nvim
-require('pretty-fold').setup()
 -- https://github.com/anuvyklack/fold-preview.nvim
 -- fold-preview.config
 require('fold-preview').setup({
@@ -19,7 +5,19 @@ require('fold-preview').setup({
   default_keybindings = false, -- requires https://github.com/anuvyklack/keymap-amend.nvim
 })
 
-wkr({
+-- https://github.com/rmagatti/goto-preview
+-- no doc
+require('goto-preview').setup({
+  -- border = false,
+})
+
+-- https://github.com/lewis6991/hover.nvim
+require('hover.providers.lsp')
+
+-- https://github.com/anuvyklack/pretty-fold.nvim
+require('pretty-fold').setup()
+
+require('which-key').register({
   name = 'Preview',
   gpf = { require('fold-preview').toggle_preview, 'fold-preview.toggle_preview' },
   gpd = { require('goto-preview').goto_preview_definition, 'definition' },
