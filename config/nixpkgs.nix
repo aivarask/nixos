@@ -63,40 +63,32 @@
               vim-log-highlighting = buildVimPlugin {
                 name = "vim-log-highlighting";
                 src = vim-log-highlighting;
+                meta = { homepage = "https://github.com/MTDL9/vim-log-highlighting"; };
               };
               vim-interestingwords = buildVimPlugin {
                 name = "vim-interestingwords";
                 src = vim-interestingwords;
-              };
-              pretty-fold = buildVimPlugin {
-                name = "pretty-fold";
-                src = pretty-fold;
-              };
-              fold-preview = buildVimPlugin {
-                name = "fold-preview";
-                src = fold-preview;
-              };
-              refactoring-nvim = buildVimPlugin {
-                name = "refactoring-nvim";
-                src = refactoring-nvim;
+                meta = { homepage = "https://github.com/lfv89/vim-interestingwords"; };
               };
               nvim-lsp-file-operations = buildVimPlugin {
                 name = "nvim-lsp-file-operations";
                 src = nvim-lsp-file-operations;
+                meta = { homepage = "https://github.com/antosha417/nvim-lsp-file-operations"; };
               };
-              # Session management
               neovim-session-manager = buildVimPlugin {
                 name = "neovim-session-manager";
                 src = neovim-session-manager;
+                meta = { homepage = "https://github.com/Shatur/neovim-session-manager"; };
               };
-              # DEBUGGING
               nvim-dap-vscode-js = buildVimPlugin {
                 name = "nvim-dap-vscode-js";
                 src = nvim-dap-vscode-js;
+                meta = { homepage = "https://github.com/mxsdev/nvim-dap-vscode-js"; };
               };
               osv = buildVimPlugin {
                 name = "osv";
                 src = osv;
+                meta = { homepage = "https://github.com/jbyuki/one-small-step-for-vimkind"; };
               };
             };
         })

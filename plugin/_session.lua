@@ -1,4 +1,4 @@
-wkr({
+require('which-key').register({
   name = 'SessionManager',
   s = { '<cmd>:SessionManager load_session<cr>', 'load_session' },
   d = { '<cmd>:SessionManager delete_session<cr>', 'delete_session' },

@@ -17,10 +17,6 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
     vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
-    # --
-    pretty-fold = { url = "github:anuvyklack/pretty-fold.nvim"; flake = false; };
-    fold-preview = { url = "github:anuvyklack/fold-preview.nvim"; flake = false; };
-    refactoring-nvim = { url = "github:ThePrimeagen/refactoring.nvim"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
     neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };

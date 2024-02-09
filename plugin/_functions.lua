@@ -6,15 +6,6 @@ function help_cexpr() vim.cmd.help(vim.fn.expand('<cexpr>')) end
 
 function custom_yank() vim.fn.setreg('p', vim.fn.expand('%:p')) end
 
-function homepage(scope, expand)
-  local expanded = vim.fn.expand(expand)
-  vim.cmd(
-    [[!nix eval nixpkgs\#]]
-    .. scope
-    .. expanded
-    .. [[.meta.homepage | xargs xdg-open]]
-  )
-end
 
 function xo(expand)
   local arg = vim.fn.escape(vim.fn.expand(expand), '#')

@@ -2,30 +2,44 @@ if not pcall(require, 'nvim-treesitter') then
   return
 end
 
-require('which-key').register({
-  ['['] = {
-    name = 'Previous',
-    t = { require('todo-comments').jump_prev, 'todo-comments.jump_prev' },
-  },
-  [']'] = {
-    name = 'Next',
-    t = { require('todo-comments').jump_next, 'todo-comments.jump_next' },
-  },
-})
+vim.cmd([[
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+  set nofoldenable
+]])
 
-require('nvim-treesitter.configs').setup({
-  textobjects = {
-    -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+require('nvim-treesitter.configs').setup({ -- nvim-treesitter
+  highlight = { enable = true },
+  indent = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = 'tt',
+      node_incremental = '<Tab>',
+      scope_incremental = 'ti',
+      node_decremental = '<S-Tab>',
+    },
+  },
+  matchup = { enable = false }, -- vim-matchup
+  endwise = { enable = false }, -- nvim-treesitter-endwise
+  autotag = {                   -- nvim-ts-autotag
+    enable = true,
+    filetypes = { 'templ', 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'xml', 'php', 'markdown' },
+  },
+  -- nvim-treesitter-context plugin
+  -- nvim-ts-context-commentstring plugin
+  textobjects = { -- nvim-treesitter-textobjects
     select = {
       enable = true,
       lookahead = true,
       keymaps = {
-        ['ax'] = '@attribute.outer',
-        ['aX'] = '@block.outer',
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
+        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+        -- ['ax'] = '@attribute.outer',
+        -- ['aX'] = '@block.outer',
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
@@ -34,6 +48,7 @@ require('nvim-treesitter.configs').setup({
       },
       include_surrounding_whitespace = true,
     },
+    -- TODO: swap config
     swap = {
       enable = true,
       swap_next = {
@@ -51,8 +66,8 @@ require('nvim-treesitter.configs').setup({
         ['<f'] = '@function.outer',
       },
     },
+    -- TODO: move config
     move = {
-      -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects#text-objects-move
       enable = true,
       set_jumps = true,
       goto_next_start = {
@@ -68,52 +83,14 @@ require('nvim-treesitter.configs').setup({
         ['[f'] = '@function.outer',
       },
     },
-  },
-  -- https://github.com/nvim-treesitter/nvim-treesitter
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'tt',
-      node_incremental = '<Tab>',
-      scope_incremental = 'ti',
-      node_decremental = '<S-Tab>',
+    lsp_interop = {
+      enable = true,
+      border = 'none',
+      floating_preview_opts = {},
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
     },
-  },
-  indent = {
-    enable = true,
-  },
-  matchup = {
-    -- https://github.com/andymass/vim-matchup#tree-sitter-integration
-    enable = true,
-  },
-  autotag = {
-    -- https://github.com/windwp/nvim-ts-autotag
-    enable = true,
-    filetypes = {
-      'templ', -- added
-      'html',
-      'javascript',
-      'typescript',
-      'javascriptreact',
-      'typescriptreact',
-      'svelte',
-      'vue',
-      'tsx',
-      'jsx',
-      'rescript',
-      'xml',
-      'php',
-      'markdown',
-      'astro',
-      'glimmer',
-      'handlebars',
-      'hbs',
-    },
-  },
-  endwise = {
-    enable = true,
   },
 })

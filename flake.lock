@@ -156,22 +156,6 @@
         "type": "github"
       }
     },
-    "fold-preview": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674838720,
-        "narHash": "sha256-FLzZGbbeUk3354Q8vbFonw57f6GbSDisRs43djTjX8I=",
-        "owner": "anuvyklack",
-        "repo": "fold-preview.nvim",
-        "rev": "b7920cb0aba2b48a6b679bff45f98c3ebc0f0b89",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anuvyklack",
-        "repo": "fold-preview.nvim",
-        "type": "github"
-      }
-    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -201,11 +185,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707175763,
-        "narHash": "sha256-0MKHC6tQ4KEuM5rui6DjKZ/VNiSANB4E+DJ/+wPS1PU=",
+        "lastModified": 1707467182,
+        "narHash": "sha256-/Bw/xgCXfj4nXDd8Xq+r1kaorfsYkkomMf5w5MpsDyA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f99eace7c167b8a6a0871849493b1c613d0f1b80",
+        "rev": "5b9156fa9a8b8beba917b8f9adbfd27bf63e16af",
         "type": "github"
       },
       "original": {
@@ -428,11 +412,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1707440758,
-        "narHash": "sha256-S2nx5HQvhwuVuSQNKR7eFSMG1julLfsZfmgci8CUMhM=",
+        "lastModified": 1707500742,
+        "narHash": "sha256-rdJOiKeJfTD5iaJ/KVksDBo5lDUSvjcdxp/F/9Kzyvw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a6dbfcbf002cf6309002bef91f61f39fcf0bba73",
+        "rev": "2e13570e2eb9164eae348f806bc6493c5d194a1a",
         "type": "github"
       },
       "original": {
@@ -489,44 +473,11 @@
         "type": "github"
       }
     },
-    "pretty-fold": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1658330126,
-        "narHash": "sha256-PQPZw0qXwMtpVE4uSxR3xUvkHE9iG4T+ZwgV6H9pUjo=",
-        "owner": "anuvyklack",
-        "repo": "pretty-fold.nvim",
-        "rev": "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anuvyklack",
-        "repo": "pretty-fold.nvim",
-        "type": "github"
-      }
-    },
-    "refactoring-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707150981,
-        "narHash": "sha256-/+RStkwv4CMQs2l3yQYA1/jXDfLfio7imSUfBRgdo5E=",
-        "owner": "ThePrimeagen",
-        "repo": "refactoring.nvim",
-        "rev": "fb4990a0546c59136930ea624b8640d07957f281",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ThePrimeagen",
-        "repo": "refactoring.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
         "dmenu-flexipatch": "dmenu-flexipatch",
         "dwm-flexipatch": "dwm-flexipatch",
-        "fold-preview": "fold-preview",
         "home-manager": "home-manager",
         "lobster": "lobster",
         "musnix": "musnix",
@@ -539,8 +490,6 @@
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "osv": "osv",
-        "pretty-fold": "pretty-fold",
-        "refactoring-nvim": "refactoring-nvim",
         "st-flexipatch": "st-flexipatch",
         "systems": "systems_3",
         "tabbed-flexipatch": "tabbed-flexipatch",

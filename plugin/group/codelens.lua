@@ -1,21 +1,17 @@
--- https://github.com/anuvyklack/fold-preview.nvim
--- fold-preview.config
-require('fold-preview').setup({
+require('goto-preview').setup({}) -- goto-preview
+
+-- hover-nvim
+require('hover').setup({
+  init = function()
+    require('hover.providers.lsp')
+  end,
+})
+require('pretty-fold').setup()  -- pretty-fold-nvim
+
+require('fold-preview').setup({ -- fold-preview-nvim
   auto = false,
-  default_keybindings = false, -- requires https://github.com/anuvyklack/keymap-amend.nvim
+  default_keybindings = false,
 })
-
--- https://github.com/rmagatti/goto-preview
--- no doc
-require('goto-preview').setup({
-  -- border = false,
-})
-
--- https://github.com/lewis6991/hover.nvim
-require('hover.providers.lsp')
-
--- https://github.com/anuvyklack/pretty-fold.nvim
-require('pretty-fold').setup()
 
 require('which-key').register({
   name = 'Preview',

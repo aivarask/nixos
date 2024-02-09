@@ -25,7 +25,7 @@ dap.configurations.lua = {
 
 local osv = require('osv')
 
-wkr({
+require('which-key').register({
   o = {
     name = 'osv',
     s = {
@@ -39,7 +39,7 @@ wkr({
       'server_messages',
     },
     l = {
-      function() osv.launch(config) end,
+      function() osv.launch({}) end,
       'launch()',
     },
   },

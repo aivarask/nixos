@@ -1,4 +1,4 @@
-wkr({
+require('which-key').register({
   ['<F5>'] = {
     function()
       if vim.bo.ft == 'lua' then
@@ -14,7 +14,7 @@ wkr({
   ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
 })
 
-wkr({
+require('which-key').register({
   name = 'DAP',
   c = { dap.continue, 'continue' },
   r = { dap.run, 'run' },

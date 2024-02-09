@@ -1,3 +1,15 @@
+function homepage(scope, expand)
+  local expanded = vim.fn.expand(expand)
+  -- [[!nix eval nixpkgs\#]]
+  local host = vim.uv.os_gethostname()
+  vim.cmd(
+    [[!nix eval nixos\#nixosConfigurations.]] .. host .. [[.pkgs.]]
+    .. scope
+    .. expanded
+    .. [[.meta.homepage | xargs xdg-open]]
+  )
+end
+
 Go = {
   homepage = {
     cword = function()
@@ -68,7 +80,7 @@ Go = {
   },
   c = {},
 }
-wkr({
+require('which-key').register({
   name = 'GOTO',
   h = { Go.homepage.cword, 'nixpkgs#<cword>.meta.homepage' },
   H = { Go.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },

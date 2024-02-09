@@ -3,22 +3,20 @@ set cmdheight=4
 set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 " set foldlevelstart=2
 " set foldlevel=3
-set foldlevel=99
-set foldmethod=expr
-set foldnestmax=5
+" set foldlevel=99
+" set foldnestmax=5
 set hidden
 set ignorecase 
-" set iskeyword+=$
 set laststatus=2
 set lazyredraw
 set modeline 
 set mouse=a 
 set noshowmode
 set number
-set scrolloff=4
 set shiftwidth=2
 set showtabline=2
 set signcolumn=yes

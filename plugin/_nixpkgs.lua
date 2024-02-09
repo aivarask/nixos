@@ -3,7 +3,7 @@ local nixos_unstable =
 local home_manager =
   'https://github.com/nix-community/home-manager/blob/master/'
 
-wkr({
+require('which-key').register({
   name = 'Nix',
   a = {
     function() local path = vim.fn.expand('%') end,

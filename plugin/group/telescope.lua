@@ -1,4 +1,4 @@
-require('telescope').setup({
+require('telescope').setup({ -- telescope-nvim
   defaults = {
     layout_strategy = 'vertical',
     layout_config = {
@@ -33,14 +33,3 @@ require('which-key').register({
     x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
   },
 }, { prefix = '<leader>t' })
-
--- https://github.com/folke/trouble.nvim
-require('trouble').setup({})
-
--- https://github.com/folke/todo-comments.nvim
-require('todo-comments').setup({})
-
-require('which-key').register({
-  name = 'Trouble',
-  x = { '[[:TroubleToggle<CR>]]', 'TroubleToggle' },
-}, { prefix = '<leader>x' })
