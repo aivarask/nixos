@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, include, ... }:
 let
   vimPlugins = with pkgs.vimPlugins; [
     vim-log-highlighting # https://github.com/MTDL9/vim-log-highlighting
@@ -155,10 +155,6 @@ let
     { plugin = nvim-colorizer-lua; type = "lua"; config = "require('colorizer').setup({})"; }
     { plugin = nvim-web-devicons; type = "lua"; config = "require('nvim-web-devicons').setup({})"; }
   ];
-  neotestPlugins = with pkgs.vimPlugins; [
-    neotest # plugin/__neotest.lua
-    neotest-plenary
-  ];
   telescope = with pkgs.vimPlugins; [
     telescope-nvim # plugin/__telescope.lua
     telescope-fzf-native-nvim
@@ -176,6 +172,7 @@ let
   ];
 in
 {
+  imports = [ ] ++ include ./plugin/group;
   programs.neovim = {
     enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
@@ -194,7 +191,7 @@ in
       ++ dap
       ++ lsp
       ++ misc
-      ++ neotestPlugins
+      # ++ neotestPlugins
       ++ telescope
       ++ treesitter;
     vimdiffAlias = true;
