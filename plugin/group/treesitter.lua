@@ -20,9 +20,9 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
       node_decremental = '<S-Tab>',
     },
   },
-  matchup = { enable = false }, -- vim-matchup
-  endwise = { enable = false }, -- nvim-treesitter-endwise
-  autotag = {                   -- nvim-ts-autotag
+  matchup = { enable = true }, -- vim-matchup
+  endwise = { enable = true }, -- nvim-treesitter-endwise
+  autotag = {                  -- nvim-ts-autotag
     enable = true,
     filetypes = { 'templ', 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'xml', 'php', 'markdown' },
   },

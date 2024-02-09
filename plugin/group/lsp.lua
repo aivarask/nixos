@@ -1,12 +1,14 @@
-require('lsp_signature').setup({
-  -- lsp_signature-configure
+require('lsp-file-operations').setup() -- nvim-lsp-file-operations
+require('refactoring').setup({})       -- refactoring-nvim
+
+require('lsp_signature').setup({       -- lsp_signature-nvim
   floating_window = false,
   close_timeout = 1000,
   hint_prefix = '🚀 ',
   toggle_key = '<M-x>',
 })
 
--- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+-- lspconfig nvim-lspconfig
 local wkr = require('which-key').register
 wkr({
   ['[d'] = { vim.diagnostic.goto_prev, 'vim.diagnostic.goto_prev' },
@@ -42,7 +44,7 @@ function inspect_lsp_client()
       local keys = get_keys(client)
 
       vim.ui.select(keys, _, function(key)
-        if key and client[key] then
+        if key and client ~= nil and client[key] then
           pretty(client[key])
         else
           pretty(client)
@@ -58,6 +60,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local buffer = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
+    if client ~= nil and client.server_capabilities.signatureHelpProvider then
+      require('lsp-overloads').setup(client, {}) -- lsp-overloads-nvim
+    end
 
     wkr({
       [']a'] = {
@@ -94,8 +99,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         function()
           vim.lsp.buf.format({
             async = true,
-            filter = function(client)
-              return client.name ~= 'null-ls'
+            filter = function(cl)
+              return cl.name ~= 'null-ls'
             end,
           })
         end,
@@ -105,8 +110,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         function()
           vim.lsp.buf.format({
             async = true,
-            filter = function(client)
-              return client.name == 'null-ls'
+            filter = function(cl)
+              return cl.name == 'null-ls'
             end,
           })
         end,
