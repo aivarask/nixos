@@ -102,61 +102,6 @@ let
     nvim-tree-lua # plugin/_nvim-tree.lua
     toggleterm-nvim # plugin/_terminal.lua
   ];
-  
-  completion = with pkgs.vimPlugins; [
-    # plugin/__completion.lua
-    nvim-autopairs # _autopairs.lua
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-    cmp-cmdline
-    cmp-nvim-lsp
-    cmp-buffer
-    cmp-path
-    cmp-emoji
-    cmp-zsh
-    cmp-git
-    cmp_luasnip # https://github.com/saadparwaiz1/cmp_luasnip
-    luasnip # https://github.com/L3MON4D3/LuaSnip
-    friendly-snippets # https://github.com/rafamadriz/friendly-snippets
-    # cmp-treesitter
-  ];
-  dap = with pkgs.vimPlugins; [
-    # plugin/__dap.lua
-    nvim-dap
-    nvim-dap-ui
-    nvim-dap-virtual-text
-    osv
-    nvim-dap-vscode-js
-    nvim-dap-python
-    nvim-dap-go
-  ];
-  lsp = with pkgs.vimPlugins; [
-    # plugin/__lsp.lua
-    nvim-lspconfig
-    refactoring-nvim
-    lsp_signature-nvim
-    lsp-overloads-nvim
-    { plugin = nvim-lsp-file-operations; type = "lua"; config = "require('lsp-file-operations').setup({ debug = false })"; }
-    none-ls-nvim
-    SchemaStore-nvim
-  ];
-  misc = with pkgs.vimPlugins; [
-    # plugin/__misc.lua
-    symbols-outline-nvim
-    flatten-nvim
-    glow-nvim
-    { plugin = dressing-nvim; type = "lua"; config = "require('dressing').setup({})"; }
-    { plugin = neoscroll-nvim; type = "lua"; config = "require('neoscroll').setup({})"; }
-    { plugin = nvim-colorizer-lua; type = "lua"; config = "require('colorizer').setup({})"; }
-    { plugin = nvim-web-devicons; type = "lua"; config = "require('nvim-web-devicons').setup({})"; }
-  ];
-
-  treesitter = with pkgs.vimPlugins; [
-    nvim-treesitter.withAllGrammars # plugin/__treesitter.lua
-    { plugin = nvim-ts-context-commentstring; type = "lua"; config = "require('ts_context_commentstring').setup({})"; }
-    nvim-treesitter-textobjects
-    nvim-ts-autotag
-    nvim-treesitter-endwise
-  ];
 in
 {
   imports = [ ] ++ include ./plugin/group;
@@ -173,11 +118,7 @@ in
     package = pkgs.neovim-nightly;
     plugins = vimPlugins
       ++ nvimPlugins
-      ++ completion
-      ++ dap
-      ++ lsp
-      ++ misc
-      ++ treesitter;
+    ;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
