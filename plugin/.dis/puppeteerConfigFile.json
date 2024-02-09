@@ -1,4 +1,0 @@
-{
-  "executablePath": "chromium",
-  "args": ["--no-sandbox"]
-}
