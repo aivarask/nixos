@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    vimPlugins.SchemaStore-nvim
     vscode-langservers-extracted
     # vscode-html-language-server 
     # vscode-css-language-server 

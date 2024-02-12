@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   environment.shellAliases = {
-    "checkmake" = "checkmake --config=${builtins.toString ./.}/checkmake.ini";
+    "checkmake" = "checkmake --config=/etc/nixos/checkmake.ini";
   };
-  environment.systemPackages = [ pkgs.gnumake pkgs.checkmake ];
+  environment.systemPackages = with pkgs; [ gnumake checkmake ];
 }

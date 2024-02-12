@@ -1,5 +1,7 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    SchemaStore-nvim
+
     nvim-lspconfig
     none-ls-nvim
 

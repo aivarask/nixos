@@ -28,8 +28,6 @@ systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
 systemctl --user restart dunst.service &
 sxhkd -c /etc/nixos/sxhkdrc &
 
-# tilda -g /etc/nixos/tilda &
-
 numlockx
 xset r rate 200 50
 

@@ -1,5 +1,6 @@
 { lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    lftp
     ethtool
     wol
     bind

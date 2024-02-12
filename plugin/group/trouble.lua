@@ -10,3 +10,5 @@ require('which-key').register({
   name = 'Trouble',
   x = { '[[:TroubleToggle<CR>]]', 'TroubleToggle' },
 }, { prefix = '<leader>x' })
+
+

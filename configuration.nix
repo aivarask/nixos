@@ -10,11 +10,9 @@
   ++ include ./config/systemd
   ++ include ./plugin/lang
   ;
-  environment.variables = {
-    #
-  };
+  environment.variables = { };
 
-  environment.shellAliases = {
-    tilda = "tilda -g /etc/nixos/tilda";
-  };
+  environment.shellAliases = { };
+
+  # environment.systemPackages
 }
