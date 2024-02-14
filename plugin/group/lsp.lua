@@ -74,9 +74,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
       rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
       rc = { inspect_lsp_client, 'Inspect LSP client' },
-      rf = { [[:RenameFile<CR>]], 'vim.lsp.util.rename' },
-      f = { function() vim.lsp.buf.format({ async = true, filter = function(cl) return cl.name ~= 'null-ls' end }) end, 'vim.lsp.buf.format ~= null-ls' },
-      F = { function() vim.lsp.buf.format({ async = true, filter = function(cl) return cl.name == 'null-ls' end }) end, 'vim.lsp.buf.format NULL-LS' },
     }, { prefix = '<space>', buffer = buffer })
 
     wkr({

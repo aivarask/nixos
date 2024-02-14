@@ -1,6 +1,6 @@
 # https://nixos.wiki/wiki/PHP
-# https://search.nixos.org/packages?channel=unstable&type=packages&query=php
 # https://xdebug.org/
+# https://nixos.org/manual/nixpkgs/unstable/#sec-php
 { pkgs, ... }: {
   environment.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
@@ -10,17 +10,8 @@
   };
   environment.systemPackages =
     [
-      (pkgs.php83.buildEnv {
-        extensions =
-          { enabled
-          , all
-          ,
-          }:
-          enabled
-          ++ (with all; [
-            # php83extensions
-            xdebug
-          ]);
+      (pkgs.php81.buildEnv {
+        extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
         extraConfig = ''
           memory_limit = 2G
           xdebug.mode = debug
@@ -28,7 +19,12 @@
         '';
       })
     ]
-    ++ (with pkgs.php83Packages; [
+    ++ (with pkgs; [
+      phpactor # lspconfig
+      phpunit
+      wp-cli
+    ])
+    ++ (with pkgs.php81Packages; [
       composer
       box
       # diagnostics
@@ -43,12 +39,8 @@
       phan # lspconfig
       phive
     ])
-    ++ (with pkgs.nodePackages_latest; [
+    ++ (with pkgs.nodePackages; [
       intelephense
     ])
-    ++ (with pkgs; [
-      phpactor # lspconfig
-      phpunit
-      wp-cli
-    ]);
+  ;
 }

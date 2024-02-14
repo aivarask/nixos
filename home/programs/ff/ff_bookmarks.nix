@@ -4,19 +4,28 @@
     { name = "pcw.local:9000"; url = "http://pcw.local:9000/#pc"; }
     # Manuals
     {
-      name = "Nix Manual";
+      name = "nixos.org/manual/nix";
       url = "https://nixos.org/manual/nix/unstable/";
-      tags = [ "nix" "man" ];
+      tags = [ "nix" ];
     }
     {
-      name = "Nixpkgs Manual";
-      tags = [ "nix" "man" ];
+      name = "nixos.org/manual/nixos";
+      tags = [ "nixos" ];
+      url = "https://nixos.org/manual/nixos/unstable/";
+    }
+    {
+      name = "nixos.org/manual/nixpkgs";
+      tags = [ "nixpkgs" ];
       url = "https://nixos.org/manual/nixpkgs/unstable";
     }
     {
-      name = "NixOS Manual";
-      tags = [ "nix" "man" ];
-      url = "https://nixos.org/manual/nixos/unstable/";
+      name = "nixos.org/manual/nixpkgs#chap-language-support";
+      tags = [ "nixpkgs" "lang" ];
+      url = "https://nixos.org/manual/nixpkgs/unstable/#chap-language-support";
+    }
+    {
+      name = "PHP";
+      url = "https://nixos.org/manual/nixpkgs/unstable/#sec-php";
     }
     {
       name = "Home Manager Options";

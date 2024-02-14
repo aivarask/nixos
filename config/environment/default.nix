@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
     # programs
-    brave
     tremc
     mpv
     telegram-desktop

@@ -48,7 +48,6 @@
       dwm-flexipatch.overlays.default
       dmenu-flexipatch.overlays.default
 
-      # https://nixos.org/manual/nixpkgs/unstable/#ssec-language-go
       (_final: prev: with prev; {
         inherit LS_COLORS;
       })

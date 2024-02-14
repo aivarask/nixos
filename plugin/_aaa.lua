@@ -1,11 +1,6 @@
 local wkr = require('which-key').register
 
 wkr({
-  name = '1L',
-  [']'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
-}, { prefix = '<leader>' })
-
-wkr({
   name = 'Lsp,LazyGit,Lf',
   i = { [[:LspInfo<CR>]], 'LspInfo' },
   l = { [[:LspLog<CR>]], 'LspLog' },

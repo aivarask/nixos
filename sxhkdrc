@@ -1,10 +1,4 @@
 # https://github.com/baskerville/sxhkd
-super + ctrl + Return
-  tabbed -c alacritty --embed
-super + c
-  alacritty
-super + q
-  tdrop alacritty
 super + F1
   notify-send ' 🚀 Keymaps' "$(cat /etc/nixos/sxhkdrc)"
 super + F2
@@ -14,7 +8,7 @@ super + F3
 super + F4
   alacritty -e pulsemixer # 🔉
 super + F5
-  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  Hotkeys reloaded'
+  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK'
 super + F6
   alacritty -e tmux new-session lf \; split-window -h lf \; attach
 super + F7
@@ -24,15 +18,24 @@ super + F9
 super + F10
   dunstctl close
 
-super + {w,e,r}
-  {$BROWSER,alacritty --working-directory=/etc/nixos -e nvim,}
-super + {a,s}
-  pulsemixer --change-volume {-,+}2 --max-volume 100
-super + {z,x,v}
-  {brightnessctl set 10%-,brightnessctl set 10%+,alacritty -e pulsemixer
+super + {q,w,e,r}
+  {tdrop alacritty,\
+  $BROWSER,\
+  alacritty --working-directory=/etc/nixos -e nvim,\
+  brave youtube.com # 📹 youtube.com r
+  }
 
 super + {W,E,Y}
   {firefox --private-window,firefox messenger.com,firefox youtube.com}
+
+super + {a,s}
+  pulsemixer --change-volume {-,+}2 --max-volume 100
+
+super + {z,x,c,v}
+  {brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}
+
+super + ctrl + Return
+  tabbed -c alacritty --embed
 
 XF86Audio{Play,Mute,Prev,Next}
   mpc {play,stop,prev,next}

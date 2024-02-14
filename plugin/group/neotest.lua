@@ -3,7 +3,7 @@ local neotest = require('neotest')
 -- https://github.com/nvim-neotest/neotest
 -- neotest.setup
 neotest.setup({
-  adapters = { require('neotest-plenary') },
+  adapters = { require('neotest-plenary'), require('neotest-phpunit') },
   output_panel = {
     open = 'botright vsplit | vertical resize 60 | set winfixwidth',
   },

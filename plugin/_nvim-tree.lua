@@ -4,12 +4,8 @@ vim.api.nvim_set_keymap('n', 'qq', [[:NvimTreeOpen<CR>]], { noremap = true, sile
 require('nvim-tree').setup({
   on_attach = function(bufnr)
     require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
-    vim.keymap.set(
-      'n',
-      '<C-Space>',
-      tree_actions_menu,
-      { buffer = bufnr, noremap = true, silent = true }
-    )
+    vim.keymap.set('n', '<C-Space>', tree_actions_menu, { buffer = bufnr, noremap = true, silent = true })
+    vim.keymap.del({ 'n' }, '<C-x>', { buffer = bufnr })
   end,
   sync_root_with_cwd = true,
   update_focused_file = {

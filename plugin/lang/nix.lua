@@ -21,7 +21,5 @@ require('lspconfig').nil_ls.setup({
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.nix' },
-  callback = function()
-    vim.lsp.buf.format({ async = true })
-  end,
+  callback = function() vim.lsp.buf.format({ filter = function(client) return client.name == 'nil_ls' end }) end,
 })

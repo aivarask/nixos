@@ -1,10 +1,12 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.chromium = {
     enable = true;
+    package = pkgs.brave;
     commandLineArgs = [
       "--no-sandbox"
-      "--enable-features=TouchpadOverscrollHistoryNavigation"
       "--no-default-browser-check"
+      # "--remote-debugging-port=9222"
+      "--enable-features=TouchpadOverscrollHistoryNavigation"
     ];
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin

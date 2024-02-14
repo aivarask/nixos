@@ -4,7 +4,7 @@
       nodejs_21
       eslint_d
     ]
-    ++ (with pkgs.nodePackages_latest; [
+    ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global
       serve
       pm2

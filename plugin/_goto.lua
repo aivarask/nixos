@@ -35,14 +35,6 @@ Go = {
       homepage('python3Packages.', '<cWORD>')
     end,
   },
-  nodePackages = {
-    cword = function() -- typescript
-      homepage('nodePackages_latest.', '<cword>')
-    end,
-    cWORD = function()
-      homepage('nodePackages_latest.', '<cWORD>')
-    end,
-  },
   vimPlugins = {
     cword = function()
       homepage('vimPlugins.', '<cword>')
@@ -86,10 +78,6 @@ require('which-key').register({
   H = { Go.homepage.cWORD, 'nixpkgs#<cWORD>.meta.homepage' },
   l = { Go.luajitPackages.cword, 'luajitPackages.<cword>.meta.homepage' },
   L = { Go.luajitPackages.cWORD, 'luajitPackages.<cWORD>.meta.homepage' },
-  p = { Go.python3Packages.cword, 'python3Packages.<cword>.meta.homepage' },
-  P = { Go.python3Packages.cWORD, 'python3Packages.<cWORD>.meta.homepage' },
-  n = { Go.nodePackages.cword, 'nodePackages.<cword>.meta.homepage' },
-  N = { Go.nodePackages.cWORD, 'nodePackages.<cWORD>.meta.homepage' },
   v = { Go.vimPlugins.cword, 'vimPlugins.<cword>.meta.homepage' },
   V = { Go.vimPlugins.cWORD, 'vimPlugins.<cWORD>.meta.homepage' },
   x = { Go.xopen.cfile, '!xdg-open <cfile>' },
