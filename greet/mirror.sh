@@ -6,7 +6,7 @@ HOST="gettransfer.lt"
 USER="gettransf"
 PASS="TcpLQPhXB3MBPAbZvtRn"
 FTPURL="ftp://$USER:$PASS@$HOST"
-LCD="/etc/nixos/siom"
+LCD="/etc/nixos/greet"
 RCD="/domains/gettransfer.lt/public_html"
 DELETE="--delete"
 lftp -c "set ftp:list-options -a;
@@ -18,4 +18,5 @@ cd $RCD;
 mirror --reverse \
        $DELETE \
        --verbose \
-       --exclude-glob .git/"
+       --exclude-glob .git/ \
+       --exclude-glob vendor/phpunit/"
