@@ -10,7 +10,7 @@
         transparency = 10;
         frame_color = "#${config.colorScheme.palette.base03}";
         frame_width = 1;
-        font = "Hack Nerd Font Mono 12";
+        font = "sans-serif 12";
       };
       urgency_critical = {
         background = "#${config.colorScheme.palette.base08}";

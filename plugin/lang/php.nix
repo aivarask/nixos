@@ -31,7 +31,7 @@
       phpcs
       phpmd
       phpstan
-      psalm
+      psalm # lspconfig
       # format
       phpcbf
       php-cs-fixer

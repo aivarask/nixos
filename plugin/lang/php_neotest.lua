@@ -1,9 +1,24 @@
 local neotest = require('neotest')
 
+vim.keymap.set('n', '<leader>[', [[:Neotest summary<CR>]])
 -- https://github.com/nvim-neotest/neotest
 -- neotest.setup
 neotest.setup({
-  adapters = { require('neotest-plenary'), require('neotest-phpunit') },
+  adapters = {
+    require('neotest-plenary'),
+    require('neotest-phpunit')({
+      phpunit_cmd = function()
+        return "vendor/bin/phpunit"
+      end,
+      root_files = { "composer.json" },
+      filter_dirs = { ".git", "node_modules", "vendor" },
+      env = {
+        XDEBUG_CONFIG = "idekey=neotest", -- from example
+      },
+      -- https://github.com/olimorris/neotest-phpunit/#debugging-with-dap-strategy
+      dap = nil, -- to configure `dap` strategy put single element from `dap.configurations.php`
+    }),
+  },
   output_panel = {
     open = 'botright vsplit | vertical resize 60 | set winfixwidth',
   },

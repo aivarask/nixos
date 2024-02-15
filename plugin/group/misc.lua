@@ -2,7 +2,7 @@ vim.keymap.set('n', '<leader>]', [[:SymbolsOutline<CR>]])
 -- symbols-outline-nvim
 require('symbols-outline').setup({
   auto_preview = false,
-  autofold_depth = 2,
+  autofold_depth = 1,
   lsp_blacklist = { 'null-ls' },
   symbols = {
     File = { icon = "", hl = "@text.uri" },

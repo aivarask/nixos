@@ -15,8 +15,8 @@
       '';
     fonts = lib.mkDefault [
       {
-        name = "Hack Nerd Font Mono";
-        package = pkgs.hack-font;
+        package = pkgs.fira-code-nerdfont;
+        name = "FiraCode Nerd Font Mono";
       }
     ];
   };
