@@ -10,7 +10,7 @@
     nur.url = "github:nix-community/NUR";
     dmenu-flexipatch = { url = "github:bakkeby/dmenu-flexipatch"; flake = false; };
     dwm-flexipatch = { url = "github:bakkeby/dwm-flexipatch"; flake = false; };
-    # st-flexipatch = { url = "github:aivarask/st-flexipatch"; flake = true; };
+    st-flexipatch = { url = "github:bakkeby/st-flexipatch"; flake = false; };
     tabbed-flexipatch = { url = "github:bakkeby/tabbed-flexipatch"; flake = false; };
     musnix = { url = "github:musnix/musnix"; };
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };

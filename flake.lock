@@ -49,16 +49,17 @@
       }
     },
     "dwm-flexipatch": {
+      "flake": false,
       "locked": {
-        "lastModified": 1703159570,
-        "narHash": "sha256-XvUX1Eic0K0JBbEMpDKFwF9HoOFneV+2ubRKkrYO/DM=",
-        "owner": "aivarask",
+        "lastModified": 1706819365,
+        "narHash": "sha256-feWn0HbBY5XvpqjdsVNoYyaUKjeqgFSwUkIOCkMNr/E=",
+        "owner": "bakkeby",
         "repo": "dwm-flexipatch",
-        "rev": "1dfdb0c45c690d4f7852ec0f6777b1aedcd4bbef",
+        "rev": "5e85bc8b5c784b47cdd3015b53c5bb517500ba9c",
         "type": "github"
       },
       "original": {
-        "owner": "aivarask",
+        "owner": "bakkeby",
         "repo": "dwm-flexipatch",
         "type": "github"
       }
