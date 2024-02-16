@@ -92,8 +92,8 @@ static const Key keys[] = {
 	{ MODKEY,               18,           move,        { .i = 8 } },
 	{ MODKEY,               19,           move,        { .i = 9 } },
 	{ MODKEY,               24,           killclient,  { 0 } },
-	/* { MODKEY,               30,           focusurgent, { .v = NULL } }, */
-	/* { MODKEY|ShiftMask,     30,           toggle,      { .v = (void*) &urgentswitch } }, */
+	{ MODKEY,               30,           focusurgent, { .v = NULL } },
+	{ MODKEY|ShiftMask,     30,           toggle,      { .v = (void*) &urgentswitch } },
 	{ 0,                    95,           fullscreen,  { 0 } },
 	#if HIDETABS_PATCH
 	{ MODKEY,               50,           showbar,     { .i = 1 } },
@@ -126,8 +126,8 @@ static const Key keys[] = {
 
 	{ MODKEY,               XK_q,         killclient,  { 0 } },
 
-	{ MODKEY,               XK_u,         focusurgent, { 0 } },
-	{ MODKEY|ShiftMask,     XK_u,         toggle,      { .v = (void*) &urgentswitch } },
+	/* { MODKEY,               XK_u,         focusurgent, { 0 } }, */
+	/* { MODKEY|ShiftMask,     XK_u,         toggle,      { .v = (void*) &urgentswitch } }, */
 
 	{ 0,                    XK_F11,       fullscreen,  { 0 } },
 	#if HIDETABS_PATCH
