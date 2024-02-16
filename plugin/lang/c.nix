@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  # https://nixos.wiki/wiki/C
   environment.systemPackages = with pkgs; [
     gcc
     libclang

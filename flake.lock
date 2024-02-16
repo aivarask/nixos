@@ -33,16 +33,17 @@
       }
     },
     "dmenu-flexipatch": {
+      "flake": false,
       "locked": {
-        "lastModified": 1680330210,
-        "narHash": "sha256-HLhUeTt4uq/+HJD0BmiB2TYaub6OXyfk6AURJk2F1tI=",
-        "owner": "aivarask",
+        "lastModified": 1702456350,
+        "narHash": "sha256-RvP4vm+7ALYJsz95iuR5sLbxYwqO2Lq+YsmVh8w9R2s=",
+        "owner": "bakkeby",
         "repo": "dmenu-flexipatch",
-        "rev": "8104b0508343eb55447581f0a07459050a3af39e",
+        "rev": "0d6d5ac5cc81016b0cd3588b94aa76623dec84de",
         "type": "github"
       },
       "original": {
-        "owner": "aivarask",
+        "owner": "bakkeby",
         "repo": "dmenu-flexipatch",
         "type": "github"
       }
@@ -542,16 +543,17 @@
       }
     },
     "tabbed-flexipatch": {
+      "flake": false,
       "locked": {
-        "lastModified": 1680248268,
-        "narHash": "sha256-XtW0BOR7axxzVyL9cEXM2PuXEgbSKTT40iKu1o8TPcg=",
-        "owner": "aivarask",
+        "lastModified": 1698357405,
+        "narHash": "sha256-tKh022ZzaEsNfEJVYVFNZgwD+/XfQxfwXQI99VLMfB0=",
+        "owner": "bakkeby",
         "repo": "tabbed-flexipatch",
-        "rev": "496e93f8ef056b24f3149109948576610326c18c",
+        "rev": "e0ada5c683c657ef1cd340a1d3be56f8896d5913",
         "type": "github"
       },
       "original": {
-        "owner": "aivarask",
+        "owner": "bakkeby",
         "repo": "tabbed-flexipatch",
         "type": "github"
       }

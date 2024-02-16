@@ -9,9 +9,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
-    dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
+    dmenu-flexipatch = { url = "github:bakkeby/dmenu-flexipatch"; flake = false; };
     # st-flexipatch = { url = "github:aivarask/st-flexipatch"; flake = true; };
-    tabbed-flexipatch.url = "github:aivarask/tabbed-flexipatch";
+    tabbed-flexipatch = { url = "github:bakkeby/tabbed-flexipatch"; flake = false; };
     musnix = { url = "github:musnix/musnix"; };
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";

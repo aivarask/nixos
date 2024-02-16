@@ -19,6 +19,7 @@
       xf86inputsynaptics
       xf86inputlibinput
       libX11
+      libXinerama
       libXrender
       xdpyinfo
       xev
