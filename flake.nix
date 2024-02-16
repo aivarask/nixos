@@ -8,8 +8,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
-    dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
     dmenu-flexipatch = { url = "github:bakkeby/dmenu-flexipatch"; flake = false; };
+    dwm-flexipatch = { url = "github:bakkeby/dwm-flexipatch"; flake = false; };
     # st-flexipatch = { url = "github:aivarask/st-flexipatch"; flake = true; };
     tabbed-flexipatch = { url = "github:bakkeby/tabbed-flexipatch"; flake = false; };
     musnix = { url = "github:musnix/musnix"; };

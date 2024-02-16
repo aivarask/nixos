@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
-    dmenu
+    # dmenu
+    dmenuo
     st
     tabbed
     # --
@@ -16,10 +17,26 @@
   nixpkgs.overlays = [
     inputs.dwm-flexipatch.overlays.default
     (self: super: {
-      dmenu = super.dmenu.overrideAttrs (oldAttrs: {
+      dmenuo = super.dmenu.overrideAttrs (oldAttrs: rec {
         # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/misc/dmenu/default.nix
         src = inputs.dmenu-flexipatch; # https://github.com/bakkeby/dmenu-flexipatch
         configFile = super.writeText "config.h" (builtins.readFile ./dmenu-config.h);
+        postPatch = ''
+          ${oldAttrs.postPatch}
+          cp ${configFile} config.h 
+          echo "#define FUZZYMATCH_PATCH 0" > patches.h
+        '';
+      });
+
+
+      dwm = super.dwm.overrideAttrs (oldAttrs: rec {
+        # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/window-managers/dwm/default.nix
+        src = inputs.dwm-flexipatch; # https://github.com/bakkeby/dwm-flexipatch
+        configFile = super.writeText "config.h" (builtins.readFile ./dwm-config.h);
+        postPatch = ''
+          ${oldAttrs.postPatch}
+          cp ${configFile} config.h 
+        '';
       });
 
       st = super.st.overrideAttrs (oldAttrs: rec {
@@ -32,16 +49,17 @@
         # postPatch = "${oldAttrs.postPatch}\ncp ${configFile} config.def.h\n";
       });
 
-      tabbed = super.tabbed.overrideAttrs (oldAttrs: rec {
-        # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/window-managers/tabbed/default.nix
-        src = inputs.tabbed-flexipatch; # https://github.com/bakkeby/tabbed-flexipatch
-        configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h); # disable focusurgent
-        postPatch = ''
-          ${oldAttrs.postPatch}
-          cp ${configFile} config.h 
-        '';
+      tabbed = super.tabbed.overrideAttrs
+        (oldAttrs: rec {
+          # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/window-managers/tabbed/default.nix
+          src = inputs.tabbed-flexipatch; # https://github.com/bakkeby/tabbed-flexipatch
+          configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h); # disable focusurgent
+          postPatch = ''
+            ${oldAttrs.postPatch}
+            cp ${configFile} config.h 
+          '';
 
-      });
+        });
     })
   ];
 
