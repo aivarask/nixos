@@ -16,6 +16,9 @@
       st = super.st.overrideAttrs (oldAttrs: rec {
         # https://st.suckless.org/patches/
         patches = [
+
+          ./st-gruvbox-dark-0.8.5.diff
+
           # ./st-fontsize.diff
           # ./st-delkey-20201112-4ef0cbd.diff
           # st -z 32 -e ...
