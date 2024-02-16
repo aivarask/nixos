@@ -18,7 +18,7 @@
         patches = [
 
           ./st-gruvbox.diff
-          ./st-defaultfontsize.diff
+          ./st-font.diff
 
           # ./st-fontsize.diff
           # ./st-delkey-20201112-4ef0cbd.diff
