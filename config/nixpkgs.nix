@@ -43,16 +43,7 @@
     with inputs; [
       nur.overlay
       neovim-nightly-overlay.overlay
-      tabbed-flexipatch.overlays.default
-      dwm-flexipatch.overlays.default
 
-      (self: super: {
-        st = super.st.overrideAttrs (oldAttrs: rec {
-          patches = [ ./st-fontsize.diff ];
-          configFile = super.writeText "config.h" (builtins.readFile ./st-config.h);
-          postPatch = "${oldAttrs.postPatch}\ncp ${configFile} config.def.h\n";
-        });
-      })
 
       (_final: prev: with prev; {
         inherit LS_COLORS;
