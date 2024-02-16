@@ -7,5 +7,6 @@
     dressing-nvim
     nvim-colorizer-lua
     nvim-web-devicons
+    image-nvim
   ];
 }

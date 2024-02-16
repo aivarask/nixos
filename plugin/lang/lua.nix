@@ -16,7 +16,6 @@ let
     # luarepl
     # lgi 
     # ldoc
-
   ]));
 in
 {

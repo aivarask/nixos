@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./ff/ff_bookmarks.nix ./ff/ff_search.nix ];
+  home.packages = with pkgs; [ geckodriver ];
   programs.firefox = {
     # nativeMessagingHosts = { };
     enable = true;

@@ -490,26 +490,10 @@
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "osv": "osv",
-        "st-flexipatch": "st-flexipatch",
         "systems": "systems_3",
         "tabbed-flexipatch": "tabbed-flexipatch",
         "vim-interestingwords": "vim-interestingwords",
         "vim-log-highlighting": "vim-log-highlighting"
-      }
-    },
-    "st-flexipatch": {
-      "locked": {
-        "lastModified": 1706776003,
-        "narHash": "sha256-be7kBLQCrPeSih+SNwnrXFv6GXoKAxGA0tx2spgyBGk=",
-        "owner": "aivarask",
-        "repo": "st-flexipatch",
-        "rev": "def11a7998ee8a574148b77b34a7233c5a0ce4ad",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aivarask",
-        "repo": "st-flexipatch",
-        "type": "github"
       }
     },
     "systems": {

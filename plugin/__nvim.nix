@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  programs.neovim.extraLuaPackages = ps: [
+    ps.magick # image-nvim
+  ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # auto-session
     # https://github.com/Shatur/neovim-session-manager

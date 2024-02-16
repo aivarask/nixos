@@ -10,7 +10,7 @@
     nur.url = "github:nix-community/NUR";
     dwm-flexipatch.url = "github:aivarask/dwm-flexipatch";
     dmenu-flexipatch.url = "github:aivarask/dmenu-flexipatch";
-    st-flexipatch = { url = "github:aivarask/st-flexipatch"; flake = true; };
+    # st-flexipatch = { url = "github:aivarask/st-flexipatch"; flake = true; };
     tabbed-flexipatch.url = "github:aivarask/tabbed-flexipatch";
     musnix = { url = "github:musnix/musnix"; };
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };

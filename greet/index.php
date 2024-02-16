@@ -17,11 +17,8 @@ $result = $db->query("
   CREATE TABLE IF NOT EXISTS users (
     id    INTEGER PRIMARY KEY,
     name  TEXT    NOT NULL
-  -- foo   TEXT NOT NULL
   );
 ");
-
-// print_r($result);
 
 while ($data = $result->fetchArray()) {
   echo $data['column'] . "<hr>";

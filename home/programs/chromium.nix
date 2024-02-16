@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [ chromedriver ];
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
