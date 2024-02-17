@@ -1,11 +1,10 @@
 { pkgs, inputs, ... }: {
   environment.systemPackages = with pkgs; [
-    # dmenu
-    dmenuo
+    dmenu
+    dwm
     st
     tabbed
     # --
-    dwm
     wmname
     emojipick
   ];
@@ -17,17 +16,16 @@
   nixpkgs.overlays = [
     # inputs.dwm-flexipatch.overlays.default
     (self: super: {
-      dmenuo = super.dmenu.overrideAttrs (oldAttrs: rec {
+      dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
         # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/misc/dmenu/default.nix
         src = inputs.dmenu-flexipatch; # https://github.com/bakkeby/dmenu-flexipatch
         configFile = super.writeText "config.h" (builtins.readFile ./dmenu-config.h); # defaults
         postPatch = ''
           ${oldAttrs.postPatch}
           cp ${configFile} config.h 
-          echo "#define FUZZYMATCH_PATCH 0" > patches.h
+          # echo "#define FUZZYMATCH_PATCH 0" > patches.h
         '';
       });
-
 
       dwm = super.dwm.overrideAttrs (oldAttrs: rec {
         # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/window-managers/dwm/default.nix
@@ -47,10 +45,10 @@
           ${oldAttrs.postPatch}
           cp ${configFile} config.h 
         '';
-        patches = [
-          ./st-gruvbox.diff
-          ./st-font.diff # st -z 32 -e ...
-        ];
+        # patches = [
+        #   ./st-gruvbox.diff
+        #   ./st-font.diff # st -z 32 -e ...
+        # ];
       });
 
       tabbed = super.tabbed.overrideAttrs

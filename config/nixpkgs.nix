@@ -1,7 +1,6 @@
 { inputs, lib, pkgs, ... }: {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [ ];
-  nixpkgs.config.joypixels.acceptLicense = true;
   # nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -16,7 +15,6 @@
       "google-chrome-dev"
       "nvidia-x11"
       "nvidia-settings"
-      "joypixels"
       "ookla-speedtest"
       "vscode"
       "intelephense"

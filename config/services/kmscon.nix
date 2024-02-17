@@ -13,12 +13,5 @@
         font-size=12
         font-dpi=72
       '';
-    fonts = lib.mkDefault [
-      {
-        package = pkgs.fira-code-nerdfont;
-        name = "FiraCode Nerd Font Mono";
-      }
-    ];
   };
-
 }

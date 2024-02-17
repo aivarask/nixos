@@ -1,9 +1,5 @@
-{ lib, pkgs, ... }: {
+{ pkgs, ... }: {
   console = {
-    packages = lib.mkDefault (with pkgs; [
-      terminus_font
-      powerline-fonts
-    ]);
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v14n.psf.gz";
   };
 }
