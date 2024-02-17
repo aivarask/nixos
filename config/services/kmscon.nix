@@ -6,7 +6,7 @@
     extraConfig =
       if config.networking.hostName == "dell" then
         ''
-          font-name=DejaVuSans Mono, Noto Color Emoji
+          font-name=DejaVuSansM Nerd Font Mono, Noto Color Emoji
           font-size=12
           font-dpi=288
         ''
