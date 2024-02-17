@@ -7,6 +7,7 @@
   ++ include ./config/environment
   ++ include ./config/programs
   ++ include ./config/services
+  ++ include ./config/suckless
   ++ include ./config/systemd
   ++ include ./plugin/lang
   ;

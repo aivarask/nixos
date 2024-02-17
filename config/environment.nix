@@ -6,7 +6,6 @@
       "${pkgs.zsh-completions}"
     ];
     variables = {
-      TERMINAL = "alacritty";
       EDITOR = "nvim";
       editor = "vim";
       PNPM_HOME = "$HOME/.pnpm-global";

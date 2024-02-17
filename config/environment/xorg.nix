@@ -14,13 +14,14 @@
     ++ (with pkgs.xorg; [
       # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
       xbacklight
+      # xfontsel
       xorgserver
       xf86inputevdev
       xf86inputsynaptics
       xf86inputlibinput
-      libX11
-      libXinerama
-      libXrender
+      # libX11
+      # libXinerama
+      # libXrender
       xdpyinfo
       xev
       xmodmap

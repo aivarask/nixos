@@ -10,7 +10,7 @@
   ];
 
   environment.shellAliases = {
-    st = "st -z 32";
+    # st = "st -z 32";
   };
 
   nixpkgs.overlays = [
