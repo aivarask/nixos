@@ -6,7 +6,6 @@
     extraConfig =
       if config.networking.hostName == "dell" then
         ''
-          font-name=DejaVuSansM Nerd Font Mono, Noto Color Emoji
           font-size=12
           font-dpi=288
         ''
@@ -14,9 +13,5 @@
         font-size=12
         font-dpi=72
       '';
-    # fonts = [
-    #   { name = "Source Code Pro"; package = pkgs.source-code-pro; }
-    #   { name = "Noto Color Emoji"; package = pkgs.noto-fonts-color-emoji; }
-    # ];
   };
 }

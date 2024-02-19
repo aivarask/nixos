@@ -19,8 +19,6 @@
     vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
     neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
-    nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
-    osv = { url = "github:jbyuki/one-small-step-for-vimkind"; flake = false; };
     lobster.url = "github:justchokingaround/lobster";
   };
   outputs =

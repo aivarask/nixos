@@ -23,9 +23,3 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('t', '<C-l>', [[<cmd>wincmd l<CR>]], opts)
   end,
 })
-
-
-dap = require('dap')
-widgets = require('dap.ui.widgets')
-dapui = require('dapui')
-

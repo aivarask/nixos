@@ -74,16 +74,6 @@
                 src = neovim-session-manager;
                 meta = { homepage = "https://github.com/Shatur/neovim-session-manager"; };
               };
-              nvim-dap-vscode-js = buildVimPlugin {
-                name = "nvim-dap-vscode-js";
-                src = nvim-dap-vscode-js;
-                meta = { homepage = "https://github.com/mxsdev/nvim-dap-vscode-js"; };
-              };
-              osv = buildVimPlugin {
-                name = "osv";
-                src = osv;
-                meta = { homepage = "https://github.com/jbyuki/one-small-step-for-vimkind"; };
-              };
             };
         })
     ];
