@@ -1,8 +1,8 @@
-{ inputs, include, ... }: {
+{ include, nix-colors, ... }: {
   home.stateVersion = "23.05";
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    nix-colors.homeManagerModules.default
     ./neovim.nix
   ]
   ++ include ./home

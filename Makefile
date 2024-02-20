@@ -30,3 +30,6 @@ gcc:
 
 cc:
 	cc -fsyntax-only ./plugin/lang/c.c
+
+clang: 
+	clang --analyze ./plugin/lang/c.c

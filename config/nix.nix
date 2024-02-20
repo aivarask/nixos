@@ -1,4 +1,4 @@
-{ pkgs, inputs, options, ... }: {
+{ pkgs, options, ... }: {
   nix = {
     channel.enable = false;
     # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
@@ -23,14 +23,9 @@
     settings.max-jobs = 2;
     settings.cores = 4;
     extraOptions = ''
-      experimental-features = nix-command flakes 
       warn-dirty = false
+      experimental-features = nix-command flakes ca-derivations
     '';
     # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      home-manager.flake = inputs.home-manager;
-      nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
-    };
   };
 }

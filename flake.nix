@@ -22,31 +22,81 @@
     lobster.url = "github:justchokingaround/lobster";
   };
   outputs =
-    { nixpkgs
-    , home-manager
-    , nixos-hardware
-    , ...
-    } @ inputs:
+    { nixpkgs, home-manager, nixos-hardware, nix-colors, lobster, musnix, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       include = p: with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
-      common = { inherit inputs; inherit include; };
+      overlays =
+        with inputs; [
+          nur.overlay
+          neovim-nightly-overlay.overlay
+
+          (_final: prev: with prev; {
+            inherit LS_COLORS;
+          })
+          (_final: prev:
+            let
+              inherit (prev.vimUtils) buildVimPlugin;
+            in
+            {
+              vimPlugins = with inputs;
+                prev.vimPlugins
+                // {
+                  vim-log-highlighting = buildVimPlugin {
+                    name = "vim-log-highlighting";
+                    src = vim-log-highlighting;
+                    meta = { homepage = "https://github.com/MTDL9/vim-log-highlighting"; };
+                  };
+                  vim-interestingwords = buildVimPlugin {
+                    name = "vim-interestingwords";
+                    src = vim-interestingwords;
+                    meta = { homepage = "https://github.com/lfv89/vim-interestingwords"; };
+                  };
+                  nvim-lsp-file-operations = buildVimPlugin {
+                    name = "nvim-lsp-file-operations";
+                    src = nvim-lsp-file-operations;
+                    meta = { homepage = "https://github.com/antosha417/nvim-lsp-file-operations"; };
+                  };
+                  neovim-session-manager = buildVimPlugin {
+                    name = "neovim-session-manager";
+                    src = neovim-session-manager;
+                    meta = { homepage = "https://github.com/Shatur/neovim-session-manager"; };
+                  };
+                };
+            })
+        ];
     in
     {
+
+      devShells."${system}".c = ./shell.nix;
       formatter."${system}" = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = common // { };
+          # specialArgs = nixosModules.args._module.args;
+          specialArgs = {
+            inherit include;
+            inherit dmenu-flexipatch;
+            inherit dwm-flexipatch;
+            inherit st-flexipatch;
+            inherit tabbed-flexipatch;
+          };
           modules = [
-            inputs.musnix.nixosModules.musnix
+            # musnix.nixosModules.musnix
             {
+              nixpkgs.overlays = overlays;
               environment.systemPackages = [
-                inputs.lobster.packages.${system}.lobster
+                # lobster.packages.${system}.lobster
               ];
+              nix.registry = {
+                nixpkgs.flake = inputs.nixpkgs;
+                home-manager.flake = inputs.home-manager;
+                nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+              };
+
             }
             ./configuration.nix
             ./_dell.nix
@@ -58,35 +108,35 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
-                useUserPackages = true;
+                useUserPackages = false;
                 users.root = import ./home.nix;
               };
-              home-manager.extraSpecialArgs = common // { };
+              home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
             }
           ];
         };
 
-        pc = nixpkgs.lib.nixosSystem {
-          # PC B450 AORUS M
-          inherit system;
-          specialArgs = common // { };
-          modules = [
-            ./configuration.nix
-            ./_pc.nix
-            nixos-hardware.nixosModules.common-cpu-amd-pstate
-            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-            nixos-hardware.nixosModules.common-hidpi
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = import ./home.nix;
-              };
-              home-manager.extraSpecialArgs = common // { };
-            }
-          ];
-        };
+        # pc = nixpkgs.lib.nixosSystem {
+        #   # PC B450 AORUS M
+        #   inherit system;
+        #   specialArgs = { inherit inputs; inherit include; };
+        #   modules = [
+        #     ./configuration.nix
+        #     ./_pc.nix
+        #     nixos-hardware.nixosModules.common-cpu-amd-pstate
+        #     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+        #     nixos-hardware.nixosModules.common-hidpi
+        #     home-manager.nixosModules.home-manager
+        #     {
+        #       home-manager = {
+        #         useGlobalPkgs = true;
+        #         useUserPackages = true;
+        #         users.root = import ./home.nix;
+        #       };
+        #       home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
+        #     }
+        #   ];
+        # };
       };
     };
 }

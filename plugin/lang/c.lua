@@ -8,7 +8,7 @@ local lspconfig = require 'lspconfig'
 
 local ccls = require('lspconfig.server_configurations.ccls')
 lspconfig.ccls.setup {
-  autostart = true,
+  autostart = false,
   -- root_dir = [[root_pattern('compile_commands.json', '.ccls', '.git')]],
   root_dir = require('lspconfig.util').root_pattern('Makefile.in', 'Makefile'),
   init_options = {
@@ -25,7 +25,7 @@ lspconfig.ccls.setup {
 local clangd = require('lspconfig.server_configurations.clangd')
 
 lspconfig.clangd.setup({
-  autostart = false,
+  autostart = true,
   root_dir = require('lspconfig.util').root_pattern('Makefile.in', 'Makefile'),
 })
 
