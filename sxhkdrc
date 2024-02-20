@@ -44,4 +44,6 @@ XF86Audio{Lower,Raise}Volume
 XF86MonBrightness{Down,Up}
   brightnessctl set 10%{-,+}
 
+Print
+  scrot
 # Break Pause Print Scroll_Lock XF86Calculator XF86HomePage XF86Mail XF86Search

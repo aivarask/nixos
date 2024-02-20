@@ -10,6 +10,24 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 })
 
 require('which-key').register({
+  d = { function()
+    vim.cmd(
+      [[!nix eval nixos\#nixosConfigurations.]]
+      .. vim.uv.os_gethostname()
+      .. '.pkgs.'
+      .. vim.fn.expand('<cword>')
+      .. '.meta.description | xargs notify-send'
+    )
+  end, 'description' },
+  D = { function()
+    vim.cmd(
+      [[!nix eval nixos\#nixosConfigurations.]]
+      .. vim.uv.os_gethostname()
+      .. '.pkgs.'
+      .. vim.fn.expand('<cword>')
+      .. [[.meta.longDescription --raw | xargs -0 notify-send]]
+    )
+  end, 'longDescription' },
   n = { function()
     vim.cmd(
       [[!nix eval nixos\#nixosConfigurations.]]

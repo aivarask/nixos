@@ -24,6 +24,9 @@ pa:
 pb:
 	parallel ::: 'php -S localhost:8000' 'curl example.org'
 
-ct:
+# C
+gcc:
 	gcc -fsyntax-only ./plugin/lang/c.c
 
+cc:
+	cc -fsyntax-only ./plugin/lang/c.c
