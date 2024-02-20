@@ -1,5 +1,9 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
+    figma-linux
+    # gnu
+    parallel
+
     # programs
     tremc
     mpv
