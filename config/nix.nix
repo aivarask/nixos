@@ -1,9 +1,13 @@
 { pkgs, inputs, options, ... }: {
   nix = {
+    channel.enable = false;
+    # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
+    # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
+    # environment.etc."nix/inputs/nixpkgs".source = "${pkgs}";
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 2w";
     };
     package = pkgs.nixUnstable;
     nixPath = options.nix.nixPath.default ++ [ ];

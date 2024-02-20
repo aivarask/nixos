@@ -38,6 +38,7 @@
       bookmarks = [
         { name = "NixOS Home"; url = "https://nixos.org"; }
         { name = "NixOS Wiki"; url = "https://nixos.wiki"; }
+        { name = "NixOS & Flakes Book"; url = "https://nixos-and-flakes.thiscute.world"; }
       ];
     }
     { name = "Sofascore Euroleague"; url = "https://www.sofascore.com/tournament/basketball/international/euroleague/138"; }

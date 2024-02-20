@@ -9,6 +9,8 @@ local lspconfig = require 'lspconfig'
 local ccls = require('lspconfig.server_configurations.ccls')
 lspconfig.ccls.setup {
   autostart = true,
+  -- root_dir = [[root_pattern('compile_commands.json', '.ccls', '.git')]],
+  root_dir = require('lspconfig.util').root_pattern('Makefile.in'),
   init_options = {
     compilationDatabaseDirectory = "build",
     index = {

@@ -57,6 +57,7 @@
     unrar
     unzip
     jq
+    yq-go
     ffmpeg
     highlight
     hicolor-icon-theme
