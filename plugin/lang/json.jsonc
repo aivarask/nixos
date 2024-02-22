@@ -1,0 +1,10 @@
+{
+  "foo": {
+    "prefix": [
+      "foo"
+    ],
+    "body": [
+      "some"
+    ]
+  }
+}

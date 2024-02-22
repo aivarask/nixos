@@ -43,7 +43,4 @@ require('lspconfig').lua_ls.setup({
   },
 })
 
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.lua' },
-  callback = function() vim.lsp.buf.format({ filter = function(client) return client.name == 'lua_ls' end }) end,
-})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.lua' }, callback = vim.lsp.buf.format })

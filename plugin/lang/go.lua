@@ -6,21 +6,12 @@ local go = {
 }
 local gopls = require('lspconfig.server_configurations.gopls')
 require('lspconfig').gopls.setup({})
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  { group = 'Format', desc = 'gopls', pattern = { '*.go' }, callback = vim.lsp.buf.format })
 
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.go' },
-  callback = function() vim.lsp.buf.format({}) end,
-})
 
-vim.filetype.add({
-  extension = {
-    templ = 'templ',
-  },
-})
-
+local templ = require('lspconfig.server_configurations.templ')
+vim.filetype.add({ extension = { templ = 'templ' } })
 require('lspconfig').templ.setup({})
-
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.templ' },
-  callback = function() vim.lsp.buf.format({}) end,
-})
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  { group = 'Format', desc = 'templ', pattern = { '*.templ' }, callback = vim.lsp.buf.format })

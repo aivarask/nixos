@@ -1,5 +1,5 @@
 vim.cmd([[
-  let &runtimepath.=',/etc/nixos'
+  " let &runtimepath.=',/etc/nixos' " already in nix config
   source /etc/nixos/vimrc.vim
 ]])
 
@@ -23,3 +23,5 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('t', '<C-l>', [[<cmd>wincmd l<CR>]], opts)
   end,
 })
+
+vim.api.nvim_create_augroup('Format', {})

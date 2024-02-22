@@ -4,6 +4,9 @@
 { pkgs, ... }: {
   environment.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
+    PATH = [
+      "$HOME/.config/composer/vendor/bin"
+    ];
   };
   environment.shellAliases = {
     wp = "wp --allow-root";

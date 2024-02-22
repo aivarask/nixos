@@ -7,9 +7,6 @@
     ];
     variables = {
       EDITOR = "nvim";
-      editor = "vim";
-      PNPM_HOME = "$HOME/.pnpm-global";
-      NODE_OPTIONS = "--no-warnings";
       GDK_SCALE = "1";
       GDK_DPI_SCALE = "1";
       QT_AUTO_SCREEN_SET_FACTOR = "0";
@@ -19,6 +16,7 @@
       # XSERVERRC = "/etc/X11/xinit/xserverrc";
     };
     shellAliases = {
+      ep = "echo $PATH | tr ':' '\n'";
       codium = "codium --no-sandbox --user-data-dir ~/.codium";
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";
@@ -47,9 +45,6 @@
       PATH = [
         "${XDG_BIN_HOME}"
         "/etc/nixos/bin"
-        "$HOME/.pnpm-global"
-        "$HOME/.node_modules/bin"
-        "$HOME/.config/composer/vendor/bin"
       ];
 
     };

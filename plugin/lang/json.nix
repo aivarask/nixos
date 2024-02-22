@@ -6,5 +6,6 @@
     # vscode-eslint-language-server
     # vscode-markdown-language-server 
     # vscode-json-language-server
+    nodePackages.fixjson
   ];
 }
