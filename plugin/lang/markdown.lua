@@ -5,9 +5,10 @@ local markdown = {
   formatting = { "cbfmt", "deno_fmt", "dprint", "markdown_toc", "markdownlint", "mdformat", "ocdc", "prettier", "prettierd", "remark", "terrafmt", "textlint" },
   hover = { "dictionary" },
 }
-require('null-ls').register({ require('null-ls.builtins.formatting.mdformat') })
+require('null-ls').register({
+  require('null-ls.builtins.formatting.mdformat'),
+  require('null-ls.builtins.formatting.markdownlint'),
+})
 
 local marksman = require('lspconfig.server_configurations.marksman')
 require('lspconfig').marksman.setup({})
-
-

@@ -1,5 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
+    soulseekqt
+    nicotine-plus
+    slskd
     figma-linux
     # gnu
     parallel
