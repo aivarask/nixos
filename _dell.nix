@@ -1,5 +1,5 @@
 # DELL XPS 7590
-{ config, lib, modulesPath, pkgs, ... }: {
+{ config, lib, modulesPath, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];

@@ -1,6 +1,6 @@
 vim.api.nvim_set_keymap('n', 'qq', [[:NvimTreeOpen<CR>]], { noremap = true, silent = true })
 
--- https://github.com/kyazdani42/nvim-tree.lua
+-- nvim-tree
 require('nvim-tree').setup({
   on_attach = function(bufnr)
     require('nvim-tree.api').config.mappings.default_on_attach(bufnr)

@@ -1,16 +1,25 @@
-{ pkgs, lib, ... }: {
-  system.extraDependencies = with pkgs; [ zlib ];
+{ pkgs, ... }: {
+  environment.shellAliases = {
+    ecip = "echo $C_INCLUDE_PATH | tr ':' '\n'";
+  };
+  environment.variables = {
+    C_INCLUDE_PATH = builtins.concatStringsSep ":" [
+      "${pkgs.zlib.dev}/include"
+      "${pkgs.libuv.dev}/include"
+      "${pkgs.check}/include"
+    ];
+  };
   environment.systemPackages = with pkgs; [
     clang
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/development/tools/clang-tools/default.nix
     (clang-tools.override {
-      enableLibcxx = true;
-      # llvmPackages = llvmPackages;
+      enableLibcxx = false;
     })
-
+    gcc
+    ccls
+    glib # gio trash
+    # check
   ];
 }
-
 
 
 

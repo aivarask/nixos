@@ -25,11 +25,14 @@ pb:
 	parallel ::: 'php -S localhost:8000' 'curl example.org'
 
 # C
-gcc:
-	gcc -fsyntax-only ./plugin/lang/c.c
-
 cc:
 	cc -fsyntax-only ./plugin/lang/c.c
 
+gcc:
+	gcc -fsyntax-only ./plugin/lang/c.c
+
 clang: 
 	clang --analyze ./plugin/lang/c.c
+
+csend:
+	clang -o ./plugin/lang/csend ./plugin/lang/csend.c; ./plugin/lang/csend

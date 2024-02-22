@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }: {
+{ lib, config, ... }: {
   services.kmscon = {
     enable = lib.mkDefault true;
     autologinUser = lib.mkDefault "root";

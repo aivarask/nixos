@@ -22,7 +22,7 @@
     lobster.url = "github:justchokingaround/lobster";
   };
   outputs =
-    { nixpkgs, home-manager, nixos-hardware, nix-colors, lobster, musnix, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
+    { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,7 +32,6 @@
         with inputs; [
           nur.overlay
           neovim-nightly-overlay.overlay
-
           (_final: prev: with prev; {
             inherit LS_COLORS;
           })
@@ -70,7 +69,6 @@
     in
     {
 
-      devShells."${system}".c = ./shell.nix;
       formatter."${system}" = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
@@ -88,15 +86,14 @@
             # musnix.nixosModules.musnix
             {
               nixpkgs.overlays = overlays;
-              environment.systemPackages = [
-                # lobster.packages.${system}.lobster
-              ];
               nix.registry = {
                 nixpkgs.flake = inputs.nixpkgs;
                 home-manager.flake = inputs.home-manager;
                 nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
               };
-
+              environment.systemPackages = [
+                # lobster.packages.${system}.lobster
+              ];
             }
             ./configuration.nix
             ./_dell.nix

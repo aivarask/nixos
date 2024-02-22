@@ -10,7 +10,7 @@ local ccls = require('lspconfig.server_configurations.ccls')
 lspconfig.ccls.setup {
   autostart = false,
   -- root_dir = [[root_pattern('compile_commands.json', '.ccls', '.git')]],
-  root_dir = require('lspconfig.util').root_pattern('Makefile.in', 'Makefile'),
+  root_dir = require('lspconfig.util').root_pattern('Makefile'),
   init_options = {
     compilationDatabaseDirectory = "build",
     index = {
@@ -23,16 +23,12 @@ lspconfig.ccls.setup {
 }
 
 local clangd = require('lspconfig.server_configurations.clangd')
-
 lspconfig.clangd.setup({
   autostart = true,
-  root_dir = require('lspconfig.util').root_pattern('Makefile.in', 'Makefile'),
+  root_dir = require('lspconfig.util').root_pattern('Makefile'),
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.c', '*.h' },
-  callback = function()
-    vim.lsp.buf.format({
-    })
-  end,
+  callback = function() vim.lsp.buf.format({}) end,
 })

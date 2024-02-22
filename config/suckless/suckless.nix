@@ -1,26 +1,7 @@
-{ pkgs
-, dmenu-flexipatch
-, dwm-flexipatch
-, st-flexipatch
-, tabbed-flexipatch
-, ...
-}: {
-  environment.systemPackages = with pkgs; [
-    dmenu
-    dwm
-    st
-    tabbed
-    # --
-    wmname
-    emojipick
-  ];
-
-  environment.shellAliases = {
-    # st = "st -z 32";
-  };
-
+{ pkgs, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... }: {
+  environment.systemPackages = with pkgs; [ dmenu dwm st tabbed wmname emojipick ];
   nixpkgs.overlays = [
-    (self: super: {
+    (_self: super: {
       dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
         src = dmenu-flexipatch; # https://github.com/bakkeby/dmenu-flexipatch
         configFile = super.writeText "config.h" (builtins.readFile ./dmenu-config.h);
