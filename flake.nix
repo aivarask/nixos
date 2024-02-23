@@ -124,6 +124,17 @@
             inherit tabbed-flexipatch;
           };
           modules = [
+            {
+              nixpkgs.overlays = overlays;
+              nix.registry = {
+                nixpkgs.flake = inputs.nixpkgs;
+                home-manager.flake = inputs.home-manager;
+                nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+              };
+              environment.systemPackages = [
+                # lobster.packages.${system}.lobster
+              ];
+            }
             ./configuration.nix
             ./_pc.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
