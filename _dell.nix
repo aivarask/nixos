@@ -1,8 +1,7 @@
 # DELL XPS 7590
+# https://www.dell.com/support/manuals/en-lt/xps-15-7590-laptop/xps-15-7590-setup-and-specifications
 { config, lib, modulesPath, ... }: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" "usb_storage" ];
@@ -16,7 +15,6 @@
     "/home" = { device = "zroot/home"; fsType = "zfs"; };
     "/boot" = { device = "/dev/disk/by-uuid/CFAB-7FF4"; fsType = "vfat"; };
   };
-
   swapDevices = [ ];
 
   hardware = {
@@ -24,18 +22,18 @@
     bluetooth.enable = false;
   };
   system.stateVersion = "23.05";
+
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
+
+  networking = { hostName = "dell"; hostId = "8425e349"; };
 
   systemd.network.networks."10-hw" = {
     name = "wlp59s0";
     matchConfig.Name = "wlp59s0";
     linkConfig.RequiredForOnline = "yes";
-    networkConfig = {
-      DHCP = "ipv4";
-      IPv6AcceptRA = true;
-    };
+    networkConfig = { DHCP = "ipv4"; IPv6AcceptRA = true; };
   };
 
   # https://github.com/NixOS/nixos-hardware/blob/master/dell/xps/15-7590/nvidia/default.nix
@@ -49,6 +47,7 @@
       intelBusId = "PCI:0:2:0";
     };
   };
+
   # https://discourse.nixos.org/t/using-internal-external-monitor-with-nvidia-offload/22504/5
   specialisation = {
     external-display.configuration = {
@@ -58,13 +57,12 @@
     };
   };
 
-  networking = {
-    hostName = "dell";
-    hostId = "8425e349";
-  };
-
   services.xserver = {
-    dpi = 168; # 96*1.75
-    libinput = { touchpad = { naturalScrolling = true; accelSpeed = "+10"; }; };
+    # xdpyinfo | grep -E 'dimensions|resolution'
+    # 15.6 3840x2160 345x194
+    dpi = 283;
+    libinput = {
+      touchpad = { naturalScrolling = true; accelSpeed = "+0.5"; };
+    };
   };
 }

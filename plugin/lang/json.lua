@@ -1,3 +1,7 @@
+vim.cmd([[
+autocmd! BufEnter *.json,flake.lock,.prettierrc setlocal ft=jsonc
+]])
+
 local ftmap = require('null-ls.builtins._meta.filetype_map').json
 local jsonc = {
   diagnostics = { "cfn_lint", "jsonlint", "spectral", "vacuum" },

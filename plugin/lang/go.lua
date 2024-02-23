@@ -1,3 +1,7 @@
+vim.cmd([[
+" autocmd! BufEnter *.templ setlocal ft=templ
+]])
+
 local ftmap = require('null-ls.builtins._meta.filetype_map').go
 local go = {
   code_actions = { "gomodifytags", "impl", "refactoring" },

@@ -1,4 +1,5 @@
 require('which-key').register({
+  ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['<F1>'] = { help_cword, 'help_cword' },
   ['<F13>'] = { help_cWORD, 'help_cWORD' },
   ['<F25>'] = { help_cexpr, 'help_cexpr' },

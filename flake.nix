@@ -113,27 +113,33 @@
           ];
         };
 
-        # pc = nixpkgs.lib.nixosSystem {
-        #   # PC B450 AORUS M
-        #   inherit system;
-        #   specialArgs = { inherit inputs; inherit include; };
-        #   modules = [
-        #     ./configuration.nix
-        #     ./_pc.nix
-        #     nixos-hardware.nixosModules.common-cpu-amd-pstate
-        #     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-        #     nixos-hardware.nixosModules.common-hidpi
-        #     home-manager.nixosModules.home-manager
-        #     {
-        #       home-manager = {
-        #         useGlobalPkgs = true;
-        #         useUserPackages = true;
-        #         users.root = import ./home.nix;
-        #       };
-        #       home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
-        #     }
-        #   ];
-        # };
+        pc = nixpkgs.lib.nixosSystem {
+          # PC B450 AORUS M
+          inherit system;
+          specialArgs = {
+            inherit include;
+            inherit dmenu-flexipatch;
+            inherit dwm-flexipatch;
+            inherit st-flexipatch;
+            inherit tabbed-flexipatch;
+          };
+          modules = [
+            ./configuration.nix
+            ./_pc.nix
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+            nixos-hardware.nixosModules.common-hidpi
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = false;
+                users.root = import ./home.nix;
+              };
+              home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
+            }
+          ];
+        };
       };
     };
 }

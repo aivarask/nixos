@@ -1,10 +1,14 @@
 { pkgs, ... }: {
   # ../modules/services/databases/mysql.nix
   environment.systemPackages = with pkgs; [
-    sqls
     sqlite-interactive
     sqlite-analyzer
     sqlite-web
+
+    sqlfluff # 7k
+
+    sqls # 0.8k
+    postgres-lsp # 3.1k
   ];
   networking.firewall.allowedTCPPorts = [
     3306 # mysql
