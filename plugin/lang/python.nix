@@ -1,8 +1,7 @@
 { pkgs, ... }: {
-  # https://nixos.wiki/wiki/Python#Libraries
-  # https://nixos.org/manual/nixpkgs/unstable/#python
   environment.systemPackages = with pkgs; [
+    nodePackages.pyright
+    black
     (python3.withPackages (ps: with ps; [ requests ]))
   ];
-  nixpkgs.overlays = [ ];
 }

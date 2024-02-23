@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     marksman
-    mdformat # hangs on man-cache
+    mdformat
     markdownlint-cli
     markdownlint-cli2
   ];

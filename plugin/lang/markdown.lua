@@ -6,9 +6,17 @@ local markdown = {
   hover = { "dictionary" },
 }
 require('null-ls').register({
-  require('null-ls.builtins.formatting.mdformat'),
+  -- require('null-ls.builtins.formatting.mdformat'),
   require('null-ls.builtins.formatting.markdownlint'),
 })
 
 local marksman = require('lspconfig.server_configurations.marksman')
 require('lspconfig').marksman.setup({})
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  {
+    group = 'Format',
+    desc = 'markdownlint',
+    pattern = { '*.md' },
+    callback = function() vim.lsp.buf.format() end,
+  })

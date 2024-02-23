@@ -11,4 +11,9 @@ local biome = require('lspconfig.server_configurations.biome')
 local tsserver = require('lspconfig.server_configurations.tsserver')
 require('lspconfig').tsserver.setup({})
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
-  { group = 'Format', desc = 'tsserver', once = true, pattern = { '*.js', '*.ts' }, callback = vim.lsp.buf.format })
+  {
+    group = 'Format',
+    desc = 'tsserver',
+    pattern = { '*.js', '*.ts' },
+    callback = function() vim.lsp.buf.format() end,
+  })

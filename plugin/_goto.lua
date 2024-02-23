@@ -16,7 +16,7 @@ Go = {
       homepage('', '<cword>')
     end,
     cWORD = function()
-      homepage('', '<cWORD>') -- prisma-engines
+      homepage('', '<cWORD>')
     end,
   },
   luajitPackages = {
