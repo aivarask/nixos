@@ -25,6 +25,11 @@
 
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
+    # https://unix.stackexchange.com/a/596888
+    # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
+    GDK_DPI_SCALE = "0.75"; # firefox nicotine
+    # GDK_SCALE = "1";
+    # QT_AUTO_SCREEN_SET_FACTOR = "0"; QT_SCALE_FACTOR = "1"; QT_FONT_DPI = "144"; 
   };
 
   networking = { hostName = "dell"; hostId = "8425e349"; };
@@ -60,7 +65,7 @@
   services.xserver = {
     # xdpyinfo | grep -E 'dimensions|resolution'
     # 15.6 3840x2160 345x194
-    dpi = 283;
+    dpi = 282;
     libinput = {
       touchpad = { naturalScrolling = true; accelSpeed = "+0.5"; };
     };

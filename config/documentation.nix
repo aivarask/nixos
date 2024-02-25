@@ -15,7 +15,7 @@
     info.enable = true;
     man = {
       enable = true;
-      generateCaches = true;
+      generateCaches = false;
       man-db = {
         enable = true;
       };

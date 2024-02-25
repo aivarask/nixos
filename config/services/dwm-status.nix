@@ -35,7 +35,7 @@
       template = "🌐 {IPv4} 📶 {ESSID}"
 
       [time]
-      format = "📆 %Y-%m-%d %H:%M"
+      format = "📆 %m-%d %H:%M"
       update_seconds = false
     '';
     # https://stackoverflow.com/questions/75668045/nix-coding-pattern-merging-two-conditional-lists-created-with-mkif
@@ -43,7 +43,7 @@
       # "audio"
       (lib.mkIf (config.networking.hostName == "dell") [ "backlight" "battery" ])
       [
-        "cpu_load"
+        # "cpu_load"
         "network"
         "time"
       ]
