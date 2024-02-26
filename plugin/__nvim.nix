@@ -3,6 +3,7 @@
     ps.magick # image-nvim
   ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    # TODO: project-nvim telescope-project-nvim
     # auto-session
     # https://github.com/Shatur/neovim-session-manager
     neovim-session-manager # plugin/_session.lua 
@@ -23,6 +24,6 @@
     lualine-nvim # plugin/_lualine.lua
     lualine-lsp-progress
     nvim-tree-lua # plugin/_nvim-tree.lua
-    toggleterm-nvim # plugin/_terminal.lua
+    toggleterm-nvim
   ];
 }

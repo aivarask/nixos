@@ -62,7 +62,4 @@
     latitude = 54.0;
     longitude = 25.0;
   };
-  # xdpyinfo | grep -E 'dimensions|resolution'
-  # 27 3840x2160 597x336
-  services.xserver = { dpi = 163; libinput.mouse.accelSpeed = "+0.5"; };
 }

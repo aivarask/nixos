@@ -14,11 +14,7 @@
     ++ (with pkgs.xorg; [
       # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
       xbacklight
-      # xfontsel
       xorgserver
-      xf86inputevdev
-      xf86inputsynaptics
-      xf86inputlibinput
 
       xdpyinfo
       xev

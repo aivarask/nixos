@@ -1,24 +1,24 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   services.dwm-status = {
     enable = true;
     extraConfig = ''
       separator = " "
 
       [audio]
-      control = "Master Playback Volume"
+      # backend = "pulseaudio" # separate branch without flake
+      control = "Master"
       mute = "MUTE"
-      template = "{ICO} {VOL}"
+      template = "{ICO}{VOL}"
       icons = ["🔈", "🔉", "🔊"]
 
       [backlight]
       device = "intel_backlight"
-      template = "{ICO} {BL}"
+      template = "{ICO}{BL}"
       icons = ["🔅", "🔆", "😎"]
 
       [battery]
-      charging = "▲"
-      discharging = "▼"
+      charging = "🔌"
+      discharging = "🔦"
       enable_notifier = true
       no_battery = ""
       notifier_critical = 10
@@ -32,15 +32,14 @@
 
       [network]
       no_value = "🌑"
-      template = "🌐 {IPv4} 📶 {ESSID}"
+      template = "🌐{IPv4} 📶{ESSID}"
 
       [time]
-      format = "📆 %m-%d %H:%M"
+      format = "📆%m-%d %H:%M"
       update_seconds = false
     '';
-    # https://stackoverflow.com/questions/75668045/nix-coding-pattern-merging-two-conditional-lists-created-with-mkif
     order = lib.mkMerge [
-      # "audio"
+      # [ "audio" ]
       (lib.mkIf (config.networking.hostName == "dell") [ "backlight" "battery" ])
       [
         # "cpu_load"

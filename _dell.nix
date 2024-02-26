@@ -62,12 +62,4 @@
     };
   };
 
-  services.xserver = {
-    # xdpyinfo | grep -E 'dimensions|resolution'
-    # 15.6 3840x2160 345x194
-    dpi = 282;
-    libinput = {
-      touchpad = { naturalScrolling = true; accelSpeed = "+0.5"; };
-    };
-  };
 }

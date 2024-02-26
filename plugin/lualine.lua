@@ -1,4 +1,4 @@
---- @ https://github.com/nvim-lualine/lualine.nvim
+-- lualine-nvim
 require('lualine').setup({
   options = {
     disabled_filetypes = {
@@ -23,6 +23,9 @@ require('lualine').setup({
         mode = 4,
       },
     },
+    -- lualine_y = { function()
+      -- return vim.uv.gettimeofday()
+    -- end },
     lualine_z = {
       'searchcount',
     },

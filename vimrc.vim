@@ -1,4 +1,3 @@
-
 aug Other
   au!
   autocmd BufEnter *svelte-kit/* set buftype=nowrite

@@ -53,5 +53,3 @@ if !has('gui_running')
   set t_Co=256
   set guioptions-=e
 endif
-
-

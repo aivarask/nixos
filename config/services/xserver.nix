@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ lib, config, ... }: {
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = lib.mkDefault false;
@@ -31,6 +31,14 @@
           Control_L, Down, Control_L|Button5
         '';
       };
+    };
+    # xdpyinfo | grep -E 'dimensions|resolution'
+    # 15.6" 3840x2160 345x194
+    # 27" 3840x2160 597x336
+    dpi = { dell = 282; pc = 163; }."${config.networking.hostName}" or 144;
+    libinput = {
+      mouse = { accelSpeed = "+0.5"; };
+      touchpad = { naturalScrolling = true; accelSpeed = "+0.5"; };
     };
   };
 

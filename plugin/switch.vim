@@ -1,24 +1,13 @@
 " https://github.com/AndrewRadev/switch.vim
+" https://github.com/AndrewRadev/switch.vim#builtins
 let g:switch_custom_definitions =
       \ [
       \   ['<cword>', '<cWORD>', '<cexpr>', '<cfile>'],
-      \   ['type=\"number\"', 'type=\"text\"'],
-      \   ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-      \   ['foo', 'bar', 'baz'],
-      \   ['Truthy', 'Falsy'],
-      \   ['export let', 'export const'],
-      \   ['const', 'export const'],
-      \   ['Int', 'String', 'Boolean'],
-      \   {
-      \     '\(\k\+=\){\([[:keyword:].]\+\)}':      '\1{`${\2}`}',
-      \     '\(\k\+=\){`${\([[:keyword:].]\+\)}`}': '\1{\2}',
-      \   },
-      \   ['it(', 'it.skip(', 'it.only('],
-      \   ['test(', 'test.skip(', 'test.only('],
-      \   ['describe(', 'describe.skip(', 'describe.only('],
-      \   ['toBeTruthy', 'toBeFalsy'],
-      \   ['toBe(', 'not.toBe('],
       \ ]
+
+" <cfile>
+" true True TRUE
+" 
 
 " https://github.com/AndrewRadev/switch.vim/wiki/Switch-next-in-current-line
 fun! SwitchLine(cnt)
