@@ -23,9 +23,9 @@ require('lualine').setup({
         mode = 4,
       },
     },
-    -- lualine_y = { function()
-      -- return vim.uv.gettimeofday()
-    -- end },
+    lualine_y = {
+      require('auto-session.lib').current_session_name,
+    },
     lualine_z = {
       'searchcount',
     },

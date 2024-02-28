@@ -6,22 +6,24 @@ vim.cmd([[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
   set nofoldenable
+" set foldlevelstart=2
+" set foldlevel=3
+" set foldlevel=99
+" set foldnestmax=5
 ]])
 
 -- nvim-treesitter-context plugin
 require 'treesitter-context'.setup {
-  enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-  max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
-  min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  enable = true,
+  max_lines = 2,
+  min_window_height = 0,
   line_numbers = true,
-  multiline_threshold = 20, -- Maximum number of lines to show for a single context
-  trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
-  -- Separator between context and content. Should be a single character string, like '-'.
-  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  multiline_threshold = 20,
+  trim_scope = 'outer',
+  mode = 'cursor',
   separator = nil,
-  zindex = 20,     -- The Z-index of the context window
-  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+  zindex = 20,
+  on_attach = nil,
 }
 
 require('nvim-treesitter.configs').setup({ -- nvim-treesitter
@@ -44,8 +46,9 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   },
   -- nvim-ts-context-commentstring plugin
   textobjects = { -- nvim-treesitter-textobjects
+    -- nvim-treesitter-text-objects-select-submod*
     select = {
-      enable = true,
+      enable = false,
       lookahead = true,
       keymaps = {
         ['af'] = '@function.outer',
@@ -63,9 +66,9 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
       },
       include_surrounding_whitespace = true,
     },
-    -- TODO: swap config
+    -- nvim-treesitter-text-objects-swap-submod
     swap = {
-      enable = true,
+      enable = false,
       swap_next = {
         ['>x'] = '@attribute.outer',
         ['>X'] = '@block.outer',
@@ -81,9 +84,9 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
         ['<f'] = '@function.outer',
       },
     },
-    -- TODO: move config
+    -- nvim-treesitter-text-objects-move-submod
     move = {
-      enable = true,
+      enable = false,
       set_jumps = true,
       goto_next_start = {
         [']x'] = '@attribute.outer',
@@ -98,6 +101,7 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
         ['[f'] = '@function.outer',
       },
     },
+    -- nvim-treesitter-textobjects-lsp_interop-submod
     lsp_interop = {
       enable = true,
       border = 'none',

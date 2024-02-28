@@ -23,7 +23,7 @@
       no_battery = ""
       notifier_critical = 10
       notifier_levels = [2, 5, 10, 15, 20]
-      separator = "·"
+      separator = ""
       icons = ["🪫", "🔋", "🔋"]
 
       [cpu_load]

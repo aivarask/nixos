@@ -1,36 +1,16 @@
-set autoindent
-set cmdheight=4
+set title titlestring=%{expand('%')}
+set autoindent smartindent shiftwidth=2 tabstop=2 expandtab
 set completeopt=menu,menuone,noselect
-set cursorline
-set expandtab
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
-" set foldlevelstart=2
-" set foldlevel=3
-" set foldlevel=99
-" set foldnestmax=5
+set cursorline mouse=a 
 set hidden
 set ignorecase 
-set laststatus=2
 set lazyredraw
 set modeline 
-set mouse=a 
 set noshowmode
-set number
-set shiftwidth=2
-set showtabline=2
-set signcolumn=yes
-set smartindent
-set splitbelow 
-set splitright
-set statusline+=%F
-set tabstop=2
-set timeoutlen=200
-set title 
-" set titlestring=%{expand('%:h')}
-" set titlestring=%{getcwd()}\ \ \ %{expand('%')}
-set titlestring=%{expand('%:h')}\ %{getcwd()}
-set updatetime=1500
+set signcolumn=yes number
+set splitright splitbelow
+set showtabline=2 statusline+=%F cmdheight=4
+set updatetime=1500 timeoutlen=200
 
 hi! link netrwMarkFile Search
 let &t_EI = "\<Esc>[2 q"
