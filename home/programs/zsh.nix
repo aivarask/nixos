@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.zsh = {
     sessionVariables = { };
     enable = true;
@@ -12,19 +12,44 @@
     };
     initExtraBeforeCompInit = ''
       # <<< initExtraBeforeCompinit
-      source /etc/nixos/zsh/_beforeComp.zsh
+      # https://man.archlinux.org/man/zshmisc.1#Hook_Functions
+      precmd() {
+        print -Pn "\e]83;title \"$1\"\a"
+        print -Pn "\e]0;$PWD $TERM\a"
+      }
+      preexec() {
+        print -Pn "\e]83;title \"$1\"\a"
+        print -Pn "\e]0;$PWD $1\a"
+      }
+      source /etc/nixos/zsh/_bcomp.zsh
       # >>>
     '';
     completionInit = ''
       # <<< completionInit
-      source /etc/nixos/zsh/_compInit.zsh
+      fpath+=(${pkgs.zig-shell-completions}/share/zsh/site-functions)
+      source /etc/nixos/zsh/_comp.zsh
       # >>>
     '';
     initExtra = ''
       # <<< initExtra
-      source /etc/nixos/zsh/_initAfter.zsh
+      source /etc/nixos/init.zsh
       # >>>
     '';
-    plugins = [ ];
+    plugins = [
+      # pkgs.zig-shell-completions
+      # {
+      #   src = pkgs.zig-shell-completions;
+      #   file = "zig-shell-completions.plugin.zsh";
+      #   name = "zig-shell-completions";
+      # }
+      # pkgs.zsh-autocomplete
+      # {
+      #   # https://github.com/chisui/zsh-nix-shell
+      #   name = "zsh-nix-shell";
+      #   file = "nix-shell.plugin.zsh";
+      #   src = pkgs.zsh-nix-shell;
+      # }
+      # zsh-forgit zsh-fzf-tab
+    ];
   };
 }

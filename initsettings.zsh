@@ -20,8 +20,8 @@ autoload -Uz run-help-git run-help-nix run-help-ip run-help-openssl run-help-sud
 # 4.6 Bind key to ncurses application
 # https://wiki.archlinux.org/title/Zsh#Bind_key_to_ncurses_application
 ncmpcppShow() {
-  BUFFER="ncmpcpp"
-  zle accept-line
+    BUFFER="ncmpcpp"
+    zle accept-line
 }
 zle -N ncmpcppShow
 bindkey '^[\' ncmpcppShow

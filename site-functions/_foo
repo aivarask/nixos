@@ -8,12 +8,14 @@ function _foo {
     'foo -- Description of foo'
     'bar -- Description of bar'
     'baz -- Description of baz'
+    'zoo -- Description of zoo'
   )
 
   _values=(
     'bar'
     'foo'
     'baz'
+    'zoo'
   )
 
   compadd -d _descriptions -a _values

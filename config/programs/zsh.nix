@@ -1,6 +1,1 @@
-{ pkgs, ... }: {
-  programs.zsh.enable = true;
-  environment.systemPackages = with pkgs; [
-    spaceship-prompt
-  ];
-}
+{ pkgs, ... }: { programs.zsh.enable = true; }
