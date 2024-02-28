@@ -13,6 +13,7 @@
     "dbrekelmans/bdi": "^1.1"
   },
   "require": {
-    "twig/twig": "^3.8"
+    "twig/twig": "^3.8",
+    "vlucas/phpdotenv": "^5.6"
   }
 }

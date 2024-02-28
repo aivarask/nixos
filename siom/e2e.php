@@ -7,6 +7,7 @@ use Symfony\Component\Panther\Client;
 // alternatively, create a Firefox client
 $client = Client::createFirefoxClient();
 
+// $client->request('GET', 'https://api-platform.com');
 $client->request('GET', 'http://127.0.0.1:8000');
 // $client->clickLink('Getting started');
 

@@ -26,11 +26,10 @@ super + {q,w,e,r}
   brave youtube.com # 📹 youtube.com r
   }
 
-super + {W,E,Y}
+super + {W,E,R}
   {firefox --private-window,\
   alacritty --working-directory=/etc/nixos,\
-  alacritty --working-directory=/etc/nixos/siom,\
-  foo
+  alacritty --working-directory=/etc/nixos/siom\
   }
 
 super + {a,s}

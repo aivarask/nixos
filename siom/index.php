@@ -23,3 +23,8 @@ $result = $db->query("
 while ($data = $result->fetchArray()) {
   echo $data['column'] . "<hr>";
 }
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+echo $_ENV["DB"];

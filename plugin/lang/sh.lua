@@ -1,6 +1,6 @@
 vim.cmd([[
-" autocmd! BufEnter .env* setlocal ft=sh
-" autocmd BufEnter */zsh/* setlocal ft=zsh
+  autocmd! BufEnter .env* setlocal ft=sh
+  autocmd BufEnter */zsh/* setlocal ft=zsh
 ]])
 
 local ftmap_sh = require('null-ls.builtins._meta.filetype_map').sh

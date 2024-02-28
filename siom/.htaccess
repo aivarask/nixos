@@ -1,0 +1,3 @@
+RewriteCond %{HTTP_HOST} ^(?:www\.)?gettransfer\.lt [NC] 
+RewriteRule ^(.*)$ maint.html [NC,QSA]
+FallbackResource /index.php
