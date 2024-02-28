@@ -1,6 +1,15 @@
+# nix
 result
 
 .direnv/
+
+# php
 */vendor/
-.ccls-cache
+
+# rust
 target
+Cargo.lock
+
+# zig
+zig-cache
+zig-out

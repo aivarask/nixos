@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    aerial-nvim
     symbols-outline-nvim
     flatten-nvim
     glow-nvim

@@ -22,11 +22,16 @@ super + {q,w,e,r}
   {tdrop alacritty,\
   $BROWSER,\
   alacritty --working-directory=/etc/nixos -e nvim,\
+  alacritty --working-directory=/etc/nixos/siom -e nvim,\
   brave youtube.com # 📹 youtube.com r
   }
 
 super + {W,E,Y}
-  {firefox --private-window,firefox messenger.com,firefox youtube.com}
+  {firefox --private-window,\
+  alacritty --working-directory=/etc/nixos,\
+  alacritty --working-directory=/etc/nixos/siom,\
+  foo
+  }
 
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
