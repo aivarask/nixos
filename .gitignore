@@ -1,10 +1,11 @@
+.direnv/
+
 # nix
 result
 
-.direnv/
-
 # php
-*/vendor/
+vendor/
+composer.lock
 
 # rust
 target
@@ -14,4 +15,6 @@ Cargo.lock
 zig-cache
 zig-out
 
-/vendor/
+# node
+pnpm-lock.json
+package.lock.json

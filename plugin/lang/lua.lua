@@ -14,10 +14,11 @@ local getLibrary = function()
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
     for _, name in ipairs({
       'plenary.nvim',
+      'nvim%-cmp',
       'nvim%-lspconfig',
       'none%-ls.nvim',
+      'neotest',
       'lsp_signature.nvim',
-      'nvim%-cmp',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -48,5 +49,5 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     group = 'Format',
     desc = 'lua',
     pattern = { '*.lua' },
-    callback = function() vim.lsp.buf.format() end
+    callback = function() vim.lsp.buf.format() end,
   })

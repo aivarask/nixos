@@ -15,7 +15,7 @@
         extraConfig = ''
           memory_limit = 2G
           xdebug.mode = debug
-          xdebug.start_with_request = trigger
+          xdebug.start_with_request = no
         '';
       })
     ]
