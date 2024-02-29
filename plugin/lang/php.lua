@@ -1,5 +1,9 @@
--- See https://github.com/bmewburn/intelephense-docs
--- phan phpactor psalm
+local ftmap = require('null-ls.builtins._meta.filetype_map').php
+local php = {
+  diagnostics = { "php", "phpcs", "phpmd", "phpstan", "psalm" },
+  formatting = { "phpcbf", "phpcsfixer", "pint", "pretty_php" },
+}
+
 require('lspconfig').intelephense.setup({
   root_dir = require('lspconfig.util').root_pattern('composer.json', '.git', 'index.php'),
 })

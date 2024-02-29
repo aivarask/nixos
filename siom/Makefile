@@ -6,7 +6,7 @@ mirror:
 	./mirror.sh
 
 serve:
-	php -S 127.0.0.1:8000 -a
+	php --ini -S 127.0.0.1:8000 -a
 
 reset:
 	fuser -k '8000/tcp'
