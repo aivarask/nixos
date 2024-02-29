@@ -13,3 +13,5 @@ Cargo.lock
 # zig
 zig-cache
 zig-out
+
+/vendor/

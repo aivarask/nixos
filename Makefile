@@ -1,38 +1,17 @@
-# https://stackoverflow.com/questions/3004811/how-do-you-run-multiple-programs-in-parallel-from-a-bash-script#5553774
-
-php:
-	php index.php
-
-check:
-	curl example.org
-
-serve:
-	php -S 127.0.0.1:8000
-
-clocal:
-	curl localhost:8000
-
-test:
-	(trap 'kill 0' SIGINT; make serve & make clocal & wait)
-
-p:
-	(make serve; make cheack) | parallel
-
-pa:
-	(make serve & make check) | parallel
-
-pb:
-	parallel ::: 'php -S localhost:8000' 'curl example.org'
-
 # C
 cc:
-	cc -fsyntax-only ./plugin/lang/c.c
-
+	cc -fsyntax-only ./src/main.c
 gcc:
-	gcc -fsyntax-only ./plugin/lang/c.c
+	gcc -fsyntax-only ./src/main.c
+ccompile: 
+	clang --analyze ./src/main.c
+crun:
+	clang -o ./src/mainc ./src/main.c; ./src/mainc
 
-clang: 
-	clang --analyze ./plugin/lang/c.c
-
-csend:
-	clang -o ./plugin/lang/csend ./plugin/lang/csend.c; ./plugin/lang/csend
+# PHP
+serve:
+	php -S localhost:8000 -t ./src
+test:
+	parallel ::: 'make serve' 'curl localhost:8000'
+trap:
+	(trap 'kill 0' SIGINT; make serve & make clocal & wait)

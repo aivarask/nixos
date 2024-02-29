@@ -1,0 +1,17 @@
+{
+    "name": "root/nixos",
+    "autoload": {
+        "psr-4": {
+            "Root\\Nixos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aivaras Kalesnykas",
+            "email": "kalesnykas.aivaras@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
