@@ -8,6 +8,14 @@ ccompile:
 crun:
 	clang -o ./src/mainc ./src/main.c; ./src/mainc
 
+# Go
+go:
+	go run ./src/main.go
+
+# Node
+node:
+	node --watch-path=./src/ ./src/index.js
+
 # PHP
 serve:
 	php -S localhost:8000 -t ./src
