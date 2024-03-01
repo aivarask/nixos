@@ -21,6 +21,7 @@
     lobster.url = "github:justchokingaround/lobster";
     neotest-zig = { url = "github:lawrence-laz/neotest-zig"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
+    neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -68,6 +69,11 @@
                     name = "nvim-dap-vscode-js";
                     src = nvim-dap-vscode-js;
                     meta = { homepage = "https://github.com/mxsdev/nvim-dap-vscode-js"; };
+                  };
+                  neotest-playwright = buildVimPlugin {
+                    name = "neotest-playwright";
+                    src = neotest-playwright;
+                    meta = { homepage = "https://github.com/thenbe/neotest-playwright"; };
                   };
                 };
             })

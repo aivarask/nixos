@@ -237,6 +237,22 @@
         "type": "github"
       }
     },
+    "neotest-playwright": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708663188,
+        "narHash": "sha256-uNQhEucVoYyBZvGVveWHHqomx9/P5jTf+M5HM3YufG8=",
+        "owner": "thenbe",
+        "repo": "neotest-playwright",
+        "rev": "39968792371cb48d395dc54c0498b7373ef73986",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thenbe",
+        "repo": "neotest-playwright",
+        "type": "github"
+      }
+    },
     "neotest-zig": {
       "flake": false,
       "locked": {
@@ -467,6 +483,7 @@
         "home-manager": "home-manager",
         "lobster": "lobster",
         "musnix": "musnix",
+        "neotest-playwright": "neotest-playwright",
         "neotest-zig": "neotest-zig",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",

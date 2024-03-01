@@ -21,6 +21,7 @@
     ]
     ++ (with pkgs; [
       phpunit
+      phpdocumentor
       wp-cli # phpactor
     ])
     ++ (with pkgs.php81Packages; [

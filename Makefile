@@ -1,11 +1,13 @@
-# C
-cc:
+all: c.all go.all
+
+c.all: c.clang
+c.cc:
 	cc -fsyntax-only ./src/main.c
-gcc:
+c.gcc:
 	gcc -fsyntax-only ./src/main.c
-ccompile: 
+c.clang: 
 	clang --analyze ./src/main.c
-crun:
+c.run:
 	clang -o ./src/mainc ./src/main.c; ./src/mainc
 
 go.all: go.run go.test
@@ -15,6 +17,8 @@ go.test:
 	go test
 go.debug:
 	dlv debug
+go.doc:
+	parallel ::: 'godoc' 'firefox https://localhost:6060/pkg/nixos'
 
 lua.all: lua.run lua.test lua.doc
 lua.run:
@@ -30,7 +34,7 @@ node.run:
 node.test:
 	node --test
 node.doc:
-	jdoc ./src/index.js
+	jsdoc ./src/*.js && parallel ::: 'serve out' 'sleep 1; firefox http://localhost:3000'
 
 php.run:
 	php ./src/index.php
@@ -39,15 +43,25 @@ php.test:
 php.serve:
 	php -S localhost:8000 -t ./src
 php.e2e:
-	parallel ::: 'make php.serve' 'curl localhost:8000'
+	parallel ::: 'make php.serve' 'curl http://localhost:8000'
 php.trap:
 	(trap 'kill 0' SIGINT; make serve & make clocal & wait)
+php.doc: # phpdocumentor
+	phpdoc run -d ./src && parallel ::: 'serve ./.phpdoc/build' 'sleep 1; firefox http://localhost:3000'
+
+py.all: py.run py.test
+py.run:
+	python ./src
+py.test:
+	pytest
 
 rust.all: rust.run rust.test
 rust.run:
 	cargo run
 rust.test:
 	cargo nextest run
+rust.doc:
+	cargo doc --open
 
 
 zig.all: zig.run zig.test

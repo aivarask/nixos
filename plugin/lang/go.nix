@@ -22,6 +22,7 @@ in
   };
   environment.systemPackages = with pkgs; [
     go
+    gotools
     gopls
     templ
     gow

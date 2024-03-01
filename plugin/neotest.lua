@@ -6,7 +6,7 @@ neo.setup({
   output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
   adapters = {
     require('neotest-plenary'),
-    require("neotest-go")({}),
+    require("neotest-go"),
     require('neotest-phpunit')({
       phpunit_cmd = function() return "vendor/bin/phpunit" end,
       root_files = { "composer.json" },
@@ -20,6 +20,14 @@ neo.setup({
     -- cargo nextest run
     require('neotest-rust'),
     require("neotest-zig"),
+    require("neotest-python")({
+    }),
+    require("neotest-playwright").adapter({
+      options = {
+        persist_project_selection = true,
+        enable_dynamic_test_discovery = true,
+      },
+    }),
   },
 })
 

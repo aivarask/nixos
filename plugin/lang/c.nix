@@ -17,7 +17,7 @@
     gcc
     ccls
     glib # gio trash
-    # check
+    check
   ];
 }
 
