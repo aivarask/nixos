@@ -44,6 +44,8 @@
         "browser.search.suggest.enabled" = false;
         "browser.send_pings" = false;
         "browser.tabs.closeWindowWithLastTab" = false;
+        "browser.tabs.loadInBackground" = false;
+        "browser.tabs.loadDivertedInBackground" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
         "browser.uidensity" = 1;
         "browser.urlbar.placeholderName" = "DuckDuckGo";

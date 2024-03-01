@@ -2,7 +2,8 @@ vim.fn.sign_define('DapBreakpoint', { text = '🟢', texthl = '', linehl = '', n
 vim.fn.sign_define('DapBreakpointRejected', { text = '🟡', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '🔴', texthl = '', linehl = '', numhl = '' })
 
--- dap-donfiguration nvim-dap
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
+-- dap-configuration nvim-dap
 local dap = require('dap')
 dap.defaults.fallback.terminal_win_cmd = '60vsplit new'
 require('nvim-dap-virtual-text').setup({})
@@ -10,17 +11,16 @@ require('nvim-dap-virtual-text').setup({})
 -- nvim-dap-ui
 local dapui = require('dapui')
 dapui.setup({})
-function dapui.toggle_reset(args)
-  dapui.toggle({ reset = true })
-end
+function dapui.toggle_reset(args) dapui.toggle({ reset = true }) end
 
 widgets = require('dap.ui.widgets')
 
 
 require('which-key').register({
-  -- ['<F6>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
+  ['<F6>'] = { dap.continue, 'continue' },
   -- ['<F7>'] = { require 'neotest'.run.dap, 'neotest.run.dap' },
-  -- ['<F8>'] = { dap.toggle_breakpoint, 'dap.toggle_breakpoint' },
+  ['<F8>'] = { dap.toggle_breakpoint, 'toggle_breakpoint' },
+  ['<F9>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
 })
 
 require('which-key').register({

@@ -25,5 +25,6 @@ in
     gopls
     templ
     gow
+    delve
   ];
 }

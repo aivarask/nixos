@@ -51,3 +51,34 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     pattern = { '*.lua' },
     callback = function() vim.lsp.buf.format() end,
   })
+
+-- https://github.com/tomblind/local-lua-debugger-vscode
+require('dap').adapters["local-lua"] = {
+  type = "executable",
+  command = "node",
+  args = { "/root/local-lua-debugger-vscode/extension/debugAdapter.js" },
+  enrich_config = function(config, on_config)
+    if not config["extensionPath"] then
+      local c = vim.deepcopy(config)
+      -- "module 'lldebugger' not found" errors in the dap-repl when trying to launch a debug session
+      c.extensionPath = "/root/local-lua-debugger-vscode/"
+      on_config(c)
+    else
+      on_config(config)
+    end
+  end,
+}
+
+require("dap").configurations.lua = {
+  {
+    type = "local-lua",
+    request = "launch",
+    name = "local-lua launch",
+    port = 9003,
+    program = {
+      lua = "luajit",
+      file = "${file}",
+    },
+    cwd = "${workspaceFolder}",
+  },
+}

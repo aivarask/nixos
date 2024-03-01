@@ -1,10 +1,16 @@
 package main
 
-import "fmt" 
+import "fmt"
 import "time"
 
-func main()  {
-  fmt.Println("Hello go")
-  start := time.Now()
-  fmt.Println(start)
+func main() {
+	lang := "go"
+	fmt.Println("Hello go", lang)
+	start := time.Now()
+	fmt.Println(start)
+}
+
+func hello() {
+	fmt.Println("Hello go")
+
 }

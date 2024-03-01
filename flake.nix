@@ -18,8 +18,9 @@
     vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
     vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
-    neovim-session-manager = { url = "github:Shatur/neovim-session-manager"; flake = false; };
     lobster.url = "github:justchokingaround/lobster";
+    neotest-zig = { url = "github:lawrence-laz/neotest-zig"; flake = false; };
+    nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -58,10 +59,15 @@
                     src = nvim-lsp-file-operations;
                     meta = { homepage = "https://github.com/antosha417/nvim-lsp-file-operations"; };
                   };
-                  neovim-session-manager = buildVimPlugin {
-                    name = "neovim-session-manager";
-                    src = neovim-session-manager;
-                    meta = { homepage = "https://github.com/Shatur/neovim-session-manager"; };
+                  neotest-zig = buildVimPlugin {
+                    name = "neotest-zig";
+                    src = neotest-zig;
+                    meta = { homepage = "https://github.com/lawrence-laz/neotest-zig"; };
+                  };
+                  nvim-dap-vscode-js = buildVimPlugin {
+                    name = "nvim-dap-vscode-js";
+                    src = nvim-dap-vscode-js;
+                    meta = { homepage = "https://github.com/mxsdev/nvim-dap-vscode-js"; };
                   };
                 };
             })

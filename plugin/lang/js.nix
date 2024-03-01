@@ -25,5 +25,6 @@
       dotenv-cli
       prettierd
       typescript-language-server
+      jsdoc
     ]);
 }

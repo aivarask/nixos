@@ -15,7 +15,7 @@ let
     # vicious
     # luarepl
     # lgi 
-    # ldoc
+    ldoc
   ]));
 in
 {

@@ -237,6 +237,22 @@
         "type": "github"
       }
     },
+    "neotest-zig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702246006,
+        "narHash": "sha256-BOvpwjw44jcIA/HnOKrP1ltG/NYfgh14/lxsh/tqXRs=",
+        "owner": "lawrence-laz",
+        "repo": "neotest-zig",
+        "rev": "742f97f971a39d44b4832b432083608834a0e59c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lawrence-laz",
+        "repo": "neotest-zig",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -247,11 +263,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1709162366,
-        "narHash": "sha256-A18s9ThfCGEPzUsqzZnV9+l3oVcjAwU+mkzOxArwqbs=",
+        "lastModified": 1709244818,
+        "narHash": "sha256-dCwN7Z4t+pmGuH90Dff5h1qIm2Rh917cZX3GF/W5GYk=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "ce7c51a1a3b2b38cdba730aeb53840d0ace32173",
+        "rev": "5d4e1693cb415e8b76749e833e28f00f14630b87",
         "type": "github"
       },
       "original": {
@@ -270,32 +286,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1709165056,
-        "narHash": "sha256-S+cQn7qnqGtpvxqgcTS/oSixxEDHvQqEhvUVGnjljs0=",
+        "lastModified": 1709251411,
+        "narHash": "sha256-gqdsGpxOYeVKL20NkzXhO34j+/acwf6cPP3WyNawO2A=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "ba07638ead045e7e2ecf9415727a694ad7cb7a66",
+        "rev": "cc9a9e3382376958422b12170c7edd78087c7a98",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "type": "github"
-      }
-    },
-    "neovim-session-manager": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708284146,
-        "narHash": "sha256-+TDWY8mprJfUp9ZFKbz83to7XW8iiovja22jHms+N1A=",
-        "owner": "Shatur",
-        "repo": "neovim-session-manager",
-        "rev": "d8e1ba3bbcf3fdc6a887bcfbd94c48ae4707b457",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Shatur",
-        "repo": "neovim-session-manager",
         "type": "github"
       }
     },
@@ -383,11 +383,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1709101946,
-        "narHash": "sha256-TsySgcWm/GlbYdL3AEva49ceeI2BdPQ7muwfYNr1fwo=",
+        "lastModified": 1709200309,
+        "narHash": "sha256-lKdtMbhnBNU1lr978T+wEYet3sfIXXgyiDZNEgx8CV8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d53c2037394da6fe98decca417fc8fda64bf2443",
+        "rev": "ebe6e807793e7c9cc59cf81225fdee1a03413811",
         "type": "github"
       },
       "original": {
@@ -414,16 +414,32 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1709203535,
-        "narHash": "sha256-yQMygggtUJ8R8gtejfTupY/F9kXJ/YcXLEKbpSoR0p4=",
+        "lastModified": 1709271691,
+        "narHash": "sha256-b5kOUYqWohybzjYl2mJsGvzkK0rTOz8rFe1CzQD74yQ=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2b3b8752d1bd83b66b38163685f686ba8f3d1924",
+        "rev": "e2083b8865f5427a5f178766e5241ecc49e87507",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "nvim-dap-vscode-js": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1678071992,
+        "narHash": "sha256-8dlzaI94I8ppzLRNIfjVd92kYgqr07D1akDj4VdKQto=",
+        "owner": "mxsdev",
+        "repo": "nvim-dap-vscode-js",
+        "rev": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mxsdev",
+        "repo": "nvim-dap-vscode-js",
         "type": "github"
       }
     },
@@ -451,12 +467,13 @@
         "home-manager": "home-manager",
         "lobster": "lobster",
         "musnix": "musnix",
+        "neotest-zig": "neotest-zig",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "neovim-session-manager": "neovim-session-manager",
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nur": "nur",
+        "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "st-flexipatch": "st-flexipatch",
         "systems": "systems_3",

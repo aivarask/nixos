@@ -17,7 +17,8 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     pattern = { '*.go' },
     callback = function() vim.lsp.buf.format() end,
   })
-
+-- nvim-dap-go
+require('dap-go').setup()
 
 local templ = require('lspconfig.server_configurations.templ')
 vim.filetype.add({ extension = { templ = 'templ' } })

@@ -1,5 +1,8 @@
 .direnv/
 
+#lua
+doc
+
 # nix
 result
 
@@ -18,3 +21,4 @@ zig-out
 # node
 pnpm-lock.json
 package.lock.json
+out

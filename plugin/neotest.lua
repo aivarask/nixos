@@ -2,8 +2,11 @@ vim.keymap.set('n', '<leader>]', [[:Neotest summary<CR>]])
 
 local neo = require('neotest')
 neo.setup({
+  summary = { open = 'botright vsplit | vertical resize 40 | set winfixwidth' },
+  output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
   adapters = {
     require('neotest-plenary'),
+    require("neotest-go")({}),
     require('neotest-phpunit')({
       phpunit_cmd = function() return "vendor/bin/phpunit" end,
       root_files = { "composer.json" },
@@ -13,9 +16,11 @@ neo.setup({
       -- https://github.com/olimorris/neotest-phpunit/#debugging-with-dap-strategy
       dap = nil, -- dap.configurations.php
     }),
+    -- cargo-nextest
+    -- cargo nextest run
+    require('neotest-rust'),
+    require("neotest-zig"),
   },
-  output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
-  summary = { open = 'botright vsplit | vertical resize 40 | set winfixwidth' },
 })
 
 

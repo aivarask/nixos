@@ -14,3 +14,22 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*.php' },
   callback = function() vim.lsp.buf.format() end,
 })
+
+-- https://github.com/xdebug/vscode-php-debug
+require('dap').adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { '/root/vscode-php-debug/out/phpDebug.js' },
+}
+
+-- https://github.com/xdebug/vscode-php-debug#vs-code-configuration
+require('dap').configurations.php = {
+  {
+    type = 'php',
+    request = 'launch',
+    name = 'Launch',
+    -- port = 9000,
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+  },
+}

@@ -1,7 +1,10 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     neotest
-    neotest-plenary
+    neotest-go
     neotest-phpunit
+    neotest-plenary
+    neotest-rust
+    neotest-zig
   ];
 }
