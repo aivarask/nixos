@@ -15,7 +15,7 @@ local sql = {
 
 local sqls = require('lspconfig.server_configurations.sqls')
 require('lspconfig').sqls.setup({
-  cmd = { "sqls", "-config", "/etc/nixos/plugin/lang/sql.yml" },
+  cmd = { "sqls", "-config", "/etc/nixos/sqls.yml" },
 })
 
 -- local postgres_lsp = require('lspconfig.server_configurations.postgres_lsp')

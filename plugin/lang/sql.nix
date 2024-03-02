@@ -15,7 +15,6 @@
     5434 # postgresql
   ];
   services.mysql = {
-    # https://mynixos.com/nixpkgs/options/services.mysql
     enable = true;
     package = pkgs.mariadb;
     settings = {
@@ -26,7 +25,6 @@
     };
   };
   services.postgresql = {
-    # https://nixos.wiki/wiki/PostgreSQL
     enable = true;
     package = pkgs.postgresql;
     ensureDatabases = [ "test" ];

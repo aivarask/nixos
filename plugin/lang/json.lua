@@ -22,7 +22,6 @@ local function json()
           name = 'snippets',
           url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
         },
-        --   { description = 'sqlls config', fileMatch = '*/.sqllsrc.json', name = 'sqllsrc', url = '/etc/nixos/schemas/sqllsrc.json', },
       },
     }),
   }

@@ -1,4 +1,4 @@
-local sqls = require('lspconfig.server_configurations.svelte')
+local svelte = require('lspconfig.server_configurations.svelte')
 require('lspconfig').svelte.setup({})
 
 
