@@ -41,9 +41,4 @@ php.trap:
 php.doc: # phpdocumentor
 	phpdoc run -t ./doc/phpdoc  -d ./src && parallel ::: 'serve ./doc/phpdoc' 'sleep 1; firefox http://localhost:3000'
 
-py.all: py.run py.test
-py.run:
-	python ./src
-py.test:
-	pytest
 
