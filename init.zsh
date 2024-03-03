@@ -1,7 +1,7 @@
 # source /etc/nixos/initfzf.zsh
 # source /etc/nixos/initlf.zsh
 source /etc/nixos/initkeys.zsh
-source /etc/nixos/initsettings.zsh
+source /etc/nixos/initset.zsh
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=(

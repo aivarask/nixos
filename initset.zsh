@@ -6,6 +6,9 @@
 # https://wiki.archlinux.org/title/Zsh#Command_completion
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
+zstyle ':completion:*:make:*:targets' call-command true
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
 
 # 4 Tips and Tricks
 # https://wiki.archlinux.org/title/Zsh#Tips_and_tricks
@@ -48,3 +51,4 @@ zle -N cdParentKey
 zle -N cdUndoKey
 bindkey '^[[1;3A' cdParentKey
 bindkey '^[[1;3D' cdUndoKey
+
