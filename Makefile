@@ -47,10 +47,3 @@ py.run:
 py.test:
 	pytest
 
-rust.all: rust.run rust.test
-rust.run:
-	cargo run
-rust.test:
-	cargo nextest run
-rust.doc:
-	cargo doc --open
