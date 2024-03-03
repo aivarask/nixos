@@ -4,8 +4,10 @@ all: c.all go.all
 c.all: c.run
 c.lint: 
 	clang ./src/main.c -fsyntax-only
-c.run:
+c.test:
 	clang-check ./src/main.c --analyze --
+c.run:
+	clang ./src/main.c && ./a.out; rm a.out
 
 go.all: go.run go.test
 go.run:

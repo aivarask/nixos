@@ -9,7 +9,7 @@
   ++ include ./config/services
   ++ include ./config/suckless
   ++ include ./config/systemd
-  ++ include ./plugin/lang
+  ++ include ./dsl
   ;
   environment.variables = { };
 
