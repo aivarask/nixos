@@ -1,7 +1,6 @@
 { pkgs, include, ... }: {
   imports = [ ]
     ++ include ./plugin
-    ++ include ./plugin/group
   ;
   programs.neovim = {
     enable = true;
