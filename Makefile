@@ -1,14 +1,11 @@
+# https://github.com/casey/just
 all: c.all go.all
 
-c.all: c.clang
-c.cc:
-	cc -fsyntax-only ./src/main.c
-c.gcc:
-	gcc -fsyntax-only ./src/main.c
-c.clang: 
-	clang --analyze ./src/main.c
+c.all: c.run
+c.lint: 
+	clang ./src/main.c -fsyntax-only
 c.run:
-	clang -o ./src/mainc ./src/main.c; ./src/mainc
+	clang-check ./src/main.c --analyze --
 
 go.all: go.run go.test
 go.run:
@@ -18,7 +15,7 @@ go.test:
 go.debug:
 	dlv debug
 go.doc:
-	parallel ::: 'godoc' 'firefox https://localhost:6060/pkg/nixos'
+	parallel ::: 'godoc -http=localhost:6060' 'sleep 1; firefox http://localhost:6060/pkg/nixos'
 
 lua.all: lua.run lua.test lua.doc
 lua.run:
@@ -26,7 +23,7 @@ lua.run:
 lua.test:
 	busted
 lua.doc:
-	ldoc .
+	ldoc -d ./doc/ldoc ./lua && parallel ::: 'serve ./doc/ldoc' 'sleep 1; firefox http://localhost:3000'
 
 node.all: node.run node.test node.doc
 node.run:
@@ -34,7 +31,7 @@ node.run:
 node.test:
 	node --test
 node.doc:
-	jsdoc ./src/*.js && parallel ::: 'serve out' 'sleep 1; firefox http://localhost:3000'
+	jsdoc -d ./doc/jsdoc ./src/*.js && parallel ::: 'serve ./doc/jsdoc' 'sleep 1; firefox http://localhost:3000'
 
 php.run:
 	php ./src/index.php
@@ -47,7 +44,7 @@ php.e2e:
 php.trap:
 	(trap 'kill 0' SIGINT; make serve & make clocal & wait)
 php.doc: # phpdocumentor
-	phpdoc run -d ./src && parallel ::: 'serve ./.phpdoc/build' 'sleep 1; firefox http://localhost:3000'
+	phpdoc run -t ./doc/phpdoc  -d ./src && parallel ::: 'serve ./doc/phpdoc' 'sleep 1; firefox http://localhost:3000'
 
 py.all: py.run py.test
 py.run:
@@ -63,6 +60,20 @@ rust.test:
 rust.doc:
 	cargo doc --open
 
+sql.dump:
+	mysqldump test --no-data > ./sql/dump.sql
+sql.show:
+	mysql test -e 'show tables;'
+sql.describe:
+	mysql test -e 'describe User; describe Address'
+sql.alter: 
+	mysql test < ./sql/alter.sql
+sql.User:
+	mysql test < ./sql/User.sql
+sql.in.A:
+	mysql test < ./sql/Address.sql
+sql.sel.A:
+	mysql test -e 'select * from Address;'
 
 zig.all: zig.run zig.test
 zig.run:

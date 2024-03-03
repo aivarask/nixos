@@ -24,11 +24,11 @@ local zsh = {
 
 -- .with({ filetypes = { 'sh', 'bash', 'zsh' } }),
 require('null-ls').register({
-  require('null-ls.builtins.code_actions.shellcheck'),
+  -- require('null-ls.builtins.code_actions.shellcheck'), -- depr
   require('null-ls.builtins.diagnostics.dotenv_linter'),
-  require('null-ls.builtins.diagnostics.shellcheck'),
+  -- require('null-ls.builtins.diagnostics.shellcheck'), -- depr
   require('null-ls.builtins.diagnostics.zsh'), -- first line only
-  require('null-ls.builtins.formatting.beautysh'),
+  -- require('null-ls.builtins.formatting.beautysh'), -- depr
   require('null-ls.builtins.formatting.shellharden'),
   require('null-ls.builtins.formatting.shfmt'),
   require('null-ls.builtins.hover.printenv'),

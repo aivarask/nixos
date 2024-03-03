@@ -5,6 +5,7 @@
     sqlite-analyzer
     sqlite-web
 
+    sqlint
     sqlfluff # 7k
 
     sqls # 0.8k
@@ -24,10 +25,16 @@
       };
     };
   };
+  # https://nixos.wiki/wiki/PostgreSQL
+  # https://github.com/supabase/postgres_lsp
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql;
     ensureDatabases = [ "test" ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
   };
 }
 
