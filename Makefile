@@ -12,13 +12,6 @@ go.debug:
 go.doc:
 	parallel ::: 'godoc -http=localhost:6060' 'sleep 1; firefox http://localhost:6060/pkg/nixos'
 
-lua.all: lua.run lua.test lua.doc
-lua.run:
-	lua ./lua/init.lua
-lua.test:
-	busted
-lua.doc:
-	ldoc -d ./doc/ldoc ./lua && parallel ::: 'serve ./doc/ldoc' 'sleep 1; firefox http://localhost:3000'
 
 node.all: node.run node.test node.doc
 node.run:

@@ -1,6 +1,0 @@
-describe('doo', function()
-  it('foo', function()
-    assert.True(true)
-    require('.')
-  end)
-end)

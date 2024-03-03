@@ -1,8 +1,5 @@
 .direnv/
 
-#lua
-doc
-
 # nix
 result
 
@@ -19,7 +16,6 @@ __pycache__
 pnpm-lock.json
 package.lock.json
 out
-
 
 /docs
 /target
