@@ -1,13 +1,4 @@
-# https://github.com/casey/just
-all: c.all go.all
-
-c.all: c.run
-c.lint: 
-	clang ./src/main.c -fsyntax-only
-c.test:
-	clang-check ./src/main.c --analyze --
-c.run:
-	clang ./src/main.c && ./a.out; rm a.out
+include ./dsl/*.mk
 
 go.all: go.run go.test
 go.run:

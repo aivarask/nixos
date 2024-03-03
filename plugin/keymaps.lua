@@ -1,4 +1,6 @@
 require('which-key').register({
+  ['<M-1>'] = { [[:Telescope find_files default_text=Make<CR>]], 'Make' },
+  -- ['<M-m>'] = { [[:Telescope find_files default_text=Make<CR>]], 'Make' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },

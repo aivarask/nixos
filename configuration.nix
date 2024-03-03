@@ -10,6 +10,7 @@
   ++ include ./config/suckless
   ++ include ./config/systemd
   ++ include ./dsl
+  ++ include ./sql
   ;
   environment.variables = { };
 
