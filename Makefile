@@ -28,17 +28,5 @@ node.test:
 node.doc:
 	jsdoc -d ./doc/jsdoc ./src/*.js && parallel ::: 'serve ./doc/jsdoc' 'sleep 1; firefox http://localhost:3000'
 
-php.run:
-	php ./src/index.php
-php.test:
-	./vendor/bin/phpunit tests
-php.serve:
-	php -S localhost:8000 -t ./src
-php.e2e:
-	parallel ::: 'make php.serve' 'curl http://localhost:8000'
-php.trap:
-	(trap 'kill 0' SIGINT; make serve & make clocal & wait)
-php.doc: # phpdocumentor
-	phpdoc run -t ./doc/phpdoc  -d ./src && parallel ::: 'serve ./doc/phpdoc' 'sleep 1; firefox http://localhost:3000'
 
 
