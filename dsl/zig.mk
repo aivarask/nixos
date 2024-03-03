@@ -1,13 +1,13 @@
-# zig-cache zig-out
-
-zig.all: zig.run zig.test
+# https://ziglang.org/
+# https://zig.guide/
+# zig-cache zig-out 
 
 zig.init:
-	zig init
-zig.run:
-	zig run ./src/main.zig
-zig.test:
-	zig test ./src/main.zig
+	zig init-exe
 zig.clean:
-	rm -rf ./zig-cache
+	rm -rf ./zig-cache ./build.zig ./src/main.zig main main.o
+zig.run:
+	zig run ./dsl/zig.zig
+zig.test:
+	zig test ./dsl/zig.zig
 
