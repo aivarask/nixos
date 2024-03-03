@@ -1,6 +1,9 @@
 require('which-key').register({
-  ['<M-1>'] = { [[:Telescope find_files default_text=Make<CR>]], 'Make' },
-  -- ['<M-m>'] = { [[:Telescope find_files default_text=Make<CR>]], 'Make' },
+  ['<M-e>'] = { [[:Telescope find_files<CR>]], 'find_files' },
+  ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files make' },
+  ['<M-2>'] = { [[:Telescope find_files default_text=src\ <CR>]], 'find_files src' },
+  --
+  ['<M-0>'] = { [[:edit plugin/keymaps.lua<CR>]], 'edit keymaps.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },

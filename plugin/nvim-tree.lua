@@ -1,4 +1,7 @@
-vim.api.nvim_set_keymap('n', 'qq', [[:NvimTreeOpen<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'qq', [[:NvimTreeToggle<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'QQ', [[:NvimTreeCollapse<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'Qf', [[:NvimTreeFocus<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'Qb', [[:NvimTreeCollapseKeepBuffers<CR>]], { noremap = true, silent = true })
 
 -- nvim-tree
 require('nvim-tree').setup({

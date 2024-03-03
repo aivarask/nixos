@@ -19,10 +19,6 @@ __pycache__
 target
 Cargo.lock
 
-# zig
-zig-cache
-zig-out
-
 # node
 pnpm-lock.json
 package.lock.json

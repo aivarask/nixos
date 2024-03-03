@@ -53,9 +53,3 @@ rust.test:
 	cargo nextest run
 rust.doc:
 	cargo doc --open
-
-zig.all: zig.run zig.test
-zig.run:
-	zig run ./src/main.zig
-zig.test:
-	zig test ./src/main.zig
