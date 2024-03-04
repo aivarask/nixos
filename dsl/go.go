@@ -1,4 +1,3 @@
-// This is main package of nixos
 package main
 
 import "fmt"
@@ -13,6 +12,6 @@ func main() {
 }
 
 // This is hello function
-func hello() {
-	fmt.Println("Hello go")
+func Hello(name string) string {
+	return ""
 }

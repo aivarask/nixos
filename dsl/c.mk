@@ -1,7 +1,7 @@
-c.all: c.run
 c.lint: 
-	clang ./src/main.c -fsyntax-only
+	clang ./dsl/c.c -fsyntax-only
 c.test:
-	clang-check ./src/main.c --analyze --
+	clang-check ./dsl/c.c --analyze --
 c.run:
-	clang ./src/main.c && ./a.out; rm a.out
+	clang ./dsl/c.c && ./a.out; rm a.out
+c.all: c.lint c.test c.run
