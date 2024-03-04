@@ -3,9 +3,8 @@ function incr(a)
   return a + 1
 end
 
-print('Hello, Lua')
-
-if describe ~= nil then
+if describe ~= nil and vim == nil then
+  print('Hello, Lua')
   describe('Dsl describe', function()
     it('increment', function()
       assert.True(true)
