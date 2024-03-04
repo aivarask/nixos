@@ -1,0 +1,39 @@
+local ftmap = require('null-ls.builtins._meta.filetype_map').html
+local html_map = {
+  diagnostics = { "markuplint", "tidy" },
+  formatting = { "prettier", "prettierd", "rustywind", "tidy" },
+}
+
+local html = require('lspconfig.server_configurations.html')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').html.setup({ capabilities = capabilities })
+
+local htmx = require('lspconfig.server_configurations.htmx')
+require('lspconfig').htmx.setup({})
+
+local emmet_ls = require('lspconfig.server_configurations.emmet_ls')
+-- local emmet_ls_capabilities = vim.lsp.protocol.make_client_capabilities()
+-- emmet_ls_capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- require('lspconfig').emmet_ls.setup({
+--   capabilities = emmet_ls_capabilities,
+--   init_options = {
+--     html = {
+--       options = {
+--         ["bem.enabled"] = true,
+--       },
+--     },
+--   },
+-- })
+
+local emmet_language_server = require('lspconfig.server_configurations.emmet_language_server')
+-- require('lspconfig').emmet_language_server.setup({})
+
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  {
+    group = 'Format',
+    desc = 'html',
+    pattern = { '*.html' },
+    callback = function() vim.lsp.buf.format() end,
+  })

@@ -2,7 +2,7 @@ require('which-key').register({
   ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },
   ['<M-e>'] = { [[:Telescope find_files<CR>]], 'find_files' },
   ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files make' },
-  ['<M-2>'] = { [[:Telescope find_files default_text=src\ <CR>]], 'find_files src' },
+  ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'dsl' },
   --
   ['<M-0>'] = { [[:edit plugin/keymaps.lua<CR>]], 'edit keymaps.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
