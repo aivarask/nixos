@@ -18,12 +18,12 @@ super + F9
 super + F10
   dunstctl close
 
-super + {q,w,e,r}
+super + {q,w,e,r,t,y,u}
   {tdrop alacritty,\
   $BROWSER,\
   alacritty --working-directory=/etc/nixos -e nvim,\
   alacritty --working-directory=/etc/nixos/siom -e nvim,\
-  brave youtube.com # 📹 youtube.com r
+  brave youtube.com # 📹 youtube.com
   }
 
 super + {W,E,R}
