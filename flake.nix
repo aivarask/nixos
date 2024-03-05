@@ -22,6 +22,7 @@
     neotest-zig = { url = "github:lawrence-laz/neotest-zig"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
+    sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -74,6 +75,11 @@
                     name = "neotest-playwright";
                     src = neotest-playwright;
                     meta = { homepage = "https://github.com/thenbe/neotest-playwright"; };
+                  };
+                  sxhkd-vim = buildVimPlugin {
+                    name = "sxhkd-vim";
+                    src = sxhkd-vim;
+                    meta = { homepage = "https://github.com/kovetskiy/sxhkd-vim"; };
                   };
                 };
             })

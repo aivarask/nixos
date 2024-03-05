@@ -19,6 +19,7 @@ local getLibrary = function()
       'none%-ls.nvim',
       'neotest',
       'lsp_signature.nvim',
+      'SchemaStore.nvim',
     }) do
       if string.find(path, name) then
         table.insert(library, path)

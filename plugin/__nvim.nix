@@ -3,6 +3,7 @@
     ps.magick # image-nvim
   ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    sxhkd-vim
     aerial-nvim
     auto-session
     {

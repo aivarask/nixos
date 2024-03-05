@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "extends"
+        ]
+      }
+    ],
+    "block-no-empty": true,
+    "unit-allowed-list": [
+      "em",
+      "rem",
+      "s"
+    ],
+    "declaration-block-no-duplicate-properties": true
+  }
+}

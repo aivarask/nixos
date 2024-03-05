@@ -4,5 +4,8 @@
   "dependencies": {
     "htmx.org": "^1.9.10",
     "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "stylelint-lsp": "^2.0.0"
   }
 }

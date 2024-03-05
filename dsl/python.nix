@@ -9,6 +9,7 @@
       pytest
       pytest-playwright
       pynvim
+      livereload
     ]))
   ];
 }
