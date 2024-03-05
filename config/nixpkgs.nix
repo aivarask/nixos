@@ -3,6 +3,7 @@
     nr = "nixos-rebuild";
     nrs = "nixos-rebuild switch";
     nrt = "nixos-rebuild test";
+    nrlg = "nixos-rebuild list-generations";
     nrl = "nix registry list";
     nfc = "nix flake check"; # duplicates with nfc
     nfu = "nix flake update";
