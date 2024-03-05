@@ -5,7 +5,7 @@
     hwRender = lib.mkDefault true;
     extraConfig =
       ''
-        font-size=10
+        font-size=${if config.networking.hostName == "dell" then "10" else "6"}
         font-dpi=${toString config.services.xserver.dpi}
       '';
   };
