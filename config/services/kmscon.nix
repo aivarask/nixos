@@ -4,14 +4,9 @@
     autologinUser = lib.mkDefault "root";
     hwRender = lib.mkDefault true;
     extraConfig =
-      if config.networking.hostName == "dell" then
-        ''
-          font-size=12
-          font-dpi=288
-        ''
-      else ''
+      ''
         font-size=12
-        font-dpi=72
+        font-dpi=${toString config.services.xserver.dpi}
       '';
   };
 }
