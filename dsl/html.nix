@@ -4,5 +4,6 @@
     htmx-lsp
     emmet-ls
     emmet-language-server
+    ludtwig
   ];
 }

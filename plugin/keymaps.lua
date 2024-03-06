@@ -9,6 +9,8 @@ require('which-key').register({
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },
   ['<F25>'] = { function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, 'help <cexpr>' },
+  ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
+  ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
 })
 
 function LspLogClear()

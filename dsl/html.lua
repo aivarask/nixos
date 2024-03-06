@@ -7,7 +7,10 @@ local html_map = {
 local html = require('lspconfig.server_configurations.html')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-require('lspconfig').html.setup({ capabilities = capabilities })
+require('lspconfig').html.setup({
+  capabilities = capabilities,
+  filetypes = { 'html', 'templ', 'twig' },
+})
 
 local htmx = require('lspconfig.server_configurations.htmx')
 require('lspconfig').htmx.setup({})
@@ -37,3 +40,8 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     pattern = { '*.html' },
     callback = function() vim.lsp.buf.format() end,
   })
+
+local twig = require('null-ls.builtins._meta.filetype_map').twig
+-- https://github.com/moetelo/twiggy
+local t = require('lspconfig.server_configurations.twiggy_language_server')
+require('lspconfig').twiggy_language_server.setup({})

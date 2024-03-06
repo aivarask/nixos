@@ -1,4 +1,6 @@
 local luasnip = require('luasnip') -- luasnip friendly-snippets
+
+luasnip.filetype_extend('twig', { 'html' })
 require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/snippets' })
 

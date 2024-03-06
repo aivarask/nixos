@@ -8,6 +8,13 @@ require('telescope').setup({ -- telescope-nvim
 })
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
+require('trouble').setup({})       -- trouble-nvim
+require('todo-comments').setup({}) -- todo-comments-nvim
+
+require('which-key').register({
+  ['[t'] = { require('todo-comments').jump_prev, 'todo-comments' },
+  [']t'] = { require('todo-comments').jump_next, 'todo-comments' },
+})
 
 local find_files = require('telescope.builtin').find_files
 
@@ -32,4 +39,5 @@ require('which-key').register({
     w = { [[:Telescope lsp_workspace_symbols<CR>]], 'lsp_workspace_symbols' },
     x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
   },
+  x = { '[[:TroubleToggle<CR>]]', 'TroubleToggle' },
 }, { prefix = '<leader>t' })
