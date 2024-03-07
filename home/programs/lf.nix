@@ -33,7 +33,9 @@
       "\\lg" = "!lazygit"; # not recognised
       "--" = "set ratios 1:2";
       "++" = "set ratios 1:2:3";
+      "+w" = "$chmod +w $fx";
       "+x" = "$chmod +x $fx";
+      "-w" = "$chmod -w $fx";
       "-x" = "$chmod -x $fx";
       "<c-f>" = "$fzf --preview 'pistol {}'";
       "<c-g>" = "$Rg";
