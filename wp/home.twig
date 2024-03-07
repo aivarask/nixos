@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "head.twig" %}
+<body>
+
+  {% set foo = 123 %}
+
+  {% for item in['one', 'two'] %}
+  {{item}} {{foo}}
+  <hr />
+
+  {% endfor %}
+
+  {{ "now"|date(null, "Europe/Vilnius") }}
+</body>
+
+</html>

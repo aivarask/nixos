@@ -7,7 +7,7 @@
   environment.sessionVariables = {
     PATH = [
       "$HOME/.pnpm-global"
-      "$HOME/.node_modules/bin"
+      "$HOME/.npm/bin"
     ];
   };
   environment.systemPackages =

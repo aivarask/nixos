@@ -1,0 +1,23 @@
+a {
+  color: blue;
+
+  &:hover {
+    color: red;
+  }
+}
+
+li {
+  span {
+    color: red;
+  }
+}
+
+.menu {
+  color: indigo;
+}
+
+.test {
+  /* height: 100%; */
+  margin: auto;
+  /* width: 100%; */
+}

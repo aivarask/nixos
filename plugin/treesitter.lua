@@ -25,7 +25,7 @@ require 'treesitter-context'.setup {
   zindex = 20,
   on_attach = nil,
 }
-
+require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig' } })
 require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   highlight = { enable = true },
   indent = { enable = true },
@@ -40,12 +40,8 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   },
   matchup = { enable = true }, -- vim-matchup
   endwise = { enable = true }, -- nvim-treesitter-endwise
-  autotag = {                  -- nvim-ts-autotag
-    enable = true,
-    filetypes = { 'templ', 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'xml', 'php', 'markdown' },
-  },
   -- nvim-ts-context-commentstring plugin
-  textobjects = { -- nvim-treesitter-textobjects
+  textobjects = {              -- nvim-treesitter-textobjects
     -- nvim-treesitter-text-objects-select-submod*
     select = {
       enable = false,

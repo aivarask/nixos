@@ -6,5 +6,5 @@ $twig = new \Twig\Environment($loader, [
   // 'cache' => 'cache',
 ]);
 
-$template = $twig->load('foo.twig');
+$template = $twig->load('home.twig');
 echo $template->render();

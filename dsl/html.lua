@@ -43,5 +43,17 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
 
 local twig = require('null-ls.builtins._meta.filetype_map').twig
 -- https://github.com/moetelo/twiggy
-local t = require('lspconfig.server_configurations.twiggy_language_server')
-require('lspconfig').twiggy_language_server.setup({})
+local twiggy = require('lspconfig.server_configurations.twiggy_language_server')
+require('lspconfig').twiggy_language_server.setup({
+  -- cmd = { 'node', '/root/.pnpm-global/global/5/node_modules/twiggy-language-server/dist/server.js', '--stdio' },
+  cmd = { 'node', '/etc/nixos/node_modules/twiggy-language-server/dist/server.js', '--stdio' },
+})
+-- require('luasnip').filetype_extend('twig', { 'html' })
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  {
+    group = 'Format',
+    desc = 'twig',
+    pattern = { '*.twig' },
+    callback = function() vim.lsp.buf.format() end,
+  })
