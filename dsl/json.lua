@@ -14,16 +14,16 @@ local function json()
   return {
     validate = { enable = true },
     -- SchemaStore-nvim
-    -- schemas = require('schemastore').json.schemas({
-    --   extra = {
-    --     {
-    --       description = 'Snippet configuration',
-    --       fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
-    --       name = 'snippets',
-    --       url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
-    --     },
-    --   },
-    -- }),
+    schemas = require('schemastore').json.schemas({
+      extra = {
+        {
+          description = 'Snippet configuration',
+          fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
+          name = 'snippets',
+          url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
+        },
+      },
+    }),
   }
 end
 

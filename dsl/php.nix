@@ -23,6 +23,7 @@
       phpunit
       phpdocumentor
       wp-cli # phpactor
+      symfony-cli
     ])
     ++ (with pkgs.php81Packages; [
       composer
