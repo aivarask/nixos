@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . './../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -10,5 +10,5 @@ $twig = new \Twig\Environment($loader, [
   // 'cache' => 'cache',
 ]);
 
-$template = $twig->load('home.twig');
+$template = $twig->load('_.twig');
 echo $template->render();

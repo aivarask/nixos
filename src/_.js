@@ -1,3 +1,8 @@
+const conn = new WebSocket('ws://127.0.0.1:1234')
+conn.onopen = function() {
+  console.log('CONN onopen')
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   newFunction()

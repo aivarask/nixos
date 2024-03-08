@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
+    xvkbd
     alsa-utils
     soulseekqt
     nicotine-plus

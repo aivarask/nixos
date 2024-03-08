@@ -3,30 +3,19 @@
 # https://www.php.net/manual/en/class.sqlite3.php
 # https://symfony.com/doc/current/setup.html
 
-# https://twig.symfony.com/doc/3.x/
 unit: # https://phpunit.de/getting-started/phpunit-11.html
 	./vendor/bin/phpunit ./tests
 serve:
-	php --ini -S 127.0.0.1:8000 -a -t src
-# https://symfony.com/doc/current/testing/end_to_end.html
-int:
-	parallel ::: 'make serve' 'make e2e'
-# ---
-mirror:
-	./mirror.sh
+	php -S localhost:8000 -a -t=src -c=src/php.ini
 
-reset:
-	fuser -k '8000/tcp'
+t0:
+	parallel -j0 --halt now,done=0 --u ::: "make serve" "pytest"
 
-reload:
-	xdotool key --window $(xdotool search --name "Mozilla Firefox") Ctrl+l
+t2w:
+	parallel -j0 --halt now,done=2 --u ::: "make serve" "pytest-watch --ext=.py,.twig,.php,.ini"
 
-
-	
-fm:
-	xdg-open https://gettransfer.lt:2222/CMD_FILE_MANAGER
 # https://gettransfer.lt
+# https://gettransfer.lt:2222/CMD_FILE_MANAGER
 
-# https://github.com/coleifer/sqlite-web
-db: # http://127.0.0.1:8080/
+db: # http://127.0.0.1:8080/ https://github.com/coleifer/sqlite-web
 	sqlite_web $(DB)

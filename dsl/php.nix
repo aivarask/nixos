@@ -12,11 +12,11 @@
     [
       (pkgs.php81.buildEnv {
         extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
-        extraConfig = ''
-          memory_limit=2G
-          xdebug.mode=debug
-          xdebug.start_with_request=yes
-        '';
+        # extraConfig = ''
+        #   memory_limit=2G
+        #   xdebug.mode=debug
+        #   xdebug.start_with_request=yes
+        # '';
       })
     ]
     ++ (with pkgs; [

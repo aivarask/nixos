@@ -22,18 +22,18 @@
         '';
       });
 
-      st = super.st.overrideAttrs (oldAttrs: rec {
-        src = st-flexipatch; # https://github.com/bakkeby/st-flexipatch
-        configFile = super.writeText "config.h" (builtins.readFile ./st-config.h);
-        postPatch = ''
-          ${oldAttrs.postPatch}
-          cp ${configFile} config.h 
-        '';
-        # patches = [
-        #   ./st-gruvbox.diff
-        #   ./st-font.diff # st -z 32 -e ...
-        # ];
-      });
+      # st = super.st.overrideAttrs (oldAttrs: rec {
+      #   src = st-flexipatch; # https://github.com/bakkeby/st-flexipatch
+      #   configFile = super.writeText "config.h" (builtins.readFile ./st-config.h);
+      #   postPatch = ''
+      #     ${oldAttrs.postPatch}
+      #     cp ${configFile} config.h 
+      #   '';
+      #   # patches = [
+      #   #   ./st-gruvbox.diff
+      #   #   ./st-font.diff # st -z 32 -e ...
+      #   # ];
+      # });
 
       tabbed = super.tabbed.overrideAttrs
         (oldAttrs: rec {

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include "head.twig" %}
+{% include "comp/head.twig" %}
 
 <body>
+  {% include "./comp/nav.twig" %}
 
   {% set foo = 123 %}
 
@@ -17,6 +18,9 @@
   <span id="main">
     Main body
   </span>
+  <button>Sign in</button>
+
+  {% include "./comp/footer.twig" %}
 </body>
 
 </html>

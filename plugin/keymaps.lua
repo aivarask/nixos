@@ -38,13 +38,12 @@ local p = [[!nix eval nixos\#nixosConfigurations.]]
 local h = vim.uv.os_gethostname()
 local w = function() return vim.fn.expand('<cword>') end
 
--- alacritty
-
 string.open = function(v)
   vim.cmd('!xdg-open ' .. v)
 end
 
 require('which-key').register({
+  c = { function() vim.cmd([[!composer browse ]] .. vim.fn.expand('<cWORD>'):gsub(':', '')) end, 'composer browse' },
   d = { function() vim.cmd(p .. h .. '.pkgs.' .. w() .. '.meta.description | xargs notify-send') end, 'description' },
   D = { function() vim.cmd(p .. h .. '.pkgs.' .. w() .. [[.meta.longDescription --raw | xargs -0 notify-send]]) end, 'longDescription' },
   -- "github:nix-community/neovim-nightly-overlay";

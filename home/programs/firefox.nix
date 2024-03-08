@@ -111,7 +111,7 @@
         "privacy.firstparty.isolate" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.trackingprotection.cryptomining.enabled" = true;
-        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.enable" = true;
         "privacy.trackingprotection.fingerprinting.enabled" = true;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2";

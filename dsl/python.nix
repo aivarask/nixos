@@ -7,6 +7,8 @@
       pipx
       requests
       pytest
+      pytest-watch
+      pytest-timeout
       pytest-playwright
       pynvim
       livereload

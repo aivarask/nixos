@@ -1,0 +1,12 @@
+nav {
+  color: gray;
+
+  a {
+    color: black;
+
+    &:active,
+    &:hover {
+      color: gray;
+    }
+  }
+}

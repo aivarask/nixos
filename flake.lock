@@ -279,11 +279,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1709764988,
-        "narHash": "sha256-qNpTZNbWdZo1QyjOC5AgR7Cidu7Hs6JeeVxmKAjjcV0=",
+        "lastModified": 1709853674,
+        "narHash": "sha256-Cs+4eVrrNuOqWPPdmW/gdkfrwkD99OTadft97Wsev+E=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "6525832a8c4d44a8ebabba02a5ea1ce09b389a4f",
+        "rev": "dc2379b89bd00cf7aa661e1b000d2a419843df3f",
         "type": "github"
       },
       "original": {
@@ -302,11 +302,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1709769948,
-        "narHash": "sha256-fOKqYDzj6GK2eDB7QFs/6tsP5CgRyG4YN/xUfeRZGaQ=",
+        "lastModified": 1709856615,
+        "narHash": "sha256-FMH6VzbgpnljnRE5s7anzMLy8+JEWoFFOMLgXhhO1W0=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "f0fc63c0db1bb97939919abfb93f63a80504933a",
+        "rev": "4e6758ba6616b7b9a251d1815d858d5f4897bea4",
         "type": "github"
       },
       "original": {
@@ -399,11 +399,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1709675310,
-        "narHash": "sha256-w61tqFEmuJ+/1rAwU7nkYZ+dN6sLwyobfLwX2Yn42FE=",
+        "lastModified": 1709780214,
+        "narHash": "sha256-p4iDKdveHMhfGAlpxmkCtfQO3WRzmlD11aIcThwPqhk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "43d259f8d726113fac056e8bb17d5ac2dea3e0a8",
+        "rev": "f945939fd679284d736112d3d5410eb867f3b31c",
         "type": "github"
       },
       "original": {
@@ -430,11 +430,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1709800027,
-        "narHash": "sha256-iyCUV3wbl+3kYpi5mJZQJRjFo/8YuuVR0UF3Ql5wLFw=",
+        "lastModified": 1709879657,
+        "narHash": "sha256-pb2qyDfjmdCIh/HwHj0LAIKBOGcKL22KSYt1BKIrgvU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "895e0855655804508fbeb90ed38bc82b6139c9bc",
+        "rev": "5c70fdaf1205fa010f458b6a2f3835f14e32e3b4",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
     "st-flexipatch": {
       "flake": false,
       "locked": {
-        "lastModified": 1709799764,
-        "narHash": "sha256-IgH4ksmIo/dRcH8vmsBF3CcMce4bQFCBXNl2HgUn8U0=",
+        "lastModified": 1709851250,
+        "narHash": "sha256-klW/j4Wc0SEXwrUocF8Q08ctwci5bSLKtUXDD5fNMc4=",
         "owner": "bakkeby",
         "repo": "st-flexipatch",
-        "rev": "677c2da0be1fd9b596b038bcaa7ba66d061f9cf2",
+        "rev": "9ddc13c0e0419ed4776457d526dec32183db5350",
         "type": "github"
       },
       "original": {

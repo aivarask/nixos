@@ -16,6 +16,8 @@
     openssl
     nss
     remote-touchpad
+    socat
+    websocat
   ];
   networking.networkmanager = {
     enable = lib.mkDefault false;
