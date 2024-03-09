@@ -1,0 +1,13 @@
+<input class="form-control"
+  type="search"
+  name="search"
+  placeholder="Search..."
+  hx-post="/search"
+  hx-trigger="input changed delay:500ms, search, revealed"
+  hx-target="#search-results"
+  hx-indicator=".htmx-indicator" />
+<hr />
+<span class="htmx-indicator">Searching...</span>
+
+<pre id="search-results"></pre>
+

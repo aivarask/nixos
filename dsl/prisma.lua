@@ -3,7 +3,7 @@ local prisma = {
   formatting = { "prismaFmt" },
 }
 require('null-ls').register({
-  require('null-ls.builtins.formatting.prismaFmt'),
+  -- require('null-ls.builtins.formatting.prismaFmt'),
 })
 -- prisma @prisma/language-server
 local prismals = require('lspconfig.server_configurations.prismals')

@@ -1,0 +1,18 @@
+<div class="__">
+
+  {% set num = 123 %}
+
+  {% for item in['one', 'two'] %}
+  {{item|upper}} {{num}}
+  <hr />
+
+  {% endfor %}
+
+  {{ "now"|date(null, "Europe/Vilnius") }}
+
+  {{ 10|price }}
+
+  <hr>
+
+  {{"now"|date('h-m-s')}}
+</div>

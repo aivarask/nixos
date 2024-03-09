@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include "comp/head.twig" %}
+  {% include '_head.twig' %}
 
-<body>
-  {% include "./comp/nav.twig" %}
+  <body>
+    {% include '_nav.twig' %}
 
-  {% set foo = 123 %}
+    <!-- {% include "./__.twig" %} -->
 
-  {% for item in['one', 'two'] %}
-  {{item}} {{foo}}
-  <hr />
-
-  {% endfor %}
-
-  {{ "now"|date(null, "Europe/Vilnius") }}
-
-  <hr />
-  <span id="main">
-    Main body
-  </span>
-  <hr />
-  <button>Sign in</button>
-
-  {% include "./comp/footer.twig" %}
-</body>
-
+    <div id="dev" style="background-color: black; padding: 2rem;">
+      {% include './_search.twig' %}
+    </div>
+    <!-- {% include './_foot.twig' %} -->
+  </body>
 </html>

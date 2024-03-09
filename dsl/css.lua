@@ -6,7 +6,11 @@ local css = {
 
 -- https://github.com/hrsh7th/vscode-langservers-extracted
 local cssls = require('lspconfig.server_configurations.cssls')
-require('lspconfig').cssls.setup({})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').cssls.setup({
+  capabilities = capabilities,
+})
 
 -- ../.stylelintrc.json
 -- https://stylelint.io/user-guide/rules

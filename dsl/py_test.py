@@ -11,3 +11,8 @@ def dec(a):
 def test_inc():
     """Increment function test"""
     assert inc(1) == 2
+
+
+def test_dec():
+    """Decrement test case"""
+    assert dec(2) == 1

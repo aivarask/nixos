@@ -4,16 +4,59 @@ local html_map = {
   formatting = { "prettier", "prettierd", "rustywind", "tidy" },
 }
 
+require('null-ls').register({
+  require('null-ls.builtins.formatting.prettierd').with({ filetypes = { 'html', 'twig' } })
+})
+
 local html = require('lspconfig.server_configurations.html')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').html.setup({
   capabilities = capabilities,
-  filetypes = { 'html', 'templ', 'twig' },
+  filetypes = {
+    'html',
+    'templ',
+    'twig',
+  },
 })
 
 local htmx = require('lspconfig.server_configurations.htmx')
 require('lspconfig').htmx.setup({})
+
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  {
+    group = 'Format',
+    desc = 'null-ls prettierd',
+    pattern = { '*.html' },
+    callback = function()
+      vim.lsp.buf.format({
+        async = true,
+        -- filter = function(client) return client.name == "html" end
+        filter = function(client) return client.name == "null-ls" end
+      })
+    end,
+  })
+
+local ftmap_twig = require('null-ls.builtins._meta.filetype_map').twig
+local twig = { diagnostics = { "twigcs" } }
+-- https://github.com/moetelo/twiggy
+local twiggy = require('lspconfig.server_configurations.twiggy_language_server')
+require('lspconfig').twiggy_language_server.setup({ cmd = { 'node', '/etc/nixos/node_modules/twiggy-language-server/dist/server.js', '--stdio' } })
+require('luasnip').filetype_extend('twig', { 'html' })
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' },
+  {
+    group = 'Format',
+    desc = 'null-ls prettierd',
+    pattern = { '*.twig' },
+    callback = function()
+      vim.lsp.buf.format({
+        async = true,
+        filter = function(client) return client.name == "null-ls" end
+      })
+    end,
+  })
 
 local emmet_ls = require('lspconfig.server_configurations.emmet_ls')
 -- local emmet_ls_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -31,28 +74,3 @@ local emmet_ls = require('lspconfig.server_configurations.emmet_ls')
 
 local emmet_language_server = require('lspconfig.server_configurations.emmet_language_server')
 -- require('lspconfig').emmet_language_server.setup({})
-
-
-vim.api.nvim_create_autocmd({ 'BufWritePre' },
-  {
-    group = 'Format',
-    desc = 'html',
-    pattern = { '*.html' },
-    callback = function() vim.lsp.buf.format() end,
-  })
-
-local twig = require('null-ls.builtins._meta.filetype_map').twig
--- https://github.com/moetelo/twiggy
-local twiggy = require('lspconfig.server_configurations.twiggy_language_server')
-require('lspconfig').twiggy_language_server.setup({
-  cmd = { 'node', '/etc/nixos/node_modules/twiggy-language-server/dist/server.js', '--stdio' },
-})
-require('luasnip').filetype_extend('twig', { 'html' })
-
-vim.api.nvim_create_autocmd({ 'BufWritePre' },
-  {
-    group = 'Format',
-    desc = 'twig',
-    pattern = { '*.twig' },
-    callback = function() vim.lsp.buf.format() end,
-  })

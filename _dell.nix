@@ -29,7 +29,9 @@
     # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
     GDK_DPI_SCALE = "0.75"; # firefox nicotine
     # GDK_SCALE = "1";
-    # QT_AUTO_SCREEN_SET_FACTOR = "0"; QT_SCALE_FACTOR = "1"; QT_FONT_DPI = "144"; 
+    QT_SCALE_FACTOR = "1.75"; # telegram-desktop
+    # QT_AUTO_SCREEN_SET_FACTOR = "0"; 
+    # QT_FONT_DPI = "144";
   };
 
   networking = { hostName = "dell"; hostId = "8425e349"; };

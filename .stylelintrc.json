@@ -12,7 +12,11 @@
     "unit-allowed-list": [
       "em",
       "rem",
-      "s"
+      "s",
+      "vh",
+      "vw",
+      "%",
+      "px"
     ],
     "declaration-block-no-duplicate-properties": true
   }

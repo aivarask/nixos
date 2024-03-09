@@ -9,8 +9,11 @@ expect.set_options(timeout=1_000)
 
 def test_(page: Page):
     page.set_default_timeout(1_000)
-    # page.goto("[::1]:8000")
     page.goto("http://localhost:8000")
     expect(page).to_have_title(re.compile("Home"))
+    h = page.get_by_role("link", name="Home")
+    expect(h).to_be_visible()
+    a = page.get_by_role("link", name="About")
+    expect(a).to_be_visible()
+
     # page.screenshot(path="./src/test_.png")
-    page.get_by_role("button", name="Sign in").click()

@@ -17,6 +17,8 @@
     tremc
     mpv
     telegram-desktop
+    gimp-with-plugins
+    krita
 
     # hardware
     kmon
