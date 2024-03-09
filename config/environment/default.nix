@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
+    # --
     xvkbd
     alsa-utils
     soulseekqt
@@ -9,6 +10,9 @@
     # gnu
     parallel
 
+    # filesytem
+    inotify-tools # inotifywait inotifywatch
+    fswatch
     # programs
     tremc
     mpv
@@ -56,7 +60,6 @@
     # utils
     libnotify
     psmisc # fuser killall prtstat pslog pstree peekfd
-    inotify-tools # inotifywait inotifywatch
     watchman
     tree-sitter
     unrar

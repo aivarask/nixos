@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# for ((COUNT = 1; COUNT <= 10; COUNT++)); do
+  # sleep 0.5
+#   echo $COUNT
+# done
+
+sleep 0.1
+chokidar /etc/nixos/src

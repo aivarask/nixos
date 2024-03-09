@@ -11,8 +11,11 @@ serve:
 t0:
 	parallel -j0 --halt now,done=0 --u ::: "make serve" "pytest"
 
+ws: # http://websocketd.com/
+	websocketd --port=8080 --loglevel=fatal /etc/nixos/src/ws
+
 t2w:
-	parallel -j0 --halt now,done=2 --u ::: "make serve" "pytest-watch --ext=.py,.twig,.php,.ini"
+	parallel -j0 --halt now,done=2 --u ::: "make ws" "make serve" "pytest-watch --ext=.py,.twig,.php,.ini"
 
 # https://gettransfer.lt
 # https://gettransfer.lt:2222/CMD_FILE_MANAGER

@@ -1,30 +1,20 @@
-const conn = new WebSocket('ws://127.0.0.1:1234')
-conn.onopen = function() {
-  console.log('CONN onopen')
-}
+window.onerror = function() { setTimeout(location.reload, 1000) }
+
+var ws = new WebSocket('ws://localhost:8080/');
+ws.onmessage = function() { location.reload() };
+ws.onerror = function() { console.log('ws.onerror') }
+ws.onclose = function() { }
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  newFunction()
-
-  setInterval(() => {
-    false && location.reload()
-  }, 2000);
-
-  // var conn = new WebSocket('ws://localhost:8080');
-  // conn.onopen = function(e) {
-  //   console.log("Connection established!");
-  // };
-
-  // conn.onmessage = function(e) {
-  //   console.log(e.data);
-  // };
+  langStore()
+  setInterval(() => { false && location.reload() }, 2000);
 })
 
 onstorage = console.log
 onlanguagechange = console.log
 
-function newFunction() {
+function langStore() {
   const l = document.getElementById('lang')
   if (!l) return;
 
@@ -42,4 +32,3 @@ function newFunction() {
   }
   l.state()
 }
-

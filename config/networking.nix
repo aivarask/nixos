@@ -18,6 +18,7 @@
     remote-touchpad
     socat
     websocat
+    websocketd
   ];
   networking.networkmanager = {
     enable = lib.mkDefault false;
