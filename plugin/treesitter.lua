@@ -12,7 +12,7 @@ vim.cmd([[
 " set foldnestmax=5
 ]])
 
--- nvim-treesitter-context plugin
+-- nvim-treesitter-context
 require 'treesitter-context'.setup {
   enable = true,
   max_lines = 2,
@@ -25,6 +25,23 @@ require 'treesitter-context'.setup {
   zindex = 20,
   on_attach = nil,
 }
+
+-- nvim-ts-context-commentstring
+require('ts_context_commentstring').setup {
+  languages = {
+    --     markdown = {},
+    html = {
+      --       -- __default = '// %s',
+      --       -- jsx_element = '{/* %s */}',
+      --       -- jsx_fragment = '{/* %s */}',
+      --       -- jsx_attribute = '// %s',
+      --       -- comment = '// %s',
+      attribute = '__\\%s'
+    },
+  },
+}
+
+
 require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig' } })
 require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   highlight = { enable = true },
@@ -40,7 +57,6 @@ require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   },
   matchup = { enable = true }, -- vim-matchup
   endwise = { enable = true }, -- nvim-treesitter-endwise
-  -- nvim-ts-context-commentstring plugin
   textobjects = {              -- nvim-treesitter-textobjects
     -- nvim-treesitter-text-objects-select-submod*
     select = {

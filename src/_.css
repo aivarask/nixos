@@ -13,26 +13,20 @@ html {
   }
 }
 
-
-.__ {
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.9);
-  margin: 1rem;
-}
-
 body {
   color: white;
   background-image: url('img/bgl.png');
-  background-position: center center;
+  /* background-position: center center; */
+  background-position: calc(100% / 2) calc(100% / 2);
 
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-width: 500px) {
   body {
-    background-position: calc(100% / 2) calc(100% / 1.5);
+    background-position: calc(100% / 2) calc(100% / 2);
   }
 
 }
@@ -47,12 +41,11 @@ body {
 }
 
 
-
 footer {
   position: absolute;
   width: 100vw;
   bottom: 0;
-  padding: 0.5rem;
+  padding-bottom: 0.5rem;
   text-align: center;
 
 }

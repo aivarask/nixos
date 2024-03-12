@@ -4,7 +4,7 @@ function xhr() {
 
   var xhr = new XMLHttpRequest();
 
-  xhr.open("GET", "/sse", true);
+  xhr.open("GET", "/xhr", true);
 
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("Accept", "application/json");

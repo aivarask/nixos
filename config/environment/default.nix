@@ -17,7 +17,7 @@
     tremc
     mpv
     telegram-desktop
-    gimp-with-plugins
+    # gimp-with-plugins
     krita
 
     # hardware

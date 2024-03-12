@@ -3,13 +3,21 @@
   {% include '_head.twig' %}
 
   <body>
-    {% include '_nav.twig' %}
-
-    <!-- {% include "./__.twig" %} -->
+    <div id="navd">
+      <a href="/">Logo</a>
+      <nav>
+        <a href="tel:+37062211314">+370 622 11314</a> |
+        <a href="mailto:info@gettransfer.lt">info@gettransfer.lt</a> |
+        <a href="/">Home</a> |
+        <a href="/about/">About</a> |
+      </nav>
+    </div>
 
     <div id="dev" style="background-color: black; padding: 2rem;">
-      {% include './_search.twig' %}
+      {% include './search/index.html' %}
     </div>
-    <!-- {% include './_foot.twig' %} -->
+    <footer>
+      &copy; Copyright 2024, gettransfer.lt
+    </footer>
   </body>
 </html>

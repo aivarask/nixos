@@ -23,7 +23,6 @@ require('lspconfig').html.setup({
 local htmx = require('lspconfig.server_configurations.htmx')
 require('lspconfig').htmx.setup({})
 
-
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {
     group = 'Format',
@@ -42,8 +41,16 @@ local ftmap_twig = require('null-ls.builtins._meta.filetype_map').twig
 local twig = { diagnostics = { "twigcs" } }
 -- https://github.com/moetelo/twiggy
 local twiggy = require('lspconfig.server_configurations.twiggy_language_server')
-require('lspconfig').twiggy_language_server.setup({ cmd = { 'node', '/etc/nixos/node_modules/twiggy-language-server/dist/server.js', '--stdio' } })
+require('lspconfig').twiggy_language_server.setup({
+  cmd = { 'node', '/etc/nixos/node_modules/twiggy-language-server/dist/server.js', '--stdio' },
+  filetypes = {
+    'html',
+    'templ',
+    'twig',
+  },
+})
 require('luasnip').filetype_extend('twig', { 'html' })
+require('luasnip').filetype_extend('html', { 'twig' })
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {

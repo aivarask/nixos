@@ -1,9 +1,7 @@
-// langStore()
-
 onstorage = console.log
 onlanguagechange = console.log
 
-function langStore() {
+export function langStore() {
   const l = document.getElementById('lang')
   if (!l) return;
 

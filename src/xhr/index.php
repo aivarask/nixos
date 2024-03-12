@@ -18,11 +18,13 @@ if ($lastEventId == 0) {
   $lastEventId = floatval(isset($_GET["lastEventId"]) ? $_GET["lastEventId"] : 0);
 }
 
+
 echo ":" . str_repeat(" ", 2048) . "\n"; // 2 kB padding for IE
 echo "retry: 2000\n";
 
-// start stream
-// while (true) {
+
+for ($i = 0; $i < 3; $i++) {
+  # code...
   if (connection_aborted()) {
     exit();
   } else {
@@ -44,6 +46,5 @@ echo "retry: 2000\n";
     }
   }
 
-  // 2 second sleep then carry on
-  sleep(2);
-// }
+  sleep(1);
+}

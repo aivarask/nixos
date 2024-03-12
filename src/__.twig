@@ -1,18 +1,19 @@
 <div class="__">
-
   {% set num = 123 %}
 
-  {% for item in['one', 'two'] %}
-  {{item|upper}} {{num}}
-  <hr />
-
+  {% for item in ['one', 'two'] %}
+    {{ item|upper }} {{ num }}
+    <hr />
   {% endfor %}
 
-  {{ "now"|date(null, "Europe/Vilnius") }}
+  {{ 'now'|date(null, 'Europe/Vilnius') }}
 
   {{ 10|price }}
 
-  <hr>
+  <hr />
 
-  {{"now"|date('h-m-s')}}
+  {{ 'now'|date('h-m-s') }}
 </div>
+<style>
+  .__ { padding: 2rem; background-color: rgba(0, 0, 0, 0.9); margin: 1rem; }
+</style>
