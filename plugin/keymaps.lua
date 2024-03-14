@@ -1,16 +1,24 @@
+-- https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 require('which-key').register({
-  ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },
-  ['<M-e>'] = { [[:Telescope find_files<CR>]], 'find_files' },
-  ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files make' },
-  ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'dsl' },
+  ['<M-e>'] = { [[:Telescope find_files<CR>]], 'find_files .' },
+  ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files Make .mk' },
+  ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'find_files dsl' },
   --
   ['<M-0>'] = { [[:edit plugin/keymaps.lua<CR>]], 'edit keymaps.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
+  ['??'] = { [[:WhichKey<CR>]], 'WhichKey' },
+  ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
+  ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },
   ['<F25>'] = { function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, 'help <cexpr>' },
-  ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
-  ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
+  ['<F6>'] = { require('dap').continue, 'continue' },
+  -- ['<F7>'] = { require('neotest').run.dap, 'neotest.run.dap' },
+  ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
+  ['<F9>'] = { require('dapui').toggle_reset, 'dapui.toggle_reset' },
+  ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
+  ['<F22>'] = { [[:Autosession delete<CR>]], "Autosession delete" },
+  ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },
 })
 
 function LspLogClear()

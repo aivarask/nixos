@@ -2,23 +2,23 @@
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', 'pistol {}']}, <bang>0)
-nmap <c-x>! :🟢 CTRL-T, CTRL-X, CTRL-V
-nmap <c-x>/ :History/<cr>
-nmap <c-x>: :History:<cr>
-nmap <c-x>F :History<cr>
-nmap <c-x>G :RG<cr>
-nmap <c-x>H :Rg http<cr>
-nmap <c-x>L :Locate <c-r><c-w>
-nmap <c-x>M :Maps<cr>
-nmap <c-x>b :Buffers<cr>
-nmap <c-x>c :Commands<cr>
-nmap <c-x>f :Files<cr>
-nmap <c-x>g :Rg<cr>
-nmap <c-x>h :Helptags<cr>
-nmap <c-x>j :Jumps<cr>
-nmap <c-x>l :Locate 
-nmap <c-x>m :Marks<cr>
-nmap <c-x>w :Rg <c-r><c-w><cr>
+nmap <M-x>! :🟢 CTRL-T, CTRL-X, CTRL-V
+nmap <M-x>/ :History/<cr>
+nmap <M-x>: :History:<cr>
+nmap <M-x>F :History<cr>
+nmap <M-x>G :RG<cr>
+nmap <M-x>H :Rg http<cr>
+nmap <M-x>L :Locate <c-r><c-w>
+nmap <M-x>M :Maps<cr>
+nmap <M-x>b :Buffers<cr>
+nmap <M-x>c :Commands<cr>
+nmap <M-x>f :Files<cr>
+nmap <M-x>g :Rg<cr>
+nmap <M-x>h :Helptags<cr>
+nmap <M-x>j :Jumps<cr>
+nmap <M-x>l :Locate 
+nmap <M-x>m :Marks<cr>
+nmap <M-x>w :Rg <c-r><c-w><cr>
 
 " nnoremap <leader>lf :LfCurrentDirectory<CR>
 " nnoremap <leader>lg :LazyGit<CR>

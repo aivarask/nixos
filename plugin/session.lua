@@ -1,9 +1,6 @@
 -- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.o.sessionoptions = "buffers,curdir"
 
-require('which-key').register({
-  ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
-})
 -- auto-session
 require("auto-session").setup({
   session_lens = {
@@ -12,5 +9,6 @@ require("auto-session").setup({
     theme_conf = { border = true },
     previewer = false,
   },
+  auto_session_suppress_dirs = { "~/", "~/Downloads", "/nix/store" },
 })
 require("telescope").load_extension("session-lens")

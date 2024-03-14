@@ -10,5 +10,5 @@
 '';
   };
   programs.sharing.enable = true;
-  programs.wireshark.enable = false;
+  programs.wireshark.enable = true; # tshark 
 }

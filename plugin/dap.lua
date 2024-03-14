@@ -17,13 +17,6 @@ widgets = require('dap.ui.widgets')
 
 
 require('which-key').register({
-  ['<F6>'] = { dap.continue, 'continue' },
-  -- ['<F7>'] = { require 'neotest'.run.dap, 'neotest.run.dap' },
-  ['<F8>'] = { dap.toggle_breakpoint, 'toggle_breakpoint' },
-  ['<F9>'] = { dapui.toggle_reset, 'dapui.toggle_reset' },
-})
-
-require('which-key').register({
   name = 'DAP',
   c = { dap.continue, 'continue' },
   r = { dap.run, 'run' },

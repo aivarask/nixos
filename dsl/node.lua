@@ -9,7 +9,9 @@ local biome = require('lspconfig.server_configurations.biome')
 -- require('lspconfig').biome.setup({})
 
 local tsserver = require('lspconfig.server_configurations.tsserver')
-require('lspconfig').tsserver.setup({})
+require('lspconfig').tsserver.setup({
+  -- filetypes = { 'javascript', 'html' }
+})
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {
     group = 'Format',

@@ -11,11 +11,11 @@ html {
       color: gray;
     }
   }
+
 }
 
 body {
-  color: white;
-  background-image: url('img/bgl.png');
+  /* background-image: url('img/bgl.png'); */
   /* background-position: center center; */
   background-position: calc(100% / 2) calc(100% / 2);
 
@@ -31,14 +31,6 @@ body {
 
 }
 
-#navd {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 1rem;
-
-  nav {
-    float: right;
-  }
-}
 
 
 footer {

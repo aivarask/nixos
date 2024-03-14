@@ -34,10 +34,9 @@ cmp.setup({
       { name = 'buffer' }, -- cmp-buffer
     }),
 })
+
 -- cmp-cmdline
-cmp.setup.cmdline({ '/', '?' }, { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } })
+cmp.setup.cmdline({ '/', '?' },
+  { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } })
 cmp.setup.cmdline(':',
-  { mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({ { name = 'path' }, { name = 'cmdline' } }) })
-cmp.setup.filetype('gitcommit', { sources = cmp.config.sources({ { name = 'git' } }, { { name = 'buffer' } }) })
-cmp.setup.filetype('gitcommit', { sources = cmp.config.sources({ { name = 'git' } }, { { name = 'buffer' } }) })
-cmp.setup.filetype('gitcommit', { sources = cmp.config.sources({ { name = 'git' } }, { { name = 'buffer' } }) })
+  { mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({ { name = 'path' }, { name = 'buffer' }, { name = 'cmdline' } }) })

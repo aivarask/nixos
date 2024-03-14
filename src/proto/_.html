@@ -1,0 +1,21 @@
+<style>
+  #proto {
+    padding: 1rem;
+    background-color: white;
+    color: black;
+    h3 {
+      color: black;
+    }
+  }
+</style>
+{% set a = 10 %}
+<div id="proto">
+  <h3>Proto</h3>
+  <span>This is some slogan</span>
+  <span> {{ a }} </span>
+</div>
+
+<script>
+  const a = {{ a }};
+  console.log("Value", a);
+</script>

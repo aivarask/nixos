@@ -1,0 +1,23 @@
+<!-- https://htmx.org/examples/inline-validation/ -->
+<h3>Signup</h3>
+<input
+  hx-trigger="input changed delay:500ms"
+  hx-post="/signup"
+  hx-boosted="true"
+  name="email"
+  title="Email"
+  placeholder="Email"
+/>
+
+<form method="post" action="/signup">
+  <input type="submit" />
+</form>
+
+<form hx-boost="true" action="/signup" method="post">
+  <input
+    name="email"
+    type="email"
+    placeholder="Enter email..."
+  />
+  <button>Submit</button>
+</form>

@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include '_head.twig' %}
-
-  <body>
-    <div id="navd">
-      <a href="/">Logo</a>
-      <nav>
-        <a href="tel:+37062211314">+370 622 11314</a> |
-        <a href="mailto:info@gettransfer.lt">info@gettransfer.lt</a> |
-        <a href="/">Home</a> |
-        <a href="/about/">About</a> |
-      </nav>
+  <style>
+    .cont { background-color: white !important; color:black; padding: 1rem; }
+  </style>
+  <body style="min-height: 200vh;">
+    {% include './nav.html' %}
+    <!-- {% include './search/_.html' %} -->
+    <!-- {% include './proto/_.html' %} -->
+    <div class="cont">
+      {% include './signup/_.html' %}
+      {% include './anim/index.html' %}
     </div>
-
-    <div id="dev" style="background-color: black; padding: 2rem;">
-      {% include './search/index.html' %}
-    </div>
+    {% include './top.html' %}
     <footer>
-      &copy; Copyright 2024, gettransfer.lt
+      <!-- &copy; Copyright 2024, gettransfer.lt -->
     </footer>
   </body>
 </html>

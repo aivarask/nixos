@@ -24,7 +24,6 @@ echo "retry: 2000\n";
 
 
 for ($i = 0; $i < 3; $i++) {
-  # code...
   if (connection_aborted()) {
     exit();
   } else {

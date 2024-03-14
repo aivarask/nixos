@@ -8,11 +8,9 @@ ws: # http://websocketd.com/
 	websocketd --port=8080 --loglevel=fatal /etc/nixos/src/ws
 sw:
 	parallel --u ::: 'make ws' 'make serve'
-
 t2w:
 	parallel -j0 --halt now,done=2 --u ::: "make sw" "pytest-watch --ext=.py,.twig,.php,.ini,.js"
-
-clear:
+cl:
 	fuser -k 8000/tcp 8080/tcp
 
 # https://gettransfer.lt
