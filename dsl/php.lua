@@ -28,8 +28,10 @@ require('dap').configurations.php = {
     type = 'php',
     request = 'launch',
     name = 'Launch',
-    -- port = 9000,
+    -- port = 9003,
     program = "${file}",
     cwd = "${workspaceFolder}",
+    runtimeArgs = { '-c=.' },
+    stopOnEntry = false,
   },
 }

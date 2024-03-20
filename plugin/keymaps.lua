@@ -12,10 +12,9 @@ require('which-key').register({
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },
   ['<F25>'] = { function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, 'help <cexpr>' },
-  ['<F6>'] = { require('dap').continue, 'continue' },
-  -- ['<F7>'] = { require('neotest').run.dap, 'neotest.run.dap' },
-  ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
-  ['<F9>'] = { require('dapui').toggle_reset, 'dapui.toggle_reset' },
+  -- dap -- https://code.visualstudio.com/Docs/editor/debugging#_debug-actions
+  -- ./dap.lua F4-F8
+
   ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
   ['<F22>'] = { [[:Autosession delete<CR>]], "Autosession delete" },
   ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },

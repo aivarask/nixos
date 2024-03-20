@@ -23,6 +23,7 @@
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
     sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
+    # persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -81,6 +82,11 @@
                     src = sxhkd-vim;
                     meta = { homepage = "https://github.com/kovetskiy/sxhkd-vim"; };
                   };
+                  # persistent-breakpoints = buildVimPlugin {
+                  #   name = "persistent-breakpoints";
+                  #   src = persistent-breakpoints;
+                  #   meta = { homepage = "https://github.com/Weissle/persistent-breakpoints.nvim"; };
+                  # };
                 };
             })
         ];

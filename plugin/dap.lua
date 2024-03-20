@@ -14,7 +14,18 @@ dapui.setup({})
 function dapui.toggle_reset(args) dapui.toggle({ reset = true }) end
 
 widgets = require('dap.ui.widgets')
+-- require('persistent-breakpoints').setup{
+-- 	load_breakpoints_event = { "BufReadPost" }
+-- }
 
+require('which-key').register({
+  ['<F5>'] = { require('dap').continue, 'dap continue' },
+  ['<F17>'] = { require('dap').terminate, 'dap terminate' },-- <S-F5>
+  ['<F7>'] = { require('dapui').toggle_reset, 'dapui.toggle_reset' },
+  ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
+  ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' }, -- <S-F8>
+
+})
 
 require('which-key').register({
   name = 'DAP',

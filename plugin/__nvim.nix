@@ -4,6 +4,7 @@
   ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
     sxhkd-vim
+    # persistent-breakpoints
     aerial-nvim
     auto-session
     {
