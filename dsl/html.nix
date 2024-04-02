@@ -5,5 +5,6 @@
     emmet-ls
     emmet-language-server
     ludtwig
+    html-tidy
   ];
 }

@@ -1,1 +1,1 @@
-{"version":1,"defects":{"HomepageTest::testMyApp":5,"App\\Tests\\HomepageTest::testMyApp":5},"times":{"HomepageTest::testMyApp":1.954,"App\\Tests\\HomepageTest::testMyApp":2.076}}
+{"version":1,"defects":{"HomepageTest::testMyApp":5,"App\\Tests\\HomepageTest::testMyApp":5},"times":{"HomepageTest::testMyApp":1.954,"App\\Tests\\HomepageTest::testMyApp":2.076,"App\\Tests\\GreeterTest::testGreetsWithName":0.002,"App\\Tests\\GreeterTest::testSimple":0,"App\\Tests\\HelloTest::testSimple":0}}

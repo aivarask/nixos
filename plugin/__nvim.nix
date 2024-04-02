@@ -4,7 +4,7 @@
   ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
     sxhkd-vim
-    # persistent-breakpoints
+    persistent-breakpoints
     aerial-nvim
     auto-session
     {
@@ -23,6 +23,8 @@
     lualine-nvim
     lualine-lsp-progress
     nvim-tree-lua
+    neorepl-nvim
+    iron-nvim
     toggleterm-nvim
   ];
 }

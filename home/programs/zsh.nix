@@ -4,7 +4,7 @@
     enable = true;
     autocd = true;
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     dotDir = ".config/zsh";
     history = {
       size = 10000;

@@ -10,5 +10,8 @@ require("auto-session").setup({
     previewer = false,
   },
   auto_session_suppress_dirs = { "~/", "~/Downloads", "/nix/store" },
+  post_restore_cmds = {
+    require('neotest').summary.open,
+  },
 })
 require("telescope").load_extension("session-lens")

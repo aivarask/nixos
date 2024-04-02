@@ -10,22 +10,37 @@ require('nvim-dap-virtual-text').setup({})
 
 -- nvim-dap-ui
 local dapui = require('dapui')
-dapui.setup({})
-function dapui.toggle_reset(args) dapui.toggle({ reset = true }) end
+dapui.setup({
+  layouts = {
+    {
+      elements = {
+        {
+          id = "scopes",
+          size = 0.25,
+        },
+        { id = "breakpoints", size = 0.25 },
+        { id = "stacks",      size = 0.25 },
+        { id = "watches",     size = 0.25 },
+      },
+      size = 40,
+      position = "left",
+    },
+    {
+      elements = {
+        "repl",
+        "console",
+      },
+      size = 10,
+      position = "bottom",
+    },
+  },
+})
 
 widgets = require('dap.ui.widgets')
--- require('persistent-breakpoints').setup{
--- 	load_breakpoints_event = { "BufReadPost" }
--- }
+require('persistent-breakpoints').setup {
+  load_breakpoints_event = { "BufReadPost" },
+}
 
-require('which-key').register({
-  ['<F5>'] = { require('dap').continue, 'dap continue' },
-  ['<F17>'] = { require('dap').terminate, 'dap terminate' },-- <S-F5>
-  ['<F7>'] = { require('dapui').toggle_reset, 'dapui.toggle_reset' },
-  ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
-  ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' }, -- <S-F8>
-
-})
 
 require('which-key').register({
   name = 'DAP',
@@ -72,5 +87,4 @@ require('which-key').register({
   h = { widgets.hover, 'widgets.hover' },
   p = { widgets.preview, 'widgets.preview' },
   -- S = { [[:lua widgets.centered_float(widgets.scopes)<cr>]], 'widgets.scopes' },
-  t = { dapui.toggle_reset, 'dapui.toggle' },
 }, { prefix = '<leader>d' })

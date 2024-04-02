@@ -35,17 +35,17 @@
         # ];
       });
 
-      tabbed = super.tabbed.overrideAttrs
-        (oldAttrs: rec {
-          src = tabbed-flexipatch; # https://github.com/bakkeby/tabbed-flexipatch
-          # disable focusurgent
-          configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h);
-          postPatch = ''
-            ${oldAttrs.postPatch}
-            cp ${configFile} config.h 
-          '';
+      # tabbed = super.tabbed.overrideAttrs
+      #   (oldAttrs: rec {
+      #     src = tabbed-flexipatch; # https://github.com/bakkeby/tabbed-flexipatch
+      #     # disable focusurgent
+      #     configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h);
+      #     postPatch = ''
+      #       ${oldAttrs.postPatch}
+      #       cp ${configFile} config.h 
+      #     '';
 
-        });
+      #   });
     })
   ];
 

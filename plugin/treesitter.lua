@@ -30,12 +30,12 @@ require 'treesitter-context'.setup {
 require('ts_context_commentstring').setup {
   languages = {
     -- html = {
-      -- attribute = '_%s'
+    -- attribute = '_%s'
     -- },
   },
 }
 
-require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig' } })
+require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig', 'xml' } })
 require('nvim-treesitter.configs').setup({ -- nvim-treesitter
   highlight = { enable = true },
   indent = { enable = true },

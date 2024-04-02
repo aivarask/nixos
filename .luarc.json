@@ -4,7 +4,8 @@
     "lowercase-global",
     "missing-fields",
     "unused-local",
-    "inject-field"
+    "inject-field",
+    "duplicate-set-field"
   ],
   "workspace.checkThirdParty": false,
   "format": {

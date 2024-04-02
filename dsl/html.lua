@@ -5,7 +5,9 @@ local html_map = {
 }
 
 require('null-ls').register({
-  require('null-ls.builtins.formatting.prettierd').with({ filetypes = { 'html', 'twig' } })
+  require('null-ls.builtins.formatting.prettierd').with({ filetypes = { 'html', 'twig' } }),
+  require('null-ls.builtins.formatting.tidy').with({ filetypes = { 'xml' } }),
+  require('null-ls.builtins.diagnostics.tidy').with({ filetypes = { 'xml' } }),
 })
 
 local html = require('lspconfig.server_configurations.html')
@@ -27,11 +29,11 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {
     group = 'Format',
     desc = 'null-ls prettierd',
-    pattern = { '*.html' },
+    pattern = { '*.html', '*.xml' },
     callback = function()
       vim.lsp.buf.format({
         async = true,
-        filter = function(client) return client.name == "null-ls" end
+        filter = function(client) return client.name == "null-ls" end,
       })
     end,
   })
@@ -59,7 +61,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     callback = function()
       vim.lsp.buf.format({
         async = true,
-        filter = function(client) return client.name == "null-ls" end
+        filter = function(client) return client.name == "null-ls" end,
       })
     end,
   })

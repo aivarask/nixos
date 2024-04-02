@@ -20,7 +20,11 @@ local getLibrary = function()
       'neotest',
       'lsp_signature.nvim',
       'SchemaStore.nvim',
-      'nvim%-ts%-context%-commentstring'
+      'nvim%-ts%-context%-commentstring',
+      'nvim%-dap',
+      'nvim%-dap%-ui',
+      'iron.nvim',
+      'symbols%-outline.nvim',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -37,6 +41,12 @@ require('lspconfig').lua_ls.setup({
     Lua = {
       runtime = {
         version = 'LuaJIT',
+        pathStrict = false,
+        path = {
+          "?.lua",
+          "lua/?.lua",
+          "lua/?/init.lua",
+        },
       },
       workspace = {
         checkThirdParty = false,
@@ -55,7 +65,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
   })
 
 -- https://github.com/tomblind/local-lua-debugger-vscode
-require('dap').adapters["local-lua"] = {
+require('dap').adapters.lua = {
   type = "executable",
   command = "node",
   args = { "/root/local-lua-debugger-vscode/extension/debugAdapter.js" },
@@ -71,16 +81,27 @@ require('dap').adapters["local-lua"] = {
   end,
 }
 
+local dap = require "dap"
+require('dap').adapters.nlua = function(callback, config)
+  callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+end
+
+
 require("dap").configurations.lua = {
   {
-    type = "local-lua",
+    type = "lua",
     request = "launch",
-    name = "local-lua launch",
+    name = "lua launch",
     port = 9003,
     program = {
       lua = "luajit",
       file = "${file}",
     },
     cwd = "${workspaceFolder}",
+  },
+  {
+    type = 'nlua',
+    request = 'attach',
+    name = "Attach to running Neovim instance",
   },
 }

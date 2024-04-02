@@ -10,6 +10,7 @@ require("aerial").setup({
 require('symbols-outline').setup({
   auto_preview = false,
   autofold_depth = 1,
+  position = "left",
   lsp_blacklist = { 'null-ls' },
   symbols = {
     File = { icon = "", hl = "@text.uri" },
@@ -54,9 +55,9 @@ require('glow').setup({
   height_ratio = 0.9,
 })
 
-require('neoscroll').setup({ -- neoscroll-nvim
-  respect_scrolloff = true,
-})
+-- require('neoscroll').setup({ -- neoscroll-nvim
+--   respect_scrolloff = true,
+-- })
 vim.cmd([[
   set scrolloff=8
 ]])

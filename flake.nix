@@ -23,7 +23,8 @@
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
     sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
-    # persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
+    persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
+    osv = { url = "github:jbyuki/one-small-step-for-vimkind"; flake = false; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -82,11 +83,16 @@
                     src = sxhkd-vim;
                     meta = { homepage = "https://github.com/kovetskiy/sxhkd-vim"; };
                   };
-                  # persistent-breakpoints = buildVimPlugin {
-                  #   name = "persistent-breakpoints";
-                  #   src = persistent-breakpoints;
-                  #   meta = { homepage = "https://github.com/Weissle/persistent-breakpoints.nvim"; };
-                  # };
+                  persistent-breakpoints = buildVimPlugin {
+                    name = "persistent-breakpoints";
+                    src = persistent-breakpoints;
+                    meta = { homepage = "https://github.com/Weissle/persistent-breakpoints.nvim"; };
+                  };
+                  osv = buildVimPlugin {
+                    name = "osv";
+                    src = osv;
+                    meta = { homepage = "https://github.com/jbyuki/one-small-step-for-vimkind"; };
+                  };
                 };
             })
         ];
@@ -116,7 +122,7 @@
                 nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
               };
               environment.systemPackages = [
-                # lobster.packages.${system}.lobster
+                inputs.lobster.packages.${system}.lobster
               ];
             }
             ./configuration.nix

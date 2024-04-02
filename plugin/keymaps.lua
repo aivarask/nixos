@@ -1,24 +1,42 @@
 -- https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 require('which-key').register({
-  ['<M-e>'] = { [[:Telescope find_files<CR>]], 'find_files .' },
+  ['<M-e><M-e>'] = { [[:Telescope find_files<CR>]], 'find_files .' },
+  ['<M-e>c'] = { [[:e composer.json<CR>]], 'composer.json' },
+  ['<M-e>p'] = { [[:e package.json<CR>]], 'package.json' },
   ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files Make .mk' },
   ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'find_files dsl' },
   --
   ['<M-0>'] = { [[:edit plugin/keymaps.lua<CR>]], 'edit keymaps.lua' },
+  ['<M-n>'] = { [[:edit plugin/neotest.lua<CR>]], 'edit neotest.lua' },
+  ['<M-d>'] = { [[:edit plugin/dap.lua<CR>]], 'edit dap.lua' },
+  ['<M-p>'] = { [[:edit dsl/php.lua<CR>]], 'edit php.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['??'] = { [[:WhichKey<CR>]], 'WhichKey' },
+  ['<leader>['] = { function() return require('dapui').toggle({ reset = true }) end, 'dapui toggle' },
+  ['<leader>]'] = { [[:Neotest summary<CR>]], 'Neotest summary' },
+  ['<leader>}'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },
   ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
   ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },
   ['<F25>'] = { function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, 'help <cexpr>' },
-  -- dap -- https://code.visualstudio.com/Docs/editor/debugging#_debug-actions
   -- ./dap.lua F4-F8
-
+  ['<F4>'] = { function() require('neotest').run.run({ vim.fn.expand('%') }) end, 'neotest %' },
+  ['<F26>'] = { function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, 'neotest % dap' },
+  ['<F38>'] = { function() require('neotest').run.run({ suite = true }) end, 'neotest % dap' },
+  ['<F5>'] = { require('dap').continue, 'dap continue' },
+  ['<F17>'] = { require('dap').terminate, 'dap terminate' }, -- <S-F5>
+  ['<F29>'] = { require('osv').launch({}), 'osv launch' },   -- <S-F5>
+  ['<F7>'] = { function() require('dapui').toggle({ reset = true }) end, 'dapui.toggle_reset' },
+  ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
+  ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' }, -- <S-F8>
+  --
   ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
   ['<F22>'] = { [[:Autosession delete<CR>]], "Autosession delete" },
   ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },
 })
+
+
 
 function LspLogClear()
   io.popen('echo > ' .. vim.lsp.get_log_path())

@@ -6,5 +6,6 @@
     nvim-dap-go
     nvim-dap-python
     nvim-dap-vscode-js
+    osv
   ];
 }

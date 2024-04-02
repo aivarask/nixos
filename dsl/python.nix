@@ -4,7 +4,7 @@
     black
     (python3.withPackages (ps: with ps; [
       pip
-      pipx
+      # pipx
       requests
       pytest
       pytest-watch

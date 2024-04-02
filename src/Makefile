@@ -3,7 +3,7 @@ unit: # https://phpunit.de/getting-started/phpunit-11.html
 t0:
 	parallel -j0 --halt now,done=0 --u ::: "make serve" "pytest"
 serve:
-	php -S localhost:8000 -a -t=src -c=src/php.ini
+	php -S localhost:8000 -a -t=src -c=php.ini
 ws: # http://websocketd.com/
 	websocketd --port=8080 --loglevel=fatal /etc/nixos/src/ws
 sw:

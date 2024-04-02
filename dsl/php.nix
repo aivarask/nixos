@@ -12,15 +12,20 @@
     [
       (pkgs.php81.buildEnv {
         extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
-        # extraConfig = ''
-        #   memory_limit=2G
-        #   xdebug.mode=debug
-        #   xdebug.start_with_request=yes
-        # '';
+        # https://www.php.net/manual/en/ini.list.php
+        # https://xdebug.org/docs/all_settings#mode
+        # https://xdebug.org/docs/all_settings#start_with_request
+        extraConfig = ''
+          memory_limit = 2G
+          cli_server.color = 1
+          xdebug.mode = debug
+          xdebug.start_with_request = yes 
+          zend_extension=${pkgs.php81Extensions.xdebug.outPath}/lib/php/extensions/xdebug.so
+        '';
       })
     ]
     ++ (with pkgs; [
-      phpunit
+      # phpunit
       phpdocumentor
       wp-cli # phpactor
       symfony-cli
