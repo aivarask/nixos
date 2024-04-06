@@ -45,7 +45,7 @@ require('symbols-outline').setup({
 })
 
 -- flatten.nvim flatten-nvim
-require("flatten").setup({})
+-- require("flatten").setup({ nest_if_no_args = true })
 
 -- glow.nvim glow-nvim
 require('glow').setup({

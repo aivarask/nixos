@@ -16,6 +16,7 @@ let
     # luarepl
     # lgi 
     ldoc
+    nvim-nio
   ]));
 in
 {

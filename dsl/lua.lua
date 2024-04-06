@@ -2,6 +2,7 @@ local getLibrary = function()
   local library = {
     vim.env.VIMRUNTIME,
     "${3rd}/luv/library",
+    "/root/one-small-step-for-vimkind",
   }
 
   -- LUA_LIB
@@ -17,6 +18,7 @@ local getLibrary = function()
       'nvim%-cmp',
       'nvim%-lspconfig',
       'none%-ls.nvim',
+      'neotest%-phpunit',
       'neotest',
       'lsp_signature.nvim',
       'SchemaStore.nvim',
@@ -41,9 +43,10 @@ require('lspconfig').lua_ls.setup({
     Lua = {
       runtime = {
         version = 'LuaJIT',
-        pathStrict = false,
+        pathStrict = true,
         path = {
           "?.lua",
+          "?/init.lua",
           "lua/?.lua",
           "lua/?/init.lua",
         },
@@ -80,14 +83,21 @@ require('dap').adapters.lua = {
     end
   end,
 }
-
-local dap = require "dap"
-require('dap').adapters.nlua = function(callback, config)
-  callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+local dap = require("dap")
+dap.set_log_level('DEBUG')
+-- https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt
+dap.adapters.nlua = function(callback, config)
+  callback({ type = 'server', host = "127.0.0.1", port = 8086 })
 end
 
+local osv = require('osv')
 
-require("dap").configurations.lua = {
+dap.configurations.lua = {
+  {
+    type = 'nlua',
+    request = 'attach',
+    name = "nlua attach",
+  },
   {
     type = "lua",
     request = "launch",
@@ -98,10 +108,5 @@ require("dap").configurations.lua = {
       file = "${file}",
     },
     cwd = "${workspaceFolder}",
-  },
-  {
-    type = 'nlua',
-    request = 'attach',
-    name = "Attach to running Neovim instance",
   },
 }

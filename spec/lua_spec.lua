@@ -1,21 +1,10 @@
--- --- Incerement function
-function incr(a)
-  print('incr function')
-  return a + 1
-end
-
--- if describe ~= nil and vim == nil then
---   print('Hello, Lua')
-describe('increment describe', function()
-  it('increment', function()
-    incr(1)
-    assert.True(true)
-    assert(incr(1) == 2, 'Incremented unsuccessfully')
+describe("desc 1", function()
+  it('it 11', function()
+    assert.True(false)
   end)
 end)
--- end
 
-describe("some basics", function()
+describe("desc 2", function()
   local bello = function(boo)
     return "bello " .. boo
   end
@@ -26,12 +15,17 @@ describe("some basics", function()
     bounter = 0
   end)
 
-  it("some test", function()
+  it("it 1", function()
     bounter = 100
     assert.equals("bello Brian", bello("Brian"))
   end)
 
-  it("some other test", function()
+  it("it 2", function()
     assert.equals(0, bounter)
   end)
+end)
+
+
+it('it 3', function()
+  assert.True(false)
 end)

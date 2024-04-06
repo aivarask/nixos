@@ -7,7 +7,7 @@ iron.setup({
   config = {
     scratch_repl = false,
     repl_definition = {
-      lua = require("iron.fts.lua"),
+      -- lua = require("iron.fts.lua"),
       sh = {
         command = { "zsh" },
       },

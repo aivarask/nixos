@@ -26,6 +26,7 @@
     ]
     ++ (with pkgs; [
       # phpunit
+      pest
       phpdocumentor
       wp-cli # phpactor
       symfony-cli

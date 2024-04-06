@@ -25,18 +25,20 @@ require('which-key').register({
   ['<F26>'] = { function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, 'neotest % dap' },
   ['<F38>'] = { function() require('neotest').run.run({ suite = true }) end, 'neotest % dap' },
   ['<F5>'] = { require('dap').continue, 'dap continue' },
-  ['<F17>'] = { require('dap').terminate, 'dap terminate' }, -- <S-F5>
-  ['<F29>'] = { require('osv').launch({}), 'osv launch' },   -- <S-F5>
-  ['<F7>'] = { function() require('dapui').toggle({ reset = true }) end, 'dapui.toggle_reset' },
+  ['<F17>'] = { require('dap').terminate, 'dap terminate' },                           -- <S-F5>
+  ['<F29>'] = { function() require('osv').launch({ port = 8086 }) end, 'osv launch' }, -- <C-F5>
+  ['<F6>'] = { function() require('osv').run_this({ port = 8086 }) end, 'osv run_this' },
+  -- ['<F7>'] = { function() require('dapui').toggle({ reset = true }) end, 'dapui.toggle_reset' },
   ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
-  ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' }, -- <S-F8>
+  ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' },   -- <S-F8>
+  ['<F32>'] = { require('dap').clear_breakpoints, 'dap.clear_breakpoints' }, -- <S-F8>
   --
   ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
   ['<F22>'] = { [[:Autosession delete<CR>]], "Autosession delete" },
   ['<F11>'] = { [[:LazyGit<CR>]], 'LazyGit' },
+  ['<leader><leader>r'] = { function() require('plenary.reload').reload_module(vim.fn.expand('%')) end, 'plenary.reload.reload_module' },
+  -- ['<leader><leader>z'] = { function() require('plenary.reload').reload_module(vim.fn.expand('%')) end, 'plenary.reload.reload_module' },
 })
-
-
 
 function LspLogClear()
   io.popen('echo > ' .. vim.lsp.get_log_path())
@@ -84,3 +86,21 @@ require('which-key').register({
     print(string)
   end, 'test' },
 }, { prefix = '<leader>g' })
+
+local neo = require('neotest')
+require('which-key').register({
+  name = 'Neotest',
+  s = { function() neo.run.run({ suite = true }) end, 'suite' },
+  S = { function() neo.run.run({ suite = true, strategy = 'dap' }) end, 'suite dap' },
+  b = { function() neo.run.run(vim.fn.expand('%')) end, '%' },
+  B = { function() neo.run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, '% dap' },
+  r = { function() neo.run.run() end, 'run' },
+  R = { function() neo.run.run({ strategy = 'dap' }) end, 'run dap' },
+  l = { function() neo.run.run_last() end, 'run_last' },
+  L = { function() neo.run.run_last({ strategy = 'dap' }) end, 'run_last dap' },
+  x = { function() neo.summary:expand(vim.uv.cwd(), true) end, 'summary:expand' },
+  -- w = { neo.watch.watch, 'watch.watch' },
+  -- t = { neo.watch.toggle, 'neotest.watch.toggle' },
+  -- W = { neo.watch.stop, 'neotest.watch.stop' },
+  --
+}, { prefix = '<leader>n' })
