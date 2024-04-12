@@ -27,6 +27,7 @@ local getLibrary = function()
       'nvim%-dap%-ui',
       'iron.nvim',
       'symbols%-outline.nvim',
+      'sqlite.lua',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -93,11 +94,11 @@ end
 local osv = require('osv')
 
 dap.configurations.lua = {
-  {
-    type = 'nlua',
-    request = 'attach',
-    name = "nlua attach",
-  },
+  -- {
+  --   type = 'nlua',
+  --   request = 'attach',
+  --   name = "nlua attach",
+  -- },
   {
     type = "lua",
     request = "launch",

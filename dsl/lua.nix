@@ -17,7 +17,11 @@ let
     # lgi 
     ldoc
     nvim-nio
+    sqlite
+    luasql-sqlite3
+    luadbi-sqlite3
   ]));
+
 in
 {
   environment.systemPackages = with pkgs;
@@ -30,6 +34,9 @@ in
   environment.variables = {
     LUA_PATH = (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages);
     LUA_LIB = "${myLuaPackages}/share/lua/5.1";
+    # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so.0.8.6";
+    # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)}";
   };
 
   environment.shellAliases = {

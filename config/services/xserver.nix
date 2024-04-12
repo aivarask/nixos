@@ -1,7 +1,6 @@
 { lib, config, ... }: {
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = lib.mkDefault false;
     windowManager.awesome.enable = lib.mkDefault false;
     windowManager.dwm.enable = lib.mkDefault true;
     displayManager.startx.enable = true;

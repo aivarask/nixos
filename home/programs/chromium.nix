@@ -2,7 +2,7 @@
   home.packages = with pkgs; [ chromedriver ];
   programs.chromium = {
     enable = true;
-    package = pkgs.brave;
+    package = pkgs.chromium;
     commandLineArgs = [
       "--no-sandbox"
       "--no-default-browser-check"

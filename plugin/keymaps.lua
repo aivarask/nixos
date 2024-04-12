@@ -3,6 +3,7 @@ require('which-key').register({
   ['<M-e><M-e>'] = { [[:Telescope find_files<CR>]], 'find_files .' },
   ['<M-e>c'] = { [[:e composer.json<CR>]], 'composer.json' },
   ['<M-e>p'] = { [[:e package.json<CR>]], 'package.json' },
+  ['<M-e>l'] = { [[:e dsl/lua.lua<CR>]], 'lua.lua' },
   ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files Make .mk' },
   ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'find_files dsl' },
   --

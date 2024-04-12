@@ -26,5 +26,9 @@
     neorepl-nvim
     iron-nvim
     toggleterm-nvim
+    {
+      plugin = sqlite-lua;
+      config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
+    }
   ];
 }

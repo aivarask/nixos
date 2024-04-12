@@ -10,7 +10,7 @@ require('neotest').setup({
     --   dap = require('dap').configurations.php[1],
     -- }),
     -- require('neotest-node'),
-    require('neotest-plenary'),
+    -- require('neotest-plenary'),
     -- require('neotest-busted'),
     -- require('neotest-vitest')
     -- require("neotest-go"),

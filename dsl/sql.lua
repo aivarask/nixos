@@ -5,12 +5,12 @@ local sql = {
   formatting = { "pg_format", "sql_formatter", "sqlfluff", "sqlfmt", "sqlformat" },
 }
 require('null-ls').register({
-  --   require('null-ls.builtins.diagnostics.sqlfluff').with({
-  --     extra_args = { "--dialect", "sqlite" },
-  --   }),
-  -- require('null-ls.builtins.formatting.sqlfluff').with({
-  --   extra_args = { "--dialect", "sqlite" },
-  -- }),
+  require('null-ls.builtins.diagnostics.sqlfluff').with({
+    extra_args = { "--dialect", "sqlite" },
+  }),
+  require('null-ls.builtins.formatting.sqlfluff').with({
+    extra_args = { "--dialect", "sqlite" },
+  }),
 })
 
 -- local sqlls = require('lspconfig.server_configurations.sqlls')
@@ -28,7 +28,7 @@ require('null-ls').register({
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {
     group = 'Format',
-    desc = 'sqls',
+    desc = 'null-ls sqlfluff',
     pattern = { '*.sql' },
     -- callback = vim.lsp.buf.format,
     callback = function(client)

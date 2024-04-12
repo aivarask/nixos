@@ -114,7 +114,7 @@
         "privacy.trackingprotection.enable" = true;
         "privacy.trackingprotection.fingerprinting.enabled" = true;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2";
+        "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2,1.3";
         # "browser.fixup.fallback-to-https" = true;
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
         # "mousewheel.with_shift.action" = 0;
