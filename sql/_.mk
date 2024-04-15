@@ -13,4 +13,5 @@ sql.in.A:
 sql.sel.A:
 	mysql test -e 'select * from Address;'
 
-
+sql.bench:
+	hyperfine --runs 5 'php sql/index.php' 'lua sql/index.lua'

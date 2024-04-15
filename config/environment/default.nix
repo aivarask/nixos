@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs;  [
     # --
+    hyperfine
     xvkbd
     alsa-utils
     soulseekqt

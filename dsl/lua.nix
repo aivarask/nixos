@@ -36,7 +36,7 @@ in
     LUA_LIB = "${myLuaPackages}/share/lua/5.1";
     # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so.0.8.6";
     # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)}";
+    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)};${pkgs.sqlite.out}/lib/libsqlite3.so";
   };
 
   environment.shellAliases = {

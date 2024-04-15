@@ -4,6 +4,7 @@ vim.cmd([[
   let &runtimepath.=',/root/one-small-step-for-vimkind'
   source /etc/nixos/vimrc.vim
   runtime! dsl/**/*{.lua,.vim}
+  runtime! dap/**/*{.lua,.vim}
 ]])
 
 vim.loader.enable()
