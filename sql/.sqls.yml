@@ -1,6 +1,0 @@
-# https://github.com/sqls-server/sqls
-lowercaseKeywords: true
-connections:
-  - alias: test
-    driver: mysql
-    dataSourceName: tcp(127.0.0.1:3306)/test

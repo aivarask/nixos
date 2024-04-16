@@ -30,6 +30,7 @@ require('which-key').register({
   -- ['<F11>'] = { "<cmd>ToggleTerm direction=float <CR>", 'ToggleTerm direction=float', mode = { 'n', 'i', 't' } },
   -- ['<F23>'] = { "<cmd>exec 'ToggleTerm direction=vertical dir=' .. expand('%:p:h')<CR>", 'ToggleTerm relative vertical', mode = { 'n', 'i', 't' } },
   -- ['<F35>'] = { "<cmd>exec 'ToggleTerm direction=tab dir=' .. expand('%:p:h')<CR>", 'ToggleTerm relative tab', mode = { 'n', 'i', 't' } },
+  ['`'] = { '<F12>', '', noremap = false },
   ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm horizontal', mode = { 'n', 'i', 't' } },
   ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
   ['<F36>'] = { '<cmd>ToggleTerm direction=tab<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },

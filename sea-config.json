@@ -1,0 +1,4 @@
+{
+  "main": "sql/index.js",
+  "output": "sql/node.blob"
+}

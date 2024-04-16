@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+sqlite = "0.34.0"
 
 [[bin]]
 name = "main"
-path = "./dsl/rust.rs"
+path = "./sql/index.rs"

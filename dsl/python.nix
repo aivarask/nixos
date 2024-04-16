@@ -12,6 +12,7 @@
       pytest-playwright
       pynvim
       livereload
+      debugpy
     ]))
   ];
 }

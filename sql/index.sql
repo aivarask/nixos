@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS TEST
 (ID INT, NUM TINYTEXT);
 
 INSERT INTO TEST
-VALUES (1, 'o'), (2, 't'), (3, 't'), (4, 'f'), (5, 'five');
+VALUES (1, 'o'), (2, 't'), (3, 't'), (4, 'f'), (5, 'go');

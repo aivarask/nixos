@@ -20,6 +20,8 @@ let
     sqlite
     luasql-sqlite3
     luadbi-sqlite3
+    toml
+    jsregexp
   ]));
 
 in

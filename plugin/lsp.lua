@@ -49,39 +49,42 @@ function inspect_lsp_client()
   end)
 end
 
+function on_attach(client, buffer)
+  if client ~= nil and client.server_capabilities.signatureHelpProvider then
+    require('lsp-overloads').setup(client, {}) -- lsp-overloads-nvim
+  end
+
+
+  wkr({
+    [']a'] = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
+    gD = { vim.lsp.buf.declaration, 'vim.lsp.buf.declaration' },
+    gd = { vim.lsp.buf.definition, 'vim.lsp.buf.definition' },
+    K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },
+    gi = { vim.lsp.buf.implementation, 'vim.lsp.buf.implementation' },
+    ['<F2>'] = { vim.lsp.buf.signature_help, 'vim.lsp.signature_help', mode = { 'n', 'i' } },
+    ['<F3>'] = { require('lsp_signature').toggle_float_win, 'lsp_signature.toggle_float_win', mode = { 'n', 'i' } },
+    gr = { vim.lsp.buf.references, 'vim.lsp.buf.references' },
+  }, { buffer = buffer })
+
+  wkr({
+    D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
+    rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
+    rc = { inspect_lsp_client, 'Inspect LSP client' },
+  }, { prefix = '<space>', buffer = buffer })
+
+  wkr({
+    name = 'Workspace',
+    a = { vim.lsp.buf.add_workspace_folder, 'vim.lsp.buf.add_workspace_folder' },
+    r = { vim.lsp.buf.remove_workspace_folder, 'vim.lsp.buf.remove_workspace_folder' },
+    l = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'vim.lsp.list_workspace_folders' },
+  }, { prefix = '<space>w', buffer = buffer })
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
     local buffer = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client ~= nil and client.server_capabilities.signatureHelpProvider then
-      require('lsp-overloads').setup(client, {}) -- lsp-overloads-nvim
-    end
-
-
-    wkr({
-      [']a'] = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
-      gD = { vim.lsp.buf.declaration, 'vim.lsp.buf.declaration' },
-      gd = { vim.lsp.buf.definition, 'vim.lsp.buf.definition' },
-      K = { vim.lsp.buf.hover, 'vim.lsp.buf.hover' },
-      gi = { vim.lsp.buf.implementation, 'vim.lsp.buf.implementation' },
-      ['<F2>'] = { vim.lsp.buf.signature_help, 'vim.lsp.signature_help', mode = { 'n', 'i' } },
-      ['<F3>'] = { require('lsp_signature').toggle_float_win, 'lsp_signature.toggle_float_win', mode = { 'n', 'i' } },
-      gr = { vim.lsp.buf.references, 'vim.lsp.buf.references' },
-    }, { buffer = buffer })
-
-    wkr({
-      D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
-      rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
-      rc = { inspect_lsp_client, 'Inspect LSP client' },
-    }, { prefix = '<space>', buffer = buffer })
-
-    wkr({
-      name = 'Workspace',
-      a = { vim.lsp.buf.add_workspace_folder, 'vim.lsp.buf.add_workspace_folder' },
-      r = { vim.lsp.buf.remove_workspace_folder, 'vim.lsp.buf.remove_workspace_folder' },
-      l = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'vim.lsp.list_workspace_folders' },
-    }, { prefix = '<space>w', buffer = buffer })
+    on_attach(client, buffer)
   end,
 })

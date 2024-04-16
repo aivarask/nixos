@@ -13,6 +13,7 @@ require('which-key').register({
   ['<M-p>'] = { [[:edit dsl/php.lua<CR>]], 'edit php.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['??'] = { [[:WhichKey<CR>]], 'WhichKey' },
+  ['qa'] = { "<leader>[", "dapui toggle", noremap = false },
   ['<leader>['] = { function() return require('dapui').toggle({ reset = true }) end, 'dapui toggle' },
   ['<leader>]'] = { [[:Neotest summary<CR>]], 'Neotest summary' },
   ['<leader>}'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },

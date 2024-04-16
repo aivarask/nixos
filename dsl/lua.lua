@@ -28,6 +28,7 @@ local getLibrary = function()
       'iron.nvim',
       'symbols%-outline.nvim',
       'sqlite.lua',
+      'rustaceanvim',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -67,4 +68,3 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' },
     pattern = { '*.lua' },
     callback = function() vim.lsp.buf.format() end,
   })
-

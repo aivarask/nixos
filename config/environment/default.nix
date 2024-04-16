@@ -74,5 +74,7 @@
     hicolor-icon-theme
     imagemagick
     libwebp
+    # debug
+    lldb
   ];
 }
