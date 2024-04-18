@@ -9,7 +9,6 @@
   ++ include ./config/services
   ++ include ./config/suckless
   ++ include ./config/systemd
-  ++ include ./dap
   ++ include ./dsl
   ++ include ./sql
   ;

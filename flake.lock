@@ -336,7 +336,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "rustceanvim",
+          "rustaceanvim",
           "neorocks",
           "pre-commit-hooks",
           "nixpkgs"
@@ -359,7 +359,7 @@
     "gitignore_2": {
       "inputs": {
         "nixpkgs": [
-          "rustceanvim",
+          "rustaceanvim",
           "pre-commit-hooks",
           "nixpkgs"
         ]
@@ -539,7 +539,7 @@
       "inputs": {
         "flake-utils": "flake-utils_4",
         "nixpkgs": [
-          "rustceanvim",
+          "rustaceanvim",
           "neorocks",
           "nixpkgs"
         ]
@@ -896,7 +896,7 @@
         "flake-utils": "flake-utils_5",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "rustceanvim",
+          "rustaceanvim",
           "neorocks",
           "nixpkgs"
         ],
@@ -956,7 +956,7 @@
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "persistent-breakpoints": "persistent-breakpoints",
-        "rustceanvim": "rustceanvim",
+        "rustaceanvim": "rustaceanvim",
         "st-flexipatch": "st-flexipatch",
         "sxhkd-vim": "sxhkd-vim",
         "systems": "systems_7",
@@ -965,7 +965,7 @@
         "vim-log-highlighting": "vim-log-highlighting"
       }
     },
-    "rustceanvim": {
+    "rustaceanvim": {
       "inputs": {
         "flake-parts": "flake-parts_3",
         "gen-luarc": "gen-luarc",

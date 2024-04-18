@@ -16,7 +16,7 @@ require('which-key').register({
   ['qa'] = { "<leader>[", "dapui toggle", noremap = false },
   ['<leader>['] = { function() return require('dapui').toggle({ reset = true }) end, 'dapui toggle' },
   ['<leader>]'] = { [[:Neotest summary<CR>]], 'Neotest summary' },
-  ['<leader>}'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },
+  [']<leader>'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },
   ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
   ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },

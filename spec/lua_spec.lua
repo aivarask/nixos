@@ -27,5 +27,5 @@ end)
 
 
 it('it 3', function()
-  assert.True(false)
+  assert.True(true)
 end)

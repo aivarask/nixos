@@ -23,6 +23,8 @@ end
 
 local osv = require('osv')
 
+---@see https://zignar.net/2023/06/10/debugging-lua-in-neovim/
+
 dap.configurations.lua = {
   -- {
   --   type = 'nlua',

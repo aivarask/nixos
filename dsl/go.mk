@@ -4,9 +4,9 @@
 # https://github.com/go-delve/delve
 
 go.test:
-	go test ./dsl/go_test.go --run TestInc
+	go test sql/go_test.go --run test
 go.run:
-	go run ./dsl/go.go
+	go run sql/index.go
 go.debug:
 	dlv debug
 go.doc:

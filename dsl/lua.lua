@@ -19,6 +19,7 @@ local getLibrary = function()
       'nvim%-lspconfig',
       'none%-ls.nvim',
       'neotest%-phpunit',
+      'neotest%-plenary',
       'neotest',
       'lsp_signature.nvim',
       'SchemaStore.nvim',

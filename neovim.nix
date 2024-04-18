@@ -1,5 +1,6 @@
 { pkgs, include, ... }: {
   imports = [ ]
+    ++ include ./dap
     ++ include ./plugin
   ;
   programs.neovim = {
