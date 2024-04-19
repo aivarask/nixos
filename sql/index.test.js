@@ -1,8 +1,22 @@
-import { strict as assert } from 'node:assert';
-import { test } from "node:test";
+import assert from 'node:assert';
+import { before, describe, it } from "node:test";
+import { loadEnv } from './index.js';
 
-test('test 1', () => {
-  const n = 1
-  assert.strictEqual(1, 1);
-});
+before(() => {
+  loadEnv()
+})
 
+describe('env', () => {
+  describe('variables', () => {
+    it('db path', () => {
+      assert.notStrictEqual(process.env.DB_PATH, undefined)
+    })
+    it('sql path', () => {
+      assert.notStrictEqual(process.env.SQL_INIT, undefined)
+    })
+
+    it('rest', () => {
+      assert.strictEqual(1, 1)
+    })
+  })
+})

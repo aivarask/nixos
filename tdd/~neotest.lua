@@ -2,7 +2,7 @@ require('neotest').setup({
   summary = { open = 'botright vsplit | vertical resize 30 | set winfixwidth' },
   output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
   adapters = {
-    -- require("neotest-go")({ recursive_run = true }),
+    -- require("neotest-go")({ recursive_run = true }), -- ok
     -- require('neotest-node'), -- local
     -- require('neotest-vitest')
     -- require('neotest-plenary'),
@@ -15,11 +15,14 @@ require('neotest').setup({
     --   env = { XDEBUG_CONFIG = "idekey=neotest" },
     --   dap = require('dap').configurations.php[2],
     -- }),
-    -- require("neotest-python")({}),  -- dap pytest builtin (usefull example)
+    -- require("neotest-python")({}), -- dap pytest builtin (usefull example)
     -- cargo-nextest
     -- cargo nextest run
-    require('rustaceanvim.neotest'),
-    -- require('neotest-rust')({ }),
+    -- require('rustaceanvim.neotest'),
+    require('neotest-rust')({
+      -- args = { "--no-capture" },
+      -- dap_adapter = "lldb",
+    }),
 
     -- require("neotest-playwright").adapter({
     --   options = {

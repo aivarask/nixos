@@ -7,7 +7,7 @@ expect.set_options(timeout=1_000)
 # http://localhost:8000/
 
 
-def test_(page: Page):
+def tes(page: Page):
     page.set_default_timeout(1_000)
     page.goto("http://localhost:8000")
     expect(page).to_have_title(re.compile("Home"))

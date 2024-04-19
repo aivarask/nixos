@@ -1,8 +1,18 @@
 // use std::env;
-use std::fs;
+use dotenv::from_filename;
+use std::{env, fs};
+
+fn load_env() {
+    let _ = from_filename("/etc/nixos/sql/.env");
+}
 
 fn main() {
-    let contents = fs::read_to_string("/etc/nixos/sql/index.sql").expect("Cant read file");
+    load_env();
+
+    let db_path = env::var("DB_PATH");
+    let sql_init = env::var("SQL_INIT");
+
+    let contents = fs::read_to_string(sql_init).expect("Cant read file");
     // println!("File text:\n{contents}");
 
     let conn = sqlite::open("/etc/nixos/sql/_.db").unwrap();
@@ -14,31 +24,12 @@ fn test_main() {
     assert_eq!(1, 1);
 }
 
-pub fn add(a: i32, b: i32) -> i32 {
-    a + b
-}
-
-// This is a really bad adding function, its purpose is to fail in this
-// example.
-#[allow(dead_code)]
-fn bad_add(a: i32, b: i32) -> i32 {
-    a - b
-}
-
 #[cfg(test)]
 mod tests {
-    // Note this useful idiom: importing names from outer (for mod tests) scope.
     use super::*;
 
     #[test]
-    fn test_add() {
-        assert_eq!(add(1, 2), 3);
-    }
-
-    #[test]
-    fn test_bad_add() {
-        // This assert would fire and test will fail.
-        // Please note, that private functions can be tested too!
-        assert_eq!(bad_add(1, 2), 3);
+    fn env() {
+        load_env()
     }
 }

@@ -1,11 +1,19 @@
 import Database from 'better-sqlite3';
-const db = Database('/etc/nixos/sql/_.db');
-
 import { readFile } from "fs/promises";
-
-const f = (await readFile('/etc/nixos/sql/index.sql')).toString()
-f.split(';').slice(0, -1).forEach(s => db.prepare(s).run())
+import { loadEnvFile } from 'process';
 
 
-const row = db.prepare('SELECT * FROM TEST').all();
-console.table(row);
+
+loadEnv()
+const db = Database(process.env.DB_PATH);
+const f = (await readFile(process.env.SQL_INIT)).toString()
+
+const statements = f.split(';').slice(0, -1)
+
+for (let index = 0; index < statements.length; index++) {
+  const s = statements[index];
+  db.prepare(s).run()
+}
+
+export function loadEnv() { return loadEnvFile("/etc/nixos/sql/.env") }
+

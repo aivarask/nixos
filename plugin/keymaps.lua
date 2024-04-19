@@ -62,7 +62,6 @@ require('which-key').register({
 }, { prefix = '<leader>l' })
 
 
-
 local p = [[!nix eval nixos\#nixosConfigurations.]]
 local h = vim.uv.os_gethostname()
 local w = function() return vim.fn.expand('<cword>') end
@@ -101,8 +100,8 @@ require('which-key').register({
   l = { function() neo.run.run_last() end, 'run_last' },
   L = { function() neo.run.run_last({ strategy = 'dap' }) end, 'run_last dap' },
   x = { function() neo.summary:expand(vim.uv.cwd(), true) end, 'summary:expand' },
-  -- w = { neo.watch.watch, 'watch.watch' },
-  -- t = { neo.watch.toggle, 'neotest.watch.toggle' },
-  -- W = { neo.watch.stop, 'neotest.watch.stop' },
+  w = { neo.watch.watch, 'watch.watch' },
+  t = { neo.watch.toggle, 'neotest.watch.toggle' },
+  W = { neo.watch.stop, 'neotest.watch.stop' },
   --
 }, { prefix = '<leader>n' })

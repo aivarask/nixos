@@ -13,6 +13,7 @@
       pynvim
       livereload
       debugpy
+      python-dotenv
     ]))
   ];
 }
