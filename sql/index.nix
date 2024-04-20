@@ -1,13 +1,25 @@
-{ ... }: {
+# https://nixos.wiki/wiki/Nginx
+{ config, ... }: {
   services.nginx.enable = true;
-  services.nginx.virtualHosts."myhost.org" = {
-    addSSL = true;
-    enableACME = true;
+  services.nginx.virtualHosts."localhost.local" = {
+    # addSSL = true;
+    # enableACME = true;
+    root = "/etc/nixos/sql";
+    # locations."~ ^(.+\.php)(.*)$" = { };
+    locations."~ \\.php$".extraConfig = ''
+      fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+      fastcgi_index index.php;
+    '';
+  };
+  services.nginx.virtualHosts."rust.localhost.local" = {
+    # addSSL = true;
+    # enableACME = true;
     root = "/etc/nixos/sql";
   };
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "foo@bar.com";
+  services.nginx.virtualHosts."music.localhost.local" = {
+    locations."/" = {
+      proxyPass = "http://localhost:3001";
+    };
   };
 
 }

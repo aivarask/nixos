@@ -40,6 +40,8 @@
         "live.fixasparts.com"
         "example.com"
         # "binarycache.example.com"
+        "localhost.local"
+
       ];
       "192.168.1.190" = [ "pcl" "pcl.local" ];
       "192.168.1.195" = [ "pcw" "pcw.local" ];

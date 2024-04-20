@@ -20,4 +20,4 @@ foreach ($qrys as $key => $value) {
   $db->query($value);
 }
 
-echo 'hello';
+echo 'hello index.php';

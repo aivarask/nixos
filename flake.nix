@@ -24,7 +24,7 @@
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
     sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
-    rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
+    # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... } @ inputs:
@@ -118,7 +118,7 @@
               };
               environment.systemPackages = [
                 inputs.lobster.packages.${system}.lobster
-                inputs.rustaceanvim.packages.${system}.codelldb
+                # inputs.rustaceanvim.packages.${system}.codelldb
               ];
             }
             ./configuration.nix
