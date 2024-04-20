@@ -2,7 +2,7 @@
 # https://docs.phpdoc.org/3.0/
 
 php.test:
-	./vendor/bin/phpunit ./dsl/php_test.php
+	./vendor/bin/phpunit ./sql/indexTest.php
 php.run:
 	php ./dsl/php.php
 php.doc: # phpdocumentor

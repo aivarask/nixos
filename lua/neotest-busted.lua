@@ -26,6 +26,7 @@ end
 ---@return neotest.Tree | nil
 function a.discover_positions(file_path)
   local query = [[
+  ;;query
   ;; describe blocks
   ((function_call
       name: (identifier) @func_name (#match? @func_name "^describe$")

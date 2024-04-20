@@ -20,6 +20,7 @@ local getLibrary = function()
       'none%-ls.nvim',
       'neotest%-phpunit',
       'neotest%-plenary',
+      'neotest%-python',
       'neotest',
       'lsp_signature.nvim',
       'SchemaStore.nvim',
@@ -29,7 +30,6 @@ local getLibrary = function()
       'iron.nvim',
       'symbols%-outline.nvim',
       'sqlite.lua',
-      'rustaceanvim',
     }) do
       if string.find(path, name) then
         table.insert(library, path)
@@ -46,12 +46,12 @@ require('lspconfig').lua_ls.setup({
     Lua = {
       runtime = {
         version = 'LuaJIT',
-        pathStrict = true,
+        pathStrict = false,
         path = {
-          "?.lua",
-          "?/init.lua",
-          "lua/?.lua",
           "lua/?/init.lua",
+          "lua/?.lua",
+          "?/init.lua",
+          "?.lua",
         },
       },
       workspace = {

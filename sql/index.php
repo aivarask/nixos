@@ -1,9 +1,16 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
+require_once 'indexTest.php';
 
-$db = new SQLite3("sql/_.db");
 
-$myfile = fopen("/etc/nixos/sql/index.sql", "r") or die("Unable to open file!");
-$script = fread($myfile, filesize("/etc/nixos/sql/index.sql"));
+loadEnv();
+$db_path = $_ENV["DB_PATH"];
+
+$db = new SQLite3($db_path);
+$sql_init = $_ENV["SQL_INIT"];
+
+$myfile = fopen($sql_init, "r") or die("Unable to open file!");
+$script = fread($myfile, filesize($sql_init));
 fclose($myfile);
 
 

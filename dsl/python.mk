@@ -3,7 +3,7 @@
 # https://docs.python.org/3/library/pydoc.html#module-pydoc
 
 py.test:
-	pytest ./dsl/py_*.py
+	pytest ./sql/*_test.py
 py.run:
 	python ./dsl/python.py
 py.doc:

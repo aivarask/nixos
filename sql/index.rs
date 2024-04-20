@@ -8,28 +8,42 @@ fn load_env() {
 
 fn main() {
     load_env();
+    println!("Hell");
 
-    let db_path = env::var("DB_PATH");
-    let sql_init = env::var("SQL_INIT");
+    // let sql_init = env::var("SQL_INIT");
+    let key = "DB_PATH";
+    match env::var(key) {
+        Ok(val) => println!("{key}: {val:?}"),
+        Err(e) => println!("couldn't interpret {key}: {e}"),
+    }
 
-    let contents = fs::read_to_string(sql_init).expect("Cant read file");
+    let contents = fs::read_to_string("/etc/nixos/sql/index.sql").expect("Cant read file");
     // println!("File text:\n{contents}");
-
     let conn = sqlite::open("/etc/nixos/sql/_.db").unwrap();
     conn.execute(contents).unwrap();
 }
 
-#[test]
-fn test_main() {
-    assert_eq!(1, 1);
-}
-
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use std::env;
+
+    use crate::load_env;
 
     #[test]
+    fn test_main() {
+        let n = 1;
+        println!("test_main");
+        assert_eq!(1, n);
+    }
+    #[test]
     fn env() {
-        load_env()
+        load_env();
+        println!("Woo");
+        let key = "DB_PATH";
+        match env::var(key) {
+            Ok(val) => println!("{key}: {val:?}"),
+            Err(e) => println!("couldn't interpret {key}: {e}"),
+        }
+        assert_eq!(1, 1);
     }
 }

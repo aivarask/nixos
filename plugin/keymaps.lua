@@ -6,11 +6,13 @@ require('which-key').register({
   ['<M-e>l'] = { [[:e dsl/lua.lua<CR>]], 'lua.lua' },
   ['<M-1>'] = { [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], 'find_files Make .mk' },
   ['<M-2>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'find_files dsl' },
+  ['<M-D>'] = { [[:Telescope find_files default_text=dsl\ <CR>]], 'find_files dsl' },
   --
   ['<M-0>'] = { [[:edit plugin/keymaps.lua<CR>]], 'edit keymaps.lua' },
-  ['<M-n>'] = { [[:edit plugin/neotest.lua<CR>]], 'edit neotest.lua' },
-  ['<M-d>'] = { [[:edit plugin/dap.lua<CR>]], 'edit dap.lua' },
-  ['<M-p>'] = { [[:edit dsl/php.lua<CR>]], 'edit php.lua' },
+  -- TDD
+  ['<M-T>'] = { [[:Telescope find_files default_text=tdd\ <CR>]], 'find_files tdd' },
+  ['<M-n>'] = { [[:edit tdd/~neotest.lua<CR>]], 'edit tdd/~neotest.lua' },
+  ['<M-d>'] = { [[:edit tdd/_dap.lua<CR>]], 'edit tdd/_dap.lua' },
   ['-'] = { [[:cd ..<CR>]], 'cd ..' },
   ['??'] = { [[:WhichKey<CR>]], 'WhichKey' },
   ['qa'] = { "<leader>[", "dapui toggle", noremap = false },
@@ -100,8 +102,8 @@ require('which-key').register({
   l = { function() neo.run.run_last() end, 'run_last' },
   L = { function() neo.run.run_last({ strategy = 'dap' }) end, 'run_last dap' },
   x = { function() neo.summary:expand(vim.uv.cwd(), true) end, 'summary:expand' },
-  w = { neo.watch.watch, 'watch.watch' },
-  t = { neo.watch.toggle, 'neotest.watch.toggle' },
-  W = { neo.watch.stop, 'neotest.watch.stop' },
+  -- w = { neo.watch.watch, 'watch.watch' },
+  -- t = { neo.watch.toggle, 'neotest.watch.toggle' },
+  -- W = { neo.watch.stop, 'neotest.watch.stop' },
   --
 }, { prefix = '<leader>n' })

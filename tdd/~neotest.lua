@@ -2,27 +2,63 @@ require('neotest').setup({
   summary = { open = 'botright vsplit | vertical resize 30 | set winfixwidth' },
   output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
   adapters = {
-    -- require("neotest-go")({ recursive_run = true }), -- ok
-    -- require('neotest-node'), -- local
-    -- require('neotest-vitest')
-    -- require('neotest-plenary'),
-    -- require('neotest-busted'), -- local
+    --- @see https://github.com/nvim-neotest/neotest-go/
+    --- .go _test.go
+    --- func Test*|Example*
+    require("neotest-go")({ recursive_run = true }),
 
-    -- require('neotest-phpunit')({
-    --   phpunit_cmd = function() return "vendor/bin/phpunit" end,
-    --   root_files = { "composer.json" },
-    --   filter_dirs = { ".git", "node_modules", "vendor" },
-    --   env = { XDEBUG_CONFIG = "idekey=neotest" },
-    --   dap = require('dap').configurations.php[2],
-    -- }),
-    -- require("neotest-python")({}), -- dap pytest builtin (usefull example)
-    -- cargo-nextest
-    -- cargo nextest run
-    -- require('rustaceanvim.neotest'),
-    require('neotest-rust')({
-      -- args = { "--no-capture" },
-      -- dap_adapter = "lldb",
+    --- ~= node_modules
+    --- .test.js
+    require('neotest-node'),
+
+    --- @see https://github.com/nvim-neotest/neotest-python/
+    --- ~= venv
+    --- test_*.py *_test.py
+    --- enabled when entered
+    --- dap preconfigured
+    require("neotest-python")({}), -- dap pytest builtin (usefull example)
+
+    --- @see https://github.com/olimorris/neotest-phpunit
+    --- ~= node_modules vendor
+    --- *Test.php
+    require('neotest-phpunit')({
+      filter_dirs = { ".git", "node_modules", "vendor" },
+      --   env = { XDEBUG_CONFIG = "idekey=neotest" },
+      dap =
+      {
+        type = "php",
+        request = "launch",
+        name = "php",
+        port = 9003,
+        stopOnEntry = false,
+        xdebugSettings = {
+          max_children = 512,
+          max_data = 1024,
+          max_depth = 4,
+        },
+        breakpoints = {
+          exception = {
+            Notice = false,
+            Warning = false,
+            Error = false,
+            Exception = false,
+            ["*"] = false,
+          },
+        },
+      },
     }),
+
+    --- @see https://github.com/rouge8/neotest-rust/?tab=readme-ov-file
+    --- not working
+    require('neotest-rust'),
+
+    --- @see https://github.com/nvim-neotest/neotest-plenary
+    --- _spec.lua
+    --- no dap
+    require('neotest-plenary'),
+
+
+    -- require('neotest-busted'), -- local
 
     -- require("neotest-playwright").adapter({
     --   options = {

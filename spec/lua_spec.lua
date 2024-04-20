@@ -1,9 +1,3 @@
-describe("desc 1", function()
-  it('it 11', function()
-    assert.True(false)
-  end)
-end)
-
 describe("desc 2", function()
   local bello = function(boo)
     return "bello " .. boo

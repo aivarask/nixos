@@ -16,7 +16,7 @@
     5434 # postgresql
   ];
   services.mysql = {
-    enable = true;
+    enable = false;
     package = pkgs.mariadb;
     settings = {
       # /etc/my.cnf
@@ -28,7 +28,7 @@
   # https://nixos.wiki/wiki/PostgreSQL
   # https://github.com/supabase/postgres_lsp
   services.postgresql = {
-    enable = true;
+    enable = false;
     package = pkgs.postgresql;
     ensureDatabases = [ "test" ];
     authentication = pkgs.lib.mkOverride 10 ''

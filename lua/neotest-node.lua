@@ -10,14 +10,15 @@ local a = {
 }
 
 function a.filter_dir(name)
-  return (name == 'lua' or name == 'sql')
+  return name ~= 'node_modules'
 end
 
 ---@async
 ---@param file_path string
 ---@return boolean
 function a.is_test_file(file_path)
-  return file_path:match('.test.js')
+  -- return file_path:match('.test.js')
+  return vim.endswith(file_path, '.test.js')
 end
 
 ---Given a file path, parse all the tests within it.
