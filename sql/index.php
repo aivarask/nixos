@@ -19,3 +19,5 @@ $qrys = explode(';', $script);
 foreach ($qrys as $key => $value) {
   $db->query($value);
 }
+
+echo 'hello';
