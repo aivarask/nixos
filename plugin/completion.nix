@@ -13,5 +13,6 @@
     # --
     cmp-zsh
     cmp-git
+    cmp-dap
   ];
 }

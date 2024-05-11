@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/x-icon" href="about:blank" />
+      <title>
+        Price
+      </title>
+      <link href="/_.css" rel="stylesheet" />
+      <script src="./lib/ws.js"></script>
+      <script src="./lib/htmx.js"></script>
+      <script src="./lib/multi-swap.js"></script>
+      <script src="./lib/sse.js"></script>
+      <script type="module"></script>
+    {% endblock %}
+    <style>
+      #top { display: flex; a, input, button { margin: 1rem; } }
+    </style>
+  </head>
+  <body hx-ext="multi-swap" hx-boost="true">
+    <div id="top">
+      <a href="/">Home</a>
+      <form action="/search">
+        <input type="text"
+          name="sname"
+          value=""
+          placeholder="Search"
+          title="Search" />
+      </form>
+      {% block top %}
+
+      {% endblock %}
+    </div>
+    <div id="content">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+    <div class="footer" id="footer">
+      <style>
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 2rem;
+        background-color: gray; }
+      </style>
+      {% block footer %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

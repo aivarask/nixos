@@ -6,8 +6,8 @@ local html_map = {
 
 require('null-ls').register({
   require('null-ls.builtins.formatting.prettierd').with({ filetypes = { 'html', 'twig' } }),
-  require('null-ls.builtins.formatting.tidy').with({ filetypes = { 'xml' } }),
-  require('null-ls.builtins.diagnostics.tidy').with({ filetypes = { 'xml' } }),
+  require('null-ls.builtins.formatting.tidy').with({ filetypes = { 'xml', 'twig' } }),
+  require('null-ls.builtins.diagnostics.tidy').with({ filetypes = { 'xml', 'twig' } }),
 })
 
 local html = require('lspconfig.server_configurations.html')
@@ -23,7 +23,9 @@ require('lspconfig').html.setup({
 })
 
 local htmx = require('lspconfig.server_configurations.htmx')
-require('lspconfig').htmx.setup({})
+require('lspconfig').htmx.setup({
+  filetypes = { 'html', 'templ', 'twig' },
+})
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {

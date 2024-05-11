@@ -1,3 +1,5 @@
+filetype plugin indent on
+set lisp
 set title titlestring=%{expand('%')}
 set autoindent smartindent shiftwidth=2 tabstop=2 expandtab
 set completeopt=menu,menuone,noselect

@@ -27,13 +27,8 @@ require 'treesitter-context'.setup {
 }
 
 -- nvim-ts-context-commentstring
-require('ts_context_commentstring').setup {
-  languages = {
-    -- html = {
-    -- attribute = '_%s'
-    -- },
-  },
-}
+vim.g.skip_ts_context_commentstring_module = true
+require('ts_context_commentstring').setup {}
 
 require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig', 'xml' } })
 require('nvim-treesitter.configs').setup({ -- nvim-treesitter

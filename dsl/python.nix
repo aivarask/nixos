@@ -14,6 +14,7 @@
       livereload
       debugpy
       python-dotenv
+      httpie
     ]))
   ];
 }

@@ -2,12 +2,11 @@
   <source>
     <exclude>
       <directory suffix=".php">vendor</directory>
-    </exclude>
+      </exclude>
   </source>
   <testsuites>
     <testsuite name="unit">
-      <directory>tests</directory>
-      <directory>sql</directory>
+      <directory>fp</directory>
     </testsuite>
   </testsuites>
 </phpunit>

@@ -1,0 +1,10 @@
+<details>
+  <summary hx-get="/edit?id={{ item.id }}"
+    hx-target="#f{{ item.id }}"
+    hx-swap="innerHTML">
+    <h2>
+      {{ item.name }}
+    </h2>
+  </summary>
+  <div id="f{{ item.id }}" class="fields"></div>
+</details>

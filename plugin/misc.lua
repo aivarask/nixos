@@ -10,6 +10,7 @@ require("aerial").setup({
 require('symbols-outline').setup({
   auto_preview = false,
   autofold_depth = 1,
+  width = 15,
   position = "left",
   lsp_blacklist = { 'null-ls' },
   symbols = {

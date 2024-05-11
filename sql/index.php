@@ -14,6 +14,8 @@ $script = fread($myfile, filesize($sql_init));
 fclose($myfile);
 
 
+
+
 $qrys = explode(';', $script);
 
 foreach ($qrys as $key => $value) {

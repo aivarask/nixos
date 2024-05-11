@@ -8,6 +8,8 @@ require('lsp_signature').setup({       -- lsp_signature-nvim
   toggle_key = '<M-x>',
 })
 
+
+
 -- lspconfig nvim-lspconfig
 local wkr = require('which-key').register
 wkr({
@@ -49,28 +51,41 @@ function inspect_lsp_client()
   end)
 end
 
-function on_attach(client, buffer)
+function on_attach(client, bufnr)
+  -- LspAttach help
+  if client.server_capabilities.completionProvider then
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end
+  if client.server_capabilities.definitionProvider then
+    vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+  end
+
+  -- lsp-inlay_hint
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    -- print(client.name, ' inlayHintProvider')
+  end
+
+  -- lsp-overloads-nvim
   if client ~= nil and client.server_capabilities.signatureHelpProvider then
     require('lsp-overloads').setup(client, {
       ui = {
-        border = nil,    -- The border to use for the signature popup window. Accepts same border values as |nvim_open_win()|.
-        height = nil,    -- Height of the signature popup window (nil allows dynamic sizing based on content of the help)
-        width = nil,     -- Width of the signature popup window (nil allows dynamic sizing based on content of the help)
-        wrap = true,     -- Wrap long lines
-        wrap_at = nil,   -- Character to wrap at for computing height when wrap enabled
-        max_width = nil, -- Maximum signature popup width
-        max_height = 30, -- Maximum signature popup height
-        -- Events that will close the signature popup window: use {"CursorMoved", "CursorMovedI", "InsertCharPre"} to hide the window when typing
+        border = nil,
+        height = nil,
+        width = nil,
+        wrap = true,
+        wrap_at = nil,
+        max_width = nil,
+        max_height = 30,
         close_events = { "CursorMoved", "BufHidden", "InsertLeave" },
-        focusable = true,                       -- Make the popup float focusable
-        focus = false,                          -- If focusable is also true, and this is set to true, navigating through overloads will focus into the popup window (probably not what you want)
-        offset_x = 0,                           -- Horizontal offset of the floating window relative to the cursor position
-        offset_y = 0,                           -- Vertical offset of the floating window relative to the cursor position
-        floating_window_above_cur_line = false, -- Attempt to float the popup above the cursor position
+        focusable = true,
+        focus = false,
+        offset_x = 0,
+        offset_y = 0,
+        floating_window_above_cur_line = false,
         -- (note, if the height of the float would be greater than the space left above the cursor, it will default
         -- to placing the float below the cursor. The max_height option allows for finer tuning of this)
         silent = true, -- Prevents noisy notifications (make false to help debug why signature isn't working)
-        -- Highlight options is null by default, but this just shows an example of how it can be used to modify the LspSignatureActiveParameter highlight property
         highlight = {
           italic = true,
           bold = true,
@@ -86,10 +101,11 @@ function on_attach(client, buffer)
         close_signature = "<A-s>",
       },
       display_automatically = false, -- Uses trigger characters to automatically display the signature overloads when typing a method signature
-    })                               -- lsp-overloads-nvim
+    })
   end
 
-  print()
+
+
 
   wkr({
     [']a'] = { vim.lsp.buf.code_action, 'vim.lsp.buf.code_action', mode = { 'n', 'v' } },
@@ -102,27 +118,27 @@ function on_attach(client, buffer)
 
     ['<F3>'] = { [[<cmd>LspOverloadsSignature<CR>]], 'LspOverloadsSignature', mode = { 'n', 'i' } },
     gr = { vim.lsp.buf.references, 'vim.lsp.buf.references' },
-  }, { buffer = buffer })
+  }, { buffer = bufnr })
 
   wkr({
     D = { vim.lsp.buf.type_definition, 'vim.lsp.type_definition' },
     rn = { vim.lsp.buf.rename, 'vim.lsp.buf.rename' },
     rc = { inspect_lsp_client, 'Inspect LSP client' },
-  }, { prefix = '<space>', buffer = buffer })
+  }, { prefix = '<space>', buffer = bufnr })
 
   wkr({
     name = 'Workspace',
     a = { vim.lsp.buf.add_workspace_folder, 'vim.lsp.buf.add_workspace_folder' },
     r = { vim.lsp.buf.remove_workspace_folder, 'vim.lsp.buf.remove_workspace_folder' },
     l = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'vim.lsp.list_workspace_folders' },
-  }, { prefix = '<space>w', buffer = buffer })
+  }, { prefix = '<space>w', buffer = bufnr })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
-    local buffer = args.buf
+    local buf = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    on_attach(client, buffer)
+    on_attach(client, buf)
   end,
 })

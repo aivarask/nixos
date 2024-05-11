@@ -18,24 +18,36 @@ require('which-key').register({
   ['qa'] = { "<leader>[", "dapui toggle", noremap = false },
   ['<leader>['] = { function() return require('dapui').toggle({ reset = true }) end, 'dapui toggle' },
   ['<leader>]'] = { [[:Neotest summary<CR>]], 'Neotest summary' },
-  [']<leader>'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },
+  -- [']<leader>'] = { [[:Neotest output-panel<CR>]], 'Neotest output-panel' },
+  [']<leader>'] = { function()
+    require('neotest').output_panel.toggle()
+  end, 'Neotest output-panel' },
   ['<leader>a'] = { [[:SymbolsOutline<CR>]], 'SymbolsOutline' },
   ['<leader>A'] = { [[:AerialToggle<CR>]], 'AerialToggle' },
   ['<F1>'] = { function() vim.cmd.help(vim.fn.expand('<cword>')) end, 'help <cword>' },
   ['<F13>'] = { function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, 'help <cWORD>' },
   ['<F25>'] = { function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, 'help <cexpr>' },
   -- ./dap.lua F4-F8
-  ['<F4>'] = { function() require('neotest').run.run({ vim.fn.expand('%') }) end, 'neotest %' },
-  ['<F26>'] = { function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, 'neotest % dap' },
-  ['<F38>'] = { function() require('neotest').run.run({ suite = true }) end, 'neotest % dap' },
+  -- ['<F4>'] = { function() require('neotest').run.run({ vim.fn.expand('%') }) end, 'neotest %' },
+  -- ['<F26>'] = { function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, 'neotest % dap' },
+  -- ['<F38>'] = { function() require('neotest').run.run({ suite = true }) end, 'neotest % dap' },
   ['<F5>'] = { require('dap').continue, 'dap continue' },
-  ['<F17>'] = { require('dap').terminate, 'dap terminate' },                           -- <S-F5>
-  ['<F29>'] = { function() require('osv').launch({ port = 8086 }) end, 'osv launch' }, -- <C-F5>
-  ['<F6>'] = { function() require('osv').run_this({ port = 8086 }) end, 'osv run_this' },
+  ['<F17>'] = { require('dap').terminate, 'dap terminate' }, -- <S-F5>
+  ['<F29>'] = { require('dap').terminate, 'dap terminate' }, -- <C-F5>
+  ['<F6>'] = { function()
+    require('neotest').output_panel.clear()
+    require('neotest').run.run({ strategy = 'dap' })
+  end, 'neotest run.run dap' },
+  ['<F7>'] = { function()
+    require('neotest').output_panel.clear()
+    require('neotest').run.run_last({ strategy = 'dap' })
+  end, 'neotest run.run_last dap' },
+  -- ['<F29>'] = { function() require('osv').launch({ port = 8086 }) end, 'osv launch' }, -- <C-F5>
+  -- ['<F6>'] = { function() require('osv').run_this({ port = 8086 }) end, 'osv run_this' },
   -- ['<F7>'] = { function() require('dapui').toggle({ reset = true }) end, 'dapui.toggle_reset' },
   ['<F8>'] = { require('dap').toggle_breakpoint, 'toggle_breakpoint' },
   ['<F20>'] = { require('dap').list_breakpoints, 'dap list_breakpoints' },   -- <S-F8>
-  ['<F32>'] = { require('dap').clear_breakpoints, 'dap.clear_breakpoints' }, -- <S-F8>
+  ['<F32>'] = { require('dap').clear_breakpoints, 'dap.clear_breakpoints' }, -- <C-F8>
   --
   ['<F10>'] = { [[:Telescope session-lens<CR>]], "session-lens" },
   ['<F22>'] = { [[:Autosession delete<CR>]], "Autosession delete" },

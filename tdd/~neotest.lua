@@ -1,22 +1,25 @@
 require('neotest').setup({
   summary = { open = 'botright vsplit | vertical resize 30 | set winfixwidth' },
-  output_panel = { open = 'botright vsplit | vertical resize 60 | set winfixwidth' },
+  output_panel = {
+    -- open = "botright vsplit | resize 20",
+    open = 'botright vsplit | vertical resize 60 | set winfixwidth',
+  },
   adapters = {
     --- @see https://github.com/nvim-neotest/neotest-go/
     --- .go _test.go
     --- func Test*|Example*
-    require("neotest-go")({ recursive_run = true }),
+    -- require("neotest-go")({ recursive_run = true }),
 
     --- ~= node_modules
     --- .test.js
-    require('neotest-node'),
+    -- require('neotest-node'),
 
     --- @see https://github.com/nvim-neotest/neotest-python/
     --- ~= venv
     --- test_*.py *_test.py
     --- enabled when entered
     --- dap preconfigured
-    require("neotest-python")({}), -- dap pytest builtin (usefull example)
+    -- require("neotest-python")({}), -- dap pytest builtin (usefull example)
 
     --- @see https://github.com/olimorris/neotest-phpunit
     --- ~= node_modules vendor
@@ -50,12 +53,12 @@ require('neotest').setup({
 
     --- @see https://github.com/rouge8/neotest-rust/?tab=readme-ov-file
     --- not working
-    require('neotest-rust'),
+    -- require('neotest-rust'),
 
     --- @see https://github.com/nvim-neotest/neotest-plenary
     --- _spec.lua
     --- no dap
-    require('neotest-plenary'),
+    -- require('neotest-plenary'),
 
 
     -- require('neotest-busted'), -- local

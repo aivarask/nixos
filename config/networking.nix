@@ -1,5 +1,7 @@
 { lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    tcpdump
+    tcpflow
     lftp
     ethtool
     wol
@@ -41,6 +43,7 @@
         "example.com"
         # "binarycache.example.com"
         "localhost.local"
+        "music.localhost.local"
 
       ];
       "192.168.1.190" = [ "pcl" "pcl.local" ];

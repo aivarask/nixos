@@ -9,6 +9,9 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp') -- nvim-cmp
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
+
+
+
 cmp.setup({
   snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
   mapping = cmp.mapping.preset.insert({
@@ -33,6 +36,10 @@ cmp.setup({
       { name = 'path' },   -- cmp-path
       { name = 'buffer' }, -- cmp-buffer
     }),
+  enabled = function()
+    return vim.api.nvim_get_option_value("buftype", { buf = 0 }) ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+  end,
 })
 
 -- cmp-cmdline
@@ -40,3 +47,16 @@ cmp.setup.cmdline({ '/', '?' },
   { mapping = cmp.mapping.preset.cmdline(), sources = { { name = 'buffer' } } })
 cmp.setup.cmdline(':',
   { mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({ { name = 'path' }, { name = 'buffer' }, { name = 'cmdline' } }) })
+
+-- require("cmp").setup({
+--   enabled = function()
+--     return vim.api.nvim_get_option_value("buftype", { buf = 0 }) ~= "prompt"
+--         or require("cmp_dap").is_dap_buffer()
+--   end,
+-- })
+
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
+})

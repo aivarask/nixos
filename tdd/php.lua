@@ -38,6 +38,6 @@ require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-de
     request = 'launch',
     name = 'localhost:8000',
     port = 9003,
-    runtimeArgs = { '-S', 'localhost:8000', '-c=php.ini', '-t=src' },
+    runtimeArgs = { '-S', 'localhost:8000', '-c=php.ini', '-t=fp' },
   },
 }

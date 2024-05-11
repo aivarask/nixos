@@ -6,8 +6,8 @@ vim.fn.sign_define('DapStopped', { text = '🔴', texthl = '', linehl = '', numh
 -- dap-configuration nvim-dap
 local dap = require('dap')
 dap.defaults.fallback.terminal_win_cmd = '60vsplit new'
-dap.defaults.fallback.switchbuf = "useopen"
--- require('nvim-dap-virtual-text').setup({})
+-- dap.defaults.fallback.switchbuf = "useopen"
+require('nvim-dap-virtual-text').setup({})
 
 -- nvim-dap-ui
 local dapui = require('dapui')
@@ -17,21 +17,24 @@ dapui.setup({
       elements = {
         {
           id = "scopes",
-          size = 0.25,
+          size = 0.70,
         },
-        { id = "breakpoints", size = 0.25 },
-        { id = "stacks",      size = 0.25 },
-        { id = "watches",     size = 0.25 },
+        { id = "breakpoints", size = 0.15 },
+        {
+          id = "stacks",
+          size = 0.15,
+        },
+        -- { id = "watches",     size = 0.25 },
       },
-      size = 40,
-      position = "left",
+      size = 30,
+      position = "right",
     },
     {
       elements = {
         "repl",
-        "console",
+        -- "console",
       },
-      size = 10,
+      size = 20,
       position = "bottom",
     },
   },
@@ -51,6 +54,7 @@ require('which-key').register({
   R = { dap.restart, 'restart' },
   T = { dap.terminate, 'terminate' },
   --
+  B = { dap.step_back, 'step_back' },
   b = {
     name = 'breakpoint',
     s = { dap.set_breakpoint, 'set_breakpoint' },

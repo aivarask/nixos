@@ -117,7 +117,7 @@
                 nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
               };
               environment.systemPackages = [
-                inputs.lobster.packages.${system}.lobster
+                # inputs.lobster.packages.${system}.lobster
                 # inputs.rustaceanvim.packages.${system}.codelldb
               ];
             }

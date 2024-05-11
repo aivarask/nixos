@@ -1,0 +1,37 @@
+h1,
+h2,
+h3 {
+  font-size: 1rem;
+}
+
+.container {
+  input {
+    &[type="number"] {
+      width: 6ch;
+    }
+  }
+}
+
+.product {
+  display: flex;
+
+  a {
+    margin: 0.5rem;
+  }
+
+
+  & .fields {
+    color: red;
+    text-align: right;
+    /* vertical-align: baseline; */
+  }
+}
+
+summary {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  gap: 16px;
+  justify-content: space-between;
+  cursor: pointer;
+}

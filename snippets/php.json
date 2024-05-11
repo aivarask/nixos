@@ -1,0 +1,13 @@
+{
+  "function simple": {
+    "prefix": [
+      "fn",
+      "fun"
+    ],
+    "body": [
+      "function ${1:test}(${2}) {",
+      "\t${0}",
+      "}"
+    ]
+  }
+}

@@ -16,7 +16,8 @@
       "vh",
       "vw",
       "%",
-      "px"
+      "px",
+      "ch"
     ],
     "declaration-block-no-duplicate-properties": true
   }

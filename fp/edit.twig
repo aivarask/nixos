@@ -1,0 +1,26 @@
+  <form hx-post="/save">
+    {% for field in multipart|numbers %}
+      <input name="{{ field['name'] }}" value="{{ field['contents'] }}" title="{{ field['name'] }}" 
+        {% for k, v in field['attributes'] %}
+          {{ k }}={{ v }}
+        {% endfor %}
+      />
+    {% endfor %}
+    <button type="submit">Save</button>
+    <hr/>
+    {% for f in multipart|notnumbers %}
+      {% if f['el'] == 'textarea' %}
+        <textarea name="{{f['name']}}">
+        {{f['contents']}}
+        </textarea>
+      {% else %}
+              <input name="{{ f['name'] }}" value="{{ f['contents'] }}" title="{{ f['name'] }}" 
+        {% for k, v in f['attributes'] %}
+        {{ k }}={{ v }}
+        {% endfor %}
+        />
+        
+      {% endif %}
+
+    {% endfor %}
+  </form>
