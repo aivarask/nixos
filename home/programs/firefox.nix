@@ -59,7 +59,10 @@
         "browser.urlbar.suggest.openpage" = false;
         "browser.urlbar.suggest.topsites" = false;
         "devtools.cache.disabled" = false;
+        "devtools.debugger.remote-enabled" = true;
+        "devtools.dom.enabled" = true;
         "devtools.editor.keymap" = "vim";
+        "devtools.inspector.showUserAgentStyles" = true;
         "devtools.responsive.html.displayedDeviceList" = {
           added = [ "iPhone 6/7/8" "1080p Full HD Television (Custom)" "Fixasparts" ];
           removed = [

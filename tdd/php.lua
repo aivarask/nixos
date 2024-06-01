@@ -6,6 +6,13 @@ require('dap').adapters.php = { -- https://github.com/xdebug/vscode-php-debug
 
 require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-debug#vs-code-configuration
   {
+    type = 'php',
+    request = 'launch',
+    name = 'localhost:8000',
+    port = 9003,
+    runtimeArgs = { '-S', 'localhost:8000', '-c=php.ini', '-t=fp' },
+  },
+  {
     type = "php",
     request = "launch",
     name = "php launch file",
@@ -32,12 +39,5 @@ require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-de
         ["*"] = false,
       },
     },
-  },
-  {
-    type = 'php',
-    request = 'launch',
-    name = 'localhost:8000',
-    port = 9003,
-    runtimeArgs = { '-S', 'localhost:8000', '-c=php.ini', '-t=fp' },
   },
 }

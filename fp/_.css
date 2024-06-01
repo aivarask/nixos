@@ -1,37 +1,86 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
 h1,
 h2,
 h3 {
   font-size: 1rem;
+  margin-top: 0.25rem;
 }
 
-.container {
-  input {
-    &[type="number"] {
-      width: 6ch;
-    }
+
+input {
+  &[type="number"] {
+    width: 8ch;
   }
 }
 
-.product {
+#top {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: gray;
   display: flex;
 
-  a {
+  a,
+  input,
+  button {
     margin: 0.5rem;
   }
+}
 
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background-color: gray;
+}
 
-  & .fields {
-    color: red;
-    text-align: right;
-    /* vertical-align: baseline; */
+#dilaina_dialog {
+  margin-top: 2rem;
+  max-width: 80vw;
+  max-height: 80vh;
+  overflow-y: scroll;
+  position: absolute;
+  display: flexbox;
+
+  &>button {
+    position: absolute;
+    right: 0.5rem;
   }
 }
 
-summary {
-  width: 100%;
-  display: flex;
-  padding: 1rem;
-  gap: 16px;
-  justify-content: space-between;
-  cursor: pointer;
+details {
+  margin: 0.25rem;
+
+  &>summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &>.title {
+      display: flex;
+      align-items: center;
+
+      &>* {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  &>div {
+    padding-right: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 0.5rem;
+  }
 }

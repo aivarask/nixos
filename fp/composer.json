@@ -1,0 +1,24 @@
+{
+  "config": {
+    "optimize-autoloader": false,
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Ext\\": "src/"
+    },
+    "files": [
+      "Crawl.php",
+      "Dilaina.php",
+      "Util.php",
+      "twig.php"
+    ]
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.8",
+    "twig/twig": "^3.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
+  }
+}

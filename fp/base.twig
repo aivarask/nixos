@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="about:blank" />
+    <title>
+      Price
+    </title>
+    <link href="/_.css" rel="stylesheet" />
+    <!-- <script src="./lib/ws.js"></script> -->
+    <script src="./lib/htmx.js"></script>
+    <script src="./lib/multi-swap.js"></script>
+    <script src="./lib/sse.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script src="./dilaina.js"></script>
+    <script>
+      function linkHandler(event) { event.stopPropagation() }
+    </script>
     {% block head %}
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" type="image/x-icon" href="about:blank" />
-      <title>
-        Price
-      </title>
-      <link href="/_.css" rel="stylesheet" />
-      <script src="./lib/ws.js"></script>
-      <script src="./lib/htmx.js"></script>
-      <script src="./lib/multi-swap.js"></script>
-      <script src="./lib/sse.js"></script>
-      <script type="module"></script>
+
     {% endblock %}
-    <style>
-      #top { display: flex; a, input, button { margin: 1rem; } }
-    </style>
   </head>
-  <body hx-ext="multi-swap" hx-boost="true">
+
+  <body hx-ext="multi-swap" hx-boost="false">
     <div id="top">
       <a href="/">Home</a>
-      <form action="/search">
-        <input type="text"
-          name="sname"
-          value=""
-          placeholder="Search"
-          title="Search" />
-      </form>
+      {% block search %}
+        {% include './comp/searchInput.twig' %}
+      {% endblock %}
       {% block top %}
 
       {% endblock %}
@@ -38,13 +37,11 @@
 
       {% endblock %}
     </div>
-    <div class="footer" id="footer">
-      <style>
-        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 2rem;
-        background-color: gray; }
-      </style>
+    <div id="footer">
       {% block footer %}
-
+        <div id="message" hx-swap-oob="true">
+          <!-- Initial -->
+        </div>
       {% endblock %}
     </div>
   </body>

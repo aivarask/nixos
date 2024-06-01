@@ -26,7 +26,7 @@ dapui.setup({
         },
         -- { id = "watches",     size = 0.25 },
       },
-      size = 30,
+      size = 40,
       position = "right",
     },
     {

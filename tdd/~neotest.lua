@@ -26,6 +26,7 @@ require('neotest').setup({
     --- *Test.php
     require('neotest-phpunit')({
       filter_dirs = { ".git", "node_modules", "vendor" },
+      -- root_files = { "jar.json" },
       --   env = { XDEBUG_CONFIG = "idekey=neotest" },
       dap =
       {

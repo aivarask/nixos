@@ -17,7 +17,8 @@
       "vw",
       "%",
       "px",
-      "ch"
+      "ch",
+      "fr"
     ],
     "declaration-block-no-duplicate-properties": true
   }

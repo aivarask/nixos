@@ -10,12 +10,15 @@
     },
     "files": [
       "fp/Crawl.php",
-      "fp/lib/twig.php",
+      "fp/Dilaina.php",
+      "fp/Util.php",
+      "fp/twig.php",
       "gt/functions.php"
     ]
   },
   "require": {
     "guzzlehttp/guzzle": "^7.8",
+    "spatie/async": "^1.6",
     "symfony/css-selector": "^6.4",
     "symfony/dom-crawler": "^6.4",
     "twig/twig": "^3.8",

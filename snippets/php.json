@@ -9,5 +9,15 @@
       "\t${0}",
       "}"
     ]
+  },
+  "anonymous function": {
+    "prefix": [
+      "af"
+    ],
+    "body": [
+      "function (${1}) {",
+      "\t${0}",
+      "}"
+    ]
   }
 }

@@ -1,0 +1,17 @@
+<form hx-post="/change_per_page"
+  hx-trigger="change from:input[name='per_page']"
+  style="display:flex; align-items: center;">
+  <input type="radio"
+    id="l50"
+    name="per_page"
+    {{ isRadioChecked('50', perPage) }}
+    value="50" />
+  <label for="l50">50</label><br />
+  <input type="radio"
+    id="l100"
+    name="per_page"
+    {{ isRadioChecked('100', perPage) }}
+    value="100" />
+  <label for="l100">100</label><br />
+  <button type="submit">Change</button>
+</form>

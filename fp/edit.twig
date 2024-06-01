@@ -1,26 +1,33 @@
-  <form hx-post="/save">
-    {% for field in multipart|numbers %}
-      <input name="{{ field['name'] }}" value="{{ field['contents'] }}" title="{{ field['name'] }}" 
-        {% for k, v in field['attributes'] %}
-          {{ k }}={{ v }}
-        {% endfor %}
-      />
-    {% endfor %}
-    <button type="submit">Save</button>
-    <hr/>
-    {% for f in multipart|notnumbers %}
-      {% if f['el'] == 'textarea' %}
-        <textarea name="{{f['name']}}">
-        {{f['contents']}}
-        </textarea>
-      {% else %}
-              <input name="{{ f['name'] }}" value="{{ f['contents'] }}" title="{{ f['name'] }}" 
-        {% for k, v in f['attributes'] %}
-        {{ k }}={{ v }}
-        {% endfor %}
-        />
-        
-      {% endif %}
-
-    {% endfor %}
-  </form>
+{% set id = multipart[0]['contents'] %}
+<div id="n{{ id }}">
+  {% for f in multipart|numbers %}
+    <input name="{{ f['name'] }}"
+      {{ attributes(f) }}
+      value="{{ f['contents'] }}"
+      title="{{ f['name'] }} {{ f['contents']|vat }}" />
+  {% endfor %}
+  <button hx-post="/save"
+    hx-include="#n{{ id }},#t{{ id }}"
+    hx-swap="multi:#n{{ id }},#t{{ id }}"
+    onclick="linkHandler(event)">
+    Save
+  </button>
+</div>
+<div id="t{{ id }}">
+  {% for f in multipart|notnumbers %}
+    {% if f['el'] == 'textarea' %}
+      <textarea {{ attributes(f) }}
+        name="{{ f['name'] }}"
+        title="{{ f['name'] }}"
+        rows="4">
+        {{ f['contents'] }}
+      </textarea>
+    {% else %}
+      <input name="{{ f['name'] }}"
+        {{ attributes(f) }}
+        {{ isCheckbox(f) }}
+        value="{{ f['contents'] }}"
+        title="{{ f['name'] }}" />
+    {% endif %}
+  {% endfor %}
+</div>
