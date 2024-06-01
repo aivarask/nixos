@@ -11,6 +11,7 @@ composer.lock
 #python
 .pytest_cache
 __pycache__
+_rplugin
 
 # node
 pnpm-lock.json
