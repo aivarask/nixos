@@ -35,10 +35,5 @@
     # 15.6" 3840x2160 345x194
     # 27" 3840x2160 597x336
     dpi = { dell = 282; pc = 163; }."${config.networking.hostName}" or 144;
-    libinput = {
-      mouse = { accelSpeed = "+0.5"; };
-      touchpad = { naturalScrolling = true; accelSpeed = "+0.5"; };
-    };
   };
-
 }

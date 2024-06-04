@@ -9,7 +9,8 @@
       dates = "weekly";
       options = "--delete-older-than 2w";
     };
-    package = pkgs.nixUnstable;
+    # package = pkgs.nixVersions.git; # master
+    # package = pkgs.nixVersions.latest; # stable
     nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
       auto-optimise-store = true;

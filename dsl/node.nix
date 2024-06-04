@@ -12,8 +12,8 @@
   };
   environment.systemPackages =
     with pkgs; [
-      nodejs_21
-      corepack_21
+      nodejs_22
+      corepack_22
       eslint_d
       biome
       typescript

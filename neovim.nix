@@ -1,4 +1,4 @@
-{ pkgs, include, ... }: {
+{ pkgs, include, inputs, ... }: {
   imports = [ ]
     ++ include ./tdd
     ++ include ./plugin
@@ -13,7 +13,8 @@
         EOF
       ''
     ];
-    package = pkgs.neovim-nightly;
+    # package = pkgs.neovim;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;

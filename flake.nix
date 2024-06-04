@@ -36,7 +36,7 @@
       overlays =
         with inputs; [
           nur.overlay
-          neovim-nightly-overlay.overlay
+          neovim-nightly-overlay.overlays.default
           (_final: prev: with prev; {
             inherit LS_COLORS;
           })
@@ -134,7 +134,11 @@
                 useUserPackages = false;
                 users.root = import ./home.nix;
               };
-              home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit include;
+                inherit nix-colors;
+              };
             }
           ];
         };
@@ -173,7 +177,11 @@
                 useUserPackages = false;
                 users.root = import ./home.nix;
               };
-              home-manager.extraSpecialArgs = { inherit include; inherit nix-colors; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit include;
+                inherit nix-colors;
+              };
             }
           ];
         };
