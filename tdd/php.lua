@@ -8,10 +8,12 @@ require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-de
   {
     type = 'php',
     request = 'launch',
-    name = 'localhost:8000',
+    name = 'php -S localhost:8000 -c=ht/php.ini -t=/etc/nixos/ht',
     port = 9003,
-    runtimeArgs = { '-S', 'localhost:8000', '-c=php.ini', '-t=fp' },
+    runtimeArgs = { '-S', 'localhost:8000',
+      '-c=/etc/nixos/ht/php.ini', '-t=/etc/nixos/ht' },
   },
+  { type = 'php', request = 'launch', name = 'php -S localhost:8000 -c=fp/php.ini -t=fp', port = 9003, runtimeArgs = { '-S', 'localhost:8000', '-c=fp/php.ini', '-t=fp' } },
   {
     type = "php",
     request = "launch",

@@ -1,8 +1,8 @@
 <?php
 
 use Ext\ListExtension;
-use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
 use Twig\TwigFunction;
 
 function load()
