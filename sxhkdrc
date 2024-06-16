@@ -25,6 +25,10 @@ super + {q,w,e,r}
   alacritty --working-directory=/etc/nixos/siom -e nvim
   }
 
+super + ctrl + {q}
+	{ tdrop alacritty -e ssh pcw
+	}
+
 super + {W,E,R,T,Y}
   {firefox --private-window\
   ,alacritty --working-directory=/etc/nixos\
@@ -35,6 +39,9 @@ super + {W,E,R,T,Y}
 
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
+
+super + {A,F,G,H}
+	alacritty --working-directory=/etc/nixos/{a,fp,gt,ht} -e nvim
 
 super + {z,x,c,v}
   {brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}

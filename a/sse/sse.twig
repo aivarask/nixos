@@ -1,0 +1,8 @@
+<div hx-ext="sse" sse-connect="/sse">
+  <div sse-swap="ping">
+    initial
+  </div>
+  <div hx-get="/sse/time" hx-trigger="sse:time" hx-swap="afterend">
+    ...
+  </div>
+</div>

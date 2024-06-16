@@ -8,12 +8,25 @@ require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-de
   {
     type = 'php',
     request = 'launch',
-    name = 'php -S localhost:8000 -c=ht/php.ini -t=/etc/nixos/ht',
     port = 9003,
-    runtimeArgs = { '-S', 'localhost:8000',
-      '-c=/etc/nixos/ht/php.ini', '-t=/etc/nixos/ht' },
+    runtimeArgs = { '-S', 'localhost:8000', '-t=/etc/nixos/a' },
+    name =
+    'php -S localhost:8000 -t=/etc/nixos/a',
   },
-  { type = 'php', request = 'launch', name = 'php -S localhost:8000 -c=fp/php.ini -t=fp', port = 9003, runtimeArgs = { '-S', 'localhost:8000', '-c=fp/php.ini', '-t=fp' } },
+  {
+    type = 'php',
+    request = 'launch',
+    port = 9003,
+    name = 'php -S localhost:8000 -c=ht/php.ini -t=/etc/nixos/ht',
+    runtimeArgs = { '-S', 'localhost:8000', '-c=/etc/nixos/ht/php.ini', '-t=/etc/nixos/ht' },
+  },
+  {
+    type = 'php',
+    request = 'launch',
+    port = 9003,
+    runtimeArgs = { '-S', 'localhost:8000', '-c=/etc/nixos/fp/php.ini', '-t=/etc/nixos/fp' },
+    name = 'php -S localhost:8000 -c=/etc/nixos/fp/php.ini -t=/etc/nixos/fp',
+  },
   {
     type = "php",
     request = "launch",
