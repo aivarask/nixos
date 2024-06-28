@@ -76,9 +76,14 @@ details {
     align-items: center;
     justify-content: space-between;
 
+    &:hover {
+      background: silver;
+    }
+
     &>.title {
       display: flex;
       align-items: center;
+
 
       &>* {
         margin-right: 0.5rem;

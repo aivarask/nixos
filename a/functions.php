@@ -12,8 +12,6 @@ function load()
 {
   $loader = new FilesystemLoader([
     '.',
-    'z',
-    'sse',
   ], __DIR__);
   $twig = new Environment($loader, [
     'debug' => true,

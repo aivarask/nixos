@@ -18,6 +18,7 @@
     ccls
     glib # gio trash
     check
+    nlohmann_json
   ];
 }
 
