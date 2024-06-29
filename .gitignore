@@ -1,5 +1,7 @@
 .direnv/
 
+CMakeFiles
+
 # nix
 result
 
