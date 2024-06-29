@@ -18,9 +18,8 @@
     ccls
     glib # gio trash
     check
+    cmake
+    meson
     nlohmann_json
   ];
 }
-
-
-
