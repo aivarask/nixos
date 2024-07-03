@@ -7,14 +7,12 @@
       "${pkgs.zlib.dev}/include"
       "${pkgs.libuv.dev}/include"
       "${pkgs.check}/include"
-      "${pkgs.libcpr.dev}/include"
     ];
     CPLUS_INCLUDE_PATH = builtins.concatStringsSep ":" [
-      "${pkgs.libcpr.dev}/include"
       "${pkgs.curl.dev}/include"
+      "${pkgs.libcpr.dev}/include"
       "${pkgs.nlohmann_json}/include"
     ];
-
   };
   environment.systemPackages = with pkgs; [
     clang

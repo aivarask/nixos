@@ -26,8 +26,7 @@ super + {q,w,e,r}
   }
 
 super + ctrl + {q}
-	{ tdrop alacritty -e ssh pcw
-	}
+	{ tdrop alacritty -e ssh pcw }
 
 super + {W,E,R,T,Y}
   {firefox --private-window\
@@ -40,6 +39,8 @@ super + {W,E,R,T,Y}
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
+super + D
+	dsl
 super + {A,F,G,H}
 	alacritty --working-directory=/etc/nixos/{a,fp,gt,ht} -e nvim
 
