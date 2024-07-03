@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    nodePackages.pyright
+    pyright
     black
     (python3.withPackages (ps: with ps; [
       pip

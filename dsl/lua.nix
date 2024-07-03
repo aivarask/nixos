@@ -20,7 +20,7 @@ let
     sqlite
     luasql-sqlite3
     luadbi-sqlite3
-    toml
+    toml-edit
     jsregexp
   ]));
 
