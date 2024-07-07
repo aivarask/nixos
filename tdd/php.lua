@@ -9,6 +9,14 @@ require('dap').configurations.php = { -- https://github.com/xdebug/vscode-php-de
     type = 'php',
     request = 'launch',
     port = 9003,
+    runtimeArgs = { '-S', 'localhost:8000', '-t=/etc/nixos/_php/aldale' },
+    name =
+    'php -S localhost:8000 -t=/etc/nixos/_php/aldale',
+  },
+  {
+    type = 'php',
+    request = 'launch',
+    port = 9003,
     runtimeArgs = { '-S', 'localhost:8000', '-t=/etc/nixos/a' },
     name =
     'php -S localhost:8000 -t=/etc/nixos/a',
