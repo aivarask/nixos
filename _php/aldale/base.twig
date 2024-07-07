@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="about:blank" />
+
+    <link href="/_.css" rel="stylesheet" type="text/css" />
+    <script src="/js/htmx.js"></script>
+    <script src="/js/sse.js"></script>
+
+    <title>
+      Aldale
+    </title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav>
+        <a href="/">Pagrindinis</a>
+        <a href="/about">Apie mus</a>
+        <a href="/contact">Kontaktai</a>
+        <a href="tel:+37068711572">868711572</a>
+        <a href="mail:info@aldale.lt">info@aldale.lt</a>
+      </nav>
+      <div id="content">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
