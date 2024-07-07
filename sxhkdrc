@@ -36,6 +36,9 @@ super + {W,E,R,T,Y}
 	,brave youtube.com\
   }
 
+super + P
+	_php
+
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
