@@ -8,4 +8,7 @@
 
 [Code Screenshots](https://www.youtube.com/watch?v=ig_HLrssAYE)
 
-Hello
+<!--  TODO: Export gimp .xcf files [imagemagick](www.imagemagick.org)   -->
+<!-- TODO: Add virtual keyboard [svkbd]( https://tools.suckless.org/x/svkbd/ ) -->
+<!-- TODO: Git in vim fugitive neogit--> 
+<!-- TODO: make lf keybindings without derivations-->

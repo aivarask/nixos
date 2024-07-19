@@ -22,6 +22,7 @@ let
     luadbi-sqlite3
     toml-edit
     jsregexp
+    magick #imagemagick
   ]));
 
 in

@@ -1,5 +1,5 @@
 { pkgs, dmenu-flexipatch, dwm-flexipatch, st-flexipatch, tabbed-flexipatch, ... }: {
-  environment.systemPackages = with pkgs; [ dmenu dwm st tabbed wmname emojipick surf ];
+  environment.systemPackages = with pkgs; [ dmenu dwm st tabbed wmname emojipick surf svkbd ];
   nixpkgs.overlays = [
     (_self: super: {
       dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
