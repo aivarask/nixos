@@ -1,3 +1,7 @@
+wk = require("which-key")
+---@type wk.Opts
+local wkconfig = {}
+wk.setup({ preset = 'helix' })
 vim.api.nvim_create_augroup('Format', { clear = true })
 vim.cmd([[
   " let &runtimepath.=',/etc/nixos' " already in nix config
@@ -8,7 +12,6 @@ vim.cmd([[
 ]])
 
 vim.loader.enable()
-
 
 vim.cmd([[
 ]])

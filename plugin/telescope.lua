@@ -18,26 +18,26 @@ require('which-key').register({
 
 local find_files = require('telescope.builtin').find_files
 
-require('which-key').register({
-  name = 'Telescope',
-  a = { [[:Telescope autocommands<CR>]], 'autocommands' },
-  b = { [[:Telescope buffers <CR>]], 'buffers' },
-  c = { [[:Telescope commands<cr> ]], 'commands' },
-  e = { [[:Telescope symbols<cr> ]], 'emoji symbols' },
-  f = { [[:Telescope find_files<CR>]], 'find_files' },
-  g = { [[:Telescope live_grep<CR>]], 'live_grep' },
-  h = { [[:Telescope help_tags<CR>]], 'helptags' },
-  k = { [[:Telescope keymaps<CR>]], 'keymaps' },
-  n = { function() find_files({ cwd = '/etc/nixos' }) end, 'find /etc/nixos' },
-  p = { [[:Telescope ak paths<CR>]], 'ak paths' },
-  r = { [[:Telescope registers<CR>]], 'registers' },
-  s = { function() find_files({ cwd = '/etc/nixos/snippets' }) end, 'find snippets' },
-  t = { [[:Telescope<CR>]], 'Telescope' },
-  l = {
-    name = 'LSP',
-    d = { [[:Telescope lsp_document_symbols<CR>]], 'lsp_document_symbols' },
-    w = { [[:Telescope lsp_workspace_symbols<CR>]], 'lsp_workspace_symbols' },
-    x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
-  },
-  x = { '[[:TroubleToggle<CR>]]', 'TroubleToggle' },
-}, { prefix = '<leader>t' })
+wk.add({
+  { '<leader>t',  group = 'Telescope' },
+  { '<leader>ta', [[:Telescope autocommands<CR>]],                            desc = 'autocommands' },
+  { '<leader>tb', [[:Telescope buffers <CR>]],                                desc = 'buffers' },
+  { '<leader>tc', [[:Telescope commands<cr> ]],                               desc = 'commands' },
+  { '<leader>te', [[:Telescope symbols<cr> ]],                                desc = 'emoji symbols' },
+  { '<leader>tf', [[:Telescope find_files<CR>]],                              desc = 'find_files' },
+  { '<leader>tg', [[:Telescope live_grep<CR>]],                               desc = 'live_grep' },
+  { '<leader>th', [[:Telescope help_tags<CR>]],                               desc = 'helptags' },
+  { '<leader>tk', [[:Telescope keymaps<CR>]],                                 desc = 'keymaps' },
+  { '<leader>tn', function() find_files({ cwd = '/etc/nixos' }) end,          desc = 'find /etc/nixos' },
+  { '<leader>tp', [[:Telescope ak paths<CR>]],                                desc = 'ak paths' },
+  { '<leader>tr', [[:Telescope registers<CR>]],                               desc = 'registers' },
+  { '<leader>ts', function() find_files({ cwd = '/etc/nixos/snippets' }) end, desc = 'find snippets' },
+  { '<leader>tt', [[:Telescope<CR>]],                                         desc = 'Telescope' },
+  { '<leader>tx', '[[:TroubleToggle<CR>]]',                                   desc = 'TroubleToggle' },
+  -- l = {
+  --   name = 'LSP',
+  --   d = { [[:Telescope lsp_document_symbols<CR>]], 'lsp_document_symbols' },
+  --   w = { [[:Telescope lsp_workspace_symbols<CR>]], 'lsp_workspace_symbols' },
+  --   x = { [[:Telescope lsp_dynamic_workspace_symbols<CR>]], 'lsp_dynamic_workspace_symbols' },
+  -- },
+})

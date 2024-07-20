@@ -13,13 +13,13 @@ require('fold-preview').setup({ -- fold-preview-nvim
   default_keybindings = false,
 })
 
-require('which-key').register({
-  name = 'Preview',
-  gpf = { require('fold-preview').toggle_preview, 'fold-preview.toggle_preview' },
-  gpd = { require('goto-preview').goto_preview_definition, 'definition' },
-  gpt = { require('goto-preview').goto_preview_type_definition, 'type_definition' },
-  gpi = { require('goto-preview').goto_preview_implementation, 'implementation' },
-  gpD = { require('goto-preview').goto_preview_declaration, 'declaration' },
-  gpc = { require('goto-preview').close_all_win, 'close_all_win' },
-  gpr = { require('goto-preview').goto_preview_references, 'references' },
+wk.add({
+  { 'gp', group = 'goto-preview', icon = '🔍' },
+  { 'gpf', require('fold-preview').toggle_preview, desc = 'fold-preview.toggle_preview' },
+  { 'gpd', require('goto-preview').goto_preview_definition, desc = 'definition' },
+  { 'gpt', require('goto-preview').goto_preview_type_definition, desc = 'type_definition' },
+  { 'gpi', require('goto-preview').goto_preview_implementation, desc = 'implementation' },
+  { 'gpD', require('goto-preview').goto_preview_declaration, desc = 'declaration' },
+  { 'gpc', require('goto-preview').close_all_win, desc = 'close_all_win' },
+  { 'gpr', require('goto-preview').goto_preview_references, desc = 'references' },
 })
