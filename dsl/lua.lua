@@ -30,6 +30,7 @@ local getLibrary = function()
       'iron.nvim',
       'symbols%-outline.nvim',
       'sqlite.lua',
+      'gitsigns.nvim',
     }) do
       if string.find(path, name) then
         table.insert(library, path)

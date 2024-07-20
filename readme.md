@@ -10,8 +10,5 @@
 
 <!--  TODO: Export gimp .xcf files [imagemagick](www.imagemagick.org)   -->
 <!-- TODO: Add virtual keyboard [svkbd]( https://tools.suckless.org/x/svkbd/ ) -->
-<!-- TODO: Git in vim fugitive neogit-->
 <!-- TODO: make lf keybindings without derivations-->
 <!-- NOTE: make dwm focus tile not under the cursor-->
-
-Testing neogit
