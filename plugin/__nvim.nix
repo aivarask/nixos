@@ -20,6 +20,8 @@
       type = "lua";
     }
     lazygit-nvim
+    neogit
+    gitsigns-nvim
     lualine-nvim
     lualine-lsp-progress
     nvim-tree-lua
