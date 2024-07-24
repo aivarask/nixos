@@ -1,28 +1,26 @@
 local gitsigns = require('gitsigns')
 
 gitsigns.setup {}
-require('which-key').register({
-  ['[h'] = { function() gitsigns.nav_hunk('prev') end, 'Hunk prev' },
-  [']h'] = { function() gitsigns.nav_hunk('next') end, 'Hunk next' },
-  ['<leader>hs'] = { gitsigns.stage_hunk, 'stage_hunk' },
-  ['<leader>hr'] = { gitsigns.reset_hunk, 'reset_hunk' },
-  ['<leader>hS'] = { gitsigns.stage_buffer, 'stage_buffer' },
-  ['<leader>hu'] = { gitsigns.undo_stage_hunk, 'undo_stage_hunk' },
-  ['<leader>hR'] = { gitsigns.reset_buffer, 'reset_buffer' },
-  ['<leader>hp'] = { gitsigns.preview_hunk, 'preview_hunk' },
-  ['<leader>hb'] = { function() gitsigns.blame_line { full = true } end, 'blame_line' },
-  ['<leader>tb'] = { gitsigns.toggle_current_line_blame, 'toggle_current_line_blame' },
-  ['<leader>hd'] = { gitsigns.diffthis, 'diffthis' },
-  ['<leader>hD'] = { function() gitsigns.diffthis('~') end, 'diffthis ~' },
-  ['<leader>td'] = { gitsigns.toggle_deleted, 'toggle_deleted' },
-  ['<leader>hn'] = { gitsigns.nav_hunk, 'nav_hunk' },
+wk.add({
+  { 'ih', [[:<C-U>Gitsigns select_hunk<CR>]], desc = 'select_hunk', mode = { 'o', 'x' } },
+  { '[h', function() gitsigns.nav_hunk('prev') end, desc = 'Hunk prev' },
+  { ']h', function() gitsigns.nav_hunk('next') end, desc = 'Hunk next' },
+  { '<leader>h', group = 'Hunk', icon = '🤩' },
+  { '<leader>hs', gitsigns.stage_hunk, desc = 'stage_hunk' },
+  { '<leader>hr', gitsigns.reset_hunk, desc = 'reset_hunk' },
+  { '<leader>hS', gitsigns.stage_buffer, desc = 'stage_buffer' },
+  { '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'stage_hunk', mode = 'v' },
+  { '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'reset_hunk', mode = 'v' },
+  { '<leader>hu', gitsigns.undo_stage_hunk, desc = 'undo_stage_hunk' },
+  { '<leader>hR', gitsigns.reset_buffer, desc = 'reset_buffer' },
+  { '<leader>hp', gitsigns.preview_hunk, desc = 'preview_hunk' },
+  { '<leader>hb', function() gitsigns.blame_line { full = true } end, desc = 'blame_line' },
+  { '<leader>tb', gitsigns.toggle_current_line_blame, desc = 'toggle_current_line_blame' },
+  { '<leader>hd', gitsigns.diffthis, desc = 'diffthis' },
+  { '<leader>hD', function() gitsigns.diffthis('~') end, desc = 'diffthis ~' },
+  { '<leader>td', gitsigns.toggle_deleted, desc = 'toggle_deleted' },
+  { '<leader>hn', gitsigns.nav_hunk, desc = 'nav_hunk' },
 })
-
-require('which-key').register({
-  ['<leader>hs'] = { function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'stage_hunk', mode = 'v' },
-  ['<leader>hr'] = { function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'reset_hunk', mode = 'v' },
-})
--- map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>'),
 
 local neogit = require("neogit")
 neogit.setup {

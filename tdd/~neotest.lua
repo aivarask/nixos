@@ -62,7 +62,7 @@ require('neotest').setup({
     -- require('neotest-plenary'),
 
 
-    -- require('neotest-busted'), -- local
+    require('neotest-busted'), -- local
 
     -- require("neotest-playwright").adapter({
     --   options = {

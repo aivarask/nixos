@@ -46,31 +46,25 @@ require('persistent-breakpoints').setup {
 }
 
 wk.add({
-  {
-    { '<leader>d', group = 'DAP', icon = '🐞' },
-    { '<leader>dc', dap.continue, desc = 'continue' },
-    { '<leader>dr', dap.run, desc = 'run' },
-    { '<leader>dl', dap.run_last, desc = 'run_last' },
-    { '<leader>dR', dap.restart, desc = 'restart' },
-    { '<leader>dT', dap.terminate, desc = 'terminate' },
-  },
-  --
-  --B = { dap.step_back, 'step_back' },
-  --b = {
-  --  name = 'breakpoint',
-  --  s = { dap.set_breakpoint, 'set_breakpoint' },
-  --  t = { dap.toggle_breakpoint, 'toggle_breakpoint' },
-  --  l = { dap.list_breakpoints, 'list_breakpoints' },
-  --  c = { dap.clear_breakpoints, 'clear_breakpoints' },
-  --  x = { dap.set_exception_breakpoints, 'set_exception_breakpoints' },
-  --},
-  --s = {
-  --  name = 'step',
-  --  j = { dap.step_over, 'over' },
-  --  l = { dap.step_into, 'into' },
-  --  h = { dap.step_out, 'out' },
-  --  k = { dap.step_back, 'back' },
-  --},
+  { '<leader>d', group = 'DAP', icon = '🐞' },
+  { '<leader>dc', dap.continue, desc = 'continue' },
+  { '<leader>dr', dap.run, desc = 'run' },
+  { '<leader>dl', dap.run_last, desc = 'run_last' },
+  { '<leader>dR', dap.restart, desc = 'restart' },
+  { '<leader>dt', function() dapui.toggle({ reset = true }) end, desc = 'dapui.toggle' },
+  { '<leader>dT', dap.terminate, desc = 'terminate' },
+  { '<leader>dB', dap.step_back, desc = 'step_back' },
+  { '<leader>db', group = 'breakpoint', icon = '🔴' },
+  { '<leader>dbs', dap.set_breakpoint, desc = 'set_breakpoint' },
+  { '<leader>dbt', dap.toggle_breakpoint, desc = 'toggle_breakpoint' },
+  { '<leader>dbl', dap.list_breakpoints, desc = 'list_breakpoints' },
+  { '<leader>dbc', dap.clear_breakpoints, desc = 'clear_breakpoints' },
+  { '<leader>dbx', dap.set_exception_breakpoints, desc = 'set_exception_breakpoints' },
+  { '<leader>ds', group = 'step', icon = '🔀' },
+  { '<leader>dsj', dap.step_over, desc = 'over' },
+  { '<leader>dsl', dap.ste_into, desc = 'into' },
+  { '<leader>dsh', dap.step_out, desc = 'out' },
+  { '<leader>dsk', dap.step_back, desc = 'back' },
   --P = { dap.pause, 'pause' },
   ---- dap.reverse_continue
   ---- dap.up

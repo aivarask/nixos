@@ -31,4 +31,16 @@ M.paths = function(opts)
       :find()
 end
 
+M._php = function(opts)
+  opts = opts or {}
+  pickers
+      .new(opts, {
+        prompt_title = 'php projects',
+        finder = finders.new_table({
+          results = { 'red', 'green', 'blue' },
+        }),
+        sorter = conf.generic_sorter(opts),
+      })
+      :find()
+end
 return M

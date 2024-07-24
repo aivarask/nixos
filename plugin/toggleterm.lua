@@ -21,19 +21,18 @@ local nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true })
 
 function _nix_repl_toggle() nix_repl:toggle() end
 
-require('which-key').register({
+wk.add({
   -- ['<c-\>'] = {},
-  r = { _nix_repl_toggle, 'nix repl' },
-}, { prefix = [[<c-\>]] })
+})
 
-require('which-key').register({
-  -- ['<F11>'] = { "<cmd>ToggleTerm direction=float <CR>", 'ToggleTerm direction=float', mode = { 'n', 'i', 't' } },
-  -- ['<F23>'] = { "<cmd>exec 'ToggleTerm direction=vertical dir=' .. expand('%:p:h')<CR>", 'ToggleTerm relative vertical', mode = { 'n', 'i', 't' } },
-  -- ['<F35>'] = { "<cmd>exec 'ToggleTerm direction=tab dir=' .. expand('%:p:h')<CR>", 'ToggleTerm relative tab', mode = { 'n', 'i', 't' } },
-  ['`'] = { '<F12>', '', noremap = false },
-  ['<F12>'] = { '<cmd>ToggleTerm direction=horizontal<CR>', 'ToggleTerm horizontal', mode = { 'n', 'i', 't' } },
-  ['<F24>'] = { '<cmd>ToggleTerm direction=vertical<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
-  ['<F36>'] = { '<cmd>ToggleTerm direction=tab<CR>', 'ToggleTerm', mode = { 'n', 'i', 't' } },
+wk.add({
+  { '<C-\\>r>', _nix_repl_toggle,                                                        desc = 'nix repl' },
+  { '<F11>',    "<cmd>ToggleTerm direction=float <CR>",                                  desc = 'ToggleTerm direction=float',   mode = { 'n', 'i', 't' } },
+  { '<F23>',    "<cmd>exec 'ToggleTerm direction=vertical dir=' .. expand('%:p:h')<CR>", desc = 'ToggleTerm relative vertical', mode = { 'n', 'i', 't' } },
+  { '<F35>',    "<cmd>exec 'ToggleTerm direction=tab dir=' .. expand('%:p:h')<CR>",      desc = 'ToggleTerm relative tab',      mode = { 'n', 'i', 't' } },
+  { '<F12>',    '<cmd>ToggleTerm direction=horizontal<CR>',                              desc = 'ToggleTerm horizontal',        mode = { 'n', 'i', 't' } },
+  { '<F24>',    '<cmd>ToggleTerm direction=vertical<CR>',                                desc = 'ToggleTerm vertical',          mode = { 'n', 'i', 't' } },
+  { '<F36>',    '<cmd>ToggleTerm direction=tab<CR>',                                     desc = 'ToggleTerm tab',               mode = { 'n', 'i', 't' } },
 })
 
 vim.api.nvim_create_augroup('ToggleTermKeymaps', { clear = true })
