@@ -5,14 +5,9 @@
   programs.neovim.plugins = with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
-    aerial-nvim
     auto-session
-    {
-      plugin = which-key-nvim;
-      type = "lua";
-      config = ''
-      '';
-    }
+    which-key-nvim
+    nvim-surround
     {
       plugin = indent-blankline-nvim;
       config = "require('ibl').setup({})";

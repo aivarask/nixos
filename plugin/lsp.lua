@@ -1,12 +1,12 @@
-require('lsp-file-operations').setup() -- nvim-lsp-file-operations
-require('refactoring').setup({})       -- refactoring-nvim
+require 'lsp-file-operations'.setup() -- nvim-lsp-file-operations
+require 'refactoring'.setup {}        -- refactoring-nvim
 
-require('lsp_signature').setup({       -- lsp_signature-nvim
+require 'lsp_signature'.setup {       -- lsp_signature-nvim
   floating_window = false,
   close_timeout = 1000,
   hint_prefix = '🚀 ',
   toggle_key = '<M-x>',
-})
+}
 
 -- lspconfig nvim-lspconfig
 local function get_keys(t)
@@ -18,9 +18,9 @@ local function get_keys(t)
 end
 
 function inspect_lsp_client()
-  local pretty = require('pl.pretty')
+  local pretty = require 'pl.pretty'
   local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients({ bufnr = bufnr })
+  local clients = vim.lsp.get_clients { bufnr = bufnr }
 
   vim.ui.select(clients, {
     prompt = 'Select LSP client',
@@ -37,6 +37,13 @@ function inspect_lsp_client()
     end
   end)
 end
+
+function LspLogClear()
+  io.popen('echo > ' .. vim.lsp.get_log_path())
+  vim.lsp.set_log_level(vim.lsp.log_levels.WARN)
+end
+
+LspLogClear()
 
 function on_attach(client, bufnr)
   -- LspAttach help
@@ -55,7 +62,7 @@ function on_attach(client, bufnr)
 
   -- lsp-overloads-nvim
   if client ~= nil and client.server_capabilities.signatureHelpProvider then
-    require('lsp-overloads').setup(client, {
+    require 'lsp-overloads'.setup(client, {
       ui = {
         border = nil,
         height = nil,
@@ -81,37 +88,15 @@ function on_attach(client, bufnr)
         },
       },
       keymaps = {
-        next_signature = "<F4>",
-        previous_signature = "<C-k>",
-        next_parameter = "<C-l>",
-        previous_parameter = "<C-h>",
+        next_signature = "j",
+        previous_signature = "k",
+        next_parameter = "l",
+        previous_parameter = "h",
         close_signature = "<A-s>",
       },
       display_automatically = false, -- Uses trigger characters to automatically display the signature overloads when typing a method signature
     })
   end
-
-  wk.add({
-    { '<F2>',      vim.lsp.buf.signature_help,                                              desc = 'vim.lsp.signature_help',             mode = { 'n', 'i' } },
-    { '<F3>',      [[<cmd>LspOverloadsSignature<CR>]],                                      desc = 'LspOverloadsSignature',              mode = { 'n', 'i' } },
-    -- { '<F3>',      require('lsp_signature').toggle_float_win,                               desc = 'lsp_signature.toggle_float_win',     mode = { 'n', 'i' } },
-    { '<space>D',  vim.lsp.buf.type_definition,                                             desc = 'vim.lsp.type_definition' },
-    { '<space>e',  vim.diagnostic.open_float,                                               desc = 'vim.diagnostic.open_float' },
-    { '<space>q',  vim.diagnostic.setloclist,                                               desc = 'vim.diagnostic.setloclist' },
-    { '<space>rc', inspect_lsp_client,                                                      desc = 'Inspect LSP client' },
-    { '<space>rn', vim.lsp.buf.rename,                                                      desc = 'vim.lsp.buf.rename' },
-    { '<space>wa', vim.lsp.buf.add_workspace_folder,                                        desc = 'vim.lsp.buf.add_workspace_folder' },
-    { '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = 'vim.lsp.list_workspace_folders' },
-    { '<space>wr', vim.lsp.buf.remove_workspace_folder,                                     desc = 'vim.lsp.buf.remove_workspace_folder' },
-    { 'K',         vim.lsp.buf.hover,                                                       desc = 'vim.lsp.buf.hover' },
-    { '[d',        vim.diagnostic.goto_prev,                                                desc = 'vim.diagnostic.goto_prev' },
-    { ']a',        vim.lsp.buf.code_action,                                                 desc = 'vim.lsp.buf.code_action',            mode = { 'n', 'v' } },
-    { ']d',        vim.diagnostic.goto_next,                                                desc = 'vim.diagnostic.goto_next' },
-    { 'gD',        vim.lsp.buf.declaration,                                                 desc = 'vim.lsp.buf.declaration' },
-    { 'gd',        vim.lsp.buf.definition,                                                  desc = 'vim.lsp.buf.definition' },
-    { 'gi',        vim.lsp.buf.implementation,                                              desc = 'vim.lsp.buf.implementation' },
-    -- { 'gr',        vim.lsp.buf.references,                                                  desc = 'vim.lsp.buf.references' },
-  })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -69,7 +69,6 @@ require('lualine').setup({
     'quickfix',
     'nvim-tree',
     'fzf',
-    'symbols-outline',
     'toggleterm',
     'man',
     'trouble',

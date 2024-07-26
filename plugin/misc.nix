@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     aerial-nvim
-    symbols-outline-nvim
+    outline-nvim
     flatten-nvim
     glow-nvim
     neoscroll-nvim

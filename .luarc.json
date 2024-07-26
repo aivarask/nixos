@@ -9,11 +9,19 @@
   ],
   "workspace.checkThirdParty": false,
   "format": {
+    "@spec": "https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config_EN.md",
     "enable": true,
     "defaultConfig": {
       "indent_style": "space",
       "indent_size": "2",
-      "trailing_table_separator": "smart"
+      "qoute_style": "none",
+      "trailing_table_separator": "smart",
+      "call_arg_parentheses": "remove",
+      "insert_final_newline": "true"
     }
+  },
+  "doc": {
+    "EmmyDocCodeStyle": "https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config_EN.md",
+    "lau-language-server": "https://github.com/LuaLS/lua-language-server/wiki/Settings#settings"
   }
 }

@@ -69,7 +69,6 @@
     fzf-vim # _fzf.vim
     # vimspector
     vim-matchup
-    vim-surround # _surround.vim
     # {
     #   plugin = auto-pairs;
     #   config = ''

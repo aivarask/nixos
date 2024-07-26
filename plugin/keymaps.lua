@@ -1,37 +1,58 @@
 -- https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
-dap = require('dap')
-dapui = require('dapui')
-neo = require('neotest')
-wk.add({
-  { group = 'Alt', icon = '💤' },
-  { '<M-e>c', [[:e composer.json<CR>]], desc = 'composer.json' },
-  { '<M-e>p', [[:e package.json<CR>]], desc = 'package.json' },
-  { '<M-e>l', [[:e dsl/lua.lua<CR>]], desc = 'lua.lua' },
+dap = require 'dap'
+dapui = require 'dapui'
+neo = require 'neotest'
+wk.add {
+  { '-', [[:cd ..<CR>]], desc = 'cd ..' },
+  { '<F1>', function() vim.cmd.help(vim.fn.expand '<cword>') end, desc = 'help <cword>' },
+  -- { '<F4>', '<leader>n', desc = 'Neotest', remap = true },
+  -- { '<F5>', '<leader>dc', desc = 'dap.continue' },
+  -- { '<F6>', '<leader>nr', desc = 'neotest dap', remap = true },
+  { '<F7>', RunLastDap, desc = 'neo run_last dap' },
+  { '<F8>', dap.toggle_breakpoint, desc = 'toggle_breakpoint' },
+  { '<M-0>', [[:edit plugin/keymaps.lua<CR>]], desc = 'edit keymaps.lua' },
   { '<M-1>', [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], desc = 'find_files Make .mk' },
   { '<M-2>', [[:Telescope find_files default_text=dsl\ <CR>]], desc = 'find_files dsl' },
   { '<M-D>', [[:Telescope find_files default_text=dsl\ <CR>]], desc = 'find_files dsl' },
-  { '<M-0>', [[:edit plugin/keymaps.lua<CR>]], desc = 'edit keymaps.lua' },
-  { '-', [[:cd ..<CR>]], desc = 'cd ..' },
-  { '??', function() wk.show({ global = false }) end, desc = 'wk.show global = false' },
-  { '?a', function() wk.show({}) end, desc = 'wk.show' },
-  { '<leader>[', function() return dapui.toggle({ reset = true }) end, desc = 'dapui toggle' },
+  { '<M-e>c', [[:e composer.json<CR>]], desc = 'composer.json' },
+  { '<M-e>l', [[:e dsl/lua.lua<CR>]], desc = 'lua.lua' },
+  { '<M-e>p', [[:e package.json<CR>]], desc = 'package.json' },
+  { '<leader>[', function() return dapui.toggle { reset = true } end, desc = 'dapui toggle' },
   { '<leader>]', '<leader>nX', desc = 'summary', remap = true },
-  { ']<leader>', neo.output_panel.toggle, desc = 'output-panel' },
-  { '<leader>a', [[:SymbolsOutline<CR>]], desc = 'SymbolsOutline' },
-  { '<leader>A', [[:AerialToggle<CR>]], desc = 'AerialToggle' },
-  { '<F1>', function() vim.cmd.help(vim.fn.expand('<cword>')) end, desc = 'help <cword>' },
-  { '<F13>', function() vim.cmd.help(vim.fn.expand('<cWORD>')) end, desc = 'SF1 help <cWORD>' },
-  { '<F25>', function() vim.cmd.help(vim.fn.expand('<cexpr>')) end, desc = 'CF1 help <cexpr>' },
-  { '<F4>', '<leader>n', desc = 'Neotest', remap = true },
-  { '<F26>', '<leader>nB', desc = 'neo % dap', remap = true },
-  { '<F38>', '<leader>nS', desc = 'neo suite dap', remap = true },
-  { '<F5>', '<leader>dc', desc = 'dap.continue' },
-  { '<F17>', '<leader>dT', desc = 'dap.terminate' },
-  { '<F6>', '<leader>nr', desc = 'neotest dap', remap = true },
-  { '<F7>', RunLastDap, desc = 'neo run_last dap' },
-  { '<F8>', dap.toggle_breakpoint, desc = 'toggle_breakpoint' },
-  { '<F20>', dap.list_breakpoints, desc = 'SF8 list_breakpoints' },   -- SF8
-  { '<F32>', dap.clear_breakpoints, desc = 'CF8 clear_breakpoints' }, -- CF8
-  { '<F10>', [[:Telescope session-lens<CR>]], desc = "session-lens" },
-  -- { '<F23>', [[:Autosession delete<CR>]], desc = "Autosession delete" },
-})
+  { '<leader>n', group = 'Neotest', icon = '🧪' },
+  { '<leader>nB', function() neo.run.run { vim.fn.expand '%', strategy = 'dap' } end, desc = '% dap' },
+  { '<leader>nL', function() neo.run.run_last { strategy = 'dap' } end, desc = 'run_last dap' },
+  { '<leader>nR', function() neo.run.run { strategy = 'dap' } end, desc = 'run dap' },
+  { '<leader>nS', function() neo.run.run { suite = true, strategy = 'dap' } end, desc = 'suite dap' },
+  { '<leader>nW', neo.watch.stop, desc = 'watch.stop' },
+  { '<leader>nX', function() neo.summary:toggle() end, desc = 'summary:toggle' },
+  { '<leader>nb', function() neo.run.run(vim.fn.expand '%') end, desc = '%' },
+  { '<leader>nl', function() neo.run.run_last() end, desc = 'run_last' },
+  { '<leader>no', neo.output_panel.toggle, desc = 'output_panel.toggle' },
+  { '<leader>nr', RunClear, desc = 'run' },
+  { '<leader>ns', function() neo.run.run { suite = true } end, desc = 'suite' },
+  { '<leader>nt', neo.watch.toggle, desc = 'watch.toggle' },
+  { '<leader>nw', neo.watch.watch, desc = 'watch.watch' },
+  { '<leader>nx', function() neo.summary:expand(vim.uv.cwd(), true) end, desc = 'summary:expand' },
+  { '??', function() wk.show { global = false } end, desc = 'wk.show global = false' },
+  { '?a', function() wk.show {} end, desc = 'wk.show' },
+}
+
+print()
+wk.add {
+  { '<space>', group = 'LSP', icon = '🤖' },
+  { '<space>D', vim.lsp.buf.declaration, desc = 'declaration' },
+  { '<space>I', inspect_lsp_client, desc = 'Inspect LSP' },
+  { '<space>R', vim.lsp.buf.references, desc = 'references' },
+  { '<space>a', vim.lsp.buf.code_action, desc = 'code_action', mode = { 'n', 'v' } },
+  { '<space>d', vim.lsp.buf.definition, desc = 'definition' },
+  { '<space>e', vim.diagnostic.open_float, desc = 'open_float' },
+  { '<space>i', vim.lsp.buf.implementation, desc = 'implementation' },
+  { '<space>q', vim.diagnostic.setloclist, desc = 'setloclist' },
+  { '<space>r', vim.lsp.buf.rename, desc = 'rename' },
+  { '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
+  { '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
+  { '<space>S', require 'lsp_signature'.toggle_float_win, desc = 'toggle_float_win' },
+  { '<A-s>', [[<cmd>LspOverloadsSignature<CR>]], desc = 'LspOverloadsSignature', mode = { 'n', 'i' } },
+  { '<space>o', [[<cmd>Outline<CR>]], desc = 'Outline' },
+}

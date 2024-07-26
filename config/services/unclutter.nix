@@ -1,6 +1,11 @@
 { ... }: {
   services.unclutter = {
     enable = true;
-    timeout = 2;
+    timeout = 1;
+    extraOptions = [
+      # "noevents"
+      # "grab"
+      # "fork"
+    ];
   };
 }

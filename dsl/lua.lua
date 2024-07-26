@@ -6,33 +6,24 @@ local getLibrary = function()
   }
 
   -- LUA_LIB
-  local lualib = vim.split(os.getenv('LUA_LIB') or '', ';')
+  local lualib = vim.split(os.getenv 'LUA_LIB' or '', ';')
   for index, value in ipairs(lualib) do
     table.insert(library, value)
   end
 
   -- plugins
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
-    for _, name in ipairs({
+    for _, name in ipairs {
       'plenary.nvim',
-      'nvim%-cmp',
-      'nvim%-lspconfig',
-      'none%-ls.nvim',
-      'neotest%-phpunit',
-      'neotest%-plenary',
-      'neotest%-python',
-      'neotest',
-      'lsp_signature.nvim',
-      'SchemaStore.nvim',
       'nvim%-ts%-context%-commentstring',
-      'nvim%-dap',
-      'nvim%-dap%-ui',
+      'nvim%-lspconfig', 'nvim%-cmp', 'none%-ls.nvim', 'lsp_signature.nvim', 'SchemaStore.nvim', 'outline.nvim',
       'iron.nvim',
-      'symbols%-outline.nvim',
+      'neotest', 'neotest%-phpunit', 'neotest%-plenary', 'neotest%-python',
+      'nvim%-dap', 'nvim%-dap%-ui',
       'sqlite.lua',
-      'gitsigns.nvim',
+      'gitsigns.nvim', 'neogit',
       'which%-key.nvim',
-    }) do
+    } do
       if string.find(path, name) then
         table.insert(library, path)
       end
@@ -43,7 +34,7 @@ local getLibrary = function()
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
-require('lspconfig').lua_ls.setup({
+require 'lspconfig'.lua_ls.setup {
   settings = { -- https://luals.github.io/wiki/settings/
     Lua = {
       runtime = {
@@ -60,9 +51,10 @@ require('lspconfig').lua_ls.setup({
         checkThirdParty = false,
         library = getLibrary(),
       },
+      -- .luarc.json
     },
   },
-})
+}
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' },
   {

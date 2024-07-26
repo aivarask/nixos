@@ -1,28 +1,32 @@
-local gitsigns = require('gitsigns')
+local gitsigns = require 'gitsigns'
 
-gitsigns.setup {}
-wk.add({
-  { 'ih', [[:<C-U>Gitsigns select_hunk<CR>]], desc = 'select_hunk', mode = { 'o', 'x' } },
-  { '[h', function() gitsigns.nav_hunk('prev') end, desc = 'Hunk prev' },
-  { ']h', function() gitsigns.nav_hunk('next') end, desc = 'Hunk next' },
-  { '<leader>h', group = 'Hunk', icon = '🤩' },
-  { '<leader>hs', gitsigns.stage_hunk, desc = 'stage_hunk' },
-  { '<leader>hr', gitsigns.reset_hunk, desc = 'reset_hunk' },
-  { '<leader>hS', gitsigns.stage_buffer, desc = 'stage_buffer' },
-  { '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'stage_hunk', mode = 'v' },
-  { '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'reset_hunk', mode = 'v' },
-  { '<leader>hu', gitsigns.undo_stage_hunk, desc = 'undo_stage_hunk' },
-  { '<leader>hR', gitsigns.reset_buffer, desc = 'reset_buffer' },
-  { '<leader>hp', gitsigns.preview_hunk, desc = 'preview_hunk' },
+gitsigns.setup {
+  signcolumn = false,
+}
+
+wk.add {
+  { '<leader>h', group = 'gitsigns', icon = '🤩' },
   { '<leader>hb', function() gitsigns.blame_line { full = true } end, desc = 'blame_line' },
-  { '<leader>tb', gitsigns.toggle_current_line_blame, desc = 'toggle_current_line_blame' },
+  { '<leader>hB', gitsigns.toggle_current_line_blame, desc = 'toggle_current_line_blame' },
+  { '<leader>hD', function() gitsigns.diffthis '~' end, desc = 'diffthis ~' },
   { '<leader>hd', gitsigns.diffthis, desc = 'diffthis' },
-  { '<leader>hD', function() gitsigns.diffthis('~') end, desc = 'diffthis ~' },
-  { '<leader>td', gitsigns.toggle_deleted, desc = 'toggle_deleted' },
+  { '<leader>hi', [[:<C-U>Gitsigns select_hunk<CR>]], desc = 'select_hunk', mode = { 'o', 'x' } },
+  { '<leader>hn', function() gitsigns.nav_hunk 'next' end, desc = 'Hunk next' },
   { '<leader>hn', gitsigns.nav_hunk, desc = 'nav_hunk' },
-})
+  { '<leader>hp', function() gitsigns.nav_hunk 'prev' end, desc = 'Hunk prev' },
+  { '<leader>hp', gitsigns.preview_hunk, desc = 'preview_hunk' },
+  { '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, desc = 'reset_hunk', mode = 'v' },
+  { '<leader>hR', gitsigns.reset_buffer, desc = 'reset_buffer' },
+  { '<leader>hr', gitsigns.reset_hunk, desc = 'reset_hunk' },
+  { '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, desc = 'stage_hunk', mode = 'v' },
+  { '<leader>hS', gitsigns.stage_buffer, desc = 'stage_buffer' },
+  { '<leader>hs', gitsigns.stage_hunk, desc = 'stage_hunk' },
+  { '<leader>htd', gitsigns.toggle_deleted, desc = 'toggle_deleted' },
+  { '<leader>hu', gitsigns.undo_stage_hunk, desc = 'undo_stage_hunk' },
+}
 
-local neogit = require("neogit")
+
+local neogit = require "neogit"
 neogit.setup {
   -- Hides the hints at the top of the status buffer
   disable_hint = false,
@@ -53,7 +57,7 @@ neogit.setup {
   -- Allows a different telescope sorter. Defaults to 'fuzzy_with_index_bias'. The example below will use the native fzf
   -- sorter instead. By default, this function returns `nil`.
   telescope_sorter = function()
-    return require("telescope").extensions.fzf.native_fzf_sorter()
+    return require "telescope".extensions.fzf.native_fzf_sorter()
   end,
   -- Persist the values of switches/options within and across sessions
   remember_settings = true,
@@ -133,7 +137,7 @@ neogit.setup {
   },
   commit_view = {
     kind = "vsplit",
-    verify_commit = vim.fn.executable("gpg") == 1, -- Can be set to true or false, otherwise we try to find the binary
+    verify_commit = vim.fn.executable "gpg" == 1, -- Can be set to true or false, otherwise we try to find the binary
   },
   log_view = {
     kind = "tab",
