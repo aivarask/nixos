@@ -9,7 +9,7 @@ require('hover').setup({
 require('pretty-fold').setup()  -- pretty-fold-nvim
 
 require('fold-preview').setup({ -- fold-preview-nvim
-  auto = false,
+  auto = 400,
   default_keybindings = false,
 })
 

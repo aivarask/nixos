@@ -38,13 +38,6 @@ function inspect_lsp_client()
   end)
 end
 
-function LspLogClear()
-  io.popen('echo > ' .. vim.lsp.get_log_path())
-  vim.lsp.set_log_level(vim.lsp.log_levels.WARN)
-end
-
-LspLogClear()
-
 function on_attach(client, bufnr)
   -- LspAttach help
   if client.server_capabilities.completionProvider then
