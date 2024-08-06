@@ -91,18 +91,13 @@ vnoremap cp "+y
 
 " #space
 nnoremap <SPACE> <Nop>
-nnoremap <Space>m :messages<CR>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
-
-map <silent> [q :cp<CR>
-map <silent> ]q :cn<CR>
 
 map <silent> <leader>. :vertical resize +5<CR>
 map <silent> <leader>, :vertical resize -5<CR>
 
 
-nmap <leader>q :quitall<CR>
 
 if !exists('*SaveExec')
   function! SaveExec() abort

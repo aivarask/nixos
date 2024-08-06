@@ -1,6 +1,13 @@
 -- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 
-vim.cmd([[]])
+vim.cmd [[
+nnoremap <leader><leader>m :messages<CR>
+nnoremap <leader><leader>q :quitall<CR>
+map <silent> [q :cp<CR>
+map <silent> ]q :cn<CR>
+
+
+        ]]
 
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum" } }
