@@ -5,12 +5,8 @@ let g:switch_custom_definitions =
       \   ['<cword>', '<cWORD>', '<cexpr>', '<cfile>'],
       \ ]
 
-" <cfile>
-" true True TRUE
-" 
-
-" https://github.com/AndrewRadev/switch.vim/wiki/Switch-next-in-current-line
 fun! SwitchLine(cnt)
+    " https://github.com/AndrewRadev/switch.vim/wiki/Switch-next-in-current-line
     let tick = b:changedtick
     let start = getcurpos()
     for n in range(a:cnt)

@@ -1,10 +1,13 @@
 -- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
+
+vim.cmd([[]])
+
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum" } }
 wk.add {
   { '-',      [[:cd ..<CR>]],                                          desc = 'cd ..' },
   { '<F1>',   function() vim.cmd.help(vim.fn.expand '<cword>') end,    desc = 'help <cword>' },
-  { '<M-0>',  [[:edit plugin/keys.lua<CR>]],                        desc = 'edit keymaps.lua' },
+  { '<M-0>',  [[:edit plugin/keys.lua<CR>]],                           desc = 'edit keymaps.lua' },
   { '<M-1>',  [[:Telescope find_files default_text=Make\ |\ .mk<CR>]], desc = 'find_files Make .mk' },
   { '<M-2>',  [[:Telescope find_files default_text=dsl\ <CR>]],        desc = 'find_files dsl' },
   { '<M-D>',  [[:Telescope find_files default_text=dsl\ <CR>]],        desc = 'find_files dsl' },
@@ -18,7 +21,7 @@ wk.add {
 todo = require 'todo-comments'
 todo.setup {}
 wk.add {
-  { '<leader>c', group = 'todo-comments', icon = '✅' },
+  { '<leader>c', group = 'todo-comments', icon = '✅', desc = 'todo-comments' },
   { '<leader>c[', todo.jump_prev, desc = 'jump_prev' },
   { '<leader>c]', todo.jump_next, desc = 'jump_next' },
   { '<leader>cc', [[:TodoTrouble<CR>]], desc = 'TodoTrouble' },
