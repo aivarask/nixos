@@ -61,10 +61,6 @@ inoremap <M-a> <C-O>a
 inoremap <M-A> <C-O>A
 
 " #tab
-nnoremap <M-CR> :tabnew<CR>
-nnoremap <M-TAB> :tabnext<CR>
-tnoremap <M-TAB> :tabnext<CR>
-nnoremap <M-Del> :tabclose<CR>
 
 
 map <M--> :wincmd <<CR>
@@ -86,39 +82,9 @@ tmap <M-l> <C-\><C-n>:wincmd l<CR>
 " map <M-K> :wincmd K<CR>
 " map <M-L> :wincmd L<CR>
 
-nnoremap cp "+y
-vnoremap cp "+y
 
 " #space
 nnoremap <SPACE> <Nop>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
-
-map <silent> <leader>. :vertical resize +5<CR>
-map <silent> <leader>, :vertical resize -5<CR>
-
-
-
-if !exists('*SaveExec')
-  function! SaveExec() abort
-    if &filetype == 'vim'
-      :silent! write
-      :source %
-    elseif &filetype == 'lua'
-      :silent! write
-      :luafile %
-    endif
-    return
-  endfunction
-endif
-nmap <leader><leader>a :call SaveExec()<CR>
-
-function! Ctoggle()
-  if empty(filter(getwininfo(), 'v:val.quickfix')) 
-    copen 
-  else
-    cclose
-  endif
-endfunction
-nnoremap tq :call Ctoggle()<CR>
 

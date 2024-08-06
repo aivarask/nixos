@@ -1,13 +1,32 @@
 -- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 
 vim.cmd [[
-nnoremap <leader><leader>m :messages<CR>
-nnoremap <leader><leader>q :quitall<CR>
-map <silent> [q :cp<CR>
-map <silent> ]q :cn<CR>
+if !exists('*SaveExec')
+  function! SaveExec() abort
+    if &filetype == 'vim'
+      :silent! write
+      :source %
+    elseif &filetype == 'lua'
+      :silent! write
+      :luafile %
+    endif
+    return
+  endfunction
+endif
+
+function! Ctoggle()
+  if empty(filter(getwininfo(), 'v:val.quickfix'))
+    copen
+  else
+    cclose
+  endif
+endfunction
+
+]]
 
 
-        ]]
+
+
 
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum" } }

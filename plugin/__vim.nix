@@ -12,6 +12,7 @@
     vim-sensible
     vim-lastplace
     vim-commentary
+
     {
       plugin = bclose-vim;
       config = ''
@@ -20,13 +21,7 @@
         nnoremap <M-Q> :Bclose!<CR>
       '';
     }
-    {
-      plugin = vim-abolish;
-      config = ''
-        nmap <leader><leader>s :Subvert/<C-r><C-w>//g<Left><Left>
-        nmap <leader><leader>S :%Subvert/<C-r><C-w>//g<Left><Left>
-      '';
-    }
+    vim-abolish
     {
       plugin = vim-floaterm;
       config = ''
