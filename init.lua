@@ -1,24 +1,12 @@
-wk = require("which-key")
-wk.setup({
-  preset = 'helix',
-  sort = {
-    -- "local",
-    -- "order",
-    -- "group",
-    "alphanum",
-    -- "mod",
-  },
-})
 vim.api.nvim_create_augroup('Format', { clear = true })
-vim.cmd([[
+vim.cmd [[
 " let &runtimepath.=',/etc/nixos' " already in nix config
 let &runtimepath.=',/root/one-small-step-for-vimkind'
 runtime! tdd/**/*{.lua,.vim}
 runtime! dsl/**/*{.lua,.vim}
 source /etc/nixos/vimrc.vim
-]])
+]]
 
 vim.loader.enable()
 
-vim.cmd([[
-]])
+vim.cmd [[ ]]

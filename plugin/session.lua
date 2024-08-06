@@ -1,8 +1,8 @@
 -- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.o.sessionoptions = "buffers,curdir"
+vim.o.sessionoptions = "buffers,curdir,help,folds"
 
 -- auto-session
-require("auto-session").setup({
+require "auto-session".setup {
   session_lens = {
     buftypes_to_ignore = {},
     load_on_setup = true,
@@ -13,5 +13,5 @@ require("auto-session").setup({
   post_restore_cmds = {
     -- require('neotest').summary.open,
   },
-})
-require("telescope").load_extension("session-lens")
+}
+require "telescope".load_extension "session-lens"

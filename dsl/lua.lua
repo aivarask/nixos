@@ -15,14 +15,17 @@ local getLibrary = function()
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
     for _, name in ipairs {
       'plenary.nvim',
-      'nvim%-ts%-context%-commentstring',
-      'nvim%-lspconfig', 'nvim%-cmp', 'none%-ls.nvim', 'lsp_signature.nvim', 'SchemaStore.nvim', 'outline.nvim',
-      'iron.nvim',
-      'neotest', 'neotest%-phpunit', 'neotest%-plenary', 'neotest%-python',
-      'nvim%-dap', 'nvim%-dap%-ui',
-      'sqlite.lua',
-      'gitsigns.nvim', 'neogit',
       'which%-key.nvim',
+      'gitsigns.nvim', 'neogit',
+      'telescope.nvim', 'trouble.nvim', 'todo%-comments.nvim',
+      'nvim%-dap', 'nvim%-dap%-ui', 'vimplugin%-persistent%-breakpoints',
+      'neotest', 'neotest%-phpunit', 'neotest%-plenary', 'neotest%-python',
+      'goto%-preview',
+
+      'nvim%-lspconfig', 'nvim%-cmp', 'none%-ls.nvim', 'lsp_signature.nvim', 'SchemaStore.nvim', 'outline.nvim',
+
+      'nvim%-ts%-context%-commentstring',
+      'iron.nvim', 'sqlite.lua',
     } do
       if string.find(path, name) then
         table.insert(library, path)
@@ -39,7 +42,7 @@ require 'lspconfig'.lua_ls.setup {
     Lua = {
       runtime = {
         version = 'LuaJIT',
-        pathStrict = false,
+        pathStrict = true,
         path = {
           "lua/?/init.lua",
           "lua/?.lua",
