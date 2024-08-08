@@ -25,9 +25,14 @@ endfunction
 ]]
 
 
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = vim.api.nvim_create_augroup("help_window_right", {}),
+  pattern = { "*.txt" },
+  callback = function() if vim.o.filetype == 'help' and vim.o.columns > 120 then vim.cmd.wincmd "L" end end,
+})
 
 
-
+require 'nvim-surround'.setup {}
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum" } }
 wk.add {
@@ -105,7 +110,7 @@ local h = vim.uv.os_gethostname()
 local w = function() return vim.fn.expand '<cword>' end
 string.open = function(v) vim.cmd('!xdg-open ' .. v) end
 wk.add {
-  { '<leader>g', group = 'xdg-open', icon = '🔗' },
+  { '<leader>g', group = 'xdg-open', desc = 'xdg-open', icon = '🔗' },
   { '<leader>gc', function() vim.cmd([[!composer browse ]] .. vim.fn.expand '<cWORD>':gsub(':', '')) end, desc = 'composer browse' },
   { '<leader>gd', function() vim.cmd(p .. h .. '.pkgs.' .. w() .. '.meta.description | xargs notify-send') end, desc = 'description' },
   { '<leader>gD', function() vim.cmd(p .. h .. '.pkgs.' .. w() .. [[.meta.longDescription --raw | xargs -0 notify-send]]) end, desc = 'longDescription' },
@@ -156,7 +161,6 @@ wk.add {
 
 wk.add {
   { '<space>', group = 'LSP', icon = '🤖' },
-  { '<space>a', vim.lsp.buf.code_action, desc = 'code_action', mode = { 'n', 'v' } },
   { '<space>D', vim.lsp.buf.declaration, desc = 'declaration' },
   { '<space>d', vim.lsp.buf.definition, desc = 'definition' },
   { '<space>e', vim.diagnostic.open_float, desc = 'open_float' },

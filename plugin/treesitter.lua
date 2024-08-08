@@ -1,115 +1,62 @@
-if not pcall(require, 'nvim-treesitter') then
-  return
-end
-
-vim.cmd([[
+if not pcall(require, 'nvim-treesitter') then return end
+vim.cmd [[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
   set nofoldenable
-" set foldlevelstart=2
-" set foldlevel=3
-" set foldlevel=99
-" set foldnestmax=5
-]])
+]]
 
--- nvim-treesitter-context
-require 'treesitter-context'.setup {
-  enable = true,
-  max_lines = 2,
-  min_window_height = 0,
-  line_numbers = true,
-  multiline_threshold = 20,
-  trim_scope = 'outer',
-  mode = 'cursor',
-  separator = nil,
-  zindex = 20,
-  on_attach = nil,
+require 'treesitter-context'.setup { -- nvim-treesitter-context
+  enable = false,
 }
 
--- nvim-ts-context-commentstring
 vim.g.skip_ts_context_commentstring_module = true
-require('ts_context_commentstring').setup {}
+require 'ts_context_commentstring'.setup { -- ts-context-commentstring nvim-ts-context-commentstring
+}
+require 'nvim-ts-autotag'.setup { filetypes = { "html", 'php', 'twig', 'xml' } }
 
-require('nvim-ts-autotag').setup({ filetypes = { "html", 'php', 'twig', 'xml' } })
-require('nvim-treesitter.configs').setup({ -- nvim-treesitter
+require 'nvim-treesitter.configs'.setup { -- nvim-treesitter
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = 'tt',
-      node_incremental = '<Tab>',
-      scope_incremental = 'ti',
-      node_decremental = '<S-Tab>',
+      init_selection = "tt",
+      node_incremental = "<tab>",
+      scope_incremental = "ti",
+      node_decremental = "<s-tab>",
     },
   },
   matchup = { enable = true }, -- vim-matchup
   endwise = { enable = true }, -- nvim-treesitter-endwise
   textobjects = {              -- nvim-treesitter-textobjects
-    -- nvim-treesitter-text-objects-select-submod*
-    select = {
-      enable = false,
+    -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects?#built-in-textobjects
+    swap = {                   -- nvim-treesitter-text-objects-swap-submod
+      enable = true,
+      swap_next = { ['<leader>>'] = '@swap.outer' },
+      swap_previous = { ['<leader><'] = '@swap.outer' },
+    },
+    select = { -- nvim-treesitter-text-objects-select-submod
+      enable = true,
       lookahead = true,
       keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-        -- ['ax'] = '@attribute.outer',
-        -- ['aX'] = '@block.outer',
-      },
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V',  -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
+        ['af'] = '@swap.outer',
+        ['if'] = '@swap.inner',
       },
       include_surrounding_whitespace = true,
     },
-    -- nvim-treesitter-text-objects-swap-submod
-    swap = {
-      enable = false,
-      swap_next = {
-        ['>x'] = '@attribute.outer',
-        ['>X'] = '@block.outer',
-        ['>p'] = '@parameter.inner',
-        ['>c'] = '@class.outer',
-        ['>f'] = '@function.outer',
-      },
-      swap_previous = {
-        ['<x'] = '@attribute.outer',
-        ['<X'] = '@block.outer',
-        ['<p'] = '@parameter.inner',
-        ['<c'] = '@class.outer',
-        ['<f'] = '@function.outer',
-      },
-    },
-    -- nvim-treesitter-text-objects-move-submod
-    move = {
-      enable = false,
+    move = { -- nvim-treesitter-text-objects-move-submod  NOTE: nvim has default {[,]}{m,m} moves
+      enable = true,
       set_jumps = true,
-      goto_next_start = {
-        [']x'] = '@attribute.outer',
-        [']X'] = '@block.outer',
-        [']c'] = '@class.outer',
-        [']f'] = '@function.outer',
-      },
-      goto_previous_start = {
-        ['[x'] = '@attribute.outer',
-        ['[X'] = '@block.outer',
-        ['[c'] = '@class.outer',
-        ['[f'] = '@function.outer',
-      },
+      goto_next_start = { [']]'] = '@swap.outer' },
+      goto_previous_start = { ['[['] = '@swap.outer' },
     },
-    -- nvim-treesitter-textobjects-lsp_interop-submod
-    lsp_interop = {
+    lsp_interop = { -- nvim-treesitter-textobjects-lsp_interop-submod
       enable = true,
       border = 'none',
       floating_preview_opts = {},
       peek_definition_code = {
-        ["<leader>df"] = "@function.outer",
-        ["<leader>dF"] = "@class.outer",
+        ["<leader><leader>d"] = "@function.outer",
       },
     },
   },
-})
+}

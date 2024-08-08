@@ -6,19 +6,19 @@ require 'outline'.setup {}
 -- require("flatten").setup({ nest_if_no_args = true })
 
 -- glow.nvim glow-nvim
-require 'glow'.setup {
-  width = 80,
-  height = 100,
-  width_ratio = 0.9,
-  height_ratio = 0.9,
-}
+-- require 'glow'.setup {
+--   width = 80,
+--   height = 100,
+--   width_ratio = 0.9,
+--   height_ratio = 0.9,
+-- }
 
 -- require('neoscroll').setup({ -- neoscroll-nvim
 --   respect_scrolloff = true,
 -- })
-vim.cmd [[
-  set scrolloff=8
-]]
+-- vim.cmd [[
+  -- set scrolloff=6
+-- ]]
 
 require 'dressing'.setup {}          -- dressing-nvim
 require 'colorizer'.setup {}         -- colorizer-nvim

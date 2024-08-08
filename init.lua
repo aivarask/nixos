@@ -6,7 +6,5 @@ runtime! tdd/**/*{.lua,.vim}
 runtime! dsl/**/*{.lua,.vim}
 source /etc/nixos/vimrc.vim
 ]]
-
 vim.loader.enable()
 
-vim.cmd [[ ]]

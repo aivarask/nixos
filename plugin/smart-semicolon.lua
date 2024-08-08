@@ -4,11 +4,11 @@ local valid_endings = { "')", '")', "'", '"', ")", "]", "}", ")}", "]}", "')}",
   '")}', '("")', "('')" }
 
 local function get_word()
-  return vim.fn.expand("<cword>")
+  return vim.fn.expand "<cword>"
 end
 
 local function get_line()
-  return vim.fn.getline(".")
+  return vim.fn.getline "."
 end
 
 local function has_valid_ending(word)
@@ -66,4 +66,3 @@ local function setup()
 end
 
 setup()
--- return { setup = setup }

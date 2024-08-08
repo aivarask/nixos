@@ -8,6 +8,14 @@ require 'lsp_signature'.setup {       -- lsp_signature-nvim
   toggle_key = '<M-x>',
 }
 
+require 'null-ls'.setup {
+  -- filetypes = { "markdown", "text", "jsonc" },
+  -- sources = { require('null-ls.builtins.code_actions.refactoring') },
+  diagnostics_format = "#{m} [#{c}] (#{s}) null-ls",
+}
+
+local ftmap = require 'null-ls.builtins._meta.filetype_map'
+
 -- lspconfig nvim-lspconfig
 local function get_keys(t)
   local keys = {}

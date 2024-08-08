@@ -15,4 +15,7 @@ map <leader><leader>T :tabclose<CR>
 map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 
+map <leader><leader>i :InspectTree<CR>
+map <leader><leader>I :Inspect<CR>
+
 ]]

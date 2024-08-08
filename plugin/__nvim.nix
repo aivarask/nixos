@@ -1,18 +1,51 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  codelens = with pkgs.vimPlugins;[
+    fold-preview-nvim
+    goto-preview
+    hover-nvim
+    pretty-fold-nvim
+  ];
+  completion = with pkgs.vimPlugins; [
+    nvim-autopairs
+    cmp_luasnip
+    luasnip
+    friendly-snippets
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp-emoji
+    cmp-path
+    cmp-buffer
+    cmp-cmdline
+    # --
+    cmp-zsh
+    cmp-git
+    cmp-dap
+  ];
+  lsp = with pkgs.vimPlugins; [
+    SchemaStore-nvim
+
+    nvim-lspconfig
+    none-ls-nvim
+
+    nvim-lsp-file-operations
+    refactoring-nvim
+    lsp_signature-nvim
+    lsp-overloads-nvim
+  ];
+
+in
+{
   programs.neovim.extraLuaPackages = ps: [
     ps.magick # image-nvim
   ];
-  programs.neovim.plugins = with pkgs.vimPlugins; [
+  programs.neovim.plugins = codelens ++ completion ++ lsp ++ (with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
     auto-session
     which-key-nvim
     nvim-surround
-    {
-      plugin = indent-blankline-nvim;
-      config = "require('ibl').setup({})";
-      type = "lua";
-    }
+    indent-blankline-nvim
     lazygit-nvim
     neogit
     gitsigns-nvim
@@ -26,5 +59,5 @@
       plugin = sqlite-lua;
       config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
     }
-  ];
+  ]);
 }

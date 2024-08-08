@@ -11,8 +11,9 @@ set modeline
 set noshowmode
 set signcolumn=yes number
 set splitright splitbelow
-set showtabline=2 statusline+=%F cmdheight=4
+set showtabline=2 statusline+=%F cmdheight=3
 set updatetime=1500 timeoutlen=200
+set scrolloff=4
 
 hi! link netrwMarkFile Search
 let &t_EI = "\<Esc>[2 q"
