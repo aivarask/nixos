@@ -1,31 +1,20 @@
--- outline.nvim
--- @alternative aerial-nvim
-require 'outline'.setup {}
+vim.o.sessionoptions = "buffers,curdir,help,folds"
+require "auto-session".setup { -- auto-session *AutoSession
+  auto_session_allowed_dirs = { '/etc/nixos' },
+}
+require "telescope".load_extension "session-lens"
+
+require 'outline'.setup {} -- outline-nvim
 
 -- flatten.nvim flatten-nvim
 -- require("flatten").setup({ nest_if_no_args = true })
 
--- glow.nvim glow-nvim
--- require 'glow'.setup {
---   width = 80,
---   height = 100,
---   width_ratio = 0.9,
---   height_ratio = 0.9,
--- }
-
--- require('neoscroll').setup({ -- neoscroll-nvim
---   respect_scrolloff = true,
--- })
--- vim.cmd [[
-  -- set scrolloff=6
--- ]]
-
 require 'dressing'.setup {}          -- dressing-nvim
 require 'colorizer'.setup {}         -- colorizer-nvim
-require 'nvim-web-devicons'.setup {} -- nvim-dev-icons
+require 'nvim-web-devicons'.setup {} -- nvim-dev-icons *devicons
 
 if vim.uv.os_getenv 'DISPLAY' then
-  require "image".setup {
+  require 'image'.setup { -- https://github.com/3rd/image.nvim
     -- backend = "kitty",
     backend = "ueberzug",
     integrations = {

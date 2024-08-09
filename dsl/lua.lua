@@ -26,6 +26,7 @@ local getLibrary = function()
 
       'nvim%-ts%-context%-commentstring',
       'iron.nvim', 'sqlite.lua',
+      'image.nvim',
     } do
       if string.find(path, name) then
         table.insert(library, path)

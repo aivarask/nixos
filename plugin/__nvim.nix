@@ -17,29 +17,53 @@ let
     cmp-path
     cmp-buffer
     cmp-cmdline
-    # --
     cmp-zsh
     cmp-git
     cmp-dap
   ];
   lsp = with pkgs.vimPlugins; [
     SchemaStore-nvim
-
     nvim-lspconfig
     none-ls-nvim
-
     nvim-lsp-file-operations
     refactoring-nvim
     lsp_signature-nvim
     lsp-overloads-nvim
   ];
-
+  misc = with pkgs.vimPlugins; [
+    aerial-nvim
+    outline-nvim
+    flatten-nvim
+    glow-nvim
+    neoscroll-nvim
+    dressing-nvim
+    nvim-colorizer-lua
+    nvim-web-devicons
+    image-nvim
+  ];
+  telescope = with pkgs.vimPlugins; [
+    telescope-nvim
+    telescope-fzf-native-nvim
+    telescope-dap-nvim
+    telescope-symbols-nvim
+    trouble-nvim
+    todo-comments-nvim
+  ];
+  treesitter =
+    with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      nvim-treesitter-endwise
+      nvim-ts-autotag
+      nvim-treesitter-context
+      nvim-ts-context-commentstring
+      nvim-treesitter-textobjects
+    ];
 in
 {
   programs.neovim.extraLuaPackages = ps: [
-    ps.magick # image-nvim
+    ps.magick #NOTE: needed by image-nvim
   ];
-  programs.neovim.plugins = codelens ++ completion ++ lsp ++ (with pkgs.vimPlugins; [
+  programs.neovim.plugins = codelens ++ completion ++ lsp ++ misc ++ telescope ++ treesitter ++ (with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
     auto-session

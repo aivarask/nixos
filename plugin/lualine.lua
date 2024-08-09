@@ -1,5 +1,4 @@
--- lualine-nvim
-require('lualine').setup({
+require 'lualine'.setup { -- lualine-nvim *lualine.txt
   options = {
     disabled_filetypes = {
       statusline = { 'NvimTree', 'neotest-summary', 'neotest-output-panel' },
@@ -24,7 +23,7 @@ require('lualine').setup({
       },
     },
     lualine_y = {
-      require('auto-session.lib').current_session_name,
+      require 'auto-session.lib'.current_session_name,
     },
     lualine_z = {
       'searchcount',
@@ -73,4 +72,4 @@ require('lualine').setup({
     'man',
     'trouble',
   },
-})
+}
