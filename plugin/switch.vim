@@ -1,5 +1,4 @@
 " https://github.com/AndrewRadev/switch.vim
-" https://github.com/AndrewRadev/switch.vim#builtins
 let g:switch_custom_definitions =
       \ [
       \   ['<cword>', '<cWORD>', '<cexpr>', '<cfile>'],

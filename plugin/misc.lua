@@ -1,46 +1,29 @@
-vim.o.sessionoptions = "buffers,curdir,help,folds"
-require "auto-session".setup { -- auto-session *AutoSession
-  auto_session_allowed_dirs = { '/etc/nixos' },
-}
+vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages"
+require "auto-session".setup { auto_session_allowed_dirs = { '/etc/nixos' } }
 require "telescope".load_extension "session-lens"
+require 'outline'.setup {}
+require 'dressing'.setup {}
+require 'colorizer'.setup {}
+require 'nvim-web-devicons'.setup {} --- @see devicons
+require 'smart-semicolon'.setup {}
+if vim.uv.os_getenv 'DISPLAY' then require 'image'.setup { backend = "ueberzug" } end
+require 'nvim-tree'.setup {
+  view = { width = 25, signcolumn = 'no' },
+  git = { enable = false },
+  sync_root_with_cwd = true,
+  update_focused_file = { enable = true, update_root = true },
+  ui = { confirm = { trash = false } },
+}
 
-require 'outline'.setup {} -- outline-nvim
 
--- flatten.nvim flatten-nvim
--- require("flatten").setup({ nest_if_no_args = true })
-
-require 'dressing'.setup {}          -- dressing-nvim
-require 'colorizer'.setup {}         -- colorizer-nvim
-require 'nvim-web-devicons'.setup {} -- nvim-dev-icons *devicons
-
-if vim.uv.os_getenv 'DISPLAY' then
-  require 'image'.setup { -- https://github.com/3rd/image.nvim
-    -- backend = "kitty",
-    backend = "ueberzug",
-    integrations = {
-      markdown = {
-        enabled = true,
-        clear_in_insert_mode = false,
-        download_remote_images = true,
-        only_render_image_at_cursor = false,
-        filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-      },
-      neorg = {
-        enabled = true,
-        clear_in_insert_mode = false,
-        download_remote_images = true,
-        only_render_image_at_cursor = false,
-        filetypes = { "norg" },
-      },
+-- https://github.com/ii14/neorepl.nvim
+-- https://github.com/Vigemus/iron.nvim
+require "iron.core".setup {
+  config = {
+    repl_definition = {
+      lua = require "iron.fts.lua",
+      sh = { command = { "zsh" } },
     },
-    max_width = nil,
-    max_height = nil,
-    max_width_window_percentage = nil,
-    max_height_window_percentage = 50,
-    window_overlap_clear_enabled = false,                                     -- toggles images when windows are overlapped
-    window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-    editor_only_render_when_focused = true,                                   -- auto show/hide images when the editor gains/looses focus
-    tmux_show_only_in_active_window = false,                                  -- auto show/hide images in the correct Tmux window (needs visual-activity off)
-    hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
-  }
-end
+    repl_open_cmd = require 'iron.view'.right '40%',
+  },
+}

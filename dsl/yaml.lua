@@ -1,13 +1,13 @@
-local ftmap = require('null-ls.builtins._meta.filetype_map').yaml
+local ftmap = require 'null-ls.builtins._meta.filetype_map'.yaml
 
 local yaml = {
   diagnostics = { "actionlint", "cfn_lint", "spectral", "vacuum", "yamllint" },
   formatting = { "prettier", "prettierd", "yamlfix", "yamlfmt", "yq" },
 }
 
-local yamlls = require('lspconfig.server_configurations.yamlls')
+local yamlls = require 'lspconfig.server_configurations.yamlls'
 -- yaml-language-server
-require('lspconfig').yamlls.setup({
+require 'lspconfig'.yamlls.setup {
   settings = {
     yaml = { format = { enable = true } },
     schemaStore = {
@@ -18,9 +18,9 @@ require('lspconfig').yamlls.setup({
       url = "",
     },
     -- SchemaStore-nvim
-    schemas = require('schemastore').yaml.schemas(),
+    schemas = require 'schemastore'.yaml.schemas(),
   },
-})
+}
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = 'Format',

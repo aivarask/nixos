@@ -15,9 +15,13 @@
       "indent_style": "space",
       "indent_size": "2",
       "qoute_style": "none",
-      "trailing_table_separator": "smart",
+      "trailing_table_separator": "always",
       "call_arg_parentheses": "remove",
-      "insert_final_newline": "true"
+      "insert_final_newline": "true",
+      "align_continuous_assign_statement": "true",
+      "align_continuous_rect_table_field": "true",
+      "align_array_table": "true",
+      "line_space_after_comment": "fixed(1)"
     }
   },
   "doc": {

@@ -57,6 +57,7 @@ let
       nvim-treesitter-context
       nvim-ts-context-commentstring
       nvim-treesitter-textobjects
+      nvim-treesitter-textsubjects
     ];
 in
 {
