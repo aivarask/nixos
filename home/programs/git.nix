@@ -26,7 +26,7 @@
       pr = "pull --rebase";
     };
     delta = {
-      enable = true;
+      enable = false;
     };
   };
 }

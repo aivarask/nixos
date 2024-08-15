@@ -59,12 +59,16 @@ let
       nvim-treesitter-textobjects
       nvim-treesitter-textsubjects
     ];
+  next =
+    with pkgs.vimPlugins; [
+      nui-nvim
+    ];
 in
 {
   programs.neovim.extraLuaPackages = ps: [
     ps.magick #NOTE: needed by image-nvim
   ];
-  programs.neovim.plugins = codelens ++ completion ++ lsp ++ misc ++ telescope ++ treesitter ++ (with pkgs.vimPlugins; [
+  programs.neovim.plugins = codelens ++ completion ++ lsp ++ misc ++ telescope ++ treesitter ++ next ++ (with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
     auto-session

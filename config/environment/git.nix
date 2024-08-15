@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     git
     git-lfs
-    delta
+    # delta
     gh
     git-crypt
     pre-commit

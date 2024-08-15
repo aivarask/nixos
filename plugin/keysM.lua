@@ -20,7 +20,6 @@ wk.add {
   { '<M-E>l', '<cmd> plugin/lua.lua<CR>', },
 }
 
-
 wk.add {
   { '?a', function() wk.show {} end,                  desc = 'all', },
   { '??', function() wk.show { global = false, } end, desc = 'w/o global', },
