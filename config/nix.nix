@@ -11,7 +11,9 @@
     };
     # package = pkgs.nixVersions.git; # master
     # package = pkgs.nixVersions.latest; # stable
-    nixPath = options.nix.nixPath.default ++ [ ];
+
+    # https://nix.dev/manual/nix/2.24/command-ref/env-common.html?highlight=NIX_PATH#common-environment-variables
+    # nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
       auto-optimise-store = true;
       substituters = [
