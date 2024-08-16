@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function() if vim.o.filetype == 'help' and vim.o.columns > 120 then vim.cmd.wincmd "L" end end,
 })
 
--- require 'nvim-surround'.setup {}
+require 'nvim-surround'.setup {}
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum", }, }
 

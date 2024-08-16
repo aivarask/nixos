@@ -73,7 +73,7 @@ in
     persistent-breakpoints
     auto-session
     which-key-nvim
-    vim-surround
+    # vim-surround
     nvim-surround
     indent-blankline-nvim
     lazygit-nvim

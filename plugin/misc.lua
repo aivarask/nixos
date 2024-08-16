@@ -13,13 +13,11 @@ require 'nvim-tree'.setup {
   sync_root_with_cwd = true,
   update_focused_file = { enable = true, update_root = true, },
   ui = { confirm = { trash = false, }, },
-
   on_attach = function(bufnr)
     local api = require "nvim-tree.api"
     api.config.mappings.default_on_attach(bufnr)
   end,
 }
-
 
 -- https://github.com/ii14/neorepl.nvim
 -- https://github.com/Vigemus/iron.nvim
