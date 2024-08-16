@@ -9,7 +9,7 @@
       ''
         let &runtimepath.=',/etc/nixos'
         lua << EOF
-        dofile("/etc/nixos/init.lua")
+        dofile('/etc/nixos/init.lua')
         EOF
       ''
     ];

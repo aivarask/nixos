@@ -13,7 +13,7 @@ require 'nvim-treesitter.configs'.setup {                                       
   highlight = { enable = true, },                                                  --- @see nvim-treesitter-highlight-mod
   indent = { enable = true, },                                                     --- @see nvim-treesitter-indentation-mod
   incremental_selection = {                                                        --- @see nvim-treesitter-incremental-selection-mod
-    enable = true,
+    enable = false,
     keymaps = {
       init_selection = "tt",
       node_incremental = "<Tab>",
@@ -21,7 +21,7 @@ require 'nvim-treesitter.configs'.setup {                                       
       node_decremental = "<S-Tab>",
     },
   },                            --- @see nvim-treesitter-indentation-mod
-  matchup = { enable = true, }, --- @see vim-matchup
+  matchup = { enable = false, }, --- @see vim-matchup
   endwise = { enable = true, }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
   textsubjects = {              --- @see https://github.com/RRethy/nvim-treesitter-textsubjects
     enable = true,
@@ -39,10 +39,10 @@ require 'nvim-treesitter.configs'.setup {                                       
       swap_previous = { ['<leader><'] = '@swap.outer', },
     },
     select = { --- @see nvim-treesitter-text-objects-select-submod
-      enable = true,
+      enable = false,
       lookahead = true,
       keymaps = { -- queries/lua/textobjects.scm
-        ['st'] = '@table.inner',
+        -- ['st'] = '@table.inner',
       },
       include_surrounding_whitespace = true,
     },

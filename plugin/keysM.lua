@@ -17,7 +17,7 @@ wk.add {
   { '<M-E>1', '<cmd>edit .luarc.json<CR>', },
   { '<M-E>i', '<cmd>edit init.lua<CR>', },
   { '<M-E>k', '<cmd>edit plugin/keys.lua<CR>', },
-  { '<M-E>l', '<cmd> plugin/lua.lua<CR>', },
+  { '<M-E>l', '<cmd>edit plugin/lua.lua<CR>', },
 }
 
 wk.add {
