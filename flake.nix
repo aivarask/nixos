@@ -7,6 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    rust-overlay = { url = "github:oxalica/rust-overlay"; inputs.nixpkgs.follows = "nixpkgs"; };
     nur.url = "github:nix-community/NUR";
     dmenu-flexipatch = { url = "github:bakkeby/dmenu-flexipatch"; flake = false; };
     dwm-flexipatch = { url = "github:bakkeby/dwm-flexipatch"; flake = false; };
@@ -35,6 +36,7 @@
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       overlays =
         with inputs; [
+          rust-overlay.overlays.default
           nur.overlay
           neovim-nightly-overlay.overlays.default
           (_final: prev: with prev; {

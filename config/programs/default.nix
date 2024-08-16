@@ -1,6 +1,6 @@
 { ... }: {
   programs.mtr.enable = true;
-  programs.bandwhich.enable = true;
+  programs.bandwhich.enable = false;
   programs.browserpass.enable = false;
   programs.iftop.enable = true;
   programs.npm.enable = true; # check other files

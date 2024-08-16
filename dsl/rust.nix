@@ -6,6 +6,7 @@
     cargo
     cargo-nextest
     rustc
+    rust-bin.stable.latest.default # from overlay
     rust-analyzer
     rustfmt
   ];
