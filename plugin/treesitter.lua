@@ -5,7 +5,7 @@ vim.cmd [[
   set nofoldenable
 ]]
 
-require 'treesitter-context'.setup { enable = false, }                             --- @see nvim-treesitter-context
+require 'treesitter-context'.setup { enable = true, }                             --- @see nvim-treesitter-context
 vim.g.skip_ts_context_commentstring_module = true
 require 'ts_context_commentstring'.setup {}                                        --- @see ts-context-commentstring
 require 'nvim-ts-autotag'.setup { filetypes = { "html", 'php', 'twig', 'xml', }, } --- @see https://github.com/windwp/nvim-ts-autotag/
@@ -13,7 +13,7 @@ require 'nvim-treesitter.configs'.setup {                                       
   highlight = { enable = true, },                                                  --- @see nvim-treesitter-highlight-mod
   indent = { enable = true, },                                                     --- @see nvim-treesitter-indentation-mod
   incremental_selection = {                                                        --- @see nvim-treesitter-incremental-selection-mod
-    enable = false,
+    enable = true,
     keymaps = {
       init_selection = "tt",
       node_incremental = "<Tab>",
@@ -21,7 +21,7 @@ require 'nvim-treesitter.configs'.setup {                                       
       node_decremental = "<S-Tab>",
     },
   },                            --- @see nvim-treesitter-indentation-mod
-  matchup = { enable = false, }, --- @see vim-matchup
+  matchup = { enable = true, }, --- @see vim-matchup
   endwise = { enable = true, }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
   textsubjects = {              --- @see https://github.com/RRethy/nvim-treesitter-textsubjects
     enable = true,
@@ -39,7 +39,7 @@ require 'nvim-treesitter.configs'.setup {                                       
       swap_previous = { ['<leader><'] = '@swap.outer', },
     },
     select = { --- @see nvim-treesitter-text-objects-select-submod
-      enable = false,
+      enable = true,
       lookahead = true,
       keymaps = { -- queries/lua/textobjects.scm
         -- ['st'] = '@table.inner',

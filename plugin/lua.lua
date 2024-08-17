@@ -1,4 +1,4 @@
-local clients = vim.lsp.get_clients { name = 'lua_ls' }
+local clients = vim.lsp.get_clients { name = 'lua_ls', }
 local client = clients[1]
 local pretty = require 'pl.pretty'
 
@@ -27,6 +27,7 @@ local add_runtimes = function(library)
     'nvim%-cmp', 'nvim%-autopairs',
     -- 'telescope.nvim',
     'which%-key.nvim',
+    'gitsigns.nvim',
   }
   for _, name in ipairs(from_runtime) do
     for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
@@ -41,7 +42,7 @@ local update = function()
   local library = client.config.settings.Lua.workspace.library
   add_lualib(library)
   add_runtimes(library)
-  client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+  client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
 end
 
 if vim.tbl_isempty(clients) then
@@ -55,21 +56,21 @@ if vim.tbl_isempty(clients) then
       .setup {
         settings = { -- https://luals.github.io/wiki/settings/
           Lua = {
-            runtime = { version = 'LuaJIT', pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua" } },
-            workspace = { checkThirdParty = false, library = library },
+            runtime = { version = 'LuaJIT', pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", }, },
+            workspace = { checkThirdParty = false, library = library, },
           },
         },
       }
 
-  vim.api.nvim_create_autocmd({ 'BufWritePre' },
-    { desc = 'lua_ls', pattern = { '*.lua' }, callback = function() vim.lsp.buf.format() end })
+  vim.api.nvim_create_autocmd({ 'BufWritePre', },
+    { desc = 'lua_ls', pattern = { '*.lua', }, callback = function() vim.lsp.buf.format() end, })
 
-  vim.api.nvim_create_autocmd({ 'BufWritePost' },
+  vim.api.nvim_create_autocmd({ 'BufWritePost', },
     {
       desc = 'lua_ls',
-      pattern = { '.luarc.json' },
+      pattern = { '.luarc.json', },
       callback = function()
-        local cl = vim.lsp.get_clients { name = 'lua_ls' }[1]
+        local cl = vim.lsp.get_clients { name = 'lua_ls', }[1]
         if cl ~= nil then
           print(cl.name, 'workspace/didChangeConfiguration')
           cl.notify("workspace/didChangeConfiguration", {})

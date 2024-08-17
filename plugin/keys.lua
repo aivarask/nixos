@@ -31,7 +31,22 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 
 require 'nvim-surround'.setup {}
 wk = require "which-key"
-wk.setup { preset = 'helix', sort = { "alphanum", }, }
+wk.setup { preset = 'helix', sort = { "alphanum", },
+  replace = {
+    desc = {
+      { "<Plug>%(?(.*)%)?", "%1", },
+      { "^%+",              "", },
+      { "<[cC]md>",         "", },
+      { "<[cC][rR]>",       "", },
+      { "<[sS]ilent>",      "", },
+      { "^lua%s+",          "", },
+      { "^call%s+",         "", },
+      { "^:Telescope%s",    "", },
+      { "^Trouble%s",       "", },
+      { "^:%s*",            "", },
+    },
+  },
+}
 
 wk.add {
   { '-',    '<cmd>cd ..<CR>', },

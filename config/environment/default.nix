@@ -34,7 +34,7 @@
     # terminal
     lazygit
     tdrop
-    # ueberzugpp # BUG build fail
+    ueberzugpp
     ollama
     tilda
     cheat

@@ -5,5 +5,3 @@ let &runtimepath.=',/root/one-small-step-for-vimkind'
 runtime! dsl/**/*{.lua,.vim}
 runtime! tdd/**/*{.lua,.vim}
           ]]
-
-print "aaa"
