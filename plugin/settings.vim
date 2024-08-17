@@ -1,3 +1,5 @@
+" packadd comment
+let &packpath.=',/etc/nixos'
 filetype plugin indent on
 set lisp
 set title titlestring=%{expand('%')}
@@ -14,7 +16,7 @@ set splitright splitbelow
 set updatetime=1500 
 set timeoutlen=500
 set showtabline=2 statusline+=%F cmdheight=3
-set scrolloff=4
+
 
 hi! link netrwMarkFile Search
 let &t_EI = "\<Esc>[2 q"

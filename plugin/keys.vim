@@ -27,7 +27,7 @@ inoremap <C-s> <C-o><C-s>
 " #undo break undo?
 inoremap <Space> <C-G>u<Space>
 
-nnoremap <SPACE> <Nop>
+" nnoremap <SPACE> <Nop>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
 
@@ -40,14 +40,14 @@ map <silent> <S-TAB> :bp<CR>
 " CTRL-D    un-indent current line
 
 " move cursor
-inoremap <M-h> <C-o>h
-inoremap <M-j> <C-o>j
-inoremap <M-k> <C-o>k
-inoremap <M-l> <C-o>l
-cnoremap <M-h> <Left>
-cnoremap <M-j> <Down>
-cnoremap <M-k> <Up>
-cnoremap <M-l> <Right>
+inoremap <M-H> <C-o>h
+inoremap <M-J> <C-o>j
+inoremap <M-K> <C-o>k
+inoremap <M-L> <C-o>l
+cnoremap <M-H> <Left>
+cnoremap <M-J> <Down>
+cnoremap <M-K> <Up>
+cnoremap <M-L> <Right>
 
 " move lines
 nnoremap <C-j> :m .+1<CR>==
@@ -58,11 +58,11 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " focus window
-map <M-H> :wincmd h<CR>
-tmap <M-H> <C-\><C-n>:wincmd h<CR>
-map <M-J> :wincmd j<CR>
-tmap <M-J> <C-\><C-n>:wincmd j<CR>
-map <M-K> :wincmd k<CR>
-tmap <M-K> <C-\><C-n>:wincmd k<CR>
-map <M-L> :wincmd l<CR>
-tmap <M-L> <C-\><C-n>:wincmd l<CR>
+map <M-h> :wincmd h<CR>
+tmap <M-h> <C-\><C-n>:wincmd h<CR>
+map <M-j> :wincmd j<CR>
+tmap <M-j> <C-\><C-n>:wincmd j<CR>
+map <M-k> :wincmd k<CR>
+tmap <M-k> <C-\><C-n>:wincmd k<CR>
+map <M-l> :wincmd l<CR>
+tmap <M-l> <C-\><C-n>:wincmd l<CR>

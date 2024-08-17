@@ -27,14 +27,14 @@
     brightnessctl
     usbutils
     lm_sensors
-    udevil
+    # udevil
     pciutils
     libxkbcommon
 
     # terminal
     lazygit
     tdrop
-    ueberzugpp
+    ueberzug # @alt ueberzugpp
     ollama
     tilda
     cheat

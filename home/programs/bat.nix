@@ -21,7 +21,7 @@
       batman
       batpipe
       batwatch
-      # batdiff # disabled due to 'delta' build failure
+      # batdiff
       prettybat
     ];
   };

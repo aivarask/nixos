@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # prisma-engines # FIX: build fail
-    # prismaPackages."@prisma/language-server"
+    # prisma-engines
+    # # prismaPackages."@prisma/language-server"
   ];
   environment.variables = {
     # PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";

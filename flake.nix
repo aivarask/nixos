@@ -116,7 +116,7 @@
               nix.registry = {
                 nixpkgs.flake = inputs.nixpkgs;
                 home-manager.flake = inputs.home-manager;
-                nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+                # nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
               };
               environment.systemPackages = [
                 # inputs.lobster.packages.${system}.lobster
@@ -161,7 +161,7 @@
               nix.registry = {
                 nixpkgs.flake = inputs.nixpkgs;
                 home-manager.flake = inputs.home-manager;
-                nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+                # nixos = { to = { type = "git"; url = "file:///etc/nixos"; }; };
               };
               environment.systemPackages = [
                 # lobster.packages.${system}.lobster

@@ -1,34 +1,26 @@
+# NOTE: https://discourse.nixos.org/t/file-in-nix-store-empty-unable-to-be-repaired/14497/9
 { pkgs, options, ... }: {
   nix = {
-    channel.enable = false;
-    # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
-    # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
-    # environment.etc."nix/inputs/nixpkgs".source = "${pkgs}";
+    # package = pkgs.nixVersions.latest; # stable
+    # nixPath = options.nix.nixPath.default ++ [ ];
+    channel.enable = true;
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 2w";
     };
-    # package = pkgs.nixVersions.git; # master
-    # package = pkgs.nixVersions.latest; # stable
-
-    # https://nix.dev/manual/nix/2.24/command-ref/env-common.html?highlight=NIX_PATH#common-environment-variables
-    # nixPath = options.nix.nixPath.default ++ [ ];
     settings = {
-      auto-optimise-store = true;
+      max-jobs = 3;
+      cores = 3;
+      auto-optimise-store = false;
       substituters = [
-        # "http://binarycache.example.com"
-        # "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
       ];
       trusted-public-keys = [ ];
     };
-    settings.max-jobs = 2;
-    settings.cores = 4;
     extraOptions = ''
       warn-dirty = false
-      experimental-features = nix-command flakes ca-derivations
+      experimental-features = nix-command flakes
     '';
-    # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake
   };
 }

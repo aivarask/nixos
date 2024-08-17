@@ -52,16 +52,8 @@
         colorscheme gruvbox-material
       '';
     }
-    {
-      plugin = switch-vim; # _switch.vim
-      config = ''
-        let g:switch_mapping = ""
-        nnoremap <silent> <Plug>(SwitchInLine) :<C-U>call SwitchLine(v:count1)<CR>
-        nmap <M-s> <Plug>(SwitchInLine)
-        imap <M-s> <C-O><M-s>
-      '';
-    }
-    fzf-vim # _fzf.vim
+    
+    fzf-vim
     # vimspector
     vim-matchup
     # {

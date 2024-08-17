@@ -66,14 +66,13 @@ let
 in
 {
   programs.neovim.extraLuaPackages = ps: [
-    ps.magick #NOTE: needed by image-nvim
+    ps.magick #NOTE: @dep image-nvim
   ];
   programs.neovim.plugins = codelens ++ completion ++ lsp ++ misc ++ telescope ++ treesitter ++ next ++ (with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
     auto-session
     which-key-nvim
-    # vim-surround
     nvim-surround
     indent-blankline-nvim
     lazygit-nvim
