@@ -18,6 +18,8 @@ wk.add {
   { '<M-E>i', '<cmd>edit init.lua<CR>', },
   { '<M-E>k', '<cmd>edit plugin/keys.lua<CR>', },
   { '<M-E>l', '<cmd>edit plugin/lua.lua<CR>', },
+  { '<M-E>f', '<cmd>edit flake.nix<CR>', },
+  { '<M-E>n', '<cmd>edit flake.nix<CR>', },
 }
 
 wk.add {

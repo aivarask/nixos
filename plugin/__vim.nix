@@ -5,7 +5,6 @@
       plugin = vim-interestingwords; # https://github.com/lfv89/vim-interestingwords
       config = "let g:interestingWordsDefaultMappings = 1";
     }
-    vim-highlightedyank
     vim-cursorword
     vim-devicons
     vim-cool

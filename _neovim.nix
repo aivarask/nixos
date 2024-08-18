@@ -1,8 +1,9 @@
-{ pkgs, include, inputs, ... }:
+{ pkgs, include, ... }:
 let
   commonPlugins = with pkgs.vimPlugins; [
     fzf-vim
     switch-vim # switch.txt
+    vim-highlightedyank # highlightedyank.txt	
   ];
 in
 {
@@ -22,10 +23,6 @@ in
     settings = { };
     extraConfig = ''
       let &runtimepath.=',/etc/nixos'
-      let g:switch_mapping = ""
-      nnoremap <silent> <Plug>(SwitchInLine) :<C-U>call SwitchLine(v:count1)<CR>
-      nmap <M-s> <Plug>(SwitchInLine)
-      imap <M-s> <C-O><M-s>
     '';
   };
   programs.neovim = {
@@ -40,7 +37,7 @@ in
 
     ];
     # package = pkgs.neovim;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;

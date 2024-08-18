@@ -31,6 +31,11 @@ inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
 
+let g:switch_mapping = ""
+nnoremap <silent> <Plug>(SwitchInLine) :<C-U>call SwitchLine(v:count1)<CR>
+nmap <M-s> <Plug>(SwitchInLine)
+imap <M-s> <C-O><M-s>
+
 " CTRL-W    delete word to the left of cursor
 " CTRL-O D  delete everything to the right of cursor
 " CTRL-U    delete everything to the left of cursor

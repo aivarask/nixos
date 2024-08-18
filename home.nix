@@ -3,7 +3,7 @@
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
   imports = [
     nix-colors.homeManagerModules.default
-    ./neovim.nix
+    ./_neovim.nix
   ]
   ++ include ./home
   ++ include ./home/programs
