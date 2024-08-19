@@ -5,7 +5,7 @@ vim.cmd [[
   set nofoldenable
 ]]
 
-require 'treesitter-context'.setup { enable = false, }                              --- @see nvim-treesitter-context
+require 'treesitter-context'.setup { enable = false, }                             --- @see nvim-treesitter-context
 vim.g.skip_ts_context_commentstring_module = true
 require 'ts_context_commentstring'.setup {}                                        --- @see ts-context-commentstring
 require 'nvim-ts-autotag'.setup { filetypes = { "html", 'php', 'twig', 'xml', }, } --- @see https://github.com/windwp/nvim-ts-autotag/
@@ -41,8 +41,8 @@ require 'nvim-treesitter.configs'.setup {                                       
     select = { --- @see nvim-treesitter-text-objects-select-submod
       enable = true,
       lookahead = true,
-      keymaps = { -- queries/lua/textobjects.scm
-        ['st'] = '@table.inner',
+      keymaps = {
+        ['il'] = '@list.inner', -- queries/lua/textobjects.scm queries/nix/textobjects.scm
       },
       include_surrounding_whitespace = true,
     },

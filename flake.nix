@@ -13,19 +13,18 @@
     dwm-flexipatch = { url = "github:bakkeby/dwm-flexipatch"; flake = false; };
     st-flexipatch = { url = "github:bakkeby/st-flexipatch"; flake = false; };
     tabbed-flexipatch = { url = "github:bakkeby/tabbed-flexipatch"; flake = false; };
-    # musnix = { url = "github:musnix/musnix"; };
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
     vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
-    # lobster.url = "github:justchokingaround/lobster";
     neotest-zig = { url = "github:lawrence-laz/neotest-zig"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
     sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
     # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
+    # musnix = { url = "github:musnix/musnix"; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, ... } @ inputs:
@@ -45,18 +44,16 @@
 
           (_self: super: {
             dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
-              src = dmenu-flexipatch; # https://github.com/bakkeby/dmenu-flexipatch
+              src = dmenu-flexipatch;
               configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/dmenu-config.h);
               postPatch = ''
                 ${oldAttrs.postPatch}
                 cp ${configFile} config.h 
-                # echo "#define FUZZYMATCH_PATCH 0" > patches.h
               '';
             });
 
             dwm = super.dwm.overrideAttrs (oldAttrs: rec {
-              src = dwm-flexipatch; # https://github.com/bakkeby/dwm-flexipatch
-              #define MODKEY Mod4Mask
+              src = dwm-flexipatch;
               configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/dwm-config.h);
               postPatch = ''
                 ${oldAttrs.postPatch}
@@ -65,29 +62,13 @@
             });
 
             st = super.st.overrideAttrs (oldAttrs: rec {
-              src = st-flexipatch; # https://github.com/bakkeby/st-flexipatch
+              src = st-flexipatch;
               configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/st-config.h);
               postPatch = ''
                 ${oldAttrs.postPatch}
                 cp ${configFile} config.h 
               '';
-              # patches = [
-              #   ./st-gruvbox.diff
-              #   ./st-font.diff # st -z 32 -e ...
-              # ];
             });
-
-            # tabbed = super.tabbed.overrideAttrs
-            #   (oldAttrs: rec {
-            #     src = tabbed-flexipatch; # https://github.com/bakkeby/tabbed-flexipatch
-            #     # disable focusurgent
-            #     configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h);
-            #     postPatch = ''
-            #       ${oldAttrs.postPatch}
-            #       cp ${configFile} config.h 
-            #     '';
-
-            #   });
           })
           (_final: prev:
             let
@@ -152,13 +133,9 @@
             inherit include;
           };
           modules = [
-            # musnix.nixosModules.musnix
             {
               nixpkgs.overlays = overlays;
-              environment.systemPackages = [
-                # inputs.lobster.packages.${system}.lobster
-                # inputs.rustaceanvim.packages.${system}.codelldb
-              ];
+              environment.systemPackages = [ ];
             }
             ./configuration.nix
             ./_dell.nix
@@ -174,7 +151,6 @@
                 users.root = import ./home.nix;
               };
               home-manager.extraSpecialArgs = {
-                # inherit inputs;
                 inherit include;
                 inherit nix-colors;
               };

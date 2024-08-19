@@ -6,4 +6,4 @@
 (comment) @swap.outer
 
 ; treesitter-directive-offset!
-((table_constructor) @table.inner (#offset! @table.inner 1 0 -1 0))
+((table_constructor) @list.inner (#offset! @list.inner 1 0 -1 0))
