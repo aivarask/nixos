@@ -132,6 +132,25 @@
           ++ include ./dsl
           ++ include ./sql
         ;
+        nixpkgs.overlays = overlays;
+      };
+      commonHome = {
+        home.stateVersion = "23.05";
+        colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+        imports = [ nix-colors.homeManagerModules.default ]
+          ++ include ./home
+          ++ include ./home/programs
+          ++ include ./home/services
+          ++ include ./plugin
+          ++ include ./tdd
+        ;
+        home.shellAliases = { };
+        home.sessionVariables = {
+          BROWSER = "firefox";
+          MOZ_X11_EGL = "1";
+          # SYSTEM = config.system.name;
+        };
+        home.file = { };
       };
     in
     {
@@ -141,15 +160,9 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = {
-            inherit include;
-          };
+          # specialArgs = { inherit include; };
           modules = [
-            {
-              nixpkgs.overlays = overlays;
-            }
             common
-            # ./configuration.nix
             ./_dell.nix
             ./_audio.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
@@ -160,7 +173,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = import ./home.nix;
+                users.root = commonHome; # import ./home.nix;
               };
               home-manager.extraSpecialArgs = {
                 inherit include;
@@ -173,13 +186,9 @@
         pc = nixpkgs.lib.nixosSystem {
           # PC B450 AORUS M
           inherit system;
-          specialArgs = { inherit include; };
+          # specialArgs = { inherit include; };
           modules = [
-            {
-              nixpkgs.overlays = overlays;
-              environment.systemPackages = [ ];
-            }
-            ./configuration.nix
+            common
             ./_pc.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -189,7 +198,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = import ./home.nix;
+                users.root = commonHome;
               };
               home-manager.extraSpecialArgs = {
                 inherit include;
