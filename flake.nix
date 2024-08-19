@@ -154,7 +154,6 @@
       };
     in
     {
-
       formatter."${system}" = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {

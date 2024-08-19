@@ -13,8 +13,8 @@
       options = "--delete-older-than 2w";
     };
     settings = {
-      max-jobs = 3;
-      cores = 3;
+      max-jobs = 8;
+      cores = 4;
       auto-optimise-store = false;
       substituters = [
         "https://cache.nixos.org/"
