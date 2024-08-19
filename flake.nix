@@ -121,6 +121,18 @@
                 };
             })
         ];
+      common = {
+        imports = [ ]
+          ++ include ./config
+          ++ include ./config/environment
+          ++ include ./config/programs
+          ++ include ./config/services
+          ++ include ./config/suckless
+          ++ include ./config/systemd
+          ++ include ./dsl
+          ++ include ./sql
+        ;
+      };
     in
     {
 
@@ -135,9 +147,9 @@
           modules = [
             {
               nixpkgs.overlays = overlays;
-              environment.systemPackages = [ ];
             }
-            ./configuration.nix
+            common
+            # ./configuration.nix
             ./_dell.nix
             ./_audio.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
