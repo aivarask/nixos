@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+eza --oneline -d /etc/nixos/lsp/*/ | dmenu -l 10 | xargs -t alacritty -e 'nvim' 

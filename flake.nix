@@ -129,7 +129,7 @@
           ++ include ./config/services
           ++ include ./config/suckless
           ++ include ./config/systemd
-          ++ include ./dsl
+          ++ include ./lsp
           ++ include ./sql
         ;
         nixpkgs.overlays = overlays;
