@@ -159,7 +159,7 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          # specialArgs = { inherit include; };
+          # specialArgs = { };
           modules = [
             common
             ./_dell.nix
@@ -172,12 +172,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = commonHome; # import ./home.nix;
+                users.root = commonHome;
+                # extraSpecialArgs = { };
               };
-              home-manager.extraSpecialArgs = {
-                inherit include;
-                inherit nix-colors;
-              };
+
             }
           ];
         };
@@ -185,7 +183,7 @@
         pc = nixpkgs.lib.nixosSystem {
           # PC B450 AORUS M
           inherit system;
-          # specialArgs = { inherit include; };
+          # specialArgs = { };
           modules = [
             common
             ./_pc.nix
@@ -198,10 +196,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = commonHome;
-              };
-              home-manager.extraSpecialArgs = {
-                inherit include;
-                inherit nix-colors;
+                # extraSpecialArgs = { };
               };
             }
           ];
