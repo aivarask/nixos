@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    vscode-langservers-extracted
+    # vscode-langservers-extracted
     # vscode-html-language-server 
     # vscode-css-language-server 
     # vscode-eslint-language-server

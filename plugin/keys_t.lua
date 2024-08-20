@@ -30,7 +30,8 @@ wk.add {
   { '<leader>tn',  function() ff { cwd = '/etc/nixos', } end,          desc = 'find /etc/nixos', },
   { '<leader>tp',  [[:Telescope ak paths<CR>]], },
   { '<leader>tr',  [[:Telescope registers<CR>]], },
-  { '<leader>ts',  function() ff { cwd = '/etc/nixos/snippets', } end, desc = 'find snippets', },
+  { '<leader>ts',  [[:Telescope session-lens<CR>]], },
+  { '<leader>tS',  function() ff { cwd = '/etc/nixos/snippets', } end, desc = 'find snippets', },
   { '<leader>tt',  [[:Telescope<CR>]], },
 }
 

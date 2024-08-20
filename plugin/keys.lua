@@ -1,25 +1,5 @@
 -- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 vim.cmd [[
-if !exists('*SaveExec')
-  function! SaveExec() abort
-    if &filetype == 'vim'
-      :silent! write
-      :source %
-    elseif &filetype == 'lua'
-      :silent! write
-      :luafile %
-    endif
-    return
-  endfunction
-endif
-
-function! Ctoggle()
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
-    copen
-  else
-    cclose
-  endif
-endfunction
 
 ]]
 
@@ -51,8 +31,8 @@ wk.setup { preset = 'helix', sort = { "alphanum", },
 wk.add {
   { '-',    '<cmd>cd ..<CR>', },
   { '<F1>', function() vim.cmd.help(vim.fn.expand '<cword>') end, desc = 'help <cword>', },
-  { 'qq',   [[:NvimTreeToggle<CR>]],                              desc = 'NvimTreeToggle',   noremap = true, },
-  { 'qw',   [[:NvimTreeCollapse<CR>]],                            desc = 'NvimTreeCollapse', },
+  { 'qq',   [[:NvimTreeToggle<CR>]],                              noremap = true, },
+  { 'qw',   [[:NvimTreeCollapse<CR>]], },
 }
 
 vim.cmd [[

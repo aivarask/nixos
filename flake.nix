@@ -133,6 +133,11 @@
           ++ include ./sql
         ;
         nixpkgs.overlays = overlays;
+        nix.registry = {
+          # nixpkgs.flake = inputs.nixpkgs;
+          # home-manager.flake = inputs.home-manager;
+          os = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+        };
       };
       commonHome = {
         home.stateVersion = "23.05";

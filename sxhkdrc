@@ -43,7 +43,7 @@ super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
 super + D
-	dsl
+	lsp
 super + {A,F,G,H}
 	alacritty --working-directory=/etc/nixos/{a,fp,gt,ht} -e nvim
 

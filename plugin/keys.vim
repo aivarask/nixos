@@ -45,10 +45,10 @@ imap <M-s> <C-O><M-s>
 " CTRL-D    un-indent current line
 
 " move cursor
-inoremap <M-H> <C-o>h
-inoremap <M-J> <C-o>j
-inoremap <M-K> <C-o>k
-inoremap <M-L> <C-o>l
+inoremap <M-h> <C-o>h
+inoremap <M-j> <C-o>j
+inoremap <M-k> <C-o>k
+inoremap <M-l> <C-o>l
 cnoremap <M-H> <Left>
 cnoremap <M-J> <Down>
 cnoremap <M-K> <Up>
