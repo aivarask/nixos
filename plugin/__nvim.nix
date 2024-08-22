@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let
   codelens = with pkgs.vimPlugins;[
-    fold-preview-nvim
+    # fold-preview-nvim
     goto-preview
     hover-nvim
-    pretty-fold-nvim
+    # pretty-fold-nvim
   ];
   completion = with pkgs.vimPlugins; [
     nvim-autopairs
@@ -22,6 +22,7 @@ let
     cmp-dap
   ];
   lsp = with pkgs.vimPlugins; [
+    conform-nvim
     SchemaStore-nvim
     nvim-lspconfig
     none-ls-nvim
@@ -53,8 +54,8 @@ let
     with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       nvim-treesitter-endwise
-      nvim-ts-autotag
       nvim-treesitter-context
+      nvim-ts-autotag
       nvim-ts-context-commentstring
       nvim-treesitter-textobjects
       nvim-treesitter-textsubjects

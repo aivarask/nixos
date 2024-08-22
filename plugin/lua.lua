@@ -25,9 +25,11 @@ local add_runtimes = function(library)
 
   local from_runtime = {
     'nvim%-cmp', 'nvim%-autopairs',
+    'neotest',
     -- 'telescope.nvim',
     'which%-key.nvim',
-    'gitsigns.nvim',
+    -- 'gitsigns.nvim',
+    -- 'fold%-preview.nvim',
   }
   for _, name in ipairs(from_runtime) do
     for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
@@ -62,8 +64,10 @@ if vim.tbl_isempty(clients) then
         },
       }
 
-  vim.api.nvim_create_autocmd({ 'BufWritePre', },
-    { desc = 'lua_ls', pattern = { '*.lua', }, callback = function() vim.lsp.buf.format() end, })
+
+
+  -- vim.api.nvim_create_autocmd({ 'BufWritePre', },
+    -- { desc = 'lua_ls', pattern = { '*.lua', }, callback = function() vim.lsp.buf.format { async = true, } end, })
 
   vim.api.nvim_create_autocmd({ 'BufWritePost', },
     {
@@ -80,3 +84,23 @@ if vim.tbl_isempty(clients) then
 else
   update()
 end
+
+vim.api.nvim_create_augroup('lua_ls', {})
+vim.api.nvim_create_autocmd('BufWritePost',
+  {
+    group = 'lua_ls',
+    pattern = { 'plugin/lua.lua', },
+    desc = 'workspace/didChangeConfiguration',
+    callback = function()
+      local clients = vim.lsp.get_clients { name = 'lua_ls', }
+      local client = clients[1]
+
+      if client ~= nil then
+        local library = client.config.settings.Lua.workspace.library
+        add_runtimes(library)
+        client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
+        print 'workspace/didChangeConfiguration'
+        -- require 'telescope.pickers'
+      end
+    end,
+  })

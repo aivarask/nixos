@@ -2,27 +2,28 @@
 { pkgs, ... }:
 let
   myLuaPackages = with pkgs; (luajit.withPackages (ps: with ps; [
-    luassert
-    busted
-    penlight
-    luafilesystem
-    luv
-    luacheck
-    std-_debug
-    inspect
-    # vusted
-    plenary-nvim
-    # vicious
-    # luarepl
     # lgi 
-    ldoc
-    nvim-nio
-    sqlite
-    luasql-sqlite3
-    luadbi-sqlite3
-    toml-edit
+    # luarepl
+    # vicious
+    # vusted
+    busted
+    inspect
     jsregexp
-    magick #imagemagick
+    ldoc
+    luacheck
+    luadbi-sqlite3
+    luafilesystem
+    luasql-sqlite3
+    luassert
+    luv
+    magick
+    nvim-nio
+    penlight
+    plenary-nvim
+    sqlite
+    std-_debug
+    stylua
+    toml-edit
   ]));
 
 in

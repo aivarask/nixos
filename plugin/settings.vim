@@ -2,7 +2,7 @@
 let &packpath.=',/etc/nixos'
 filetype plugin indent on
 set lisp
-set title titlestring=%{expand('%')}
+set title titlestring=%{expand('%')}\ %{hostname()}
 set autoindent smartindent shiftwidth=2 tabstop=2 expandtab
 set completeopt=menu,menuone,noselect
 set cursorline mouse=a
@@ -30,11 +30,6 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_winsize = 30
 
-if has('nvim')
-  set undodir=$HOME/.vim/undo
-  set undofile
-  set noswapfile
-endif
 if !has('gui_running')
   set t_Co=256
   set guioptions-=e

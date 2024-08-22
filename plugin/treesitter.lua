@@ -49,8 +49,8 @@ require 'nvim-treesitter.configs'.setup {                                       
     move = { --- @see nvim-treesitter-text-objects-move-submod  NOTE: nvim has default {[,]}{m,m} moves
       enable = true,
       set_jumps = true,
-      goto_next_start = { [']]'] = '@swap.outer', },
-      goto_previous_start = { ['[['] = '@swap.outer', },
+      -- goto_next_start = { [']]'] = '@swap.outer', },
+      -- goto_previous_start = { ['[['] = '@swap.outer', },
     },
     lsp_interop = { --- @see nvim-treesitter-textobjects-lsp_interop-submod
       enable = true,

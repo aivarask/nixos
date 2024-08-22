@@ -18,6 +18,10 @@ if !has('nvim')
   tnoremap <F12> <C-W>:FloatermToggle<CR>
   let g:AutoPairsFlyMode = 1
   let g:AutoPairsShortcutBackInsert = '<C-b>'
+else
+  set undodir=$HOME/.vim/undo
+  set undofile
+  set noswapfile
 endif
 
 if has('termguicolors')

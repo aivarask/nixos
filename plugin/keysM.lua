@@ -1,24 +1,20 @@
-vim.cmd [[
-map <M--> :wincmd <<CR>
-tmap <M--> <C-\><C-n>:wincmd <<CR>
-map <M-=> :wincmd ><CR>
-tmap <M-=> <C-\><C-n>:wincmd ><CR>
-]]
-
-
 wk.add {
   -- <M-k> lsp_signature toggle_key
   -- <M-s> lsp-overloads close_signature
   -- <M-s> switch
   -- <M-w> https//github.com/windwp/nvim-autopairs#fastwrap
-  { '<M-1>',  '<cmd>Telescope find_files default_text=Make\\ |\\ .mk<CR>', mode = { 'n', 'i', }, },
-  { '<M-c>',  '<cmd>Commentary<CR>',                                       mode = { 'n', 'i', 'v', }, },
-  { '<M-E>1', '<cmd>edit .luarc.json<CR>', },
-  { '<M-E>i', '<cmd>edit init.lua<CR>', },
-  { '<M-E>k', '<cmd>edit plugin/keys.lua<CR>', },
-  { '<M-E>l', '<cmd>edit plugin/lua.lua<CR>', },
-  { '<M-E>f', '<cmd>edit flake.nix<CR>', },
-  { '<M-E>n', '<cmd>edit flake.nix<CR>', },
+  { '<M-1>',      '<cmd>Telescope find_files default_text=Make\\ |\\ .mk<CR>', mode = { 'n', 'i', }, },
+  { '<M-c>',      [[:Commentary<CR>]],                                         mode = { 'n', 'i', 'v', }, },
+  { '<M-e>1',     '<cmd>edit .luarc.json<CR>', },
+  { '<M-e><M-E>', '<cmd>edit plugin/keysM.lua<CR>', },
+  { '<M-e>f',     '<cmd>edit flake.nix<CR>', },
+  { '<M-e>i',     '<cmd>edit plugin/__init.lua<CR>', },
+  { '<M-e>k',     '<cmd>edit plugin/keys.lua<CR>', },
+  { '<M-e>l',     '<cmd>edit plugin/lua.lua<CR>', },
+  { '<M-e>L',     '<cmd>edit plugin/lualine.lua<CR>', },
+  { '<M-e>n',     '<cmd>edit tdd/~neotest.lua<CR>', },
+  { '<M-e>s',     '<cmd>edit sxhkdrc<CR>', },
+  { '<M-e>t',     '<cmd>edit plugin/treesitter.lua<CR>', },
 }
 
 wk.add {

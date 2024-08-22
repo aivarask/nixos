@@ -1,14 +1,4 @@
 -- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
-vim.cmd [[
-
-]]
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = vim.api.nvim_create_augroup("help_window_right", {}),
-  pattern = { "*.txt", },
-  callback = function() if vim.o.filetype == 'help' and vim.o.columns > 120 then vim.cmd.wincmd "L" end end,
-})
-
 require 'nvim-surround'.setup {}
 wk = require "which-key"
 wk.setup { preset = 'helix', sort = { "alphanum", },
@@ -21,16 +11,29 @@ wk.setup { preset = 'helix', sort = { "alphanum", },
       { "<[sS]ilent>",      "", },
       { "^lua%s+",          "", },
       { "^call%s+",         "", },
-      { "^:Telescope%s",    "", },
-      { "^Trouble%s",       "", },
+      { "^?:Telescope%s",   "", },
+      { "^?:Trouble%s",     "", },
       { "^:%s*",            "", },
     },
   },
 }
 
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = vim.api.nvim_create_augroup("help_window_right", {}),
+  pattern = { "*.txt", },
+  callback = function()
+    if vim.o.filetype == 'help' then
+      if vim.o.columns > 120 then vim.cmd.wincmd "L" end
+      if vim.fn.winwidth(0) < 100 then vim.cmd [[wincmd T]] end
+    end
+  end,
+})
+
+local help_cword = function() vim.cmd.help(vim.fn.expand '<cword>') end
+
 wk.add {
   { '-',    '<cmd>cd ..<CR>', },
-  { '<F1>', function() vim.cmd.help(vim.fn.expand '<cword>') end, desc = 'help <cword>', },
+  { '<F1>', function() vim.cmd.help(vim.fn.expand '<cword>') end, mode = { 'n', 'i', 'v', }, },
   { 'qq',   [[:NvimTreeToggle<CR>]],                              noremap = true, },
   { 'qw',   [[:NvimTreeCollapse<CR>]], },
 }
@@ -47,15 +50,29 @@ map <leader><leader>a :call SaveExec()<CR>
 map <leader><leader>+ "+y
 map <leader><leader>t :tabnew<CR>
 map <leader><leader>T :tabclose<CR>
+map ]T :tabclose<CR>
 map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map <leader><leader>i :InspectTree<CR>
 map <leader><leader>I :Inspect<CR>
 ]]
 
-wk.add {
+
+wk.add { --- @see H_checkhealth
   { '<leader>H',  group = 'checkhealth', },
+  { '<leader>Hc', '<cmd>checkhealth provider.clipboard<CR>', },
+  { '<leader>Hd', '<cmd>checkhealth dap<CR>', },
+  { '<leader>HD', '<cmd>checkhealth dressing<CR>', },
+  { '<leader>Hf', '<cmd>checkhealth floaterm<CR>', },
   { '<leader>HH', '<cmd>checkhealth<CR>', },
+  { '<leader>Hl', '<cmd>checkhealth vim.lsp<CR>', },
+  { '<leader>HN', '<cmd>checkhealth null-ls<CR>', },
+  { '<leader>Hn', '<cmd>checkhealth nvim<CR>', },
+  { '<leader>Hs', '<cmd>checkhealth auto-session<CR>', },
+  { '<leader>Hs', '<cmd>checkhealth luasnip<CR>', },
+  { '<leader>Ht', '<cmd>checkhealth nvim-treesitter<CR>', },
+  { '<leader>HT', '<cmd>checkhealth telescope<CR>', },
+  { '<leader>Hv', '<cmd>checkhealth vim.treesitter<CR>', },
   { '<leader>Hw', '<cmd>checkhealth which-key<CR>', },
 }
 
@@ -63,7 +80,7 @@ dap = require 'dap'
 dapui = require 'dapui'
 widgets = require 'dap.ui.widgets'
 require 'persistent-breakpoints'.setup { load_breakpoints_event = { "BufReadPost", }, }
-wk.add {
+wk.add { --- @see d_dap
   { '<leader>d',   group = 'DAP', },
   { '<leader>da',  dap.attach,                                            desc = 'attach', },
   { '<leader>dB',  dap.step_back,                                         desc = 'step_back', },
@@ -158,11 +175,11 @@ wk.add {
   { '<leader>lw', [[:LfWorkingDirectory<CR>]],                                  desc = 'LfWorkingDirectory', },
 }
 
-function on_attach_lsp(client, bufnr)
-end
-
-wk.add {
+wk.add { --- @see vim.lsp
   { '<space>',  group = 'LSP', },
+  { '<space>a', function()
+    return vim.lsp.buf.code_action()
+  end, desc = 'code_action', mode = { 'n', 'v', }, },
   { '<space>D', vim.lsp.buf.declaration,                        desc = 'declaration', },
   { '<space>d', vim.lsp.buf.definition,                         desc = 'definition', },
   { '<space>e', vim.diagnostic.open_float,                      desc = 'open_float', },
@@ -191,22 +208,23 @@ wk.add {
 }
 
 neotest = require 'neotest'
-wk.add {
+wk.add { --- @see n_neotest
   { '<leader>n',  group = 'neotest', },
+  { '<leader>nA', function() neotest.run.run { suite = true, strategy = 'dap', } end,      desc = 'suite dap', },
+  { '<leader>na', function() neotest.run.run { suite = true, } end,                        desc = 'suite', },
   { '<leader>nB', function() neotest.run.run { vim.fn.expand '%', strategy = 'dap', } end, desc = '% dap', },
   { '<leader>nb', function() neotest.run.run(vim.fn.expand '%') end,                       desc = '%', },
   { '<leader>nc', neotest.output_panel.clear,                                              desc = 'output_panel.clear', },
   { '<leader>nL', function() neotest.run.run_last { strategy = 'dap', } end,               desc = 'run_last dap', },
   { '<leader>nl', function() neotest.run.run_last() end,                                   desc = 'run_last', },
+  { '<leader>nn', function() neotest.run.run {} end,                                       desc = 'run', },
   { '<leader>no', neotest.output_panel.toggle,                                             desc = 'output_panel.toggle', },
   { '<leader>nR', function() neotest.run.run { strategy = 'dap', } end,                    desc = 'run dap', },
-  { '<leader>ns', function() neotest.run.run { suite = true, } end,                        desc = 'suite', },
-  { '<leader>nS', function() neotest.run.run { suite = true, strategy = 'dap', } end,      desc = 'suite dap', },
+  { '<leader>ns', function() neotest.summary:toggle() end,                                 desc = 'summary:toggle', },
   { '<leader>nt', neotest.watch.toggle,                                                    desc = 'watch.toggle', },
   { '<leader>nW', neotest.watch.stop,                                                      desc = 'watch.stop', },
   { '<leader>nw', neotest.watch.watch,                                                     desc = 'watch.watch', },
   { '<leader>nx', function() neotest.summary:expand(vim.uv.cwd(), true) end,               desc = 'summary:expand', },
-  { '<leader>nX', function() neotest.summary:toggle() end,                                 desc = 'summary:toggle', },
 }
 
 
@@ -225,7 +243,7 @@ local Terminal = require 'toggleterm.terminal'.Terminal
 nix_repl = Terminal:new { cmd = 'nix repl', hidden = true, }
 lazygit = Terminal:new { cmd = "lazygit", hidden = true, }
 
-wk.add {
+wk.add { --- @see a_ToggleTerm
   { '<leader>a',  group = 'ToggleTerm', },
   { '<leader>aa', '<cmd>ToggleTerm<CR>',                                                   desc = 'ToggleTerm',        mode = { 'n', 'i', 't', }, },
   { '<leader>af', '<cmd>ToggleTerm direction=float <CR>',                                  desc = 'float',             mode = { 'n', 'i', 't', }, },

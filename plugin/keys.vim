@@ -44,7 +44,6 @@ imap <M-s> <C-O><M-s>
 " CTRL-T    indent current line
 " CTRL-D    un-indent current line
 
-" move cursor
 inoremap <M-h> <C-o>h
 inoremap <M-j> <C-o>j
 inoremap <M-k> <C-o>k
@@ -54,7 +53,6 @@ cnoremap <M-J> <Down>
 cnoremap <M-K> <Up>
 cnoremap <M-L> <Right>
 
-" move lines
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 inoremap <C-j> <Esc>:m .+1<CR>==gi
@@ -62,7 +60,6 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" focus window
 map <M-h> :wincmd h<CR>
 tmap <M-h> <C-\><C-n>:wincmd h<CR>
 map <M-j> :wincmd j<CR>
@@ -71,3 +68,8 @@ map <M-k> :wincmd k<CR>
 tmap <M-k> <C-\><C-n>:wincmd k<CR>
 map <M-l> :wincmd l<CR>
 tmap <M-l> <C-\><C-n>:wincmd l<CR>
+
+map <M--> :wincmd <<CR>
+tmap <M--> <C-\><C-n>:wincmd <<CR>
+map <M-=> :wincmd ><CR>
+tmap <M-=> <C-\><C-n>:wincmd ><CR>

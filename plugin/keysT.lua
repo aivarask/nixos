@@ -46,5 +46,5 @@ wk.add {
   { '<leader>xl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', }, -- TODO: err no results for lsp, sounds interesting
   { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', },
   { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', },
-  { '<leader>xx', '<cmd>Trouble<cr>', },
+  { '<leader>xx', [[:Trouble<cr>]], },
 }
