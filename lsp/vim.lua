@@ -1,14 +1,14 @@
-local ftmap = require('null-ls.builtins._meta.filetype_map').vim
+local ftmap = require("null-ls.builtins._meta.filetype_map").vim
 local vim = {
-  diagnostics = { "vint" },
+	diagnostics = { "vint" },
 }
 
 -- require('null-ls').register({
 --   require('null-ls.builtins.diagnostics.vint'),
 -- })
 
-local vimls = require('lspconfig.server_configurations.vimls')
-require("lspconfig").vimls.setup({})
+local vimls = require "lspconfig.server_configurations.vimls"
+require("lspconfig").vimls.setup {}
 
 -- vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 --   group = 'Format',

@@ -1,3 +1,3 @@
-print 'minimal_init'
+print "minimal_init"
 
 -- assert = require('luassert.assert')

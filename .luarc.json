@@ -8,21 +8,19 @@
     "duplicate-set-field"
   ],
   "workspace.checkThirdParty": false,
-  "format": {
-    "@spec": "https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config_EN.md",
-    "enable": true,
-    "defaultConfig": {
-      "indent_style": "space",
-      "indent_size": "2",
-      "qoute_style": "none",
-      "trailing_table_separator": "always",
-      "call_arg_parentheses": "remove",
-      "insert_final_newline": "true",
-      "align_continuous_assign_statement": "true",
-      "align_continuous_rect_table_field": "true",
-      "align_array_table": "true",
-      "line_space_after_comment": "fixed(1)"
-    }
+  "format.enable": true,
+  "format.defaultConfig": {
+    "indent_style": "space",
+    "indent_size": "2",
+    "qoute_style": "none",
+    "trailing_table_separator": "always",
+    "call_arg_parentheses": "remove",
+    "insert_final_newline": "true",
+    "align_continuous_assign_statement": "true",
+    "align_continuous_rect_table_field": "true",
+    "align_array_table": "true",
+    "line_space_after_comment": "fixed(1)",
+    "max_line_length": "200"
   },
   "doc": {
     "EmmyDocCodeStyle": "https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config_EN.md",

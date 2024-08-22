@@ -1,1 +1,1 @@
-vim.api.nvim_create_augroup('Format', { clear = true })
+vim.api.nvim_create_augroup("Format", { clear = true })

@@ -1,5 +1,3 @@
 describe("sql", function()
-  it('1=1', function()
-    assert.True(true)
-  end)
+	it("1=1", function() assert.True(true) end)
 end)

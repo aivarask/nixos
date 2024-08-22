@@ -22,7 +22,6 @@ let
     plenary-nvim
     sqlite
     std-_debug
-    stylua
     toml-edit
   ]));
 
@@ -30,6 +29,7 @@ in
 {
   environment.systemPackages = with pkgs;
     [
+      stylua
       selene
       lua-language-server
       myLuaPackages

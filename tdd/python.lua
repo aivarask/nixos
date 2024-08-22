@@ -1,6 +1,5 @@
 -- https://github.com/mfussenegger/nvim-dap-python
-require('dap-python').setup('python')
-
+require("dap-python").setup "python"
 
 -- require('dap').configurations.python = {
 --   {
