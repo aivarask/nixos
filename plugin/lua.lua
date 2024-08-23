@@ -28,6 +28,8 @@ local add_runtimes = function(library)
     -- 'gitsigns.nvim',
     -- 'fold%-preview.nvim',
     "nvim%-lspconfig",
+    "none%-ls.nvim",
+
   }
   for _, name in ipairs(from_runtime) do
     for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do

@@ -35,8 +35,6 @@
       # composer
       # box php-codesniffer phpmd phpstan psalm php-cs-fixer phan phive
     ])
-    ++ (with pkgs.nodePackages; [
-      intelephense
-    ])
+    ++ (with pkgs.nodePackages; [ intelephense ])
   ;
 }
