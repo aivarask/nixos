@@ -21,6 +21,15 @@ let
     cmp-git
     cmp-dap
   ];
+  dap = with pkgs.vimPlugins; [
+    nvim-dap
+    nvim-dap-ui
+    nvim-dap-virtual-text
+    nvim-dap-go
+    nvim-dap-python
+    nvim-dap-vscode-js
+    # rustaceanvim
+  ];
   lsp = with pkgs.vimPlugins; [
     conform-nvim
     SchemaStore-nvim
@@ -41,6 +50,21 @@ let
     nvim-colorizer-lua
     nvim-web-devicons
     image-nvim
+  ];
+  neotest = with pkgs.vimPlugins; [
+    vim-test
+    neotest
+    neotest-bash
+    neotest-go
+    neotest-jest
+    neotest-phpunit
+    neotest-pest
+    neotest-playwright
+    neotest-plenary
+    neotest-python
+    neotest-rust
+    neotest-zig
+    neotest-vitest
   ];
   telescope = with pkgs.vimPlugins; [
     telescope-nvim
@@ -69,7 +93,7 @@ in
   programs.neovim.extraLuaPackages = ps: [
     ps.magick #NOTE: @dep image-nvim
   ];
-  programs.neovim.plugins = codelens ++ completion ++ lsp ++ misc ++ telescope ++ treesitter ++ next ++ (with pkgs.vimPlugins; [
+  programs.neovim.plugins = codelens ++ completion ++ dap ++ lsp ++ misc ++ neotest ++ telescope ++ treesitter ++ next ++ (with pkgs.vimPlugins; [
     sxhkd-vim
     persistent-breakpoints
     auto-session

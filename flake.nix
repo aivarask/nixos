@@ -93,11 +93,6 @@
                     src = nvim-lsp-file-operations;
                     meta = { homepage = "https://github.com/antosha417/nvim-lsp-file-operations"; };
                   };
-                  neotest-zig = buildVimPlugin {
-                    name = "neotest-zig";
-                    src = neotest-zig;
-                    meta = { homepage = "https://github.com/lawrence-laz/neotest-zig"; };
-                  };
                   nvim-dap-vscode-js = buildVimPlugin {
                     name = "nvim-dap-vscode-js";
                     src = nvim-dap-vscode-js;
@@ -147,7 +142,6 @@
           ++ include ./home/programs
           ++ include ./home/services
           ++ include ./plugin
-          ++ include ./tdd
         ;
         home.shellAliases = { };
         home.sessionVariables = {
@@ -213,10 +207,7 @@
               environment.variables = { LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so"; };
               environment.systemPackages = with pkgs; [ cargo cargo-nextest rustc rust-analyzer rustfmt ];
             }
-            {
-              # shellcheck beautysh bashdb
-              environment.systemPackages = with pkgs; [ dotenv-linter shellharden shfmt nodePackages.bash-language-server ];
-            }
+            { environment.systemPackages = with pkgs; [ dotenv-linter shellharden shfmt nodePackages.bash-language-server ]; }
             common
             ./_dell.nix
             ./_audio.nix
@@ -233,8 +224,6 @@
               };
 
             }
-          ] ++ [
-
           ];
         };
 

@@ -30,8 +30,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre", }, {
   group = "Format",
   desc = "jsonls",
   pattern = { "*.json", "*.jsonc", },
-  callback = function()
-    vim.lsp.buf.format()
-  end,
+  callback = function() vim.lsp.buf.format() end,
 })
 require "lspconfig".jsonls.setup { capabilities = capabilities, settings = { json = json(), }, }
