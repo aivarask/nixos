@@ -3,10 +3,6 @@ ftmap = require "null-ls.builtins._meta.filetype_map"
 nls = require 'null-ls'
 lsconfig = require 'lspconfig'
 
--- php
-lsconfig.intelephense.setup { root_dir = require "lspconfig.util".root_pattern("composer.json", ".git", "index.php"), }
-vim.api.nvim_create_autocmd({ "BufWritePre", }, { group = "Format", desc = "intelephense", pattern = { "*.php", }, callback = vim.lsp.buf.format, })
-
 -- json
 vim.cmd [[ autocmd! BufEnter *.json,flake.lock,.prettierrc setlocal ft=jsonc ]]
 local function json()
