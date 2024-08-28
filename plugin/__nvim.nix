@@ -51,8 +51,16 @@ let
     nvim-web-devicons
     image-nvim
   ];
-  neotest = with pkgs.vimPlugins; [
-    vim-test
+  telescope = with pkgs.vimPlugins; [
+    telescope-nvim
+    telescope-fzf-native-nvim
+    telescope-dap-nvim
+    telescope-symbols-nvim
+    trouble-nvim
+    todo-comments-nvim
+  ];
+  testing = with pkgs.vimPlugins; [
+    # vim-test
     neotest
     neotest-bash
     neotest-go
@@ -65,14 +73,6 @@ let
     neotest-rust
     neotest-zig
     neotest-vitest
-  ];
-  telescope = with pkgs.vimPlugins; [
-    telescope-nvim
-    telescope-fzf-native-nvim
-    telescope-dap-nvim
-    telescope-symbols-nvim
-    trouble-nvim
-    todo-comments-nvim
   ];
   treesitter =
     with pkgs.vimPlugins; [
@@ -93,25 +93,35 @@ in
   programs.neovim.extraLuaPackages = ps: [
     ps.magick #NOTE: @dep image-nvim
   ];
-  programs.neovim.plugins = codelens ++ completion ++ dap ++ lsp ++ misc ++ neotest ++ telescope ++ treesitter ++ next ++ (with pkgs.vimPlugins; [
-    sxhkd-vim
-    persistent-breakpoints
-    auto-session
-    which-key-nvim
-    nvim-surround
-    indent-blankline-nvim
-    lazygit-nvim
-    neogit
-    gitsigns-nvim
-    lualine-nvim
-    lualine-lsp-progress
-    nvim-tree-lua
-    neorepl-nvim
-    iron-nvim
-    toggleterm-nvim
-    {
-      plugin = sqlite-lua;
-      config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
-    }
-  ]);
+  programs.neovim.plugins =
+    codelens
+    ++ completion
+    ++ dap
+    ++ lsp
+    ++ misc
+    ++ testing
+    ++ telescope
+    ++ treesitter
+    ++ next
+    ++ (with pkgs.vimPlugins; [
+      sxhkd-vim
+      persistent-breakpoints
+      auto-session
+      which-key-nvim
+      nvim-surround
+      indent-blankline-nvim
+      lazygit-nvim
+      neogit
+      gitsigns-nvim
+      lualine-nvim
+      lualine-lsp-progress
+      nvim-tree-lua
+      neorepl-nvim
+      iron-nvim
+      toggleterm-nvim
+      {
+        plugin = sqlite-lua;
+        config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
+      }
+    ]);
 }
