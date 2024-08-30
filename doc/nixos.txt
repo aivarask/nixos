@@ -1,29 +1,16 @@
-*nixos.txt* Some docs for /etc/nixos             *nixos*
+*nixos.txt* /etc/nixos related help            *nixos*
 
-Author: Aivaras Kalesnykas
-License: MIT License
+=======================
+Resources
 
-================================================================================
-CONTENTS                                                        *nixos.contents*
-
-1. Intro ........................................ |nixos-intro|
-2. Environment .............................................. |environment|
-
-================================================================================
-1. Intro                                   *nixos.intro*
-
-|nixos| is a config for awesome OS with nix ecosystem.
+help-writing
+https://devhints.io/vim-help#syntax
 
 
-================================================================================
-2. Environment                                                 *environment*
 
-|environment| has three main operations:
 
-* Adding a delimiter pair to the buffer
-* Deleting a delimiter pair from the buffer
-* Changing a delimiter pair to a different pair
 
---------------------------------------------------------------------------------
 
-vim:tw=78:ts=8:ft=help:norl:
+
+
+vim:tw=78:ts=8:ft=help

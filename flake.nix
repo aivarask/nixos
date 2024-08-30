@@ -2,13 +2,23 @@
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-colors.url = "github:misterio77/nix-colors";
     rust-overlay = { url = "github:oxalica/rust-overlay"; inputs.nixpkgs.follows = "nixpkgs"; };
     nur.url = "github:nix-community/NUR";
     dmenu-flexipatch = { url = "github:bakkeby/dmenu-flexipatch"; flake = false; };
@@ -27,8 +37,6 @@
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
     # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
     # musnix = { url = "github:musnix/musnix"; };
-    nixos-generators = { url = "github:nix-community/nixos-generators"; inputs.nixpkgs.follows = "nixpkgs"; };
-    nix-on-droid = { url = "github:nix-community/nix-on-droid/release-24.05"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, nix-on-droid, ... } @ inputs:
@@ -213,7 +221,7 @@
         modules = [
           {
             system.stateVersion = "24.05";
-            environment.packages = with pkgs; [ vim hostname man nmap htop git lf zsh ];
+            environment.packages = with pkgs; [ git vim lf htop zsh nmap hostname ];
             nix.extraOptions = ''
               experimental-features = nix-command flakes
             '';
@@ -222,26 +230,23 @@
               shell = "${pkgs.bashInteractive}/bin/bash";
               # shell = "${pkgs.zsh}/bin/zsh";
             };
-            # home-manager.config = { pkgs, ... }: {
-            #   home.stateVersion = "24.05";
-            #   programs.zsh = {
-            #     enable = true;
-            #   };
-            #   programs.lf = {
-            #     enable = true;
-            #     extraConfig = ''
-            #       set hidden
-            #     '';
-            #   };
-            #   programs.nvim = {
-            #     enable = true;
-            #     extraConfig = ''
-            #       set tabstop=2
-            #       set shiftwidth=2
-            #       set wildmenu
-            #     '';
-            #   };
-            # };
+            home-manager.config = { pkgs, ... }: {
+              home.stateVersion = "24.05";
+              programs.lf = {
+                enable = true;
+                extraConfig = ''
+                  set hidden
+                '';
+              };
+              #   programs.nvim = {
+              #     enable = true;
+              #     extraConfig = ''
+              #       set tabstop=2
+              #       set shiftwidth=2
+              #       set wildmenu
+              #     '';
+              #   };
+            };
           }
         ];
       };
