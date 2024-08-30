@@ -2,6 +2,8 @@
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,9 +27,11 @@
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
     # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
     # musnix = { url = "github:musnix/musnix"; };
+    nixos-generators = { url = "github:nix-community/nixos-generators"; inputs.nixpkgs.follows = "nixpkgs"; };
+    nix-on-droid = { url = "github:nix-community/nix-on-droid/release-24.05"; inputs.nixpkgs.follows = "nixpkgs"; inputs.home-manager.follows = "home-manager"; };
   };
   outputs =
-    { nixpkgs, home-manager, nixos-hardware, nix-colors, ... } @ inputs:
+    { nixpkgs, home-manager, nixos-hardware, nix-colors, nix-on-droid, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -204,12 +208,50 @@
     in
     {
       formatter."${system}" = pkgs.nixpkgs-fmt;
+      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
+        modules = [
+          {
+            system.stateVersion = "24.05";
+            environment.packages = with pkgs; [ vim hostname man nmap htop git lf zsh ];
+            nix.extraOptions = ''
+              experimental-features = nix-command flakes
+            '';
+            time.timeZone = "Europe/Vilnius";
+            user = {
+              shell = "${pkgs.bashInteractive}/bin/bash";
+              # shell = "${pkgs.zsh}/bin/zsh";
+            };
+            # home-manager.config = { pkgs, ... }: {
+            #   home.stateVersion = "24.05";
+            #   programs.zsh = {
+            #     enable = true;
+            #   };
+            #   programs.lf = {
+            #     enable = true;
+            #     extraConfig = ''
+            #       set hidden
+            #     '';
+            #   };
+            #   programs.nvim = {
+            #     enable = true;
+            #     extraConfig = ''
+            #       set tabstop=2
+            #       set shiftwidth=2
+            #       set wildmenu
+            #     '';
+            #   };
+            # };
+          }
+        ];
+      };
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
           # specialArgs = { };
           modules = commonModules ++ [
+            { hardware.nvidia.open = true; }
             common
             ./_dell.nix
             ./_audio.nix
