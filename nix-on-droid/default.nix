@@ -1,12 +1,14 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ ./options/sshd.nix ./sshd.nix ];
+  # imports = [ ./options/sshd.nix ./sshd.nix ];
+  imports = [ ./sss.nix ];
   environment.packages = with pkgs; [
     vim
     git
     htop
     hostname
     nmap
+    openssh
   ];
 
   environment.etcBackupExtension = ".bak";
