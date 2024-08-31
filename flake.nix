@@ -218,37 +218,7 @@
       formatter."${system}" = pkgs.nixpkgs-fmt;
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [
-          {
-            system.stateVersion = "24.05";
-            environment.packages = with pkgs; [ git vim lf htop zsh nmap hostname ];
-            nix.extraOptions = ''
-              experimental-features = nix-command flakes
-            '';
-            time.timeZone = "Europe/Vilnius";
-            user = {
-              shell = "${pkgs.bashInteractive}/bin/bash";
-              # shell = "${pkgs.zsh}/bin/zsh";
-            };
-            home-manager.config = { pkgs, ... }: {
-              home.stateVersion = "24.05";
-              programs.lf = {
-                enable = true;
-                extraConfig = ''
-                  set hidden
-                '';
-              };
-              #   programs.nvim = {
-              #     enable = true;
-              #     extraConfig = ''
-              #       set tabstop=2
-              #       set shiftwidth=2
-              #       set wildmenu
-              #     '';
-              #   };
-            };
-          }
-        ];
+        modules = [ ./nix-on-droid.nix ];
       };
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
