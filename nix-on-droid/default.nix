@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   environment.packages = with pkgs; [
-    vim
-    git
+    vim git htop hostname nmap
   ];
 
   environment.etcBackupExtension = ".bak";
