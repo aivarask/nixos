@@ -218,7 +218,7 @@
       formatter."${system}" = pkgs.nixpkgs-fmt;
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [ ./nix-on-droid.nix ];
+        modules = [ ./_nix-on-droid.nix ];
       };
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
