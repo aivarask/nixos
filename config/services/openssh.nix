@@ -1,12 +1,13 @@
+# https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=options&query=services.openssh
 { ... }: {
-  # networking.firewall.allowedTCPPorts = [ 22 ];
   services.openssh = {
     enable = true;
     openFirewall = true;
-    settings.PermitRootLogin = "yes";
     settings = {
-      # https://unix.stackexchange.com/questions/12755/how-to-forward-x-over-ssh-to-run-graphics-applications-remotely
       X11Forwarding = true;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "yes";
     };
   };
   # openssh.authorizedKeys

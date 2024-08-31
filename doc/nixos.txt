@@ -10,11 +10,11 @@ magick
 magick mogrify -alpha off -format png *.xcf
 
 ============
-*nix-on-droid*
+*nix-on-droid* *NOD*
 https://nix-community.github.io/nix-on-droid/nix-on-droid-options.html#sec-options
+https://github.com/Yeshey/nixOS-Config ~
 
-------------
-https://github.com/Yeshey/nixOS-Config
+https://nixos.wiki/wiki/SSH_public_key_authentication
 
 ============
 *home-manager*

@@ -23,11 +23,16 @@
       { config, lib, pkgs, ... }:
       {
         home.stateVersion = "24.05";
-
         programs.bash = {
           initExtra = ''
             sshd-start
           '';
+        };
+        programs.lf = {
+          enable = true;
+          settings = {
+            hidden = false;
+          };
         };
       };
   };
