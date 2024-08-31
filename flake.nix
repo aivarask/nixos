@@ -180,20 +180,7 @@
           environment.systemPackages = with pkgs; [
             pyright
             black
-            (python3.withPackages (ps: with ps; [
-              pip
-              # pipx
-              requests
-              pytest
-              pytest-watch
-              pytest-timeout
-              pytest-playwright
-              pynvim
-              livereload
-              debugpy
-              python-dotenv
-              httpie
-            ]))
+            (python3.withPackages (ps: with ps; [ pip requests pytest pytest-watch pytest-timeout pytest-playwright pynvim livereload debugpy python-dotenv httpie ]))
           ];
         }
         {
