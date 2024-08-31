@@ -1,7 +1,11 @@
 { config, lib, pkgs, ... }:
 {
   environment.packages = with pkgs; [
-    vim git htop hostname nmap
+    vim
+    git
+    htop
+    hostname
+    nmap
   ];
 
   environment.etcBackupExtension = ".bak";
@@ -18,6 +22,12 @@
       { config, lib, pkgs, ... }:
       {
         home.stateVersion = "24.05";
+
+        programs.bash = {
+          initExtra = ''
+            sshd-start
+          '';
+        };
       };
   };
 
