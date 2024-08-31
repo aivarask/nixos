@@ -5,7 +5,12 @@
     enable = true;
     ports = [ 8022 ];
     authorizedKeysFiles = [
-      ./my_identity.pub
+      ../ssh/id_rsa.pub
     ];
+    # settings = {
+    #   PasswordAuthentication = false;
+    #   KbdInteractiveAuthentication = false;
+    #   AllowUsers = [ "root" "nix-on-droid" ];
+    # };
   };
 }

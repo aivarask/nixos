@@ -31,7 +31,7 @@
         programs.lf = {
           enable = true;
           settings = {
-            hidden = false;
+            hidden = true;
           };
         };
       };
