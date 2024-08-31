@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 {
+  imports = [ ./options/sshd.nix ./sshd.nix ];
   environment.packages = with pkgs; [
     vim
     git
