@@ -128,6 +128,7 @@
                 };
             })
         ];
+      # overlay = nixpkgs.lib.composeManyExtensions (import ./overlays);
       common = {
         imports = [ ]
           ++ include ./config
@@ -139,7 +140,9 @@
           ++ include ./lsp
           ++ include ./sql
         ;
-        nixpkgs.overlays = overlays;
+        nixpkgs.overlays = overlays
+          # ++ overlay
+        ;
         nix.registry = {
           # nixpkgs.flake = inputs.nixpkgs;
           # home-manager.flake = inputs.home-manager;

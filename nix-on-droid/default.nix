@@ -3,12 +3,19 @@
   # imports = [ ./options/sshd.nix ./sshd.nix ];
   # imports = [ ./sss.nix ];
   environment.packages = with pkgs; [
+    utillinux
+    which
     vim
     git
     htop
     hostname
     nmap
     openssh
+    man
+    gnugrep
+    gnupg
+    gnused
+    gnutar
   ];
 
   environment.etcBackupExtension = ".bak";
