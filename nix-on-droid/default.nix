@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   # imports = [ ./options/sshd.nix ./sshd.nix ];
-  imports = [ ./sss.nix ];
+  # imports = [ ./sss.nix ];
   environment.packages = with pkgs; [
     vim
     git
@@ -27,7 +27,7 @@
         home.stateVersion = "24.05";
         programs.bash = {
           initExtra = ''
-            sshd-start
+            # sshd-start
           '';
         };
         programs.lf = {
