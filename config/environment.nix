@@ -1,14 +1,12 @@
 { pkgs, ... }: {
   environment = {
     profiles = [
-      # $NIX_PROFILES
-      # "/etc/nixos"
       "${pkgs.zsh-completions}"
     ];
     variables = {
       EDITOR = "nvim";
-      XINITRC = "/etc/nixos/xinitrc";
-      # XSERVERRC = "/etc/X11/xinit/xserverrc";
+      XINITRC = "/etc/nixos/files/xinitrc";
+      SXHKDRC = "/etc/nixos/files/sxhkdrc";
     };
     shellAliases = {
       ep = "echo $PATH | tr ':' '\n'";
@@ -25,8 +23,6 @@
       tre = "trans :en";
       trl = "trans :lt";
       x = "startx";
-      xs = "xinit $XINITRC -- $XSERVERRC";
-      xa = "startx $XINITRC awesome";
     };
     sessionVariables = rec {
       # https://nixos.wiki/wiki/Environment_variables

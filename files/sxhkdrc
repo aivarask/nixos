@@ -1,6 +1,6 @@
 # https://github.com/baskerville/sxhkd
 super + F1
-  notify-send ' 🚀 Keymaps' "$(cat /etc/nixos/sxhkdrc)"
+  notify-send ' 🚀 Keymaps' "$(cat $SXHKDRC)"
 super + F2
   alacritty -e htop # 🧬
 super + F3

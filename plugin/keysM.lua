@@ -14,7 +14,7 @@ wk.add {
   { "<M-e>l",     "<cmd>edit plugin/lua.lua<CR>", },
   { "<M-e>L",     "<cmd>edit plugin/lualine.lua<CR>", },
   { "<M-e>n",     "<cmd>edit lsp/~neotest.lua<CR>", },
-  { "<M-e>s",     "<cmd>edit sxhkdrc<CR>", },
+  { "<M-e>s",     "<cmd>edit " .. vim.env.SXHKDRC .. "<CR>", },
   { "<M-e>t",     "<cmd>edit plugin/treesitter.lua<CR>", },
 }
 
