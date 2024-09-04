@@ -9,12 +9,12 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
   dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
-if [ "$HOSTNAME" = pc ]; then
+if [ "$(hostname)" = pc ]; then
   # https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
   nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
   imwheel -b 45 &                       # ./config/services/xserver.nix
   XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-elif [[ "$HOSTNAME" = dell ]]; then
+elif [ "$(hostname)" = dell ]; then
   echo '';
 fi
 
@@ -26,7 +26,7 @@ systemctl --user restart dwm-status.service & # ./config/services/dwm-status.nix
 systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
 # Home manager
 systemctl --user restart dunst.service &
-sxhkd -c /etc/nixos/sxhkdrc &
+sxhkd -c "$SXHKDRC" &
 
 numlockx
 xset r rate 200 50
