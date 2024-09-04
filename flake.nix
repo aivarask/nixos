@@ -28,107 +28,23 @@
     LS_COLORS = { url = "github:trapd00r/LS_COLORS"; flake = false; };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = { url = "github:MTDL9/vim-log-highlighting"; flake = false; };
+    sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
     vim-interestingwords = { url = "github:lfv89/vim-interestingwords"; flake = false; };
     nvim-lsp-file-operations = { url = "github:antosha417/nvim-lsp-file-operations"; flake = false; };
     neotest-zig = { url = "github:lawrence-laz/neotest-zig"; flake = false; };
     nvim-dap-vscode-js = { url = "github:mxsdev/nvim-dap-vscode-js"; flake = false; };
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
-    sxhkd-vim = { url = "github:kovetskiy/sxhkd-vim"; flake = false; };
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
     # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
     # musnix = { url = "github:musnix/musnix"; };
   };
   outputs =
-    { nixpkgs, home-manager, nixos-hardware, nix-colors, nix-on-droid, ... } @ inputs:
+    { nixpkgs, home-manager, nixos-hardware, nix-colors, nix-on-droid, LS_COLORS, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       include = p: with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
-      overlays =
-        with inputs; [
-          rust-overlay.overlays.default
-          nur.overlay
-          neovim-nightly-overlay.overlays.default
-          (_final: prev: with prev; {
-            inherit LS_COLORS;
-          })
-
-          (_self: super: {
-            dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
-              src = dmenu-flexipatch;
-              configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/dmenu-config.h);
-              postPatch = ''
-                ${oldAttrs.postPatch}
-                cp ${configFile} config.h 
-              '';
-            });
-
-            dwm = super.dwm.overrideAttrs (oldAttrs: rec {
-              src = dwm-flexipatch;
-              configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/dwm-config.h);
-              postPatch = ''
-                ${oldAttrs.postPatch}
-                cp ${configFile} config.h
-              '';
-            });
-
-            st = super.st.overrideAttrs (oldAttrs: rec {
-              src = st-flexipatch;
-              configFile = super.writeText "config.h" (builtins.readFile ./config/suckless/st-config.h);
-              postPatch = ''
-                ${oldAttrs.postPatch}
-                cp ${configFile} config.h 
-              '';
-            });
-          })
-          (_final: prev:
-            let
-              inherit (prev.vimUtils) buildVimPlugin;
-            in
-            {
-              vimPlugins = with inputs;
-                prev.vimPlugins
-                // {
-                  vim-log-highlighting = buildVimPlugin {
-                    name = "vim-log-highlighting";
-                    src = vim-log-highlighting;
-                    meta = { homepage = "https://github.com/MTDL9/vim-log-highlighting"; };
-                  };
-                  vim-interestingwords = buildVimPlugin {
-                    name = "vim-interestingwords";
-                    src = vim-interestingwords;
-                    meta = { homepage = "https://github.com/lfv89/vim-interestingwords"; };
-                  };
-                  nvim-lsp-file-operations = buildVimPlugin {
-                    name = "nvim-lsp-file-operations";
-                    src = nvim-lsp-file-operations;
-                    meta = { homepage = "https://github.com/antosha417/nvim-lsp-file-operations"; };
-                  };
-                  nvim-dap-vscode-js = buildVimPlugin {
-                    name = "nvim-dap-vscode-js";
-                    src = nvim-dap-vscode-js;
-                    meta = { homepage = "https://github.com/mxsdev/nvim-dap-vscode-js"; };
-                  };
-                  neotest-playwright = buildVimPlugin {
-                    name = "neotest-playwright";
-                    src = neotest-playwright;
-                    meta = { homepage = "https://github.com/thenbe/neotest-playwright"; };
-                  };
-                  sxhkd-vim = buildVimPlugin {
-                    name = "sxhkd-vim";
-                    src = sxhkd-vim;
-                    meta = { homepage = "https://github.com/kovetskiy/sxhkd-vim"; };
-                  };
-                  persistent-breakpoints = buildVimPlugin {
-                    name = "persistent-breakpoints";
-                    src = persistent-breakpoints;
-                    meta = { homepage = "https://github.com/Weissle/persistent-breakpoints.nvim"; };
-                  };
-                };
-            })
-        ];
-      # overlay = nixpkgs.lib.composeManyExtensions (import ./overlays);
       common = {
         imports = [ ]
           ++ include ./config
@@ -140,12 +56,16 @@
           ++ include ./lsp
           ++ include ./sql
         ;
-        nixpkgs.overlays = overlays
-          # ++ overlay
-        ;
+        nixpkgs.overlays =
+          with inputs; [
+            rust-overlay.overlays.default
+            nur.overlay
+            (import ./overlays/LS_COLORS.nix LS_COLORS)
+            neovim-nightly-overlay.overlays.default
+            (import ./overlays/vimPlugins.nix inputs)
+            (import ./overlays/suckless.nix inputs)
+          ];
         nix.registry = {
-          # nixpkgs.flake = inputs.nixpkgs;
-          # home-manager.flake = inputs.home-manager;
           os = { to = { type = "git"; url = "file:///etc/nixos"; }; };
         };
       };
