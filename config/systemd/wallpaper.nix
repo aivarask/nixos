@@ -10,11 +10,11 @@
     '';
   };
   systemd.timers."wallpaper" = {
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       # OnBootSec = "1h";
       OnUnitActiveSec = "1h";
       Unit = "wallpaper.service";
     };
-    wantedBy = [ "timers.target" ];
   };
 }

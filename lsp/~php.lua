@@ -1,14 +1,11 @@
--- php
-lsconfig.intelephense.setup { root_dir = require "lspconfig.util".root_pattern("composer.json", ".git", "index.php"), }
-vim.api.nvim_create_autocmd({ "BufWritePre", }, { group = "Format", desc = "intelephense", pattern = { "*.php", }, callback = vim.lsp.buf.format, })
 
-require "dap".adapters.php = {  -- https://github.com/xdebug/vscode-php-debug
+require "dap".adapters.php = { -- https://github.com/xdebug/vscode-php-debug
   type = "executable",
   command = "node",
   args = { "/root/vscode-php-debug/out/phpDebug.js", },
 }
 
-require "dap".configurations.php = {  -- https://github.com/xdebug/vscode-php-debug#vs-code-configuration
+require "dap".configurations.php = { -- https://github.com/xdebug/vscode-php-debug#vs-code-configuration
   {
     type = "php",
     request = "launch",

@@ -19,6 +19,7 @@
       biome
       typescript
       vscode-js-debug
+      stylelint-lsp
     ]
     ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global

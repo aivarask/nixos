@@ -6,6 +6,7 @@
     enable = true;
     documentation = [ "https://github.com/vercel/serve" ];
     after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "simple";
       Restart = "always";
@@ -14,6 +15,5 @@
       WorkingDirectory = "/var/music";
       ExecStart = "${pkgs.nodePackages.serve}/bin/serve -p 3001";
     };
-    wantedBy = [ "multi-user.target" ];
   };
 }

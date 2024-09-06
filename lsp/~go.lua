@@ -1,22 +1,3 @@
-vim.cmd [[
-" autocmd! BufEnter *.templ setlocal ft=templ
-]]
-
-require "lspconfig".gopls.setup {}
-vim.api.nvim_create_autocmd({ "BufWritePre", }, {
-  group = "Format",
-  pattern = { "*.go", },
-  callback = function() vim.lsp.buf.format() end,
-})
-
-vim.filetype.add { extension = { templ = "templ", }, }
-require "lspconfig".templ.setup {}
-vim.api.nvim_create_autocmd({ "BufWritePre", }, {
-  group = "Format",
-  pattern = { "*.templ", },
-  callback = function() vim.lsp.buf.format() end,
-})
-
 require "dap-go".setup()
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly

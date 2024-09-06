@@ -1,9 +1,7 @@
 " packadd comment
 let &packpath.=',/etc/nixos'
 filetype plugin indent on
-set lisp
 set title titlestring=%{expand('%')}\ %{hostname()}
-set autoindent smartindent shiftwidth=2 tabstop=2 expandtab
 set completeopt=menu,menuone,noselect
 set cursorline mouse=a
 set hidden
@@ -16,7 +14,13 @@ set splitright splitbelow
 set updatetime=1500 
 set timeoutlen=500
 set showtabline=2 statusline+=%F cmdheight=3
+set autoindent smartindent shiftwidth=2 tabstop=2
+" set lisp softtabstop=2 noexpandtab shiftround cpoptions+=I
 
+if !has('gui_running')	
+  set t_Co=256
+  set guioptions-=e
+endif
 
 hi! link netrwMarkFile Search
 let &t_EI = "\<Esc>[2 q"
@@ -29,11 +33,6 @@ let g:netrw_keepdir = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_winsize = 30
-
-if !has('gui_running')
-  set t_Co=256
-  set guioptions-=e
-endif
 
 aug Other
   au!

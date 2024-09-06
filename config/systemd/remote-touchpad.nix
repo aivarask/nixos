@@ -3,9 +3,10 @@
   environment.systemPackages = with pkgs; [ remote-touchpad ];
   networking.firewall.allowedTCPPorts = [ 9000 ];
   systemd.services.remote-touchpad = {
-    enable = false;
+    enable = true;
     documentation = [ "https://github.com/unrud/remote-touchpad" ];
     after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
     environment = {
       XDG_SESSION_TYPE = "x11";
     };
@@ -17,7 +18,6 @@
       WorkingDirectory = "/root";
       ExecStart = "${pkgs.remote-touchpad}/bin/remote-touchpad -bind :9000 -secret pc";
     };
-    wantedBy = [ "multi-user.target" ];
   };
 }
 
