@@ -226,7 +226,7 @@ wk.add {
   { "<leader>lw", [[:LfWorkingDirectory<CR>]], desc = "LfWorkingDirectory", },
 }
 
-wk.add { --- @see vim.lsp
+wk.add {
   { "<space>",  group = "LSP", },
   { "<space>a", vim.lsp.buf.code_action,                  desc = "code_action",           mode = { "n", "v", }, },
   { "<space>D", vim.lsp.buf.declaration,                  desc = "declaration", },
@@ -244,7 +244,7 @@ wk.add { --- @see vim.lsp
   { "<space>t", vim.lsp.buf.type_definition,              desc = "type_definition", },
 }
 
-require "hover".setup { --- @see hover-nvim
+require "hover".setup {
   init = function() require "hover.providers.lsp" end,
 }
 

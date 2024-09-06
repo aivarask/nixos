@@ -16,7 +16,6 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     rust-overlay = { url = "github:oxalica/rust-overlay"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -54,7 +53,6 @@
           ++ include ./config/suckless
           ++ include ./config/systemd
           ++ include ./lsp
-          ++ include ./sql
         ;
         nixpkgs.overlays =
           with inputs; [
@@ -71,6 +69,7 @@
       };
       commonHome = {
         home.stateVersion = "23.05";
+        home.enableNixpkgsReleaseCheck = false;
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
         imports = [ nix-colors.homeManagerModules.default ]
           ++ include ./home
@@ -87,6 +86,35 @@
         home.file = { };
       };
       commonModules = [
+
+        {
+          networking.hosts = { };
+          services.nginx = {
+            enable = true;
+            recommendedProxySettings = true;
+
+            virtualHosts."localhost.local" = {
+              # addSSL = true;
+              # enableACME = true;
+              root = "/etc/nixos/sql";
+              # locations."~ ^(.+\.php)(.*)$" = { };
+              # locations."~ \\.php$".extraConfig = ''
+              # fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+              # fastcgi_index index.php;
+              # '';
+            };
+            virtualHosts."rust.localhost.local" = {
+              # addSSL = true;
+              # enableACME = true;
+              root = "/etc/nixos/sql";
+            };
+            virtualHosts."music.localhost.local" = {
+              locations."/" = {
+                proxyPass = "http://localhost:3001";
+              };
+            };
+          };
+        }
         {
           environment.systemPackages = with pkgs; [ stylelint ];
           environment.shellAliases = { stylelint = "stylelint -c /etc/nixos/.stylelintrc.json --config-basedir /etc/nixos"; };
@@ -134,9 +162,7 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          # specialArgs = { };
           modules = commonModules ++ [
-            { hardware.nvidia.open = true; }
             common
             ./_dell.nix
             ./_audio.nix
@@ -145,21 +171,13 @@
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = commonHome;
-                # extraSpecialArgs = { };
-              };
-
+              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = commonHome; };
             }
           ];
         };
-
         pc = nixpkgs.lib.nixosSystem {
           # PC B450 AORUS M
           inherit system;
-          # specialArgs = { };
           modules = commonModules ++ [
             common
             ./_pc.nix
@@ -168,12 +186,7 @@
             nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = commonHome;
-                # extraSpecialArgs = { };
-              };
+              home-manager = { useGlobalPkgs = true; useUserPackages = true; users.root = commonHome; };
             }
           ];
         };

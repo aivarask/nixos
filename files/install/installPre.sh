@@ -7,7 +7,7 @@ set -euo pipefail
 # wpa_cli
 # add_network
 # set_network 0 ssid "hw"
-# set_network 0 psk "laikinas"
+# set_network 0 psk "???"
 # set_network 0 key_mgmt WPA-PSK or WPA2-PSK
 # enable_network 0
 

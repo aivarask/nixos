@@ -12,7 +12,7 @@
   "format.defaultConfig": {
     "indent_style": "space",
     "indent_size": "2",
-    "qoute_style": "none",
+    "qoute_style": "double",
     "trailing_table_separator": "always",
     "call_arg_parentheses": "remove",
     "insert_final_newline": "true",

@@ -64,7 +64,9 @@ https://wiki.nixos.org/wiki/PHP
 nushell
 https://www.nushell.sh/
 
-
+============
+Makefile
+https://makefiletutorial.com/#multiple-targets
 
 
 

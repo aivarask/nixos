@@ -13,7 +13,6 @@ if [ "$(hostname)" = pc ]; then
   # https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
   nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
   imwheel -b 45 &                       # ./config/services/xserver.nix
-  XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 elif [ "$(hostname)" = dell ]; then
   echo '';
 fi
