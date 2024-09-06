@@ -1,5 +1,6 @@
 { pkgs, lib, ... }: {
   hardware.nvidia.modesetting.enable = lib.mkDefault true;
+  hardware.nvidia.open = true;
   hardware.pulseaudio = {
     enable = true;
     systemWide = true;
