@@ -1,8 +1,10 @@
 { pkgs, ... }: {
-  systemd.services.serve-music = {
+  networking.hosts = { "127.0.0.1" = [ "music.local" ]; };
+  networking.firewall.allowedTCPPorts = [ 3001 ];
+  services.nginx.virtualHosts."music.local" = { locations."/" = { proxyPass = "http://localhost:3001"; }; };
+  systemd.services.music = {
     enable = true;
-    # description = "serve /var/music";
-    # documentation = "https://pm2.keymetrics.io/";
+    documentation = [ "https://github.com/vercel/serve" ];
     after = [ "network.target" ];
     serviceConfig = {
       Type = "simple";
@@ -14,5 +16,4 @@
     };
     wantedBy = [ "multi-user.target" ];
   };
-  networking.firewall.allowedTCPPorts = [ 3001 ];
 }

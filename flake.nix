@@ -87,34 +87,7 @@
       };
       commonModules = [
 
-        {
-          networking.hosts = { };
-          services.nginx = {
-            enable = true;
-            recommendedProxySettings = true;
-
-            virtualHosts."localhost.local" = {
-              # addSSL = true;
-              # enableACME = true;
-              root = "/etc/nixos/sql";
-              # locations."~ ^(.+\.php)(.*)$" = { };
-              # locations."~ \\.php$".extraConfig = ''
-              # fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
-              # fastcgi_index index.php;
-              # '';
-            };
-            virtualHosts."rust.localhost.local" = {
-              # addSSL = true;
-              # enableACME = true;
-              root = "/etc/nixos/sql";
-            };
-            virtualHosts."music.localhost.local" = {
-              locations."/" = {
-                proxyPass = "http://localhost:3001";
-              };
-            };
-          };
-        }
+        
         {
           environment.systemPackages = with pkgs; [ stylelint ];
           environment.shellAliases = { stylelint = "stylelint -c /etc/nixos/.stylelintrc.json --config-basedir /etc/nixos"; };

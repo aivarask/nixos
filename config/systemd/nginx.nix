@@ -1,5 +1,10 @@
 { lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [ nginx ];
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+  };
+
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];
     NoNewPrivileges = lib.mkForce false;
