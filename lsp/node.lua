@@ -30,9 +30,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre", }, {
 })
 
 
--- nvim-dap-vscode-js
+-- dap-vscode-js
 require "dap-vscode-js".setup {
-  debugger_path = "/root/vscode-js-debug",
+  debugger_cmd = { "js-debug", },
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost", },
 }
 require "dap".configurations.javascript = {

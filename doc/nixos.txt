@@ -17,6 +17,9 @@ https://nix-community.github.io/nix-on-droid/
 https://wiki.nixos.org/wiki/SSH_public_key_authentication
 
 ============
+https://nixos-and-flakes.thiscute.world/development/intro#using-zsh-fish-instead-of-bash
+
+============
 *home-manager*
 https://nix-community.github.io/home-manager/options.xhtml
 
@@ -25,15 +28,41 @@ https://nix-community.github.io/home-manager/options.xhtml
 xs = "xinit $XINITRC -- $XSERVERRC";
 xa = "startx $XINITRC awesome";
 
+============
+https://nix.dev
+https://nix.dev/tutorials/packaging-existing-software
+https://www.youtube.com/watch?v=0YBWhSNTgV8 [ Best Way To Manage Project Dependencies | Nix Shells ]
+
+============                                                                                                                                                            
+nixos.org
+https://nixos.org/manual/nixpkgs/unstable/#chap-stdenv
+
+============ *nixvim*
+https://github.com/nix-community/nixvim
+
+============
+https://github.com/moetelo/twiggy
+
+============    
+*nil*
+https://github.com/oxalica/nil/blob/main/docs/configuration.md
+
+============
+https://github.com/tomblind/local-lua-debugger-vscode
+
+============
+direnv 
+https://github.com/direnv/direnv/blob/master/docs/hook.md
+https://mynixos.com/home-manager/options/programs.direnv
+
+============
+*php*
+https://wiki.nixos.org/wiki/PHP
 
 
-
-
-
-
-
-
-
+============
+nushell
+https://www.nushell.sh/
 
 
 

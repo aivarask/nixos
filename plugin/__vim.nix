@@ -17,6 +17,7 @@ let
     vim-lastplace
     vim-log-highlighting # https://github.com/MTDL9/vim-log-highlighting
     vim-matchup
+    direnv-vim
   ];
 in
 {

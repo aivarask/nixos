@@ -2,6 +2,7 @@
   environment.variables = {
     NODE_OPTIONS = "--no-warnings";
     PNPM_HOME = "$HOME/.pnpm-global";
+    VSCODE_JS_DEBUG = "${pkgs.vscode-js-debug.outPath}";
 
   };
   environment.sessionVariables = {
@@ -17,6 +18,7 @@
       eslint_d
       biome
       typescript
+      vscode-js-debug
     ]
     ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global

@@ -7,7 +7,7 @@ wk.add {
   { "<M-c>",      [[:Commentary<CR>]],                                         mode = { "n", "i", "v", }, },
   { "<M-e>1",     "<cmd>edit .luarc.json<CR>", },
   { "<M-e><M-E>", "<cmd>edit plugin/keysM.lua<CR>", },
-  { "<M-e>d",     "<cmd>edit doc/nixos.txt<CR>", },
+  { "<M-e>d",     "<cmd>edit /etc/nixos/doc/nixos.txt<CR>", },
   { "<M-e>f",     "<cmd>edit flake.nix<CR>", },
   { "<M-e>i",     "<cmd>edit plugin/__init.lua<CR>", },
   { "<M-e>k",     "<cmd>edit plugin/keys.lua<CR>", },
