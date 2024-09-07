@@ -16,6 +16,7 @@
     nurl
     deadnix
     nixos-generators
+		fh # flakehub
   ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [ ];

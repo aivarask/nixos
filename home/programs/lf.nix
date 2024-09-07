@@ -17,6 +17,7 @@
       touch = ''%touch "$@"'';
       mkdir = ''%mkdir "$@"'';
     };
+    # TODO: make lf keybindings without derivations
     keybindings = {
       "." = "set hidden!";
       "<backspace>" = "set hidden!";

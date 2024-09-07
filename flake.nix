@@ -66,6 +66,13 @@
           ];
         nix.registry = {
           os = { to = { type = "git"; url = "file:///etc/nixos"; }; };
+          "dev-templates" = {
+            to = {
+              owner = "the-nix-way";
+              repo = "dev-templates";
+              type = "github";
+            };
+          };
         };
       };
       commonHome = {

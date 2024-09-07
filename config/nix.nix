@@ -1,4 +1,3 @@
-# NOTE: https://discourse.nixos.org/t/file-in-nix-store-empty-unable-to-be-repaired/14497/9
 { pkgs, options, ... }: {
   nix = {
     # package = pkgs.nixVersions.latest; # stable

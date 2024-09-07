@@ -17,7 +17,7 @@ https://nix-community.github.io/nix-on-droid/
 https://wiki.nixos.org/wiki/SSH_public_key_authentication
 
 ============
-https://nixos-and-flakes.thiscute.world/development/intro#using-zsh-fish-instead-of-bash
+https://nixos-and-flakes.thiscute.world
 
 ============
 *home-manager*
