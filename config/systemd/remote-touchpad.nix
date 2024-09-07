@@ -3,7 +3,7 @@
   environment.systemPackages = with pkgs; [ remote-touchpad ];
   networking.firewall.allowedTCPPorts = [ 9000 ];
   systemd.services.remote-touchpad = {
-    enable = true;
+    enable = false;
     documentation = [ "https://github.com/unrud/remote-touchpad" ];
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];

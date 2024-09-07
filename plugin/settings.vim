@@ -13,9 +13,13 @@ set signcolumn=yes number
 set splitright splitbelow
 set updatetime=1500 timeoutlen=500
 set showtabline=2 statusline+=%F cmdheight=3
-set autoindent smartindent shiftwidth=2 tabstop=2
+set autoindent 
+set smartindent 
+set shiftwidth=2 
+set tabstop=2
+set nolisp
 
-if !has('gui_running')	
+if !has('gui_running')
   set t_Co=256
   set guioptions-=e
 endif

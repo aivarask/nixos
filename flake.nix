@@ -53,6 +53,7 @@
           ++ include ./config/suckless
           ++ include ./config/systemd
           ++ include ./lsp
+          ++ include ./www/hello
         ;
         nixpkgs.overlays =
           with inputs; [

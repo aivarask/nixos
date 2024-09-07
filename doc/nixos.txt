@@ -68,7 +68,9 @@ https://www.nushell.sh/
 Makefile
 https://makefiletutorial.com/#multiple-targets
 
-
+============
+nginx
+https://nixos.wiki/wiki/Nginx
 
 
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly

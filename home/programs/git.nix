@@ -17,7 +17,6 @@
       "package-lock.json"
       "result"
       "tags"
-      "www"
       "packages"
       "!flake.lock"
     ];

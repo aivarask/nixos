@@ -58,6 +58,7 @@
         "browser.urlbar.suggest.history" = true;
         "browser.urlbar.suggest.openpage" = false;
         "browser.urlbar.suggest.topsites" = false;
+        "browser.urlbar.trimHttps" = true;
         "devtools.cache.disabled" = false;
         "devtools.debugger.remote-enabled" = true;
         "devtools.dom.enabled" = true;

@@ -1,10 +1,15 @@
-{ lib, pkgs, ... }: {
+{ pkgs, lib, ... }: {
   environment.systemPackages = with pkgs; [ nginx ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
+    recommendedOptimisation = true;
+    recommendedTlsSettings = true;
+    # recommendedGzipSettings = true;
+    # recommendedZstdSettings = true;
+    # recommendedBrotliSettings = true;
   };
-
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];
     NoNewPrivileges = lib.mkForce false;

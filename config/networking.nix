@@ -33,7 +33,6 @@
   networking = {
     useNetworkd = true;
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ ];
     dhcpcd.extraConfig = "nohook resolv.conf"; # /etc/nixos/config/services/dnscrypt-proxy2.nix
     nameservers = [ "127.0.0.1" "::1" ];
     hosts = {
