@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2/bin/cmake
+CMAKE_COMMAND = /nix/store/hx89vlv61l4vm0dvn0zww817nckzh7ls-cmake-3.29.6/bin/cmake
 
 # The command to remove a file.
-RM = /nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2/bin/cmake -E rm -f
+RM = /nix/store/hx89vlv61l4vm0dvn0zww817nckzh7ls-cmake-3.29.6/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /etc/nixos/dsl/cpp
+CMAKE_SOURCE_DIR = /etc/nixos/pack/hello_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /etc/nixos/dsl/cpp
+CMAKE_BINARY_DIR = /etc/nixos/pack/hello_cpp
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /etc/nixos/dsl/cpp
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	/nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/nix/store/hx89vlv61l4vm0dvn0zww817nckzh7ls-cmake-3.29.6/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/nix/store/hx89vlv61l4vm0dvn0zww817nckzh7ls-cmake-3.29.6/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /etc/nixos/dsl/cpp/CMakeFiles /etc/nixos/dsl/cpp//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /etc/nixos/pack/hello_cpp/CMakeFiles /etc/nixos/pack/hello_cpp//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /etc/nixos/dsl/cpp/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /etc/nixos/pack/hello_cpp/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,78 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named hello_cpp
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+hello_cpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello_cpp
+.PHONY : hello_cpp
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+hello_cpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_cpp.dir/build.make CMakeFiles/hello_cpp.dir/build
+.PHONY : hello_cpp/fast
 
-#=============================================================================
-# Target rules for targets named api
-
-# Build rule for target.
-api: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 api
-.PHONY : api
-
-# fast build rule for target.
-api/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/api.dir/build.make CMakeFiles/api.dir/build
-.PHONY : api/fast
-
-api.o: api.cpp.o
-.PHONY : api.o
+hello.o: hello.cpp.o
+.PHONY : hello.o
 
 # target to build an object file
-api.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/api.dir/build.make CMakeFiles/api.dir/api.cpp.o
-.PHONY : api.cpp.o
+hello.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_cpp.dir/build.make CMakeFiles/hello_cpp.dir/hello.cpp.o
+.PHONY : hello.cpp.o
 
-api.i: api.cpp.i
-.PHONY : api.i
-
-# target to preprocess a source file
-api.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/api.dir/build.make CMakeFiles/api.dir/api.cpp.i
-.PHONY : api.cpp.i
-
-api.s: api.cpp.s
-.PHONY : api.s
-
-# target to generate assembly for a file
-api.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/api.dir/build.make CMakeFiles/api.dir/api.cpp.s
-.PHONY : api.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
+hello.i: hello.cpp.i
+.PHONY : hello.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+hello.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_cpp.dir/build.make CMakeFiles/hello_cpp.dir/hello.cpp.i
+.PHONY : hello.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+hello.s: hello.cpp.s
+.PHONY : hello.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+hello.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello_cpp.dir/build.make CMakeFiles/hello_cpp.dir/hello.cpp.s
+.PHONY : hello.cpp.s
 
 # Help Target
 help:
@@ -198,14 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... api"
-	@echo "... main"
-	@echo "... api.o"
-	@echo "... api.i"
-	@echo "... api.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... hello_cpp"
+	@echo "... hello.o"
+	@echo "... hello.i"
+	@echo "... hello.s"
 .PHONY : help
 
 

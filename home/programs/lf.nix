@@ -41,6 +41,7 @@
       "<c-g>" = "$Rg";
       "gn" = ''$lf -remote "send $id cd /etc/nixos"'';
       "gx" = ''!xdg-open $fx'';
+      "og" = ''&gimp $fx'';
       "of" = ''!firefox $fx'';
       "oz" = ''!zathura $fx'';
     };
