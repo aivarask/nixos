@@ -1,4 +1,4 @@
-{ pkgs, ... }: [
+{ pkgs, lib, ... }: lib.mkMerge [
   {
     environment.systemPackages = with pkgs; [ stylelint ];
     environment.shellAliases = { stylelint = "stylelint -c /etc/nixos/.stylelintrc.json --config-basedir /etc/nixos"; };

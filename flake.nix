@@ -85,7 +85,7 @@
         };
         home.file = { };
       };
-      commonModules = include ./nixModules ++ [];
+      commonModules = include ./nixModules ++ [ ];
     in
     {
       formatter."${system}" = pkgs.nixpkgs-fmt;
