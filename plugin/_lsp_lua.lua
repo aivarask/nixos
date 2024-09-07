@@ -18,11 +18,11 @@ local add_runtimes = function(library)
 	local from_runtime = {
 		"nvim%-cmp",
 		"nvim%-autopairs",
-		-- "neotest",
 		"which%-key.nvim",
 		"nvim%-lspconfig",
 		"none%-ls.nvim",
-		"fidget",
+		"fidget", "notify",
+
 	}
 	for _, name in ipairs(from_runtime) do
 		for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
@@ -57,7 +57,7 @@ end
 
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("lua_ls configuration ", {}),
-	pattern = { "plugin/__lua.lua", },
+	pattern = { ".luarc.json", "plugin/_lsp_lua.lua", },
 	desc = "workspace/didChangeConfiguration",
 	callback = function()
 		local client = vim.lsp.get_clients { name = "lua_ls", }[1] or nil
@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			local library = client.config.settings.Lua.workspace.library
 			add_runtimes(library)
 			client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
-			print 'lua_ls library will update'
+			vim.notify 'lua_ls workspace/didChangeConfiguration'
 		end
 	end,
 })

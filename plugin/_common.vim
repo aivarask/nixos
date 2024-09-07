@@ -13,25 +13,25 @@ let g:floaterm_width = 0.8
 let g:floaterm_wintype = 'float'
 
 augroup Common
-au!
+	au!
 	autocmd VimResized * FloatermUpdate
-	autocmd BufWritePost doc/nixos.txt helptags doc
+	autocmd BufWritePost doc/* helptags doc
 augroup END
 
 
 if !has('nvim')
-  nnoremap <F12> :FloatermToggle<CR>
-  tnoremap <F12> <C-W>:FloatermToggle<CR>
-  let g:AutoPairsFlyMode = 1
-  let g:AutoPairsShortcutBackInsert = '<C-b>'
+	nnoremap <F12> :FloatermToggle<CR>
+	tnoremap <F12> <C-W>:FloatermToggle<CR>
+	let g:AutoPairsFlyMode = 1
+	let g:AutoPairsShortcutBackInsert = '<C-b>'
 else
-  set undodir=$HOME/.vim/undo
-  set undofile
-  set noswapfile
+	set undodir=$HOME/.vim/undo
+	set undofile
+	set noswapfile
 endif
 
 if has('termguicolors')
-  set termguicolors
+	set termguicolors
 endif
 set background=dark
 let g:gruvbox_material_background = 'medium'

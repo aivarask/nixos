@@ -52,7 +52,6 @@
           ++ include ./config/services
           ++ include ./config/suckless
           ++ include ./config/systemd
-          ++ include ./lsp
           ++ include ./www/hello
         ;
         nixpkgs.overlays =
@@ -83,7 +82,6 @@
           ++ include ./home
           ++ include ./home/programs
           ++ include ./home/services
-          ++ include ./plugin
         ;
         home.shellAliases = { };
         home.sessionVariables = {

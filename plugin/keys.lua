@@ -192,20 +192,16 @@ wk.add {
 	{ "<space>l", function()
 		local client = vim.lsp.get_clients { name = "lua_ls", }[1]
 		local library = client.config.settings.Lua.workspace.library or nil
-		vim.notify(print(library))
+		vim.print(library)
 	end, desc = "lua_ls library", },
-	{ "<space>O", [[<cmd>LspOverloadsSignature<CR>]],       desc = "LspOverloadsSignature", },
-	{ "<space>o", [[<cmd>Outline<CR>]],                     desc = "Outline", },
+	{ "<space>O", [[<cmd>LspOverloadsSignature<CR>]], },
+	{ "<space>o", [[<cmd>Outline<CR>]], },
 	{ "<space>q", vim.diagnostic.setloclist,                desc = "setloclist", },
 	{ "<space>R", vim.lsp.buf.references,                   desc = "references", },
 	{ "<space>r", vim.lsp.buf.rename,                       desc = "rename", },
 	{ "<space>S", require "lsp_signature".toggle_float_win, desc = "toggle_float_win", },
 	{ "<space>s", vim.lsp.buf.signature_help,               desc = "signature_help", },
 	{ "<space>t", vim.lsp.buf.type_definition,              desc = "type_definition", },
-}
-
-require "hover".setup {
-	init = function() require "hover.providers.lsp" end,
 }
 
 require "goto-preview".setup {}

@@ -1,107 +1,102 @@
-
-
-ftmap = require "null-ls.builtins._meta.filetype_map"
-
-nls = require "null-ls"
-require "null-ls".setup {
-  sources = { nls.builtins.code_actions.refactoring, },
-  diagnostics_format = "#{m} [#{c}] (#{s}) null-ls",
+local ftmap = require "null-ls.builtins._meta.filetype_map"
+local nls = require "null-ls"
+nls.setup {
+	sources = { nls.builtins.code_actions.refactoring, },
+	diagnostics_format = "#{m} [#{c}] (#{s}) null-ls",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig = require "lspconfig"
-lspconfig.clangd.setup {}
-vim.filetype.add { extension = { templ = "templ", }, }
-lspconfig.gopls.setup {}
-lspconfig.templ.setup {}
-lspconfig.cssls.setup {
-  capabilities = capabilities,
+c = require "lspconfig"
+c.clangd.setup {}
+c.gopls.setup {}
+c.templ.setup {}
+c.cssls.setup {
+	capabilities = capabilities,
 }
-lspconfig.stylelint_lsp.setup {
-  capabilities = capabilities,
-  filetypes = { "css", },
-  settings = {
-    stylelintplus = {
-      enable = true,
-      autoFixOnFormat = true,
-    },
-  },
+c.stylelint_lsp.setup {
+	capabilities = capabilities,
+	filetypes = { "css", },
+	settings = {
+		stylelintplus = {
+			enable = true,
+			autoFixOnFormat = true,
+		},
+	},
 }
 nls.register { nls.builtins.formatting.prettierd.with { filetypes = { "html", "twig", }, }, }
-lspconfig.html.setup {
-  capabilities = capabilities,
-  filetypes = { "html", "templ", "twig", },
+c.html.setup {
+	capabilities = capabilities,
+	filetypes = { "html", "templ", "twig", },
 }
-lspconfig.htmx.setup { filetypes = { "html", "templ", "twig", }, }
-require "luasnip".filetype_extend("twig", { "html", })
-require "luasnip".filetype_extend("html", { "twig", })
-lspconfig.twiggy_language_server.setup {
-  cmd = { "node", "/etc/nixos/node_modules/twiggy-language-server/dist/server.js", "--stdio", },
-  filetypes = { "html", "templ", "twig", },
+c.htmx.setup { filetypes = { "html", "templ", "twig", }, }
+local ls = require "luasnip"
+ls.filetype_extend("twig", { "html", })
+ls.filetype_extend("html", { "twig", })
+c.twiggy_language_server.setup {
+	cmd = { "node", "/etc/nixos/node_modules/twiggy-language-server/dist/server.js", "--stdio", },
+	filetypes = { "html", "templ", "twig", },
 }
 nls.register {
-  nls.builtins.formatting.markdownlint,
+	nls.builtins.formatting.markdownlint,
 }
-lspconfig.marksman.setup {}
-
-vim.cmd [[ autocmd! BufEnter *.json,flake.lock,.prettierrc setlocal ft=jsonc ]]
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-  settings = { json = {
-    schemas = require "schemastore".json.schemas {
-      extra = {
-        {
-          fileMatch = { "*/snippets/*.json", "!*/snippets/package.json", },
-          name = "snippets",
-          url = "https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json",
-        },
-      },
-    },
-    validate = { enable = true, },
-  },
-  },
+c.marksman.setup {}
+c.jsonls.setup {
+	capabilities = capabilities,
+	settings = { json = {
+		schemas = require "schemastore".json.schemas {
+			extra = {
+				{
+					fileMatch = { "*/snippets/*.json", "!*/snippets/package.json", },
+					name = "snippets",
+					url = "https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json",
+				},
+			},
+		},
+		validate = { enable = true, },
+	},
+	},
 }
 
-lspconfig.nil_ls.setup {
-  autostart = true,
-  settings = {
-    ["nil"] = {
-      formatting = { command = { "nixpkgs-fmt", }, },
-      nix = {
-        maxMemoryMB = 20480,
-        flake = {
-          -- autoArchive = true,
-          -- autoEvalInputs = true,
-          nixpkgsInputName = "nixpkgs",
-        },
-      },
-    },
-  },
+c.nil_ls.setup {
+	autostart = true,
+	settings = {
+		["nil"] = {
+			formatting = { command = { "nixpkgs-fmt", }, },
+			nix = {
+				maxMemoryMB = 20480,
+				flake = {
+					-- autoArchive = true,
+					-- autoEvalInputs = true,
+					nixpkgsInputName = "nixpkgs",
+				},
+			},
+		},
+	},
 }
-lspconfig.intelephense.setup {}
+c.intelephense.setup {}
 nls.register { nls.builtins.formatting.black, }
-lspconfig.pyright.setup {}
-lspconfig.rust_analyzer.setup {}
+c.pyright.setup {}
+c.rust_analyzer.setup {}
 
 vim.cmd [[
   autocmd! BufEnter .env* setlocal ft=sh
   autocmd BufEnter */zsh/* setlocal ft=zsh
 ]]
 nls.register {
-  nls.builtins.diagnostics.dotenv_linter,
-  nls.builtins.diagnostics.zsh,
-  nls.builtins.formatting.shellharden,
-  nls.builtins.formatting.shfmt,
-  nls.builtins.hover.printenv,
+	nls.builtins.diagnostics.dotenv_linter,
+	nls.builtins.diagnostics.zsh,
+	nls.builtins.formatting.shellharden,
+	nls.builtins.formatting.shfmt,
+	nls.builtins.hover.printenv,
 }
-lspconfig.bashls.setup {
-  filetypes = { "sh", "bash", "zsh", },
-  settings = { bashIde = { globPattern = "*@(.sh|.inc|.bash|.command|.zsh)", }, },
+c.bashls.setup {
+	filetypes = { "sh", "bash", "zsh", },
+	settings = { bashIde = { globPattern = "*@(.sh|.inc|.bash|.command|.zsh)", }, },
 }
 nls.register {
-  nls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "sqlite", }, },
+	nls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "sqlite", }, },
 }
 -- local sqlls = require('lspconfig.server_configurations.sqlls')
 -- require('lspconfig').sqlls.setup({
@@ -113,15 +108,54 @@ nls.register {
 -- local postgres_lsp = require('lspconfig.server_configurations.postgres_lsp')
 -- require('lspconfig').postgres_lsp.setup({})
 nls.register { nls.builtins.diagnostics.vint, }
-lspconfig.vimls.setup {}
-lspconfig.yamlls.setup {
-  settings = {
-    yaml = { format = { enable = true, }, },
-    schemaStore = {
-      enable = false,
-      url = "",
-    },
-    schemas = require "schemastore".yaml.schemas(),
-  },
+c.vimls.setup {}
+c.yamlls.setup {
+	settings = {
+		yaml = { format = { enable = true, }, },
+		schemaStore = {
+			enable = false,
+			url = "",
+		},
+		schemas = require "schemastore".yaml.schemas(),
+	},
 }
-lspconfig.zls.setup {}
+c.zls.setup {}
+
+vim.api.nvim_create_augroup("format", {})
+vim.api.nvim_create_autocmd({ "BufWritePre", }, {
+	group = "format",
+	pattern = {
+		"*.c", "*.h", "*.cpp",
+		"*.css",
+		"*.go", "*.templ",
+		"*.md",
+		"*.nix",
+		"*.js", "*.ts",
+		"*.php",
+		"*.py",
+		"*.rs",
+		"*.sh", "*.bash", "*.zsh",
+		"*.sql",
+		"*.lua",
+		-- "*.vim",
+		"*.json", "*.jsonc",
+		"*.yaml", "*.yml",
+		"*.zig",
+	},
+	desc = "vim.lsp.buf.format()",
+	callback = function() vim.lsp.buf.format() end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre", }, {
+	group = "format",
+	pattern = {
+		"*.html", "*.xml", "*.twig",
+	},
+	desc = "vim.lsp.buf.format null-ls",
+	callback = function()
+		vim.lsp.buf.format {
+			async = true,
+			filter = function(client) return client.name == "null-ls" end,
+		}
+	end,
+})
