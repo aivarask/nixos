@@ -1,4 +1,5 @@
-vim.api.nvim_create_augroup("Format", { clear = true, })
+
+
 ftmap = require "null-ls.builtins._meta.filetype_map"
 
 nls = require "null-ls"

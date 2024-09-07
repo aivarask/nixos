@@ -11,9 +11,13 @@ let g:floaterm_autoclose = 2
 let g:floaterm_height = 0.7
 let g:floaterm_width = 0.8
 let g:floaterm_wintype = 'float'
-autocmd VimResized * FloatermUpdate
 
-autocmd BufWritePost doc/nixos.txt helptags doc
+augroup Common
+au!
+	autocmd VimResized * FloatermUpdate
+	autocmd BufWritePost doc/nixos.txt helptags doc
+augroup END
+
 
 if !has('nvim')
   nnoremap <F12> :FloatermToggle<CR>

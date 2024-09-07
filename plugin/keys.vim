@@ -1,4 +1,3 @@
-" https://github.com/junegunn/fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', 'pistol {}']}, <bang>0)

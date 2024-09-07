@@ -1,7 +1,3 @@
-local clients = vim.lsp.get_clients { name = "lua_ls", }
-local client = clients[1]
-local pretty = require "pl.pretty"
-
 local add_lualib = function(library)
 	local lualib = vim.split(os.getenv "LUA_LIB" or "", ";")
 	for k, v in pairs(lualib) do
@@ -22,14 +18,11 @@ local add_runtimes = function(library)
 	local from_runtime = {
 		"nvim%-cmp",
 		"nvim%-autopairs",
-		"neotest",
-		-- 'telescope.nvim',
+		-- "neotest",
 		"which%-key.nvim",
-		-- 'gitsigns.nvim',
-		-- 'fold%-preview.nvim',
 		"nvim%-lspconfig",
 		"none%-ls.nvim",
-
+		"fidget",
 	}
 	for _, name in ipairs(from_runtime) do
 		for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
@@ -38,51 +31,41 @@ local add_runtimes = function(library)
 	end
 end
 
-local update = function()
+--- @param client vim.lsp.Client
+local update = function(client)
 	local library = client.config.settings.Lua.workspace.library
 	add_lualib(library)
 	add_runtimes(library)
 	client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
 end
 
-if vim.tbl_isempty(clients) then
-	local library = {
-		vim.env.VIMRUNTIME,
-		"${3rd}/luv/library",
-	}
+if vim.tbl_isempty(vim.lsp.get_clients { name = "lua_ls", }) then
+	local library = { vim.env.VIMRUNTIME, "${3rd}/luv/library", }
 	add_lualib(library)
 	add_runtimes(library)
 	require "lspconfig".lua_ls.setup {
 		settings = { -- https://luals.github.io/wiki/settings/
 			Lua = {
-				runtime = {
-					version = "LuaJIT",
-					pathStrict = true,
-					path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", },
-				},
+				runtime = { version = "LuaJIT", pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", }, },
 				workspace = { checkThirdParty = false, library = library, },
 			},
 		},
 	}
 else
-	update()
+	update(vim.lsp.get_clients { name = "lua_ls", }[1])
 end
 
-
 vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("lua_ls", {}),
-	pattern = { "plugin/lua.lua", },
+	group = vim.api.nvim_create_augroup("lua_ls configuration ", {}),
+	pattern = { "plugin/__lua.lua", },
 	desc = "workspace/didChangeConfiguration",
 	callback = function()
-		local clients = vim.lsp.get_clients { name = "lua_ls", }
-		local client = clients[1]
-
+		local client = vim.lsp.get_clients { name = "lua_ls", }[1] or nil
 		if client ~= nil then
 			local library = client.config.settings.Lua.workspace.library
 			add_runtimes(library)
 			client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
-			print "workspace/didChangeConfiguration"
-			-- require 'telescope.pickers'
+			print 'lua_ls library will update'
 		end
 	end,
 })
