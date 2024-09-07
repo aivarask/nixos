@@ -32,7 +32,7 @@
     '';
     initExtra = ''
       # <<< initExtra
-      source /etc/nixos/init.zsh
+      source /etc/nixos/zsh/_init.zsh
       # >>>
     '';
     plugins = [
