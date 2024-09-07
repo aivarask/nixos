@@ -1,1 +1,1 @@
-fpath+=('/etc/nixos/site-functions')
+fpath+=('/etc/nixos/zsh/site-functions')

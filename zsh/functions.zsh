@@ -1,4 +1,4 @@
-foo() {
+foof() {
 	echo 'im function' $1
 }
 
