@@ -1,3 +1,10 @@
+if vim.lsp.luals.client or nil then
+	vim.lsp.luals:runtime {
+		"nvim%-lspconfig",
+		"none%-ls.nvim",
+	}:notify()
+end
+
 local ftmap = require "null-ls.builtins._meta.filetype_map"
 local nls = require "null-ls"
 nls.setup {
@@ -9,6 +16,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 c = require "lspconfig"
+c.lua_ls.setup {
+	settings = { -- https://luals.github.io/wiki/settings/
+		Lua = {
+			runtime = { version = "LuaJIT", pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", }, },
+			workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME, "${3rd}/luv/library", }, },
+		},
+	},
+}
 c.clangd.setup {}
 c.gopls.setup {}
 c.templ.setup {}
@@ -80,10 +95,6 @@ nls.register { nls.builtins.formatting.black, }
 c.pyright.setup {}
 c.rust_analyzer.setup {}
 
-vim.cmd [[
-  autocmd! BufEnter .env* setlocal ft=sh
-  autocmd BufEnter */zsh/* setlocal ft=zsh
-]]
 nls.register {
 	nls.builtins.diagnostics.dotenv_linter,
 	nls.builtins.diagnostics.zsh,
@@ -120,42 +131,3 @@ c.yamlls.setup {
 	},
 }
 c.zls.setup {}
-
-vim.api.nvim_create_augroup("format", {})
-vim.api.nvim_create_autocmd({ "BufWritePre", }, {
-	group = "format",
-	pattern = {
-		"*.c", "*.h", "*.cpp",
-		"*.css",
-		"*.go", "*.templ",
-		"*.md",
-		"*.nix",
-		"*.js", "*.ts",
-		"*.php",
-		"*.py",
-		"*.rs",
-		"*.sh", "*.bash", "*.zsh",
-		"*.sql",
-		"*.lua",
-		-- "*.vim",
-		"*.json", "*.jsonc",
-		"*.yaml", "*.yml",
-		"*.zig",
-	},
-	desc = "vim.lsp.buf.format()",
-	callback = function() vim.lsp.buf.format() end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre", }, {
-	group = "format",
-	pattern = {
-		"*.html", "*.xml", "*.twig",
-	},
-	desc = "vim.lsp.buf.format null-ls",
-	callback = function()
-		vim.lsp.buf.format {
-			async = true,
-			filter = function(client) return client.name == "null-ls" end,
-		}
-	end,
-})
