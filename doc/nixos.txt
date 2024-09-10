@@ -58,6 +58,9 @@ https://mynixos.com/home-manager/options/programs.direnv
 ============
 *php*
 https://wiki.nixos.org/wiki/PHP
+https://www.php.net/manual/en/ini.list.php
+https://xdebug.org/docs/all_settings#mode
+https://xdebug.org/docs/all_settings#start_with_request
 
 
 ============

@@ -4,7 +4,8 @@ vim.filetype.add {
 		['.prettierrc'] = 'json',
 	},
 }
-vim.cmd [[
-  autocmd! BufEnter .env* setlocal ft=sh
-  autocmd BufEnter */zsh/* setlocal ft=zsh
-]]
+
+-- vim.cmd [[
+-- autocmd! BufEnter .env* setlocal ft=sh
+-- autocmd BufEnter */zsh/* setlocal ft=zsh
+-- ]]

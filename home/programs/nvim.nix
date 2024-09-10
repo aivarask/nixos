@@ -87,13 +87,14 @@ let
   next =
     with pkgs.vimPlugins; [
       nui-nvim
-			fidget-nvim
-			nvim-notify
+      fidget-nvim
+      nvim-notify
+      plenary-nvim
     ];
 in
 {
   programs.neovim.extraLuaPackages = ps: [
-    ps.magick #NOTE: @dep image-nvim
+    ps.magick
   ];
   programs.neovim.plugins =
     codelens

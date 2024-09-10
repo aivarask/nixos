@@ -1,3 +1,4 @@
+local wk = require "which-key"
 wk.add {
 	{ "<space>",  group = "LSP", },
 	{ "<space>a", vim.lsp.buf.code_action,    desc = "code_action",    mode = { "n", "v", }, },

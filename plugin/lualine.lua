@@ -34,12 +34,12 @@ require "lualine".setup {  --- @see lualine
 		lualine_b = { vim.uv.cwd, },
 		lualine_c = {
 			{ "filename", path = 1, },
-			{
-				--- @see https://github.com/arkav/lualine-lsp-progress
-				"lsp_progress",
-				display_components = { "lsp_client_name", "spinner", { "percentage", }, },
-				spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 ", },
-			},
+			-- {
+			-- 	--- @see https://github.com/arkav/lualine-lsp-progress
+			-- 	"lsp_progress",
+			-- 	display_components = { "lsp_client_name", "spinner", { "percentage", }, },
+			-- 	spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 ", },
+			-- },
 		},
 		lualine_x = {
 			"encoding",

@@ -97,6 +97,13 @@
           updateInterval = 24 * 60 * 60 * 1000; # every day
           urls = [{ template = "https://discourse.nixos.org/search?q={searchTerms}"; }];
         };
+
+        "neovim discourse @vd" = {
+          definedAliases = [ "@vd" ];
+          # iconUpdateURL = "https://mynixos.com/favicon.ico";
+          # updateInterval = 30 * 24 * 60 * 60 * 1000; # every month
+          urls = [{ template = "https://neovim.discourse.group/search?q={searchTerms}"; }];
+        };
       };
     };
 }

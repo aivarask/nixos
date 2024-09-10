@@ -29,42 +29,46 @@ vim.lsp.inspect_client = function()
 	end)
 end
 
-
 vim.lsp.luals = {
 	client = vim.lsp.get_clients { name = 'lua_ls', }[1] or nil,
 	inspect = function(self)
 		vim.print(self.client.config.settings.Lua.workspace.library)
 	end,
-	lualib = function(self)
-		local library = self.client.config.settings.Lua.workspace.library
-		local lualib = vim.split(os.getenv "LUA_LIB" or "", ";")
-		for k, v in pairs(lualib) do
-			local found = false
-			for j, lib_v in pairs(library) do
-				if v == lib_v then found = true end
+	---@param enable boolean
+	lualib = function(self, enable)
+		if enable then
+			local library = self.client.config.settings.Lua.workspace.library
+			local lualib = vim.split(os.getenv "LUA_LIB" or "", ";")
+			for k, v in pairs(lualib) do
+				local found = false
+				for j, lib_v in pairs(library) do
+					if v == lib_v then found = true end
+				end
+				if not found then table.insert(library, v) end
 			end
-			if not found then table.insert(library, v) end
+			vim.notify "lua_ls.lualib"
 		end
-		vim.notify "lualib ok"
 		return self
 	end,
-	runtime = function(self, list)
-		local library = self.client.config.settings.Lua.workspace.library
-		for i = #library, 1, -1 do
-			local value = library[i]
-			if string.find(value, "myNeovimPackages") then table.remove(library, i) end
-		end
-		for _, name in ipairs(list) do
-			for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
-				if string.find(path, name) then table.insert(library, path) end
+	runtime = function(self, enable, list)
+		if enable then
+			local library = self.client.config.settings.Lua.workspace.library
+			for i = #library, 1, -1 do
+				local value = library[i]
+				if string.find(value, "myNeovimPackages") then table.remove(library, i) end
 			end
+			for _, name in ipairs(list) do
+				for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
+					if string.find(path, name) then table.insert(library, path) end
+				end
+			end
+			vim.notify 'lua_ls.runtime'
 		end
-		vim.notify 'runtime ok'
 		return self
 	end,
 	notify = function(self)
 		self.client.notify("workspace/didChangeConfiguration", { settings = self.client.config.settings, })
-		vim.notify 'lua_ls notify'
+		vim.notify 'lua_ls.notif workspace/didChangeConfiguration'
 	end,
 }
 

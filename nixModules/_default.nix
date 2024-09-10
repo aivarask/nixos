@@ -10,7 +10,6 @@
   { environment.systemPackages = with pkgs; [ taplo taplo-cli taplo-lsp ]; } # toml
   { environment.systemPackages = with pkgs; [ vim-vint nodePackages.vim-language-server ]; } # vim
   { environment.systemPackages = with pkgs; [ yaml-language-server ]; } # yaml
-  { environment.systemPackages = with pkgs; [ zig zls zig-shell-completions zap ]; } # zig
   {
     environment.systemPackages = with pkgs; [
       pyright

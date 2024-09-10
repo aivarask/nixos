@@ -1,6 +1,5 @@
--- NOTE: https://vi.stackexchange.com/questions/22129/which-keys-are-free-unmapped-by-default-in-vim
 require "nvim-surround".setup {}
-wk = require "which-key"
+local wk = require "which-key"
 wk.setup {
 	preset = "helix",
 	sort = { "alphanum", },
@@ -78,9 +77,9 @@ wk.add { --- @see H_checkhealth
 	{ "<leader>Hw", "<cmd>checkhealth which-key<CR>", },
 }
 
-dap = require "dap"
-dapui = require "dapui"
-widgets = require "dap.ui.widgets"
+local dap = require "dap"
+local dapui = require "dapui"
+local widgets = require "dap.ui.widgets"
 require "persistent-breakpoints".setup { load_breakpoints_event = { "BufReadPost", }, }
 
 wk.add { --- @see d_dap
@@ -142,7 +141,7 @@ wk.add {
 	{ "<leader>gg", function() vim.fn.expand "<cWORD>":gsub("github:", "https://github.com/"):gsub(";", ""):xdg_open() end,      desc = "github:owner/repo", },
 }
 
-gitsigns = require "gitsigns"
+local gitsigns = require "gitsigns"
 gitsigns.setup { signcolumn = false, }
 wk.add {
 	{ "<leader>h",   group = "gitsigns", },
