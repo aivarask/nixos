@@ -47,12 +47,10 @@
       common = {
         imports = [ ]
           ++ include ./config
-          ++ include ./config/environment
           ++ include ./config/programs
           ++ include ./config/services
           ++ include ./config/suckless
           ++ include ./config/systemd
-          ++ include ./www/hello
         ;
         nixpkgs.overlays =
           with inputs; [
@@ -108,7 +106,6 @@
           modules = commonModules ++ [
             common
             ./_dell.nix
-            ./_audio.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
             nixos-hardware.nixosModules.common-hidpi

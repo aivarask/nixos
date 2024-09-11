@@ -24,8 +24,6 @@
       ci = "commit";
       pr = "pull --rebase";
     };
-    delta = {
-      enable = false;
-    };
+    delta = { enable = false; };
   };
 }

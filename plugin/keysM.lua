@@ -5,7 +5,7 @@ wk.add {
 	-- <M-s> switch
 	-- <M-w> https//github.com/windwp/nvim-autopairs#fastwrap
 	{ "<M-1>",      "<cmd>Telescope find_files default_text=Make\\ |\\ .mk<CR>", mode = { "n", "i", }, },
-	{ "<M-c>",      [[:Commentary<CR>]],                                         mode = { "n", "i", "v", }, },
+	{ "<M-c>",      "<cmd>Commentary<CR>",                                       mode = { "n", "i", "v", }, },
 	{ "<M-e>1",     "<cmd>edit .luarc.json<CR>", },
 	{ "<M-e><M-E>", "<cmd>edit plugin/keysM.lua<CR>", },
 	{ "<M-e>d",     "<cmd>edit /etc/nixos/doc/nixos.txt<CR>", },

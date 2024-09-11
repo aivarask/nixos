@@ -32,14 +32,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	end,
 })
 
-wk.add {
-	{ "-",     "<cmd>cd ..<CR>", },
-	{ "<F1>",  function() vim.cmd.help(vim.fn.expand "<cword>") end, mode = { "n", "i", "v", }, },
-	{ "<F11>", "<cmd>LazyGit<CR>",                                   mode = { 'n', 't', }, },
-	{ "qq",    [[:NvimTreeToggle<CR>]],                              noremap = true, },
-	{ "qw",    [[:NvimTreeCollapse<CR>]], },
-}
-
 vim.cmd [[
 map <leader><leader>m :messages<CR>
 map <leader><leader>q :quitall<CR>
@@ -129,17 +121,6 @@ wk.add { --- @see d_dap
 	{ "<leader>dZ", dap.terminate, desc = "terminate", },
 }
 
-local p = [[!nix eval nixos\#nixosConfigurations.]]
-local h = vim.uv.os_gethostname()
-local w = function() return vim.fn.expand "<cword>" end
-string.xdg_open = function(v) vim.cmd("!xdg-open " .. v) end
-wk.add {
-	{ "<leader>g",  group = "xdg-open",                                                                                          desc = "xdg-open", },
-	{ "<leader>gc", function() vim.cmd([[!composer browse ]] .. vim.fn.expand "<cWORD>":gsub(":", "")) end,                      desc = "composer browse", },
-	{ "<leader>gd", function() vim.cmd(p .. h .. ".pkgs." .. w() .. ".meta.description | xargs notify-send") end,                desc = "description", },
-	{ "<leader>gD", function() vim.cmd(p .. h .. ".pkgs." .. w() .. [[.meta.longDescription --raw | xargs -0 notify-send]]) end, desc = "longDescription", },
-	{ "<leader>gg", function() vim.fn.expand "<cWORD>":gsub("github:", "https://github.com/"):gsub(";", ""):xdg_open() end,      desc = "github:owner/repo", },
-}
 
 local gitsigns = require "gitsigns"
 gitsigns.setup { signcolumn = false, }
