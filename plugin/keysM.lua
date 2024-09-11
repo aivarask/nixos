@@ -16,42 +16,16 @@ wk.add {
 	{ "<M-e>n",     "<cmd>edit lsp/~neotest.lua<CR>", },
 	{ "<M-e>s",     "<cmd>edit " .. vim.env.SXHKDRC .. "<CR>", },
 	{ "<M-e>t",     "<cmd>edit plugin/treesitter.lua<CR>", },
+	{ "<M-f>",      "<cmd>Files<cr>", },
+	{ "<M-g>",      "<cmd>Rg<cr>", },
 }
 
 wk.add {
-	{
-		"?a",
-		function() wk.show {} end,
-		desc = "all",
-	},
-	{
-		"??",
-		function() wk.show { global = false, } end,
-		desc = "w/o global",
-	},
-	{
-		"?i",
-		function() wk.show { mode = "i", } end,
-		desc = "i",
-	},
-	{
-		"?n",
-		function() wk.show { mode = "n", } end,
-		desc = "n",
-	},
-	{
-		"?v",
-		function() wk.show { mode = "v", } end,
-		desc = "v",
-	},
-	{
-		"?c",
-		function() wk.show { mode = "c", } end,
-		desc = "c",
-	},
-	{
-		"?z",
-		function() wk.show { keys = "/", } end,
-		desc = "z",
-	},
+	{ "?a", function() wk.show {} end,                  desc = "all", },
+	{ "??", function() wk.show { global = false, } end, desc = "w/o global", },
+	{ "?i", function() wk.show { mode = "i", } end,     desc = "i", },
+	{ "?n", function() wk.show { mode = "n", } end,     desc = "n", },
+	{ "?v", function() wk.show { mode = "v", } end,     desc = "v", },
+	{ "?c", function() wk.show { mode = "c", } end,     desc = "c", },
+	{ "?z", function() wk.show { keys = "/", } end,     desc = "z", },
 }

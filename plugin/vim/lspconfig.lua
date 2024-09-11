@@ -75,7 +75,6 @@ c.jsonls.setup {
 	},
 }
 
-
 c.nixd.setup {
 	settings = {
 		nixd = {

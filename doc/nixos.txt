@@ -83,5 +83,16 @@ https://nixos.wiki/wiki/Audio_production
 xorg
 https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
 
+============
+git-hooks
+https://github.com/cachix/git-hooks.nix
+
+============
+nixfmt
+https://github.com/NixOS/nixfmt
+
+============
+nixd
+https://github.com/nix-community/nixd
 
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly
