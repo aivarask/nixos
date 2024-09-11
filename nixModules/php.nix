@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
     PATH = [
@@ -39,6 +40,5 @@
       phan
       phive
     ])
-    ++ (with pkgs.nodePackages; [ intelephense ])
-  ;
+    ++ (with pkgs.nodePackages; [ intelephense ]);
 }

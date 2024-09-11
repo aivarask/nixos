@@ -5,12 +5,24 @@ _: {
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      package = { disabled = true; };
-      golang = { disabled = true; };
-      lua = { disabled = true; };
-      nodejs = { disabled = true; };
-      php = { disabled = true; };
-      rust = { disabled = true; };
+      package = {
+        disabled = true;
+      };
+      golang = {
+        disabled = true;
+      };
+      lua = {
+        disabled = true;
+      };
+      nodejs = {
+        disabled = true;
+      };
+      php = {
+        disabled = true;
+      };
+      rust = {
+        disabled = true;
+      };
     };
   };
 }

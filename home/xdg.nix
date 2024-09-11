@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   xdg.configFile = {
     "nicotine/config_def" = {
       source = ./xdg_nicotine;

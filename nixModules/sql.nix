@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # ../modules/services/databases/mysql.nix
   environment.systemPackages = with pkgs; [
     sqlite-interactive
@@ -37,4 +38,3 @@
     '';
   };
 }
-

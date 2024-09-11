@@ -1,3 +1,4 @@
-LS_COLORS: (self: super: {
+LS_COLORS:
+(_: _: {
   inherit LS_COLORS;
 })

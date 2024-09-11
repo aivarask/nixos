@@ -1,4 +1,5 @@
-{ pkgs, options, ... }: {
+{ ... }:
+{
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   systemd.network.enable = true;
   systemd = {
     sleep.extraConfig = ''

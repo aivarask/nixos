@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.mtr.enable = true;
   programs.bandwhich.enable = false;
   programs.browserpass.enable = false;
@@ -6,9 +7,8 @@
   programs.npm.enable = true; # check other files
   programs.screen = {
     enable = true;
-    screenrc = ''
-'';
+    screenrc = '''';
   };
   programs.sharing.enable = true;
-  programs.wireshark.enable = true; # tshark 
+  programs.wireshark.enable = true; # tshark
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.shellAliases = {
     nrs = "nixos-rebuild switch";
     nrt = "nixos-rebuild test";
@@ -10,6 +11,7 @@
   };
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
+    nixd
     nil
     nurl
     deadnix

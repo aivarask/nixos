@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.pipewire = {
     enable = false;
     alsa.enable = true;

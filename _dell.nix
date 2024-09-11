@@ -1,19 +1,40 @@
 # DELL XPS 7590
 # https://www.dell.com/support/manuals/en-lt/xps-15-7590-laptop/xps-15-7590-setup-and-specifications
-{ config, lib, modulesPath, ... }: {
+{
+  config,
+  lib,
+  modulesPath,
+  ...
+}:
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" "rtsx_pci_sdmmc" "usb_storage" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "sd_mod"
+      "rtsx_pci_sdmmc"
+      "usb_storage"
+    ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
 
   fileSystems = {
-    "/" = { device = "zroot/root/nixos"; fsType = "zfs"; };
-    "/home" = { device = "zroot/home"; fsType = "zfs"; };
-    "/boot" = { device = "/dev/disk/by-uuid/CFAB-7FF4"; fsType = "vfat"; };
+    "/" = {
+      device = "zroot/root/nixos";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "zroot/home";
+      fsType = "zfs";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/CFAB-7FF4";
+      fsType = "vfat";
+    };
   };
   swapDevices = [ ];
 
@@ -34,13 +55,19 @@
     # QT_FONT_DPI = "144";
   };
 
-  networking = { hostName = "dell"; hostId = "8425e349"; };
+  networking = {
+    hostName = "dell";
+    hostId = "8425e349";
+  };
 
   systemd.network.networks."10-hw" = {
     name = "wlp59s0";
     matchConfig.Name = "wlp59s0";
     linkConfig.RequiredForOnline = "yes";
-    networkConfig = { DHCP = "ipv4"; IPv6AcceptRA = true; };
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
   };
 
   # https://github.com/NixOS/nixos-hardware/blob/master/dell/xps/15-7590/nvidia/default.nix

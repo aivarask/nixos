@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # https://www.youtube.com/watch?v=GH3kpsbbERo
   environment.shellAliases = {
     mc = "tmux split -h lf; lf";

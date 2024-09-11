@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # https://github.com/junegunn/fzf#usage
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
   home.shellAliases = {

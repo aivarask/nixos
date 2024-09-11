@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  codelens = with pkgs.vimPlugins;[
+  codelens = with pkgs.vimPlugins; [
     # fold-preview-nvim
     goto-preview
     hover-nvim
@@ -74,23 +74,21 @@ let
     neotest-zig
     neotest-vitest
   ];
-  treesitter =
-    with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-endwise
-      nvim-treesitter-context
-      nvim-ts-autotag
-      nvim-ts-context-commentstring
-      nvim-treesitter-textobjects
-      nvim-treesitter-textsubjects
-    ];
-  next =
-    with pkgs.vimPlugins; [
-      nui-nvim
-      fidget-nvim
-      nvim-notify
-      plenary-nvim
-    ];
+  treesitter = with pkgs.vimPlugins; [
+    nvim-treesitter.withAllGrammars
+    nvim-treesitter-endwise
+    nvim-treesitter-context
+    nvim-ts-autotag
+    nvim-ts-context-commentstring
+    nvim-treesitter-textobjects
+    nvim-treesitter-textsubjects
+  ];
+  next = with pkgs.vimPlugins; [
+    nui-nvim
+    fidget-nvim
+    nvim-notify
+    plenary-nvim
+  ];
 in
 {
   programs.neovim.extraLuaPackages = ps: [

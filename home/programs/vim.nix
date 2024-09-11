@@ -23,12 +23,14 @@ in
 {
   programs.vim = {
     enable = true;
-    plugins = common ++ (with pkgs.vimPlugins; [
-      # h local-additions
-      # vim-repeat vim-sensible vim-matchit
-      vim-surround
-      auto-pairs
-    ]);
+    plugins =
+      common
+      ++ (with pkgs.vimPlugins; [
+        # h local-additions
+        # vim-repeat vim-sensible vim-matchit
+        vim-surround
+        auto-pairs
+      ]);
     settings = { };
     extraConfig = ''
       let &runtimepath.=',/etc/nixos'
@@ -36,9 +38,11 @@ in
   };
   programs.neovim = {
     enable = true;
-    plugins = common ++ (with pkgs.vimPlugins; [
-      vim-sensible
-    ]);
+    plugins =
+      common
+      ++ (with pkgs.vimPlugins; [
+        vim-sensible
+      ]);
     extraConfig = builtins.concatStringsSep "\n" [
       ''
         let &runtimepath.=',/etc/nixos'

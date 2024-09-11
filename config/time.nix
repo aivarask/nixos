@@ -1,3 +1,4 @@
-{ ... }: {
+{ ... }:
+{
   time.timeZone = "Europe/Vilnius";
 }

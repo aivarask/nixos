@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   services.blueman = {
     # Device B8:53:AC:C2:7F:24 Aivaras’s iPhone
     # Device AC:90:85:C6:DA:FD AirPods

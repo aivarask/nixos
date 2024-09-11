@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  # imports = [ ./options/sshd.nix ./sshd.nix ];
-  # imports = [ ./sss.nix ];
   environment.packages = with pkgs; [
     utillinux
     which
@@ -29,7 +27,7 @@
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
     config =
-      { config, lib, pkgs, ... }:
+      { ... }:
       {
         home.stateVersion = "24.05";
         programs.bash = {

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   security.acme = {
     acceptTerms = true;
     defaults.email = "kalesnykas.aivaras@gmail.com";

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.variables = {
     NODE_OPTIONS = "--no-warnings";
     PNPM_HOME = "$HOME/.pnpm-global";
@@ -12,7 +13,8 @@
     ];
   };
   environment.systemPackages =
-    with pkgs; [
+    with pkgs;
+    [
       nodejs_22
       corepack_22
       eslint_d
@@ -23,6 +25,7 @@
     ]
     ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global
+      pnpm-shell-completion
       serve
       pm2
       dotenv-cli

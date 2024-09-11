@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.shellAliases = {
     ecip = "echo $C_INCLUDE_PATH | tr ':' '\n'";
   };

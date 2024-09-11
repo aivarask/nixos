@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  imports = [ ./ff/ff_bookmarks.nix ./ff/ff_search.nix ];
+{ pkgs, ... }:
+{
+  imports = [
+    ./ff/ff_bookmarks.nix
+    ./ff/ff_search.nix
+  ];
   home.packages = with pkgs; [ geckodriver ];
   programs.firefox = {
     # nativeMessagingHosts = { };
@@ -65,7 +69,11 @@
         "devtools.editor.keymap" = "vim";
         "devtools.inspector.showUserAgentStyles" = true;
         "devtools.responsive.html.displayedDeviceList" = {
-          added = [ "iPhone 6/7/8" "1080p Full HD Television (Custom)" "Fixasparts" ];
+          added = [
+            "iPhone 6/7/8"
+            "1080p Full HD Television (Custom)"
+            "Fixasparts"
+          ];
           removed = [
             "Galaxy Note 20"
             "Galaxy Note 20 Ultra"

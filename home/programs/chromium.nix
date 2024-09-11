@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [ chromedriver ];
   programs.chromium = {
     enable = true;
@@ -11,7 +12,7 @@
     ];
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
-      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium 
+      { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       { id = "aghfnjkcakhmadgdomlmlhhaocbkloab"; } # just-black
     ];
   };

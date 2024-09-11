@@ -1,5 +1,9 @@
-{ ... }: {
-  networking. firewall.allowedTCPPorts = [ 9091 51413 ];
+{ ... }:
+{
+  networking.firewall.allowedTCPPorts = [
+    9091
+    51413
+  ];
   services.transmission = {
     enable = false;
     settings = {

@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   services.dwm-status = {
     enable = true;
     extraConfig = ''
@@ -40,7 +41,10 @@
     '';
     order = lib.mkMerge [
       # [ "audio" ]
-      (lib.mkIf (config.networking.hostName == "dell") [ "backlight" "battery" ])
+      (lib.mkIf (config.networking.hostName == "dell") [
+        "backlight"
+        "battery"
+      ])
       [
         # "cpu_load"
         "network"

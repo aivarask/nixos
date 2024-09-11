@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   systemd.services."pm2-example" = {
     enable = false;
     description = "PM2 process manager";

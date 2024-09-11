@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = false;
     package = pkgs.vscodium.fhs;
@@ -16,12 +17,11 @@
         command = "workbench.action.files.saveAll";
       }
     ];
-    extensions = with pkgs.vscode-extensions;
-      [
-        bbenoist.nix
-        ms-python.python
-        # ms-azuretools.vscode-docker
-        # vscodevim.vim
-      ];
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      ms-python.python
+      # ms-azuretools.vscode-docker
+      # vscodevim.vim
+    ];
   };
 }

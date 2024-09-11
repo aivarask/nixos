@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   users = {
     defaultUserShell = pkgs.zsh;
   };
@@ -13,6 +14,13 @@
   users.users.ak = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "pulse" "video" "disk" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "pulse"
+      "video"
+      "disk"
+      "networkmanager"
+    ];
   };
 }

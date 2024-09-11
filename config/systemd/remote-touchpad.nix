@@ -1,5 +1,6 @@
 # XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [ remote-touchpad ];
   networking.firewall.allowedTCPPorts = [ 9000 ];
   systemd.services.remote-touchpad = {
@@ -20,4 +21,3 @@
     };
   };
 }
-

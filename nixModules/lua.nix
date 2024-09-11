@@ -1,44 +1,51 @@
 # https://nixos.wiki/wiki/Lua
 { pkgs, ... }:
 let
-  myLuaPackages = with pkgs; (luajit.withPackages (ps: with ps; [
-    # lgi 
-    # luarepl
-    # vicious
-    # vusted
-    penlight
-    busted
-    luassert
-    plenary-nvim
-    inspect
-    magick
-    jsregexp
-    ldoc
-    luacheck
-    luadbi-sqlite3
-    luafilesystem
-    luasql-sqlite3
-    luv
-    nvim-nio
-    sqlite
-    std-_debug
-    toml-edit
-  ]));
+  myLuaPackages =
+    with pkgs;
+    (luajit.withPackages (
+      ps: with ps; [
+        # lgi 
+        # luarepl
+        # vicious
+        # vusted
+        penlight
+        busted
+        luassert
+        plenary-nvim
+        inspect
+        magick
+        jsregexp
+        ldoc
+        luacheck
+        luadbi-sqlite3
+        luafilesystem
+        luasql-sqlite3
+        luv
+        nvim-nio
+        sqlite
+        std-_debug
+        toml-edit
+      ]
+    ));
 
-  myLuaLib = with pkgs; (luajit.withPackages (ps: with ps; [
-    penlight
-    busted
-    luassert
-    plenary-nvim
+  myLuaLib =
+    with pkgs;
+    (luajit.withPackages (
+      ps: with ps; [
+        penlight
+        busted
+        luassert
+        plenary-nvim
 
-  ]));
+      ]
+    ));
 in
 {
-  environment.systemPackages = with pkgs;
-    [
-      lua-language-server
-      myLuaPackages
-    ];
+  environment.systemPackages = with pkgs; [
+    lua-language-server
+    myLuaPackages
+  ];
 
   environment.variables = {
     LUA_PATH = (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages);

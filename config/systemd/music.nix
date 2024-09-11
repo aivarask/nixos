@@ -1,7 +1,14 @@
-{ pkgs, ... }: {
-  networking.hosts = { "127.0.0.1" = [ "music.local" ]; };
+{ pkgs, ... }:
+{
+  networking.hosts = {
+    "127.0.0.1" = [ "music.local" ];
+  };
   networking.firewall.allowedTCPPorts = [ 3001 ];
-  services.nginx.virtualHosts."music.local" = { locations."/" = { proxyPass = "http://localhost:3001"; }; };
+  services.nginx.virtualHosts."music.local" = {
+    locations."/" = {
+      proxyPass = "http://localhost:3001";
+    };
+  };
   systemd.services.music = {
     enable = true;
     documentation = [ "https://github.com/vercel/serve" ];

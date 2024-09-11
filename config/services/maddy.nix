@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # https://nixos.wiki/wiki/Maddy
   services.maddy = {
     enable = true;
@@ -41,7 +42,10 @@
     #   ''}"
     # ];
   };
-  networking.firewall.allowedTCPPorts = [ 993 465 ];
+  networking.firewall.allowedTCPPorts = [
+    993
+    465
+  ];
   # https://nixos.wiki/wiki/Maddy#Autoconfig
   # services.go-autoconfig = {
   #   enable = true;

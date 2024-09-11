@@ -1,4 +1,11 @@
-{ config, lib, modulesPath, pkgs, ... }: {
+{
+  config,
+  lib,
+  modulesPath,
+  pkgs,
+  ...
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -6,22 +13,38 @@
   boot.kernelPackages = pkgs.linuxPackages_6_1;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
-    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+    ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
   };
   fileSystems = {
-    "/" = { device = "zroot/root/nixos"; fsType = "zfs"; };
-    "/home" = { device = "zroot/home"; fsType = "zfs"; };
-    "/boot" = { device = "/dev/disk/by-uuid/CE3C-0926"; fsType = "vfat"; };
+    "/" = {
+      device = "zroot/root/nixos";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "zroot/home";
+      fsType = "zfs";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/CE3C-0926";
+      fsType = "vfat";
+    };
   };
   swapDevices = [ ];
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     fancontrol = {
       enable = false;
-      config = '' '';
+      config = '''';
     };
   };
   system.stateVersion = "23.05";

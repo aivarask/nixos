@@ -1,5 +1,8 @@
-{ pkgs, ... }: {
-  environment.variables = { EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 "; };
+{ pkgs, ... }:
+{
+  environment.variables = {
+    EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
+  };
   environment.shellAliases = { };
   fonts = {
     fontconfig = {

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.unclutter = {
     enable = false;
     timeout = 1;
