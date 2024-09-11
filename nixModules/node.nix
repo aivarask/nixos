@@ -23,7 +23,6 @@
     ]
     ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global
-      pnpm-shell-completion
       serve
       pm2
       dotenv-cli

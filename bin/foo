@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-echo 'im bin/foo' "$1"
-

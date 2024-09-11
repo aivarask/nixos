@@ -6,38 +6,43 @@ let
     # luarepl
     # vicious
     # vusted
+    penlight
     busted
+    luassert
+    plenary-nvim
     inspect
+    magick
     jsregexp
     ldoc
     luacheck
     luadbi-sqlite3
     luafilesystem
     luasql-sqlite3
-    luassert
     luv
-    magick
     nvim-nio
-    penlight
-    plenary-nvim
     sqlite
     std-_debug
     toml-edit
   ]));
 
+  myLuaLib = with pkgs; (luajit.withPackages (ps: with ps; [
+    penlight
+    busted
+    luassert
+    plenary-nvim
+
+  ]));
 in
 {
   environment.systemPackages = with pkgs;
     [
-      stylua
-      selene
       lua-language-server
       myLuaPackages
     ];
 
   environment.variables = {
     LUA_PATH = (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages);
-    LUA_LIB = "${myLuaPackages}/share/lua/5.1";
+    LUA_LIB = "${myLuaLib}/share/lua/5.1";
     # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so.0.8.6";
     # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
     LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)};${pkgs.sqlite.out}/lib/libsqlite3.so";

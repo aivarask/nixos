@@ -27,6 +27,7 @@
     completionInit = ''
       # <<< completionInit
       fpath+=(${pkgs.zig-shell-completions}/share/zsh/site-functions)
+      # fpath+=(${pkgs.pnpm-shell-completion}/share/zsh/site-functions)
       source /etc/nixos/zsh/_comp.zsh
       # >>>
     '';
@@ -36,12 +37,6 @@
       # >>>
     '';
     plugins = [
-      # pkgs.zig-shell-completions
-      # {
-      #   src = pkgs.zig-shell-completions;
-      #   file = "zig-shell-completions.plugin.zsh";
-      #   name = "zig-shell-completions";
-      # }
       # pkgs.zsh-autocomplete
       # {
       #   # https://github.com/chisui/zsh-nix-shell

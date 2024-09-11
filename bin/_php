@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-eza --oneline -d /etc/nixos/_php/*/ | dmenu -l 10 | xargs -t alacritty -e 'nvim' 

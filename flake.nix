@@ -35,7 +35,7 @@
     neotest-playwright = { url = "github:thenbe/neotest-playwright"; flake = false; };
     persistent-breakpoints = { url = "github:Weissle/persistent-breakpoints.nvim"; flake = false; };
     # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
-    # musnix = { url = "github:musnix/musnix"; };
+    musnix = { url = "github:musnix/musnix"; };
   };
   outputs =
     { nixpkgs, home-manager, nixos-hardware, nix-colors, nix-on-droid, LS_COLORS, ... } @ inputs:
@@ -91,7 +91,9 @@
         };
         home.file = { };
       };
-      commonModules = include ./nixModules ++ [ ];
+      commonModules = include ./nixModules ++ [
+        inputs.musnix.nixosModules.musnix
+      ];
     in
     {
       formatter."${system}" = pkgs.nixpkgs-fmt;

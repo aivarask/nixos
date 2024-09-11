@@ -75,5 +75,9 @@ https://makefiletutorial.com/#multiple-targets
 nginx
 https://nixos.wiki/wiki/Nginx
 
+============
+audio musnix
+https://nixos.wiki/wiki/Audio_production
+
 
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly
