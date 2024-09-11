@@ -1,8 +1,8 @@
 if vim.lsp.luals.client or nil then
-	vim.lsp.luals:runtime(false, {
+	vim.lsp.luals:runtime(true, {
 		"nvim%-lspconfig",
 		"none%-ls.nvim",
-	})
+	}):notify()
 end
 
 local ftmap = require "null-ls.builtins._meta.filetype_map"
@@ -79,7 +79,7 @@ c.nil_ls.setup {
 	autostart = true,
 	settings = {
 		["nil"] = {
-			formatting = { command = { "nixpkgs-fmt", }, },
+			formatting = { command = { "nixfmt", }, },
 			nix = {
 				maxMemoryMB = 20480,
 				flake = {
@@ -131,4 +131,5 @@ c.yamlls.setup {
 		schemas = require "schemastore".yaml.schemas(),
 	},
 }
+c.taplo.setup {}
 c.zls.setup {}

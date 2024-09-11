@@ -38,9 +38,13 @@ wk.add {
 
 }
 
+vim.cmd [[
+	cab == lua= print('foo')
+	
+]]
 
 
-local function get_visual_selection()
+function get_visual_selection()
 	local s_start = vim.fn.getpos "'<"
 	local s_end = vim.fn.getpos "'>"
 	local n_lines = math.abs(s_end[2] - s_start[2]) + 1
@@ -51,18 +55,27 @@ local function get_visual_selection()
 	else
 		lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
 	end
-	return table.concat(lines, '\n')
+	-- return table.concat(lines, '\n')
+	print(table.concat(lines, '\n'))
 end
 
+vim.keymap.set('v', '<Leader>F', ':<C-u>lua get_visual_selection()<CR>', { silent = true, })
+
 wk.add {
-	{ "<F2>", function()
+	{ '<F3>', function()
 		local mode = vim.fn.mode()
-		local s_start = vim.fn.getpos "'<"
+		-- vim.fn.feedkeys ':<C-u>lua get_visual_selection()<CR>'
+		if mode == 'v' then
+		end
+		vim.ui.select({
+			vim.fn.expand '<cword>',
+			vim.fn.expand '<cWORD>',
+			vim.fn.expand '<cfile>',
+			vim.fn.expand '<cexpr>',
 
-		vim.notify('<F2>' .. mode);
+		}, {}, function(item, idx)
+			if item then vim.cmd.help(item) end
+		end);
+	end, mode = { 'n', 'i', 'v', }, },
 
-		-- local r = get_visual_selection()
-	end, mode = { "v", }, },
 }
-
-vim.fn.feedkeys 'v'

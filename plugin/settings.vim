@@ -15,8 +15,8 @@ set updatetime=1500 timeoutlen=500
 set showtabline=2 statusline+=%F cmdheight=3
 set autoindent 
 set smartindent 
-set shiftwidth=2 
 set tabstop=2
+set shiftwidth=0
 set nolisp
 
 if !has('gui_running')

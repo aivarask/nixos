@@ -1,4 +1,5 @@
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+-- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 require "auto-session".setup { auto_session_allowed_dirs = { "/etc/nixos", }, }
 require "telescope".load_extension "session-lens"
 -- require "dressing".setup {}

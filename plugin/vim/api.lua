@@ -25,7 +25,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			if client.name == 'lua_ls' then
 				vim.lsp.luals.client = client
 				vim.lsp.luals:lualib(true)
-				require 'pl.pretty'
 			end
 		end
 	end,
