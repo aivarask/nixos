@@ -1,6 +1,7 @@
 { ... }:
 {
   nix = {
+
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
     channel.enable = true;

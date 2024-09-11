@@ -80,6 +80,7 @@
     musnix = {
       url = "github:musnix/musnix";
     };
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
   outputs =
     {
@@ -148,8 +149,21 @@
       commonModules = include ./nixModules ++ [
         inputs.musnix.nixosModules.musnix
       ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+          };
+        };
+      });
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };
