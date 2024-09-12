@@ -1,1 +1,1 @@
-set scrolloff=6
+set scrolloff=12

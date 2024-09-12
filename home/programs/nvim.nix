@@ -115,7 +115,6 @@ in
       neogit
       gitsigns-nvim
       lualine-nvim
-      lualine-lsp-progress
       nvim-tree-lua
       neorepl-nvim
       iron-nvim

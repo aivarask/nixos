@@ -1,25 +1,25 @@
 {
-  "rules": {
-    "at-rule-no-unknown": [
-      true,
-      {
-        "ignoreAtRules": [
-          "extends"
-        ]
-      }
-    ],
-    "block-no-empty": true,
-    "unit-allowed-list": [
-      "em",
-      "rem",
-      "s",
-      "vh",
-      "vw",
-      "%",
-      "px",
-      "ch",
-      "fr"
-    ],
-    "declaration-block-no-duplicate-properties": true
-  }
+	"rules": {
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": [
+					"extends"
+				]
+			}
+		],
+		"block-no-empty": true,
+		"unit-allowed-list": [
+			"em",
+			"rem",
+			"s",
+			"vh",
+			"vw",
+			"%",
+			"px",
+			"ch",
+			"fr"
+		],
+		"declaration-block-no-duplicate-properties": true
+	}
 }

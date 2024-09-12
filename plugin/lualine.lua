@@ -1,4 +1,4 @@
-require "lualine".setup {  --- @see lualine
+require "lualine".setup { --- @see lualine
 	options = {
 		disabled_filetypes = {
 			statusline = { "NvimTree", "Outline", "neotest-summary", "neotest-output-panel", },
@@ -34,12 +34,6 @@ require "lualine".setup {  --- @see lualine
 		lualine_b = { vim.uv.cwd, },
 		lualine_c = {
 			{ "filename", path = 1, },
-			-- {
-			-- 	--- @see https://github.com/arkav/lualine-lsp-progress
-			-- 	"lsp_progress",
-			-- 	display_components = { "lsp_client_name", "spinner", { "percentage", }, },
-			-- 	spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 ", },
-			-- },
 		},
 		lualine_x = {
 			"encoding",

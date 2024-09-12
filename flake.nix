@@ -146,7 +146,6 @@
         home.file = { };
       };
       commonModules = include ./nixModules ++ [
-        { nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; }
         inputs.musnix.nixosModules.musnix
       ];
     in
