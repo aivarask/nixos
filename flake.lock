@@ -496,10 +496,9 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "id": "nixpkgs",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "indirect"
       }
     },
     "nmd": {
@@ -558,11 +557,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1726127159,
-        "narHash": "sha256-xkow0BDQPgBm+pZjwxpG/H2rLoRBP6LqQjPscvaZ+bw=",
+        "lastModified": 1726144869,
+        "narHash": "sha256-qkhOz11M4PbadbiLVxlPqFk0q3vOJIFjyA0BoXrO7f8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b24649831b541ea9869b96fbd383e36c632876ad",
+        "rev": "6c0484657df7e38bf357339c2db5bc6e91169d4a",
         "type": "github"
       },
       "original": {
@@ -622,11 +621,7 @@
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
-        "dmenu-flexipatch": "dmenu-flexipatch",
-        "dwm-flexipatch": "dwm-flexipatch",
         "home-manager": "home-manager",
-        "neotest-playwright": "neotest-playwright",
-        "neotest-zig": "neotest-zig",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nix-on-droid": "nix-on-droid",
@@ -634,17 +629,10 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
-        "nvim-dap-vscode-js": "nvim-dap-vscode-js",
-        "nvim-lsp-file-operations": "nvim-lsp-file-operations",
-        "persistent-breakpoints": "persistent-breakpoints",
         "rust-overlay": "rust-overlay",
-        "st-flexipatch": "st-flexipatch",
-        "sxhkd-vim": "sxhkd-vim",
+        "suckless": "suckless",
         "systems": "systems",
-        "tabbed-flexipatch": "tabbed-flexipatch",
-        "vim-interestingwords": "vim-interestingwords",
-        "vim-log-highlighting": "vim-log-highlighting",
-        "vimPlugins": "vimPlugins"
+        "vim-overlay": "vim-overlay"
       }
     },
     "rust-overlay": {
@@ -683,7 +671,7 @@
         "type": "github"
       }
     },
-    "smart": {
+    "smart-semicolon": {
       "flake": false,
       "locked": {
         "lastModified": 1629673541,
@@ -715,6 +703,23 @@
         "type": "github"
       }
     },
+    "suckless": {
+      "inputs": {
+        "dmenu-flexipatch": "dmenu-flexipatch",
+        "dwm-flexipatch": "dwm-flexipatch",
+        "st-flexipatch": "st-flexipatch"
+      },
+      "locked": {
+        "lastModified": 1726146258,
+        "narHash": "sha256-iMSKKEAyr5oP1XgumKgR/pTtNm8HkK+S8ncScqVRjQI=",
+        "path": "/etc/nixos/overlays/suckless",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/overlays/suckless",
+        "type": "path"
+      }
+    },
     "sxhkd-vim": {
       "flake": false,
       "locked": {
@@ -743,22 +748,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "x86_64-linux",
-        "type": "github"
-      }
-    },
-    "tabbed-flexipatch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1710920078,
-        "narHash": "sha256-huQkID0Aiyuf2onQ6mFYWzw1j9Q/4PkCbk78tbAiOeo=",
-        "owner": "bakkeby",
-        "repo": "tabbed-flexipatch",
-        "rev": "f9b93088813e917b0d406bdbf3744be7ebdcb3d9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bakkeby",
-        "repo": "tabbed-flexipatch",
         "type": "github"
       }
     },
@@ -794,18 +783,26 @@
         "type": "github"
       }
     },
-    "vimPlugins": {
+    "vim-overlay": {
       "inputs": {
-        "smart": "smart"
+        "neotest-playwright": "neotest-playwright",
+        "neotest-zig": "neotest-zig",
+        "nvim-dap-vscode-js": "nvim-dap-vscode-js",
+        "nvim-lsp-file-operations": "nvim-lsp-file-operations",
+        "persistent-breakpoints": "persistent-breakpoints",
+        "smart-semicolon": "smart-semicolon",
+        "sxhkd-vim": "sxhkd-vim",
+        "vim-interestingwords": "vim-interestingwords",
+        "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1726129390,
-        "narHash": "sha256-MwncLqibX95MenqHHwB9VrClLZdY7MRfVaCb++0/T+o=",
-        "path": "/root/vimPlugins",
+        "lastModified": 1726147337,
+        "narHash": "sha256-aWwFInPk8nTLZBDtE4+vAWHo7i5TwQk2p8bY0IyAMOU=",
+        "path": "/etc/nixos/overlays/vim",
         "type": "path"
       },
       "original": {
-        "path": "/root/vimPlugins",
+        "path": "/etc/nixos/overlays/vim",
         "type": "path"
       }
     }

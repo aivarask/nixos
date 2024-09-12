@@ -2,7 +2,7 @@
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,60 +23,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
-    dmenu-flexipatch = {
-      url = "github:bakkeby/dmenu-flexipatch";
-      flake = false;
-    };
-    dwm-flexipatch = {
-      url = "github:bakkeby/dwm-flexipatch";
-      flake = false;
-    };
-    st-flexipatch = {
-      url = "github:bakkeby/st-flexipatch";
-      flake = false;
-    };
-    tabbed-flexipatch = {
-      url = "github:bakkeby/tabbed-flexipatch";
-      flake = false;
-    };
     LS_COLORS = {
       url = "github:trapd00r/LS_COLORS";
       flake = false;
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    vim-log-highlighting = {
-      url = "github:MTDL9/vim-log-highlighting";
-      flake = false;
-    };
-    sxhkd-vim = {
-      url = "github:kovetskiy/sxhkd-vim";
-      flake = false;
-    };
-    vim-interestingwords = {
-      url = "github:lfv89/vim-interestingwords";
-      flake = false;
-    };
-    nvim-lsp-file-operations = {
-      url = "github:antosha417/nvim-lsp-file-operations";
-      flake = false;
-    };
-    neotest-zig = {
-      url = "github:lawrence-laz/neotest-zig";
-      flake = false;
-    };
-    nvim-dap-vscode-js = {
-      url = "github:mxsdev/nvim-dap-vscode-js";
-      flake = false;
-    };
-    neotest-playwright = {
-      url = "github:thenbe/neotest-playwright";
-      flake = false;
-    };
-    persistent-breakpoints = {
-      url = "github:Weissle/persistent-breakpoints.nvim";
-      flake = false;
-    };
-    vimPlugins.url = "path:/root/vimPlugins";
+    vim-overlay.url = "path:/etc/nixos/overlays/vim";
+    suckless.url = "path:/etc/nixos/overlays/suckless";
   };
   outputs =
     {
@@ -97,19 +50,21 @@
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       common = {
         imports =
-          [ ]
+          [
+            inputs.suckless.nixosModules.default
+          ]
           ++ include ./config
           ++ include ./config/programs
           ++ include ./config/services
-          ++ include ./config/suckless
           ++ include ./config/systemd;
         nixpkgs.overlays = with inputs; [
+          suckless.overlays.default
+          vim-overlay.overlays.default
           rust-overlay.overlays.default
           nur.overlay
           (import ./overlays/LS_COLORS.nix LS_COLORS)
           neovim-nightly-overlay.overlays.default
-          (import ./overlays/vimPlugins.nix inputs)
-          (import ./overlays/suckless.nix inputs)
+          # (import ./overlays/suckless.nix inputs)
         ];
         nix.registry = {
           os = {
@@ -132,13 +87,13 @@
         home.enableNixpkgsReleaseCheck = false;
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
         imports = [
+          inputs.vim-overlay.home.default
           nix-colors.homeManagerModules.default
         ] ++ include ./home ++ include ./home/programs ++ include ./home/services;
         home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
-          # SYSTEM = config.system.name;
         };
         home.file = { };
       };
@@ -155,6 +110,7 @@
           # DELL XPS 7590
           inherit system;
           modules = commonModules ++ [
+            inputs.suckless.nixosModules.default
             common
             ./hosts/dell.nix
             nixos-hardware.nixosModules.dell-xps-15-7590

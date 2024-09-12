@@ -89,6 +89,7 @@ let
     nvim-notify
     plenary-nvim
   ];
+
 in
 {
   programs.neovim.extraLuaPackages = ps: [
