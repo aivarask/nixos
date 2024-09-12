@@ -142,13 +142,13 @@
         };
         home.file = { };
       };
-      commonModules = include ./nixModules ++ [ ];
+      commonModules = include ./modules ++ [ ];
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [ ./nix-on-droid ];
+        modules = [ ./hosts/redmi.nix ];
       };
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
@@ -156,7 +156,7 @@
           inherit system;
           modules = commonModules ++ [
             common
-            ./_dell.nix
+            ./hosts/dell.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
             nixos-hardware.nixosModules.common-hidpi
@@ -175,7 +175,7 @@
           inherit system;
           modules = commonModules ++ [
             common
-            ./_pc.nix
+            ./hosts/pc.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             nixos-hardware.nixosModules.common-hidpi
