@@ -1,11 +1,10 @@
 { pkgs, ... }:
 {
-  # musnix.enable = true;
   environment.systemPackages = with pkgs; [
     libbs2b
     ladspaPlugins
     vital
-    bitwig-studio
+    # bitwig-studio
     mixxx
   ];
   environment.variables = {
@@ -13,7 +12,6 @@
   };
   services.udev.packages = [
     pkgs.mixxx
-    pkgs.bitwig-studio
-    # pkgs.android-udev-rules
+    # pkgs.bitwig-studio
   ];
 }

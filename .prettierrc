@@ -1,5 +1,0 @@
-{
-  "plugins": ["./node_modules/prettier-plugin-twig-melody"],
-  "printWidth": 60,
-  "html.format.wrapLineLength": 40
-}

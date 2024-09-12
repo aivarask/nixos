@@ -18,7 +18,6 @@
       nodejs_22
       corepack_22
       eslint_d
-      biome
       typescript
       vscode-js-debug
       stylelint-lsp

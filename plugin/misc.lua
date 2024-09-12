@@ -5,7 +5,7 @@ require "telescope".load_extension "session-lens"
 -- require "dressing".setup {}
 require "colorizer".setup {}
 require "nvim-web-devicons".setup {} --- @see devicons
-require "smart-semicolon".setup {}
+
 if vim.uv.os_getenv "DISPLAY" then require("image").setup { backend = "ueberzug" } end
 require "nvim-tree".setup {
 	view = { width = 25, signcolumn = "no", },

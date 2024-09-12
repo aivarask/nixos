@@ -7,7 +7,7 @@ https://devhints.io/vim-help#syntax
 https://github.com/Yeshey/nixOS-Config/blob/main/flake.nix
 
 ============
-magick
+*magick*
 magick mogrify -alpha off -format png *.xcf
 
 ============
@@ -37,10 +37,21 @@ https://www.youtube.com/watch?v=0YBWhSNTgV8 [ Best Way To Manage Project Depende
 nixos.org
 https://nixos.org/manual/nixpkgs/unstable/#chap-stdenv
 
-============ *nixvim*
+============
+*flake*
+https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix
+
+============
+*apps* *flake-apps* https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix/#apps
+
+============ 
+*nixvim*
 https://github.com/nix-community/nixvim
 
 ============
+*twig*
+twiggy-language-server
+prettier-plugin-twig-melody
 https://github.com/moetelo/twiggy
 
 ============    
@@ -76,7 +87,7 @@ nginx
 https://nixos.wiki/wiki/Nginx
 
 ============
-audio musnix
+*audio* musnix bitwig-studio vital
 https://nixos.wiki/wiki/Audio_production
 
 ============

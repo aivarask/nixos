@@ -76,10 +76,7 @@
       url = "github:Weissle/persistent-breakpoints.nvim";
       flake = false;
     };
-    # rustaceanvim = { url = "github:mrcjkb/rustaceanvim"; };
-    musnix = {
-      url = "github:musnix/musnix";
-    };
+    vimPlugins.url = "path:/root/vimPlugins";
   };
   outputs =
     {
@@ -145,9 +142,7 @@
         };
         home.file = { };
       };
-      commonModules = include ./nixModules ++ [
-        inputs.musnix.nixosModules.musnix
-      ];
+      commonModules = include ./nixModules ++ [ ];
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
