@@ -27,7 +27,6 @@ let
     nvim-dap-virtual-text
     nvim-dap-go
     nvim-dap-python
-    nvim-dap-vscode-js
     # rustaceanvim
   ];
   lsp = with pkgs.vimPlugins; [
@@ -35,7 +34,6 @@ let
     SchemaStore-nvim
     nvim-lspconfig
     none-ls-nvim
-    nvim-lsp-file-operations
     refactoring-nvim
     lsp_signature-nvim
     lsp-overloads-nvim
@@ -67,7 +65,6 @@ let
     neotest-jest
     neotest-phpunit
     neotest-pest
-    neotest-playwright
     neotest-plenary
     neotest-python
     neotest-rust
@@ -106,8 +103,6 @@ in
     ++ treesitter
     ++ next
     ++ (with pkgs.vimPlugins; [
-      sxhkd-vim
-      persistent-breakpoints
       auto-session
       which-key-nvim
       nvim-surround

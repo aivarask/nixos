@@ -48,7 +48,12 @@ lib.mkMerge [
       nodePackages.vim-language-server
     ];
   } # vim
-  { environment.systemPackages = with pkgs; [ yaml-language-server ]; } # yaml
+  {
+    environment.systemPackages = with pkgs; [
+      yaml-language-server
+      yq-go
+    ];
+  } # yaml
   {
     environment.systemPackages = with pkgs; [
       pyright

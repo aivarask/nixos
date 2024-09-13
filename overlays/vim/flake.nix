@@ -16,10 +16,6 @@
       url = "github:antosha417/nvim-lsp-file-operations";
       flake = false;
     };
-    neotest-zig = {
-      url = "github:lawrence-laz/neotest-zig";
-      flake = false;
-    };
     nvim-dap-vscode-js = {
       url = "github:mxsdev/nvim-dap-vscode-js";
       flake = false;
@@ -44,6 +40,15 @@
         { pkgs, ... }:
         {
           programs.neovim.plugins = with pkgs.vimPlugins; [
+            # common
+            vim-log-highlighting
+            sxhkd-vim
+            vim-interestingwords
+            # nvim
+            nvim-lsp-file-operations
+            nvim-dap-vscode-js
+            neotest-playwright
+            persistent-breakpoints
             smart-semicolon
           ];
         };

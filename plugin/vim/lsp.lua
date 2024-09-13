@@ -75,7 +75,10 @@ vim.lsp.luals = {
 
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("lua_ls configuration ", {}),
-	pattern = { ".luarc.json", "plugin/vim/lsp.lua", },
+	pattern = {
+		".luarc.json",
+		-- "plugin/vim/lsp.lua",
+	},
 	desc = "client.notify workspace/didChangeConfiguration",
 	callback = function()
 		vim.lsp.luals:notify()

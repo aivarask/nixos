@@ -246,22 +246,6 @@
         "type": "github"
       }
     },
-    "neotest-zig": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1725553030,
-        "narHash": "sha256-l4O4vH3z/qoBG8HeOwadwbQVDeXc5gRU2MUOR8+Kn3c=",
-        "owner": "lawrence-laz",
-        "repo": "neotest-zig",
-        "rev": "fc160b277126cb21a1486d48fc298d06803c3f88",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lawrence-laz",
-        "repo": "neotest-zig",
-        "type": "github"
-      }
-    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -557,11 +541,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1726144869,
-        "narHash": "sha256-qkhOz11M4PbadbiLVxlPqFk0q3vOJIFjyA0BoXrO7f8=",
+        "lastModified": 1726159256,
+        "narHash": "sha256-44W4xQ7ZH145UYThFPx1C04Vak6TepakEkj01i5Csog=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6c0484657df7e38bf357339c2db5bc6e91169d4a",
+        "rev": "d65aa3d5752e2d949465b403a5be0bab4beedc03",
         "type": "github"
       },
       "original": {
@@ -710,7 +694,7 @@
         "st-flexipatch": "st-flexipatch"
       },
       "locked": {
-        "lastModified": 1726146258,
+        "lastModified": 1726148332,
         "narHash": "sha256-iMSKKEAyr5oP1XgumKgR/pTtNm8HkK+S8ncScqVRjQI=",
         "path": "/etc/nixos/overlays/suckless",
         "type": "path"
@@ -786,7 +770,6 @@
     "vim-overlay": {
       "inputs": {
         "neotest-playwright": "neotest-playwright",
-        "neotest-zig": "neotest-zig",
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
         "persistent-breakpoints": "persistent-breakpoints",
@@ -796,8 +779,8 @@
         "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1726147337,
-        "narHash": "sha256-aWwFInPk8nTLZBDtE4+vAWHo7i5TwQk2p8bY0IyAMOU=",
+        "lastModified": 1726149773,
+        "narHash": "sha256-X6bxe8OFZHYr9W3ljgcCIsZElK9ze5cGFWARnouIW3c=",
         "path": "/etc/nixos/overlays/vim",
         "type": "path"
       },

@@ -97,7 +97,7 @@
         };
         home.file = { };
       };
-      commonModules = include ./modules ++ [ ];
+      commonModules = include ./modules ++ include ./ftplugin ++ [ ];
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;

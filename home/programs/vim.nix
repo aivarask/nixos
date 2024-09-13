@@ -13,9 +13,7 @@ let
     vim-devicons # devicons
     vim-floaterm # floaterm
     vim-highlightedyank # highlightedyank
-    vim-interestingwords # https://github.com/lfv89/vim-interestingwords
     vim-lastplace
-    vim-log-highlighting # https://github.com/MTDL9/vim-log-highlighting
     vim-matchup
     direnv-vim
   ];

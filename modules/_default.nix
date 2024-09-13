@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    libreoffice-qt
     # nur.repos.running-grass.postman
     # --
     hyperfine
@@ -10,13 +11,10 @@
     nicotine-plus
     slskd
     figma-linux
-    # gnu
     parallel
 
-    # filesytem
-    inotify-tools # inotifywait inotifywatch
+    inotify-tools
     fswatch
-    # programs
     tremc
     mpv
     telegram-desktop
@@ -35,7 +33,8 @@
     # terminal
     lazygit
     tdrop
-    ueberzug # @alt ueberzugpp
+    ueberzug
+    ueberzugpp
     ollama
     tilda
     cheat
@@ -70,7 +69,6 @@
     unrar
     unzip
     jq
-    yq-go
     ffmpeg
     highlight
     hicolor-icon-theme
