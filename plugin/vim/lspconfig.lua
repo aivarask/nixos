@@ -69,22 +69,21 @@ c.nixd.setup {
 		},
 	},
 }
--- c.nil_ls.setup {
--- 	autostart = true,
--- 	settings = {
--- 		["nil"] = {
--- 			formatting = { command = { "nixfmt", }, },
--- 			nix = {
--- 				maxMemoryMB = 20480,
--- 				flake = {
--- 					-- autoArchive = true,
--- 					-- autoEvalInputs = true,
--- 					nixpkgsInputName = "nixpkgs",
--- 				},
--- 			},
--- 		},
--- 	},
--- }
+c.nil_ls.setup {
+	settings = {
+		["nil"] = {
+			formatting = { command = { "nixfmt", }, },
+			nix = {
+				maxMemoryMB = 20480,
+				flake = {
+					-- autoArchive = true,
+					-- autoEvalInputs = true,
+					nixpkgsInputName = "nixpkgs",
+				},
+			},
+		},
+	},
+}
 c.intelephense.setup {}
 nls.register { nls.builtins.formatting.black, }
 c.pyright.setup {}

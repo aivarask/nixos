@@ -3,7 +3,7 @@
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
-    channel.enable = false;
+    channel.enable = true;
     gc = {
       automatic = true;
       dates = "daily";

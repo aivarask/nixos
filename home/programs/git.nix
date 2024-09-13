@@ -1,36 +1,30 @@
 { ... }:
 {
+  programs.git.delta = {
+    enable = false;
+  };
   programs.git = {
     enable = true;
-    userName = "Aivaras Kalesnykas";
-    userEmail = "kalesnykas.aivaras@gmail.com";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      pull.rebase = false;
-      core = {
-        hookspath = ".githooks";
-      };
-    };
-    ignores = [
-      "*.lock"
-      "*.swp"
-      ".direnv"
-      "build"
-      "node_modules"
-      "package-lock.json"
-      "result"
-      "tags"
-      "packages"
-      "!flake.lock"
-    ];
     aliases = {
       ci = "commit";
       pr = "pull --rebase";
     };
-    delta = {
-      enable = false;
+    extraConfig = {
+      core.hookspath = ".githooks";
+      init.defaultBranch = "main";
+      pull.rebase = true;
     };
+    ignores = [
+      "*.lock"
+      "!flake.lock"
+      "*lock.json"
+      "*lock.yaml"
+      "tags"
+      "node_modules/"
+      "vendor/"
+      "CMakeFiles/"
+    ];
+    userName = "Aivaras Kalesnykas";
+    userEmail = "kalesnykas.aivaras@gmail.com";
   };
 }

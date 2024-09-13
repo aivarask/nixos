@@ -34,6 +34,7 @@ wk.add {
 	{ "<leader>tld", [[:Telescope lsp_document_symbols<CR>]], },
 	{ "<leader>tlw", [[:Telescope lsp_workspace_symbols<CR>]], },
 	{ "<leader>tlx", [[:Telescope lsp_dynamic_workspace_symbols<CR>]], },
+	{ "<leader>tm",  [[:Telescope manix<CR>]], },
 	{ "<leader>tn",  [[:Telescope notify<CR>]], },
 	{ "<leader>tN",  function() ff { cwd = "/etc/nixos", } end,          desc = "find /etc/nixos", },
 	{ "<leader>to",  [[:Telescope vim_options<CR>]], },

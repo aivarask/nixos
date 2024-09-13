@@ -1,18 +1,15 @@
 { pkgs, ... }:
-{
-  environment.variables = {
+rec {
+  home.sessionVariables = {
     NODE_OPTIONS = "--no-warnings";
-    PNPM_HOME = "$HOME/.pnpm-global";
+    PNPM_HOME = "$HOME/.pnpm";
     VSCODE_JS_DEBUG = "${pkgs.vscode-js-debug.outPath}";
-
   };
-  environment.sessionVariables = {
-    PATH = [
-      "$HOME/.pnpm-global"
-      "$HOME/.npm/bin"
-    ];
-  };
-  environment.systemPackages =
+  home.sessionPath = [
+    "${home.sessionVariables.PNPM_HOME}"
+    "$HOME/.npm/bin"
+  ];
+  home.packages =
     with pkgs;
     [
       nodejs_22
@@ -24,7 +21,6 @@
     ]
     ++ (with pkgs.nodePackages; [
       pnpm # ~/.pnpm-global
-      pnpm-shell-completion
       serve
       pm2
       dotenv-cli
