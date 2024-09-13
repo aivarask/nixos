@@ -693,7 +693,7 @@
         "st-flexipatch": "st-flexipatch"
       },
       "locked": {
-        "lastModified": 1726238509,
+        "lastModified": 1726148332,
         "narHash": "sha256-iMSKKEAyr5oP1XgumKgR/pTtNm8HkK+S8ncScqVRjQI=",
         "path": "/etc/nixos/overlays/suckless",
         "type": "path"
@@ -778,7 +778,7 @@
         "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1726238509,
+        "lastModified": 1726149773,
         "narHash": "sha256-X6bxe8OFZHYr9W3ljgcCIsZElK9ze5cGFWARnouIW3c=",
         "path": "/etc/nixos/overlays/vim",
         "type": "path"
