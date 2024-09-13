@@ -65,30 +65,16 @@
           (import ./overlays/LS_COLORS.nix LS_COLORS)
           neovim-nightly-overlay.overlays.default
           # (import ./overlays/suckless.nix inputs)
+          (import ./overlays/manix.nix)
           (final: prev: {
-            manix = prev.manix.override (old: {
-              rustPlatform = old.rustPlatform // {
-                buildRustPackage =
-                  args:
-                  old.rustPlatform.buildRustPackage (
-                    args
-                    // {
-
-                      version = "0.8.0-pr20";
-
-                      src = prev.fetchFromGitHub {
-                        owner = "nix-community";
-                        repo = "manix";
-                        rev = "c532d14b0b59d92c4fab156fc8acd0565a0836af";
-                        sha256 = "sha256-Uo+4/be6rT0W8Z1dvCRXOANvoct6gJ4714flhyFzmKU=";
-                      };
-
-                      cargoHash = "sha256-ey8nXMCFnDSlJl+2uYYFm1YrhJ+r0sq48qtCwhqI0mo=";
-
-                    }
-                  );
+            gow = pkgs.buildGoModule {
+              name = "gow";
+              src = builtins.fetchGit {
+                url = "https://github.com/mitranim/gow";
+                rev = "af11a6e1e9ebccdcdace2a6df619355b85494d74";
               };
-            });
+              vendorHash = "sha256-Xw9V7bYaSfu5kA2505wmef2Ns/Y0RHKbZHUkvCtVNSM=";
+            };
           })
         ];
         nix.registry = {

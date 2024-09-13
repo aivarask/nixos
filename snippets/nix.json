@@ -25,5 +25,13 @@
 			"\toutputs = _: {  };",
 			"}"
 		]
+	},
+	"overlay": {
+		"prefix": [
+			"overlay"
+		],
+		"body": [
+			"(final: prev: { $0 })"
+		]
 	}
 }
