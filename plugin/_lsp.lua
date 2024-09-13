@@ -1,7 +1,10 @@
+
+
 -- local lspattach = vim.api.nvim_create_augroup('LspAttachGroup', {})
 -- vim.api.nvim_create_autocmd("LspAttach", {
 -- 	group = lspattach,
 -- 	desc = "user config",
+-- 	pattern = "*.lua",
 -- 	callback = function(args)
 -- 		local bufnr = args.buf
 -- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -22,9 +25,10 @@
 -- 					display_automatically = false,
 -- 				})
 -- 			end
--- 			if client.name == 'lua_ls' then
--- 				vim.lsp.luals.client = client
--- 			end
+-- 			-- if client.name == 'lua_ls' then
+-- 			-- 	vim.lsp.luals.client = client
+-- 			-- end
 -- 		end
 -- 	end,
 -- })
+

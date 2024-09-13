@@ -28,7 +28,7 @@
     completionInit = ''
       # <<< completionInit
       fpath+=(${pkgs.zig-shell-completions}/share/zsh/site-functions)
-      # fpath+=(${pkgs.pnpm-shell-completion}/share/zsh/site-functions)
+      fpath+=(${pkgs.luajitPackages.busted}/share/zsh/site-functions)
       source /etc/nixos/zsh/_comp.zsh
       # >>>
     '';

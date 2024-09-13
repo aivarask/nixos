@@ -1,10 +1,3 @@
-if vim.lsp.luals.client or nil then
-	vim.lsp.luals:runtime(true, {
-		"nvim%-lspconfig",
-		"none%-ls.nvim",
-	}):notify()
-end
-
 local ftmap = require "null-ls.builtins._meta.filetype_map"
 local nls = require "null-ls"
 nls.setup {
@@ -16,14 +9,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local c = require "lspconfig"
-c.lua_ls.setup {
-	settings = { -- https://luals.github.io/wiki/settings/
-		Lua = {
-			runtime = { version = "LuaJIT", pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", }, },
-			workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME, "${3rd}/luv/library", }, },
-		},
-	},
-}
 
 c.clangd.setup {}
 c.gopls.setup {}

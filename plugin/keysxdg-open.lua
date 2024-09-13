@@ -17,6 +17,7 @@ wk.add {
 		vim.cmd(cmd)
 	end, desc = "nixpkgs.<cword>.homepage", },
 	-- git
+	-- let o = system("nix eval nixpkgs\#" . p . '.meta.position')
 
 	-- { "<leader>gc", function() vim.cmd([[!composer browse ]] .. vim.fn.expand "<cWORD>":gsub(":", "")) end,                             desc = "composer browse", },
 	-- { "<leader>gd", function() vim.cmd(p .. hostname .. ".pkgs." .. w() .. ".meta.description | xargs notify-send") end,                desc = "description", },

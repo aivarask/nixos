@@ -14,9 +14,3 @@ luapath+=(
 	'/etc/nixos/lua/?/init.lua'
 	'/etc/nixos/?.lua'
 )
-
-typeset -TU LUA_LIB lualib ';'
-lualib+=(
-	'/etc/nixos/lua'
-	'/etc/nixos'
-)

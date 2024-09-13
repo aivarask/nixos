@@ -1,4 +1,3 @@
-# https://nixos.wiki/wiki/Lua
 { pkgs, ... }:
 let
   myLuaPackages =
@@ -37,7 +36,6 @@ let
         busted
         luassert
         plenary-nvim
-
       ]
     ));
 in
@@ -46,19 +44,15 @@ in
     lua-language-server
     myLuaPackages
   ];
-
   environment.variables = {
+
     LUA_PATH = (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages);
     LUA_LIB = "${myLuaLib}/share/lua/5.1";
-    # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so.0.8.6";
-    # LUA_CPATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)};${pkgs.sqlite.out}/lib/libsqlite3.so";
+    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)};${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)};${pkgs.sqlite.out}/lib/libsqlite3.so";
   };
-
   environment.shellAliases = {
     elp = "echo $LUA_PATH | tr ';' '\n'";
     elc = "echo $LUA_CPATH | tr ';' '\n'";
-    ell = "echo $LUA_LIB | tr ';' '\n'";
   };
 
 }

@@ -1,11 +1,3 @@
-if vim.lsp.luals.client or nil then
-	vim.lsp.luals:runtime(true, {
-		"notify",
-		"fidget",
-		-- "hover",
-		"plenary.nvim",
-	}):notify()
-end
 
 
 
