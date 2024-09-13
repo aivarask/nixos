@@ -1,8 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  programs.git.delta = {
-    enable = false;
-  };
+  home.packages = with pkgs; [
+    git
+    git-lfs
+    gh
+    git-crypt
+    pre-commit
+  ];
+  programs.git.delta.enable = false;
+  programs.git.lfs.enable = true;
   programs.git = {
     enable = true;
     aliases = {
