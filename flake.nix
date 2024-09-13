@@ -65,7 +65,7 @@
           (import ./overlays/LS_COLORS.nix LS_COLORS)
           neovim-nightly-overlay.overlays.default
           # (import ./overlays/suckless.nix inputs)
-          (import ./overlays/manix.nix)
+          (import ./overlays/manix.nix { })
           (final: prev: {
             gow = pkgs.buildGoModule {
               name = "gow";
