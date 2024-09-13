@@ -8,10 +8,6 @@ let
         # luarepl
         # vicious
         # vusted
-        penlight
-        busted
-        luassert
-        plenary-nvim
         inspect
         magick
         jsregexp
@@ -21,13 +17,11 @@ let
         luafilesystem
         luasql-sqlite3
         luv
-        nvim-nio
         sqlite
         std-_debug
         toml-edit
       ]
     ));
-
   myLuaLib =
     with pkgs;
     (luajit.withPackages (
@@ -36,6 +30,7 @@ let
         busted
         luassert
         plenary-nvim
+        nvim-nio
       ]
     ));
 in
@@ -45,10 +40,15 @@ in
     myLuaPackages
   ];
   environment.variables = {
-
-    LUA_PATH = (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages);
+    LUA_PATH = builtins.concatStringsSep ";" [
+      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
+    ];
+    LUA_CPATH = builtins.concatStringsSep ";" [
+      (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)
+      (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)
+      "${pkgs.sqlite.out}/lib/libsqlite3.so"
+    ];
     LUA_LIB = "${myLuaLib}/share/lua/5.1";
-    LUA_CPATH = "${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)};${(pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)};${pkgs.sqlite.out}/lib/libsqlite3.so";
   };
   environment.shellAliases = {
     elp = "echo $LUA_PATH | tr ';' '\n'";

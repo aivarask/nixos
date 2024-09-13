@@ -19,13 +19,14 @@ end
 print(vim.env.LUA_LIB)
 assert(1 == 1, 'this is not equal')
 
+require 'nio'
+
 -- if vim.lsp.luals.client or nil then
 -- 	vim.lsp.luals:runtime(true, {
 -- 		"nvim%-lspconfig",
 -- 		"none%-ls.nvim",
 -- 	}):notify()
 -- end
-
 -- if vim.lsp.luals.client or nil then
 -- 	vim.lsp.luals:runtime(true, {
 -- 		"notify",

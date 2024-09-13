@@ -56,6 +56,7 @@ let
     telescope-symbols-nvim
     trouble-nvim
     todo-comments-nvim
+    telescope-manix
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
@@ -89,6 +90,8 @@ let
 
 in
 {
+  home.packages = [ pkgs.manix ];
+
   programs.neovim.extraLuaPackages = ps: [
     ps.magick
   ];

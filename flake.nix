@@ -4,7 +4,7 @@
     systems.url = "github:nix-systems/x86_64-linux";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-on-droid = {
@@ -65,6 +65,31 @@
           (import ./overlays/LS_COLORS.nix LS_COLORS)
           neovim-nightly-overlay.overlays.default
           # (import ./overlays/suckless.nix inputs)
+          (final: prev: {
+            manix = prev.manix.override (old: {
+              rustPlatform = old.rustPlatform // {
+                buildRustPackage =
+                  args:
+                  old.rustPlatform.buildRustPackage (
+                    args
+                    // {
+
+                      version = "0.8.0-pr20";
+
+                      src = prev.fetchFromGitHub {
+                        owner = "nix-community";
+                        repo = "manix";
+                        rev = "c532d14b0b59d92c4fab156fc8acd0565a0836af";
+                        sha256 = "sha256-Uo+4/be6rT0W8Z1dvCRXOANvoct6gJ4714flhyFzmKU=";
+                      };
+
+                      cargoHash = "sha256-ey8nXMCFnDSlJl+2uYYFm1YrhJ+r0sq48qtCwhqI0mo=";
+
+                    }
+                  );
+              };
+            });
+          })
         ];
         nix.registry = {
           os = {
@@ -85,6 +110,11 @@
       commonHome = {
         home.stateVersion = "23.05";
         home.enableNixpkgsReleaseCheck = false;
+        manual.json.enable = true;
+        nix.channels = {
+          inherit nixpkgs;
+          inherit home-manager;
+        };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
         imports = [
           inputs.vim-overlay.home.default
@@ -97,7 +127,7 @@
         };
         home.file = { };
       };
-      commonModules = include ./modules ++ include ./lua ++ [ ];
+      commonModules = include ./modules ++ include ./lua;
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
