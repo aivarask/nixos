@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  environment.shellAliases = {
+  home.shellAliases = {
     ecip = "echo $C_INCLUDE_PATH | tr ':' '\n'";
   };
-  environment.variables = {
+  home.sessionVariables = {
     C_INCLUDE_PATH = builtins.concatStringsSep ":" [
       "${pkgs.zlib.dev}/include"
       "${pkgs.libuv.dev}/include"
@@ -15,7 +15,7 @@
       "${pkgs.nlohmann_json}/include"
     ];
   };
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     clang
     (clang-tools.override {
       enableLibcxx = false;

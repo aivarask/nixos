@@ -49,9 +49,10 @@ map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map <leader><leader>i :InspectTree<CR>
 map <leader><leader>I :Inspect<CR>
+map <M-\> <cmd>Commentary<CR>
 ]]
 
-wk.add { --- @see H_checkhealth
+wk.add {
 	{ "<leader>H",  group = "checkhealth", },
 	{ "<leader>Hc", "<cmd>checkhealth provider.clipboard<CR>", },
 	{ "<leader>Hd", "<cmd>checkhealth dap<CR>", },

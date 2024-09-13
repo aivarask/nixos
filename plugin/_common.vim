@@ -1,5 +1,3 @@
-let g:interestingWordsDefaultMappings = 1
-
 let g:bclose_no_plugin_maps=1
 nnoremap <silent> <M-q> :Bclose<CR>
 nnoremap <M-Q> :Bclose!<CR>

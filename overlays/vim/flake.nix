@@ -43,7 +43,10 @@
             # common
             vim-log-highlighting
             sxhkd-vim
-            vim-interestingwords
+            {
+              plugin = vim-interestingwords;
+              config = ''let g:interestingWordsDefaultMappings = 0'';
+            }
             # nvim
             nvim-lsp-file-operations
             nvim-dap-vscode-js

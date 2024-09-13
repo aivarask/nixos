@@ -11,22 +11,25 @@
   };
   home.packages =
     [
-      (pkgs.php83.buildEnv {
-        extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
-        extraConfig = builtins.concatStringsSep "\n" [
-          "memory_limit = 2G"
-          "cli_server.color = 1"
-          "xdebug.mode = debug"
-          "xdebug.start_with_request = yes"
-          # zend_extension=${pkgs.php81Extensions.xdebug.outPath}/lib/php/extensions/xdebug.so
-        ];
-      })
+      # (pkgs.php83.buildEnv {
+      #   extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
+      #   extraConfig = builtins.concatStringsSep "\n" [
+      #     "memory_limit = 2G"
+      #     "cli_server.color = 1"
+      #     "xdebug.mode = debug"
+      #     "xdebug.start_with_request = yes"
+      #     # zend_extension=${pkgs.php81Extensions.xdebug.outPath}/lib/php/extensions/xdebug.so
+      #   ];
+      # })
     ]
+    # composer global require
+    # wp-cli 
     ++ (with pkgs; [
+      php83
       phpunit
       pest
       phpdocumentor
-      wp-cli # phpactor
+      # phpactor
       symfony-cli
     ])
     ++ (with pkgs.php81Packages; [
