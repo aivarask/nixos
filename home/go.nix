@@ -7,7 +7,7 @@ rec {
     GOPATH = "$HOME/.go";
   };
   home.sessionPath = [
-    "${home.sessionPath.GOPATH}/bin"
+    "${home.sessionVariables.GOPATH}/bin"
   ];
   home.packages = with pkgs; [
     go

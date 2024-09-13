@@ -194,6 +194,7 @@ lazygit = Terminal:new { cmd = "lazygit", hidden = true, }
 
 wk.add { --- @see a_ToggleTerm
 	{ "<leader>a",  group = "ToggleTerm", },
+	{ "<C-\\>",     "<cmd>ToggleTerm<CR>",                                                   mode = { "n", "i", "t", }, },
 	{ "<leader>aa", "<cmd>ToggleTerm<CR>",                                                   mode = { "n", "i", "t", }, },
 	{ "<leader>af", "<cmd>ToggleTerm direction=float <CR>",                                  mode = { "n", "i", "t", }, },
 	{ "<leader>ah", "<cmd>ToggleTerm direction=horizontal<CR>",                              mode = { "n", "i", "t", }, },

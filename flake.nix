@@ -50,32 +50,20 @@
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       common = {
         imports =
-          [
-            inputs.suckless.nixosModules.default
-          ]
+          [ inputs.suckless.nixosModules.default ]
           ++ include ./config
           ++ include ./config/programs
           ++ include ./config/services
           ++ include ./config/systemd;
         nixpkgs.overlays = with inputs; [
-          suckless.overlays.default
-          vim-overlay.overlays.default
-          rust-overlay.overlays.default
-          nur.overlay
-          (import ./overlays/LS_COLORS.nix LS_COLORS)
           neovim-nightly-overlay.overlays.default
-          # (import ./overlays/suckless.nix inputs)
+          nur.overlay
+          rust-overlay.overlays.default
+          vim-overlay.overlays.default
+          suckless.overlays.default
+          (import ./overlays/LS_COLORS.nix LS_COLORS)
           (import ./overlays/manix.nix { })
-          (final: prev: {
-            gow = pkgs.buildGoModule {
-              name = "gow";
-              src = builtins.fetchGit {
-                url = "https://github.com/mitranim/gow";
-                rev = "af11a6e1e9ebccdcdace2a6df619355b85494d74";
-              };
-              vendorHash = "sha256-Xw9V7bYaSfu5kA2505wmef2Ns/Y0RHKbZHUkvCtVNSM=";
-            };
-          })
+          (import ./overlays/gow.nix pkgs)
         ];
         nix.registry = {
           os = {

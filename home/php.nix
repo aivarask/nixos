@@ -1,25 +1,25 @@
 { pkgs, ... }:
 {
-  environment.sessionVariables = {
+  home.sessionVariables = {
     COMPOSER_ALLOW_SUPERUSER = "1";
-    PATH = [
-      "$HOME/.config/composer/vendor/bin"
-    ];
   };
-  environment.shellAliases = {
+  home.sessionPath = [
+    "$HOME/.config/composer/vendor/bin"
+  ];
+  home.shellAliases = {
     wp = "wp --allow-root";
   };
-  environment.systemPackages =
+  home.packages =
     [
       (pkgs.php83.buildEnv {
         extensions = { enabled, all }: enabled ++ (with all; [ xdebug ]);
-        extraConfig = ''
-          memory_limit = 2G
-          cli_server.color = 1
-          xdebug.mode = debug
-          xdebug.start_with_request = yes 
+        extraConfig = builtins.concatStringsSep "\n" [
+          "memory_limit = 2G"
+          "cli_server.color = 1"
+          "xdebug.mode = debug"
+          "xdebug.start_with_request = yes"
           # zend_extension=${pkgs.php81Extensions.xdebug.outPath}/lib/php/extensions/xdebug.so
-        '';
+        ];
       })
     ]
     ++ (with pkgs; [
