@@ -21,8 +21,8 @@
     extraOptions = ''
       warn-dirty = false
       experimental-features = nix-command flakes
-			access-tokens = github.com=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
     '';
+		# access-tokens = github.com=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
 
   };
 }
