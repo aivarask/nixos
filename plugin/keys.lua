@@ -40,7 +40,7 @@ map <silent> [c :cprevious<CR>
 map <silent> ]c :cnext<CR>
 map <leader><leader>s :Subvert/<C-r><C-w>//g<Left><Left>
 map <leader><leader>S :%Subvert/<C-r><C-w>//g<Left><Left>
-map <leader><leader>a :call SaveExec()<CR>
+map <silent> <leader><leader>a :call SaveExec()<CR>
 map <leader><leader>+ "+y
 map <leader><leader>t :tabnew<CR>
 map <leader><leader>T :tabclose<CR>
@@ -217,4 +217,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 	end,
 })
-

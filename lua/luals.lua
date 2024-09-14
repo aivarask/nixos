@@ -8,7 +8,13 @@ for i = #library, 1, -1 do
 	local value = library[i]
 	if string.find(value, "myNeovimPackages") then table.remove(library, i) end
 end
-for _, name in ipairs { 'which%-key', "nvim%-nio", 'plenary.nvim', } do
+for _, name in ipairs {
+	'which%-key',
+	"nvim%-nio",
+	'plenary.nvim',
+	'notify',
+	'fidget',
+} do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then table.insert(library, path) end
 	end
@@ -26,52 +32,10 @@ c.lua_ls.setup {
 	},
 }
 
-local wk = require "which-key"
-
-greet = function()
-	vim.notify 'hello 3'
+local client = vim.lsp.get_clients { name = 'lua_ls', }[1] or nil
+if client ~= nil then
+	vim.notify('lua_ls_' .. client.id)
+	-- client.notify("workspace/didChangeConfiguration", { settings = client.config.settings, })
+else
+	vim.notify('client not available, startup case', vim.log.levels.WARN)
 end
-
--- print(vim.env.LUA_LIB)
--- assert(1 == 1, 'this is not equal')
--- require 'nio'
--- if vim.lsp.luals.client or nil then
--- 	vim.lsp.luals:runtime(true, {
--- 		"nvim%-lspconfig",
--- 		"none%-ls.nvim",
--- 	}):notify()
--- end
--- if vim.lsp.luals.client or nil then
--- 	vim.lsp.luals:runtime(true, {
--- 		"notify",
--- 		"fidget",
--- 		-- "hover",
--- 		"plenary.nvim",
--- 	}):notify()
--- end
--- vim.lsp.luals = {
--- 	client = vim.lsp.get_clients { name = 'lua_ls', }[1] or nil,
--- 	inspect = function(self)
--- 		vim.print(self.client.config.settings.Lua.workspace.library)
--- 	end,
--- 	runtime = function(self, enable, list)
--- 		if enable then
--- 			local library = self.client.config.settings.Lua.workspace.library
--- 			for i = #library, 1, -1 do
--- 				local value = library[i]
--- 				if string.find(value, "myNeovimPackages") then table.remove(library, i) end
--- 			end
--- 			for _, name in ipairs(list) do
--- 				for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
--- 					if string.find(path, name) then table.insert(library, path) end
--- 				end
--- 			end
--- 			vim.notify 'lua_ls.runtime'
--- 		end
--- 		return self
--- 	end,
--- 	notify = function(self)
--- 		self.client.notify("workspace/didChangeConfiguration", { settings = self.client.config.settings, })
--- 		vim.notify 'lua_ls.notif workspace/didChangeConfiguration'
--- 	end,
--- }

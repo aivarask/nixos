@@ -3,16 +3,16 @@ let
   common = with pkgs.vimPlugins; [
     bclose-vim
     fzf-vim
-    gruvbox-material # https://github.com/sainnhe/gruvbox-material
+    gruvbox-material
     lf-vim
-    switch-vim # switch
-    vim-abolish # abolish
-    vim-commentary # commentary
+    switch-vim
+    vim-abolish
+    vim-commentary
     vim-cool
     vim-cursorword
-    vim-devicons # devicons
-    vim-floaterm # floaterm
-    vim-highlightedyank # highlightedyank
+    vim-devicons
+    vim-floaterm
+    vim-highlightedyank
     vim-lastplace
     vim-matchup
     direnv-vim
@@ -24,7 +24,6 @@ in
     plugins =
       common
       ++ (with pkgs.vimPlugins; [
-        # h local-additions
         # vim-repeat vim-sensible vim-matchit
         vim-surround
         auto-pairs
