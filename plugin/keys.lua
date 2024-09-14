@@ -49,7 +49,9 @@ map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map <leader><leader>i :InspectTree<CR>
 map <leader><leader>I :Inspect<CR>
-map <M-\> <cmd>Commentary<CR>
+nmap <M-c> gcc
+imap <M-c> <C-O>gcc
+vmap <M-c> gc
 ]]
 
 wk.add {
@@ -161,26 +163,25 @@ wk.add {
 }
 
 
-neotest = require "neotest"
-wk.add {
-	{ "<leader>n",  group = "neotest", },
-	{ "<leader>nA", function() neotest.run.run { suite = true, strategy = "dap", } end,      desc = "suite dap", },
-	{ "<leader>na", function() neotest.run.run { suite = true, } end,                        desc = "suite", },
-	{ "<leader>nB", function() neotest.run.run { vim.fn.expand "%", strategy = "dap", } end, desc = "% dap", },
-	{ "<leader>nb", function() neotest.run.run(vim.fn.expand "%") end,                       desc = "%", },
-	{ "<leader>nc", neotest.output_panel.clear,                                              desc = "output_panel.clear", },
-	{ "<leader>nL", function() neotest.run.run_last { strategy = "dap", } end,               desc = "run_last dap", },
-	{ "<leader>nl", function() neotest.run.run_last() end,                                   desc = "run_last", },
-	{ "<leader>nn", function() neotest.run.run {} end,                                       desc = "run", },
-	{ "<leader>no", neotest.output_panel.toggle,                                             desc = "output_panel.toggle", },
-	{ "<leader>nR", function() neotest.run.run { strategy = "dap", } end,                    desc = "run dap", },
-	{ "<leader>ns", function() neotest.summary:toggle() end,                                 desc = "summary:toggle", },
-	{ "<leader>nt", neotest.watch.toggle,                                                    desc = "watch.toggle", },
-	{ "<leader>nW", neotest.watch.stop,                                                      desc = "watch.stop", },
-	{ "<leader>nw", neotest.watch.watch,                                                     desc = "watch.watch", },
-	{ "<leader>nx", function() neotest.summary:expand(vim.uv.cwd(), true) end,               desc = "summary:expand", },
-}
-
+-- neotest = require "neotest"
+-- wk.add {
+-- 	{ "<leader>n",  group = "neotest", },
+-- 	{ "<leader>nA", function() neotest.run.run { suite = true, strategy = "dap", } end,      desc = "suite dap", },
+-- 	{ "<leader>na", function() neotest.run.run { suite = true, } end,                        desc = "suite", },
+-- 	{ "<leader>nB", function() neotest.run.run { vim.fn.expand "%", strategy = "dap", } end, desc = "% dap", },
+-- 	{ "<leader>nb", function() neotest.run.run(vim.fn.expand "%") end,                       desc = "%", },
+-- 	{ "<leader>nc", neotest.output_panel.clear,                                              desc = "output_panel.clear", },
+-- 	{ "<leader>nL", function() neotest.run.run_last { strategy = "dap", } end,               desc = "run_last dap", },
+-- 	{ "<leader>nl", function() neotest.run.run_last() end,                                   desc = "run_last", },
+-- 	{ "<leader>nn", function() neotest.run.run {} end,                                       desc = "run", },
+-- 	{ "<leader>no", neotest.output_panel.toggle,                                             desc = "output_panel.toggle", },
+-- 	{ "<leader>nR", function() neotest.run.run { strategy = "dap", } end,                    desc = "run dap", },
+-- 	{ "<leader>ns", function() neotest.summary:toggle() end,                                 desc = "summary:toggle", },
+-- 	{ "<leader>nt", neotest.watch.toggle,                                                    desc = "watch.toggle", },
+-- 	{ "<leader>nW", neotest.watch.stop,                                                      desc = "watch.stop", },
+-- 	{ "<leader>nw", neotest.watch.watch,                                                     desc = "watch.watch", },
+-- 	{ "<leader>nx", function() neotest.summary:expand(vim.uv.cwd(), true) end,               desc = "summary:expand", },
+-- }
 require "toggleterm".setup {
 	shade_terminals = false,
 	size = function(term) return term.direction == "horizontal" and vim.o.lines * 0.4 or (term.direction == "vertical" and vim.o.columns * 0.3) end,
@@ -216,3 +217,4 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 	end,
 })
+

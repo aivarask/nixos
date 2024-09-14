@@ -1,26 +1,40 @@
+local library = {
+	vim.env.VIMRUNTIME,
+	"${3rd}/luv/library",
+	vim.env.LUA_LIB,
+}
+
+for i = #library, 1, -1 do
+	local value = library[i]
+	if string.find(value, "myNeovimPackages") then table.remove(library, i) end
+end
+for _, name in ipairs { 'which%-key', "nvim%-nio", 'plenary.nvim', } do
+	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
+		if string.find(path, name) then table.insert(library, path) end
+	end
+end
+
 local c = require 'lspconfig'
 c.lua_ls.setup {
 	settings = { -- https://luals.github.io/wiki/settings/
 		Lua = {
 			runtime = { version = "LuaJIT", pathStrict = true, path = { "lua/?/init.lua", "lua/?.lua", "?/init.lua", "?.lua", }, },
-			workspace = { checkThirdParty = false, library = {
-				vim.env.VIMRUNTIME,
-				"${3rd}/luv/library",
-				vim.env.LUA_LIB,
-			}, },
+			workspace = { checkThirdParty = false,
+				library = library,
+			},
 		},
 	},
 }
+
+local wk = require "which-key"
 
 greet = function()
 	vim.notify 'hello 3'
 end
 
-print(vim.env.LUA_LIB)
-assert(1 == 1, 'this is not equal')
-
-require 'nio'
-
+-- print(vim.env.LUA_LIB)
+-- assert(1 == 1, 'this is not equal')
+-- require 'nio'
 -- if vim.lsp.luals.client or nil then
 -- 	vim.lsp.luals:runtime(true, {
 -- 		"nvim%-lspconfig",

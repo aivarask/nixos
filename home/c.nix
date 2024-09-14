@@ -16,10 +16,11 @@
     ];
   };
   home.packages = with pkgs; [
-    clang
-    (clang-tools.override {
-      enableLibcxx = false;
-    })
+    # clang
+    # clang-tools
+    # (clang-tools.override {
+    #   enableLibcxx = false;
+    # })
     gcc
     ccls
     glib # gio trash
