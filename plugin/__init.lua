@@ -4,9 +4,9 @@ vim.cmd [[
 " runtime! key/**/*{.lua,.vim}
 ]]
 
+local notify = vim.notify
 
 -- require "fidget".setup {}
-n = vim.notify
 -- vim.notify = require 'notify'
 
 require "notifications"
