@@ -14,6 +14,9 @@ for _, name in ipairs {
 	'plenary.nvim',
 	'notify',
 	'fidget',
+	"nvim%-web%-devicons",
+	-- "none%-ls.nvim",
+	-- "nvim%-lspconfig",
 } do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then table.insert(library, path) end
@@ -29,6 +32,12 @@ c.lua_ls.setup {
 				library = library,
 			},
 		},
+	},
+}
+
+require "nvim-web-devicons".setup {
+	override = {
+		["nix"] = { icon = "", color = "#85ea2d", cterm_color = "110", name = "Nix", },
 	},
 }
 

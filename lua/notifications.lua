@@ -1,6 +1,7 @@
 local wk = require "which-key"
 wk.add {
 	{ "<leader>n", group = "nix", },
+
 	{ "<leader>nn", function()
 		vim.ui.select({
 			'clock',
@@ -24,6 +25,20 @@ wk.add {
 			end
 		end)
 	end, },
+	{ '<leader>nd', function()
+		-- vim.notify = require 'notify'
+		local nio = require "nio"
+		local notify = require 'notify'
+		notify.setup { render = 'compact', }
+		local task = nio.run(function()
+			local prev = nil
+			for i = 1, 3, 1 do
+				local current = notify.notify(os.date(), vim.log.levels.INFO, { title = "Date", replace = prev or nil, })
+				nio.sleep(1000)
+				prev = current.id
+			end
+			notify.notify('Date notification end', vim.log.levels.WARN, { title = "Date", replace = prev, })
+		end)
+	end, },
+
 }
-
-

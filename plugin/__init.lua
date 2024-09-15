@@ -4,11 +4,10 @@ vim.cmd [[
 " runtime! key/**/*{.lua,.vim}
 ]]
 
-require "notify".setup { render = "minimal", }
-vim.notify = require 'notify'
 
+-- require "fidget".setup {}
+n = vim.notify
+-- vim.notify = require 'notify'
 
-
-
+require "notifications"
 require "luals"
-require "zzz"

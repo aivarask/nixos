@@ -39,7 +39,6 @@ let
     lsp-overloads-nvim
   ];
   misc = with pkgs.vimPlugins; [
-    aerial-nvim
     outline-nvim
     flatten-nvim
     glow-nvim
@@ -83,9 +82,11 @@ let
   ];
   next = with pkgs.vimPlugins; [
     nui-nvim
-    fidget-nvim
     nvim-notify
     plenary-nvim
+  ];
+  disabled = [
+    pkgs.vimPlugins.fidget-nvim
   ];
 
 in

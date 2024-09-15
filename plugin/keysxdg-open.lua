@@ -40,8 +40,7 @@ wk.add {
 }
 
 vim.cmd [[
-	cab == lua= print('foo')
-	
+	cabbrev == lua= print('foo')
 ]]
 
 

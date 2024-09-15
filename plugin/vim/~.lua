@@ -1,4 +1,3 @@
-require "fidget".setup {}
 require "lsp-file-operations".setup {}
 require "refactoring".setup {}
 require "lsp_signature".setup {

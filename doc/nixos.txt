@@ -106,4 +106,8 @@ https://github.com/NixOS/nixfmt
 nixd
 https://github.com/nix-community/nixd
 
+============
+unicode
+https://symbl.cc/en/unicode-table/#latin-1-supplement
+
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly
