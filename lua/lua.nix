@@ -8,7 +8,6 @@ let
         # luarepl
         # vicious
         # vusted
-        inspect
         magick
         jsregexp
         ldoc
@@ -26,6 +25,7 @@ let
     with pkgs;
     (luajit.withPackages (
       ps: with ps; [
+        inspect
         penlight
         busted
         luassert

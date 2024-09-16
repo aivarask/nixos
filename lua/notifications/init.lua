@@ -1,7 +1,14 @@
+require 'fidget'.setup {}
+nv = vim.notify
+nf = require 'fidget'.notify
+
 local wk = require "which-key"
 wk.add {
-	{ "<leader>n", group = "nix", },
-
+	{ '<C-M-H>',           [[:Telescope help_tags<CR>]], },
+	{ '<C-M-G>',           [[:Telescope live_grep<CR>]], },
+	{ '<C-M-K>',           [[:Telescope keymaps<CR>]], },
+	{ '<leader><leader>s', function() vim.cmd.lua(vim.api.nvim_get_current_line()) end, },
+	{ "<leader>n",         group = "nix", },
 	{ "<leader>nn", function()
 		vim.ui.select({
 			'clock',
@@ -40,5 +47,4 @@ wk.add {
 			notify.notify('Date notification end', vim.log.levels.WARN, { title = "Date", replace = prev, })
 		end)
 	end, },
-
 }

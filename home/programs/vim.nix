@@ -84,10 +84,11 @@ let
     nui-nvim
     nvim-notify
     plenary-nvim
-  ];
-  disabled = [
     pkgs.vimPlugins.fidget-nvim
   ];
+  disabled =
+    [
+    ];
 
   common = with pkgs.vimPlugins; [
     bclose-vim
@@ -114,6 +115,7 @@ in
     ps.magick
   ];
   programs.neovim = {
+    enable = true;
     extraConfig = builtins.concatStringsSep "\n" [
       "let &runtimepath.=',/etc/nixos'"
     ];
@@ -135,26 +137,25 @@ in
     ++ telescope
     ++ treesitter
     ++ next
-    ++
-      (with pkgs.vimPlugins; [
-        auto-session
-        which-key-nvim
-        nvim-surround
-        indent-blankline-nvim
-        lazygit-nvim
-        neogit
-        gitsigns-nvim
-        lualine-nvim
-        nvim-tree-lua
-        neorepl-nvim
-        iron-nvim
-        toggleterm-nvim
-        {
-          plugin = sqlite-lua;
-          config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
-        }
-      ])
-        common
+    ++ (with pkgs.vimPlugins; [
+      auto-session
+      which-key-nvim
+      nvim-surround
+      indent-blankline-nvim
+      lazygit-nvim
+      neogit
+      gitsigns-nvim
+      lualine-nvim
+      nvim-tree-lua
+      neorepl-nvim
+      iron-nvim
+      toggleterm-nvim
+      {
+        plugin = sqlite-lua;
+        config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
+      }
+    ])
+    ++ common
     ++ (with pkgs.vimPlugins; [
       vim-sensible
     ]);

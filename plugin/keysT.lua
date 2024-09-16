@@ -14,7 +14,16 @@ wk.add {
 }
 
 require "telescope".setup {
-	defaults = { layout_strategy = "vertical", layout_config = { vertical = { width = 0.9, }, }, },
+	defaults = {
+		layout_strategy = "vertical", layout_config = { vertical = { width = 0.9, }, }, },
+	-- mappings = {
+	-- 	i = {
+	-- 		-- map actions.which_key to <C-h> (default: <C-/>)
+	-- 		-- actions.which_key shows the mappings for your picker,
+	-- 		-- e.g. git_{create, delete, ...}_branch for the git_branches picker
+	-- 		["<C-h>"] = "live_grep",
+	-- 	},
+	-- },
 }
 require "telescope".load_extension "dap"
 require "telescope".load_extension "fzf"

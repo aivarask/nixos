@@ -17,6 +17,8 @@ for _, name in ipairs {
 	"nvim%-web%-devicons",
 	-- "none%-ls.nvim",
 	-- "nvim%-lspconfig",
+	"nvim%-cmp",
+	"nvim%-autopairs"
 } do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then table.insert(library, path) end
