@@ -1,6 +1,6 @@
 -- https://github.com/nvim-telescope/telescope.nvim/blob/master/developers.md#first-picker
-local pickers = require('telescope.pickers')
 local finders = require('telescope.finders')
+local pickers = require('telescope.pickers')
 local conf = require('telescope.config').values
 
 local M = {}
