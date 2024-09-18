@@ -6,13 +6,15 @@ vim.lsp.inspect_client = function()
 		end
 		return keys
 	end
-	local pretty = require "pl.pretty"
+	local pretty = require("pl.pretty")
 	local bufnr = vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.get_clients { bufnr = bufnr, }
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
 	vim.ui.select(clients, {
 		prompt = "Select LSP client",
-		format_item = function(client) return client.name end,
+		format_item = function(client)
+			return client.name
+		end,
 	}, function(selected_client)
 		if selected_client then
 			local client = vim.lsp.get_client_by_id(selected_client.id)
@@ -28,4 +30,3 @@ vim.lsp.inspect_client = function()
 		end
 	end)
 end
-

@@ -1,5 +1,5 @@
 -- https://github.com/nvim-telescope/telescope.nvim/blob/master/developers.md#bundling-as-extension
-return require("telescope").register_extension {
+return require("telescope").register_extension({
 	-- setup = function(ext_config, config)
 	--   -- access extension config and user config
 	-- end,
@@ -7,4 +7,4 @@ return require("telescope").register_extension {
 		colors = require("ak").colors,
 		paths = require("ak").paths,
 	},
-}
+})

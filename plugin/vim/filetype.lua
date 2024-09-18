@@ -1,9 +1,9 @@
-vim.filetype.add {
+vim.filetype.add({
 	-- extension = { json = "jsonc", },
 	filename = {
-		['.prettierrc'] = 'json',
+		[".prettierrc"] = "json",
 	},
-}
+})
 
 -- vim.cmd [[
 -- autocmd! BufEnter .env* setlocal ft=sh

@@ -1,8 +1,8 @@
-local path = '/etc/nixos/pack/local-lua-debugger-vscode'
-require "dap".adapters.lua_local = {
+local path = "/etc/nixos/pack/local-lua-debugger-vscode"
+require("dap").adapters.lua_local = {
 	type = "executable",
 	command = "node",
-	args = { path .. "/extension/debugAdapter.js", },
+	args = { path .. "/extension/debugAdapter.js" },
 	enrich_config = function(config, on_config)
 		if not config["extensionPath"] then
 			local c = vim.deepcopy(config)

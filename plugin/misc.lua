@@ -1,8 +1,3 @@
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
--- require("auto-session").setup({
--- 	log_level = vim.log.levels.INFO,
--- 	auto_session_allowed_dirs = { "/etc/nixos" },
--- })
 require("telescope").load_extension("session-lens")
 -- require "dressing".setup {}
 require("colorizer").setup({})

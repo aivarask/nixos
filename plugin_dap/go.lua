@@ -1,4 +1,4 @@
-require "dap-go".setup()
+require("dap-go").setup()
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
 -- local dap = require('dap')
