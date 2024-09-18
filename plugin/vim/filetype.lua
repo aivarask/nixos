@@ -1,8 +1,8 @@
 vim.filetype.add({
-	-- extension = { json = "jsonc", },
-	filename = {
-		[".prettierrc"] = "json",
-	},
+  -- extension = { json = "jsonc", },
+  filename = {
+    ['.prettierrc'] = 'json',
+  },
 })
 
 -- vim.cmd [[
