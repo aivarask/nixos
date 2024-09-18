@@ -31,9 +31,15 @@ require "lualine".setup { --- @see lualine
 	},
 	sections = {
 		lualine_a = { "mode", },
-		lualine_b = { vim.uv.cwd, },
+		lualine_b = {
+			function()
+				-- vim.uv.cwd,
+				local p = vim.fn.expand '%:p'
+				return p:gsub('/nix/store/[%a%d]+-', ''):gsub(vim.uv.cwd() .. '/' or '', '')
+			end,
+		},
 		lualine_c = {
-			{ "filename", path = 1, },
+			-- { "filename", path = 2, },
 		},
 		lualine_x = {
 			"encoding",
@@ -48,10 +54,13 @@ require "lualine".setup { --- @see lualine
 		},
 	},
 	inactive_sections = {
-		lualine_c = { "filename", },
+		lualine_c = {
+			-- *lualine-filename-component-options*
+			-- { "filename", shorting_target = 210, },
+		},
 		lualine_x = {
-			"location",
-			function() return vim.api.nvim_buf_line_count(0) end,
+			-- "location",
+			-- function() return vim.api.nvim_buf_line_count(0) end,
 		},
 	},
 	extensions = { "quickfix", "nvim-tree", "fzf", "toggleterm", "man", "trouble", },

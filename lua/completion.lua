@@ -1,15 +1,15 @@
 local luasnip = require "luasnip"                 --- @see luasnip
-require "luasnip.loaders.from_vscode".lazy_load() --- @see https://github.com/rafamadriz/friendly-snippets
-require "luasnip.loaders.from_vscode".load { paths = "/etc/nixos/snippets", }
+-- require "luasnip.loaders.from_vscode".lazy_load() --- @see https://github.com/rafamadriz/friendly-snippets
+-- require "luasnip.loaders.from_vscode".load { paths = "/etc/nixos/snippets", }
 
 local cmp = require "cmp" --- @see nvim-cmp
 cmp.setup {
 	snippet = {
-		expand = function(args) luasnip.lsp_expand(args.body) end,
+		-- expand = function(args) luasnip.lsp_expand(args.body) end,
 	},
 	mapping = cmp.mapping.preset.insert {
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
+		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		-- ["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-b>"] = cmp.mapping.complete { config = { sources = { { name = "luasnip", }, }, }, },
 		["<C-e>"] = cmp.mapping.abort(),

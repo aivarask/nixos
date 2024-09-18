@@ -20,6 +20,7 @@ let
     cmp-zsh
     cmp-git
     cmp-dap
+		cmp-treesitter
   ];
   dap = with pkgs.vimPlugins; [
     nvim-dap
@@ -34,7 +35,6 @@ let
     SchemaStore-nvim
     nvim-lspconfig
     none-ls-nvim
-    refactoring-nvim
     lsp_signature-nvim
     # lsp-overloads-nvim
   ];

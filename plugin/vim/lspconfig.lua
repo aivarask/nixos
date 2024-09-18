@@ -1,7 +1,9 @@
 local ftmap = require "null-ls.builtins._meta.filetype_map"
 local nls = require "null-ls"
 nls.setup {
-	sources = { nls.builtins.code_actions.refactoring, },
+	sources = {
+	nls.builtins.formatting.stylua,
+	},
 	diagnostics_format = "#{m} [#{c}] (#{s}) null-ls",
 }
 

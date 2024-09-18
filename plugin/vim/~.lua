@@ -1,5 +1,4 @@
 require "lsp-file-operations".setup {}
-require "refactoring".setup {}
 require "lsp_signature".setup {
 	floating_window = false,
 	close_timeout = 1000,

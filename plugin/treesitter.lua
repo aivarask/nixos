@@ -22,7 +22,7 @@ require "nvim-treesitter.configs".setup {                                       
 		},
 	},                          --- @see nvim-treesitter-indentation-mod
 	matchup = { enable = true, }, --- @see vim-matchup
-	endwise = { enable = true, }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
+	endwise = { enable = false, }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
 	textsubjects = {            --- @see https://github.com/RRethy/nvim-treesitter-textsubjects
 		enable = true,
 		prev_selection = ",",

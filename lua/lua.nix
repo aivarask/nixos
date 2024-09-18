@@ -36,18 +36,20 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    stylua
     lua-language-server
     myLuaPackages
   ];
   environment.variables = {
     LUA_PATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
+      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
     ];
     LUA_CPATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)
       (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)
-      "${pkgs.sqlite.out}/lib/libsqlite3.so"
     ];
+    # "${pkgs.sqlite.out}/lib/libsqlite3.so"
     LUA_LIB = "${myLuaLib}/share/lua/5.1";
   };
   environment.shellAliases = {
