@@ -6,7 +6,9 @@ local library = {
 
 for i = #library, 1, -1 do
   local value = library[i]
-  if string.find(value, 'myNeovimPackages') then table.remove(library, i) end
+  if string.find(value, 'myNeovimPackages') then
+    table.remove(library, i)
+  end
 end
 for _, name in ipairs({
   'which',
@@ -23,9 +25,12 @@ for _, name in ipairs({
   'auto%-session',
   'persistent%-breakpoints',
   'telescope',
+  'vimkind',
 }) do
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
-    if string.find(path, name) then table.insert(library, path) end
+    if string.find(path, name) then
+      table.insert(library, path)
+    end
   end
 end
 

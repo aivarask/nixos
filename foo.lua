@@ -1,6 +1,6 @@
+local a = 5
 print('start')
-local a = 10
-for i = 1, 10 do
+for i = 1, 3 do
   print(i)
 end
 print('end')

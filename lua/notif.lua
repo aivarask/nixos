@@ -1,7 +1,6 @@
 require('fidget').setup({})
 nv = vim.notify
 nf = require('fidget').notify
-require('telescope').load_extension('notify')
 
 local wk = require('which-key')
 wk.add({
@@ -10,7 +9,9 @@ wk.add({
   { '<C-M-K>', [[:Telescope keymaps<CR>]] },
   {
     '<leader><leader>s',
-    function() vim.cmd.lua(vim.api.nvim_get_current_line()) end,
+    function()
+      vim.cmd.lua(vim.api.nvim_get_current_line())
+    end,
   },
   { '<leader>n', group = 'nix' },
   {
@@ -28,8 +29,12 @@ wk.add({
           Job:new({
             command = head,
             args = t,
-            on_stdout = function(_, line) vim.notify(line) end,
-            on_exit = function(self, code, signal) require('pl.pretty')(self:result()) end,
+            on_stdout = function(_, line)
+              vim.notify(line)
+            end,
+            on_exit = function(self, code, signal)
+              require('pl.pretty')(self:result())
+            end,
           }):start()
         end
       end)

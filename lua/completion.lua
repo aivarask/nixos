@@ -80,3 +80,18 @@ cmp.setup.filetype({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, {
     { name = 'dap' },
   },
 })
+
+require('nvim-autopairs').setup({ --- @see nvim-autopairs
+  disable_filetype = { 'TelescopePrompt', 'vim' },
+  -- fast_wrap = { map = '<M-w>' },
+  check_ts = true,
+})
+
+-- completions
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:clear()
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({}))
+
+npairs = require('nvim-autopairs')
+local Rule = require('nvim-autopairs.rule')
+local rules = npairs.config.rules

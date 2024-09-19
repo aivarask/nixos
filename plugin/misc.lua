@@ -1,4 +1,3 @@
--- require "dressing".setup {}
 require('colorizer').setup({})
 
 if vim.uv.os_getenv('DISPLAY') then require('image').setup({ backend = 'ueberzug' }) end

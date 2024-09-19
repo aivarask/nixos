@@ -44,7 +44,7 @@ let
     flatten-nvim
     glow-nvim
     neoscroll-nvim
-    dressing-nvim
+    # dressing-nvim
     nvim-colorizer-lua
     nvim-web-devicons
     image-nvim
@@ -101,7 +101,7 @@ let
     vim-cool
     vim-cursorword
     vim-devicons
-    vim-floaterm
+    # vim-floaterm
     vim-highlightedyank
     vim-lastplace
     vim-matchup

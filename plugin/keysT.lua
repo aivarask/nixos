@@ -18,48 +18,24 @@ require('telescope').setup({
     layout_strategy = 'vertical',
     layout_config = { vertical = { width = 0.9 } },
   },
-  -- mappings = {
-  -- 	i = {
-  -- 		-- map actions.which_key to <C-h> (default: <C-/>)
-  -- 		-- actions.which_key shows the mappings for your picker,
-  -- 		-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-  -- 		["<C-h>"] = "live_grep",
-  -- 	},
-  -- },
 })
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('manix')
 local ff = require('telescope.builtin').find_files
 wk.add({
-  { '<leader>t', group = 'Telescope' },
+  { '<leader>t', group = 'Telescope', icon = '' },
   { '<leader>ta', [[:Telescope autocommands<CR>]] },
   { '<leader>tB', [[:Telescope buffers <CR>]] },
   { '<leader>tc', [[:Telescope commands<cr>]] },
-  { '<leader>td', [[:Telescope dap ]] },
   { '<leader>tf', [[:Telescope find_files<cr>]] },
   { '<leader>tg', [[:Telescope live_grep<CR>]] },
   { '<leader>th', [[:Telescope help_tags<CR>]] },
   { '<leader>tk', [[:Telescope keymaps<CR>]] },
-  { '<leader>tl', group = 'LSP' },
-  { '<leader>tld', [[:Telescope lsp_document_symbols<CR>]] },
-  { '<leader>tlw', [[:Telescope lsp_workspace_symbols<CR>]] },
-  { '<leader>tlx', [[:Telescope lsp_dynamic_workspace_symbols<CR>]] },
   { '<leader>tm', [[:Telescope manix<CR>]] },
   { '<leader>tn', [[:Telescope notify<CR>]] },
-  {
-    '<leader>tN',
-    function() ff({ cwd = '/etc/nixos' }) end,
-    desc = 'find /etc/nixos',
-  },
   { '<leader>to', [[:Telescope vim_options<CR>]] },
-  { '<leader>tp', [[:Telescope ak paths<CR>]] },
+  { '<leader>tp', [[:Telescope paths<CR>]] },
   { '<leader>tr', [[:Telescope registers<CR>]] },
   { '<leader>ts', [[:Telescope session-lens<CR>]] },
-  {
-    '<leader>tS',
-    function() ff({ cwd = '/etc/nixos/snippets' }) end,
-    desc = 'find /etc/nixos/snippets',
-  },
+  { '<leader>tS', [[:Telescope snippets<CR>]] },
   { '<leader>tt', [[:Telescope<CR>]] },
 })
 
