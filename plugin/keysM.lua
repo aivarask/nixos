@@ -9,6 +9,7 @@ wk.add({
   { '<M-e>s', '<cmd>edit ' .. vim.env.SXHKDRC .. '<CR>' },
   { '<M-e>f', '<cmd>edit flake.nix<CR>' },
   { '<M-e>l', '<cmd>Telescope find_files cwd=lua<CR>' },
+  { '<M-e>L', '<cmd>Telescope find_files cwd=~/.local/state/nvim<CR>' },
   { '<M-e>p', '<cmd>Telescope find_files cwd=plugin<CR>' },
   { '<M-e><M-e>', '<cmd>Telescope find_files<CR>' },
   { '<M-f>', '<cmd>Files<cr>' },
@@ -16,39 +17,11 @@ wk.add({
 })
 
 wk.add({
-  {
-    '?a',
-    function() wk.show({}) end,
-    desc = 'all',
-  },
-  {
-    '??',
-    function() wk.show({ global = false }) end,
-    desc = 'w/o global',
-  },
-  {
-    '?i',
-    function() wk.show({ mode = 'i' }) end,
-    desc = 'i',
-  },
-  {
-    '?n',
-    function() wk.show({ mode = 'n' }) end,
-    desc = 'n',
-  },
-  {
-    '?v',
-    function() wk.show({ mode = 'v' }) end,
-    desc = 'v',
-  },
-  {
-    '?c',
-    function() wk.show({ mode = 'c' }) end,
-    desc = 'c',
-  },
-  {
-    '?z',
-    function() wk.show({ keys = '/' }) end,
-    desc = 'z',
-  },
+  { '?a', function() wk.show({}) end, desc = 'all' },
+  { '??', function() wk.show({ global = false }) end, desc = 'w/o global' },
+  { '?i', function() wk.show({ mode = 'i' }) end, desc = 'i' },
+  { '?n', function() wk.show({ mode = 'n' }) end, desc = 'n' },
+  { '?v', function() wk.show({ mode = 'v' }) end, desc = 'v' },
+  { '?c', function() wk.show({ mode = 'c' }) end, desc = 'c' },
+  { '?z', function() wk.show({ keys = '/' }) end, desc = 'z' },
 })

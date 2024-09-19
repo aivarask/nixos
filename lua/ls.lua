@@ -2,7 +2,6 @@ local library = {
   vim.env.VIMRUNTIME,
   '${3rd}/luv/library',
   vim.env.LUA_LIB,
-  '/etc/nixos/pack/one-small-step-for-vimkind',
 }
 
 for i = #library, 1, -1 do
@@ -10,19 +9,20 @@ for i = #library, 1, -1 do
   if string.find(value, 'myNeovimPackages') then table.remove(library, i) end
 end
 for _, name in ipairs({
-  'which%-key',
-  'nvim%-nio',
+  'which',
+  'nio',
   'plenary.nvim',
   'notify',
   'fidget',
-  'nvim%-web%-devicons',
-  'none%-ls.nvim',
-  -- "nvim%-lspconfig",
-  'nvim%-cmp',
-  'nvim%-autopairs',
-  'nvim%-dap',
-  'nvim%-dap%-ui',
+  'devicons',
+  'none',
+  'lspconfig',
+  'cmp',
+  'autopairs',
+  'dap',
   'auto%-session',
+  'persistent%-breakpoints',
+  'telescope',
 }) do
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
     if string.find(path, name) then table.insert(library, path) end

@@ -24,10 +24,11 @@ let
   ];
   dap = with pkgs.vimPlugins; [
     nvim-dap
-    nvim-dap-ui
-    nvim-dap-virtual-text
-    nvim-dap-go
-    nvim-dap-python
+		nvim-dap-virtual-text
+    telescope-dap-nvim
+    # nvim-dap-ui
+    # nvim-dap-go
+    # nvim-dap-python
     # rustaceanvim
   ];
   lsp = with pkgs.vimPlugins; [
@@ -51,7 +52,6 @@ let
   telescope = with pkgs.vimPlugins; [
     telescope-nvim
     telescope-fzf-native-nvim
-    telescope-dap-nvim
     telescope-symbols-nvim
     trouble-nvim
     todo-comments-nvim

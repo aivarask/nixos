@@ -1,6 +1,7 @@
 require('fidget').setup({})
 nv = vim.notify
 nf = require('fidget').notify
+require('telescope').load_extension('notify')
 
 local wk = require('which-key')
 wk.add({
