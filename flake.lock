@@ -35,11 +35,11 @@
     "dmenu-flexipatch": {
       "flake": false,
       "locked": {
-        "lastModified": 1726687854,
-        "narHash": "sha256-j3+99z1P/RbYDAJdx9YpABJfyq3X2lQWUncKs6OoLWE=",
+        "lastModified": 1726731105,
+        "narHash": "sha256-ILIeOpSUA6TmsH5ykfk8Jf43v+eI3TR5+eFzGL+mE9U=",
         "owner": "bakkeby",
         "repo": "dmenu-flexipatch",
-        "rev": "23cbc819b9eca634e2453e8a211b1e4b661d67e5",
+        "rev": "43f0483d5a0bd854d5e405d84d4a566728e1a958",
         "type": "github"
       },
       "original": {
@@ -216,11 +216,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726611255,
-        "narHash": "sha256-/bxaYvIK6/d3zqpW26QFS0rqfd0cO4qreSNWvYLTl/w=",
+        "lastModified": 1726764199,
+        "narHash": "sha256-aiw08ZK7PBVwnOglT0rk+VI3ZqPgbFlOWP7SCFb8sHA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d2493de5cd1da06b6a4c3e97f4e7d5dd791df457",
+        "rev": "1f7b8188a9c9c5ba32f9a8351c55f42ecc22b77c",
         "type": "github"
       },
       "original": {
@@ -540,11 +540,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1726725210,
-        "narHash": "sha256-WJS0qFTTHYSsnhuenv8PsJrl0HurSJf4uv8xEOfAtPQ=",
+        "lastModified": 1726766869,
+        "narHash": "sha256-xsJ5GR5K5ypR68pkIIJ7sPvMI/Oj4uTTVotgDKue/ew=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bed6d44c9b843371bf1d873f19b37bada27a34aa",
+        "rev": "75101e2278f7d9ea5652bdfedce719de4e97cb6f",
         "type": "github"
       },
       "original": {
