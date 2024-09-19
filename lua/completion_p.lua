@@ -15,6 +15,6 @@ npairs = require('nvim-autopairs')
 local Rule = require('nvim-autopairs.rule')
 
 -- inspection
-local inspect = require('inspect')
+-- local inspect = require('inspect')
 -- print(inspect(npairs.config.rules { depth = 3, }))
 -- print(inspect(npairs.get_rules('{', { depth = 2, })))

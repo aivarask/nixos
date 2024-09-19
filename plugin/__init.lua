@@ -1,8 +1,4 @@
 vim.loader.enable()
-vim.cmd([[
-" let &runtimepath.=',/etc/nixos/pack/osv'
-" runtime! key/**/*{.lua,.vim}
-]])
 
 vim.o.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 require('telescope').load_extension('session-lens')

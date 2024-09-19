@@ -32,7 +32,7 @@
       url = "github:iagotito/smart-semicolon.nvim";
       flake = false;
     };
-    osv = {
+    one-small-step-for-vimkind = {
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
@@ -52,7 +52,7 @@
               config = ''let g:interestingWordsDefaultMappings = 0'';
             }
             # nvim
-            osv
+            one-small-step-for-vimkind
             nvim-lsp-file-operations
             nvim-dap-vscode-js
             neotest-playwright
@@ -70,11 +70,11 @@
             with inputs;
             prev.vimPlugins
             // {
-              osv = buildVimPlugin {
-                name = "osv";
-                src = osv;
+              one-small-step-for-vimkind = buildVimPlugin {
+                name = "one-small-step-for-vimkind";
+                src = one-small-step-for-vimkind;
                 meta = {
-                  homepage = "https://github.com/MTDL9/vim-log-highlighting";
+                  homepage = "https://github.com/jbyuki/one-small-step-for-vimkind";
                 };
               };
               vim-log-highlighting = buildVimPlugin {

@@ -59,7 +59,7 @@ https://github.com/moetelo/twiggy
 https://github.com/oxalica/nil/blob/main/docs/configuration.md
 
 ============
-lua metatable luadebug *osv*
+lua metatable luadebug osv
 https://devforum.roblox.com/t/full-beginner-guide-to-metatables-what-are-they-and-every-metamethod-explained/2505946
 https://gist.github.com/oatmealine/655c9e64599d0f0dd47687c1186de99f
 https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt
@@ -115,6 +115,12 @@ https://github.com/nix-community/nixd
 ============
 unicode
 https://symbl.cc/en/unicode-table/#latin-1-supplement
+
+============
+runtime runtimepath path
+let &runtimepath.=',/etc/nixos/pack/osv'
+runtime! key/**/*{.lua,.vim}
+
 
 
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly

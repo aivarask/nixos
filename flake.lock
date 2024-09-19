@@ -585,7 +585,7 @@
         "type": "github"
       }
     },
-    "osv": {
+    "one-small-step-for-vimkind": {
       "flake": false,
       "locked": {
         "lastModified": 1723370447,
@@ -787,7 +787,7 @@
         "neotest-playwright": "neotest-playwright",
         "nvim-dap-vscode-js": "nvim-dap-vscode-js",
         "nvim-lsp-file-operations": "nvim-lsp-file-operations",
-        "osv": "osv",
+        "one-small-step-for-vimkind": "one-small-step-for-vimkind",
         "persistent-breakpoints": "persistent-breakpoints",
         "smart-semicolon": "smart-semicolon",
         "sxhkd-vim": "sxhkd-vim",
@@ -795,8 +795,8 @@
         "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1726725980,
-        "narHash": "sha256-l9nbE+mJZ2ttO0fv3vmDwEDUp/GphR1DlZGpGnnH12k=",
+        "lastModified": 1726727215,
+        "narHash": "sha256-sMhdA7AThrUwcym/dh6flT0MixT2c95z9n8xc2sehew=",
         "path": "/etc/nixos/overlays/vim",
         "type": "path"
       },

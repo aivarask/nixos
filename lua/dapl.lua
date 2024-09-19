@@ -67,7 +67,11 @@ wk.add({
 })
 
 dap.adapters = {
+	--- @see one
   osv = function(callback, config, parent)
-    print(vim.inspect(config))
+    -- print(vim.inspect(config))
   end,
 }
+
+--- @see dap-configuration
+-- dap.configurations.osv

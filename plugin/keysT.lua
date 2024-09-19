@@ -35,6 +35,7 @@ wk.add({
   { '<leader>ta', [[:Telescope autocommands<CR>]] },
   { '<leader>tB', [[:Telescope buffers <CR>]] },
   { '<leader>tc', [[:Telescope commands<cr>]] },
+  { '<leader>td', [[:Telescope dap ]] },
   { '<leader>tf', [[:Telescope find_files<cr>]] },
   { '<leader>tg', [[:Telescope live_grep<CR>]] },
   { '<leader>th', [[:Telescope help_tags<CR>]] },
