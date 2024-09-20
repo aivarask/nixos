@@ -19,6 +19,7 @@ function! Ctoggle()
   endif
 endfunction
 
+" packadd comment
 let &packpath.=',/etc/nixos'
 filetype plugin indent on
 set title titlestring=%{expand('%')}\ %{hostname()}
@@ -73,12 +74,15 @@ aug Other
 aug END
 
 if !has('nvim')
+	nmap <leader>k :Maps<cr>
 	nnoremap qq <cmd>NERDTreeToggle<CR>
+	map <leader>c :Commands<cr>
 endif
 
-nnoremap <silent> <leader>q :Bclose<CR>
+nnoremap <silent> <M-q> :Bclose<CR>
 nnoremap <silent> <Plug>(Save) :w<cr>
 map <C-s> <Plug>(Save)
+inoremap <C-s> <C-o><C-s>
 inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>

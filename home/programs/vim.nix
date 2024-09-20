@@ -165,10 +165,14 @@ in
       common
       ++ (with pkgs.vimPlugins; [
         # vim-repeat vim-sensible vim-matchit
-				vim-which-key
+        {
+          plugin = vim-airline;
+          config = ''let g:airline#extensions#tabline#enabled = 1'';
+        }
+        vim-which-key
         vim-surround
         auto-pairs
-				nerdtree
+        nerdtree
       ]);
     settings = { };
     extraConfig = ''
