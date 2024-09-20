@@ -42,23 +42,28 @@
     {
       home.default =
         { pkgs, ... }:
+        let
+          common = with pkgs.vimPlugins; [ sxhkd-vim ];
+        in
         {
-          programs.neovim.plugins = with pkgs.vimPlugins; [
-            # common
-            vim-log-highlighting
-            sxhkd-vim
-            {
-              plugin = vim-interestingwords;
-              config = ''let g:interestingWordsDefaultMappings = 0'';
-            }
-            # nvim
-            one-small-step-for-vimkind
-            nvim-lsp-file-operations
-            nvim-dap-vscode-js
-            neotest-playwright
-            persistent-breakpoints
-            smart-semicolon
-          ];
+          programs.vim.plugins = common ++ (with pkgs.vimPlugins; [ sxhkd-vim ]);
+          programs.neovim.plugins =
+            common
+            ++ (with pkgs.vimPlugins; [
+              # common
+              vim-log-highlighting
+              {
+                plugin = vim-interestingwords;
+                config = ''let g:interestingWordsDefaultMappings = 0'';
+              }
+              # nvim
+              one-small-step-for-vimkind
+              nvim-lsp-file-operations
+              nvim-dap-vscode-js
+              neotest-playwright
+              persistent-breakpoints
+              smart-semicolon
+            ]);
         };
       overlays.default = (
         _: prev:

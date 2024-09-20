@@ -121,6 +121,9 @@ runtime runtimepath path
 let &runtimepath.=',/etc/nixos/pack/osv'
 runtime! key/**/*{.lua,.vim}
 
+============
+vimscript
+let [f, l] = o->substitute("\\n", "", "g")->substitute("\"", "", "g")->split(":")
 
 
 vim:tw=78:ts=8:ft=help:modifiable:noreadonly

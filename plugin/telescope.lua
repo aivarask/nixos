@@ -19,7 +19,7 @@ require('telescope').setup({
     layout_config = { vertical = { width = 0.9 } },
   },
 })
-local ff = require('telescope.builtin').find_files
+
 wk.add({
   { '<leader>t', group = 'Telescope', icon = '' },
   { '<leader>ta', [[:Telescope autocommands<CR>]] },

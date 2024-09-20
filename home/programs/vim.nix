@@ -44,7 +44,7 @@ let
     flatten-nvim
     glow-nvim
     neoscroll-nvim
-    # dressing-nvim
+    dressing-nvim
     nvim-colorizer-lua
     nvim-web-devicons
     image-nvim
@@ -94,7 +94,7 @@ let
     bclose-vim
     fzf-vim
     gruvbox-material
-    lf-vim
+    # lf-vim
     switch-vim
     vim-abolish
     vim-commentary
@@ -165,8 +165,10 @@ in
       common
       ++ (with pkgs.vimPlugins; [
         # vim-repeat vim-sensible vim-matchit
+				vim-which-key
         vim-surround
         auto-pairs
+				nerdtree
       ]);
     settings = { };
     extraConfig = ''

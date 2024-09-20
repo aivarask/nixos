@@ -20,12 +20,15 @@ super + F9
   notify-send ' ♻️  nixos-rebuild switch' "$(nixos-rebuild switch)"
 super + F10
   dunstctl close
+super + F11
+	notify-send 'hello'
+	
 
 super + {q,w,e,r}
-  {tdrop alacritty,\
-  $BROWSER,\
-  alacritty --working-directory=/etc/nixos -e nvim,\
-  alacritty --working-directory=/etc/nixos/siom -e nvim
+  {tdrop alacritty\
+  ,$BROWSER\
+  ,alacritty --working-directory=/etc/nixos -e nvim\
+  ,alacritty --working-directory=/etc/nixos/siom -e nvim
   }
 
 super + ctrl + {q}
@@ -33,7 +36,7 @@ super + ctrl + {q}
 
 super + {W,E,R,T,Y}
   {firefox --private-window\
-  ,alacritty --working-directory=/etc/nixos\
+  ,alacritty --working-directory=/etc/nixos -e vim -S\
   ,alacritty --working-directory=/etc/nixos\
 	,telegram-desktop\
 	,brave youtube.com\
