@@ -540,11 +540,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1726864306,
-        "narHash": "sha256-rbp2nad0Os38CtvEshh4iXwTqWO/a7Yo8tdainEt+hs=",
+        "lastModified": 1726867452,
+        "narHash": "sha256-KOYfmRwrVIZalP0rUCD2dGZyujOagimlERk2Uj4wq/A=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c50344d686ef0cbabb4b4553a29d96b4f5dccc20",
+        "rev": "bd9f04ac4cfc12e9582668a01499c0ea80dd6fd5",
         "type": "github"
       },
       "original": {
@@ -709,7 +709,7 @@
         "st-flexipatch": "st-flexipatch"
       },
       "locked": {
-        "lastModified": 1726238509,
+        "lastModified": 1726148332,
         "narHash": "sha256-iMSKKEAyr5oP1XgumKgR/pTtNm8HkK+S8ncScqVRjQI=",
         "path": "/etc/nixos/overlays/suckless",
         "type": "path"
@@ -795,7 +795,7 @@
         "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1726865765,
+        "lastModified": 1726851910,
         "narHash": "sha256-SYthiFRc54mwYWx6uxoE+QWZEq5coec87gb92pZ6Bcs=",
         "path": "/etc/nixos/overlays/vim",
         "type": "path"
