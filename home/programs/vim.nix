@@ -20,11 +20,11 @@ let
     cmp-zsh
     cmp-git
     cmp-dap
-		cmp-treesitter
+    cmp-treesitter
   ];
   dap = with pkgs.vimPlugins; [
     nvim-dap
-		nvim-dap-virtual-text
+    nvim-dap-virtual-text
     telescope-dap-nvim
     # nvim-dap-ui
     # nvim-dap-go

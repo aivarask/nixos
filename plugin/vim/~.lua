@@ -6,7 +6,9 @@ require('lsp_signature').setup({
   toggle_key = '<M-k>',
 })
 require('hover').setup({
-  init = function() require('hover.providers.lsp') end,
+  init = function()
+    require('hover.providers.lsp')
+  end,
 })
 require('outline').setup({
   symbols = {

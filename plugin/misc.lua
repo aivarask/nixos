@@ -1,6 +1,8 @@
 require('colorizer').setup({})
 
-if vim.uv.os_getenv('DISPLAY') then require('image').setup({ backend = 'ueberzug' }) end
+if vim.uv.os_getenv('DISPLAY') then
+  require('image').setup({ backend = 'ueberzug' })
+end
 require('nvim-tree').setup({
   view = { width = 25, signcolumn = 'no' },
   git = { enable = false },

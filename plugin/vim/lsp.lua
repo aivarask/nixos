@@ -12,7 +12,9 @@ vim.lsp.inspect_client = function()
 
   vim.ui.select(clients, {
     prompt = 'Select LSP client',
-    format_item = function(client) return client.name end,
+    format_item = function(client)
+      return client.name
+    end,
   }, function(selected_client)
     if selected_client then
       local client = vim.lsp.get_client_by_id(selected_client.id)

@@ -4,18 +4,26 @@ local p = [[!nix eval nixos\#nixosConfigurations.]]
 
 local nixpkgs = [[!nix eval nixpkgs\#]]
 local hostname = vim.uv.os_gethostname()
-local w = function() return vim.fn.expand('<cword>') end
-string.xdg_open = function(v) vim.cmd('!xdg-open ' .. v) end
+local w = function()
+  return vim.fn.expand('<cword>')
+end
+string.xdg_open = function(v)
+  vim.cmd('!xdg-open ' .. v)
+end
 wk.add({
   { '<leader>g', group = 'xdg-open' },
   {
     '<leader>gd',
-    function() vim.cmd(nixpkgs .. w() .. '.meta.description | xargs notify-send') end,
+    function()
+      vim.cmd(nixpkgs .. w() .. '.meta.description | xargs notify-send')
+    end,
     desc = 'nixpkgs.<cword>.description',
   },
   {
     '<leader>gD',
-    function() vim.cmd(nixpkgs .. w() .. '.meta.longDescription --raw | xargs -0 notify-send') end,
+    function()
+      vim.cmd(nixpkgs .. w() .. '.meta.longDescription --raw | xargs -0 notify-send')
+    end,
     desc = 'nixpkgs.<cword>.longDescription',
   },
   {
@@ -43,7 +51,9 @@ wk.add({
   { '-', '<cmd>cd ..<CR>' },
   {
     '<F1>',
-    function() vim.cmd.help(vim.fn.expand('<cword>')) end,
+    function()
+      vim.cmd.help(vim.fn.expand('<cword>'))
+    end,
     mode = { 'n', 'i', 'v' },
   },
   { 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
@@ -85,7 +95,9 @@ wk.add({
         vim.fn.expand('<cfile>'),
         vim.fn.expand('<cexpr>'),
       }, {}, function(item, idx)
-        if item then vim.cmd.help(item) end
+        if item then
+          vim.cmd.help(item)
+        end
       end)
     end,
     mode = { 'n', 'i', 'v' },

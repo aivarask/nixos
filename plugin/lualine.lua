@@ -49,8 +49,12 @@ require('lualine').setup({ --- @see lualine
     lualine_y = { 'progress' },
     lualine_z = {
       'location',
-      function() return vim.api.nvim_buf_line_count(0) end,
-      function() return vim.fn.winwidth(0) end,
+      function()
+        return vim.api.nvim_buf_line_count(0)
+      end,
+      function()
+        return vim.fn.winwidth(0)
+      end,
     },
   },
   inactive_sections = {
