@@ -29,6 +29,7 @@
       "node_modules/"
       "vendor/"
       "CMakeFiles/"
+			"Session.vim"
     ];
     userName = "Aivaras Kalesnykas";
     userEmail = "kalesnykas.aivaras@gmail.com";

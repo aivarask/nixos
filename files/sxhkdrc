@@ -8,7 +8,7 @@ super + F3
 super + F4
   alacritty -e pulsemixer # 🔉
 super + F5
-  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK'
+  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK' && pkill -USR1 hx
 super + F6
   alacritty -e tmux new-session lf \; split-window -h lf \; attach
 super + F7
