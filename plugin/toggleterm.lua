@@ -14,14 +14,10 @@ toggleterm.setup({
   },
 })
 local Terminal = require('toggleterm.terminal').Terminal
-nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true })
 lazygit = Terminal:new({ cmd = 'lazygit', hidden = true })
-
-local wk = require('which-key')
-wk.add({
+require('which-key').add({
   { '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
 })
-
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('toggleterm', {}),
   pattern = 'toggleterm',

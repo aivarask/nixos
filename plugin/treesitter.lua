@@ -58,7 +58,7 @@ require('nvim-treesitter.configs').setup({ --- @see nvim-treesitter
       enable = true,
       floating_preview_opts = {},
       peek_definition_code = {
-        ['<leader><leader>d'] = '@function.outer',
+        ['<C-M-K>'] = '@function.outer',
       },
     },
   },

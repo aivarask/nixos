@@ -28,6 +28,12 @@ for _, name in ipairs({
   'vimkind',
   'lualine',
   'toggleterm',
+  'todo%-comments',
+  'trouble.nvim',
+  'outline',
+  'hover',
+  'lsp_signature',
+  'file%-operations',
 }) do
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
     if string.find(path, name) then

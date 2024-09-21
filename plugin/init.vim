@@ -1,23 +1,28 @@
 if !exists('*SaveExec')
-  function! SaveExec() abort
-    if &filetype ==?'vim'
-      :silent! write
-      :source %
-    elseif &filetype ==?'lua'
-      :silent! write
-      :luafile %
-    endif
-    return
-  endfunction
+	function! SaveExec() abort
+		if &filetype ==?'vim'
+			:silent! write
+			:source %
+		elseif &filetype ==?'lua'
+			:silent! write
+			:luafile %
+		endif
+		return
+	endfunction
 endif
 
 function! Ctoggle()
-  if empty(filter(getwininfo(), 'v:val.quickfix'))
-    copen
-  else
-    cclose
-  endif
+	if empty(filter(getwininfo(), 'v:val.quickfix'))
+		copen
+	else
+		cclose
+	endif
 endfunction
+
+if !has('gui_running')
+	set t_Co=256
+	set guioptions-=e
+endif
 
 let &packpath.=',/etc/nixos'
 filetype plugin indent on
@@ -33,12 +38,12 @@ set signcolumn=yes number
 set splitright splitbelow
 set updatetime=1500 timeoutlen=500
 set showtabline=2 statusline+=%F cmdheight=3
-set autoindent 
-set smartindent 
+set autoindent
+set smartindent
 set tabstop=2
 set shiftwidth=0
 set nolisp
-set undofile 
+set undofile
 set undodir="$XDG_STATE_HOME/nvim/undo//"
 set noswapfile
 set termguicolors
@@ -58,25 +63,26 @@ let g:lf_map_keys = 0
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = ''
 
-if !has('gui_running')
-  set t_Co=256
-  set guioptions-=e
+nnoremap <silent> <leader>q :Bclose<CR>
+if !has('nvim')
+	set showcmd
+	nnoremap qq <cmd>NERDTreeToggle<CR>
+	nnoremap <leader>f :Files<CR>
+	nnoremap <leader>g :Rg<CR>
+else
+	nnoremap <leader>f :Telescope find_files<CR>
+	nnoremap <leader>g :Telescope live_grep<CR>
+
 endif
 
-aug Other
-  au!
-  autocmd BufEnter * checktime
-  autocmd VimResized * wincmd =
-  autocmd FileType * autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
-	autocmd VimLeave * mksession!
-	autocmd QuitPre * mksession!
+aug Common
+	au!
+	autocmd BufEnter * checktime
+	autocmd VimResized * wincmd =
+		autocmd FileType * autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
+	autocmd VimLeavePre,QuitPre * mksession!
 aug END
 
-if !has('nvim')
-	nnoremap qq <cmd>NERDTreeToggle<CR>
-endif
-
-nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <Plug>(Save) :w<cr>
 map <C-s> <Plug>(Save)
 inoremap <Space> <C-G>u<Space>

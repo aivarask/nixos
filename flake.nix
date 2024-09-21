@@ -93,7 +93,7 @@
         imports = [
           inputs.vim-overlay.home.default
           nix-colors.homeManagerModules.default
-        ] ++ include ./home ++ include ./home/programs ++ include ./home/services;
+        ] ++ include ./home ++ include ./home/programs ++ include ./home/services ++ include ./helix;
         home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
