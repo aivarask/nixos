@@ -1,6 +1,10 @@
 vim.fn.sign_define('DapBreakpoint', { text = '🟢', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '🟡', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '🔴', texthl = '', linehl = '', numhl = '' })
+require('persistent-breakpoints').setup({
+  save_dir = vim.fn.stdpath('data') .. '/breakpoints',
+  load_breakpoints_event = 'BufReadPost',
+})
 
 --- @see dap-adapter
 --- @see dap-configuration
@@ -22,8 +26,7 @@ dap.configurations.lua = {
   { name = 'run_this', request = 'launch', type = 'run_this' },
 }
 
-local wk = require('which-key')
-wk.add({
+require('which-key').add({
   --- @see dap-mappings
   { '<F5>', dap.continue, desc = 'dap.continue' },
   { '<F6>', [[:PBToggleBreakpoint<cr>]] },

@@ -1,19 +1,15 @@
 vim.loader.enable()
 
-vim.filetype.add({
-  filename = {
-    ['.prettierrc'] = 'json',
-  },
+require('auto-session').setup({ --- @see AutoSession
+  auto_session_allowed_dirs = { '/etc/nixos' },
+  log_level = vim.log.levels.ERROR,
 })
 
-require('auto-session').setup({ --- @see AutoSession
-  log_level = vim.log.levels.ERROR,
-  auto_session_allowed_dirs = { '/etc/nixos' },
-})
 require('colorizer').setup({})
 if vim.uv.os_getenv('DISPLAY') then
   require('image').setup({ backend = 'ueberzug' })
 end
+
 require('nvim-tree').setup({
   view = { width = 25, signcolumn = 'no' },
   git = { enable = false },
@@ -21,19 +17,22 @@ require('nvim-tree').setup({
   update_focused_file = { enable = true, update_root = true },
   ui = { confirm = { trash = false } },
   on_attach = function(bufnr)
-    local api = require('nvim-tree.api')
-    api.config.mappings.default_on_attach(bufnr)
+    require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
   end,
 })
-local wk = require('which-key')
-wk.setup({
+require('nvim-web-devicons').setup({
+  override = {
+    ['nix'] = { icon = '', color = '#85ea2d', cterm_color = '110', name = 'Nix' },
+  },
+})
+
+require('which-key').setup({
   preset = 'helix',
   sort = { 'alphanum' },
 })
 
 require('lsp-file-operations').setup({})
 require('lsp_signature').setup({
-
   floating_window = false,
   close_timeout = 1000,
   hint_prefix = '🚀 ',
@@ -56,8 +55,11 @@ require('outline').setup({
   },
 })
 
-require('notif')
-require('dapl')
-require('ls')
+require('_aug')
+require('_init')
 require('completion')
-require('open')
+require('dap_config')
+require('lsp_config')
+require('lsp_format')
+require('lsp_lua')
+require('notify_config')

@@ -1,4 +1,4 @@
-local format = vim.api.nvim_create_augroup('format', {})
+local format = vim.api.nvim_create_augroup('format', {}) 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = format,
   pattern = {
@@ -33,12 +33,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
-require('persistent-breakpoints').setup({
-  save_dir = vim.fn.stdpath('data') .. '/breakpoints',
-  load_breakpoints_event = 'BufReadPost',
-  perf_record = false,
-  on_load_breakpoint = nil,
-})
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = format,
   pattern = {

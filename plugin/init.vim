@@ -1,6 +1,7 @@
 if !exists('*SaveExec')
 	function! SaveExec() abort
 		if &filetype ==?'vim'
+			" :%s/\s\+$//e
 			:silent! write
 			:source %
 		elseif &filetype ==?'lua'
@@ -57,31 +58,52 @@ let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-let g:webdevicons_enable_nerdtree = 0
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = ''
-
-nnoremap <silent> <leader>q :Bclose<CR>
-if !has('nvim')
-	set showcmd
-	nnoremap qq <cmd>NERDTreeToggle<CR>
-	nnoremap <leader>f :Files<CR>
-	nnoremap <leader>g :Rg<CR>
-else
-	nnoremap <leader>f :Telescope find_files<CR>
-	nnoremap <leader>g :Telescope live_grep<CR>
-
-endif
 
 aug Common
 	au!
 	autocmd BufEnter * checktime
 	autocmd VimResized * wincmd =
 		autocmd FileType * autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
-	autocmd VimLeavePre,QuitPre * mksession!
 aug END
+
+nnoremap <silent> <leader>q :Bclose<CR>
+nnoremap <silent> <leader>Q :quitall<CR>
+nnoremap <leader>a :call SaveExec()<CR>
+if !has('nvim')
+	set showcmd
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	let g:airline#extensions#whitespace#enabled = 1
+	let g:webdevicons_enable_nerdtree = 0
+	let g:webdevicons_conceal_nerdtree_brackets = 0
+	let g:which_key_vertical = 1
+	" let g:which_key_hspace = 3
+	" let g:which_key_centered = 0
+	nnoremap qq <cmd>NERDTreeToggle<CR>
+	nnoremap <leader>f :Files<CR>
+	nnoremap <leader>g :Rg<CR>
+	nnoremap <leader>h :Helptags<CR>
+	nnoremap <leader>k :Maps<CR>
+	nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
+	aug VimOnly
+		au!
+		autocmd VimLeavePre,QuitPre * mksession! 
+	aug END
+	set foldmethod=expr
+else
+	set foldmethod=expr
+	set foldexpr=nvim_treesitter#foldexpr()
+	" set nofoldenable
+
+	nnoremap <leader>f :Telescope find_files<CR>
+	nnoremap <leader>g :Telescope live_grep<CR>
+	nnoremap <leader>h :Telescope help_tags<CR>
+	nnoremap <leader>k :Telescope keymaps<CR>
+endif
 
 nnoremap <silent> <Plug>(Save) :w<cr>
 map <C-s> <Plug>(Save)
@@ -92,8 +114,6 @@ map [c :cprevious<CR>
 map ]c :cnext<CR>
 map ]C :call Ctoggle()<CR>
 map [C :call Ctoggle()<CR>
-map <leader><leader>a :call SaveExec()<CR>
-map <leader><leader>+ "+y
 map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map ]T :tabclose<CR>
@@ -107,6 +127,13 @@ map [T :tabclose<CR>
 " CTRL-T    indent current line
 " CTRL-D    un-indent current line
 
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 inoremap <M-h> <C-o>h
 inoremap <M-j> <C-o>j
 inoremap <M-k> <C-o>k
@@ -115,13 +142,6 @@ cnoremap <M-H> <Left>
 cnoremap <M-J> <Down>
 cnoremap <M-K> <Up>
 cnoremap <M-L> <Right>
-
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
 
 map <M-h> :wincmd h<CR>
 tmap <M-h> <C-\><C-n>:wincmd h<CR>

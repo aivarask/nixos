@@ -2,17 +2,21 @@
 # pkill -USR1 hx
 theme = "gruvbox"
 
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
-
 
 [editor.file-picker]
 hidden = false
 
 [keys.normal]
 C-s = ":w"
+tab = ":buffer-next"
 
-[keys.normal.g]
-a = "code_action" # Maps `ga` to show possible code actions
+[keys.insert]
+# Alt-c = ":toggle_comments"

@@ -1,11 +1,6 @@
 if not pcall(require, 'nvim-treesitter') then
   return
 end
-vim.cmd([[
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-  set nofoldenable
-]])
 
 require('treesitter-context').setup({ enable = false }) --- @see nvim-treesitter-context
 vim.g.skip_ts_context_commentstring_module = true

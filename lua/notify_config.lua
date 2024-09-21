@@ -1,18 +1,5 @@
 require('fidget').setup({})
-nv = vim.notify
-nf = require('fidget').notify
-
-local wk = require('which-key')
-wk.add({
-  { '<C-M-H>', [[:Telescope help_tags<CR>]] },
-  { '<C-M-G>', [[:Telescope live_grep<CR>]] },
-  { '<C-M-K>', [[:Telescope keymaps<CR>]] },
-  {
-    '<leader><leader>s',
-    function()
-      vim.cmd.lua(vim.api.nvim_get_current_line())
-    end,
-  },
+require('which-key').add({
   { '<leader>n', group = 'nix' },
   {
     '<leader>nn',
@@ -43,14 +30,13 @@ wk.add({
   {
     '<leader>nd',
     function()
-      -- vim.notify = require 'notify'
       local nio = require('nio')
       local notify = require('notify')
       notify.setup({ render = 'compact' })
       local task = nio.run(function()
         local prev = nil
         for i = 1, 3, 1 do
-          local current = notify.notify(os.date(), vim.log.levels.INFO, { title = 'Date', replace = prev or nil })
+          local current = notify.notify(os.date(), vim.log.levels.INFO, { title = 'Date', replace = prev or 0 })
           nio.sleep(1000)
           prev = current.id
         end

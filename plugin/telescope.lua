@@ -5,16 +5,10 @@ require('telescope').setup({
   },
 })
 
-local wk = require('which-key')
-wk.add({
+require('which-key').add({
   { '<leader>t', group = 'Telescope', icon = '' },
   { '<leader>ta', [[:Telescope autocommands<CR>]] },
-  { '<leader>tB', [[:Telescope buffers <CR>]] },
   { '<leader>tc', [[:Telescope commands<cr>]] },
-  { '<leader>tf', [[:Telescope find_files<cr>]] },
-  { '<leader>tg', [[:Telescope live_grep<CR>]] },
-  { '<leader>th', [[:Telescope help_tags<CR>]] },
-  { '<leader>tk', [[:Telescope keymaps<CR>]] },
   { '<leader>tm', [[:Telescope manix<CR>]] },
   { '<leader>tn', [[:Telescope notify<CR>]] },
   { '<leader>to', [[:Telescope vim_options<CR>]] },

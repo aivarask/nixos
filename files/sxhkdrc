@@ -20,15 +20,12 @@ super + F9
   notify-send ' ♻️  nixos-rebuild switch' "$(nixos-rebuild switch)"
 super + F10
   dunstctl close
-super + F11
-	notify-send 'hello'
-	
 
 super + {q,w,e,r}
   {tdrop alacritty\
   ,$BROWSER\
   ,alacritty --working-directory=/etc/nixos -e nvim\
-  ,alacritty --working-directory=/etc/nixos/siom -e nvim
+  ,alacritty --working-directory=/etc/nixos -e hx
   }
 
 super + ctrl + {q}

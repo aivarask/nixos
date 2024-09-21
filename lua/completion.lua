@@ -85,7 +85,3 @@ cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({}))
 npairs = require('nvim-autopairs')
 local Rule = require('nvim-autopairs.rule')
 local rules = npairs.config.rules
-
-local t = {
-  a = {},
-}
