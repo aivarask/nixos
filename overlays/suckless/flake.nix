@@ -28,6 +28,7 @@
             wmname
             surf
             svkbd
+            nsxiv
           ];
         };
       overlays.default = (

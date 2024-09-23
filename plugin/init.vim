@@ -20,6 +20,15 @@ function! Ctoggle()
 	endif
 endfunction
 
+function! Demo()
+	" https://vim.fandom.com/wiki/User_input_from_a_script
+	let curline = getline('.')
+	call inputsave()
+	let name = input('Enter name: ')
+	call inputrestore()
+	call setline('.', curline . ' ' . name)
+endfunction
+
 if !has('gui_running')
 	set t_Co=256
 	set guioptions-=e
@@ -37,15 +46,13 @@ set modeline
 set noshowmode
 set signcolumn=yes number
 set splitright splitbelow
-set updatetime=1500 timeoutlen=500
+set updatetime=1500 timeoutlen=600
 set showtabline=2 statusline+=%F cmdheight=3
 set autoindent
 set smartindent
 set tabstop=2
 set shiftwidth=0
 set nolisp
-set undofile
-set undodir="$XDG_STATE_HOME/nvim/undo//"
 set noswapfile
 set termguicolors
 set background=dark
@@ -60,8 +67,6 @@ colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = ''
 
 aug Common
 	au!
@@ -70,43 +75,9 @@ aug Common
 		autocmd FileType * autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
 aug END
 
-nnoremap <silent> <leader>q :Bclose<CR>
-nnoremap <silent> <leader>Q :quitall<CR>
-nnoremap <leader>a :call SaveExec()<CR>
-if !has('nvim')
-	set showcmd
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#formatter = 'unique_tail'
-	let g:airline#extensions#whitespace#enabled = 1
-	let g:webdevicons_enable_nerdtree = 0
-	let g:webdevicons_conceal_nerdtree_brackets = 0
-	let g:which_key_vertical = 1
-	" let g:which_key_hspace = 3
-	" let g:which_key_centered = 0
-	nnoremap qq <cmd>NERDTreeToggle<CR>
-	nnoremap <leader>f :Files<CR>
-	nnoremap <leader>g :Rg<CR>
-	nnoremap <leader>h :Helptags<CR>
-	nnoremap <leader>k :Maps<CR>
-	nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
-	aug VimOnly
-		au!
-		autocmd VimLeavePre,QuitPre * mksession! 
-	aug END
-	set foldmethod=expr
-else
-	set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
-	" set nofoldenable
-
-	nnoremap <leader>f :Telescope find_files<CR>
-	nnoremap <leader>g :Telescope live_grep<CR>
-	nnoremap <leader>h :Telescope help_tags<CR>
-	nnoremap <leader>k :Telescope keymaps<CR>
-endif
-
-nnoremap <silent> <Plug>(Save) :w<cr>
+nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
+
 inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
@@ -118,6 +89,54 @@ map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map ]T :tabclose<CR>
 map [T :tabclose<CR>
+nnoremap <silent> <leader>q :Bclose<CR>
+nnoremap <silent> <leader>Q :quitall<CR>
+nnoremap <leader>a :call SaveExec()<CR>
+nnoremap <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <F2> @:<CR>
+if !has('nvim')
+	aug VimOnly
+		au!
+		autocmd VimLeavePre,QuitPre * mksession!
+	aug END
+	set showcmd
+	if !isdirectory($HOME.'/.vim')
+		call mkdir($HOME.'/.vim', '', 0770)
+	endif
+	if !isdirectory($HOME.'/.vim/undo')
+		call mkdir($HOME.'/.vim/undo', '', 0700)
+	endif
+	set undodir=~/.vim/undo
+	set undofile
+	let g:AutoPairsFlyMode = 0
+	let g:AutoPairsShortcutBackInsert = ''
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	let g:airline#extensions#whitespace#enabled = 0
+	let g:webdevicons_enable_nerdtree = 0
+	let g:which_key_vertical = 1
+	let g:NERDTreeMapPreview = '<TAB>'
+	nnoremap qq <cmd>NERDTreeToggle<CR>
+	nnoremap <leader>f :Files<CR>
+	nnoremap <leader>g :Rg<CR>
+	nnoremap <leader>h :Helptags<CR>
+	nnoremap <leader>k :Maps<CR>
+	nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
+	" nnoremap <silent> [ :<C-u>WhichKey '['<CR>
+	" nnoremap <silent> ] :<C-u>WhichKey ']'<CR>
+	set foldmethod=indent
+	set nofoldenable
+else
+	set undodir=$XDG_STATE_HOME/nvim/undo
+	set undofile
+	set foldmethod=expr
+	set foldexpr=nvim_treesitter#foldexpr()
+	set nofoldenable
+	nnoremap <leader>f :Telescope find_files<CR>
+	nnoremap <leader>g :Telescope live_grep<CR>
+	nnoremap <leader>h :Telescope help_tags<CR>
+	nnoremap <leader>k :Telescope keymaps<CR>
+endif
 
 " CTRL-W    delete word to the left of cursor
 " CTRL-O D  delete everything to the right of cursor

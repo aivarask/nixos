@@ -14,30 +14,27 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +25 lua/_init.lua
-badd +26 lua/notify_config.lua
-badd +12 lua/_aug.lua
-badd +94 plugin/init.vim
-badd +1 lua/lsp_format.lua
+badd +66 plugin/init.vim
+badd +103 doc/nixos.txt
 argglobal
 %argdel
-edit plugin/init.vim
+edit doc/nixos.txt
 argglobal
-balt lua/lsp_format.lua
-setlocal fdm=expr
+balt plugin/init.vim
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
-let s:l = 4 - ((3 * winheight(0) + 26) / 52)
+setlocal nofen
+let s:l = 104 - ((13 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
-normal! 0
+keepjumps 104
+normal! 011|
 lcd /etc/nixos
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0

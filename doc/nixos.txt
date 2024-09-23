@@ -29,11 +29,19 @@ xs = "xinit $XINITRC -- $XSERVERRC";
 xa = "startx $XINITRC awesome";
 
 ============
+*fonts*
+https://krasjet.com/scribbles/font-preview.html
+https://mynixos.com/nixpkgs/options/fonts.fontconfig.defaultFonts
+https://emojipedia.org/
+https://www.nerdfonts.com/cheat-sheet
+https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/shas.nix
+
+============
 https://nix.dev
 https://nix.dev/tutorials/packaging-existing-software
 https://www.youtube.com/watch?v=0YBWhSNTgV8 [ Best Way To Manage Project Dependencies | Nix Shells ]
 
-============                                                                                                                                                            
+============
 nixos.org
 https://nixos.org/manual/nixpkgs/unstable/#chap-stdenv
 
@@ -54,7 +62,7 @@ twiggy-language-server
 prettier-plugin-twig-melody
 https://github.com/moetelo/twiggy
 
-============    
+============ 
 *nil*
 https://github.com/oxalica/nil/blob/main/docs/configuration.md
 
@@ -83,6 +91,17 @@ https://xdebug.org/docs/all_settings#start_with_request
 ============
 nushell
 https://www.nushell.sh/
+
+============ *sh*
+sh bash zsh
+*bash*
+https://stackoverflow.com/questions/948008/linux-command-to-list-all-available-commands-and-aliases
+*compgen*
+
+cat -v 
+echo 'foo'
+notify-send 'hello'
+dumpkeys -L
 
 ============
 Makefile

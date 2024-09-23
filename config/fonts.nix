@@ -4,11 +4,12 @@
     EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
   };
   environment.shellAliases = { };
+  environment.systemPackages= with pkgs; [
+      fontpreview
+  ];
   fonts = {
     fontconfig = {
       defaultFonts = {
-        # https://mynixos.com/nixpkgs/options/fonts.fontconfig.defaultFonts
-        # https://emojipedia.org/
         emoji = [
           "Noto Color Emoji"
           "DejaVuSansM Nerd Font"
@@ -28,12 +29,10 @@
       };
     };
     enableDefaultPackages = false;
-    # https://www.nerdfonts.com/cheat-sheet
     packages = with pkgs; [
       noto-fonts-color-emoji
       (nerdfonts.override {
-        # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/data/fonts/nerdfonts/shas.nix
-        fonts = [ "DejaVuSansMono" ];
+        fonts = [ "DejaVuSansMono"];
       })
     ];
   };
