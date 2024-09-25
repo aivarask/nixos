@@ -87,22 +87,6 @@ https://www.php.net/manual/en/ini.list.php
 https://xdebug.org/docs/all_settings#mode
 https://xdebug.org/docs/all_settings#start_with_request
 
-
-============
-nushell
-https://www.nushell.sh/
-
-============ *sh*
-sh bash zsh
-*bash*
-https://stackoverflow.com/questions/948008/linux-command-to-list-all-available-commands-and-aliases
-*compgen*
-
-cat -v 
-echo 'foo'
-notify-send 'hello'
-dumpkeys -L
-
 ============
 Makefile
 https://makefiletutorial.com/#multiple-targets

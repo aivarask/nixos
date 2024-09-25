@@ -14,13 +14,23 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +66 plugin/init.vim
-badd +103 doc/nixos.txt
+badd +1 plugin/init.vim
 argglobal
 %argdel
-edit doc/nixos.txt
+edit plugin/init.vim
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
 argglobal
-balt plugin/init.vim
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,20 +39,21 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 104 - ((13 * winheight(0) + 26) / 52)
+let s:l = 67 - ((12 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 104
-normal! 011|
-lcd /etc/nixos
+keepjumps 67
+normal! 03|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=10
+set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

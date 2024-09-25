@@ -33,10 +33,10 @@ require('which-key').setup({
 
 require('lsp-file-operations').setup({})
 require('lsp_signature').setup({
+  hint_prefix = '🚀 ',
   floating_window = false,
   close_timeout = 1000,
-  hint_prefix = '🚀 ',
-  toggle_key = '<M-k>',
+  -- toggle_key = nil,
 })
 require('hover').setup({
   init = function()

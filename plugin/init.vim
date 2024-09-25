@@ -57,6 +57,8 @@ set noswapfile
 set termguicolors
 set background=dark
 set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
+set undofile
+set nofoldenable
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -70,14 +72,13 @@ let g:lf_map_keys = 0
 
 aug Common
 	au!
-	autocmd BufEnter * checktime
+	" autocmd CursorMoved, * checktime
 	autocmd VimResized * wincmd =
 		autocmd FileType * autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
 aug END
 
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
-
 inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
@@ -93,45 +94,43 @@ nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>Q :quitall<CR>
 nnoremap <leader>a :call SaveExec()<CR>
 nnoremap <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
-nnoremap <F2> @:<CR>
+
 if !has('nvim')
 	aug VimOnly
 		au!
 		autocmd VimLeavePre,QuitPre * mksession!
 	aug END
-	set showcmd
 	if !isdirectory($HOME.'/.vim')
 		call mkdir($HOME.'/.vim', '', 0770)
+		if !isdirectory($HOME.'/.vim/undo')
+			call mkdir($HOME.'/.vim/undo', '', 0700)
+		endif
 	endif
-	if !isdirectory($HOME.'/.vim/undo')
-		call mkdir($HOME.'/.vim/undo', '', 0700)
-	endif
+	set showcmd
 	set undodir=~/.vim/undo
-	set undofile
+	set foldmethod=indent
 	let g:AutoPairsFlyMode = 0
 	let g:AutoPairsShortcutBackInsert = ''
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#formatter = 'unique_tail'
 	let g:airline#extensions#whitespace#enabled = 0
+	let g:airline_powerline_fonts = 1
 	let g:webdevicons_enable_nerdtree = 0
 	let g:which_key_vertical = 1
 	let g:NERDTreeMapPreview = '<TAB>'
 	nnoremap qq <cmd>NERDTreeToggle<CR>
+	nnoremap <leader>c :Commands<CR>
 	nnoremap <leader>f :Files<CR>
 	nnoremap <leader>g :Rg<CR>
 	nnoremap <leader>h :Helptags<CR>
 	nnoremap <leader>k :Maps<CR>
-	nnoremap <silent> <leader> :<c-u>WhichKey '\'<CR>
-	" nnoremap <silent> [ :<C-u>WhichKey '['<CR>
-	" nnoremap <silent> ] :<C-u>WhichKey ']'<CR>
-	set foldmethod=indent
-	set nofoldenable
+	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
+	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
 else
 	set undodir=$XDG_STATE_HOME/nvim/undo
-	set undofile
 	set foldmethod=expr
 	set foldexpr=nvim_treesitter#foldexpr()
-	set nofoldenable
+	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
 	nnoremap <leader>g :Telescope live_grep<CR>
 	nnoremap <leader>h :Telescope help_tags<CR>
@@ -153,35 +152,25 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-inoremap <M-h> <C-o>h
-inoremap <M-j> <C-o>j
-inoremap <M-k> <C-o>k
-inoremap <M-l> <C-o>l
-cnoremap <M-H> <Left>
-cnoremap <M-J> <Down>
-cnoremap <M-K> <Up>
-cnoremap <M-L> <Right>
+inoremap <Esc>h <C-O>h
+inoremap <Esc>j <C-O>j
+inoremap <Esc>k <C-O>k
+inoremap <Esc>l <C-O>l
 
-map <M-h> :wincmd h<CR>
-tmap <M-h> <C-\><C-n>:wincmd h<CR>
-map <M-j> :wincmd j<CR>
-tmap <M-j> <C-\><C-n>:wincmd j<CR>
-map <M-k> :wincmd k<CR>
-tmap <M-k> <C-\><C-n>:wincmd k<CR>
-map <M-l> :wincmd l<CR>
-tmap <M-l> <C-\><C-n>:wincmd l<CR>
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
 
-map <M--> :wincmd <<CR>
-tmap <M--> <C-\><C-n>:wincmd <<CR>
-map <M-=> :wincmd ><CR>
-tmap <M-=> <C-\><C-n>:wincmd ><CR>
+" map <M-h> :wincmd h<CR>
+" tmap <M-h> <C-\><C-n>:wincmd h<CR>
+" map <M-j> :wincmd j<CR>
+" tmap <M-j> <C-\><C-n>:wincmd j<CR>
+" map <M-k> :wincmd k<CR>
+" tmap <M-k> <C-\><C-n>:wincmd k<CR>
+" map <M-l> :wincmd l<CR>
+" tmap <M-l> <C-\><C-n>:wincmd l<CR>
 
-" hi! link netrwMarkFile Search
-" let g:loaded_netrw = 1
-" let g:loaded_netrwPlugin = 1
-" let g:netrw_banner = 0
-" let g:netrw_keepdir = 0
-" let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-" let g:netrw_localcopydircmd = 'cp -r'
-" let g:netrw_winsize = 30
+" map <M--> :wincmd <<CR>
+" tmap <M--> <C-\><C-n>:wincmd <<CR>
+" map <M-=> :wincmd ><CR>
+" tmap <M-=> <C-\><C-n>:wincmd ><CR>
 
