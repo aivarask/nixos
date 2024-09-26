@@ -10,6 +10,12 @@ if vim.uv.os_getenv('DISPLAY') then
   require('image').setup({ backend = 'ueberzug' })
 end
 
+require('nvim-web-devicons').setup({
+  override = {
+    ['nix'] = { icon = '', color = '#85ea2d', cterm_color = '110', name = 'Nix' },
+  },
+})
+
 require('nvim-tree').setup({
   view = { width = 25, signcolumn = 'no' },
   git = { enable = false },
@@ -19,11 +25,6 @@ require('nvim-tree').setup({
   on_attach = function(bufnr)
     require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
   end,
-})
-require('nvim-web-devicons').setup({
-  override = {
-    ['nix'] = { icon = '', color = '#85ea2d', cterm_color = '110', name = 'Nix' },
-  },
 })
 
 require('which-key').setup({
@@ -55,6 +56,7 @@ require('outline').setup({
   },
 })
 
+require('nvim-surround').setup({})
 require('_aug')
 require('_init')
 require('completion')

@@ -74,11 +74,11 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local c = require('lspconfig')
 
 c.clangd.setup({})
+c.cssls.setup({
+	capabilities = capabilities,
+})
 c.gopls.setup({})
 c.templ.setup({})
-c.cssls.setup({
-  capabilities = capabilities,
-})
 c.stylelint_lsp.setup({
   capabilities = capabilities,
   filetypes = { 'css' },

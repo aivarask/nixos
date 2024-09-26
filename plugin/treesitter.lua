@@ -2,7 +2,7 @@ if not pcall(require, 'nvim-treesitter') then
   return
 end
 
-require('treesitter-context').setup({ enable = false }) --- @see nvim-treesitter-context
+require('treesitter-context').setup({ enable = true, max_lines = 1 }) --- @see nvim-treesitter-context
 vim.g.skip_ts_context_commentstring_module = true
 require('ts_context_commentstring').setup({}) --- @see ts-context-commentstring
 require('nvim-ts-autotag').setup({ filetypes = { 'html', 'php', 'twig', 'xml' } }) --- @see https://github.com/windwp/nvim-ts-autotag/

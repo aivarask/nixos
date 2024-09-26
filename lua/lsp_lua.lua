@@ -38,6 +38,7 @@ for _, name in ipairs({
   'image.nvim',
   'nvim%-tree.lua',
   'goto%-preview',
+	'surround'
   -- 'treesitter', -- disabled
 }) do
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
