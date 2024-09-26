@@ -16,16 +16,17 @@
     ];
   };
   home.packages = with pkgs; [
-		# gcc
+    # gcc
     clang
     # clang-tools
     (clang-tools.override {
       enableLibcxx = false;
     })
+    llvmPackages_latest.llvm
+    cmake
     ccls
     glib # gio trash
     check
-    cmake
     meson
     libcpr
     nlohmann_json
