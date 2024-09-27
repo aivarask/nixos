@@ -1,8 +1,3 @@
-if !has('gui_running')
-	set t_Co=256
-	set guioptions-=e
-endif
-
 filetype plugin indent on
 set title titlestring=%{expand('%')}\ %{hostname()}
 set completeopt=menu,menuone,noselect
@@ -39,6 +34,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 
+map - :cd ..<CR> 
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
 inoremap <Space> <C-G>u<Space>
@@ -57,6 +53,11 @@ nnoremap <silent> <leader>Q :quitall<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
 nnoremap <silent> <leader>m :messages<CR>
+
+if !has('gui_running')
+	set t_Co=256
+	set guioptions-=e
+endif
 
 if !has('nvim')
 	aug VimOnly

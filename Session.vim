@@ -14,18 +14,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 lua/_init.lua
-badd +30 lua/cfg/init.vim
-badd +27 lua/cfg/_.lua
-badd +73 flake.nix
-badd +133 lua/vim.nix
-badd +2 lua/_exp.lua
-badd +3 lua/_.lua
+badd +57 flake.nix
+badd +1 lua/_.vim
 argglobal
 %argdel
-edit lua/_exp.lua
+edit lua/_.vim
 argglobal
-balt lua/_.lua
+balt flake.nix
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}

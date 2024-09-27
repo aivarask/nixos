@@ -15,7 +15,6 @@ ui_select = {
 }
 
 require('which-key').add({
-  { '-', '<cmd>cd ..<CR>' },
   { '<F1>', ui_select.help, mode = { 'n', 'i', 'v' } },
 })
 

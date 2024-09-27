@@ -8,6 +8,7 @@ require('which-key').add({
         },
       }
     end,
+    desc = '_treesitter.lua',
   },
 })
 
