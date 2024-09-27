@@ -1,10 +1,10 @@
-*shell.txt* shell related help  *shell.txt*
+*shell.txt* shell related help 
 
 ============
-nushell
+*nushell* *nufoo*
 https://www.nushell.sh/
 
-============ *sh*
+============    
 sh bash zsh readline
 *bash*
 https://stackoverflow.com/questions/948008/linux-command-to-list-all-available-commands-and-aliases

@@ -1,10 +1,3 @@
-local doc = vim.api.nvim_create_augroup('doc', {})
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  group = doc,
-  pattern = { 'doc/*' },
-  command = "helptags doc | echo 'helptags doc'",
-})
-
 ui_select = {
   help = function()
     local mode = vim.fn.mode()
@@ -21,29 +14,9 @@ ui_select = {
   end,
 }
 
-local node = require('nvim-tree.api').node
-local tree = require('nvim-tree.api').tree
 require('which-key').add({
   { '-', '<cmd>cd ..<CR>' },
   { '<F1>', ui_select.help, mode = { 'n', 'i', 'v' } },
-  { 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
-  { 'qw', [[:NvimTreeCollapse<CR>]] },
-  {
-    '[q',
-    function()
-      node.navigate.sibling.prev()
-      node.open.preview()
-    end,
-    desc = 'tree.prev',
-  },
-  {
-    ']q',
-    function()
-      node.navigate.sibling.next()
-      node.open.preview()
-    end,
-    desc = 'tree.next',
-  },
 })
 
 function get_visual_selection()

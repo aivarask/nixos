@@ -43,10 +43,7 @@ local get_parent = function(node)
   return node
 end
 
-local node = get_master_node()
-local parent = get_parent(node)
-local bufnr = vim.api.nvim_get_current_buf()
-print(node:range())
-
--- print(bufnr)
+-- local node = get_master_node()
+-- local parent = get_parent(node)
+-- local bufnr = vim.api.nvim_get_current_buf()
 -- ts_utils.goto_node(parent)
