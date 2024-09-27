@@ -1,4 +1,7 @@
 vim.loader.enable()
+vim.cmd([[
+runtime! lua/cfg/**/*{.lua,.vim}
+]])
 
 require('auto-session').setup({
   auto_session_allowed_dirs = { '/etc/nixos' },

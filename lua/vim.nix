@@ -114,21 +114,44 @@ in
   programs.neovim.extraLuaPackages = ps: [
     ps.magick
   ];
+  programs.vim = {
+    enable = true;
+    plugins =
+      common
+      ++ (with pkgs.vimPlugins; [
+        # vim-repeat vim-sensible vim-matchit
+        vim-airline
+        vim-which-key
+        vim-surround
+        auto-pairs
+        nerdtree
+      ]);
+    settings = { };
+    extraConfig = ''
+      let &runtimepath.=',/etc/nixos'
+      runtime! lua/cfg/**/*.vim
+    '';
+  };
   programs.neovim = {
     enable = true;
-    extraConfig = builtins.concatStringsSep "\n" [
-      "let &runtimepath.=',/etc/nixos'"
-    ];
-    extraLuaConfig = builtins.concatStringsSep "\n" [
-
-    ];
+    extraConfig = ''
+      let &runtimepath.=',/etc/nixos'
+      runtime! lua/cfg/**/*{.lua,.vim}
+    '';
+    extraLuaConfig = ''
+      vim.loader.enable()
+    '';
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
     withRuby = false;
   };
   programs.neovim.plugins =
-    codelens
+    common
+    ++ (with pkgs.vimPlugins; [
+      vim-sensible
+    ])
+    ++ codelens
     ++ completion
     ++ dap
     ++ lsp
@@ -154,26 +177,5 @@ in
         plugin = sqlite-lua;
         config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
       }
-    ])
-    ++ common
-    ++ (with pkgs.vimPlugins; [
-      vim-sensible
     ]);
-  programs.vim = {
-    enable = true;
-    plugins =
-      common
-      ++ (with pkgs.vimPlugins; [
-        # vim-repeat vim-sensible vim-matchit
-        vim-airline
-        vim-which-key
-        vim-surround
-        auto-pairs
-        nerdtree
-      ]);
-    settings = { };
-    extraConfig = ''
-      let &runtimepath.=',/etc/nixos'
-    '';
-  };
 }

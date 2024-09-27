@@ -92,8 +92,9 @@ map ]T :tabclose<CR>
 map [T :tabclose<CR>
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>Q :quitall<CR>
-nnoremap <leader>a :call SaveExec()<CR>
-nnoremap <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <silent> <leader>a :call SaveExec()<CR>
+nnoremap <silent> <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <silent> <leader>m :messages<CR>
 
 if !has('nvim')
 	aug VimOnly
