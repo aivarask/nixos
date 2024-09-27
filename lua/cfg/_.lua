@@ -53,9 +53,3 @@ require('outline').setup({
     },
   },
 })
-
-require('telescope.setup')
-require('_init')
-require('lsp_c')
-require('lsp_format')
-require('lsp_lua')
