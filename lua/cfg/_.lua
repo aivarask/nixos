@@ -1,8 +1,3 @@
-vim.loader.enable()
-vim.cmd([[
-runtime! lua/cfg/**/*{.lua,.vim}
-]])
-
 require('auto-session').setup({
   auto_session_allowed_dirs = { '/etc/nixos' },
   log_level = vim.log.levels.ERROR,
@@ -61,13 +56,6 @@ require('outline').setup({
 
 require('telescope.setup')
 require('_init')
-require('completion')
-require('dap_c')
 require('lsp_c')
 require('lsp_format')
 require('lsp_lua')
-require('lualine_c')
-require('notify_c')
-require('neotest_c')
-require('toggleterm_c')
-require('treesitter_c')
