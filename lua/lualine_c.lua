@@ -1,4 +1,4 @@
-require('lualine').setup({ --- @see lualine
+require('lualine').setup({
   extensions = { 'quickfix', 'nvim-tree', 'fzf', 'toggleterm', 'man', 'trouble' },
   options = {
     disabled_filetypes = {

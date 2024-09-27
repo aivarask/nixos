@@ -13,10 +13,12 @@ toggleterm.setup({
     end,
   },
 })
+
 local Terminal = require('toggleterm.terminal').Terminal
 lazygit = Terminal:new({ cmd = 'lazygit', hidden = true })
 require('which-key').add({
   { '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
+  { '`', '<cmd>ToggleTerm<CR>', mode = { 'n', 't' } },
 })
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('toggleterm', {}),

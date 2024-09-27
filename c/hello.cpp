@@ -1,7 +1,8 @@
+#include <cstdio>
 #include <iostream>
-using namespace std;
 
 int main() {
-  cout << "Hello World!";
+  printf("Hello printf\n");
+  std::cout << "Hello std::cout\n";
   return 0;
-} 
+}

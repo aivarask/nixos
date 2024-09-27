@@ -145,12 +145,12 @@ endif
 " CTRL-T    indent current line
 " CTRL-D    un-indent current line
 
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
+" inoremap <C-j> <Esc>:m .+1<CR>==gi
+" inoremap <C-k> <Esc>:m .-2<CR>==gi
+" vnoremap <C-j> :m '>+1<CR>gv=gv
+" vnoremap <C-k> :m '<-2<CR>gv=gv
 
 inoremap <Esc>h <C-O>h
 inoremap <Esc>j <C-O>j
@@ -160,17 +160,16 @@ inoremap <Esc>l <C-O>l
 cnoremap <nowait> <Esc>h <Left>
 cnoremap <nowait> <Esc>l <Right>
 
-" map <M-h> :wincmd h<CR>
-" tmap <M-h> <C-\><C-n>:wincmd h<CR>
-" map <M-j> :wincmd j<CR>
-" tmap <M-j> <C-\><C-n>:wincmd j<CR>
-" map <M-k> :wincmd k<CR>
-" tmap <M-k> <C-\><C-n>:wincmd k<CR>
-" map <M-l> :wincmd l<CR>
-" tmap <M-l> <C-\><C-n>:wincmd l<CR>
+nnoremap <Esc>h :wincmd h<CR>
+nnoremap <Esc>j :wincmd j<CR>
+nnoremap <Esc>k :wincmd k<CR>
+nnoremap <Esc>l :wincmd l<CR>
 
+tnoremap <M-h> <C-\><C-n>:wincmd h<CR>
+tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
+tnoremap <M-k> <C-\><C-n>:wincmd k<CR>
+tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
 " map <M--> :wincmd <<CR>
 " tmap <M--> <C-\><C-n>:wincmd <<CR>
 " map <M-=> :wincmd ><CR>
 " tmap <M-=> <C-\><C-n>:wincmd ><CR>
-

@@ -1,3 +1,38 @@
+-- local lspattach = vim.api.nvim_create_augroup('LspAttachGroup', {})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   group = lspattach,
+--   desc = 'user config',
+--   callback = function(args)
+--     local bufnr = args.buf
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     if client ~= nil then
+--       if client.supports_method('textDocument/completion') then
+--         vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+--       end
+--       if client.supports_method('textDocument/definition') then
+--         vim.bo[bufnr].tagfunc = 'v:lua.vim.lsp.tagfunc'
+--       end
+--       if client.server_capabilities.inlayHintProvider then
+--         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+--       end
+
+--       if client.server_capabilities.signatureHelpProvider then
+--         require('lsp-overloads').setup(client, {
+--           display_automatically = true,
+--           keymaps = {
+--             next_signature = 'j',
+--             previous_signature = 'k',
+--             next_parameter = 'l',
+--             previous_parameter = 'h',
+--             close_signature = '<M-s>',
+--           },
+--         })
+--       end
+--     end
+--   end,
+-- })
+
+
 local wk = require('which-key')
 wk.add({
   { '<space>', group = 'LSP' },
@@ -27,6 +62,7 @@ wk.add({
   { '<leader>pc', require('goto-preview').close_all_win, desc = 'close_all_win' },
   { '<leader>pr', require('goto-preview').goto_preview_references, desc = 'references' },
 })
+
 vim.lsp.inspect_client = function()
   local function get_keys(t)
     local keys = {}
@@ -75,7 +111,7 @@ local c = require('lspconfig')
 
 c.clangd.setup({})
 c.cssls.setup({
-	capabilities = capabilities,
+  capabilities = capabilities,
 })
 c.gopls.setup({})
 c.templ.setup({})
@@ -133,21 +169,21 @@ c.nixd.setup({
     },
   },
 })
-c.nil_ls.setup({
-  settings = {
-    ['nil'] = {
-      formatting = { command = { 'nixfmt' } },
-      nix = {
-        maxMemoryMB = 20480,
-        flake = {
-          -- autoArchive = true,
-          -- autoEvalInputs = true,
-          nixpkgsInputName = 'nixpkgs',
-        },
-      },
-    },
-  },
-})
+-- c.nil_ls.setup({
+--   settings = {
+--     ['nil'] = {
+--       formatting = { command = { 'nixfmt' } },
+--       nix = {
+--         maxMemoryMB = 20480,
+--         flake = {
+--           -- autoArchive = true,
+--           -- autoEvalInputs = true,
+--           nixpkgsInputName = 'nixpkgs',
+--         },
+--       },
+--     },
+--   },
+-- })
 c.intelephense.setup({})
 nls.register({ nls.builtins.formatting.black })
 c.pyright.setup({})

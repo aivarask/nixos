@@ -1,3 +1,10 @@
+local doc = vim.api.nvim_create_augroup('doc', {})
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  group = doc,
+  pattern = { 'doc/*' },
+  command = "helptags doc | echo 'helptags doc'",
+})
+
 ui_select = {
   help = function()
     local mode = vim.fn.mode()
@@ -14,7 +21,6 @@ ui_select = {
   end,
 }
 
--- vim.cmd.lua(vim.api.nvim_get_current_line())
 local node = require('nvim-tree.api').node
 local tree = require('nvim-tree.api').tree
 require('which-key').add({

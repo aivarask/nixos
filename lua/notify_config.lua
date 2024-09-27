@@ -1,6 +1,9 @@
 require('fidget').setup({})
+require('notify').setup({})
+vim.notify = require('notify')
+
 require('which-key').add({
-  { '<leader>n', group = 'nix' },
+  { '<leader>n', group = 'notify' },
   {
     '<leader>nn',
     function()
@@ -20,7 +23,7 @@ require('which-key').add({
               vim.notify(line)
             end,
             on_exit = function(self, code, signal)
-              require('pl.pretty')(self:result())
+              vim.print(self:result())
             end,
           }):start()
         end
@@ -43,5 +46,6 @@ require('which-key').add({
         notify.notify('Date notification end', vim.log.levels.WARN, { title = 'Date', replace = prev })
       end)
     end,
+    desc = '',
   },
 })

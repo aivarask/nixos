@@ -4,31 +4,29 @@
     ecip = "echo $C_INCLUDE_PATH | tr ':' '\n'";
   };
   home.sessionVariables = {
-    C_INCLUDE_PATH = builtins.concatStringsSep ":" [
-      "${pkgs.zlib.dev}/include"
-      "${pkgs.libuv.dev}/include"
-      "${pkgs.check}/include"
-    ];
-    CPLUS_INCLUDE_PATH = builtins.concatStringsSep ":" [
-      "${pkgs.curl.dev}/include"
-      "${pkgs.libcpr.dev}/include"
-      "${pkgs.nlohmann_json}/include"
-    ];
+    # C_INCLUDE_PATH = builtins.concatStringsSep ":" [
+    #   "${pkgs.zlib.dev}/include"
+    #   "${pkgs.libuv.dev}/include"
+    #   "${pkgs.check}/include"
+    # ];
+    # CPLUS_INCLUDE_PATH = builtins.concatStringsSep ":" [
+    #   "${pkgs.curl.dev}/include"
+    #   "${pkgs.libcpr.dev}/include"
+    #   "${pkgs.nlohmann_json}/include"
+    # ];
   };
+  # ./readme.md#clang
   home.packages = with pkgs; [
-    # gcc
+    glibc
+    glibcInfo
     clang
-    # clang-tools
-    (clang-tools.override {
-      enableLibcxx = false;
-    })
-    llvmPackages_latest.llvm
+    clang-tools
     cmake
-    ccls
+    # ccls
     glib # gio trash
-    check
-    meson
-    libcpr
-    nlohmann_json
+    # check
+    # meson
+    # libcpr
+    # nlohmann_json
   ];
 }

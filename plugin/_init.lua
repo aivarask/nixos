@@ -1,6 +1,6 @@
 vim.loader.enable()
 
-require('auto-session').setup({ --- @see AutoSession
+require('auto-session').setup({
   auto_session_allowed_dirs = { '/etc/nixos' },
   log_level = vim.log.levels.ERROR,
 })
@@ -55,9 +55,10 @@ require('outline').setup({
     },
   },
 })
-
 require('nvim-surround').setup({})
-require('_aug')
+
+require('telescope.setup')
+require('term_config')
 require('_init')
 require('completion')
 require('dap_config')
@@ -65,3 +66,5 @@ require('lsp_config')
 require('lsp_format')
 require('lsp_lua')
 require('notify_config')
+require('neotest_c')
+require('_exp')

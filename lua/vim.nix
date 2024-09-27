@@ -33,11 +33,11 @@ let
   ];
   lsp = with pkgs.vimPlugins; [
     conform-nvim
-    SchemaStore-nvim
     nvim-lspconfig
+    SchemaStore-nvim
     none-ls-nvim
     lsp_signature-nvim
-    # lsp-overloads-nvim
+    lsp-overloads-nvim
   ];
   misc = with pkgs.vimPlugins; [
     outline-nvim
@@ -86,26 +86,26 @@ let
     plenary-nvim
     pkgs.vimPlugins.fidget-nvim
   ];
-  disabled =
-    [
-    ];
+  disabled = [
+    # vim-floaterm
+    # lf-vim
+  ];
 
   common = with pkgs.vimPlugins; [
     bclose-vim
     fzf-vim
     gruvbox-material
-    # lf-vim
     switch-vim
     vim-abolish
     vim-commentary
     vim-cool
     vim-cursorword
     vim-devicons
-    # vim-floaterm
     vim-highlightedyank
     vim-lastplace
     vim-matchup
     direnv-vim
+    vim-markdown
   ];
 in
 {
