@@ -99,7 +99,8 @@
           ++ include ./home/programs
           ++ include ./home/services
           ++ include ./.helix
-          ++ include ./c;
+          ++ include ./c
+					++ include ./lua;
         home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
@@ -107,7 +108,7 @@
         };
         home.file = { };
       };
-      commonModules = include ./modules ++ include ./lua;
+      commonModules = include ./modules;
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;

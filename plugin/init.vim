@@ -169,6 +169,7 @@ tnoremap <M-h> <C-\><C-n>:wincmd h<CR>
 tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
 tnoremap <M-k> <C-\><C-n>:wincmd k<CR>
 tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
+
 " map <M--> :wincmd <<CR>
 " tmap <M--> <C-\><C-n>:wincmd <<CR>
 " map <M-=> :wincmd ><CR>

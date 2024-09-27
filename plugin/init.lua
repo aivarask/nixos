@@ -31,7 +31,7 @@ require('which-key').setup({
   preset = 'helix',
   sort = { 'alphanum' },
 })
-
+require('nvim-surround').setup({})
 require('lsp-file-operations').setup({})
 require('lsp_signature').setup({
   hint_prefix = '🚀 ',
@@ -55,16 +55,16 @@ require('outline').setup({
     },
   },
 })
-require('nvim-surround').setup({})
 
 require('telescope.setup')
-require('term_config')
 require('_init')
 require('completion')
-require('dap_config')
-require('lsp_config')
+require('dap_c')
+require('lsp_c')
 require('lsp_format')
 require('lsp_lua')
-require('notify_config')
+require('lualine_c')
+require('notify_c')
 require('neotest_c')
-require('_exp')
+require('toggleterm_c')
+require('treesitter_c')
