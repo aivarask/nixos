@@ -4,9 +4,9 @@ let
     with pkgs;
     (luajit.withPackages (
       ps: with ps; [
-        # lgi 
+        lgi 
+				vicious
         # luarepl
-        vicious
         # vusted
         magick
         jsregexp
@@ -46,7 +46,9 @@ in
   environment.variables = {
     LUA_PATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
-      # (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
+      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
+			"${pkgs.awesome}/share/awesome/lib/?.lua"
+			"${pkgs.awesome}/share/awesome/lib/?/init.lua"
     ];
     LUA_CPATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)

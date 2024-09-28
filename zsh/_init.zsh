@@ -13,6 +13,7 @@ luapath+=(
 	'/etc/nixos/lua/?.lua'
 	'/etc/nixos/lua/?/init.lua'
 	'/etc/nixos/?.lua'
+	'/etc/nixos/awe/?.lua'
 )
 
 # export PATH="$PATH:$1"
