@@ -30,10 +30,11 @@ local a = function()
           vim.notify(line)
         end,
         on_exit = function(self, code, signal)
-          vim.print(self:result())
+          vim.inspect(self:result())
         end,
       }):start()
     end
   end)
 end
 
+a()

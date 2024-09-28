@@ -99,8 +99,9 @@
           ++ include ./home/programs
           ++ include ./home/services
           ++ include ./.helix
+          ++ include ./awe
           ++ include ./c
-					++ include ./lua;
+          ++ include ./lua;
         home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
