@@ -36,5 +36,3 @@ local a = function()
     end
   end)
 end
-
-a()

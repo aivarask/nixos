@@ -1,6 +1,6 @@
 { ... }:
 {
-	home.sessionVariables.HTOPRC = "/etc/nixos/files/htoprc";
+	environment.variables.HTOPRC = "/etc/nixos/files/htoprc";
   programs.htop = {
     enable = true;
     settings = {

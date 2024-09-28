@@ -6,7 +6,7 @@ let
       ps: with ps; [
         # lgi 
         # luarepl
-        # vicious
+        vicious
         # vusted
         magick
         jsregexp
@@ -37,6 +37,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    awesome
     stylua
     lua-language-server
     myLuaPackages
@@ -45,7 +46,7 @@ in
   environment.variables = {
     LUA_PATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
-      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
+      # (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
     ];
     LUA_CPATH = builtins.concatStringsSep ";" [
       (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)
