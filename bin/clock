@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
 for i in $(seq 1 3); do
-	echo $i
+	date=$(date '+%Y-%m-%d %H:%M:%S')
+	echo "$i $date"
 	sleep 1
 done
 

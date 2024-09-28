@@ -31,6 +31,7 @@ let
         luassert
         plenary-nvim
         nvim-nio
+        luafilesystem
       ]
     ));
 in
@@ -39,6 +40,7 @@ in
     stylua
     lua-language-server
     myLuaPackages
+    myLuaLib
   ];
   environment.variables = {
     LUA_PATH = builtins.concatStringsSep ";" [

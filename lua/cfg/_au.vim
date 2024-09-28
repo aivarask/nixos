@@ -7,7 +7,7 @@ augroup END
 
 augroup vimrc_save
 	au!
-	au FocusGained,BufEnter * :silent! checktime
+	au FocusGained,BufEnter,CursorHold,VimResume * :silent! checktime
 	autocmd VimResized * wincmd =
 	autocmd FileType *\(.txt\|.diffs\)\@<! autocmd TextChanged,CursorHoldI,InsertLeave <buffer> if &readonly == 0 && filereadable(bufname('%')) | silent update | endif
 augroup END

@@ -14,13 +14,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +57 flake.nix
 badd +1 lua/_.vim
+badd +1 lua/_io.lua
 argglobal
 %argdel
-edit lua/_.vim
+edit lua/_io.lua
 argglobal
-balt flake.nix
+balt lua/_.vim
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,12 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 1 - ((0 * winheight(0) + 26) / 52)
+let s:l = 18 - ((17 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 18
+normal! 05|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

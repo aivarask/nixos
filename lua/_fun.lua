@@ -1,17 +1,3 @@
-require('which-key').add({
-  {
-    '<leader>x',
-    function()
-      local table = {
-        a = {
-          b = 1,
-        },
-      }
-    end,
-    desc = '_treesitter.lua',
-  },
-})
-
 local ts_utils = require('nvim-treesitter.ts_utils')
 
 local get_master_node = function()
@@ -48,3 +34,4 @@ end
 -- local parent = get_parent(node)
 -- local bufnr = vim.api.nvim_get_current_buf()
 -- ts_utils.goto_node(parent)
+

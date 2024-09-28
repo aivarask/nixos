@@ -39,7 +39,7 @@ for _, name in ipairs({
   'nvim%-tree.lua',
   'goto%-preview',
 	'surround',
-  'treesitter', -- disabled
+  -- 'treesitter', -- disabled
 }) do
   for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
     if string.find(path, name) then

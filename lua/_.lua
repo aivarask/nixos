@@ -6,9 +6,13 @@ ui_select = {
       vim.fn.expand('<cWORD>'),
       vim.fn.expand('<cfile>'),
       vim.fn.expand('<cexpr>'),
-    }, {}, function(item, idx)
-      if item then
-        vim.cmd.help(item)
+    }, {}, function(first, idx)
+      if first then
+        vim.ui.select({ 'help', 'nix' }, {}, function(second, ib)
+          if second == 'help' then
+            vim.cmd.help(first)
+          end
+        end)
       end
     end)
   end,
@@ -32,3 +36,5 @@ function get_visual_selection()
   -- return table.concat(lines, '\n')
   vim.print(table.concat(lines, '\n'))
 end
+
+

@@ -14,3 +14,6 @@ require('nvim-web-devicons').setup({
   },
 })
 
+require('fidget').setup({})
+require('notify').setup({render = 'compact'})
+vim.notify = require('notify')
