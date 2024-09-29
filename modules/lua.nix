@@ -4,8 +4,9 @@ let
     with pkgs;
     (luajit.withPackages (
       ps: with ps; [
-        lgi 
+        # lgi 
 				vicious
+				luarocks
         # luarepl
         # vusted
         magick

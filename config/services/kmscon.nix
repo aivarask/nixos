@@ -1,5 +1,12 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = [ pkgs.kmscon ];
+	services.kmscon.useXkbConfig = true;
   services.kmscon = {
     enable = lib.mkDefault true;
     autologinUser = lib.mkDefault "root";

@@ -14,8 +14,6 @@ require('awful.hotkeys_popup.keys')
 -- https://vicious.readthedocs.io/en/latest/examples.html#
 vicious = require('vicious')
 
-aiva = require('aiva')
-
 require('error')
 require('variables')
 require('menu')
