@@ -86,12 +86,15 @@ let
     plenary-nvim
     pkgs.vimPlugins.fidget-nvim
   ];
-  disabled = [
+  disabled = with pkgs.vimPlugins; [
+    vim-indentwise
     # vim-floaterm
     # lf-vim
   ];
 
   common = with pkgs.vimPlugins; [
+    # pkgs.vimPlugins.vim-indentwise
+    vim-indentwise
     bclose-vim
     fzf-vim
     gruvbox-material
@@ -106,6 +109,7 @@ let
     vim-matchup
     direnv-vim
     vim-markdown
+    vim-fugitive
   ];
 in
 {

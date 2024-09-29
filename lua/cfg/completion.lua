@@ -12,7 +12,7 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete({ config = { sources = { { name = 'nvim_lsp' } } } }),
     ['<C-b>'] = cmp.mapping.complete({ config = { sources = { { name = 'luasnip' } } } }),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
@@ -30,20 +30,20 @@ cmp.setup({
         fallback()
       end
     end,
-    ['<C-n>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(1) then
-        luasnip.jump(1)
-      else
-        -- fallback()
-      end
-    end, { 'i', 's', 'c' }),
-    ['<C-p>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        -- fallback()
-      end
-    end, { 'i', 's', 'c' }),
+    -- ['<C-n>'] = cmp.mapping(function(fallback)
+    --   if luasnip.jumpable(1) then
+    --     luasnip.jump(1)
+    --   else
+    --     -- fallback()
+    --   end
+    -- end, { 'i', 's', 'c' }),
+    -- ['<C-p>'] = cmp.mapping(function(fallback)
+    --   if luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     -- fallback()
+    --   end
+    -- end, { 'i', 's', 'c' }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' }, --- @see cmp-nvim-lsp

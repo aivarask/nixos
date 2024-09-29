@@ -1,5 +1,7 @@
 filetype plugin indent on
+set termguicolors
 set title titlestring=%{expand('%')}\ %{hostname()}
+set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
 set completeopt=menu,menuone,noselect
 set cursorline mouse=a
 set hidden
@@ -14,12 +16,10 @@ set showtabline=2 statusline+=%F cmdheight=3
 set autoindent
 set smartindent
 set tabstop=2
-set shiftwidth=0
+set shiftwidth=2
 set nolisp
 set noswapfile
-set termguicolors
 set background=dark
-set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
 set undofile
 set nofoldenable
 set scrolloff=15
@@ -37,7 +37,7 @@ let g:lf_map_keys = 0
 map - :cd ..<CR> 
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
-inoremap <Space> <C-G>u<Space>
+" inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>
 map [c :cprevious<CR>
@@ -98,7 +98,6 @@ if !has('nvim')
 
 	nnoremap <Esc>h :wincmd h<CR>
 	nnoremap <Esc>j :wincmd j<CR>
-	nnoremap <Esc>k :wincmd k<CR>
 	nnoremap <Esc>l :wincmd l<CR>
 	
 	cnoremap <nowait> <Esc>h <Left>
@@ -120,7 +119,6 @@ else
 
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>
-	nnoremap <M-k> :wincmd k<CR>
 	nnoremap <M-l> :wincmd l<CR>
 	tnoremap <M-h> <C-\><C-n>:wincmd h<CR>
 	tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
