@@ -2,60 +2,61 @@ local luasnip = require('luasnip') --- @see luasnip
 require('luasnip.loaders.from_vscode').lazy_load() --- @see https://github.com/rafamadriz/friendly-snippets
 require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/snippets' })
 
+-- require('copilot').setup({
+--   suggestion = { enabled = false },
+--   panel = { enabled = false },
+-- })
+local lspkind = require('lspkind')
+
 local cmp = require('cmp') --- @see nvim-cmp
 cmp.setup({
+  enabled = function()
+    return vim.api.nvim_get_option_value('buftype', { buf = 0 }) ~= 'prompt' or require('cmp_dap').is_dap_buffer()
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete({ config = { sources = { { name = 'nvim_lsp' } } } }),
-    ['<C-b>'] = cmp.mapping.complete({ config = { sources = { { name = 'luasnip' } } } }),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
-    -- ['<C-n>'] = cmp.mapping(function(fallback)
-    --   if luasnip.jumpable(1) then
-    --     luasnip.jump(1)
-    --   else
-    --     -- fallback()
-    --   end
-    -- end, { 'i', 's', 'c' }),
-    -- ['<C-p>'] = cmp.mapping(function(fallback)
-    --   if luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     -- fallback()
-    --   end
-    -- end, { 'i', 's', 'c' }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' }, --- @see cmp-nvim-lsp
-    { name = 'emoji' }, --- @see https://github.com/hrsh7th/cmp-emoji
-  }, {
-    { name = 'path' }, --- @see https://github.com/hrsh7th/cmp-path
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      max_width = 50,
+      show_labelDetails = true,
+      symbol_map = { Copilot = '' },
+    }),
+  },
 
-    { name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
+  sources = cmp.config.sources({
+    -- { name = 'copilot', group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 }, --- @see cmp-nvim-lsp
+    { name = 'path', group_index = 2 }, --- @see cmp-path
+    { name = 'luasnip', group_index = 2 },
+    { name = 'emoji', group_index = 2 }, --- @see cmp-emoji
+    -- { name = 'zsh' }, --- @see cmp-zsh
+    -- { name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
   }),
-  enabled = function()
-    return vim.api.nvim_get_option_value('buftype', { buf = 0 }) ~= 'prompt' or require('cmp_dap').is_dap_buffer()
-  end,
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete({}),
+    ['<C-z>'] = cmp.mapping.complete({ config = { sources = { { name = 'zsh' } } } }),
+    ['<C-b>'] = cmp.mapping.complete({ config = { sources = { { name = 'luasnip' } } } }),
+    ['<M-a>'] = cmp.mapping.abort(),
+    ['<M-n>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { 'i', 's', 'c' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's', 'c' }),
+  }),
 })
 
 cmp.setup.cmdline(
@@ -73,7 +74,6 @@ cmp.setup.cmdline(':', {
 
 require('nvim-autopairs').setup({ --- @see nvim-autopairs
   disable_filetype = { 'TelescopePrompt', 'vim' },
-  -- fast_wrap = { map = '<M-w>' },
   check_ts = false,
 })
 

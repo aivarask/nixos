@@ -11,8 +11,8 @@ set modeline
 set noshowmode
 set signcolumn=yes number
 set splitright splitbelow
-set updatetime=1500 timeoutlen=600
-set showtabline=2 statusline+=%F cmdheight=3
+set showtabline=2 statusline+=%F 
+set cmdheight=3
 set autoindent
 set smartindent
 set tabstop=2
@@ -23,6 +23,12 @@ set background=dark
 set undofile
 set nofoldenable
 set scrolloff=15
+set autowriteall
+set updatetime=500 
+set timeoutlen=600
+
+
+
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"

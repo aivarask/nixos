@@ -38,6 +38,7 @@ let
     none-ls-nvim
     lsp_signature-nvim
     lsp-overloads-nvim
+    lspkind-nvim
   ];
   misc = with pkgs.vimPlugins; [
     outline-nvim
@@ -90,10 +91,14 @@ let
     vim-indentwise
     # vim-floaterm
     # lf-vim
+    # copilot-cmp
+    # copilot-lua
   ];
 
   common = with pkgs.vimPlugins; [
+
     # pkgs.vimPlugins.vim-indentwise
+    vim-auto-save
     vim-indentwise
     bclose-vim
     fzf-vim

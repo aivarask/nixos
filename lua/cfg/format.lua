@@ -1,34 +1,10 @@
-local format = vim.api.nvim_create_augroup('format', {}) 
+local format = vim.api.nvim_create_augroup('_format', {})
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = format,
-  pattern = {
-    '*.c',
-    '*.h',
-    '*.cpp',
-    '*.css',
-    '*.go',
-    '*.templ',
-    '*.md',
-    '*.nix',
-    '*.js',
-    '*.ts',
-    '*.php',
-    '*.py',
-    '*.rs',
-    '*.sh',
-    '*.bash',
-    '*.zsh',
-    '*.sql',
-    -- "*.lua",
-    -- "*.vim",
-    '*.json',
-    '*.jsonc',
-    '*.yaml',
-    '*.yml',
-    '*.zig',
-  },
+  pattern = { [[*\(.vim\|.lua\)\@<!]] },
   desc = 'vim.lsp.buf.format',
   callback = function()
+    print('regular')
     vim.lsp.buf.format()
   end,
 })
@@ -36,18 +12,13 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = format,
   pattern = {
+    '*.lua',
     '*.html',
     '*.xml',
     '*.twig',
-    '*.lua',
   },
   desc = 'vim.lsp.buf.format null-ls',
   callback = function()
-    vim.lsp.buf.format({
-      async = true,
-      filter = function(client)
-        return client.name == 'null-ls'
-      end,
-    })
+    vim.lsp.buf.format({ name = 'null-ls' })
   end,
 })

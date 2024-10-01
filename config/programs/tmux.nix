@@ -4,6 +4,7 @@ let
     resurrect
     tmux-fzf
     tmux-floax
+
   ];
   disabled = with pkgs.tmuxPlugins; [
     tmux-fzf
@@ -22,11 +23,9 @@ in
   # /etc/tmux.conf
   programs.tmux = {
     enable = true;
-    plugins =
-      stablePlugins
-      ++ (with pkgs.tmuxPlugins; [
+    plugins = stablePlugins ++ [
 
-      ]);
+    ];
 
     # terminal = "xterm-256color";
     # terminal = "tmux-direct";
