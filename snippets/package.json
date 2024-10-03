@@ -1,25 +1,31 @@
 {
-  "contributes": {
-    "snippets": [
-      {
-        "language": [
-          "json",
-          "jsonc"
-        ],
-        "path": "./snippet.json"
-      },
-      {
-        "language": [
-          "nix"
-        ],
-        "path": "./nix.json"
-      },
-      {
-        "language": [
-          "php"
-        ],
-        "path": "./php.json"
-      }
-    ]
-  }
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"json",
+					"jsonc"
+				],
+				"path": "./snippet.json"
+			},
+			{
+				"language": [
+					"nix"
+				],
+				"path": "./nix.json"
+			},
+			{
+				"language": [
+					"php"
+				],
+				"path": "./php.json"
+			},
+			{
+				"language": [
+					"lua"
+				],
+				"path": "./lua.json"
+			}
+		]
+	}
 }

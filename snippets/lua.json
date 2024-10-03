@@ -1,0 +1,11 @@
+{
+	"foo": {
+		"prefix": [
+			"foo"
+		],
+		"body": [
+			"foo_lua"
+		],
+		"description": ""
+	}
+}

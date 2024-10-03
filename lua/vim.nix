@@ -85,7 +85,7 @@ let
     nui-nvim
     nvim-notify
     plenary-nvim
-    pkgs.vimPlugins.fidget-nvim
+    fidget-nvim
   ];
   disabled = with pkgs.vimPlugins; [
     vim-indentwise

@@ -1,6 +1,6 @@
-local nio = require('nio')
+local nio = require("nio")
 
-local Job = require('plenary.job')
+local Job = require("plenary.job")
 -- Job:new({
 --   command = 'clock',
 --   args = nil,

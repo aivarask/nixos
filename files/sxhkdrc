@@ -33,7 +33,7 @@ super + ctrl + {q}
 
 super + {W,E,R,T,Y}
   {firefox --private-window\
-  ,alacritty --working-directory=/etc/nixos -e vim -S\
+  ,alacritty --working-directory=/etc/nixos -e vim\
   ,alacritty --working-directory=/etc/nixos\
 	,telegram-desktop\
 	,brave youtube.com\
