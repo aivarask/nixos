@@ -5,34 +5,34 @@ let
     (luajit.withPackages (
       ps: with ps; [
         # lgi 
-				vicious
-				luarocks
         # luarepl
         # vusted
-        magick
-        jsregexp
-        ldoc
-        luacheck
-        luadbi-sqlite3
-        luafilesystem
-        luasql-sqlite3
-        luv
-        sqlite
-        std-_debug
-        toml-edit
+        # vicious
+        # luarocks
+        # magick
+        # jsregexp
+        # ldoc
+        # luacheck
+        # luadbi-sqlite3
+        # luafilesystem
+        # luasql-sqlite3
+        # luv
+        # sqlite
+        # std-_debug
+        # toml-edit
       ]
     ));
   myLuaLib =
     with pkgs;
     (luajit.withPackages (
       ps: with ps; [
-        inspect
-        penlight
-        busted
-        luassert
-        plenary-nvim
+        # inspect
+        # penlight
+        # busted
+        # luassert
+        # plenary-nvim
         nvim-nio
-        luafilesystem
+        # luafilesystem
       ]
     ));
 in
@@ -45,18 +45,18 @@ in
     myLuaLib
   ];
   environment.variables = {
-    LUA_PATH = builtins.concatStringsSep ";" [
-      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
-      (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
-			"${pkgs.awesome}/share/awesome/lib/?.lua"
-			"${pkgs.awesome}/share/awesome/lib/?/init.lua"
-    ];
-    LUA_CPATH = builtins.concatStringsSep ";" [
-      (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)
-      (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)
-    ];
-    # "${pkgs.sqlite.out}/lib/libsqlite3.so"
-    LUA_LIB = "${myLuaLib}/share/lua/5.1";
+    # LUA_PATH = builtins.concatStringsSep ";" [
+    #   (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages)
+    #   (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaLib)
+    # "${pkgs.awesome}/share/awesome/lib/?.lua"
+    # "${pkgs.awesome}/share/awesome/lib/?/init.lua"
+    # ];
+    # LUA_CPATH = builtins.concatStringsSep ";" [
+    #   (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages)
+    #   (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaLib)
+    # ];
+    # # "${pkgs.sqlite.out}/lib/libsqlite3.so"
+    # LUA_LIB = "${myLuaLib}/share/lua/5.1";
   };
   environment.shellAliases = {
     elp = "echo $LUA_PATH | tr ';' '\n'";

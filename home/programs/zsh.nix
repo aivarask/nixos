@@ -25,10 +25,10 @@
       source /etc/nixos/zsh/_bcomp.zsh
       # >>>
     '';
+    # fpath+=(${pkgs.luajitPackages.busted}/share/zsh/site-functions)
     completionInit = ''
       # <<< completionInit
       fpath+=(${pkgs.zig-shell-completions}/share/zsh/site-functions)
-      fpath+=(${pkgs.luajitPackages.busted}/share/zsh/site-functions)
       source /etc/nixos/zsh/_comp.zsh
       # >>>
     '';

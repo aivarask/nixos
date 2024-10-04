@@ -59,6 +59,7 @@ nnoremap <silent> <leader>Q :quitall<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
 nnoremap <silent> <leader>m :messages<CR>
+nnoremap <silent> <leader>L :LazyGit<CR>
 
 if !has('gui_running')
 	set t_Co=256

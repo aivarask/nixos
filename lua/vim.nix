@@ -60,13 +60,13 @@ let
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
-    neotest
+    # neotest
     neotest-bash
     neotest-go
     neotest-jest
     neotest-phpunit
     neotest-pest
-    neotest-plenary
+    # neotest-plenary
     neotest-python
     neotest-rust
     neotest-zig
