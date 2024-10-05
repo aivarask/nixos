@@ -11,7 +11,6 @@ let
     fzf-tmux-url
     tilish
     sensible # https://github.com/tmux-plugins/tmux-sensible
-
   ];
 in
 {

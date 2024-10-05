@@ -13,9 +13,8 @@
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";
       "..." = "../..";
-      ls = "eza --icons --git";
+      ls = "eza --icons";
       l = "ls -l --group-directories-first";
-      la = "ls -la";
       oras = "curl wttr.in/Vilnius";
       x = "startx";
     };

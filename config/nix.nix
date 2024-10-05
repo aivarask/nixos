@@ -9,6 +9,7 @@
     nixos-generators
     fh # flakehub
   ];
+  nixpkgs.config.allowUnfree = true;
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
