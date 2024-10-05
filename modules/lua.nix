@@ -26,12 +26,13 @@ let
     with pkgs;
     (luajit.withPackages (
       ps: with ps; [
+        # magick
         # inspect
         # penlight
         # busted
         # luassert
         # plenary-nvim
-        nvim-nio
+        # nvim-nio
         # luafilesystem
       ]
     ));

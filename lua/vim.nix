@@ -120,9 +120,6 @@ in
 {
   home.packages = [ pkgs.manix ];
 
-  programs.neovim.extraLuaPackages = ps: [
-    ps.magick
-  ];
   programs.vim = {
     enable = true;
     plugins =
@@ -159,10 +156,14 @@ in
     withPython3 = true;
     withRuby = false;
   };
+  programs.neovim.extraLuaPackages = ps: [
+    ps.magick
+  ];
   programs.neovim.plugins =
     common
     ++ (with pkgs.vimPlugins; [
       vim-sensible
+      nvim-nio
     ])
     ++ codelens
     ++ completion
