@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  home.sessionVariables = {
-    BAT_THEME = "gruvbox-dark";
-  };
-  # home.shellAliases = { };
+  home.sessionVariables.BAT_THEME = "gruvbox-dark";
   programs.bat = {
     enable = true;
     config = {

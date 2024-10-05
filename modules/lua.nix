@@ -59,9 +59,4 @@ in
     # # "${pkgs.sqlite.out}/lib/libsqlite3.so"
     # LUA_LIB = "${myLuaLib}/share/lua/5.1";
   };
-  environment.shellAliases = {
-    elp = "echo $LUA_PATH | tr ';' '\n'";
-    elc = "echo $LUA_CPATH | tr ';' '\n'";
-  };
-
 }

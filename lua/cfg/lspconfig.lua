@@ -103,35 +103,38 @@ c.nixd.setup({
 			formatting = {
 				command = { "nixfmt" },
 			},
-			nixpkgs = {
-				expr = '(builtins.getFlake "/etc/nixos").inputs.nixpkgs',
-			},
-			options = {
-				nixos = {
-					expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dell.options',
-				},
-				home_manager = {
-					expr = '(builtins.getFlake "/etc/nixos").homeConfigurations.root.options',
-				},
-			},
+			-- nixpkgs = {
+			-- 	expr = '(builtins.getFlake "/etc/nixos").inputs.nixpkgs',
+			-- },
+			-- options = {
+			-- 	nixos = {
+			-- 		expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dell.options',
+			-- 	},
+			-- 	home_manager = {
+			-- 		expr = '(builtins.getFlake "/etc/nixos").homeConfigurations.root.options',
+			-- 	},
+			-- },
 		},
 	},
 })
+
 -- c.nil_ls.setup({
---   settings = {
---     ['nil'] = {
---       formatting = { command = { 'nixfmt' } },
---       nix = {
---         maxMemoryMB = 20480,
---         flake = {
---           -- autoArchive = true,
---           -- autoEvalInputs = true,
---           nixpkgsInputName = 'nixpkgs',
---         },
---       },
---     },
---   },
+-- 	autostart = false,
+-- 	settings = {
+-- 		["nil"] = {
+-- 			formatting = { command = { "nixfmt" } },
+-- 			nix = {
+-- 				maxMemoryMB = 20480,
+-- 				flake = {
+-- 					-- autoArchive = true,
+-- 					-- autoEvalInputs = true,
+-- 					nixpkgsInputName = "nixpkgs",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
 -- })
+
 c.intelephense.setup({})
 nls.register({ nls.builtins.formatting.black })
 c.pyright.setup({})

@@ -16,10 +16,9 @@ let
 in
 {
   # https://www.youtube.com/watch?v=GH3kpsbbERo
-  environment.shellAliases = {
-    tmux = "tmux -f /etc/nixos/files/tmux.conf";
-    tmux_lf = "tmux split -h lf; lf";
-  };
+  environment.shellAliases.tmux = "tmux -f /etc/nixos/files/tmux.conf";
+  environment.shellAliases.tmux_lf = "tmux split -h lf; lf";
+
   # /etc/tmux.conf
   programs.tmux = {
     enable = true;

@@ -3,9 +3,8 @@
   environment.variables = {
     EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
   };
-  environment.shellAliases = { };
-  environment.systemPackages= with pkgs; [
-      fontpreview
+  environment.systemPackages = with pkgs; [
+    fontpreview
   ];
   fonts = {
     fontconfig = {
@@ -32,7 +31,7 @@
     packages = with pkgs; [
       noto-fonts-color-emoji
       (nerdfonts.override {
-        fonts = [ "DejaVuSansMono"];
+        fonts = [ "DejaVuSansMono" ];
       })
     ];
   };

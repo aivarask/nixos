@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  home.shellAliases = {
-    ecip = "echo $C_INCLUDE_PATH | tr ':' '\n'";
-  };
   home.sessionVariables = {
     # C_INCLUDE_PATH = builtins.concatStringsSep ":" [
     #   "${pkgs.zlib.dev}/include"

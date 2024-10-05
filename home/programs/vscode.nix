@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  home.shellAliases.codium = "codium --no-sandbox --user-data-dir ~/.codium";
   programs.vscode = {
     enable = false;
     package = pkgs.vscodium.fhs;

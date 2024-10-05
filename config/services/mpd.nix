@@ -1,14 +1,10 @@
 { pkgs, ... }:
 {
   networking.firewall.allowedTCPPorts = [ 6600 ];
-
   environment.systemPackages = with pkgs; [
     pulsemixer
     mpc_cli
   ];
-  environment.shellAliases = {
-    # pulsemixer = "pulsemixer --max-volume 100";
-  };
   services.mpd = {
     enable = true;
     user = "root";

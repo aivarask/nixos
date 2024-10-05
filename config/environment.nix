@@ -10,28 +10,20 @@
       SXHKDRC = "/etc/nixos/files/sxhkdrc";
     };
     shellAliases = {
-      ep = "echo $PATH | tr ':' '\n'";
-      codium = "codium --no-sandbox --user-data-dir ~/.codium";
       wol_pc = "wol b4:2e:99:61:09:cf";
       ".." = "cd ..";
       "..." = "../..";
+      ls = "eza --icons --git";
       l = "ls -l --group-directories-first";
       la = "ls -la";
-      lg = "lazygit";
-      ls = "eza --icons --git";
-      lt = "ls --tree --level=2";
       oras = "curl wttr.in/Vilnius";
-      tre = "trans :en";
-      trl = "trans :lt";
       x = "startx";
     };
     sessionVariables = rec {
-      # https://nixos.wiki/wiki/Environment_variables
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-
       XDG_BIN_HOME = "$HOME/.local/bin";
 
       PATH = [

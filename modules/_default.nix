@@ -31,7 +31,6 @@
     libxkbcommon
 
     # terminal
-    lazygit
     tdrop
     ueberzug
     ueberzugpp

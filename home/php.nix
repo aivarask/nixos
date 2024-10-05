@@ -6,9 +6,7 @@
   home.sessionPath = [
     "$HOME/.config/composer/vendor/bin"
   ];
-  home.shellAliases = {
-    wp = "wp --allow-root";
-  };
+  home.shellAliases.wp = "wp --allow-root";
   home.packages =
     [
       # (pkgs.php83.buildEnv {

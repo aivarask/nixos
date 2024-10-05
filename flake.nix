@@ -105,7 +105,6 @@
           ++ include ./c
           ++ include ./lua
           ++ include ./zsh;
-        home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
@@ -139,6 +138,13 @@
           # DELL XPS 7590
           inherit system;
           modules = commonModules ++ [
+            {
+              environment.systemPackages = [
+                pkgs.firefox
+                pkgs.thunderbird
+              ];
+
+            }
             inputs.suckless.nixosModules.default
             common
             ./hosts/dell.nix
@@ -148,7 +154,6 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = commonHome;

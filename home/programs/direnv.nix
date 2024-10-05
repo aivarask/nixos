@@ -1,7 +1,5 @@
 _: {
-  home.shellAliases = {
-    da = "direnv allow";
-  };
+  home.shellAliases.da = "direnv allow";
   programs.direnv = {
     enable = true;
     # silent = false;

@@ -1,11 +1,13 @@
 { pkgs, ... }:
 {
+  home.shellAliases.lg = "lazygit";
   home.packages = with pkgs; [
     git
     git-lfs
     gh
     git-crypt
     pre-commit
+    lazygit
   ];
   programs.git.delta.enable = false;
   programs.git.lfs.enable = true;
@@ -29,7 +31,7 @@
       "node_modules/"
       "vendor/"
       "CMakeFiles/"
-			"Session.vim"
+      "Session.vim"
     ];
     userName = "Aivaras Kalesnykas";
     userEmail = "kalesnykas.aivaras@gmail.com";

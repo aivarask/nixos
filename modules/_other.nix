@@ -1,10 +1,27 @@
 { pkgs, lib, ... }:
 lib.mkMerge [
+  rec {
+    environment.sessionVariables.GOPATH = "$HOME/.go";
+    environment.sessionVariables.PATH = [ "${environment.sessionVariables.GOPATH}" ];
+    environment.systemPackages = with pkgs; [
+      go
+      gotools
+      gopls
+      templ
+      gow
+      delve
+    ];
+  }
+  {
+    environment.systemPackages = with pkgs; [
+      zig
+      zls
+      zig-shell-completions
+      zap
+    ];
+  }
   {
     environment.systemPackages = with pkgs; [ stylelint ];
-    environment.shellAliases = {
-      stylelint = "stylelint -c /etc/nixos/.stylelintrc.json --config-basedir /etc/nixos";
-    };
   }
   {
     environment.systemPackages = with pkgs; [
@@ -14,7 +31,7 @@ lib.mkMerge [
       ludtwig
       html-tidy
     ];
-  } # html
+  }
   {
     environment.systemPackages = with pkgs; [
       vscode-langservers-extracted
@@ -84,12 +101,9 @@ lib.mkMerge [
       PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright-driver.version}";
     };
   }
-
   {
     # rust rust-bin.stable.latest.default
-    environment.variables = {
-      LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so";
-    };
+    environment.variables.LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so";
     environment.systemPackages = with pkgs; [
       cargo
       cargo-nextest

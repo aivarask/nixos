@@ -2,9 +2,7 @@
 {
   # https://github.com/junegunn/fzf#usage
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
-  home.shellAliases = {
-    fzp = "fzf -m --preview 'pistol {}'";
-  };
+  home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
     enable = true;
     defaultCommand = "fd -tf";
