@@ -43,6 +43,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
+      username = "root";
       pkgs = nixpkgs.legacyPackages.${system};
       include =
         p:
@@ -100,7 +101,6 @@
           ++ include ./home
           ++ include ./home/programs
           ++ include ./home/services
-          ++ include ./.helix
           ++ include ./awe
           ++ include ./c
           ++ include ./lua
@@ -113,7 +113,6 @@
         home.file = { };
       };
       commonModules = include ./modules;
-      username = "root";
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
@@ -124,8 +123,12 @@
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          commonHome
-          { }
+          # commonHome
+          {
+            home.stateVersion = "23.05";
+            home.username = username;
+            home.homeDirectory = "/root";
+          }
         ];
         extraSpecialArgs = {
           inherit inputs system username;
