@@ -1,5 +1,14 @@
 { pkgs, lib, ... }:
 lib.mkMerge [
+  {
+    environment.systemPackages = with pkgs; [
+      gtk3
+      gtk3-x11
+      layan-gtk-theme
+      gruvbox-dark-gtk
+      gruvbox-dark-icons-gtk
+    ];
+  }
   rec {
     environment.sessionVariables.GOPATH = "$HOME/.go";
     environment.sessionVariables.PATH = [ "${environment.sessionVariables.GOPATH}" ];
@@ -14,6 +23,13 @@ lib.mkMerge [
   }
   {
     environment.systemPackages = with pkgs; [
+      ghc
+      ghcid
+      ghciwatch
+    ];
+  }
+  {
+    environment.systemPackages = with pkgs; [
       zig
       zls
       zig-shell-completions
@@ -21,10 +37,8 @@ lib.mkMerge [
     ];
   }
   {
-    environment.systemPackages = with pkgs; [ stylelint ];
-  }
-  {
     environment.systemPackages = with pkgs; [
+      stylelint
       htmx-lsp
       emmet-ls
       emmet-language-server
@@ -37,13 +51,13 @@ lib.mkMerge [
       vscode-langservers-extracted
       nodePackages.fixjson
     ];
-  } # json
+  }
   {
     environment.systemPackages = with pkgs; [
       gnumake
       checkmake
     ];
-  } # make
+  }
   {
     environment.systemPackages = with pkgs; [
       marksman
@@ -51,26 +65,26 @@ lib.mkMerge [
       markdownlint-cli
       markdownlint-cli2
     ];
-  } # markdown
+  }
   {
     environment.systemPackages = with pkgs; [
       taplo
       taplo-cli
       taplo-lsp
     ];
-  } # toml
+  }
   {
     environment.systemPackages = with pkgs; [
       vim-vint
       nodePackages.vim-language-server
     ];
-  } # vim
+  }
   {
     environment.systemPackages = with pkgs; [
       yaml-language-server
       yq-go
     ];
-  } # yaml
+  }
   {
     environment.systemPackages = with pkgs; [
       pyright
@@ -102,7 +116,6 @@ lib.mkMerge [
     };
   }
   {
-    # rust rust-bin.stable.latest.default
     environment.variables.LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so";
     environment.systemPackages = with pkgs; [
       cargo

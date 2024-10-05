@@ -1,5 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    nixfmt-rfc-style
+    nixd
+    nil
+    nurl
+    deadnix
+    nixos-generators
+    fh # flakehub
+  ];
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];

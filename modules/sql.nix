@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # ../modules/services/databases/mysql.nix
   environment.systemPackages = with pkgs; [
     sqlite-interactive
     sqlite-analyzer
@@ -26,8 +25,6 @@
       };
     };
   };
-  # https://nixos.wiki/wiki/PostgreSQL
-  # https://github.com/supabase/postgres_lsp
   services.postgresql = {
     enable = false;
     package = pkgs.postgresql;

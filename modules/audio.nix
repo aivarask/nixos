@@ -7,9 +7,8 @@
     # bitwig-studio
     # mixxx
   ];
-  environment.variables = {
-    QT_AUTO_SCREEN_SCALE_FACTOR = "0"; # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
-  };
+  # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
+  environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "0";
   services.udev.packages = [
     # pkgs.mixxx
     # pkgs.bitwig-studio
