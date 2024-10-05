@@ -10,7 +10,7 @@ if vim.uv.os_getenv("DISPLAY") then
 end
 require("nvim-web-devicons").setup({
 	override = {
-		["nix"] = { icon = "", color = "#85ea2d", cterm_color = "110", name = "Nix" },
+		["nix"] = { icon = "", color = "#ffffff", cterm_color = "110", name = "Nix" },
 	},
 })
 

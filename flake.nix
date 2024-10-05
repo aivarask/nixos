@@ -101,7 +101,8 @@
           ++ include ./.helix
           ++ include ./awe
           ++ include ./c
-          ++ include ./lua;
+          ++ include ./lua
+          ++ include ./zsh;
         home.shellAliases = { };
         home.sessionVariables = {
           BROWSER = "firefox";
