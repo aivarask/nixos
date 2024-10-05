@@ -24,11 +24,8 @@ set undofile
 set nofoldenable
 set scrolloff=15
 set autowriteall
-set updatetime=500 
+set updatetime=250
 set timeoutlen=600
-
-
-
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"

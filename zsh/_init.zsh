@@ -3,7 +3,11 @@
 # /run/current-system/sw/share/zsh/site-functions
 # ~/.config/zsh/.zshrc
 
-source /etc/nixos/zsh/alias.zsh
+alias af="alias | fzf" \
+	__fpath="print -l $fpath" \
+	gr=foo \
+	ci=compinit
+
 source /etc/nixos/zsh/functions.zsh
 source /etc/nixos/zsh/keys.zsh
 source /etc/nixos/zsh/settings.zsh

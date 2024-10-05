@@ -143,10 +143,10 @@ in
   programs.neovim = {
     enable = true;
     extraConfig = ''
-            let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
-      			let &packpath.=',/etc/nixos'
-            runtime! lua/cfg/**/*{.lua,.vim}
-            runtime! lua/_*{.lua,.vim}
+      let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
+      let &packpath.=',/etc/nixos'
+      runtime! lua/cfg/**/*{.lua,.vim}
+      runtime! lua/_*{.lua,.vim}
     '';
     extraLuaConfig = ''
       vim.loader.enable()

@@ -103,6 +103,17 @@ c.nixd.setup({
 			formatting = {
 				command = { "nixfmt" },
 			},
+			nixpkgs = {
+				expr = '(builtins.getFlake "/etc/nixos").inputs.nixpkgs',
+			},
+			options = {
+				nixos = {
+					expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dell.options',
+				},
+				home_manager = {
+					expr = '(builtins.getFlake "/etc/nixos").homeConfigurations.root.options',
+				},
+			},
 		},
 	},
 })
