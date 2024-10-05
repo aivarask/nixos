@@ -49,6 +49,7 @@
         with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       common = {
+        nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         imports =
           [ inputs.suckless.nixosModules.default ]
           ++ include ./config
@@ -121,9 +122,11 @@
         modules = [ ./hosts/redmi.nix ];
       };
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        # modules = [ ./home ];
-        modules = [ commonHome ];
+        inherit pkgs;
+        modules = [
+          commonHome
+          { }
+        ];
         extraSpecialArgs = {
           inherit inputs system username;
         };
@@ -142,6 +145,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
+
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = commonHome;

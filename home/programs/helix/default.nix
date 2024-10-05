@@ -1,7 +1,7 @@
 { ... }:
 {
   home.shellAliases = {
-    hx = "hx -c /etc/nixos/.helix/config.toml";
+    hx = "hx -c /etc/nixos/home/programs/helix/config.toml";
   };
   programs.helix = {
     enable = true;
