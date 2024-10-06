@@ -100,7 +100,6 @@
           ]
           ++ include ./home
           ++ include ./home/programs
-          ++ include ./home/services
           ++ include ./awe
           ++ include ./c
           ++ include ./lua
@@ -175,7 +174,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.root = commonHome;
+                # users.root = commonHome;
+                users.${username} = {
+
+                };
               };
             }
           ];
