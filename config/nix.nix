@@ -9,10 +9,13 @@
     nixos-generators
     fh # flakehub
   ];
+
   nixpkgs.config.allowUnfree = true;
   nix = {
+
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
+    # nixPath = [ "nixpkgs=${pkgs}" ];
     channel.enable = true;
     gc = {
       automatic = true;
@@ -34,5 +37,21 @@
     '';
     # access-tokens = github.com=
     # gh auth token
+    registry = {
+      os = {
+        to = {
+          type = "git";
+          url = "file:///etc/nixos";
+        };
+      };
+      "dev-templates" = {
+        to = {
+          owner = "the-nix-way";
+          repo = "dev-templates";
+          type = "github";
+        };
+      };
+    };
   };
+
 }

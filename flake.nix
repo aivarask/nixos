@@ -43,14 +43,13 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      username = "root";
       pkgs = nixpkgs.legacyPackages.${system};
+      username = "root";
       include =
         p:
         with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       common = {
-        nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         imports =
           [ inputs.suckless.nixosModules.default ]
           ++ include ./config
@@ -67,23 +66,9 @@
           (import ./overlays/manix.nix { })
           (import ./overlays/gow.nix pkgs)
         ];
-        nix.registry = {
-          os = {
-            to = {
-              type = "git";
-              url = "file:///etc/nixos";
-            };
-          };
-          "dev-templates" = {
-            to = {
-              owner = "the-nix-way";
-              repo = "dev-templates";
-              type = "github";
-            };
-          };
-        };
       };
       commonHome = {
+
         home.stateVersion = "23.05";
         home.username = username;
         home.enableNixpkgsReleaseCheck = false;
@@ -108,7 +93,6 @@
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
         };
-        home.file = { };
       };
       commonModules = include ./modules;
     in
@@ -136,14 +120,9 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
+          specialArgs = { };
           modules = commonModules ++ [
-            {
-              environment.systemPackages = [
-                pkgs.firefox
-                pkgs.thunderbird
-              ];
 
-            }
             inputs.suckless.nixosModules.default
             common
             ./hosts/dell.nix

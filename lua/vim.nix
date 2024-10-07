@@ -147,6 +147,7 @@ in
       let &packpath.=',/etc/nixos'
       runtime! lua/cfg/**/*{.lua,.vim}
       runtime! lua/_*{.lua,.vim}
+      runtime! {config,home}/*.lua
     '';
     extraLuaConfig = ''
       vim.loader.enable()

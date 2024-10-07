@@ -4,7 +4,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { [[*\(.vim\|.lua\)\@<!]] },
 	desc = "vim.lsp.buf.format",
 	callback = function()
-		print("regular")
 		vim.lsp.buf.format()
 	end,
 })

@@ -60,7 +60,6 @@ vim.lsp.inspect_client = function()
 		end
 		return keys
 	end
-	local pretty = require("pl.pretty")
 	local bufnr = vim.api.nvim_get_current_buf()
 	local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
@@ -76,9 +75,9 @@ vim.lsp.inspect_client = function()
 
 			vim.ui.select(keys, {}, function(key)
 				if key and client ~= nil and client[key] then
-					pretty(client[key])
+					vim.print(client[key])
 				else
-					pretty(client)
+					vim.print(client)
 				end
 			end)
 		end
