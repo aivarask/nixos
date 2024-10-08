@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
@@ -8,14 +8,13 @@
     deadnix
     nixos-generators
     fh # flakehub
-  ];
 
+  ];
   nixpkgs.config.allowUnfree = true;
   nix = {
-
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
-    # nixPath = [ "nixpkgs=${pkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     channel.enable = true;
     gc = {
       automatic = true;

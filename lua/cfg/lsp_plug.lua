@@ -27,7 +27,7 @@ wk.add({
 	{ "<space>", group = "LSP" },
 	{ "<space>a", vim.lsp.buf.code_action, desc = "code_action", mode = { "n", "v" } },
 	{ "<space>D", vim.lsp.buf.declaration, desc = "declaration" },
-	{ "<space>d", vim.lsp.buf.definition, desc = "definition" },
+	{ "<space>dd", vim.lsp.buf.definition, desc = "definition" },
 	{ "<space>e", vim.diagnostic.open_float, desc = "open_float" },
 	{ "<space>I", vim.lsp.inspect_client, desc = "inspect_client", noremap = true },
 	{ "<space>i", vim.lsp.buf.implementation, desc = "implementation" },
@@ -43,13 +43,13 @@ wk.add({
 
 require("goto-preview").setup({})
 wk.add({
-	{ "<leader>p", group = "goto-preview" },
-	{ "<leader>pd", require("goto-preview").goto_preview_definition, desc = "definition" },
-	{ "<leader>pt", require("goto-preview").goto_preview_type_definition, desc = "type_definition" },
-	{ "<leader>pi", require("goto-preview").goto_preview_implementation, desc = "implementation" },
-	{ "<leader>pD", require("goto-preview").goto_preview_declaration, desc = "declaration" },
-	{ "<leader>pc", require("goto-preview").close_all_win, desc = "close_all_win" },
-	{ "<leader>pr", require("goto-preview").goto_preview_references, desc = "references" },
+	{ "<space>p", group = "goto-preview" },
+	{ "<space>pd", require("goto-preview").goto_preview_definition, desc = "definition" },
+	{ "<space>pt", require("goto-preview").goto_preview_type_definition, desc = "type_definition" },
+	{ "<space>pi", require("goto-preview").goto_preview_implementation, desc = "implementation" },
+	{ "<space>pD", require("goto-preview").goto_preview_declaration, desc = "declaration" },
+	{ "<space>pc", require("goto-preview").close_all_win, desc = "close_all_win" },
+	{ "<space>pr", require("goto-preview").goto_preview_references, desc = "references" },
 })
 
 vim.lsp.inspect_client = function()

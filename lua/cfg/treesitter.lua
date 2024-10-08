@@ -49,11 +49,12 @@ require("nvim-treesitter.configs").setup({ --- @see nvim-treesitter
 			-- goto_next_start = { [']]'] = '@swap.outer', },
 			-- goto_previous_start = { ['[['] = '@swap.outer', },
 		},
-		lsp_interop = { --- @see nvim-treesitter-textobjects-lsp_interop-submod
+		lsp_interop = { --- @doc nvim-treesitter-textobjects-lsp_interop-submod
 			enable = true,
 			floating_preview_opts = {},
 			peek_definition_code = {
-				["<C-M-K>"] = "@function.outer",
+				["<space>df"] = "@function.outer",
+				["<space>dF"] = "@class.outer",
 			},
 		},
 	},

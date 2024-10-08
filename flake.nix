@@ -120,7 +120,9 @@
         dell = nixpkgs.lib.nixosSystem {
           # DELL XPS 7590
           inherit system;
-          specialArgs = { };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = commonModules ++ [
 
             inputs.suckless.nixosModules.default
