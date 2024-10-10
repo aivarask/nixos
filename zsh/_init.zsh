@@ -24,4 +24,5 @@ luapath+=(
 typeset -TU PATH path ':'
 path+=(
 	'/etc/nixos'
+	'/etc/nixos/lua'
 )

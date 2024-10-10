@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    ffuf
     libreoffice-qt
     # nur.repos.running-grass.postman
     # --

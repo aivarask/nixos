@@ -1,11 +1,5 @@
 { pkgs, ... }:
 let
-  codelens = with pkgs.vimPlugins; [
-    # fold-preview-nvim
-    goto-preview
-    hover-nvim
-    # pretty-fold-nvim
-  ];
   completion = with pkgs.vimPlugins; [
     nvim-autopairs
     cmp_luasnip
@@ -13,14 +7,11 @@ let
     friendly-snippets
     nvim-cmp
     cmp-nvim-lsp
-    cmp-emoji
     cmp-path
+    cmp-emoji
     cmp-buffer
     cmp-cmdline
     cmp-zsh
-    cmp-git
-    cmp-dap
-    cmp-treesitter
   ];
   dap = with pkgs.vimPlugins; [
     nvim-dap
@@ -29,14 +20,13 @@ let
     # nvim-dap-ui
     # nvim-dap-go
     # nvim-dap-python
-    # rustaceanvim
   ];
   lsp = with pkgs.vimPlugins; [
     conform-nvim
     nvim-lspconfig
     SchemaStore-nvim
     none-ls-nvim
-    lsp_signature-nvim
+    goto-preview
     lsp-overloads-nvim
     lspkind-nvim
   ];
@@ -44,7 +34,6 @@ let
     outline-nvim
     flatten-nvim
     glow-nvim
-    neoscroll-nvim
     dressing-nvim
     nvim-colorizer-lua
     nvim-web-devicons
@@ -96,7 +85,6 @@ let
   ];
 
   common = with pkgs.vimPlugins; [
-
     # pkgs.vimPlugins.vim-indentwise
     vim-auto-save
     vim-indentwise
@@ -118,8 +106,6 @@ let
   ];
 in
 {
-  home.packages = [ pkgs.manix ];
-
   programs.vim = {
     enable = true;
     plugins =
@@ -140,6 +126,23 @@ in
             runtime! lua/_*.vim
     '';
   };
+  home.packages = with pkgs; [
+    manix
+    awesome
+    stylua
+    lua-language-server
+    (pkgs.luajit.withPackages (
+      ps:
+      [
+      ]
+    ))
+  ];
+  home.sessionVariables = {
+    # LUA_PATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages) ];
+    # LUA_CPATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages) ];
+    # LUA_LIB = "${myLuaLib}/share/lua/5.1";
+  };
+
   programs.neovim = {
     enable = true;
     extraConfig = ''
@@ -157,16 +160,19 @@ in
     withPython3 = true;
     withRuby = false;
   };
-  programs.neovim.extraLuaPackages = ps: [
-    ps.magick
-  ];
+  programs.neovim.extraLuaPackages =
+    luaPkgs: with luaPkgs; [
+      magick
+      cjson
+      inspect
+      lpeglabel
+    ];
   programs.neovim.plugins =
     common
     ++ (with pkgs.vimPlugins; [
       vim-sensible
       nvim-nio
     ])
-    ++ codelens
     ++ completion
     ++ dap
     ++ lsp

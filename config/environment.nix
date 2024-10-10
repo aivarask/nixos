@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment = {
+
     profiles = [
       "${pkgs.zsh-completions}"
     ];

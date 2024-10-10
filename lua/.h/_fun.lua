@@ -1,9 +1,9 @@
-local ts_utils = require("nvim-treesitter.ts_utils")
+local ts_utils = require('nvim-treesitter.ts_utils')
 
 local get_master_node = function()
 	local node = ts_utils.get_node_at_cursor()
 	if node == nil then
-		error("No Treesitter parser found.")
+		error('No Treesitter parser found.')
 	end
 
 	local start_row = node:start()

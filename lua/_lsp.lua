@@ -1,27 +1,20 @@
-local c = require("lspconfig")
-
-local nixd = require("lspconfig.server_configurations.nixd").default_config
-local lua_ls = require("lspconfig.server_configurations.lua_ls").default_config
-
 -- lsp-quickstart
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "nix",
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'nix',
 	callback = function(ev)
+		-- local nixd = require('lspconfig.server_configurations.nixd').default_config
 		vim.lsp.start({
-			name = "nixd",
-			cmd = { "nixd" },
-			root_dir = vim.fs.root(ev.buf, { "flake.lock" }),
+			name = 'nixd',
+			cmd = { 'nixd' },
+			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
 			settings = {
 				nixd = {
-					formatting = { command = { "nixfmt" } },
-					nixpkgs = { expr = "import <nixpkgs> { }" },
-					-- nixpkgs = { expr = '(builtins.getFlake "/etc/nixos").inputs.nixpkgs' },
+					formatting = { command = { 'nixfmt' } },
+					nixpkgs = { expr = 'import <nixpkgs> { }' },
 					options = {
-						-- nixos = { expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dell.options' },
 						nixos = {
 							expr = '(builtins.getFlake ("git+file://" + toString /etc/nixos)).nixosConfigurations.dell.options',
 						},
-						-- home_manager = { expr = '(builtins.getFlake "/etc/nixos").homeConfigurations.root.options' },
 						home_manager = {
 							expr = '(builtins.getFlake ("git+file://" + toString /etc/nixos)).homeConfigurations.root.options',
 						},
@@ -29,12 +22,12 @@ vim.api.nvim_create_autocmd("FileType", {
 				},
 			},
 		})
-		if true then
+		if false then
 			vim.lsp.start({
-				name = "nil",
-				cmd = { "nil" },
+				name = 'nil',
+				cmd = { 'nil' },
 				settings = {
-					["nil"] = {
+					['nil'] = {
 						formatting = { command = nil },
 						nix = {
 							maxMemoryMB = 20480,

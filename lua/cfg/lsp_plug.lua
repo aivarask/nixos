@@ -1,55 +1,39 @@
-require("lsp-file-operations").setup({})
-require("lsp_signature").setup({
-	hint_prefix = "🚀 ",
-	floating_window = false,
-	close_timeout = 1000,
-	-- toggle_key = nil,
-})
-require("hover").setup({
-	init = function()
-		require("hover.providers.lsp")
-	end,
-})
-require("outline").setup({
+require('lsp-file-operations').setup({})
+require('outline').setup({
 	symbols = {
 		icons = {
-			Class = { icon = "󰠱", hl = "Type" },
-			String = { icon = "󰉿", hl = "String" },
-			Struct = { icon = "󰙅", hl = "Structure" },
-			Event = { icon = "", hl = "Type" },
-			TypeParameter = { icon = "T", hl = "Identifier" },
+			Class = { icon = '󰠱', hl = 'Type' },
+			String = { icon = '󰉿', hl = 'String' },
+			Struct = { icon = '󰙅', hl = 'Structure' },
+			Event = { icon = '', hl = 'Type' },
+			TypeParameter = { icon = 'T', hl = 'Identifier' },
 		},
 	},
 })
 
-local wk = require("which-key")
-wk.add({
-	{ "<space>", group = "LSP" },
-	{ "<space>a", vim.lsp.buf.code_action, desc = "code_action", mode = { "n", "v" } },
-	{ "<space>D", vim.lsp.buf.declaration, desc = "declaration" },
-	{ "<space>dd", vim.lsp.buf.definition, desc = "definition" },
-	{ "<space>e", vim.diagnostic.open_float, desc = "open_float" },
-	{ "<space>I", vim.lsp.inspect_client, desc = "inspect_client", noremap = true },
-	{ "<space>i", vim.lsp.buf.implementation, desc = "implementation" },
-	{ "<space>O", [[<cmd>LspOverloadsSignature<CR>]] },
-	{ "<space>o", [[<cmd>Outline<CR>]] },
-	{ "<space>q", vim.diagnostic.setloclist, desc = "setloclist" },
-	{ "<space>R", vim.lsp.buf.references, desc = "references" },
-	{ "<space>r", vim.lsp.buf.rename, desc = "rename" },
-	{ "<space>S", require("lsp_signature").toggle_float_win, desc = "toggle_float_win" },
-	{ "<space>s", vim.lsp.buf.signature_help, desc = "signature_help" },
-	{ "<space>t", vim.lsp.buf.type_definition, desc = "type_definition" },
-})
-
-require("goto-preview").setup({})
-wk.add({
-	{ "<space>p", group = "goto-preview" },
-	{ "<space>pd", require("goto-preview").goto_preview_definition, desc = "definition" },
-	{ "<space>pt", require("goto-preview").goto_preview_type_definition, desc = "type_definition" },
-	{ "<space>pi", require("goto-preview").goto_preview_implementation, desc = "implementation" },
-	{ "<space>pD", require("goto-preview").goto_preview_declaration, desc = "declaration" },
-	{ "<space>pc", require("goto-preview").close_all_win, desc = "close_all_win" },
-	{ "<space>pr", require("goto-preview").goto_preview_references, desc = "references" },
+require('goto-preview').setup({})
+require('which-key').add({
+	{ '<space>', group = 'LSP' },
+	{ '<space>a', vim.lsp.buf.code_action, desc = 'code_action', mode = { 'n', 'v' } },
+	{ '<space>D', vim.lsp.buf.declaration, desc = 'declaration' },
+	{ '<space>dd', vim.lsp.buf.definition, desc = 'definition' },
+	{ '<space>e', vim.diagnostic.open_float, desc = 'open_float' },
+	{ '<space>I', vim.lsp.inspect_client, desc = 'inspect_client', noremap = true },
+	{ '<space>i', vim.lsp.buf.implementation, desc = 'implementation' },
+	{ '<space>O', [[<cmd>LspOverloadsSignature<CR>]] },
+	{ '<space>o', [[<cmd>Outline<CR>]] },
+	{ '<space>p', group = 'goto-preview' },
+	{ '<space>pd', require('goto-preview').goto_preview_definition, desc = 'definition' },
+	{ '<space>pt', require('goto-preview').goto_preview_type_definition, desc = 'type_definition' },
+	{ '<space>pi', require('goto-preview').goto_preview_implementation, desc = 'implementation' },
+	{ '<space>pD', require('goto-preview').goto_preview_declaration, desc = 'declaration' },
+	{ '<space>pc', require('goto-preview').close_all_win, desc = 'close_all_win' },
+	{ '<space>pr', require('goto-preview').goto_preview_references, desc = 'references' },
+	{ '<space>q', vim.diagnostic.setloclist, desc = 'setloclist' },
+	{ '<space>R', vim.lsp.buf.references, desc = 'references' },
+	{ '<space>r', vim.lsp.buf.rename, desc = 'rename' },
+	{ '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
+	{ '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
 })
 
 vim.lsp.inspect_client = function()
@@ -64,7 +48,7 @@ vim.lsp.inspect_client = function()
 	local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
 	vim.ui.select(clients, {
-		prompt = "Select LSP client",
+		prompt = 'Select LSP client',
 		format_item = function(client)
 			return client.name
 		end,

@@ -6,3 +6,5 @@ insert_final_newline = true
 tab_width = 2
 max_line_length = 120
 
+[*.lua]
+quote_style = ForceSingle

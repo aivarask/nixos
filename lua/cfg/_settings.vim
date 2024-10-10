@@ -11,7 +11,7 @@ set modeline
 set noshowmode
 set signcolumn=yes number
 set splitright splitbelow
-set showtabline=2 statusline+=%F 
+set showtabline=2 statusline+=%F
 set cmdheight=3
 set autoindent
 set smartindent
@@ -37,7 +37,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 
-map - :cd ..<CR> 
+map - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
 " inoremap <Space> <C-G>u<Space>
@@ -103,7 +103,7 @@ if !has('nvim')
 	nnoremap <Esc>h :wincmd h<CR>
 	nnoremap <Esc>j :wincmd j<CR>
 	nnoremap <Esc>l :wincmd l<CR>
-	
+
 	cnoremap <nowait> <Esc>h <Left>
 	cnoremap <nowait> <Esc>l <Right>
 else
@@ -128,10 +128,10 @@ else
 	tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
 	tnoremap <M-k> <C-\><C-n>:wincmd k<CR>
 	tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
-	
+
 	cnoremap <M-h> <Left>
 	cnoremap <M-l> <Right>
-	
+
 	nnoremap <M-J> :m .+1<CR>==
 	nnoremap <M-K> :m .-2<CR>==
 	inoremap <M-J> <Esc>:m .+1<CR>==gi
