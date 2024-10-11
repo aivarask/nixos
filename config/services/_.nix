@@ -75,7 +75,7 @@
     };
   };
   services.unclutter = {
-    enable = false;
+    enable = true;
     timeout = 1;
     extraOptions = [
       # "noevents"

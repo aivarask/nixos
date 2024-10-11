@@ -29,7 +29,8 @@
       };
     };
   };
-  services.mpris-proxy.enable = true; # Using Bluetooth headset buttons to control media player
+  services.mpris-proxy.enable = true;
+  home.sessionVariables.SXHKDRC = "/etc/nixos/files/sxhkdrc";
   services.sxhkd = {
     enable = true;
   };

@@ -3,7 +3,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ ./a_gruvbox.toml ];
+      import = [ ./../files/gruvbox.toml ];
       font.size = if osConfig.networking.hostName == "dell" then 8 else 12;
       keyboard = {
         bindings = [
@@ -69,8 +69,6 @@
 
   home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
-    # https://github.com/junegunn/fzf#usage
-    # https://github.com/nix-community/home-manager/blob/master/modules/programs/fzf.nix
     enable = true;
     defaultCommand = "fd -tf";
     defaultOptions = [
@@ -116,13 +114,11 @@
       # https://github.com/ncmpcpp/ncmpcpp/blob/master/doc/config
       # https://raw.githubusercontent.com/ncmpcpp/ncmpcpp/master/doc/config
       mpd_music_dir = "/var/music";
-
       ###
       "user_interface" = "alternative";
       "alternative_header_first_line_format" = "$b$5«« {%a}|{%t} »»$9$/b";
       alternative_header_second_line_format = "$b$5 {%b}|{%f} {%b} ({%y})$9$/b";
       song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
-
       ###
       display_bitrate = "yes";
       playlist_show_mpd_host = "no";
@@ -139,19 +135,10 @@
       add_newline = false;
       package.disabled = true;
       golang.disabled = true;
-
-      lua = {
-        disabled = true;
-      };
-      nodejs = {
-        disabled = true;
-      };
-      php = {
-        disabled = true;
-      };
-      rust = {
-        disabled = true;
-      };
+      lua.disabled = true;
+      nodejs.disabled = true;
+      php.disabled = true;
+      rust.disabled = true;
     };
   };
 }

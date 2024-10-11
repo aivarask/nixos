@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  home.sessionVariables = {
-    COMPOSER_ALLOW_SUPERUSER = "1";
-  };
+  home.sessionVariables.COMPOSER_ALLOW_SUPERUSER = "1";
   home.sessionPath = [
     "$HOME/.config/composer/vendor/bin"
   ];
@@ -21,7 +19,7 @@
       # })
     ]
     # composer global require
-    # wp-cli 
+    # wp-cli
     ++ (with pkgs; [
       php83
       phpunit

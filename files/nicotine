@@ -2,10 +2,10 @@
 server = ('server.slsknet.org', 2242)
 login = aivarask
 passw = Laikinas123
-interface = 
+interface =
 ctcpmsgs = False
 autosearch = []
-autoreply = 
+autoreply =
 portrange = (2234, 2239)
 upnp = True
 upnp_interval = 4
@@ -38,8 +38,8 @@ downloadlimitalt = 100
 preferfriends = False
 useupslots = False
 uploadslots = 2
-afterfinish = 
-afterfolder = 
+afterfinish =
+afterfolder =
 lock = True
 reverseorder = False
 fifoqueue = False
@@ -72,7 +72,7 @@ uploadsexpanded = True
 
 [userinfo]
 descr = ''
-pic = 
+pic =
 
 [userbrowse]
 expand_folders = True
@@ -150,10 +150,10 @@ private_search_results = True
 [ui]
 dark_mode = True
 header_bar = True
-icontheme = 
+icontheme =
 chatme = #908e8b
-chatremote = 
-chatlocal = 
+chatremote =
+chatlocal =
 chathilite = #5288ce
 urlcolor = #5288ce
 useronline = #16bb5c
@@ -161,13 +161,13 @@ useraway = #c9ae13
 useroffline = #e04f5e
 usernamehotspots = True
 usernamestyle = bold
-textbg = 
-search = 
+textbg =
+search =
 searchq = GREY
-inputcolor = 
+inputcolor =
 spellcheck = True
 exitdialog = 0
-tab_default = 
+tab_default =
 tab_hilite = #497ec2
 tab_changed = #497ec2
 tab_select_previous = True
@@ -191,7 +191,7 @@ modes_order = ['search', 'downloads', 'uploads', 'userbrowse', 'userinfo', 'priv
 buddylistinchatrooms = tab
 trayicon = True
 startup_hidden = False
-filemanager = 
+filemanager =
 speechenabled = False
 speechprivate = User %(user)s told you: %(message)s
 speechrooms = In room %(room)s, user %(user)s said: %(message)s
@@ -216,11 +216,11 @@ likes = []
 dislikes = []
 
 [players]
-default = 
-npothercommand = 
+default =
+npothercommand =
 npplayer = mpris
 npformatlist = []
-npformat = 
+npformat =
 
 [notifications]
 notification_window_title = True

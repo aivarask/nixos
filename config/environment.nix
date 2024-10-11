@@ -8,7 +8,6 @@
     variables = {
       EDITOR = "nvim";
       XINITRC = "/etc/nixos/files/xinitrc";
-      SXHKDRC = "/etc/nixos/files/sxhkdrc";
     };
     shellAliases = {
       wol_pc = "wol b4:2e:99:61:09:cf";
