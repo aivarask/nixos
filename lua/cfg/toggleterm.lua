@@ -1,9 +1,9 @@
-local toggleterm = require("toggleterm")
+local toggleterm = require('toggleterm')
 toggleterm.setup({
 	shade_terminals = false,
 	size = function(term)
-		return term.direction == "horizontal" and vim.o.lines * 0.4
-			or (term.direction == "vertical" and vim.o.columns * 0.3)
+		return term.direction == 'horizontal' and vim.o.lines * 0.4
+			or (term.direction == 'vertical' and vim.o.columns * 0.3)
 	end,
 	float_opts = {
 		width = function()
@@ -15,18 +15,16 @@ toggleterm.setup({
 	},
 })
 
-local Terminal = require("toggleterm.terminal").Terminal
-lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-require("which-key").add({
-	{ "<C-\\>", "<cmd>ToggleTerm<CR>", mode = { "n", "i", "t" } },
-	{ "`", "<cmd>ToggleTerm<CR>", mode = { "n", "t" } },
+require('which-key').add({
+	{ '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
+	{ '`', '<cmd>ToggleTerm<CR>', mode = { 'n', 't' } },
 })
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("toggleterm", {}),
-	pattern = "toggleterm",
-	desc = "<esc> <C-\\><C-n>",
+vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('toggleterm', {}),
+	pattern = 'toggleterm',
+	desc = '<esc> <C-\\><C-n>',
 	callback = function()
 		local opts = { buffer = 0 }
-		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+		vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
 	end,
 })

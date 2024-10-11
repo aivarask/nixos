@@ -1,3 +1,0 @@
-#!/usr/bin/env lua
-
-io.write('foo')

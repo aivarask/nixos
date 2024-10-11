@@ -52,7 +52,7 @@ https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake
 ============
 *apps* *flake-apps* https://vtimofeenko.com/posts/practical-nix-flake-anatomy-a-guided-tour-of-flake.nix/#apps
 
-============ 
+============
 *nixvim*
 https://github.com/nix-community/nixvim
 
@@ -62,7 +62,7 @@ twiggy-language-server
 prettier-plugin-twig-melody
 https://github.com/moetelo/twiggy
 
-============ 
+============
 *nil*
 https://github.com/oxalica/nil/blob/main/docs/configuration.md
 
@@ -74,9 +74,12 @@ https://github.com/jbyuki/one-small-step-for-vimkind/blob/main/doc/osv.txt
 https://zignar.net/2023/06/10/debugging-lua-in-neovim/
 https://github.com/tomblind/local-lua-debugger-vscode
 https://github.com/LuaLS/lua-language-server/issues/2455
+# LUA_PATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages) ];
+# LUA_CPATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages) ];
+# LUA_LIB = "${myLuaLib}/share/lua/5.1";
 
 ============
-direnv 
+direnv
 https://github.com/direnv/direnv/blob/master/docs/hook.md
 https://mynixos.com/home-manager/options/programs.direnv
 

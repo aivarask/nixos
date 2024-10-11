@@ -8,7 +8,7 @@
       ifs = "\n";
       info = "size";
       ratios = "1:2";
-      scrolloff = 4;
+      scrolloff = 8;
       shell = "zsh";
       shellopts = "-ey";
     };
@@ -18,20 +18,22 @@
       touch = ''%touch "$@"'';
       mkdir = ''%mkdir "$@"'';
     };
+    # read           (modal)   (default ':')
+    # shell          (modal)   (default '$')
+    # shell-pipe     (modal)   (default '%')
+    # shell-wait     (modal)   (default '!')
+    # shell-async    (modal)   (default '&')
+    # f 	Current file.
+    # fs 	Selected with filesep
+    # fx 	Selected or current.
     keybindings = {
       "." = "set hidden!";
-      "<backspace>" = "set hidden!";
-      H = "set hidden!";
       D = "%trash-put $fx";
-      e = "$$EDITOR $fx";
-      E = "$vim $fx";
       a = "push :touch<space>";
       A = "push :mkdir<space>";
       U = "!du -hs $fx";
       T = ":get-mime-type";
       "<esc>" = ":quit";
-      ZZ = ":quit";
-      "\\lg" = "!lazygit"; # not recognised
       "--" = "set ratios 1:2";
       "++" = "set ratios 1:2:3";
       "+w" = "$chmod +w $fx";
@@ -43,8 +45,9 @@
       "gn" = ''$lf -remote "send $id cd /etc/nixos"'';
       "gx" = ''!xdg-open $fx'';
       "og" = ''&gimp $fx'';
-      "of" = ''!firefox $fx'';
-      "oz" = ''!zathura $fx'';
+      "of" = ''&firefox $fx'';
+      "ol" = "$lazygit";
+      "oz" = ''&zathura $fx'';
     };
     cmdKeybindings = { };
     extraConfig = ''

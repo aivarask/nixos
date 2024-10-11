@@ -2,11 +2,8 @@
 # /run/current-system/sw/share/zsh/plugins
 # /run/current-system/sw/share/zsh/site-functions
 # ~/.config/zsh/.zshrc
-
-alias af="alias | fzf" \
-	__fpath="print -l $fpath" \
-	gr=foo \
-	ci=compinit
+alias \
+	__fpath="print -l $fpath"
 
 source /etc/nixos/zsh/functions.zsh
 source /etc/nixos/zsh/keys.zsh
@@ -20,7 +17,6 @@ luapath+=(
 	'/etc/nixos/awe/?.lua'
 )
 
-# export PATH="$PATH:$1"
 typeset -TU PATH path ':'
 path+=(
 	'/etc/nixos'

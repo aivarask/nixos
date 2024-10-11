@@ -6,13 +6,9 @@ nsp() {
 
 # remove after :
 # sed "s/:.*//"
-ee() {
-	tr -d '"' | awk '{split($0,a,":"); print a[1], "+"a[2]}'
-}
+ee() { tr -d '"' | awk '{split($0,a,":"); print a[1], "+"a[2]}' }
 
-mx() {
-	manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview="manix '{}'"
-}
+mx() { manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview="manix '{}'" }
 
 lfcd() {
 	tmp="$(mktemp)"
@@ -27,10 +23,10 @@ lfcd() {
 }
 
 lf() {
+	PAGER=bat
 	local tempfile
 	tempfile="$(mktemp)"
 	command lf -command "map Q \$echo \$PWD >$tempfile; lf -remote \"send \$id quit\"" "$@"
-
 	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n "$(pwd)")" ]]; then
 		cd -- "$(cat "$tempfile")" || return
 	fi

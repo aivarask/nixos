@@ -9,9 +9,9 @@
     pre-commit
     lazygit
   ];
-  programs.git.delta.enable = false;
-  programs.git.lfs.enable = true;
   programs.git = {
+    delta.enable = false;
+    lfs.enable = true;
     enable = true;
     aliases = {
       ci = "commit";

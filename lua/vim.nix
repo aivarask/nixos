@@ -120,10 +120,10 @@ in
       ]);
     settings = { };
     extraConfig = ''
-            let &runtimepath.=',/etc/nixos'
-      			let &packpath.=',/etc/nixos'
-            runtime! lua/cfg/**/*.vim
-            runtime! lua/_*.vim
+      let &runtimepath.=',/etc/nixos'
+      let &packpath.=',/etc/nixos'
+      runtime! lua/cfg/**/*.vim
+      runtime! lua/_*.vim
     '';
   };
   home.packages = with pkgs; [
@@ -131,15 +131,19 @@ in
     awesome
     stylua
     lua-language-server
-    (pkgs.luajit.withPackages (ps: [
-      ps.luv
-    ]))
+    (pkgs.luajit.withPackages (
+      ps: with ps; [
+        luv
+        cjson
+      ]
+    ))
   ];
-  home.sessionVariables = {
-    # LUA_PATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages) ];
-    # LUA_CPATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaCPathAbsStr myLuaPackages) ];
-    # LUA_LIB = "${myLuaLib}/share/lua/5.1";
-  };
+  programs.neovim.extraLuaPackages =
+    ps: with ps; [
+      magick
+      inspect
+      lpeglabel
+    ];
 
   programs.neovim = {
     enable = true;
@@ -158,13 +162,6 @@ in
     withPython3 = true;
     withRuby = false;
   };
-  programs.neovim.extraLuaPackages =
-    luaPkgs: with luaPkgs; [
-      magick
-      cjson
-      inspect
-      lpeglabel
-    ];
   programs.neovim.plugins =
     common
     ++ (with pkgs.vimPlugins; [
