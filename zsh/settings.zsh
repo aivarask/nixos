@@ -29,7 +29,7 @@ ncmpcppShow() {
 zle -N ncmpcppShow
 bindkey '^[\' ncmpcppShow
 
-# 4.7 File manager kay binds
+# 4.7 File manager key binds
 # https://wiki.archlinux.org/title/Zsh#File_manager_key_binds
 cdUndoKey() {
   popd

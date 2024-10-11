@@ -1,4 +1,3 @@
-# https://github.com/baskerville/sxhkd
 super + F1
   notify-send ' 🚀 Keymaps' "$(cat $SXHKDRC)"
 super + F2
@@ -9,15 +8,6 @@ super + F4
   alacritty -e pulsemixer # 🔉
 super + F5
   kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK' && pkill -USR1 hx
-super + F6
-  alacritty -e tmux new-session lf \; split-window -h lf \; attach
-super + F7
-  telegram-desktop
-super + F8
-	notify-send 'foo'
-  # alacritty
-super + F9
-  notify-send ' ♻️  nixos-rebuild switch' "$(nixos-rebuild switch)"
 super + F10
   dunstctl close
 
@@ -39,14 +29,9 @@ super + {W,E,R,T,Y}
 	,brave youtube.com\
   }
 
-super + P
-	_php
-
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
-super + D
-	lsp
 super + {A,F,G,H}
 	alacritty --working-directory=/etc/nixos/{a,fp,gt,ht} -e nvim
 

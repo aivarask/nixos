@@ -11,6 +11,7 @@
 
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
+  environment.shellAliases.nfu = "nix flake update";
   nixpkgs.config.allowUnfree = true;
   nix = {
     # package = pkgs.nixVersions.latest; # stable

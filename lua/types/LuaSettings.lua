@@ -49,6 +49,7 @@
 --- @field workspace? workspace
 
 --- @type LuaSettings
+---@diagnostic disable-next-line: unused-local
 local settings = {
 	diagnostics = {
 		disable = {

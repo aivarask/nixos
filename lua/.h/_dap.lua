@@ -8,13 +8,13 @@ require('persistent-breakpoints').setup({
 
 --- @see dap-adapter
 --- @see dap-configuration
-dap = require('dap')
-widgets = require('dap.ui.widgets')
+local dap = require('dap')
+local widgets = require('dap.ui.widgets')
 dap.defaults.fallback.focus_terminal = true
 require('nvim-dap-virtual-text').setup({})
 require('persistent-breakpoints').setup({ load_breakpoints_event = { 'BufReadPost' } })
 
-osv = require('osv')
+local osv = require('osv')
 dap.adapters = {
 	nlua = function(callback, config)
 		callback({ type = 'server', host = '127.0.0.1', port = 8086 })

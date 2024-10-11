@@ -1,5 +1,14 @@
 #!/usr/bin/env lua
 
-while true do
-	print()
+local uv = require('luv')
+function sleep(n)
+	os.execute('sleep ' .. tonumber(n))
+end
+
+for c in io.lines() do
+	print(c)
+	repeat
+		print(os.clock())
+		sleep(1)
+	until c == 'b'
 end

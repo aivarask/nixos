@@ -131,11 +131,9 @@ in
     awesome
     stylua
     lua-language-server
-    (pkgs.luajit.withPackages (
-      ps:
-      [
-      ]
-    ))
+    (pkgs.luajit.withPackages (ps: [
+      ps.luv
+    ]))
   ];
   home.sessionVariables = {
     # LUA_PATH = builtins.concatStringsSep ";" [ (pkgs.luajitPackages.luaLib.genLuaPathAbsStr myLuaPackages) ];

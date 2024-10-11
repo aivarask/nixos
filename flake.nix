@@ -78,17 +78,10 @@
           inherit home-manager;
         };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports =
-          [
-            inputs.vim-overlay.home.default
-            nix-colors.homeManagerModules.default
-          ]
-          ++ include ./home
-          ++ include ./home/programs
-          ++ include ./awe
-          ++ include ./c
-          ++ include ./lua
-          ++ include ./zsh;
+        imports = [
+          inputs.vim-overlay.home.default
+          nix-colors.homeManagerModules.default
+        ] ++ include ./home ++ include ./home/programs ++ include ./c ++ include ./lua ++ include ./zsh;
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
