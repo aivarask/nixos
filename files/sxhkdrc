@@ -15,11 +15,11 @@ super + {q,w,e,r}
   {tdrop alacritty\
   ,$BROWSER\
   ,alacritty --working-directory=/etc/nixos -e nvim\
-  ,alacritty --working-directory=/etc/nixos -e hx
+  ,alacritty --working-directory=/etc/nixos -e ''
   }
 
 super + ctrl + {q}
-	{ tdrop alacritty -e ssh pcw }
+	{ tdrop alacritty -e ssh pcw -t 'ncmpcpp' }
 
 super + {W,E,R,T,Y}
   {firefox --private-window\
@@ -32,8 +32,8 @@ super + {W,E,R,T,Y}
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
-super + {A,F,G,H}
-	alacritty --working-directory=/etc/nixos/{a,fp,gt,ht} -e nvim
+super + {A,S}
+	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
 
 super + {z,x,c,v}
   {brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}

@@ -2,15 +2,6 @@
 local format = vim.api.nvim_create_augroup('_format', {})
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	group = format,
-	pattern = { [[*\(.vim\|.lua\|.nix\)\@<!]] },
-	desc = 'vim.lsp.buf.format',
-	callback = function()
-		vim.lsp.buf.format({ timeout_ms = 2000 })
-	end,
-})
-
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	group = format,
 	pattern = {
 		'*.lua',
 		'*.html',
@@ -25,5 +16,14 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 			name = 'null-ls',
 			timeout_ms = 1000,
 		})
+	end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	group = format,
+	pattern = { [[?*\(.vim\|.lua\|.nix\|sxhkdrc\)\@<!]] },
+	desc = 'vim.lsp.buf.format',
+	callback = function()
+		vim.lsp.buf.format({ timeout_ms = 1000 })
 	end,
 })

@@ -59,7 +59,6 @@
   };
   programs.kitty.enable = true;
   programs.nushell.enable = true;
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -69,7 +68,6 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-
   home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
     enable = true;
@@ -90,7 +88,6 @@
     changeDirWidgetCommand = "fd --type d"; # Alt-c
     changeDirWidgetOptions = [ "--preview 'pistol {}'" ];
   };
-
   programs.gh = {
     enable = true;
     extensions = with pkgs; [
@@ -110,7 +107,6 @@
       };
     };
   };
-
   programs.ncmpcpp = {
     enable = true;
     settings = {
