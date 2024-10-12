@@ -3,7 +3,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ ./../files/gruvbox.toml ];
+      import = [ ./files/gruvbox.toml ];
       font.size = if osConfig.networking.hostName == "dell" then 8 else 12;
       keyboard = {
         bindings = [

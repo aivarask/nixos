@@ -9,7 +9,7 @@
   };
   xdg.configFile = {
     "nicotine/config_def" = {
-      source = ./../files/nicotine;
+      source = ./files/nicotine;
       enable = true;
       recursive = true;
       onChange = ''
