@@ -11,6 +11,7 @@ for i = #library, 1, -1 do
 end
 for _, name in ipairs({
 	'nvim%-cmp',
+	'outline.nvim',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then

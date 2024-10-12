@@ -7,6 +7,8 @@ if !exists('*SaveExec')
 		elseif &filetype ==?'lua'
 			:silent! write
 			:luafile %
+		else
+			:edit
 		endif
 		return
 	endfunction

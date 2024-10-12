@@ -1,23 +1,29 @@
-local format = vim.api.nvim_create_augroup("_format", {})
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- vim: foldlevel=4
+local format = vim.api.nvim_create_augroup('_format', {})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	group = format,
-	pattern = { [[*\(.vim\|.lua\)\@<!]] },
-	desc = "vim.lsp.buf.format",
+	pattern = { [[*\(.vim\|.lua\|.nix\)\@<!]] },
+	desc = 'vim.lsp.buf.format',
 	callback = function()
-		vim.lsp.buf.format()
+		vim.lsp.buf.format({ timeout_ms = 2000 })
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	group = format,
 	pattern = {
-		"*.lua",
-		"*.html",
-		"*.xml",
-		"*.twig",
+		'*.lua',
+		'*.html',
+		'*.xml',
+		'*.twig',
+		'*.nix',
 	},
-	desc = "vim.lsp.buf.format null-ls",
+	desc = 'vim.lsp.buf.format null-ls',
 	callback = function()
-		vim.lsp.buf.format({ name = "null-ls" })
+		vim.lsp.buf.format({
+			-- async = true,
+			name = 'null-ls',
+			timeout_ms = 1000,
+		})
 	end,
 })

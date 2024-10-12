@@ -1,5 +1,10 @@
 require('lsp-file-operations').setup({})
+
 require('outline').setup({
+	outline_window = {
+		position = 'left',
+		width = 15,
+	},
 	symbols = {
 		icons = {
 			Class = { icon = '󰠱', hl = 'Type' },
@@ -8,6 +13,16 @@ require('outline').setup({
 			Event = { icon = '', hl = 'Type' },
 			TypeParameter = { icon = 'T', hl = 'Identifier' },
 		},
+	},
+	symbol_folding = {
+		autofold_depth = 1,
+		auto_unfold = {
+			hovered = false,
+			only = true,
+		},
+	},
+	preview_window = {
+		auto_preview = true,
 	},
 })
 

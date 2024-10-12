@@ -1,7 +1,7 @@
 filetype plugin indent on
 set termguicolors
 set title titlestring=%{expand('%')}\ %{hostname()}
-set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
+set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
 set completeopt=menu,menuone,noselect
 set cursorline mouse=a
 set hidden
@@ -21,7 +21,6 @@ set nolisp
 set noswapfile
 set background=dark
 set undofile
-set nofoldenable
 set scrolloff=15
 set autowriteall
 set updatetime=250
@@ -109,7 +108,25 @@ if !has('nvim')
 else
 	set undodir=$XDG_STATE_HOME/nvim/undo
 	set foldmethod=expr
+	set foldenable
+	set foldclose=all
+
+	set foldlevel=2
+	set foldminlines=3
+	set foldnestmax=4
 	set foldexpr=nvim_treesitter#foldexpr()
+	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
+
+	function Boo()
+		if 1
+			echo 'foo'
+		else
+			echo 'not foo'
+
+		endif
+
+	endfunction
+
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
 	nnoremap <leader>g :Telescope live_grep<CR>
