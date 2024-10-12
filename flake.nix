@@ -50,12 +50,9 @@
         with builtins;
         map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
       common = {
-        imports =
-          [ inputs.suckless.nixosModules.default ]
-          ++ include ./config
-          ++ include ./config/programs
-          ++ include ./config/services
-          ++ include ./config/systemd;
+        imports = [
+          inputs.suckless.nixosModules.default
+        ] ++ include ./config ++ include ./config/systemd;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
           nur.overlay

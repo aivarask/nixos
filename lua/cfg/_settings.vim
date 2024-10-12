@@ -113,7 +113,7 @@ else
 
 	set foldlevel=2
 	set foldminlines=3
-	set foldnestmax=4
+	set foldnestmax=6
 	set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 
