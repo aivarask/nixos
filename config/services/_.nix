@@ -53,15 +53,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
   services.redshift = {
     enable = true;
-    temperature = {
-      day = 6500; # 5500
-      night = 4500; # 3700
-    };
+    temperature.day = 6500;
+    temperature.night = 4500;
   };
   networking.firewall.allowedTCPPorts = [
     9091

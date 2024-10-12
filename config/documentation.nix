@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   environment.variables = {
     MANPAGER = "less -R --use-color -Dd+r -Du+b";
     MANROFFOPT = "-P -c";

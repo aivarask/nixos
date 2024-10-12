@@ -1,5 +1,8 @@
 { pkgs, osConfig, ... }:
 {
+  programs.eza.enable = true;
+  programs.eza.icons = true;
+  programs.eza.enableZshIntegration = false;
   programs.alacritty = {
     enable = true;
     settings = {

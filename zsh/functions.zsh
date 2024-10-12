@@ -8,7 +8,7 @@ nsp() {
 # sed "s/:.*//"
 ee() { tr -d '"' | awk '{split($0,a,":"); print a[1], "+"a[2]}' }
 
-mx() { manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview="manix '{}'" }
+manixf() { manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview="manix '{}'" }
 
 lfcd() {
 	tmp="$(mktemp)"
