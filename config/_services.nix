@@ -65,12 +65,9 @@
     temperature.day = 6500;
     temperature.night = 4500;
   };
-  networking.firewall.allowedTCPPorts = [
-    9091
-    51413
-  ];
   services.transmission = {
     enable = false;
+    openPeerPorts = true;
     settings = {
       watch-dir = "/var/lib/transmission/watch-dir";
       watch-dir-enabled = true;

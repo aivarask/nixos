@@ -54,6 +54,7 @@ nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>Q :quitall<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <silent> <leader>s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>L :LazyGit<CR>
 

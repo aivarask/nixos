@@ -18,6 +18,7 @@ https://wiki.nixos.org/wiki/SSH_public_key_authentication
 
 ============
 https://nixos-and-flakes.thiscute.world
+# https://nixos-and-flakes.thiscute.world/nixos-with-flakes/add-custom-cache-servers#accelerate-package-downloads-via-a-proxy-server
 
 ============
 *home-manager*
