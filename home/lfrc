@@ -5,9 +5,7 @@
 # shell-pipe     (modal)   (default '%')
 # shell-wait     (modal)   (default '!')
 # shell-async    (modal)   (default '&')
-# f 	Current file.
-# fs 	Selected with filesep
-# fx 	Selected or current.
+# f fs fx
 
 map gn $lf -remote "send $id cd /etc/nixos"
 map gx &xdg-open $fx
@@ -16,5 +14,5 @@ map of &firefox $fx
 map ol $lazygit
 map oz &zathura $fx
 map on &notify-send 'zoo'
-map Yc !cat $f | xclip -selection clipboard
+map Yc $cat $f | xclip -selection clipboard
 map \\lg $lazygit
