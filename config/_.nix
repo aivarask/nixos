@@ -1,3 +1,4 @@
+# vim: fdl=3
 {
   pkgs,
   config,

@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-# https://www.lipsum.com/feed/html
-
-echo 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a rutrum elit. Aenean in facilisis ante. Ut consectetur semper turpis. Curabitur id lacinia diam, eget vestibulum sapien. Vestibulum ac efficitur nisi. Vestibulum tempus mauris vel risus pulvinar vulputate. Nam cursus nisl dui, ut accumsan est ultricies et. Suspendisse vel sem eu nibh pharetra hendrerit. Aenean vitae porta erat. Vestibulum nec quam risus. Nulla vel ex quis turpis imperdiet vehicula. Nunc dignissim, neque sit amet tincidunt dictum, nisl felis maximus enim, eget suscipit mi lacus id sapien. Aenean viverra bibendum dui quis fermentum. Morbi semper sapien lacus. Aliquam est nulla, interdum sit amet dui nec, placerat dictum arcu.'

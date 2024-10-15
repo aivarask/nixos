@@ -7,6 +7,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +78,9 @@
         };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
         imports = [
+          inputs.nix-index-database.hmModules.nix-index
           inputs.vim-overlay.home.default
+          { programs.nix-index-database.comma.enable = true; }
           nix-colors.homeManagerModules.default
         ] ++ include ./home ++ include ./home/programs ++ include ./c ++ include ./lua ++ include ./zsh;
         home.sessionVariables = {

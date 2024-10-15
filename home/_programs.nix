@@ -1,7 +1,10 @@
 { pkgs, osConfig, ... }:
 {
+
+  programs.nix-index.enable = true;
+  programs.nix-index.enableZshIntegration = true;
   programs.eza.enable = true;
-  programs.eza.icons = true;
+  programs.eza.icons = false;
   programs.eza.enableZshIntegration = false;
   programs.alacritty = {
     enable = true;
@@ -70,7 +73,9 @@
   };
   home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
+
     enable = true;
+    enableZshIntegration = true;
     defaultCommand = "fd -tf";
     defaultOptions = [
       "--layout=reverse"

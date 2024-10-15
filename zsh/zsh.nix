@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 {
+  programs.bash =
+    {
+    };
   programs.zsh = {
     sessionVariables = { };
     enable = true;
@@ -11,6 +14,7 @@
       size = 10000;
       extended = true;
     };
+    profileExtra = '''';
     initExtraBeforeCompInit = ''
       # <<< initExtraBeforeCompinit
       precmd() {
@@ -21,24 +25,13 @@
       	print -Pn "\e]83;title \"$1\"\a"
       	print -Pn "\e]0;$PWD $1\a"
       }
-      fpath+=('/etc/nixos/zsh/site-functions')
-      # source /etc/nixos/zsh/_bcomp.zsh
       # >>>
     '';
     # fpath+=(${pkgs.luajitPackages.busted}/share/zsh/site-functions)
     completionInit = ''
       # <<< completionInit
-      fpath+=(${pkgs.zig-shell-completions}/share/zsh/site-functions)
-
-      # autoload -U +X bashcompinit && bashcompinit
-      # autoload -U compinit && compinit
-      # autoload -U +X compinit && compinit
-      # compinit
-
-      # autoload -U compinit
-      # source /etc/nixos/zsh/site-functions/_foo
-      # source /etc/nixos/zsh/site-functions/_wp
-      # source /etc/nixos/zsh/_comp.zsh
+      # autoload -U +X bashcompinit
+      # autoload -U +X compinit
       # >>>
     '';
     initExtra = ''

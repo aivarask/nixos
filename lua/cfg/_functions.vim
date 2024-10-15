@@ -8,7 +8,7 @@ if !exists('*SaveExec')
 			:silent! write
 			:luafile %
 		else
-			:edit
+			:edit | execute feedkeys('zx')
 		endif
 		return
 	endfunction

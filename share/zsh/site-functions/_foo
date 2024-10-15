@@ -1,0 +1,18 @@
+#compdef foo _foo
+
+function _foo {
+
+	local -a _descriptions _values
+
+	_descriptions=(
+		'foo -- desc of foo'
+		'bar -- desc of bar'
+	)
+
+	_values=(
+		'foo'
+		'bar'
+	)
+
+	compadd -d _descriptions -a _values
+}

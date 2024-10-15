@@ -51,10 +51,11 @@ map [t :tabprevious<CR>
 map ]T :tabclose<CR>
 map [T :tabclose<CR>
 nnoremap <silent> <leader>q :Bclose<CR>
-nnoremap <silent> <leader>Q :quitall<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
-nnoremap <silent> <leader>d :edit /etc/nixos/doc/nixos.txt<CR>
-nnoremap <silent> <leader>s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
+nnoremap <silent> <leader>A :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
+nnoremap <silent> <leader>D :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
+nnoremap <silent> <leader>Z :edit /etc/nixos/zsh/zsh.nix<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>L :LazyGit<CR>
 
@@ -111,11 +112,12 @@ else
 	set foldmethod=expr
 	set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-	set foldenable
 	set foldclose=all
 	set foldlevel=2
-	set foldnestmax=3
-	set foldminlines=2
+	" set foldnestmax=4
+	let &foldnestmax = &foldlevel+2
+	" set foldminlines=3
+	set foldenable
 
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
