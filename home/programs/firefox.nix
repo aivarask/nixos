@@ -36,7 +36,7 @@
       settings = {
         "app.shield.optoutstudies.enabled" = false;
         "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
-        "browser.download.lastDir" = "~/Downloads";
+        "browser.download.lastDir" = "~";
         "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
         "browser.newtabpage.activity-stream.feeds.topsites" = true;

@@ -1,5 +1,6 @@
 { ... }:
 {
+  home.shellAliases.pistol = "pistol -c /etc/nixos/home/programs/pistol.conf";
   programs.pistol = {
     enable = true;
     associations = [
@@ -33,7 +34,7 @@
       }
       {
         mime = "inode/directory";
-        command = "eza --git --group --tree --level=1 --long --icons --group-directories-first %pistol-filename%";
+        command = "eza --git --group --tree --level=2 --long --icons --group-directories-first %pistol-filename%";
       }
     ];
   };

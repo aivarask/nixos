@@ -1,6 +1,16 @@
 { pkgs, osConfig, ... }:
 {
 
+  programs.zathura.enable = true;
+  programs.zathura.options = {
+    default-bg = "#000000";
+    default-fg = "#FFFFFF";
+    database = "null";
+  };
+  programs.zathura.extraConfig = ''
+
+  '';
+
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
   programs.eza.enable = true;

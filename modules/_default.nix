@@ -55,8 +55,6 @@
     translate-shell
     remarshal # json2yaml...
     w3m
-    zathura
-    eza
     chafa
     tiv
     bat
