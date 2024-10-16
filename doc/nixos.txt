@@ -7,6 +7,10 @@ https://devhints.io/vim-help#syntax
 https://github.com/Yeshey/nixOS-Config/blob/main/flake.nix
 
 ============
+POSIX
+https://www.geeksforgeeks.org/posix-basic-regular-expressions/
+
+============
 *magick*
 magick mogrify -alpha off -format png *.xcf
 

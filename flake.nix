@@ -47,10 +47,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
-      include =
-        p:
-        with builtins;
-        map (f: "${p}/${f}") (filter (n: !isNull (match ".*+\.nix" n)) (attrNames (readDir p)));
+      include = (import ./config/.functions.nix).include;
       common = {
         imports = [
           inputs.suckless.nixosModules.default
@@ -94,7 +91,7 @@
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [ ./hosts/redmi.nix ];
+        modules = [ ./hosts/.redmi.nix ];
       };
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -138,7 +135,7 @@
           inherit system;
           modules = commonModules ++ [
             common
-            ./hosts/pc.nix
+            ./config/.pc.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             nixos-hardware.nixosModules.common-hidpi
@@ -147,10 +144,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                # users.root = commonHome;
-                users.${username} = {
+                users.root = commonHome;
+                # users.${username} = {
 
-                };
+                # };
               };
             }
           ];
