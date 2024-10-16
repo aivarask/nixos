@@ -1,10 +1,5 @@
 # vim:ft=conf
-
-# read           (modal)   (default ':')
-# shell          (modal)   (default '$')
-# shell-pipe     (modal)   (default '%')
-# shell-wait     (modal)   (default '!')
-# shell-async    (modal)   (default '&')
+# :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
 
 map gn $lf -remote "send $id cd /etc/nixos"

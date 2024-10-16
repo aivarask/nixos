@@ -1,7 +1,28 @@
+precmd() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $HOST\a"
+}
+preexec() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $1 $HOST\a"
+}
+
+batp() {
+	echo "$1" | sed "s/:.*//" | xargs bat
+}
+
+_pack() {
+	eza --oneline -d ~/pack/*/ | dmenu -l 10 | xargs -t alacritty -e 'nvim'
+}
+
 nsp() {
 	nix search nixpkgs --json |
 		jq -cr 'to_entries | .[] | .key |= sub("legacyPackages.x86_64-linux.";"") | .key + " | " + .value.version  + " | " + .value.description' |
 		fzf --preview "nix eval nixpkgs\#{1}.meta --json | jq"
+}
+
+foo(){
+	echo 'foo has arg' $1
 }
 
 # remove after :

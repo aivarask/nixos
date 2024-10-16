@@ -1,14 +1,5 @@
 { pkgs, lib, ... }:
 lib.mkMerge [
-  {
-    environment.systemPackages = with pkgs; [
-      gtk3
-      gtk3-x11
-      layan-gtk-theme
-      gruvbox-dark-gtk
-      gruvbox-dark-icons-gtk
-    ];
-  }
   rec {
     environment.sessionVariables.GOPATH = "$HOME/.go";
     environment.sessionVariables.PATH = [ "${environment.sessionVariables.GOPATH}" ];
@@ -102,12 +93,13 @@ lib.mkMerge [
           debugpy
           python-dotenv
           httpie
+          playwright
         ]
       ))
     ];
   }
   {
-    environment.systemPackages = with pkgs; [ playwright ];
+    # environment.systemPackages = with pkgs; [ playwright ];
     environment.sessionVariables = {
       # PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";

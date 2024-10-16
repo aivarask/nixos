@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     libbs2b
     ladspaPlugins
+    lsof
     # vital
     # bitwig-studio
     # mixxx

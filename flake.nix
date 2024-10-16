@@ -112,7 +112,6 @@
       };
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
-          # DELL XPS 7590
           inherit system;
           specialArgs = {
             inherit inputs;
@@ -121,7 +120,7 @@
 
             inputs.suckless.nixosModules.default
             common
-            ./hosts/dell.nix
+            ./config/.dell.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
             nixos-hardware.nixosModules.common-hidpi
@@ -136,7 +135,6 @@
           ];
         };
         pc = nixpkgs.lib.nixosSystem {
-          # PC B450 AORUS M
           inherit system;
           modules = commonModules ++ [
             common

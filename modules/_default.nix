@@ -20,7 +20,7 @@
     mpv
     telegram-desktop
     gimp-with-plugins
-    krita
+    # krita
 
     # hardware
     kmon

@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# path:number
-echo "$1" | sed "s/:.*//" | xargs bat

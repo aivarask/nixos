@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  environment.variables.EDITOR = "nvim";
+  environment.variables.XINITRC = "/etc/nixos/files/xinitrc";
   environment.shellAliases = {
     ".." = "cd ..";
     "..." = "../..";
@@ -19,10 +21,8 @@
     ];
   };
   environment.profiles = [
-    "${pkgs.zsh-completions}"
     "${pkgs.zig-shell-completions}"
-    # "/etc/nixos"
+    "${pkgs.zsh-completions}"
+    "/etc/nixos"
   ];
-  environment.variables.EDITOR = "nvim";
-  environment.variables.XINITRC = "/etc/nixos/files/xinitrc";
 }
