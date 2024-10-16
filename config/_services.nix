@@ -220,7 +220,7 @@
     order = lib.mkMerge [
       # [ "audio" ]
       (lib.mkIf (config.networking.hostName == "dell") [
-        "audio"
+        # "audio"
         "backlight"
         "battery"
       ])
