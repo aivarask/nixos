@@ -114,7 +114,6 @@
             inherit inputs;
           };
           modules = commonModules ++ [
-
             inputs.suckless.nixosModules.default
             common
             ./config/.dell.nix
@@ -133,7 +132,11 @@
         };
         pc = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
           modules = commonModules ++ [
+            inputs.suckless.nixosModules.default
             common
             ./config/.pc.nix
             nixos-hardware.nixosModules.common-cpu-amd-pstate
