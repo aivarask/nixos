@@ -134,7 +134,7 @@
     enable = true;
     user = "root";
     group = "wheel";
-    playlistDirectory = /etc/nixos/files/playlist;
+    playlistDirectory = ./playlist;
     # network.listenAddress = "any";
     startWhenNeeded = true;
     extraConfig = ''
