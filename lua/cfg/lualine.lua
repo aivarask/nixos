@@ -1,49 +1,49 @@
-require("lualine").setup({
-	extensions = { "quickfix", "nvim-tree", "fzf", "toggleterm", "man", "trouble" },
+require('lualine').setup({
+	extensions = { 'quickfix', 'nvim-tree', 'fzf', 'toggleterm', 'man', 'trouble' },
 	options = {
 		disabled_filetypes = {
-			statusline = { "NvimTree", "Outline", "neotest-summary", "neotest-output-panel" },
-			winbar = { "NvimTree", "neotest-summary", "neotest-output-panel" },
+			statusline = { 'NvimTree', 'Outline', 'neotest-summary', 'neotest-output-panel' },
+			winbar = { 'NvimTree', 'neotest-summary', 'neotest-output-panel' },
 		},
 	},
 	tabline = {
 		lualine_a = {},
 		lualine_b = {
 			{
-				"buffers",
+				'buffers',
 				show_filename_only = true,
 				max_length = vim.o.columns * 4 / 5,
-				mode = 4,
+				mode = 0,
 			},
 		},
 		lualine_y = {
-			"tabs",
-			require("auto-session.lib").current_session_name,
+			'tabs',
+			require('auto-session.lib').current_session_name,
 		},
 		lualine_z = {
-			"searchcount",
+			'searchcount',
 		},
 	},
 	sections = {
-		lualine_a = { "mode" },
+		lualine_a = { 'mode' },
 		lualine_b = {
 			function()
 				-- vim.uv.cwd,
-				local p = vim.fn.expand("%:p")
-				return p:gsub("/nix/store/[%a%d]+-", ""):gsub(vim.uv.cwd() .. "/" or "", "")
+				local p = vim.fn.expand('%:p')
+				return p:gsub('/nix/store/[%a%d]+-', ''):gsub(vim.uv.cwd() .. '/' or '', '')
 			end,
 		},
 		lualine_c = {
 			-- { "filename", path = 2, },
 		},
 		lualine_x = {
-			"encoding",
-			"fileformat",
-			"filetype",
+			'encoding',
+			'fileformat',
+			'filetype',
 		},
-		lualine_y = { "progress" },
+		lualine_y = { 'progress' },
 		lualine_z = {
-			"location",
+			'location',
 			function()
 				return vim.api.nvim_buf_line_count(0)
 			end,

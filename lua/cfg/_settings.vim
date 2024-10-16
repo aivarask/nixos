@@ -1,6 +1,6 @@
 filetype plugin indent on
 set termguicolors
-set title titlestring=%{expand('%')}\ %{hostname()}
+set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
 set completeopt=menu,menuone,noselect
 set cursorline mouse=a

@@ -127,6 +127,7 @@
   };
   environment.systemPackages = with pkgs; [
     pulsemixer
+    alsa-utils
     mpc_cli
   ];
   services.mpd = {
@@ -183,7 +184,7 @@
 
       [audio]
       # backend = "pulseaudio" # separate branch without flake
-      control = "Master"
+      # control = "Master Playback Volume"
       mute = "MUTE"
       template = "{ICO}{VOL}"
       icons = ["🔈", "🔉", "🔊"]
@@ -209,7 +210,8 @@
 
       [network]
       no_value = "🌑"
-      template = "🌐{IPv4} 📶{ESSID}"
+      template = "📶{ESSID}"
+      # template = "🌐{IPv4} 📶{ESSID}"
 
       [time]
       format = "📆%m-%d %H:%M"
@@ -218,6 +220,7 @@
     order = lib.mkMerge [
       # [ "audio" ]
       (lib.mkIf (config.networking.hostName == "dell") [
+        "audio"
         "backlight"
         "battery"
       ])

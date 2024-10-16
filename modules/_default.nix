@@ -7,7 +7,6 @@
     # --
     hyperfine
     xvkbd
-    alsa-utils
     soulseekqt
     nicotine-plus
     slskd
