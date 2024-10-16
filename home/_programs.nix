@@ -12,7 +12,7 @@
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
   programs.eza.enable = true;
-  programs.eza.icons = false;
+  programs.eza.icons = true;
   programs.eza.enableZshIntegration = false;
   programs.alacritty = {
     enable = true;

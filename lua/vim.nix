@@ -153,6 +153,9 @@ in
       runtime! lua/cfg/**/*{.lua,.vim}
       runtime! lua/_*{.lua,.vim}
       runtime! {config,home}/*.lua
+
+      set scrolloff=12
+      set cmdheight=3
     '';
     extraLuaConfig = ''
       vim.loader.enable()
