@@ -1,6 +1,6 @@
 { ... }:
 {
-  xdg.configFile."lf/icons".source = ./files/lf_icons;
+  xdg.configFile."lf/icons".source = ./lf_icons;
   programs.lf = {
     # ~/.config/lf/lfrc
     enable = true;

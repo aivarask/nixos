@@ -51,7 +51,7 @@
       include_ = (import ./config/.functions.nix).include_;
       common = {
         imports = [
-          inputs.suckless.nixosModules.defaul
+          inputs.suckless.nixosModules.default
         ] ++ include ./config ++ include ./config/systemd;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
@@ -82,7 +82,7 @@
             { programs.nix-index-database.comma.enable = true; }
             nix-colors.homeManagerModules.default
           ]
-          # ++ include_ ./config
+          ++ include_ ./config
           ++ include ./home
           ++ include ./home/programs
           ++ include ./c
