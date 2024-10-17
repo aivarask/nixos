@@ -48,7 +48,7 @@
       $mkdir -p ~/.trash
       set previewer pistol
       map t
-      source /etc/nixos/home/lfrc
+      source /etc/nixos/config/lfrc
     '';
   };
 }

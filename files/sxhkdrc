@@ -8,13 +8,15 @@ super + F4
   alacritty -e pulsemixer # 🔉
 super + F5
   kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK' && pkill -USR1 hx
+super + F9
+	notify-send $(which nvim)
 super + F10
   dunstctl close
 
 super + {q,w,e,r}
   {tdrop alacritty\
   ,$BROWSER\
-  ,alacritty --working-directory=/etc/nixos -e nvim\
+  ,alacritty --working-directory=/etc/nixos -e nvim --listen /tmp/nvimsocket\
   ,alacritty --working-directory=/etc/nixos -e ''
   }
 
