@@ -1,6 +1,6 @@
 { ... }:
 {
-  home.shellAliases.pistol = "pistol -c /etc/nixos/home/programs/pistol.conf";
+  home.shellAliases.pistol = "pistol -c /etc/nixos/config/programs_/pistol.conf";
   programs.pistol = {
     enable = true;
     associations = [

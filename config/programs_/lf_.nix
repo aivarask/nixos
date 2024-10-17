@@ -2,6 +2,12 @@
 {
   xdg.configFile."lf/icons".source = ./lf_icons;
   programs.lf = {
+    extraConfig = ''
+      $mkdir -p ~/.trash
+      set previewer pistol
+      map t
+      source ${./lfrc}
+    '';
     # ~/.config/lf/lfrc
     enable = true;
     settings = {
@@ -44,11 +50,5 @@
       # "oz" = ''&zathura $fx'';
     };
     cmdKeybindings = { };
-    extraConfig = ''
-      $mkdir -p ~/.trash
-      set previewer pistol
-      map t
-      source /etc/nixos/config/lfrc
-    '';
   };
 }

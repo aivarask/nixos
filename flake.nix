@@ -83,8 +83,7 @@
             nix-colors.homeManagerModules.default
           ]
           ++ include_ ./config
-          ++ include ./home
-          ++ include ./home/programs
+          ++ include_ ./config/programs_
           ++ include ./c
           ++ include ./lua
           ++ include ./zsh;
