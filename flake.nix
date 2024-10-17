@@ -114,6 +114,8 @@
             inherit inputs;
           };
           modules = commonModules ++ [
+            { environment.variables.ZOO = (import ./state.nix).zoo; }
+            { environment.variable.vardas = (import ./aivaras.nix).vardas; }
             inputs.suckless.nixosModules.default
             common
             ./config/.dell.nix

@@ -127,6 +127,7 @@ in
     '';
   };
   home.packages = with pkgs; [
+    neovim-remote
     manix
     awesome
     stylua
@@ -145,6 +146,7 @@ in
       lpeglabel
     ];
 
+  home.shellAliases.nvim = "nvim --listen /tmp/nvimsocket";
   programs.neovim = {
     enable = true;
     extraConfig = ''

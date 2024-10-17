@@ -8,7 +8,6 @@
     deadnix
     nixos-generators
     fh # flakehub
-
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
   environment.shellAliases.nfu = "nix flake update";
