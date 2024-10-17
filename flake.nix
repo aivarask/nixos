@@ -48,9 +48,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
       include = (import ./config/.functions.nix).include;
+      include_ = (import ./config/.functions.nix).include_;
       common = {
         imports = [
-          inputs.suckless.nixosModules.default
+          inputs.suckless.nixosModules.defaul
         ] ++ include ./config ++ include ./config/systemd;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
@@ -74,12 +75,19 @@
           inherit home-manager;
         };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports = [
-          inputs.nix-index-database.hmModules.nix-index
-          inputs.vim-overlay.home.default
-          { programs.nix-index-database.comma.enable = true; }
-          nix-colors.homeManagerModules.default
-        ] ++ include ./home ++ include ./home/programs ++ include ./c ++ include ./lua ++ include ./zsh;
+        imports =
+          [
+            inputs.nix-index-database.hmModules.nix-index
+            inputs.vim-overlay.home.default
+            { programs.nix-index-database.comma.enable = true; }
+            nix-colors.homeManagerModules.default
+          ]
+          # ++ include_ ./config
+          ++ include ./home
+          ++ include ./home/programs
+          ++ include ./c
+          ++ include ./lua
+          ++ include ./zsh;
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
@@ -114,8 +122,6 @@
             inherit inputs;
           };
           modules = commonModules ++ [
-            { environment.variables.ZOO = (import ./state.nix).zoo; }
-            { environment.variable.vardas = (import ./aivaras.nix).vardas; }
             inputs.suckless.nixosModules.default
             common
             ./config/.dell.nix

@@ -1,12 +1,11 @@
-rec {
+# vim:nofoldenable
+{
   include =
     p:
     with builtins;
-    map (f: "${p}/${f}") (filter (n: !isNull (match "[^.].*+\.nix" n)) (attrNames (readDir p)));
-  nixWillInclude = include ./.;
-  includeHome =
+    map (f: "${p}/${f}") (filter (n: !isNull (match "[^.].*[^_]+\.nix" n)) (attrNames (readDir p)));
+  include_ =
     p:
     with builtins;
-    map (f: "${p}/${f}") (filter (n: !isNull (match "[^.]+.*+\.nix" n)) (attrNames (readDir p)));
-  homeIncludes = includeHome ./.;
+    map (f: "${p}/${f}") (filter (n: !isNull (match "[^.].*+_+\.nix" n)) (attrNames (readDir p)));
 }
