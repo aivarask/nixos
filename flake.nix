@@ -76,12 +76,21 @@
           inherit home-manager;
         };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports = [
-          inputs.nix-index-database.hmModules.nix-index
-          inputs.vim-overlay.home.default
-          { programs.nix-index-database.comma.enable = true; }
-          nix-colors.homeManagerModules.default
-        ] ++ include_ ./config ++ include ./config/programs_ ++ f.i_ ./c ++ include ./lua ++ include ./zsh;
+        imports =
+          [
+            inputs.nix-index-database.hmModules.nix-index
+            inputs.vim-overlay.home.default
+            { programs.nix-index-database.comma.enable = true; }
+            nix-colors.homeManagerModules.default
+          ]
+          #
+          ++ f.i_ ./c
+          ++ f.i_ ./config
+          ++ f.i ./config/programs_
+          ++ f.i_ ./lua
+          ++ f.i_ ./zsh
+        # end
+        ;
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
