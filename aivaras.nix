@@ -1,1 +1,0 @@
-{ vardas = "Aivaras"; }

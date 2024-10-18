@@ -47,8 +47,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
-      include = (import ./config/.functions.nix).include;
-      include_ = (import ./config/.functions.nix).include_;
+      # with ( import ./config/.functions.nix );
       common = {
         imports = [
           inputs.suckless.nixosModules.default

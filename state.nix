@@ -1,3 +1,0 @@
-{
-  zoo = "this is zoo";
-}
