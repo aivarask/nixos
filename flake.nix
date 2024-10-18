@@ -82,11 +82,7 @@
             { programs.nix-index-database.comma.enable = true; }
             nix-colors.homeManagerModules.default
           ]
-          ++ include_ ./config
-          ++ include_ ./config/programs_
-          ++ include ./c
-          ++ include ./lua
-          ++ include ./zsh;
+          ++ include_ ./config ++ include ./config/programs_ ++ include ./c ++ include ./lua ++ include ./zsh;
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";

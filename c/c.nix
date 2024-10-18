@@ -12,7 +12,6 @@
     #   "${pkgs.nlohmann_json}/include"
     # ];
   };
-  # ./readme.md#clang
   home.packages = with pkgs; [
     glibc
     glibcInfo

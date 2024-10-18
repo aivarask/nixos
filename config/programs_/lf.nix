@@ -6,7 +6,7 @@
       $mkdir -p ~/.trash
       set previewer pistol
       map t
-      source ${./lfrc}
+      source /etc/nixos/config/programs_/lfrc
     '';
     # ~/.config/lf/lfrc
     enable = true;
