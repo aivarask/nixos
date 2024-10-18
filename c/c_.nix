@@ -7,7 +7,6 @@
     clang-tools
     cmake
     # ccls
-    glib # gio trash
     # check
     # meson
     # libcpr

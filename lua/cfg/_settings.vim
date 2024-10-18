@@ -52,12 +52,13 @@ map ]T :tabclose<CR>
 map [T :tabclose<CR>
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
+nnoremap <silent> <leader>m :messages<CR>
+nnoremap <silent> <leader>l :LazyGit<CR>
 nnoremap <silent> <leader>A :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap <silent> <leader>D :edit /etc/nixos/doc/nixos.txt<CR>
+nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
 nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap <silent> <leader>Z :edit /etc/nixos/zsh/zsh.nix<CR>
-nnoremap <silent> <leader>m :messages<CR>
-nnoremap <silent> <leader>L :LazyGit<CR>
 
 if !has('gui_running')
 	set t_Co=256

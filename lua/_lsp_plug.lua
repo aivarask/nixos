@@ -45,8 +45,8 @@ require('which-key').add({
 	{ '<space>pc', require('goto-preview').close_all_win, desc = 'close_all_win' },
 	{ '<space>pr', require('goto-preview').goto_preview_references, desc = 'references' },
 	{ '<space>q', vim.diagnostic.setloclist, desc = 'setloclist' },
-	{ '<space>R', vim.lsp.buf.references, desc = 'references' },
-	{ '<space>r', vim.lsp.buf.rename, desc = 'rename' },
+	{ '<space>r', vim.lsp.buf.references, desc = 'references' },
+	{ '<space>R', vim.lsp.buf.rename, desc = 'rename' },
 	{ '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
 	{ '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
 })

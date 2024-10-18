@@ -7,8 +7,12 @@ https://devhints.io/vim-help#syntax
 https://github.com/Yeshey/nixOS-Config/blob/main/flake.nix
 
 ============
-POSIX
+POSIX Regular Expression Basic BRE Extanded ERE
 https://www.geeksforgeeks.org/posix-basic-regular-expressions/
+https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions
+https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_04
+https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html
+https://stackoverflow.com/questions/55674543/including-optional-character-in-regex-with-sed#55674980
 
 ============
 *magick*

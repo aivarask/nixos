@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    glib # gio trash
     ffuf
     libreoffice-qt
     # nur.repos.running-grass.postman

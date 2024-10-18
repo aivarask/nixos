@@ -1,3 +1,4 @@
+# vim:nofoldenable
 {
   description = "NixOS config";
   inputs = {
@@ -47,7 +48,9 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
-      # with ( import ./config/.functions.nix );
+      f = import ./func.nix;
+      include = (import ./func.nix).include;
+      include_ = (import ./func.nix).include_;
       common = {
         imports = [
           inputs.suckless.nixosModules.default
@@ -64,7 +67,6 @@
         ];
       };
       commonHome = {
-
         home.stateVersion = "23.05";
         home.username = username;
         home.enableNixpkgsReleaseCheck = false;
@@ -74,14 +76,12 @@
           inherit home-manager;
         };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports =
-          [
-            inputs.nix-index-database.hmModules.nix-index
-            inputs.vim-overlay.home.default
-            { programs.nix-index-database.comma.enable = true; }
-            nix-colors.homeManagerModules.default
-          ]
-          ++ include_ ./config ++ include ./config/programs_ ++ include ./c ++ include ./lua ++ include ./zsh;
+        imports = [
+          inputs.nix-index-database.hmModules.nix-index
+          inputs.vim-overlay.home.default
+          { programs.nix-index-database.comma.enable = true; }
+          nix-colors.homeManagerModules.default
+        ] ++ include_ ./config ++ include ./config/programs_ ++ f.i_ ./c ++ include ./lua ++ include ./zsh;
         home.sessionVariables = {
           BROWSER = "firefox";
           MOZ_X11_EGL = "1";
