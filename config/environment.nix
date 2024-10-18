@@ -1,4 +1,17 @@
 { pkgs, ... }:
+let
+  xorgPackages = with pkgs.xorg; [
+    xbacklight
+    xorgserver
+    xdpyinfo
+    xev
+    xmodmap
+    xmessage
+    transset
+    xwininfo
+    xwd
+  ];
+in
 {
   environment.variables.EDITOR = "nvim";
   environment.variables.XINITRC = "/etc/nixos/files/xinitrc";
@@ -25,4 +38,92 @@
     "${pkgs.zsh-completions}"
     "/etc/nixos"
   ];
+  environment.systemPackages =
+    xorgPackages
+    ++ (with pkgs; [
+      # xorg
+      xcompmgr
+      xdotool
+      xsel
+      xclip
+      sxiv
+      unclutter-xfixes
+      numlockx
+      xautomation
+      xbindkeys
+
+      glib # gio trash
+      ffuf
+      libreoffice-qt
+      # nur.repos.running-grass.postman
+      # --
+      hyperfine
+      xvkbd
+      soulseekqt
+      nicotine-plus
+      slskd
+      figma-linux
+      parallel
+
+      inotify-tools
+      fswatch
+      tremc
+      mpv
+      telegram-desktop
+      gimp-with-plugins
+      # krita
+
+      # hardware
+      kmon
+      brightnessctl
+      usbutils
+      lm_sensors
+      # udevil
+      pciutils
+      libxkbcommon
+
+      # terminal
+      tdrop
+      ueberzug
+      ueberzugpp
+      ollama
+      tilda
+      cheat
+      feh
+      gdu
+      duf
+      glow
+      scrot
+      httpie
+      lf
+      loc
+      tree
+      fd
+      ripgrep
+      trash-cli
+      neofetch
+      ookla-speedtest
+      translate-shell
+      remarshal # json2yaml...
+      w3m
+      chafa
+      tiv
+      bat
+
+      # utils
+      libnotify
+      psmisc # fuser killall prtstat pslog pstree peekfd
+      watchman
+      tree-sitter
+      unrar
+      unzip
+      jq
+      ffmpeg
+      highlight
+      hicolor-icon-theme
+      imagemagick
+      libwebp
+      # debug
+      lldb
+    ]);
 }

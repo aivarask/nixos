@@ -1,6 +1,35 @@
+# vim:foldlevel=3
 { pkgs, lib, ... }:
 lib.mkMerge [
+  {
+    # c
+    environment.systemPackages = with pkgs; [
+      glibc
+      glibcInfo
+      clang
+      clang-tools
+      cmake
+      # ccls
+      # check
+      # meson
+      # libcpr
+      # nlohmann_json
+    ];
+    environment.sessionVariables = {
+      # C_INCLUDE_PATH = builtins.concatStringsSep ":" [
+      #   "${pkgs.zlib.dev}/include"
+      #   "${pkgs.libuv.dev}/include"
+      #   "${pkgs.check}/include"
+      # ];
+      # CPLUS_INCLUDE_PATH = builtins.concatStringsSep ":" [
+      #   "${pkgs.curl.dev}/include"
+      #   "${pkgs.libcpr.dev}/include"
+      #   "${pkgs.nlohmann_json}/include"
+      # ];
+    };
+  }
   rec {
+    # go
     environment.sessionVariables.GOPATH = "$HOME/.go";
     environment.sessionVariables.PATH = [ "${environment.sessionVariables.GOPATH}" ];
     environment.systemPackages = with pkgs; [
@@ -13,6 +42,44 @@ lib.mkMerge [
     ];
   }
   {
+    # sql
+    environment.systemPackages = with pkgs; [
+      sqlite-interactive
+      sqlite-analyzer
+      sqlite-web
+
+      sqlint
+      sqlfluff # 7k
+
+      sqls # 0.8k
+      postgres-lsp # 3.1k
+    ];
+    networking.firewall.allowedTCPPorts = [
+      3306 # mysql
+      5434 # postgresql
+    ];
+    services.mysql = {
+      enable = false;
+      package = pkgs.mariadb;
+      settings = {
+        # /etc/my.cnf
+        mysql = {
+          auto-rehash = true;
+        };
+      };
+    };
+    services.postgresql = {
+      enable = false;
+      package = pkgs.postgresql;
+      ensureDatabases = [ "test" ];
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     trust
+      '';
+    };
+  }
+  {
+    # haskell
     environment.systemPackages = with pkgs; [
       ghc
       ghcid
@@ -20,6 +87,7 @@ lib.mkMerge [
     ];
   }
   {
+    # zig
     environment.systemPackages = with pkgs; [
       zig
       zls
@@ -28,6 +96,7 @@ lib.mkMerge [
     ];
   }
   {
+    # html
     environment.systemPackages = with pkgs; [
       stylelint
       htmx-lsp
@@ -38,18 +107,21 @@ lib.mkMerge [
     ];
   }
   {
+    # json
     environment.systemPackages = with pkgs; [
       vscode-langservers-extracted
       nodePackages.fixjson
     ];
   }
   {
+    # make
     environment.systemPackages = with pkgs; [
       gnumake
       checkmake
     ];
   }
   {
+    # markdown
     environment.systemPackages = with pkgs; [
       marksman
       mdformat
@@ -58,6 +130,7 @@ lib.mkMerge [
     ];
   }
   {
+    # toml
     environment.systemPackages = with pkgs; [
       taplo
       taplo-cli
@@ -65,18 +138,21 @@ lib.mkMerge [
     ];
   }
   {
+    # vim
     environment.systemPackages = with pkgs; [
       vim-vint
       nodePackages.vim-language-server
     ];
   }
   {
+    # yaml
     environment.systemPackages = with pkgs; [
       yaml-language-server
       yq-go
     ];
   }
   {
+    # python
     environment.systemPackages = with pkgs; [
       pyright
       black
@@ -108,6 +184,7 @@ lib.mkMerge [
     };
   }
   {
+    # rust
     environment.variables.LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so";
     environment.systemPackages = with pkgs; [
       cargo
@@ -118,6 +195,7 @@ lib.mkMerge [
     ];
   }
   {
+    # sh
     environment.systemPackages = with pkgs; [
       dotenv-linter
       shellharden

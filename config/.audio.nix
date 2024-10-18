@@ -1,3 +1,4 @@
+# vim:nofoldenable
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
