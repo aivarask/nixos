@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  environment.variables = {
-    EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
-  };
+  environment.variables.EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
   environment.systemPackages = with pkgs; [
     fontpreview
   ];
