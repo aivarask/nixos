@@ -25,6 +25,7 @@ set scrolloff=15
 set autowriteall
 set updatetime=250
 set timeoutlen=600
+set bufhidden=wipe
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"

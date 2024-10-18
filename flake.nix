@@ -82,7 +82,6 @@
             nix-colors.homeManagerModules.default
           ]
           #
-          ++ f.i_ ./c
           ++ f.i_ ./config
           ++ f.i ./config/programs_
           ++ f.i_ ./lua

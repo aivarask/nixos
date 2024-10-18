@@ -146,7 +146,7 @@ in
       lpeglabel
     ];
 
-  home.shellAliases.nvim = "nvim --listen /tmp/nvimsocket";
+  home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
     enable = true;
     extraConfig = ''

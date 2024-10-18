@@ -13,6 +13,7 @@ require('telescope').setup({
 	},
 })
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('lazygit')
 
 require('which-key').add({
 	{ '<leader>t', group = 'Telescope', icon = '' },

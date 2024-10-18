@@ -11,6 +11,7 @@
   '';
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
+  programs.lazygit.enable = true;
   programs.eza.enable = true;
   programs.eza.icons = "auto";
   programs.eza.enableZshIntegration = false;
@@ -126,7 +127,6 @@
       # https://github.com/ncmpcpp/ncmpcpp/blob/master/doc/config
       # https://raw.githubusercontent.com/ncmpcpp/ncmpcpp/master/doc/config
       mpd_music_dir = "/var/music";
-      ###
       "user_interface" = "alternative";
       "alternative_header_first_line_format" = "$b$5«« {%a}|{%t} »»$9$/b";
       alternative_header_second_line_format = "$b$5 {%b}|{%f} {%b} ({%y})$9$/b";

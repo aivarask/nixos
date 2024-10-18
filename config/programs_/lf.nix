@@ -46,7 +46,6 @@
       # "gx" = ''!xdg-open $fx'';
       # "og" = ''&gimp $fx'';
       # "of" = ''&firefox $fx'';
-      # "ol" = "$lazygit";
       # "oz" = ''&zathura $fx'';
     };
     cmdKeybindings = { };

@@ -1,13 +1,11 @@
 { pkgs, ... }:
 {
-  home.shellAliases.lg = "lazygit";
   home.packages = with pkgs; [
     git
     git-lfs
     gh
     git-crypt
     pre-commit
-    lazygit
   ];
   programs.git = {
     delta.enable = false;

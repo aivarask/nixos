@@ -1,22 +1,18 @@
 super + F1
-  notify-send ' 🚀 Keymaps' "$(cat $SXHKDRC)"
+  notify-send --print-id  'Keymaps' "$(cat $SXHKDRC)"
 super + F2
-  alacritty -e htop # 🧬
+  alacritty -e htop
 super + F3
-  alacritty -e ncmpcpp # ⏯️
+  alacritty -e ncmpcpp
 super + F4
-  alacritty -e pulsemixer # 🔉
+  alacritty -e pulsemixer
 super + F5
   kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK' && pkill -USR1 hx
-super + F9
-	notify-send $(which nvim)
-super + F10
-  dunstctl close
 
 super + {q,w,e,r}
   {tdrop alacritty\
   ,$BROWSER\
-  ,alacritty --working-directory=/etc/nixos -e nvim --listen /tmp/nvimsocket\
+  ,alacritty --working-directory=/etc/nixos -e nvr\
   ,alacritty --working-directory=/etc/nixos -e ''
   }
 
@@ -34,11 +30,11 @@ super + {W,E,R,T,Y}
 super + {a,s}
   pulsemixer --change-volume {-,+}2 --max-volume 100
 
+super + {z,x,c,v}
+	{brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}
+
 super + {A,S}
 	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
-
-super + {z,x,c,v}
-  {brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}
 
 super + ctrl + Return
   tabbed -c alacritty --embed

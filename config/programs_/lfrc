@@ -2,12 +2,11 @@
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
 
+map E &nvr $fx
 map gn $lf -remote "send $id cd /etc/nixos"
 map gx &xdg-open $fx
 map og &gimp $fx
 map of &firefox $fx
-map ol $lazygit
 map oz &zathura $fx
-map on &notify-send 'zoo'
 map Yc $cat $f | xclip -selection clipboard
-map \\lg $lazygit
+map \\l $lazygit

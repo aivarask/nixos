@@ -19,3 +19,5 @@ path+=(
 	'/etc/nixos'
 	'/etc/nixos/lua'
 )
+
+alias lazygit='lazygit -ucf /etc/nixos/config/files/lazygit.yml'
