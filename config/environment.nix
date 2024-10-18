@@ -14,7 +14,7 @@ let
 in
 {
   environment.variables.EDITOR = "nvim";
-  environment.variables.XINITRC = "/etc/nixos/files/xinitrc";
+  environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
   environment.shellAliases = {
     ".." = "cd ..";
     "..." = "../..";

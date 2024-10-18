@@ -7,10 +7,14 @@ require('nvim-tree').setup({
 	on_attach = function(bufnr)
 		require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
 	end,
+	renderer = {
+		icons = {
+			git_placement = 'after',
+		},
+	},
 })
 
 local node = require('nvim-tree.api').node
-local tree = require('nvim-tree.api').tree
 require('which-key').add({
 	{ 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
 	{ 'qw', [[:NvimTreeCollapse<CR>]] },

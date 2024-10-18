@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.variables.HTOPRC = "/etc/nixos/files/htoprc";
+  environment.variables.HTOPRC = "/etc/nixos/config/files/htoprc";
   programs.htop = {
     enable = true;
     settings = {
@@ -22,7 +22,7 @@
   programs.sharing.enable = true;
   programs.wireshark.enable = true;
 
-  environment.shellAliases.tmux = "tmux -f /etc/nixos/files/tmux.conf";
+  environment.shellAliases.tmux = "tmux -f /etc/nixos/config/files/tmux.conf";
   environment.shellAliases.tmux_lf = "tmux split -h lf; lf";
   programs.tmux = {
     enable = true;
