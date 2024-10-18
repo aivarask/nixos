@@ -49,12 +49,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
       f = import ./func.nix;
-      include = (import ./func.nix).include;
-      include_ = (import ./func.nix).include_;
       common = {
         imports = [
           inputs.suckless.nixosModules.default
-        ] ++ include ./config ++ include ./config/systemd;
+        ] ++ f.i ./config ++ f.i ./config/systemd;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
           nur.overlay
@@ -96,7 +94,6 @@
           MOZ_X11_EGL = "1";
         };
       };
-      commonModules = include ./modules;
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
@@ -107,7 +104,6 @@
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          # commonHome
           {
             home.stateVersion = "23.05";
             home.username = username;
@@ -124,7 +120,7 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = commonModules ++ [
+          modules = [
             inputs.suckless.nixosModules.default
             common
             ./config/.dell.nix
@@ -146,7 +142,7 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = commonModules ++ [
+          modules = [
             inputs.suckless.nixosModules.default
             common
             ./config/.pc.nix
@@ -159,9 +155,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.root = commonHome;
-                # users.${username} = {
-
-                # };
               };
             }
           ];

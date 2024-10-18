@@ -1,7 +1,7 @@
 --- @doc https://github.com/rafamadriz/friendly-snippets
 local luasnip = require('luasnip') --- @see luasnip
 require('luasnip.loaders.from_vscode').lazy_load({ exclude = { 'all' } })
-require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/snippets' })
+require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/share/vim/snippets' })
 
 local cmp = require('cmp') --- @see nvim-cmp
 --- @type cmp.ConfigSchema
