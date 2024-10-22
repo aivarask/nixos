@@ -70,17 +70,6 @@ c.pyright.setup({})
 c.rust_analyzer.setup({})
 
 nls.register({
-	nls.builtins.diagnostics.dotenv_linter,
-	nls.builtins.diagnostics.zsh,
-	nls.builtins.formatting.shellharden,
-	nls.builtins.formatting.shfmt,
-	nls.builtins.hover.printenv,
-})
-c.bashls.setup({
-	filetypes = { 'sh', 'bash', 'zsh' },
-	settings = { bashIde = { globPattern = '*@(.sh|.inc|.bash|.command|.zsh)' } },
-})
-nls.register({
 	nls.builtins.diagnostics.sqlfluff.with({ extra_args = { '--dialect', 'sqlite' } }),
 })
 -- local sqlls = require('lspconfig.server_configurations.sqlls')

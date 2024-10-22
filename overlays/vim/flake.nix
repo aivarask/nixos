@@ -52,10 +52,7 @@
             ++ (with pkgs.vimPlugins; [
               # common
               vim-log-highlighting
-              {
-                plugin = vim-interestingwords;
-                config = ''let g:interestingWordsDefaultMappings = 0'';
-              }
+              vim-interestingwords
               # nvim
               one-small-step-for-vimkind
               nvim-lsp-file-operations

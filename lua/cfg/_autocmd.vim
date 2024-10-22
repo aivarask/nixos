@@ -15,7 +15,7 @@ augroup _fold
 	autocmd!
 	autocmd BufEnter */systemd/*.nix setlocal fdl=4
 	autocmd BufEnter */config/_.nix setlocal fdl=3
-	autocmd BufEnter */{home,lua,zsh}/*.nix setlocal nofoldenable
+	autocmd BufEnter */{lua,zsh}/*.nix setlocal nofoldenable
 augroup END
 
 let g:auto_save = 1

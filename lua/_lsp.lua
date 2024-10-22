@@ -1,3 +1,4 @@
+-- vim:fdl=4
 local library = {
 	vim.env.VIMRUNTIME,
 	'${3rd}/luv/library',
@@ -13,6 +14,8 @@ for _, name in ipairs({
 	'nvim%-cmp',
 	'outline.nvim',
 	'nvim%-tree',
+	'none%-ls.nvim',
+	'nvim%-lspconfig',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then

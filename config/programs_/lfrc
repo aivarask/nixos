@@ -10,3 +10,10 @@ map of &firefox $fx
 map oz &zathura $fx
 map Yc $cat $f | xclip -selection clipboard
 map \\l $lazygit
+
+cmd quit-and-cd &{{
+    pwd > "$LF_CD_FILE"
+    lf -remote "send $id quit"
+}}
+
+map Q quit-and-cd

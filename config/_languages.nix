@@ -175,15 +175,6 @@ lib.mkMerge [
     ];
   }
   {
-    # environment.systemPackages = with pkgs; [ playwright ];
-    environment.sessionVariables = {
-      # PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
-      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
-      # PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
-      # PLAYWRIGHT_BROWSERS_VERSION = "${pkgs.playwright-driver.version}";
-    };
-  }
-  {
     # rust
     environment.variables.LD_LIBRARY_PATH = "${pkgs.lldb.lib}/lib/liblldb.so";
     environment.systemPackages = with pkgs; [
@@ -192,15 +183,6 @@ lib.mkMerge [
       rustc
       rust-analyzer
       rustfmt
-    ];
-  }
-  {
-    # sh
-    environment.systemPackages = with pkgs; [
-      dotenv-linter
-      shellharden
-      shfmt
-      nodePackages.bash-language-server
     ];
   }
 ]

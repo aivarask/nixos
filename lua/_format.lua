@@ -5,9 +5,6 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	pattern = {
 		'*.nix',
 		'*.lua',
-		-- '*.html',
-		-- '*.xml',
-		-- '*.twig',
 	},
 	desc = 'vim.lsp.buf.format null-ls 1000',
 	callback = function()

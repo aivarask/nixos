@@ -1,5 +1,13 @@
-{ ... }:
+{pkgs, ... }:
 {
+    # sh
+    home.packages = with pkgs; [
+		nodePackages.bash-language-server
+		shellcheck
+		shfmt
+      dotenv-linter
+      shellharden
+    ];
   programs.zsh = {
     enable = true;
     autocd = true;
