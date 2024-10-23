@@ -7,7 +7,7 @@
     };
     script = ''
       set -eu
-      DISPLAY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/files/images/wallpaper/abstract
+      DISPLAY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/images/wallpaper/abstract
     '';
   };
   systemd.timers."wallpaper" = {
