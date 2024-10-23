@@ -58,3 +58,4 @@ path+=(
 )
 
 alias lazygit='lazygit -ucf /etc/nixos/config/files/lazygit.yml'
+alias \\l='lazygit'

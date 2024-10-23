@@ -82,9 +82,10 @@
   };
   home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
-
+    # https://mynixos.com/home-manager/options/programs.fzf
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     defaultCommand = "fd -tf";
     defaultOptions = [
       "--layout=reverse"
@@ -97,9 +98,9 @@
       "--bind 'ctrl-f:reload(fd -tf)'"
       "--bind 'ctrl-d:reload(fd -td)'"
     ];
-    fileWidgetCommand = "fd --type f"; # Ctrl-t
+    fileWidgetCommand = "fd --tf"; # Ctrl-t
     fileWidgetOptions = [ "--preview 'pistol {}'" ];
-    changeDirWidgetCommand = "fd --type d"; # Alt-c
+    changeDirWidgetCommand = "fd --td"; # Alt-c
     changeDirWidgetOptions = [ "--preview 'pistol {}'" ];
   };
   programs.gh = {
