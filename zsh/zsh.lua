@@ -34,8 +34,7 @@ vim.api.nvim_create_autocmd('FileType', {
 				bashIde = {
 					globPattern = [[*@(.sh|.inc|.bash|.command|.zsh)]],
 					-- globPattern = '*@(.sh|.inc|.bash|.command|.zsh)',
-					explainshellEndpoint = 'https://explainshell.com',
-					shellcheckArguments = { '--shell=bash' },
+					-- shellcheckArguments = { '--shell=bash' },
 				},
 			},
 		})
