@@ -1,3 +1,4 @@
+# vim:nofoldenable
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
@@ -57,5 +58,4 @@
       bind_to_address "/run/mpd/socket"
     '';
   };
-
 }

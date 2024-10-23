@@ -4,6 +4,9 @@
 
 map E &nvr $fx
 map gn $lf -remote "send $id cd /etc/nixos"
+map gd $lf -remote "send $id cd ~/Downloads"
+map gtw $lf -remote "send $id cd /var/lib/transmission/watch-dir"
+map gtd $lf -remote "send $id cd /var/lib/transmission/Downloads"
 map gx &xdg-open $fx
 map og &gimp $fx
 map of &firefox $fx

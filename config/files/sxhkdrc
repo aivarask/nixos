@@ -7,7 +7,9 @@ super + F3
 super + F4
   alacritty -e pulsemixer
 super + F5
-  kill -SIGUSR1 $(pidof sxhkd) && dunstify ' ⌨️  sxhkd reload OK' && pkill -USR1 hx
+  kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx
+super + F6
+  alacritty -e tremc
 
 super + {q,w,e,r}
   {tdrop alacritty\

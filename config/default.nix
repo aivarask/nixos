@@ -64,7 +64,6 @@ lib.mkMerge [
         "pulse"
         "video"
         "disk"
-        "networkmanager"
       ];
     };
   }
