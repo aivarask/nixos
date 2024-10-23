@@ -53,13 +53,6 @@
       PermitRootLogin = "yes";
     };
   };
-  services.pipewire = {
-    enable = false;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    #jack.enable = true;
-  };
   services.redshift = {
     enable = true;
     temperature.day = 6500;
@@ -99,7 +92,6 @@
       variant = "qwerty"; # localectl list-x11-keymap-variants
     };
     tty = null;
-    # LINKS:
     # https://wiki.archlinux.org/title/Multihead
     xrandrHeads = [ ];
     imwheel = {
@@ -124,35 +116,6 @@
         pc = 163;
       }
       ."${config.networking.hostName}" or 144;
-  };
-  environment.systemPackages = with pkgs; [
-    pulsemixer
-    alsa-utils
-    mpc_cli
-  ];
-  services.mpd = {
-    enable = true;
-    user = "root";
-    group = "wheel";
-    playlistDirectory = ./playlist;
-    # network.listenAddress = "any";
-    startWhenNeeded = true;
-    extraConfig = ''
-      auto_update "yes"
-      music_directory "/var/music"
-      audio_output {
-        type "pulse"
-        name "Pulseaudio"
-        server "0.0.0.0"
-      }
-      playlist_plugin {
-        name "m3u"
-        enabled "true"
-      }
-      # bind_to_address "0.0.0.0:6600"
-      # bind_to_address "/var/lib/mpd/socket"
-      bind_to_address "/run/mpd/socket"
-    '';
   };
   services.maddy = {
     enable = true;

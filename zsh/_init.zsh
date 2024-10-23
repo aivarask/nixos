@@ -8,8 +8,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-precmd() { print -Pn "\e]83;title \"$1\"\a" print -Pn "\e]0;$PWD $HOST\a" }
-preexec() { print -Pn "\e]83;title \"$1\"\a" print -Pn "\e]0;$PWD $1 $HOST\a" }
+precmd() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $HOST\a"
+}
+preexec() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $1 $HOST\a"
+}
 manixf() { manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview="manix '{}'" }
 
 lf() {
