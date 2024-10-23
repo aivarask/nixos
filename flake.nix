@@ -3,7 +3,7 @@
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,12 +96,10 @@
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
-      # nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      #   pkgs = import nixpkgs { system = "aarch64-linux"; };
-      #   modules = [
-      #     ./hosts/.redmi.nix
-      #   ];
-      # };
+      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
+        modules = [ ./hosts/.redmi.nix ];
+      };
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [

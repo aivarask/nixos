@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.packages = with pkgs; [
-    # util-linux
+    util-linux
     which
     vim
     git
