@@ -7,7 +7,10 @@ require('lualine').setup({
 		},
 	},
 	tabline = {
-		lualine_a = {},
+		lualine_a = {
+			require('auto-session.lib').current_session_name,
+			'tabs',
+		},
 		lualine_b = {
 			{
 				'buffers',
@@ -15,10 +18,6 @@ require('lualine').setup({
 				max_length = vim.o.columns * 4 / 5,
 				mode = 0,
 			},
-		},
-		lualine_y = {
-			'tabs',
-			require('auto-session.lib').current_session_name,
 		},
 		lualine_z = {
 			'searchcount',

@@ -96,10 +96,12 @@
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
-      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [ ./hosts/.redmi.nix ];
-      };
+      # nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+      #   pkgs = import nixpkgs { system = "aarch64-linux"; };
+      #   modules = [
+      #     ./hosts/.redmi.nix
+      #   ];
+      # };
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
