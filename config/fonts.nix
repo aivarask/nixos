@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  environment.variables.EMOJI = "♥ ❤️ 👍😍😎🙊🥱🥺✨✅🎊🏄  🇪🇺 ";
-  environment.systemPackages = with pkgs; [
-    fontpreview
-  ];
+  environment.systemPackages = with pkgs; [ fontpreview ];
   fonts = {
     fontconfig = {
       defaultFonts = {

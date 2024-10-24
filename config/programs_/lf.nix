@@ -42,11 +42,6 @@
       "-x" = "$chmod -x $fx";
       "<c-f>" = "$fzf --preview 'pistol {}'";
       "<c-g>" = "$Rg";
-      # "gn" = ''$lf -remote "send $id cd /etc/nixos"'';
-      # "gx" = ''!xdg-open $fx'';
-      # "og" = ''&gimp $fx'';
-      # "of" = ''&firefox $fx'';
-      # "oz" = ''&zathura $fx'';
     };
     cmdKeybindings = { };
   };

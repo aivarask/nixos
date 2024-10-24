@@ -1,16 +1,9 @@
 { pkgs, osConfig, ... }:
 {
   programs.zathura.enable = true;
-  programs.zathura.options = {
-    default-bg = "#000000";
-    default-fg = "#FFFFFF";
-    database = "null";
-  };
-  programs.zathura.extraConfig = ''
-
-  '';
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
+  programs.nix-index.enableBashIntegration = true;
   programs.lazygit.enable = true;
   programs.eza.enable = true;
   programs.eza.icons = "auto";
@@ -31,10 +24,10 @@
       };
     };
   };
-  home.sessionVariables.BAT_THEME = "gruvbox-dark";
   programs.bat = {
     enable = true;
     config = {
+      theme = "gruvbox-dark";
       pager = "less -R";
       style = "numbers,changes,header";
       map-syntax = [
@@ -83,6 +76,7 @@
   home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.fzf = {
     # https://mynixos.com/home-manager/options/programs.fzf
+    # https://github.com/junegunn/fzf
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
@@ -128,15 +122,14 @@
       # https://github.com/ncmpcpp/ncmpcpp/blob/master/doc/config
       # https://raw.githubusercontent.com/ncmpcpp/ncmpcpp/master/doc/config
       mpd_music_dir = "/var/music";
-      "user_interface" = "alternative";
-      "alternative_header_first_line_format" = "$b$5«« {%a}|{%t} »»$9$/b";
-      alternative_header_second_line_format = "$b$5 {%b}|{%f} {%b} ({%y})$9$/b";
-      song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
-      ###
+      connected_message_on_startup = "no";
       display_bitrate = "yes";
       playlist_show_mpd_host = "no";
       allow_for_physical_item_deletion = "yes";
-      connected_message_on_startup = "no";
+      "user_interface" = "alternative";
+      "alternative_header_first_line_format" = "$b$5 {%a}|{%t} $9$/b";
+      alternative_header_second_line_format = "$b$5 {%b}|{%f} {%b} ({%y})$9$/b";
+      song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
     };
   };
   programs.starship = {
