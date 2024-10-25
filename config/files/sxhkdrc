@@ -1,5 +1,9 @@
+Print
+  scrot
+super + ctrl + Return
+  tabbed -c alacritty --embed
 super + F1
-  notify-send --print-id  'Keymaps' "$(cat $SXHKDRC)"
+  notify-send 'Keymaps' "$(cat $SXHKDRC)"
 super + F2
   alacritty -e htop
 super + F3
@@ -10,36 +14,35 @@ super + F5
   kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx
 super + F6
   alacritty -e tremc
-
-super + {q,w,e,r}
+{q,w,e,r} + super
   {tdrop alacritty\
   ,$BROWSER\
   ,alacritty --working-directory=/etc/nixos -e nvr\
   ,alacritty --working-directory=/etc/nixos -e ''
   }
-
-super + ctrl + {q}
-	{ tdrop alacritty -e ssh pcw -t 'ncmpcpp' }
-
-super + {W,E,R,T,Y}
+{a,s} + super
+  pulsemixer --change-volume {-,+}2 --max-volume 100
+{z,x,c,v} + super
+	{brightnessctl set 10%-\
+	,brightnessctl set 10%+\
+	,alacritty\
+	,alacritty -e pulsemixer
+	}
+{W,E,R,T,Y} + super
   {firefox --private-window\
   ,alacritty --working-directory=/etc/nixos -e vim\
   ,alacritty --working-directory=/etc/nixos\
 	,telegram-desktop\
 	,brave youtube.com\
   }
-
-super + {a,s}
-  pulsemixer --change-volume {-,+}2 --max-volume 100
-
-super + {z,x,c,v}
-	{brightnessctl set 10%-,brightnessctl set 10%+,alacritty,alacritty -e pulsemixer}
-
-super + {A,S}
+{A,S} + super
 	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
 
-super + ctrl + Return
-  tabbed -c alacritty --embed
+
+ctrl + super + p ; {n,p}
+	{tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
+	,tdrop alacritty -e ssh pcw -t 'pulsemixer'
+	}
 
 XF86Audio{Play,Mute,Prev,Next}
   mpc {play,stop,prev,next}
@@ -47,7 +50,4 @@ XF86Audio{Lower,Raise}Volume
   pulsemixer --change-volume {-,+}2 --max-volume 100
 XF86MonBrightness{Down,Up}
   brightnessctl set 10%{-,+}
-
-Print
-  scrot
 # Break Pause Print Scroll_Lock XF86Calculator XF86HomePage XF86Mail XF86Search

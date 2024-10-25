@@ -85,7 +85,6 @@
           ++ f.i_ ./config
           ++ f.i ./config/programs_
           ++ f.i_ ./lua
-          ++ f.i_ ./zsh
         # end
         ;
         home.sessionVariables = {

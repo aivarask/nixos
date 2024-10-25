@@ -1,3 +1,4 @@
+# vim:nofoldenable
 { pkgs, ... }:
 {
   # sh
@@ -28,7 +29,7 @@
     '';
     initExtra = ''
       # programs.zsh.initExtra
-      source /etc/nixos/zsh/_init.zsh
+      source /etc/nixos/config/programs_/zshrc.zsh
     '';
     plugins = [ ];
   };
