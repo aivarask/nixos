@@ -40,7 +40,7 @@ bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[OQ" "manixf\n"         # <F2>
 bindkey -s "^[[15~" "exec zsh\n"     # <F5>
-bindkey -s "^F" "fzf -m --preview 'pistol {}'\n"
+bindkey -s "^F" "fzf -m\n"
 bindkey -s "^G" "Rg\n"
 
 typeset -TU LUA_PATH luapath ';'

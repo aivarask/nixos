@@ -76,7 +76,6 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-  home.shellAliases.fzp = "fzf -m --preview 'pistol {}'";
   programs.gh = {
     enable = true;
     extensions = with pkgs; [

@@ -40,7 +40,7 @@
       "+x" = "$chmod +x $fx";
       "-w" = "$chmod -w $fx";
       "-x" = "$chmod -x $fx";
-      "<c-f>" = "$fzf --preview 'pistol {}'";
+      "<c-f>" = "$fzf";
       "<c-g>" = "$Rg";
     };
     cmdKeybindings = { };

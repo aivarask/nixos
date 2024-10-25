@@ -14,6 +14,7 @@ let
 in
 {
   environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
+  environment.variables.EDITOR = "nvr";
   environment.shellAliases = {
     ".." = "cd ..";
     "..." = "../..";
