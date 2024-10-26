@@ -1,8 +1,11 @@
 # vim:ft=conf
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
+$mkdir -p ~/.trash
+set previewer pistol
+map t
 
-map E &nvr $fx
+map E $nvr $fx
 map gn $lf -remote "send $id cd /etc/nixos"
 map gd $lf -remote "send $id cd ~/Downloads"
 map gtw $lf -remote "send $id cd /var/lib/transmission/watch-dir"

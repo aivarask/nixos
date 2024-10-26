@@ -19,6 +19,7 @@ require('which-key').add({
 	{ '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
 	{ '`', '<cmd>ToggleTerm<CR>', mode = { 'n', 't' } },
 })
+
 vim.api.nvim_create_autocmd('FileType', {
 	group = vim.api.nvim_create_augroup('toggleterm', {}),
 	pattern = 'toggleterm',
@@ -28,3 +29,11 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
 	end,
 })
+
+local Terminal = require('toggleterm.terminal').Terminal
+local lf = Terminal:new({ cmd = 'lf', hidden = true, direction = 'vertical' })
+function _lf_toggle()
+	lf:toggle()
+end
+
+vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua _lf_toggle()<CR>', { noremap = true, silent = true })

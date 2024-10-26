@@ -1,5 +1,5 @@
 # vim:nofoldenable
-rec {
+{
   i =
     p:
     with builtins;

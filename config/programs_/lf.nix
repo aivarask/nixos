@@ -3,9 +3,6 @@
   xdg.configFile."lf/icons".source = ./lf_icons;
   programs.lf = {
     extraConfig = ''
-      $mkdir -p ~/.trash
-      set previewer pistol
-      map t
       source /etc/nixos/config/programs_/lfrc
     '';
     # ~/.config/lf/lfrc

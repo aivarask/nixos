@@ -14,13 +14,25 @@ require('nvim-tree').setup({
 	},
 })
 
-local node = require('nvim-tree.api').node
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'NvimTree',
+	callback = function(ev)
+		require('which-key').add({
+			{ 'l', require('nvim-tree.api').node.open.edit, buffer = ev.buf },
+			{ '<C-l>', require('nvim-tree.api').tree.expand_all, buffer = ev.buf },
+			{ 'h', require('nvim-tree.api').node.navigate.parent_close, buffer = ev.buf },
+			{ '<C-h>', require('nvim-tree.api').tree.collapse_all, buffer = ev.buf },
+		})
+	end,
+})
+
 require('which-key').add({
 	{ 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
 	{ 'qw', [[:NvimTreeCollapse<CR>]] },
 	{
 		'[q',
 		function()
+			local node = require('nvim-tree.api').node
 			node.navigate.sibling.prev()
 			node.open.preview()
 		end,
@@ -29,6 +41,7 @@ require('which-key').add({
 	{
 		']q',
 		function()
+			local node = require('nvim-tree.api').node
 			node.navigate.sibling.next()
 			node.open.preview()
 		end,
