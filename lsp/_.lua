@@ -1,9 +1,5 @@
-require('null-ls').setup({
-	sources = {},
-})
-
+require('null-ls').setup()
 require('lsp-file-operations').setup({})
-
 require('outline').setup({
 	outline_window = {
 		position = 'right',
@@ -29,7 +25,6 @@ require('outline').setup({
 		auto_preview = false,
 	},
 })
-
 require('goto-preview').setup({})
 require('which-key').add({
 	{ '<space>', group = 'LSP' },
@@ -52,4 +47,152 @@ require('which-key').add({
 	{ '<space>R', vim.lsp.buf.rename, desc = 'rename' },
 	{ '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
 	{ '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
+})
+
+require('lspconfig.configs.clangd')
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+	callback = function()
+		vim.lsp.start({
+			cmd = { 'clangd' },
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.c' },
+	desc = 'format clang',
+	callback = function()
+		vim.lsp.buf.format({ name = 'clang' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'php' },
+	desc = 'lsp intelephense',
+	callback = function()
+		vim.lsp.start({
+			cmd = { 'intelephense', '--stdio' },
+			filetypes = { 'php' },
+			settings = {
+				intelephense = {
+					files = {
+						maxSize = 1000000,
+					},
+				},
+			},
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.php' },
+	desc = 'format intelephense',
+	callback = function()
+		vim.lsp.buf.format({ name = 'intelephense' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'python' },
+	desc = 'lsp pyright',
+	callback = function()
+		vim.lsp.start({
+			cmd = { 'pyright-langserver', '--stdio' },
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = 'openFilesOnly',
+					},
+				},
+			},
+		})
+	end,
+})
+require('null-ls').register({ require('null-ls.builtins.formatting.black') })
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.py' },
+	desc = 'format black',
+	callback = function()
+		vim.lsp.buf.format({ name = 'null-ls' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'zig', 'zir' },
+	desc = 'lsp zig',
+	callback = function()
+		vim.lsp.start({
+			cmd = { 'zls' },
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.zig' },
+	desc = 'format zls',
+	callback = function()
+		vim.lsp.buf.format({ name = 'zls' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'toml' },
+	desc = 'lsp taplo',
+	callback = function()
+		vim.lsp.start({
+			cmd = { 'taplo', 'lsp', 'stdio' },
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.toml' },
+	desc = 'format taplo not working',
+	callback = function()
+		-- vim.lsp.buf.format({ name = 'taplo' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'rust' },
+	desc = 'lsp rust_analyzer',
+	callback = function()
+		vim.lsp.start({ cmd = { 'rust-analyzer' } })
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.rs' },
+	desc = 'format rust-analyzer',
+	callback = function()
+		vim.lsp.buf.format({ name = 'rust-analyzer' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'go', 'gomod', 'gowork', 'gotmpl' },
+	desc = 'lsp gopls',
+	callback = function()
+		vim.lsp.start({ cmd = { 'gopls' } })
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.go' },
+	desc = 'format gopls',
+	callback = function()
+		vim.lsp.buf.format({ name = 'gopls' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'templ' },
+	desc = 'lsp templ',
+	callback = function()
+		vim.lsp.start({ cmd = { 'templ', 'lsp' } })
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.templ' },
+	desc = 'format templ',
+	callback = function()
+		vim.lsp.buf.format({ name = 'templ' })
+	end,
 })

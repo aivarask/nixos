@@ -2,7 +2,6 @@
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'nix',
 	callback = function(ev)
-		-- local nixd = require('lspconfig.server_configurations.nixd').default_config
 		vim.lsp.start({
 			name = 'nixd',
 			cmd = { 'nixd' },
@@ -22,29 +21,6 @@ vim.api.nvim_create_autocmd('FileType', {
 				},
 			},
 		})
-		if false then
-			vim.lsp.start({
-				name = 'nil',
-				cmd = { 'nil' },
-				settings = {
-					['nil'] = {
-						formatting = { command = nil },
-						nix = {
-							maxMemoryMB = 20480,
-							flake = {
-								-- autoArchive = true,
-								-- autoEvalInputs = true,
-								-- nixpkgsInputName = "nixpkgs",
-							},
-						},
-					},
-				},
-
-				on_attach = function(client)
-					client.server_capabilities.completionProvider = nil
-				end,
-			})
-		end
 	end,
 })
 

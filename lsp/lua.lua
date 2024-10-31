@@ -26,7 +26,13 @@ for _, name in ipairs({
 	end
 end
 
-require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
+local client = vim.lsp.get_clients({ name = 'lua_ls' })[1] or nil
+if client ~= nil then
+	vim.print(client.settings.Lua.workspace.library)
+	client.settings.Lua.workspace.library = library
+	client.notify('workspace/didChangeConfiguration', { settings = client.settings })
+end
+
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'lua',
 	callback = function(ev)
@@ -65,10 +71,11 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-
-local client = vim.lsp.get_clients({ name = 'lua_ls' })[1] or nil
-if client ~= nil then
-	vim.print(client.settings.Lua.workspace.library)
-	client.settings.Lua.workspace.library = library
-	client.notify('workspace/didChangeConfiguration', { settings = client.settings })
-end
+require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.lua' },
+	desc = 'format null-ls',
+	callback = function()
+		vim.lsp.buf.format({ name = 'null-ls' })
+	end,
+})

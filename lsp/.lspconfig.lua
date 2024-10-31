@@ -8,13 +8,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local c = require('lspconfig')
-
-c.clangd.setup({})
-c.cssls.setup({
-	capabilities = capabilities,
-})
-c.gopls.setup({})
-c.templ.setup({})
+c.cssls.setup({})
 c.stylelint_lsp.setup({
 	capabilities = capabilities,
 	filetypes = { 'css' },
@@ -60,11 +54,6 @@ c.jsonls.setup({
 	},
 })
 
-c.intelephense.setup({})
-nls.register({ nls.builtins.formatting.black })
-c.pyright.setup({})
-c.rust_analyzer.setup({})
-
 nls.register({
 	nls.builtins.diagnostics.sqlfluff.with({ extra_args = { '--dialect', 'sqlite' } }),
 })
@@ -89,5 +78,3 @@ c.yamlls.setup({
 		schemas = require('schemastore').yaml.schemas(),
 	},
 })
-c.taplo.setup({})
-c.zls.setup({})
