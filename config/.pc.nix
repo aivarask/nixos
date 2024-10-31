@@ -50,7 +50,8 @@
   system.stateVersion = "23.05";
   environment.systemPackages = with pkgs; [
     libva-utils
-    android-studio-full
+    android-studio-tools
+    # android-studio-full
   ];
   environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   systemd.network.networks."10-eno1" = {
