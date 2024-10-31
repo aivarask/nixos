@@ -4,7 +4,9 @@ require('auto-session').setup({
 	auto_session_allowed_dirs = { '/etc/nixos' },
 	log_level = vim.log.levels.ERROR,
 })
-
+require('glow').setup({
+	-- your override config
+})
 require('colorizer').setup({})
 if vim.uv.os_getenv('DISPLAY') then
 	require('image').setup({ backend = 'ueberzug' })
@@ -19,6 +21,6 @@ require('fidget').setup({})
 require('notify').setup({
 	render = 'wrapped-compact',
 	-- timeout = 1000,
-	top_down = false
+	top_down = false,
 })
 vim.notify = require('notify')
