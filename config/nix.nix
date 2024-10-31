@@ -12,6 +12,7 @@
   environment.shellAliases.nrs = "nixos-rebuild switch";
   environment.shellAliases.nfu = "nix flake update";
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
