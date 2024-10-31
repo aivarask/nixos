@@ -1,7 +1,0 @@
-*foo.txt*
-
-=================
-*foo*
-This is foo paragraph
-
-vim:tw=78:ts=8:ft=help:modifiable:noreadonly

@@ -1,6 +1,5 @@
 -- lsp-quickstart
 vim.api.nvim_create_autocmd('FileType', {
-	-- group = LSP,
 	pattern = 'nix',
 	callback = function(ev)
 		-- local nixd = require('lspconfig.server_configurations.nixd').default_config

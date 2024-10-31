@@ -26,9 +26,8 @@ for _, name in ipairs({
 	end
 end
 
-local LSP = vim.api.nvim_create_augroup('LSP', {})
+require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
 vim.api.nvim_create_autocmd('FileType', {
-	group = LSP,
 	pattern = 'lua',
 	callback = function(ev)
 		vim.lsp.start({

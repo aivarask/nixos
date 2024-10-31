@@ -1,9 +1,13 @@
+require('null-ls').setup({
+	sources = {},
+})
+
 require('lsp-file-operations').setup({})
 
 require('outline').setup({
 	outline_window = {
-		position = 'left',
-		width = 15,
+		position = 'right',
+		width = 20,
 	},
 	symbols = {
 		icons = {
@@ -22,7 +26,7 @@ require('outline').setup({
 		},
 	},
 	preview_window = {
-		auto_preview = true,
+		auto_preview = false,
 	},
 })
 
@@ -33,7 +37,6 @@ require('which-key').add({
 	{ '<space>D', vim.lsp.buf.declaration, desc = 'declaration' },
 	{ '<space>dd', vim.lsp.buf.definition, desc = 'definition' },
 	{ '<space>e', vim.diagnostic.open_float, desc = 'open_float' },
-	{ '<space>I', vim.lsp.inspect_client, desc = 'inspect_client', noremap = true },
 	{ '<space>i', vim.lsp.buf.implementation, desc = 'implementation' },
 	{ '<space>O', [[<cmd>LspOverloadsSignature<CR>]] },
 	{ '<space>o', [[<cmd>Outline<CR>]] },
@@ -50,35 +53,3 @@ require('which-key').add({
 	{ '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
 	{ '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
 })
-
-vim.lsp.inspect_client = function()
-	local function get_keys(t)
-		local keys = {}
-		for key, _ in pairs(t) do
-			table.insert(keys, key)
-		end
-		return keys
-	end
-	local bufnr = vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.get_clients({ bufnr = bufnr })
-
-	vim.ui.select(clients, {
-		prompt = 'Select LSP client',
-		format_item = function(client)
-			return client.name
-		end,
-	}, function(selected_client)
-		if selected_client then
-			local client = vim.lsp.get_client_by_id(selected_client.id)
-			local keys = get_keys(client)
-
-			vim.ui.select(keys, {}, function(key)
-				if key and client ~= nil and client[key] then
-					vim.print(client[key])
-				else
-					vim.print(client)
-				end
-			end)
-		end
-	end)
-end

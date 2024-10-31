@@ -1,11 +1,7 @@
 local ftmap = require('null-ls.builtins._meta.filetype_map')
 local nls = require('null-ls')
 nls.setup({
-	sources = {
-		nls.builtins.formatting.stylua,
-		nls.builtins.formatting.nixfmt,
-	},
-	diagnostics_format = '#{m} [#{c}] (#{s}) null-ls',
+	sources = {},
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
