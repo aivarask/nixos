@@ -64,6 +64,7 @@
   };
   hardware.nvidia = {
     # https://github.com/NixOS/nixos-hardware/blob/master/dell/xps/15-7590/nvidia/default.nix
+    open = true;
     modesetting.enable = true;
     prime = {
       sync.enable = false; # gpu always

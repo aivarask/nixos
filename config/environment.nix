@@ -41,6 +41,9 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      android-tools
+      # https://nixos.wiki/wiki/MTP
+      jmtpfs
       # xorg
       xcompmgr
       xdotool

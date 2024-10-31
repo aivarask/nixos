@@ -40,6 +40,10 @@
     };
   };
   swapDevices = [ ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+  };
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     fancontrol = {
