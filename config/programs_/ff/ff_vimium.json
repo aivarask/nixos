@@ -1,7 +1,0 @@
-{
-  "keyMappings": "unmap f\n map \\ LinkHints.activateMode",
-  "scrollStepSize": 40,
-  "searchEngines": "qw: https://www.qwant.com/?q=%s Qwant",
-  "settingsVersion": "2.0.6",
-  "config": "moz-extension://6ba3b5f2-39a3-4b91-8d24-199a65e1e907/pages/options.html"
-}
