@@ -59,7 +59,7 @@
               nvim-dap-vscode-js
               neotest-playwright
               persistent-breakpoints
-              smart-semicolon
+              # smart-semicolon
             ]);
         };
       overlays.default = (

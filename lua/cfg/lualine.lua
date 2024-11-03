@@ -9,9 +9,11 @@ require('lualine').setup({
 	tabline = {
 		lualine_a = {
 			require('auto-session.lib').current_session_name,
-			'tabs',
 		},
 		lualine_b = {
+			'tabs',
+		},
+		lualine_c = {
 			{
 				'buffers',
 				show_filename_only = true,

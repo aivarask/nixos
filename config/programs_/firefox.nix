@@ -231,7 +231,7 @@
           "tabs.closeWindowWithLastTab" = false;
           "tabs.loadDivertedInBackground" = true;
           "tabs.loadInBackground" = false;
-          "toolbars.bookmarks.visibility" = "always";
+          "toolbars.bookmarks.visibility" = "never";
           "uidensity" = 1;
           "urlbar.placeholderName" = "DuckDuckGo";
           "urlbar.shortcuts.bookmarks" = false;

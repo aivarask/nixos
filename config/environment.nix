@@ -41,6 +41,9 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      tuir
+      josm
+      merkaartor
       android-tools
       # https://nixos.wiki/wiki/MTP
       jmtpfs

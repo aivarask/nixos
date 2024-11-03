@@ -52,6 +52,7 @@ map ]t :tabnext<CR>
 map [t :tabprevious<CR>
 map ]T :tabclose<CR>
 map [T :tabclose<CR>
+nmap <C-k> [%
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>m :messages<CR>
@@ -61,6 +62,7 @@ nnoremap <silent> <leader>C :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap <silent> <leader>D :edit /etc/nixos/doc/nixos.txt<CR>
 nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
 nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
+nnoremap <silent> <leader>Z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
 
 if !has('gui_running')
 	set t_Co=256
@@ -118,7 +120,7 @@ else
 	set foldclose=all
 	set foldlevel=2
 	" set foldnestmax=4
-	let &foldnestmax = &foldlevel+2
+	let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
 	set foldenable
 

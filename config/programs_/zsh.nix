@@ -3,6 +3,7 @@
 {
   # sh
   home.packages = with pkgs; [
+    zed-editor
     nodePackages.bash-language-server
     shellcheck
     shfmt

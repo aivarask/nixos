@@ -1,10 +1,11 @@
 --- @doc https://github.com/rafamadriz/friendly-snippets
 local luasnip = require('luasnip') --- @see luasnip
-require('luasnip').filetype_extend('twig', { 'html' })
-require('luasnip').filetype_extend('html', { 'twig' })
+-- require('luasnip').filetype_extend('twig', { 'html' })
+-- require('luasnip').filetype_extend('html', { 'twig' })
 require('luasnip.loaders.from_vscode').lazy_load({ exclude = { 'all' } })
-require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/share/vim/snippets' })
+require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/snippets' })
 
+require('smart_semicolon').setup()
 local cmp = require('cmp') --- @see nvim-cmp
 --- @type cmp.ConfigSchema
 local config = {
@@ -19,7 +20,7 @@ local config = {
 		{ name = 'path', group_index = 2 }, --- @see cmp-path
 		-- { name = 'luasnip', group_index = 2, keyword_length = 2 },
 		-- { name = "emoji", group_index = 2 }, --- @see cmp-emoji
-		-- { name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
+		{ name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
 	}),
 
 	mapping = {
