@@ -49,6 +49,7 @@
     # QT_AUTO_SCREEN_SET_FACTOR = "0";
     # QT_FONT_DPI = "144";
   };
+  systemd.network.enable = true;
   networking = {
     hostName = "dell";
     hostId = "8425e349";

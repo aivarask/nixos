@@ -15,7 +15,7 @@
 
 ## Forward *.lan, *.local, *.home, *.home.arpa, *.internal and *.localdomain to 192.168.1.1
 # lan              192.168.1.1
-# local            192.168.1.1
+# local            127.0.0.1
 # home             192.168.1.1
 # home.arpa        192.168.1.1
 # internal         192.168.1.1
@@ -34,4 +34,5 @@
 ## AutomapHostsOnResolve 1
 
 # onion            127.0.0.1:9053
-0.0.0.0 accounts.google.com
+accounts.google.com 127.0.0.1
+music.local 127.0.0.3

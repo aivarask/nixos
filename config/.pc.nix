@@ -58,6 +58,7 @@
     # android-studio-full
   ];
   environment.variables.LIBVA_DRIVER_NAME = "vdpau";
+  systemd.network.enable = true;
   systemd.network.networks."10-eno1" = {
     name = "eno1";
     matchConfig.Name = "eno1";
@@ -65,7 +66,6 @@
     networkConfig = {
       DHCP = "ipv4";
       IPv6AcceptRA = true;
-
     };
   };
   systemd.network.networks."20-wlp6s0" = {
