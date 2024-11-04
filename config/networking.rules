@@ -34,4 +34,4 @@
 ## AutomapHostsOnResolve 1
 
 # onion            127.0.0.1:9053
-
+0.0.0.0 accounts.google.com
