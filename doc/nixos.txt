@@ -1,6 +1,10 @@
 *nixos.txt* /etc/nixos related help            *nixos*
 
 ============
+Themes
+https://github.com/sainnhe/everforest
+
+============
 Resources
 help-writing
 https://devhints.io/vim-help#syntax

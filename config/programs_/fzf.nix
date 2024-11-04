@@ -13,7 +13,7 @@ _: {
     defaultCommand = "fd -tf -H";
     defaultOptions = [
       "--layout=reverse"
-      "--preview 'pistol {}'"
+      # "--preview 'pistol {}'"
       "--preview-window up"
       "--bind ']:toggle-preview'"
       "--bind 'ctrl-]:change-preview-window(right|up)'"

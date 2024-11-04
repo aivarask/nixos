@@ -1,3 +1,4 @@
+# vim:foldlevel=3
 {
   config,
   lib,
@@ -40,10 +41,6 @@
     };
   };
   swapDevices = [ ];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = true;
-  };
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     fancontrol = {
@@ -51,14 +48,27 @@
       config = '''';
     };
   };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+  };
   system.stateVersion = "23.05";
-  environment.systemPackages = with pkgs; [
-    libva-utils
-    android-studio-tools
-    # android-studio-full
-  ];
-  environment.variables.LIBVA_DRIVER_NAME = "vdpau";
-  systemd.network.enable = true;
+  networking = {
+    hostName = "pc";
+    hostId = "007f0200";
+    wireless.enable = true;
+    wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
+    interfaces.eno1.wakeOnLan.enable = true;
+  };
+  systemd.network.networks."20-wlp6s0" = {
+    name = "wlp6s0";
+    matchConfig.Name = "wlp6s0";
+    linkConfig.RequiredForOnline = "yes";
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
+    };
+  };
   systemd.network.networks."10-eno1" = {
     name = "eno1";
     matchConfig.Name = "eno1";
@@ -68,20 +78,6 @@
       IPv6AcceptRA = true;
     };
   };
-  systemd.network.networks."20-wlp6s0" = {
-    name = "wlp6s0";
-    matchConfig.Name = "wlp6s0";
-    # linkConfig.RequiredForOnline = "no";
-    networkConfig = {
-      DHCP = "ipv4";
-      IPv6AcceptRA = true;
-    };
-  };
-  networking = {
-    hostName = "pc";
-    hostId = "007f0200";
-    wireless.enable = true;
-    wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
-    interfaces.eno1.wakeOnLan.enable = true;
-  };
+  environment.variables.LIBVA_DRIVER_NAME = "vdpau";
+  environment.systemPackages = with pkgs; [ libva-utils ];
 }

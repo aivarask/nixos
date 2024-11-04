@@ -115,6 +115,15 @@
               iconUpdateURL = "https://nixos.wiki/favicon.png";
               inherit updateInterval;
             };
+            "@np NixOS Packages" = {
+              definedAliases = [ "@np" ];
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+                }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            };
             #
             # "ArchWiki @aw" = {
             #   definedAliases = [ "@aw" ];
@@ -153,30 +162,6 @@
             #   definedAliases = [ "@nm" ];
             #   iconUpdateURL = "https://nixos.org/manual/nix/unstable/favicon.svg";
             #   urls = [ { template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}"; } ];
-            # };
-
-            # "NixOS Packages @np" = {
-            #   definedAliases = [ "@np" ];
-            #   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            #   urls = [
-            #     {
-            #       template = "https://search.nixos.org/packages";
-            #       params = [
-            #         {
-            #           name = "channel";
-            #           value = "unstable";
-            #         }
-            #         {
-            #           name = "type";
-            #           value = "packages";
-            #         }
-            #         {
-            #           name = "query";
-            #           value = "{searchTerms}";
-            #         }
-            #       ];
-            #     }
-            #   ];
             # };
 
             # "NixOS Options @no" = {

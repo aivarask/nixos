@@ -26,6 +26,7 @@ set autowriteall
 set updatetime=250
 set timeoutlen=600
 set bufhidden=wipe
+setglobal commentstring="# %s"
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"

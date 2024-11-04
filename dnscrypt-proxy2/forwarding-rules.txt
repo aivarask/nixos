@@ -34,5 +34,5 @@
 ## AutomapHostsOnResolve 1
 
 # onion            127.0.0.1:9053
-accounts.google.com 127.0.0.1
-music.local 127.0.0.3
+# accounts.google.com 127.0.0.1
+linkomanija.net 1.1.1.1
