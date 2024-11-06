@@ -103,6 +103,7 @@ let
     direnv-vim
     vim-markdown
     vim-fugitive
+    tabular
   ];
 in
 {

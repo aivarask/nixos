@@ -45,7 +45,7 @@
       User = "root";
       StateDirectory = "dnscrypt-proxy";
       PermissionsStartOnly = "true";
-      RestartSec = "3s";
+      RestartSec = "2s";
     };
   };
   services.dnscrypt-proxy2 = {
