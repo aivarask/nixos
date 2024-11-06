@@ -1,4 +1,5 @@
 # https://nixos.wiki/wiki/Encrypted_DNS
+# https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration
 # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
 # https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
 { lib, pkgs, ... }:
@@ -82,5 +83,4 @@
       '')
     }
   '';
-
 }

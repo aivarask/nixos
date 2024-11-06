@@ -39,5 +39,7 @@
       phan
       phive
     ])
-    ++ (with pkgs.nodePackages; [ intelephense ]);
+    ++ (with pkgs.nodePackages; [
+      intelephense
+    ]);
 }
