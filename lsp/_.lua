@@ -1,4 +1,4 @@
--- vim:foldlevel=4
+-- vim:foldlevel=1
 require('null-ls').setup()
 require('lsp-file-operations').setup({})
 require('outline').setup({
@@ -52,6 +52,7 @@ require('which-key').add({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 require('null-ls').register({ require('null-ls.builtins.diagnostics.vint') })
 vim.api.nvim_create_autocmd('Filetype', {
@@ -356,3 +357,59 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 -- https://github.com/supabase/postgres_lsp
 -- local postgres_lsp = require('lspconfig.server_configurations.postgres_lsp')
 -- require('lspconfig').postgres_lsp.setup({})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = 'nix',
+	callback = function(ev)
+		vim.lsp.start({
+			name = 'nixd',
+			cmd = { 'nixd' },
+			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
+			settings = {
+				nixd = {
+					formatting = { command = { 'nixfmt' } },
+					nixpkgs = { expr = 'import <nixpkgs> { }' },
+					options = {
+						nixos = {
+							expr = '(builtins.getFlake ("git+file://" + toString /etc/nixos)).nixosConfigurations.dell.options',
+						},
+						home_manager = {
+							expr = '(builtins.getFlake ("git+file://" + toString /etc/nixos)).homeConfigurations.root.options',
+						},
+					},
+				},
+			},
+		})
+	end,
+})
+require('null-ls').register({ require('null-ls.builtins.formatting.nixfmt') })
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.nix' },
+	desc = 'null-ls',
+	callback = function()
+		vim.lsp.buf.format({ name = 'null-ls' })
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'sh', 'bash', 'zsh' },
+	callback = function()
+		vim.lsp.start({
+			name = 'bash-language-server',
+			cmd = { 'bash-language-server', 'start' },
+			settings = {
+				bashIde = {
+					globPattern = '*@(.sh|.inc|.bash|.command|.zsh)',
+					-- shellcheckArguments = { '--shell=bash' },
+				},
+			},
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.sh', '*.bash', '*.zsh' },
+	desc = 'vim.lsp.buf.format bash-language-server 1000',
+	callback = function()
+		vim.lsp.buf.format({ name = 'bash-language-server' })
+	end,
+})

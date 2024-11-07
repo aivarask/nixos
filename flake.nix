@@ -52,7 +52,7 @@
       common = {
         imports = [
           inputs.suckless.nixosModules.default
-        ] ++ f.i ./config ++ f.i ./config/systemd;
+        ] ++ f.i ./config ++ f.i ./config/systemd ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
           nur.overlay

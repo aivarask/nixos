@@ -89,24 +89,10 @@
               iconUpdateURL = "https://styles.redditmedia.com/t5_2ssc0/styles/communityIcon_8yz6min83bg41.png";
               inherit updateInterval;
             };
-
-            "@dnixos Discourse" = {
-              definedAliases = [ "@dnixos" ];
+            "@nd Nixos Discourse" = {
+              definedAliases = [ "@nd" ];
               urls = [ { template = "https://discourse.nixos.org/search?q={searchTerms}"; } ];
               iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
-              inherit updateInterval;
-            };
-
-            "@dneovim Discourse" = {
-              definedAliases = [ "@dneovim" ];
-              urls = [ { template = "https://neovim.discourse.group/search?q={searchTerms}"; } ];
-              iconUpdateURL = "https://canada1.discourse-cdn.com/free1/uploads/neovim/original/1X/48ee1361c952b59562a67d0c5d19d403f8f2ee12.png";
-              inherit updateInterval;
-            };
-            "@mn MyNixOS" = {
-              definedAliases = [ "@mn" ];
-              urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
-              iconUpdateURL = "https://mynixos.com/favicon.ico";
               inherit updateInterval;
             };
             "@nw NixOS Wiki" = {
@@ -123,6 +109,12 @@
                 }
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            };
+            "@mn MyNixOS" = {
+              definedAliases = [ "@mn" ];
+              urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+              iconUpdateURL = "https://mynixos.com/favicon.ico";
+              inherit updateInterval;
             };
             #
             # "ArchWiki @aw" = {

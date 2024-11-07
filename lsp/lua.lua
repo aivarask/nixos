@@ -33,11 +33,16 @@ if client ~= nil then
 	client.notify('workspace/didChangeConfiguration', { settings = client.settings })
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'lua',
 	callback = function(ev)
 		vim.lsp.start({
 			name = 'lua_ls',
+			capabilities = capabilities,
 			cmd = { 'lua-language-server' },
 			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
 			settings = {

@@ -1,7 +1,15 @@
 # vim:ft=conf
+
+# https://raw.githubusercontent.com/DNSCrypt/dnscrypt-proxy/refs/heads/master/dnscrypt-proxy/example-cloaking-rules.txt
 localhost	127.0.0.1
 localhost ::1
+
 accounts.google.com 		0.0.0.0
 
+redmi										192.168.1.140
+pcw											192.168.1.195
+pcw.*										192.168.1.195
+
+# gettransfer.lt					79.98.24.174
 example.com							79.98.24.174
-# example.com							127.0.0.1
+aldale.gettransfer.lt 	127.0.0.1

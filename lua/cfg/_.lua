@@ -1,7 +1,7 @@
 require('which-key').setup({ preset = 'helix', sort = { 'alphanum' } })
 require('nvim-surround').setup({})
 require('auto-session').setup({
-	auto_session_allowed_dirs = { '/etc/nixos' },
+	auto_session_allowed_dirs = { '/etc/nixos', '/root/foo' },
 	log_level = vim.log.levels.ERROR,
 })
 require('glow').setup({
