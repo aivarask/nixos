@@ -25,7 +25,7 @@ super + F6
 {z,x,c,v} + super
 	{brightnessctl set 10%-\
 	,brightnessctl set 10%+\
-	,alacritty\
+	,alacritty --working-directory=/root/foo -e nvim
 	,alacritty -e pulsemixer
 	}
 {W,E,R,T,Y} + super

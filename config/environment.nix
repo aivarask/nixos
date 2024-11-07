@@ -41,6 +41,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      difftastic
       tuir
       josm
       merkaartor
