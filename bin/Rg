@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 IFS=: read -ra selected < <(
-  rg --hidden --color=always --line-number --no-heading --smart-case \
-		--ignore-file "$HOME/.config/git/ignore" \
+  rg --column --line-number --no-heading --color=always --smart-case \
+		--hidden --ignore-file "$HOME/.config/git/ignore" \
     -L "${*:-}" \
-    -g "!*.lock" \
 		-g "!.git" \
 		-g "!*/suckless/*.{h,diff}" \
+		-g "!{dnscrypt-proxy.toml,public-resolvers.md,relays.md}" \
 	|fzf --ansi \
 		--color "hl:-1:underline,hl+:-1:underline:reverse" \
 		--delimiter : \

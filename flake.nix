@@ -136,6 +136,7 @@
           ];
         };
         pc = nixpkgs.lib.nixosSystem {
+          # B450 AORUS M
           inherit system;
           specialArgs = {
             inherit inputs;

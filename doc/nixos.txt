@@ -1,6 +1,10 @@
 *nixos.txt* /etc/nixos related help            *nixos*
 
 ============
+Multiheading External-Display
+https://discourse.nixos.org/t/using-internal-external-monitor-with-nvidia-offload/22504/5
+
+============
 Themes
 https://github.com/sainnhe/everforest
 

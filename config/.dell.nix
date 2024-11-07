@@ -48,7 +48,6 @@
     };
   };
   specialisation = {
-    # https://discourse.nixos.org/t/using-internal-external-monitor-with-nvidia-offload/22504/5
     external-display.configuration = {
       system.nixos.tags = [ "external-display" ];
       hardware.nvidia.prime.offload.enable = lib.mkForce true;

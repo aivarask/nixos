@@ -7,12 +7,10 @@
   ...
 }:
 {
-  # PC B450 AORUS M
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot.kernelPackages = pkgs.linuxPackages_6_1;
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot = {
     initrd.availableKernelModules = [
       "nvme"
@@ -55,12 +53,6 @@
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # prime = {
-    #   sync.enable = false;
-    #   offload.enable = true;
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:7:0:0";
-    # };
   };
   system.stateVersion = "23.05";
   networking = {

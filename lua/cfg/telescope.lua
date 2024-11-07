@@ -14,7 +14,7 @@ require('telescope').setup({
 			'--glob=!.git',
 			'--glob=!*.lock',
 			'--glob=!*/suckless/*.{h,diff}',
-			-- '--ignore-file="/root/.config/git/ignore"',
+			-- '--ignore-file \'/root/.config/git/ignore\'',
 		},
 	},
 	extensions = {

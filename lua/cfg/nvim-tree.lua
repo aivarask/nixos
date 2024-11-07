@@ -4,14 +4,15 @@ require('nvim-tree').setup({
 	sync_root_with_cwd = true,
 	update_focused_file = { enable = true, update_root = true },
 	ui = { confirm = { trash = false } },
-	on_attach = function(bufnr)
-		require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
-	end,
 	renderer = {
+		hidden_display = 'all',
 		icons = {
 			git_placement = 'after',
 		},
 	},
+	on_attach = function(bufnr)
+		require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
