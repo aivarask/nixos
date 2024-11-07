@@ -50,7 +50,17 @@
   };
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    powerManagement.enable = true;
+    # powerManagement.finegrained = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # prime = {
+    #   sync.enable = false;
+    #   offload.enable = true;
+    #   intelBusId = "PCI:0:2:0";
+    #   nvidiaBusId = "PCI:7:0:0";
+    # };
   };
   system.stateVersion = "23.05";
   networking = {

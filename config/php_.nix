@@ -40,6 +40,6 @@
       phive
     ])
     ++ (with pkgs.nodePackages; [
-      intelephense
+      # intelephense
     ]);
 }
