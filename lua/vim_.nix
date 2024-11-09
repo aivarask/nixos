@@ -29,6 +29,7 @@ let
     goto-preview
     lsp-overloads-nvim
     lspkind-nvim
+    nvim-genghis
   ];
   misc = with pkgs.vimPlugins; [
     outline-nvim
@@ -121,13 +122,14 @@ in
       ]);
     settings = { };
     extraConfig = ''
-      let &runtimepath.=',/etc/nixos'
       let &packpath.=',/etc/nixos'
+      let &runtimepath.=',/etc/nixos'
       runtime! lua/cfg/**/*.vim
       runtime! lua/_*.vim
     '';
   };
   home.packages = with pkgs; [
+    lnav
     neovim-remote
     manix
     awesome
@@ -145,17 +147,17 @@ in
       magick
       inspect
       lpeglabel
+      cjson
     ];
 
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
     enable = true;
     extraConfig = ''
-      let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
       let &packpath.=',/etc/nixos'
+      let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
       runtime! lua/cfg/**/*{.lua,.vim}
       runtime! lua/_*{.lua,.vim}
-      runtime! config/programs_/*.lua
       runtime! lsp/**/*.lua
 
       set scrolloff=12

@@ -18,6 +18,7 @@ for _, name in ipairs({
 	'nvim%-lspconfig',
 	'toggleterm.nvim',
 	'which%-key.nvim',
+	'lsp%-file%-operations',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then
@@ -26,7 +27,7 @@ for _, name in ipairs({
 	end
 end
 
-local client = vim.lsp.get_clients({ name = 'lua_ls' })[1] or nil
+local client = vim.lsp.get_clients({ name = 'luals' })[1] or nil
 if client ~= nil then
 	vim.print(client.settings.Lua.workspace.library)
 	client.settings.Lua.workspace.library = library
@@ -34,17 +35,29 @@ if client ~= nil then
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+-- capabilities.workspace.fileOperations.didRename
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'lua',
-	callback = function(ev)
+	callback = function()
+		if false then
+			vim.lsp.start({
+				name = 'ls.lua',
+				cmd = { 'ls.lua' },
+				-- 	cmd = { 'lua', '/etc/nixos/lua/ls.lua' },
+				-- 	cmd_env = { LUA_PATH = '/etc/nixos/lua/?.lua' },
+				-- 	settings = {
+				-- 		a = 1,
+				-- 	},
+			})
+		end
 		vim.lsp.start({
-			name = 'lua_ls',
+			name = 'luals',
 			capabilities = capabilities,
 			cmd = { 'lua-language-server' },
-			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
+			root_dir = vim.fs.root(0, { 'flake.lock' }),
 			settings = {
 				Lua = { --- @type LuaSettings
 					completion = {

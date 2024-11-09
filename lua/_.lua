@@ -17,6 +17,7 @@ local ui_select = {
 		end)
 	end,
 }
+package.path = package.path .. ';/etc/nixos/lua/?.lua'
 
 require('which-key').add({
 	{ '<F1>', ui_select.help, mode = { 'n', 'i', 'v' } },

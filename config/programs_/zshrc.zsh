@@ -27,10 +27,8 @@ bindkey -s "^G" "Rg\n"
 typeset -TU LUA_PATH luapath ';'
 luapath+=(
 	'/etc/nixos/lua/?.lua'
-	'/etc/nixos/lua/?/init.lua'
-	'/etc/nixos/?.lua'
-	'/etc/nixos/awe/?.lua'
 )
+export LUA_PATH
 
 typeset -TU PATH path ':'
 path+=(

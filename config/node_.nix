@@ -15,7 +15,7 @@ rec {
       nodejs_22
       corepack_22
       eslint_d
-      typescript
+      # typescript
       vscode-js-debug
       stylelint-lsp
     ]
@@ -25,7 +25,7 @@ rec {
       pm2
       dotenv-cli
       prettierd
-      typescript-language-server
+      # typescript-language-server
       jsdoc
     ]);
 }

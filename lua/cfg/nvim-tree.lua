@@ -1,6 +1,6 @@
 require('nvim-tree').setup({
 	view = { width = 25, signcolumn = 'no' },
-	git = { enable = true },
+	git = { enable = false },
 	sync_root_with_cwd = true,
 	update_focused_file = { enable = true, update_root = true },
 	ui = { confirm = { trash = false } },

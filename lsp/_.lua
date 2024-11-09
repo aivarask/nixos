@@ -1,6 +1,17 @@
--- vim:foldlevel=1
-require('null-ls').setup()
+-- vim:foldlevel=3
+
+require('genghis').setup({
+	backdrop = {
+		enabled = true,
+		blend = 50,
+	},
+	-- default is `"trash"` on Mac/Windows, and `{ "gio", "trash" }` on Linux
+	trashCmd = 'trash',
+})
+gen = require('genghis')
 require('lsp-file-operations').setup({})
+
+require('null-ls').setup()
 require('outline').setup({
 	outline_window = {
 		position = 'right',
@@ -47,6 +58,7 @@ require('which-key').add({
 	{ '<space>r', vim.lsp.buf.references, desc = 'references' },
 	{ '<space>R', vim.lsp.buf.rename, desc = 'rename' },
 	{ '<space>s', vim.lsp.buf.signature_help, desc = 'signature_help' },
+	{ '<c-b>', vim.lsp.buf.signature_help, desc = 'signature_help', mode = { 'i' } },
 	{ '<space>t', vim.lsp.buf.type_definition, desc = 'type_definition' },
 })
 
@@ -54,12 +66,46 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
+if false then
+	vim.lsp.log.set_level(vim.lsp.log_levels.INFO)
+	vim.lsp.log.set_format_func(vim.inspect)
+end
+vim.api.nvim_create_autocmd('Filetype', {
+	pattern = { 'javascript', 'typescript' },
+	callback = function()
+		vim.lsp.start({
+			name = 'lsjs',
+			cmd = { 'ls.js' },
+			root_dir = vim.fs.root(0, { 'package.json' }),
+			-- capabilities = capabilities,
+		})
+		vim.lsp.start({
+			name = 'tsls',
+			-- https://github.com/microsoft/TypeScript
+			-- https://github.com/typescript-language-server/typescript-language-server
+			cmd = { '/etc/nixos/node_modules/.bin/typescript-language-server', '--stdio' },
+			root_dir = vim.fs.root(0, { 'package.json' }),
+			init_options = { hostInfo = 'neovim' },
+			-- capabilities = capabilities,
+		})
+	end,
+})
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+	pattern = { '*.js', '*.ts' },
+	desc = 'format tsls',
+	callback = function()
+		vim.lsp.buf.format({ name = 'tsls' })
+	end,
+})
+
 require('null-ls').register({ require('null-ls.builtins.diagnostics.vint') })
 vim.api.nvim_create_autocmd('Filetype', {
 	pattern = { 'vim' },
-	callback = function()
+	callback = function(ev)
 		vim.lsp.start({
+			name = 'vimls',
 			cmd = { 'vim-language-server', '--stdio' },
+			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
 			init_options = {
 				isNeovim = true,
 				iskeyword = '@,48-57,_,192-255,-#',
