@@ -1,11 +1,12 @@
 # vim:foldlevel=4 foldnestmax=6
+# https://searchfox.org
+# ~/.mozilla/firefox/root/user.js
 { pkgs, ... }:
 {
   home.packages = with pkgs; [ geckodriver ];
   programs.firefox = {
     enable = true;
     profiles.root = {
-      # ~/.mozilla/firefox/root/user.js
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # https://nur.nix-community.org/repos/rycee
         # https-everywhere
@@ -116,12 +117,11 @@
               iconUpdateURL = "https://mynixos.com/favicon.ico";
               inherit updateInterval;
             };
-            #
-            # "ArchWiki @aw" = {
-            #   definedAliases = [ "@aw" ];
-            #   iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
-            #   urls = [ { template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; } ];
-            # };
+            "@aw ArchWiki" = {
+              definedAliases = [ "@aw" ];
+              iconUpdateURL = "https://wiki.archlinux.org/favicon.ico";
+              urls = [ { template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; } ];
+            };
 
             # "GitHub Code @gc" = {
             #   definedAliases = [ "@gc" ];
