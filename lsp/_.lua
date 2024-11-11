@@ -1,16 +1,13 @@
 -- vim:foldlevel=3
-
 require('genghis').setup({
 	backdrop = {
 		enabled = true,
 		blend = 50,
 	},
 	-- default is `"trash"` on Mac/Windows, and `{ "gio", "trash" }` on Linux
-	trashCmd = 'trash',
+	trashCmd = 'trash', -- gio trash
 })
-gen = require('genghis')
 require('lsp-file-operations').setup({})
-
 require('null-ls').setup()
 require('outline').setup({
 	outline_window = {
@@ -329,6 +326,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'json', 'jsonc' },
 	desc = 'lsp vscode-json-language-server',
 	callback = function()
+		require('lspconfig.configs.jsonls')
 		vim.lsp.start({
 			cmd = { 'vscode-json-language-server', '--stdio' },
 			capabilities = capabilities,
@@ -337,6 +335,14 @@ vim.api.nvim_create_autocmd('FileType', {
 					validate = { enable = true },
 					format = { enable = true },
 					schemas = require('schemastore').json.schemas({
+						select = {
+							'.eslintrc',
+							'prettierrc.json',
+							'package.json',
+							'jsconfig.json',
+							'tsconfig.json',
+							'composer.json',
+						},
 						extra = {
 							{
 								fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
@@ -411,6 +417,7 @@ vim.api.nvim_create_autocmd('FileType', {
 			name = 'nixd',
 			cmd = { 'nixd' },
 			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
+			capabilities = capabilities,
 			settings = {
 				nixd = {
 					formatting = { command = { 'nixfmt' } },

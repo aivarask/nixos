@@ -46,7 +46,7 @@
           common = with pkgs.vimPlugins; [ sxhkd-vim ];
         in
         {
-          programs.vim.plugins = common ++ (with pkgs.vimPlugins; [ sxhkd-vim ]);
+          programs.vim.plugins = common;
           programs.neovim.plugins =
             common
             ++ (with pkgs.vimPlugins; [

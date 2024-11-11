@@ -2,16 +2,18 @@
 {
   programs.kitty = {
     enable = true;
-
   };
   programs.zathura.enable = true;
+  programs.nix-index-database.comma.enable = true;
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
   programs.nix-index.enableBashIntegration = true;
   programs.lazygit.enable = true;
-  programs.eza.enable = true;
-  programs.eza.icons = "auto";
-  programs.eza.enableZshIntegration = false;
+  programs.eza = {
+    enable = true;
+    icons = "auto";
+    enableZshIntegration = false;
+  };
   programs.alacritty = {
     enable = true;
     settings = {

@@ -14,6 +14,8 @@ super + F5
   kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx
 super + F6
   alacritty -e tremc
+super + F7
+	notify-send 'hiaa'
 {q,w,e,r} + super
   {tdrop alacritty\
   ,$BROWSER\

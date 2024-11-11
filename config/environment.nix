@@ -41,6 +41,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      obs-cli
       difftastic
       tuir
       josm

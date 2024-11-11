@@ -1,6 +1,7 @@
 # vim:foldlevel=4 foldnestmax=6
 # https://searchfox.org
 # ~/.mozilla/firefox/root/user.js
+# ~/.mozilla/firefox/root/prefs.js
 { pkgs, ... }:
 {
   home.packages = with pkgs; [ geckodriver ];
@@ -186,7 +187,6 @@
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
         # "mousewheel.with_shift.action" = 0;
         # "mousewheel.with_shift.action.override_x" = 1;
-        # ~/.mozilla/firefox/root/prefs.js
         "app.shield.optoutstudies.enabled" = false;
         "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
         "gfx.webrender.all" = true;

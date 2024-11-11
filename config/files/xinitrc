@@ -17,13 +17,10 @@ elif [ "$(hostname)" = dell ]; then
   echo '';
 fi
 
-# NixOS
-# systemctl --user restart unclutter.service & # ./config/services/unclutter.nix
-systemctl --user restart redshift.service & # ./config/services/redshift.nix
-systemctl --user restart dwm-status.service & # ./config/services/dwm-status.nix
-# custom
-systemctl restart wallpaper.service & # ./config/systemd/wallpaper.nix
-# Home manager
+# systemctl --user restart unclutter.service &
+systemctl --user restart redshift.service &
+systemctl --user restart dwm-status.service &
+systemctl restart wallpaper.service &
 systemctl --user restart dunst.service &
 sxhkd -c "$SXHKDRC" &
 

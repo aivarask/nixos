@@ -9,7 +9,7 @@
       proxyPass = "http://localhost:3002";
     };
   };
-  systemd.services.music = {
+  systemd.services.video = {
     enable = true;
     documentation = [ "https://github.com/vercel/serve" ];
     after = [ "network.target" ];

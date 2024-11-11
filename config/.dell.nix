@@ -38,13 +38,7 @@
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
   };
-  services.blueman = {
-    # Device B8:53:AC:C2:7F:24 Aivaras’s iPhone
-    # Device AC:90:85:C6:DA:FD AirPods
-    # Device D4:11:A3:98:B4:88 Galaxy A50
-    # C1:35:3C:2F:43:D4 WM628
-    enable = true;
-  };
+  services.blueman.enable = true;
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;

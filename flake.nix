@@ -78,7 +78,6 @@
           [
             inputs.nix-index-database.hmModules.nix-index
             inputs.vim-overlay.home.default
-            { programs.nix-index-database.comma.enable = true; }
             nix-colors.homeManagerModules.default
           ]
           #
