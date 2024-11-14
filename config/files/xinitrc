@@ -1,24 +1,23 @@
 #!/bin/sh
 
 if test "$DBUS_SESSION_BUS_ADDRESS" = ""; then
-  eval "$(dbus-launch --exit-with-session --sh-syntax)"
+	eval "$(dbus-launch --exit-with-session --sh-syntax)"
 fi
 systemctl --user import-environment DISPLAY XAUTHORITY
 
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-  dbus-update-activation-environment DISPLAY XAUTHORITY
+	dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
 if [ "$(hostname)" = pc ]; then
-  # https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
-  # nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
-  imwheel -b 45 &                       # ./config/services/xserver.nix
+	# https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
+	# nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
+	imwheel -b 45 & # ./config/services/xserver.nix
 elif [ "$(hostname)" = dell ]; then
-  echo '';
+	systemctl --user restart redshift.service &
 fi
 
 # systemctl --user restart unclutter.service &
-systemctl --user restart redshift.service &
 systemctl --user restart dwm-status.service &
 systemctl restart wallpaper.service &
 systemctl --user restart dunst.service &
@@ -29,11 +28,11 @@ xset r rate 200 50
 
 session=${1:-dwm}
 case $session in
-  i3 | i3wm) exec i3 ;;
-  kde) exec startplasma-x11 ;;
-  xfce | xfce4) exec startxfce4 ;;
-  dwm) exec dwm ;;
-  # Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
-  awesome) exec awesome -c /etc/nixos/awe/_rc.lua ;;
-  *) exec "$1" ;;
+i3 | i3wm) exec i3 ;;
+kde) exec startplasma-x11 ;;
+xfce | xfce4) exec startxfce4 ;;
+dwm) exec dwm ;;
+# Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
+awesome) exec awesome -c /etc/nixos/awe/_rc.lua ;;
+*) exec "$1" ;;
 esac
