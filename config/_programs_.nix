@@ -3,7 +3,6 @@
   programs.kitty = {
     enable = true;
   };
-  programs.zathura.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
@@ -55,7 +54,10 @@
       prettybat
     ];
   };
-  home.packages = with pkgs; [ chromedriver ];
+  home.packages = with pkgs; [
+    chromedriver
+    vimpager
+  ];
   programs.chromium = {
     enable = true;
     package = pkgs.chromium;
@@ -116,6 +118,7 @@
       song_columns_list_format = "(40)[blue]{a|f} (40)[green]{tE} (20)[blue]{bE}";
     };
   };
+
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
@@ -131,4 +134,5 @@
       rust.disabled = true;
     };
   };
+  programs.zathura.enable = true;
 }

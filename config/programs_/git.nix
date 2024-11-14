@@ -30,6 +30,7 @@
       "vendor/"
       "CMakeFiles/"
       "Session.vim"
+      ".zig-cache/"
     ];
     userName = "Aivaras Kalesnykas";
     userEmail = "kalesnykas.aivaras@gmail.com";

@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [ ];
   environment.variables.HTOPRC = "/etc/nixos/config/files/htoprc";
   programs.htop = {
     enable = true;
@@ -30,6 +31,7 @@
       resurrect
       tmux-fzf
       tmux-floax
+
       # tmux-fzf
       # fzf-tmux-url
       # tilish

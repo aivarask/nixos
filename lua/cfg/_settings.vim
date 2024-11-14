@@ -153,6 +153,7 @@ else
 	inoremap <M-K> <Esc>:m .-2<CR>==gi
 	vnoremap <M-J> :m '>+1<CR>gv=gv
 	vnoremap <M-K> :m '<-2<CR>gv=gv
+	inoremap <M-x> <C-O>x
 endif
 
 " CTRL-W    delete word to the left of cursor

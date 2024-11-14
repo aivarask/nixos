@@ -61,7 +61,6 @@ require('which-key').add({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 if false then
 	vim.lsp.log.set_level(vim.lsp.log_levels.INFO)
@@ -70,14 +69,16 @@ end
 vim.api.nvim_create_autocmd('Filetype', {
 	pattern = { 'javascript', 'typescript' },
 	callback = function()
+		if false then
+			vim.lsp.start({
+				name = 'lsjs',
+				cmd = { 'ls.js' },
+				root_dir = vim.fs.root(0, { 'package.json' }),
+				-- capabilities = capabilities,
+			})
+		end
 		vim.lsp.start({
-			name = 'lsjs',
-			cmd = { 'ls.js' },
-			root_dir = vim.fs.root(0, { 'package.json' }),
-			-- capabilities = capabilities,
-		})
-		vim.lsp.start({
-			name = 'tsls',
+			name = 'tsserver',
 			-- https://github.com/microsoft/TypeScript
 			-- https://github.com/typescript-language-server/typescript-language-server
 			cmd = { '/etc/nixos/node_modules/.bin/typescript-language-server', '--stdio' },
@@ -85,13 +86,6 @@ vim.api.nvim_create_autocmd('Filetype', {
 			init_options = { hostInfo = 'neovim' },
 			-- capabilities = capabilities,
 		})
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.js', '*.ts' },
-	desc = 'format tsls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'tsls' })
 	end,
 })
 
@@ -133,25 +127,11 @@ require('null-ls').register({
 	require('null-ls.builtins.formatting.markdownlint'),
 	require('null-ls.builtins.diagnostics.markdownlint'),
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.md', '*.mdx' },
-	desc = 'format markdownlint',
-	callback = function()
-		vim.lsp.buf.format({ name = 'null-ls' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
 	callback = function()
 		vim.lsp.start({ cmd = { 'clangd' } })
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.c', '*.cpp' },
-	desc = 'format clangd',
-	callback = function()
-		vim.lsp.buf.format({ name = 'clangd' })
 	end,
 })
 
@@ -182,13 +162,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 		})
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.css', '*.scss', '*.less' },
-	desc = 'format vscode-css-language-server',
-	callback = function()
-		vim.lsp.buf.format({ name = 'vscode-css-language-server' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'php' },
@@ -207,14 +180,8 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.php' },
-	desc = 'format intelephense',
-	callback = function()
-		vim.lsp.buf.format({ name = 'intelephense' })
-	end,
-})
 
+require('null-ls').register({ require('null-ls.builtins.formatting.black') })
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'python' },
 	desc = 'lsp pyright',
@@ -233,47 +200,24 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-require('null-ls').register({ require('null-ls.builtins.formatting.black') })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.py' },
-	desc = 'format black',
-	callback = function()
-		vim.lsp.buf.format({ name = 'null-ls' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'zig', 'zir' },
 	desc = 'lsp zig',
 	callback = function()
-		vim.lsp.start({
-			cmd = { 'zls' },
-		})
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.zig' },
-	desc = 'format zls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'zls' })
+		vim.lsp.start({ cmd = { 'zls' } })
 	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'toml' },
 	desc = 'lsp taplo',
-	callback = function()
+	callback = function(ev)
 		vim.lsp.start({
+			name = 'taplo',
 			cmd = { 'taplo', 'lsp', '-c', '/etc/nixos/.taplo.toml', 'stdio' },
-			root_dir = '/etc/nixos',
+			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
 		})
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.toml' },
-	desc = 'format taplo not working',
-	callback = function()
-		vim.lsp.buf.format({ name = 'taplo' })
 	end,
 })
 
@@ -284,13 +228,6 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.lsp.start({ cmd = { 'rust-analyzer' } })
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.rs' },
-	desc = 'format rust-analyzer',
-	callback = function()
-		vim.lsp.buf.format({ name = 'rust-analyzer' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -299,26 +236,12 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.lsp.start({ cmd = { 'gopls' } })
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.go' },
-	desc = 'format gopls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'gopls' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'templ' },
 	desc = 'lsp templ',
 	callback = function()
 		vim.lsp.start({ cmd = { 'templ', 'lsp' } })
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.templ' },
-	desc = 'format templ',
-	callback = function()
-		vim.lsp.buf.format({ name = 'templ' })
 	end,
 })
 
@@ -356,13 +279,6 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.json', '*.jsonc' },
-	desc = 'format vscode-json-language-server',
-	callback = function()
-		vim.lsp.buf.format({ name = 'vscode-json-language-server' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'yaml' },
@@ -381,24 +297,9 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.yaml', '*.yml' },
-	desc = 'format yamlls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'yaml-language-server' })
-	end,
-})
 
 require('null-ls').register({
 	require('null-ls.builtins.formatting.sqlfluff').with({ extra_args = { '--dialect', 'sqlite' } }),
-	require('null-ls.builtins.diagnostics.sqlfluff').with({ extra_args = { '--dialect', 'sqlite' } }),
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.sql' },
-	desc = 'format sqlfluff',
-	callback = function()
-		vim.lsp.buf.format({ name = 'null-ls' })
-	end,
 })
 -- local sqlls = require('lspconfig.server_configurations.sqlls')
 -- require('lspconfig').sqlls.setup({
@@ -410,6 +311,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 -- local postgres_lsp = require('lspconfig.server_configurations.postgres_lsp')
 -- require('lspconfig').postgres_lsp.setup({})
 
+require('null-ls').register({ require('null-ls.builtins.formatting.nixfmt') })
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'nix',
 	callback = function(ev)
@@ -435,14 +337,6 @@ vim.api.nvim_create_autocmd('FileType', {
 		})
 	end,
 })
-require('null-ls').register({ require('null-ls.builtins.formatting.nixfmt') })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.nix' },
-	desc = 'null-ls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'null-ls' })
-	end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'sh', 'bash', 'zsh' },
@@ -457,12 +351,5 @@ vim.api.nvim_create_autocmd('FileType', {
 				},
 			},
 		})
-	end,
-})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-	pattern = { '*.sh', '*.bash', '*.zsh' },
-	desc = 'vim.lsp.buf.format bash-language-server 1000',
-	callback = function()
-		vim.lsp.buf.format({ name = 'bash-language-server' })
 	end,
 })

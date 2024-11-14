@@ -3,7 +3,7 @@ Print
 super + ctrl + Return
   tabbed -c alacritty --embed
 super + F1
-  notify-send 'Keymaps' "$(cat $SXHKDRC)"
+  notify-send 'Keymaps' "$(vimcat $SXHKDRC)"
 super + F2
   alacritty -e htop
 super + F3
@@ -15,7 +15,7 @@ super + F5
 super + F6
   alacritty -e tremc
 super + F7
-	notify-send 'hiaa'
+	alacritty -e sysz
 {q,w,e,r} + super
   {tdrop alacritty\
   ,$BROWSER\
