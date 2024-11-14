@@ -1,3 +1,4 @@
+# vim:foldlevel=3
 {
   config,
   lib,

@@ -1,3 +1,4 @@
+# vim:fdl=4
 { pkgs, osConfig, ... }:
 {
   programs.kitty = {
@@ -13,11 +14,15 @@
     icons = "auto";
     enableZshIntegration = false;
   };
+  # home.shellAliases.alacritty = "alacritty --config-file=/etc/nixos/config/files/alacritty.toml";
   programs.alacritty = {
     enable = true;
     settings = {
-      general.import = [ ./files/gruvbox.toml ];
-      font.size = if osConfig.networking.hostName == "dell" then 8 else 12;
+      general.import = [
+        ./files/gruvbox.toml
+        "/etc/nixos/config/files/a_pc.toml"
+      ];
+      font.size = if osConfig.networking.hostName == "dell" then 8 else 24;
       keyboard = {
         bindings = [
           {

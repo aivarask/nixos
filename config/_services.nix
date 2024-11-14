@@ -1,4 +1,4 @@
-# vim:foldlevel=3
+# vim:foldlevel=4
 {
   pkgs,
   lib,
@@ -19,8 +19,8 @@
 
     hwRender = lib.mkDefault true;
     extraConfig = ''
-      font-size=${if config.networking.hostName == "dell" then "10" else "6"}
       font-dpi=${toString config.services.xserver.dpi}
+      font-size=${if config.networking.hostName == "dell" then "10" else "10"}
     '';
   };
   services.libinput = {
@@ -104,7 +104,8 @@
     dpi =
       {
         dell = 282;
-        pc = 163;
+        # pc = 163;
+        pc = builtins.ceil (90 * 2.5);
       }
       ."${config.networking.hostName}" or 144;
   };

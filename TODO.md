@@ -1,8 +1,13 @@
+# TODOS
+
+## cli
+
 - [ ] console fontsize
 - [ ] alacritty fontsize
 - [ ] ncmpcpp config bindings
 
-# php
+## php
+
 - [ ] use php.ini
 - [ ] sync with sever
 - [ ] .htaccess .index.php
