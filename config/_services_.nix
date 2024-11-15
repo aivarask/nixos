@@ -32,7 +32,6 @@
   };
   services.mpris-proxy.enable = true;
   home.sessionVariables.SXHKDRC = "/etc/nixos/config/files/sxhkdrc";
-  services.sxhkd = {
-    enable = true;
-  };
+  services.sxhkd.enable = true;
+
 }

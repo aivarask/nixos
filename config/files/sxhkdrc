@@ -1,13 +1,19 @@
+XF86HomePage
+	firefox --new-window https://www.youtube.com/
+XF86Mail
+	firefox --new-window https://www.messenger.com/
+XF86Calculator
+  alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS
 Print
   scrot
 super + ctrl + Return
   tabbed -c alacritty --embed
 super + F1
-  notify-send 'Keymaps' "$(vimcat $SXHKDRC)"
+  notify-send "$(vimcat $SXHKDRC)"
 super + F2
   alacritty -e htop
 super + F3
-  alacritty -e ncmpcpp
+  alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS
 super + F4
   alacritty -e pulsemixer
 super + F5
@@ -16,6 +22,8 @@ super + F6
   alacritty -e tremc
 super + F7
 	alacritty -e sysz
+super + F8
+	printenv
 {q,w,e,r} + super
   {tdrop alacritty\
   ,$BROWSER\
@@ -42,7 +50,7 @@ super + F7
 
 
 ctrl + super + p ; {n,p}
-	{tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
+	{tdrop alacritty -e ssh pcw -t 'ncmpcpp_'\
 	,tdrop alacritty -e ssh pcw -t 'pulsemixer'
 	}
 

@@ -1,6 +1,9 @@
+-- vim:fdl=3
 require('lualine').setup({
 	extensions = { 'quickfix', 'nvim-tree', 'fzf', 'toggleterm', 'man', 'trouble' },
 	options = {
+		icons_enabled = false,
+		section_separators = { left = '', right = '' },
 		disabled_filetypes = {
 			statusline = { 'NvimTree', 'Outline', 'neotest-summary', 'neotest-output-panel' },
 			winbar = { 'NvimTree', 'neotest-summary', 'neotest-output-panel' },
@@ -9,17 +12,10 @@ require('lualine').setup({
 	tabline = {
 		lualine_a = {
 			require('auto-session.lib').current_session_name,
-		},
-		lualine_b = {
 			'tabs',
 		},
-		lualine_c = {
-			{
-				'buffers',
-				show_filename_only = true,
-				max_length = vim.o.columns * 4 / 5,
-				mode = 0,
-			},
+		lualine_b = {
+			{ 'buffers', show_filename_only = true, max_length = vim.o.columns * 4 / 5, mode = 0 },
 		},
 		lualine_z = {
 			'searchcount',
@@ -29,7 +25,6 @@ require('lualine').setup({
 		lualine_a = { 'mode' },
 		lualine_b = {
 			function()
-				-- vim.uv.cwd,
 				local p = vim.fn.expand('%:p')
 				return p:gsub('/nix/store/[%a%d]+-', ''):gsub(vim.uv.cwd() .. '/' or '', '')
 			end,

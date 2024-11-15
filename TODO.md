@@ -2,9 +2,9 @@
 
 ## cli
 
-- [ ] console fontsize
-- [ ] alacritty fontsize
-- [ ] ncmpcpp config bindings
+- [x] console fontsize
+- [x] alacritty fontsize
+- [x] ncmpcpp config bindings
 
 ## php
 
