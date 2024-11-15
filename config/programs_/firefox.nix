@@ -97,11 +97,17 @@
               iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
               inherit updateInterval;
             };
-            "@nw NixOS Wiki" = {
-              definedAliases = [ "@nw" ];
+            "@nW NixOS Wiki" = {
+              definedAliases = [ "@nW" ];
               urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
               iconUpdateURL = "https://nixos.wiki/favicon.png";
               inherit updateInterval;
+            };
+            # https://wiki.nixos.org/w/index.php?search={searchTerms}&title=Special%3ASearch&wprov=acrw1_-1
+
+            "@nw NixOS Wiki Oficial" = {
+              definedAliases = [ "@nw" ];
+              urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
             };
             "@np NixOS Packages" = {
               definedAliases = [ "@np" ];

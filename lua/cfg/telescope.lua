@@ -16,6 +16,7 @@ require('telescope').setup({
 			'--glob=!*/suckless/*.{h,diff}',
 			'--glob=!public-resolvers.md',
 			'--glob=!gruvbox.{yaml,toml}',
+			'--glob=!*.jpg',
 			-- '--ignore-file \'/root/.config/git/ignore\'',
 		},
 	},

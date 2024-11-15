@@ -3,6 +3,7 @@
 # f fs fx
 $mkdir -p ~/.trash
 set previewer pistol
+set hidden!
 map t
 
 map E $nvr $fx

@@ -1,10 +1,7 @@
 { pkgs, ... }:
 {
   home.sessionVariables.COMPOSER_ALLOW_SUPERUSER = "1";
-  home.sessionPath = [
-    "$HOME/.config/composer/vendor/bin"
-  ];
-  home.shellAliases.wp = "wp --allow-root";
+  home.sessionPath = [ "$HOME/.config/composer/vendor/bin" ];
   home.packages =
     [
       # (pkgs.php83.buildEnv {
@@ -18,8 +15,6 @@
       #   ];
       # })
     ]
-    # composer global require
-    # wp-cli
     ++ (with pkgs; [
       php83
       phpunit
@@ -38,8 +33,5 @@
       php-cs-fixer
       phan
       phive
-    ])
-    ++ (with pkgs.nodePackages; [
-      # intelephense
     ]);
 }
