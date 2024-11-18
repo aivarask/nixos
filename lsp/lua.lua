@@ -68,7 +68,9 @@ vim.api.nvim_create_autocmd('FileType', {
 						keywordSnippet = 'Both',
 						postfix = '@',
 					},
-					diagnostics = {},
+					diagnostics = {
+						disable = { 'lowercase-global' },
+					},
 					hint = {
 						enable = true,
 						arrayIndex = 'Auto',

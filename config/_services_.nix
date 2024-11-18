@@ -1,6 +1,7 @@
 { config, ... }:
 {
   services.blueman-applet.enable = true;
+  services.conky.enable = true;
   services.dunst = {
     # https://smarttech101.com/how-to-configure-dunst-notifications-in-linux-with-images
     enable = true;

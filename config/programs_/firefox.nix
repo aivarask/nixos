@@ -213,7 +213,7 @@
           "send_pings" = false;
           "tabs.closeWindowWithLastTab" = false;
           "tabs.loadDivertedInBackground" = true;
-          "tabs.loadInBackground" = false;
+          "tabs.loadInBackground" = true;
           "toolbars.bookmarks.visibility" = "never";
           "uidensity" = 1;
           "urlbar.placeholderName" = "DuckDuckGo";

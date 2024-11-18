@@ -1,3 +1,5 @@
+-- vim:fdl=4
+
 --- @doc https://github.com/rafamadriz/friendly-snippets
 local luasnip = require('luasnip') --- @see luasnip
 -- require('luasnip').filetype_extend('twig', { 'html' })
@@ -20,7 +22,7 @@ local config = {
 		{ name = 'path', group_index = 2 }, --- @see cmp-path
 		-- { name = 'luasnip', group_index = 2, keyword_length = 2 },
 		-- { name = "emoji", group_index = 2 }, --- @see cmp-emoji
-		{ name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
+		-- { name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
 	}),
 
 	mapping = {

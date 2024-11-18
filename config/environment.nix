@@ -41,6 +41,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      intelephense
       obs-cli
       difftastic
       tuir
@@ -49,6 +50,8 @@ in
       android-tools
       # https://nixos.wiki/wiki/MTP
       jmtpfs
+      mtpfs
+      go-mtpfs
       # xorg
       xcompmgr
       xdotool

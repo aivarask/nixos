@@ -33,6 +33,8 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-overlay.url = "path:/etc/nixos/overlays/vim";
     suckless.url = "path:/etc/nixos/overlays/suckless";
+    conky.url = "github:brndnmtthws/conky";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs =
     {
@@ -50,9 +52,15 @@
       username = "root";
       f = import ./func.nix;
       common = {
-        imports = [
-          inputs.suckless.nixosModules.default
-        ] ++ f.i ./config ++ f.i ./config/systemd ++ f.i ./network;
+        imports =
+          [
+            inputs.suckless.nixosModules.default
+          ]
+          ++ f.i ./config
+          ++ f.i ./config/systemd
+          ++ f.i ./config/systemd/timers
+          ++ f.i ./config/systemd/services
+          ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
           nur.overlay

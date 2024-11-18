@@ -13,3 +13,5 @@
 - [ ] .htaccess .index.php
 - [ ] url state lang page
 - [ ] mail in website
+
+<https://xmonad.org/TUTORIAL.html>

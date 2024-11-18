@@ -31,9 +31,11 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 local Terminal = require('toggleterm.terminal').Terminal
-local lf = Terminal:new({ cmd = 'lf', hidden = true, direction = 'vertical' })
-function _lf_toggle()
-	lf:toggle()
-end
+lf = Terminal:new({ cmd = 'lf', hidden = true, direction = 'float' })
+vim.api.nvim_set_keymap('n', '<leader>1', '<cmd>lua lf:toggle()<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>j', '<cmd>lua _lf_toggle()<CR>', { noremap = true, silent = true })
+nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true, direction = 'tab' })
+vim.api.nvim_set_keymap('n', '<leader>2', '<cmd>lua nix_repl:toggle()<CR>', { noremap = true, silent = true })
+
+ncmpcpp = Terminal:new({ cmd = 'ncmpcppcxz< ', hidden = true, direction = 'float' })
+vim.api.nvim_set_keymap('n', '<leader>3', '<cmd>lua ncmpcpp:toggle()<CR>', { noremap = true, silent = true })

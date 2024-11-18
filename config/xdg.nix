@@ -1,5 +1,5 @@
+# vim: nofoldenable
 { ... }:
-
 {
   xdg.mime = {
     enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ ];
   environment.variables.HTOPRC = "/etc/nixos/config/files/htoprc";
@@ -22,9 +22,7 @@
   };
   programs.sharing.enable = true;
   programs.wireshark.enable = true;
-
   environment.shellAliases.tmux = "tmux -f /etc/nixos/config/files/tmux.conf";
-  environment.shellAliases.tmux_lf = "tmux split -h lf; lf";
   programs.tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
@@ -46,5 +44,13 @@
     #   bind-key M-` send-prefix
     # '';
   };
-
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 }
