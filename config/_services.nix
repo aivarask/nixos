@@ -122,15 +122,6 @@
       "test@test.ekolangas.lt".passwordFile = "${pkgs.writeText "postmaster" "l"}";
     };
   };
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    recommendedOptimisation = true;
-    recommendedTlsSettings = true;
-    # recommendedGzipSettings = true;
-    # recommendedZstdSettings = true;
-    # recommendedBrotliSettings = true;
-  };
   services.dwm-status = {
     enable = true;
     extraConfig = ''

@@ -1,5 +1,59 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
+
+  networking.firewall.allowedTCPPorts = [ 12345 ];
+  services.httpd = {
+    enable = true;
+    enablePHP = true;
+    # user = "root";
+    group = "root";
+  };
+  services.httpd.phpPackage = pkgs.php.buildEnv {
+    extensions = (
+      { enabled, all }:
+      enabled
+      ++ (with all; [
+        xdebug
+      ])
+    );
+    extraConfig = ''
+      xdebug.mode=debug
+      upload_max_filesize=30M
+      post_max_size=31M
+      memory_limit = 100M
+      max_execution_time = 120
+    '';
+  };
+  services.httpd.extraModules = [
+    "proxy_wstunnel"
+  ];
+  services.httpd.virtualHosts = {
+    # https://mynixos.com/nixpkgs/options/services.httpd.virtualHosts.%3Cname%3E
+    "a.local" = rec {
+      # forceSSL = true;
+      # addSSL = true;
+      serverAliases = [ ];
+      documentRoot = "/etc/nixos/a";
+      extraConfig = ''
+        ProxyPass "/ws2/"  "ws://a.local:12345/websockets.php"
+        <Directory "${documentRoot}">
+        	Options FollowSymlinks
+        	AllowOverride All
+        	# Require all granted
+        </Directory>
+      '';
+    };
+  };
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedOptimisation = true;
+    recommendedTlsSettings = true;
+    # recommendedGzipSettings = true;
+    # recommendedZstdSettings = true;
+    # recommendedBrotliSettings = true;
+    defaultHTTPListenPort = 8080;
+  };
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];
     NoNewPrivileges = lib.mkForce false;

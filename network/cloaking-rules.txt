@@ -9,7 +9,8 @@ accounts.google.com 		0.0.0.0
 redmi										192.168.1.140
 pcw											192.168.1.195
 pcw.*										192.168.1.195
+dell										192.168.1.180
 
 # gettransfer.lt					79.98.24.174
-example.com							79.98.24.174
-aldale.gettransfer.lt 	127.0.0.1
+
+a.local 	127.0.0.1

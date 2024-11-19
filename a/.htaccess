@@ -1,0 +1,17 @@
+# Options +Indexes
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.php [L,QSA]
+
+DirectoryIndex index.php
+FallbackResource /index.php
+
+# RewriteCond %{HTTP_HOST} ^(?:www\.)?gettransfer\.lt [NC]
+# RewriteRule ^(.*)$ maint.html [NC,QSA]
+
+SetEnv INTERVAL 5000
+
+# php_value upload_max_filesize 50M
+# php_value post_max_size 52M

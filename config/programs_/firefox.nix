@@ -97,8 +97,8 @@
               iconUpdateURL = "https://discourse.nixos.org/uploads/default/optimized/1X/401be373869e12dfe689b9d7eb347f78b1a105f0_2_32x32.png";
               inherit updateInterval;
             };
-            "@nW NixOS Wiki" = {
-              definedAliases = [ "@nW" ];
+            "@nwo NixOS Wiki" = {
+              definedAliases = [ "@nwo" ];
               urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
               iconUpdateURL = "https://nixos.wiki/favicon.png";
               inherit updateInterval;
@@ -195,6 +195,7 @@
         # "mousewheel.with_shift.action.override_x" = 1;
         "app.shield.optoutstudies.enabled" = false;
         "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
+        general.useragent.override = "";
         "gfx.webrender.all" = true;
         "gfx.webrender.enabled" = true;
         "identity.fxaccounts.enabled" = false;
@@ -235,7 +236,7 @@
             enabled = false;
           };
           inspector = {
-            "showUserAgentStyles" = true;
+            "showUserAgentStyles" = false;
           };
           "debugger" = {
             remote-enabled = true;

@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  port = config.services.nginx.defaultHTTPListenPort;
+in
 {
   networking.hosts = {
     "127.0.0.1" = [ "music.local" ];
