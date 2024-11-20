@@ -1,7 +1,9 @@
 { pkgs, lib, ... }:
 {
-
-  networking.firewall.allowedTCPPorts = [ 12345 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    12345
+  ];
   services.httpd = {
     enable = true;
     enablePHP = true;

@@ -41,6 +41,8 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      poedit
+      gettext
       intelephense
       obs-cli
       difftastic

@@ -35,7 +35,7 @@ super + F8
 {z,x,c,v} + super
 	{brightnessctl set 10%-\
 	,brightnessctl set 10%+\
-	,alacritty --working-directory=/root/foo -e nvim
+	,alacritty --working-directory=/root -e nvim\
 	,alacritty -e pulsemixer
 	}
 {W,E,R,T,Y} + super
@@ -48,10 +48,12 @@ super + F8
 {A,S} + super
 	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
 
-
-ctrl + super + p ; {n,p}
+# DISPLAY=:0 xdotool getactivewindow key "Super+F1"
+# https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
+ctrl + super + p ; {n,p,F1}
 	{tdrop alacritty -e ssh pcw -t 'ncmpcpp_'\
-	,tdrop alacritty -e ssh pcw -t 'pulsemixer'
+	,tdrop alacritty -e ssh pcw -t 'pulsemixer'\
+	,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
 	}
 
 XF86Audio{Play,Mute,Prev,Next}

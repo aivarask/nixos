@@ -11,7 +11,7 @@ FallbackResource /index.php
 # RewriteCond %{HTTP_HOST} ^(?:www\.)?gettransfer\.lt [NC]
 # RewriteRule ^(.*)$ maint.html [NC,QSA]
 
-SetEnv INTERVAL 5000
+SetEnv INTERVAL 9000
 
 # php_value upload_max_filesize 50M
 # php_value post_max_size 52M
