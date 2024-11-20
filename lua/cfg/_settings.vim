@@ -63,6 +63,7 @@ nnoremap <silent> <leader>C :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap <silent> <leader>D :edit /etc/nixos/doc/nixos.txt<CR>
 nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
 nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
+nnoremap <silent> <leader>X :edit /etc/nixos/config/files/xinitrc<CR>
 nnoremap <silent> <leader>Z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
 
 if !has('gui_running')
