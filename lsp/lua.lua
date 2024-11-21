@@ -19,6 +19,8 @@ for _, name in ipairs({
 	'toggleterm.nvim',
 	'which%-key.nvim',
 	'lsp%-file%-operations',
+	'nvim%-dap',
+	'nvim%-dap%-ui'
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then

@@ -17,7 +17,7 @@ let
     nvim-dap
     nvim-dap-virtual-text
     telescope-dap-nvim
-    # nvim-dap-ui
+    nvim-dap-ui
     # nvim-dap-go
     # nvim-dap-python
   ];
