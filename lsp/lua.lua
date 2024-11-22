@@ -20,7 +20,8 @@ for _, name in ipairs({
 	'which%-key.nvim',
 	'lsp%-file%-operations',
 	'nvim%-dap',
-	'nvim%-dap%-ui'
+	'nvim%-dap%-ui',
+	'lualine.nvim',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then

@@ -9,7 +9,7 @@ let
       ])
     );
     extraConfig = ''
-      xdebug.idekey=nvim
+      xdebug.idekey=neovim
       xdebug.mode=debug
       xdebug.start_with_request=yes
       upload_max_filesize=30M

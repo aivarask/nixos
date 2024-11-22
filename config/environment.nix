@@ -28,6 +28,8 @@ in
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
     PATH = [
       "${XDG_BIN_HOME}"
       "/etc/nixos/bin"
@@ -41,6 +43,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      playwright-driver.browsers
       poedit
       gettext
       intelephense
