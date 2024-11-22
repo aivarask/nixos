@@ -1,10 +1,15 @@
 # XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 { pkgs, config, ... }:
 {
+  # services.nginx.virtualHosts."music.local" = {
+  #   locations."/" = {
+  #     proxyPass = "http://localhost:3001";
+  #   };
+  # };
   environment.systemPackages = with pkgs; [ remote-touchpad ];
   networking.firewall.allowedTCPPorts = [ 9000 ];
   systemd.services.remote-touchpad = {
-    enable = if config.networking.hostName == "pc" then true else false;
+    enable = if config.networking.hostName == "pc" then true else true;
     documentation = [ "https://github.com/unrud/remote-touchpad" ];
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
