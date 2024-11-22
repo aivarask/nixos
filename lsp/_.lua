@@ -187,13 +187,17 @@ vim.api.nvim_create_autocmd('FileType', {
 	desc = 'lsp pyright',
 	callback = function()
 		vim.lsp.start({
-			cmd = { 'pyright-langserver', '--stdio' },
+			cmd = {
+				'pyright-langserver',
+				'--stdio',
+			},
 			settings = {
 				python = {
 					analysis = {
 						autoSearchPaths = true,
 						useLibraryCodeForTypes = true,
 						diagnosticMode = 'openFilesOnly',
+						stubPath = '/run/current-system/sw/lib/python3.12/site-packages',
 					},
 				},
 			},

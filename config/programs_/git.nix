@@ -30,6 +30,8 @@
       "vendor/"
       "CMakeFiles/"
       "Session.vim"
+      ".pytest_cache/"
+      "__pycache__"
       ".zig-cache/"
     ];
     userName = "Aivaras Kalesnykas";

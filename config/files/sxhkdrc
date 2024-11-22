@@ -28,32 +28,36 @@ super + F8
   {tdrop alacritty\
   ,$BROWSER\
   ,alacritty --working-directory=/etc/nixos -e nvr\
-  ,alacritty --working-directory=/etc/nixos -e ''
+  ,alacritty -e 'tmux'
   }
-{a,s} + super
-  pulsemixer --change-volume {-,+}2 --max-volume 100
-{z,x,c,v} + super
-	{brightnessctl set 10%-\
-	,brightnessctl set 10%+\
-	,alacritty --working-directory=/root -e nvim\
-	,alacritty -e pulsemixer
-	}
 {W,E,R,T,Y} + super
-  {firefox --private-window\
+  {\
+	,firefox --private-window\
   ,alacritty --working-directory=/etc/nixos -e vim\
   ,alacritty --working-directory=/etc/nixos\
 	,telegram-desktop\
 	,brave youtube.com\
   }
+{a,s} + super
+  pulsemixer --change-volume {-,+}2 --max-volume 100
+{z,x,c,v} + super
+	{\
+	,brightnessctl set 10%-\
+	,brightnessctl set 10%+\
+	,alacritty --working-directory=/nix/store\
+	,alacritty --working-directory=/nix/store
+	}
 {A,S} + super
 	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
 
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
+# ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
 ctrl + super + p ; {n,p,F1}
-	{tdrop alacritty -e ssh pcw -t 'ncmpcpp_'\
+	{\
+	,tdrop alacritty -e ssh pcw -t 'ncmpcpp\'\
 	,tdrop alacritty -e ssh pcw -t 'pulsemixer'\
-	,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
+	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'
 	}
 
 XF86Audio{Play,Mute,Prev,Next}

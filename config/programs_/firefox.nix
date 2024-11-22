@@ -85,6 +85,10 @@
               iconUpdateURL = "https://styles.redditmedia.com/t5_30kix/styles/communityIcon_n2hvyn96zwk81.png";
               inherit updateInterval;
             };
+            "@rsuckless" = {
+              definedAliases = [ "@rsuckless" ];
+              urls = [ { template = "${reddit}/r/suckless/search/?q={searchTerms}"; } ];
+            };
             "@rNixOS" = {
               definedAliases = [ "@rnixos" ];
               urls = [ { template = "${reddit}/r/NixOS/search/?q={searchTerms}"; } ];

@@ -32,7 +32,7 @@ $doc->loadHTML($html);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>a</title>
 	<link rel="icon" type="image/x-icon" href="about:blank" />
 	<link rel="stylesheet" href="/style.css">
 </head>

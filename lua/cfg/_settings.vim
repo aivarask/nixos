@@ -37,7 +37,7 @@ colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
-let g:interestingWordsDefaultMappings = 1
+let g:interestingWordsDefaultMappings=0
 
 map - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
@@ -65,6 +65,7 @@ nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
 nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap <silent> <leader>X :edit /etc/nixos/config/files/xinitrc<CR>
 nnoremap <silent> <leader>Z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
+nnoremap ?s :execute 'edit ' . getenv("SXHKDRC")<CR>
 
 if !has('gui_running')
 	set t_Co=256

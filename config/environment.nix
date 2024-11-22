@@ -29,7 +29,7 @@ in
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
     PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
-    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
     PATH = [
       "${XDG_BIN_HOME}"
       "/etc/nixos/bin"
