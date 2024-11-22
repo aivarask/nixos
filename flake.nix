@@ -59,7 +59,7 @@
           ++ f.i ./config
           ++ f.i ./config/systemd
           ++ f.i ./config/systemd/timers
-          ++ f.i ./config/systemd/services
+          ++ f.idash ./config/systemd/services
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default

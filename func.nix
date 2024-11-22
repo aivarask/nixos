@@ -1,5 +1,13 @@
 # vim:nofoldenable
 {
+  idash =
+    p:
+    with builtins;
+    map (f: "${p}/${f}") (
+      filter (n: !isNull (builtins.match "[^.]?[[:alnum:]]+(-|_)?[[:alnum:]]+.nix" n)) (
+        attrNames (readDir p)
+      )
+    );
   i =
     p:
     with builtins;

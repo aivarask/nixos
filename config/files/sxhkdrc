@@ -34,7 +34,7 @@ super + F8
   {\
 	,firefox --private-window\
   ,alacritty --working-directory=/etc/nixos -e vim\
-  ,alacritty --working-directory=/etc/nixos\
+	,firefox 'lrt.lt'\
 	,telegram-desktop\
 	,brave youtube.com\
   }
