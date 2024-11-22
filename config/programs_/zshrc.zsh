@@ -12,6 +12,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
+alias nf='nixos-rebuild switch --fast'
 alias tmux_lf='tmux split -h lf; lf'
 alias lazygit='lazygit -ucf /etc/nixos/config/files/lazygit.yml'
 alias \\l='lazygit'

@@ -65,6 +65,7 @@ nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
 nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap <silent> <leader>X :edit /etc/nixos/config/files/xinitrc<CR>
 nnoremap <silent> <leader>Z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
+
 nnoremap ?s :execute 'edit ' . getenv("SXHKDRC")<CR>
 
 if !has('gui_running')
