@@ -60,8 +60,8 @@ end
 
 local function setup()
 	local map = vim.api.nvim_set_keymap
-	map('i', ';', 'v:lua.smart_semicolon(\';\')', { noremap = true, expr = true })
-	-- map('i', '<c-h>', 'v:lua.undo_smart_semicolon()', { noremap = true, expr = true })
+	map('i', '<M-;>', 'v:lua.smart_semicolon(\';\')', { noremap = true, expr = true })
+	-- map('i', '<M-;>', 'v:lua.undo_smart_semicolon()', { noremap = true, expr = true })
 end
 
 return { setup = setup }

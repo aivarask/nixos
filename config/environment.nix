@@ -43,6 +43,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      inkscape-with-extensions
       playwright-driver.browsers
       poedit
       gettext

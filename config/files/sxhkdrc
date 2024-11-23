@@ -1,42 +1,34 @@
-XF86HomePage
-	firefox --new-window https://www.youtube.com/
-XF86Mail
-	firefox --new-window https://www.messenger.com/
-XF86Calculator
-  alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS
-Print
-  scrot
+{XF86HomePage,XF86Mail,XF86Calculator,Print}
+	{firefox 'https://youtube.com/' \
+	,firefox \
+	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS \
+	,scrot \
+	}
 super + ctrl + Return
   tabbed -c alacritty --embed
-super + F1
-  notify-send "$(vimcat $SXHKDRC)"
-super + F2
-  alacritty -e htop
-super + F3
-  alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS
-super + F4
-  alacritty -e pulsemixer
-super + F5
-  kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx
-super + F6
-  alacritty -e tremc
-super + F7
-	alacritty -e sysz
-super + F8
-	printenv
-{q,w,e,r} + super
+super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+	{\
+	,notify-send "$(vimcat $SXHKDRC)"\
+	,alacritty -e htop\
+	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
+	,alacritty -e pulsemixer\
+	,kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx\
+	,alacritty -e tremc\
+	,alacritty -e sysz\
+	}
+
+{q,w,e} + super
   {tdrop alacritty\
   ,$BROWSER\
   ,alacritty --working-directory=/etc/nixos -e nvr\
-  ,alacritty -e 'tmux'
   }
 {W,E,R,T,Y} + super
   {\
 	,firefox --private-window\
-  ,alacritty --working-directory=/etc/nixos -e vim\
+  ,firefox 'pcw.local:9000/#pc'\
 	,firefox 'lrt.lt'\
 	,telegram-desktop\
-	,brave youtube.com\
+	,brave 'https://youtube.com'\
   }
 {a,s} + super
   pulsemixer --change-volume {-,+}2 --max-volume 100
@@ -45,7 +37,7 @@ super + F8
 	,brightnessctl set 10%-\
 	,brightnessctl set 10%+\
 	,alacritty --working-directory=/nix/store\
-	,alacritty --working-directory=/nix/store
+	,alacritty --working-directory=/nix/store\
 	}
 {A,S} + super
 	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
@@ -53,11 +45,19 @@ super + F8
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
 # ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
-ctrl + super + p ; {n,p,F1}
+super + r; {1,2,n,p,F1}
 	{\
-	,tdrop alacritty -e ssh pcw -t 'ncmpcpp\'\
+	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
+	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
+	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
 	,tdrop alacritty -e ssh pcw -t 'pulsemixer'\
-	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'
+	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
+	}
+super + o; {1,2,3,4,5,6,7,8,9,0}
+	{\
+	,notify-send "echo $SHELL"\
+	,notify-send "echo two"\
+	,inkscape '/etc/nixos/a/img/logo.svg'
 	}
 
 XF86Audio{Play,Mute,Prev,Next}

@@ -1,0 +1,22 @@
+#compdef scrot _scrot
+
+function _scrot {
+
+	# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org#writing-your-own-completion-functions
+	# https://olets.dev/posts/writing-tab-completions-for-zsh-commands-can-be-straightforward/
+
+	local -a subcmds topics
+
+	subcmds=(
+		'-a:--autoselect:Non-interactively choose a rectangle starting at position X,Y and of W by H resolution.'
+		'-b:--border:When  selecting  a window, grab the WM`s border too.  Use with -s to raise the focus of the window.'
+	)
+
+	topics=('e:description for e help topic' 'f:description for f help topic')
+	# _describe 'scrot' subcmds -- --topics
+
+	# _alternative 'arguments:custom arg:(a b c)' 'files:filename:_files'
+
+	_arguments '-s[sort output]' '--l[long output]' '-l[long output]'
+
+}

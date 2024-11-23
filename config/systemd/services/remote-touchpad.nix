@@ -7,9 +7,12 @@
   #   };
   # };
   environment.systemPackages = with pkgs; [ remote-touchpad ];
-  networking.firewall.allowedTCPPorts = [ 9000 ];
+  networking.firewall.allowedTCPPorts = [
+    9000
+    9001
+  ];
   systemd.services.remote-touchpad = {
-    enable = if config.networking.hostName == "pc" then true else true;
+    enable = if config.networking.hostName == "pc" then false else false;
     documentation = [ "https://github.com/unrud/remote-touchpad" ];
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
@@ -22,7 +25,7 @@
       User = "root";
       Group = "wheel";
       WorkingDirectory = "/root";
-      ExecStart = "${pkgs.remote-touchpad}/bin/remote-touchpad -bind :9000 -secret pc";
+      ExecStart = "${pkgs.remote-touchpad}/bin/remote-touchpad -bind :9001 -secret pc";
     };
   };
 }

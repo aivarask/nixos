@@ -69,6 +69,7 @@
     networkConfig.IPv6AcceptRA = true;
   };
   system.stateVersion = "23.05";
+
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
     # https://unix.stackexchange.com/a/596888
