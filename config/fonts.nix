@@ -25,9 +25,7 @@
     enableDefaultPackages = false;
     packages = with pkgs; [
       noto-fonts-color-emoji
-      (nerdfonts.override {
-        fonts = [ "DejaVuSansMono" ];
-      })
+      nerd-fonts.dejavu-sans-mono
     ];
   };
 }

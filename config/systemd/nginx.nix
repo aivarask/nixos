@@ -49,7 +49,7 @@ in
     # addSSL = true;
     sslServerKey = "/etc/nixos/a/cert.key";
     sslServerCert = "/etc/nixos/a/cert.pem";
-    serverAliases = [ ];
+    serverAliases = [ "a.local" ];
     documentRoot = "/etc/nixos/a";
     extraConfig = ''
       <Directory "${documentRoot}">
