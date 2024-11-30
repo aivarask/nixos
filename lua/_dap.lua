@@ -36,15 +36,15 @@ dap.adapters.php = {
 }
 
 dap.configurations.php = {
-	{
-		name = 'launch $file',
-		type = 'php',
-		request = 'launch',
-		port = 9003,
-		cwd = '${fileDirname}',
-		program = '${file}',
-		runtimeExecutable = 'php',
-	},
+	-- {
+	-- 	name = 'launch $file',
+	-- 	type = 'php',
+	-- 	request = 'launch',
+	-- 	port = 9003,
+	-- 	cwd = '${fileDirname}',
+	-- 	program = '${file}',
+	-- 	runtimeExecutable = 'php',
+	-- },
 	{
 		name = 'launch',
 		type = 'php',
@@ -130,8 +130,8 @@ dapui.setup({
 					size = 0.5,
 				},
 			},
-			position = 'right',
-			size = 60,
+			position = 'bottom',
+			size = 20,
 		},
 	},
 	mappings = {

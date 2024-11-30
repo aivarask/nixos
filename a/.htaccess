@@ -1,17 +1,27 @@
-# Options +Indexes
-
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ /index.php [L,QSA]
+SetEnv SERVER_ADMIN admin@gettransfer.lt
 
 DirectoryIndex index.php
-# FallbackResource /index.php
 
-# RewriteCond %{HTTP_HOST} ^(?:www\.)?gettransfer\.lt [NC]
-# RewriteRule ^(.*)$ maint.html [NC,QSA]
+# RewriteEngine On
+# RewriteBase /
+# RewriteRule ^index.php$ - [L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /index.php [L]
+# RewriteRule ^(en|lt)/(.*)$  $2?lang=$1 [L,QSA]
+# RewriteRule ^(.*)$  $1?lang=en [L,QSA]
 
-SetEnv INTERVAL 9000
 
-# php_value upload_max_filesize 50M
-# php_value post_max_size 52M
+
+
+# AuthName "Restricted Files"
+# Authtype Basic
+# AuthBasicProvider file
+# <If "%{HTTP_HOST} == 'a.gettransfer.lt'">
+	# AuthUserFile "/domains/a.gettransfer.lt/public_html/.htpasswd"
+# </If>
+# <Else>
+	# AuthUserFile "/etc/nixos/a/.htpasswd"
+# </Else>
+# Require user foo
+

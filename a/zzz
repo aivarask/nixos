@@ -19,5 +19,6 @@ mirror --reverse \
 $DELETE \
 --verbose \
 --exclude-glob .git/ \
+--exclude-glob __pycache__/ \
 --exclude-glob vendor/phpunit/ \
 "

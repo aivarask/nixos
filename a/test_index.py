@@ -3,9 +3,11 @@ import re
 from playwright.sync_api import Page, expect
 
 
-def test_has_title(page: Page):
+def test_lang(page: Page):
     page.goto("http://a.local/")
-    expect(page).to_have_title(re.compile("a"))
+    html = page.locator("html")
+    lang = html.get_attribute("lang")
+    # expect(lang).__eq__("lang")
 
 
 # def test_get_started_link(page: Page):

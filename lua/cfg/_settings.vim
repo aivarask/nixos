@@ -58,15 +58,15 @@ nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
-nnoremap <silent> <leader>A :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
-nnoremap <silent> <leader>C :edit /etc/nixos/lua/_completion.lua<CR>
-nnoremap <silent> <leader>D :edit /etc/nixos/lua/_dap.lua<CR>
-nnoremap <silent> <leader>F :edit /etc/nixos/flake.nix<CR>
-nnoremap <silent> <leader>S :edit /etc/nixos/lua/cfg/_settings.vim<CR>
-nnoremap <silent> <leader>X :edit /etc/nixos/config/files/xinitrc<CR>
-nnoremap <silent> <leader>Z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
 
-nnoremap ?s :execute 'edit ' . getenv("SXHKDRC")<CR>
+nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
+nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
+nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
+nnoremap ?f :edit /etc/nixos/flake.nix<CR>
+nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
+nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
+nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>
+nnoremap ?z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
 
 if !has('gui_running')
 	set t_Co=256
@@ -122,7 +122,7 @@ else
 	set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 	set foldclose=all
-	set foldlevel=2
+	set foldlevel=3
 	" set foldnestmax=4
 	let &foldnestmax = &foldlevel+3
 	" set foldminlines=3

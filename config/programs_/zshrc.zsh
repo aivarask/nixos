@@ -10,14 +10,13 @@ autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run
 (( ${+aliases[run-help]} )) && unalias run-help
 alias help=run-help
 
-
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-    # GDK_DPI_SCALE = "0.75"; # firefox
-    # GDK_SCALE = "2"; # nicotine
+# GDK_DPI_SCALE = "0.75"; # firefox
+# GDK_SCALE = "2"; # nicotine
 # alias inkscape_="GDK_SCALE=1.5; inkscape"
 alias nf='nixos-rebuild switch --fast'
 alias tmux_lf='tmux split -h lf; lf'

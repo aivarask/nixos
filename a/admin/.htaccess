@@ -1,0 +1,13 @@
+<IfModule "mod_info.c">
+	Header set X-mod_info "Enabled"
+</IfModule>
+
+<IfModule "mod_auth_basic.c">
+	Header set X-mod_auth_basic "Enabled"
+</IfModule>
+
+
+<If "%{HTTP_HOST} == 'a.local'">
+	Header set X-HTTP_HOST "HTTP_HOST = a.local"
+</If>
+

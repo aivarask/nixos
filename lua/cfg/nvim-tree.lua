@@ -1,18 +1,33 @@
 require('nvim-tree').setup({
-	view = { width = 25, signcolumn = 'no' },
+	on_attach = function(bufnr)
+		require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
+	end,
 	git = { enable = false },
-	sync_root_with_cwd = true,
-	update_focused_file = { enable = true, update_root = true },
-	ui = { confirm = { trash = false } },
+	view = { width = 25, signcolumn = 'no' },
 	renderer = {
+		indent_width = 1,
 		hidden_display = 'all',
 		icons = {
 			git_placement = 'after',
 		},
 	},
-	on_attach = function(bufnr)
-		require('nvim-tree.api').config.mappings.default_on_attach(bufnr)
-	end,
+	sync_root_with_cwd = false,
+	root_dirs = { '/etc/nixos' },
+	update_focused_file = {
+		enable = false,
+		update_root = {
+			enable = false,
+			ignore_list = {},
+		},
+		exclude = false,
+	},
+	ui = {
+		confirm = {
+			remove = true,
+			trash = true,
+			default_yes = false,
+		},
+	},
 })
 
 vim.api.nvim_create_autocmd('FileType', {
