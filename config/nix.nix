@@ -13,10 +13,12 @@
   environment.shellAliases.nfu = "nix flake update";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.android_sdk.accept_license = true;
+  nixpkgs.flake.setNixPath = true;
+
   nix = {
     # package = pkgs.nixVersions.latest; # stable
     # nixPath = options.nix.nixPath.default ++ [ ];
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    # nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     channel.enable = true;
     gc = {
       automatic = true;

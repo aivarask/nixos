@@ -43,6 +43,10 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      blender
+      ticker
+      tickrs
+      cointop
       inkscape-with-extensions
       playwright-driver.browsers
       poedit

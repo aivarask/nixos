@@ -1,8 +1,7 @@
-SetEnv SERVER_ADMIN admin@gettransfer.lt
+DirectoryIndex index.html index.php
 
-DirectoryIndex index.php
-
-# RewriteEngine On
+RewriteEngine On
+RewriteRule "^index\.html$"  "welcome.html"
 # RewriteBase /
 # RewriteRule ^index.php$ - [L]
 # RewriteCond %{REQUEST_FILENAME} !-f

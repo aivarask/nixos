@@ -1,15 +1,14 @@
 Options Indexes FollowSymlinks
 
 <IfModule "mod_info.c">
-	Header set X-mod_info "Enabled"
+	Header set x-mod_info "Enabled"
 </IfModule>
 
 <IfModule "mod_auth_basic.c">
-	Header set X-mod_auth_basic "Enabled"
+	Header set x-mod_auth_basic "Enabled"
 </IfModule>
 
-
-<If "%{HTTP_HOST} == 'a.local'">
-	Header set X-HTTP_HOST "HTTP_HOST = a.local"
+<If "%{HTTP_HOST} == 'dell.gettransfer.lt'">
+	Header set x-http_host "dell.gettransfer.lt"
 </If>
 

@@ -38,15 +38,11 @@ in
     extraModules = [
       "proxy_wstunnel"
     ];
-    extraConfig = ''
-      <Location "/info">
-      		SetHandler server-info
-      </Location>
-    '';
+    extraConfig = '''';
   };
   services.httpd.virtualHosts."dell.gettransfer.lt" = rec {
-    forceSSL = true;
-    # addSSL = true;
+    # forceSSL = true;
+    addSSL = true;
     sslServerKey = "/etc/nixos/a/cert.key";
     sslServerCert = "/etc/nixos/a/cert.pem";
     serverAliases = [ "a.local" ];

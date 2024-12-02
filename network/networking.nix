@@ -5,6 +5,7 @@
 { lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    curlFull
     tcpdump
     tcpflow
     lftp
