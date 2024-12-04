@@ -1,4 +1,0 @@
-{ ... }:
-{
-  nix.keepOldNixPath = true;
-}

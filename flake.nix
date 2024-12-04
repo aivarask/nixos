@@ -77,10 +77,6 @@
         home.username = username;
         home.enableNixpkgsReleaseCheck = false;
         manual.json.enable = true;
-        nix.channels = {
-          inherit nixpkgs;
-          inherit home-manager;
-        };
         colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
         imports =
           [
