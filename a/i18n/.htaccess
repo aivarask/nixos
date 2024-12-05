@@ -1,2 +1,0 @@
-# Header set Set-Cookie "language=%{lang}e; path=/;" env=lang
-

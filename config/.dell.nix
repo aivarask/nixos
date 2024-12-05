@@ -70,14 +70,4 @@
   };
   system.stateVersion = "23.05";
 
-  environment.variables = {
-    MOZ_USE_XINPUT2 = "1";
-    # https://unix.stackexchange.com/a/596888
-    # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
-    GDK_DPI_SCALE = "0.75"; # firefox
-    # GDK_SCALE = "2"; # nicotine
-    QT_SCALE_FACTOR = "1.75"; # telegram-desktop
-    # QT_AUTO_SCREEN_SET_FACTOR = "0";
-    # QT_FONT_DPI = "144";
-  };
 }

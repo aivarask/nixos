@@ -24,7 +24,7 @@ require('nvim-tree').setup({
 	ui = {
 		confirm = {
 			remove = true,
-			trash = true,
+			trash = false,
 			default_yes = false,
 		},
 	},

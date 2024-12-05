@@ -1,6 +1,12 @@
 # vim: nofoldenable
-{ ... }:
+{ pkgs, ... }:
 {
+  # environment.variables.GTK_USE_PORTAL = "1";
+  environment.systemPackages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-kde
+  ];
   xdg.mime = {
     enable = true;
     defaultApplications = {
@@ -34,10 +40,7 @@
       "text/vnd.trolltech.linguist" = "nvim.desktop";
     };
     removedAssociations = {
-      "audio/mpeg" = [
-        "mpv.desktop"
-
-      ];
+      "audio/mpeg" = [ "mpv.desktop" ];
       "audio/mp3" = [
         "mpv.desktop"
         "umpv.desktop"

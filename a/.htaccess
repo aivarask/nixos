@@ -1,26 +1,11 @@
 DirectoryIndex index.html index.php
 
 RewriteEngine On
-RewriteRule "^index\.html$"  "welcome.html"
-# RewriteBase /
-# RewriteRule ^index.php$ - [L]
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteRule . /index.php [L]
-# RewriteRule ^(en|lt)/(.*)$  $2?lang=$1 [L,QSA]
-# RewriteRule ^(.*)$  $1?lang=en [L,QSA]
-
-
-
-
-# AuthName "Restricted Files"
-# Authtype Basic
-# AuthBasicProvider file
-# <If "%{HTTP_HOST} == 'a.gettransfer.lt'">
-	# AuthUserFile "/domains/a.gettransfer.lt/public_html/.htpasswd"
-# </If>
-# <Else>
-	# AuthUserFile "/etc/nixos/a/.htpasswd"
-# </Else>
-# Require user foo
+# RewriteBase /
+RewriteRule ^index.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(en|lt)/(.*)$  $2?lang=$1 [L,QSA]
+RewriteRule ^(.*)$  $1?lang=lt [L,QSA]
 

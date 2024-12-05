@@ -4,13 +4,19 @@
 # ~/.mozilla/firefox/root/prefs.js
 { pkgs, ... }:
 {
+  home.sessionVariables = {
+    MOZ_USE_XINPUT2 = "1";
+    # https://unix.stackexchange.com/a/596888
+    # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
+    GDK_DPI_SCALE = "0.75"; # firefox
+  };
   home.packages = with pkgs; [ geckodriver ];
   programs.firefox = {
     enable = true;
     profiles.root = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # https://nur.nix-community.org/repos/rycee
-        # https-everywhere
+
         # moz-extension://6ba3b5f2-39a3-4b91-8d24-199a65e1e907/pages/options.html
         vimium # ./firefox.vimium.json
         darkreader

@@ -43,6 +43,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      dolphin
       blender
       ticker
       tickrs
@@ -81,7 +82,7 @@ in
       hyperfine
       xvkbd
       soulseekqt
-      nicotine-plus
+      nicotine-plus # GDK_SCALE = "2";
       slskd
       figma-linux
       parallel
@@ -90,7 +91,7 @@ in
       fswatch
       tremc
       mpv
-      telegram-desktop
+      telegram-desktop # QT_SCALE_FACTOR = "1.75";
       gimp-with-plugins
       # krita
 
