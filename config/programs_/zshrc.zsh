@@ -15,10 +15,13 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-# GDK_DPI_SCALE = "0.75"; # firefox
+export NIXPKGS_ALLOW_INSECURE=1
 # GDK_SCALE = "2"; # nicotine
 # alias inkscape_="GDK_SCALE=1.5; inkscape"
-alias nf='nixos-rebuild switch --fast'
+alias nf='nixos-rebuild switch --fast'\
+	nrl='nix registry list'\
+	oras='curl wttr.in/Vilnius'
+
 alias tmux_lf='tmux split -h lf; lf'
 alias lazygit='lazygit -ucf /etc/nixos/config/files/lazygit.yml'
 alias \\l='lazygit'

@@ -1,4 +1,4 @@
-# vim:foldlevel=4 foldnestmax=6 nowrap
+# vim:foldlevel=6 foldnestmax=6 nowrap
 # https://searchfox.org
 # ~/.mozilla/firefox/root/user.js
 # ~/.mozilla/firefox/root/prefs.js
@@ -29,6 +29,10 @@
         h264ify
         browserpass
         foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
+        facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
+        stylus
+        leechblock-ng
+        tab-session-manager # https://github.com/sienori/Tab-Session-Manager
       ];
       settings = {
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
@@ -37,8 +41,8 @@
         "app.shield.optoutstudies.enabled" = false;
         "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
         general.useragent.override = "";
-        "gfx.webrender.all" = true;
         "gfx.webrender.enabled" = true;
+        "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = false;
         browser = {
           "download.lastDir" = "~";
@@ -172,6 +176,11 @@
           name = "about:about";
           url = "about:about";
         }
+        {
+          tags = [ "a:s" ];
+          name = "about:support";
+          url = "about:support";
+        }
       ];
     }
   ];
@@ -213,6 +222,10 @@
         "@reddit zsh" = {
           definedAliases = [ "@rzsh" ];
           urls = [ { template = "${reddit}/r/zsh/search/?q={searchTerms}"; } ];
+        };
+        "@reddit lua" = {
+          definedAliases = [ "@rlua" ];
+          urls = [ { template = "${reddit}/r/lua/search/?q={searchTerms}"; } ];
         };
         "@reddit vim" = {
           definedAliases = [ "@rvim" ];

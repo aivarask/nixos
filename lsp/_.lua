@@ -37,6 +37,12 @@ require('outline').setup({
 require('goto-preview').setup({})
 require('which-key').add({
 	{ '<space>', group = 'LSP' },
+	{ '<space>1', require('goto-preview').goto_preview_definition, desc = 'definition' },
+	{ '<space>2', require('goto-preview').goto_preview_type_definition, desc = 'type_definition' },
+	{ '<space>3', require('goto-preview').goto_preview_implementation, desc = 'implementation' },
+	{ '<space>4', require('goto-preview').goto_preview_declaration, desc = 'declaration' },
+	{ '<space>5', require('goto-preview').close_all_win, desc = 'close_all_win' },
+	{ '<space>6', require('goto-preview').goto_preview_references, desc = 'references' },
 	{ '<space>a', vim.lsp.buf.code_action, desc = 'code_action', mode = { 'n', 'v' } },
 	{ '<space>D', vim.lsp.buf.declaration, desc = 'declaration' },
 	{ '<space>dd', vim.lsp.buf.definition, desc = 'definition' },

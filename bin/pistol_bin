@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pistol -c /etc/nixos/config/programs_/pistol.conf "$@"

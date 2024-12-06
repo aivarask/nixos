@@ -3,7 +3,7 @@
   description = "NixOS config";
   inputs = {
     systems.url = "github:nix-systems/x86_64-linux";
-    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -125,9 +125,8 @@
             inputs.suckless.nixosModules.default
             common
             ./config/.dell.nix
-            nixos-hardware.nixosModules.dell-xps-15-7590
             nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-            nixos-hardware.nixosModules.common-hidpi
+            # nixos-hardware.nixosModules.common-hidpi
             home-manager.nixosModules.home-manager
             {
               home-manager = {

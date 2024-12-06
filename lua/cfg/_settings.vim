@@ -63,6 +63,7 @@ nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
+nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
 nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>

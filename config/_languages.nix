@@ -201,6 +201,7 @@ lib.mkMerge [
           python-dotenv
           httpie
           # playwright
+          yt-dlp
         ]
       ))
     ];

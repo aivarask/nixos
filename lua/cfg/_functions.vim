@@ -31,3 +31,20 @@ function! Demo()
 	call setline('.', curline . ' ' . name)
 endfunction
 
+
+function! RegistersClear()
+	let regs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
+	let i = 0
+	while (i < strlen(regs))
+			exec 'let @' . regs[i] . ' = ""'
+			let i = i + 1
+	endwhile
+	unlet regs
+endfunction
+
+function! RegistersClear_()
+	let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+	for r in regs
+		call setreg(r, [])
+	endfor
+endfunction

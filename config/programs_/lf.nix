@@ -18,28 +18,14 @@
       shellopts = "-ey";
     };
     commands = {
-      get-mime-type = ''%xdg-mime query filetype "$f"'';
-      open = "$$OPENER $f";
-      touch = ''%touch "$@"'';
-      mkdir = ''%mkdir "$@"'';
+      # get-mime-type = ''%xdg-mime query filetype "$f"'';
+      # open = "$$OPENER $f";
+      # touch = ''%touch "$@"'';
+      # mkdir = ''%mkdir "$@"'';
     };
-    keybindings = {
-      "." = "set hidden!";
-      D = "%trash-put $fx";
-      a = "push :touch<space>";
-      A = "push :mkdir<space>";
-      U = "!du -hs $fx";
-      T = ":get-mime-type";
-      "<esc>" = ":quit";
-      "--" = "set ratios 1:2";
-      "++" = "set ratios 1:2:3";
-      "+w" = "$chmod +w $fx";
-      "+x" = "$chmod +x $fx";
-      "-w" = "$chmod -w $fx";
-      "-x" = "$chmod -x $fx";
-      "<c-f>" = "$fzf";
-      "<c-g>" = "$Rg";
-    };
+    keybindings =
+      {
+      };
     cmdKeybindings = { };
   };
 }

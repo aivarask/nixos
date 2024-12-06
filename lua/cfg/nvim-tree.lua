@@ -29,7 +29,7 @@ require('nvim-tree').setup({
 		},
 	},
 })
-
+tree = require('nvim-tree.api').tree
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'NvimTree',
 	callback = function(ev)
@@ -43,8 +43,14 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 require('which-key').add({
-	{ 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
-	{ 'qw', [[:NvimTreeCollapse<CR>]] },
+	{ 'QQ', [[:NvimTreeToggle<CR>]], noremap = true },
+	{ 'QW', [[:NvimTreeCollapse<CR>]] },
+	{
+		'Qq',
+		function()
+			tree.open({ find_file = true } --[[@as ApiTreeOpenOpts]])
+		end,
+	},
 	{
 		'[q',
 		function()

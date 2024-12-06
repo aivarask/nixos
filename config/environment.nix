@@ -1,3 +1,4 @@
+# vim: nofoldenable
 { pkgs, ... }:
 let
   xorgPackages = with pkgs.xorg; [
@@ -18,7 +19,6 @@ in
   environment.shellAliases = {
     ".." = "cd ..";
     "..." = "../..";
-    oras = "curl wttr.in/Vilnius";
     x = "startx";
     wol_pc = "wol b4:2e:99:61:09:cf";
   };
@@ -43,6 +43,7 @@ in
   environment.systemPackages =
     xorgPackages
     ++ (with pkgs; [
+      file
       dolphin
       blender
       ticker

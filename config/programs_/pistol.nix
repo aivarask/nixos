@@ -1,12 +1,15 @@
 { ... }:
 {
-  # home.shellAliases.pistol = "pistol -c /etc/nixos/config/programs_/pistol.conf";
   programs.pistol = {
     enable = true;
     associations = [
       {
         mime = "inode/directory";
         command = "eza --tree --level=3 --group --group-directories-first %pistol-filename%";
+      }
+      {
+        mime = "inode/x-empty";
+        command = "echo inode/x-empty";
       }
       {
         mime = "application/json";
@@ -32,6 +35,13 @@
         mime = "text/*";
         command = "bat --color=always --style=plain --pager=never %pistol-filename%";
       }
+
+      # escape characters needed
+      # inkview display chafa feh
+      # {
+      #   mime = "image/*";
+      #   command = "pv %pistol-filename% %pistol-extra0% %pistol-extra1% %pistol-extra2% %pistol-extra3%";
+      # }
       {
         mime = "image/*";
         command = "chafa %pistol-filename%";
