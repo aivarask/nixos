@@ -63,7 +63,7 @@
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           neovim-nightly-overlay.overlays.default
-          nur.overlay
+          nur.overlays.default
           rust-overlay.overlays.default
           vim-overlay.overlays.default
           suckless.overlays.default
@@ -84,16 +84,9 @@
             inputs.vim-overlay.home.default
             nix-colors.homeManagerModules.default
           ]
-          #
           ++ f.i_ ./config
           ++ f.i ./config/programs_
-          ++ f.i_ ./lua
-        # end
-        ;
-        home.sessionVariables = {
-          BROWSER = "firefox";
-          MOZ_X11_EGL = "1";
-        };
+          ++ f.i_ ./lua;
       };
     in
     {

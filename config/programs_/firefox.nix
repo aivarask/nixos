@@ -1,40 +1,66 @@
-# vim:foldlevel=6 foldnestmax=6 nowrap
+# vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
 # https://searchfox.org
 # ~/.mozilla/firefox/root/user.js
 # ~/.mozilla/firefox/root/prefs.js
 { pkgs, ... }:
 {
   home.sessionVariables = {
-    MOZ_USE_XINPUT2 = "1";
     # https://unix.stackexchange.com/a/596888
     # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
+    BROWSER = "firefox";
+    MOZ_X11_EGL = "1";
+    MOZ_USE_XINPUT2 = "1";
     GDK_DPI_SCALE = "0.75"; # firefox
   };
   home.packages = with pkgs; [ geckodriver ];
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox-devedition-bin;
+
     profiles.root = {
+      bookmarks = [
+        {
+          name = "about";
+          toolbar = true;
+          bookmarks = [
+            {
+              tags = [ "a:a" ];
+              name = "a:a";
+              url = "about:about";
+            }
+            {
+              tags = [ "a:c" ];
+              name = "a:c";
+              url = "about:config";
+            }
+            {
+              tags = [ "a:s" ];
+              name = "a:s";
+              url = "about:support";
+            }
+          ];
+        }
+      ];
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # https://nur.nix-community.org/repos/rycee
-
-        # moz-extension://6ba3b5f2-39a3-4b91-8d24-199a65e1e907/pages/options.html
-        vimium # ./firefox.vimium.json
-        darkreader
-        df-youtube
-        ublock-origin
-        privacy-badger
-        decentraleyes
-        clearurls
-        sponsorblock
-        h264ify
-        browserpass
-        foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
-        facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
-        stylus
-        leechblock-ng
-        tab-session-manager # https://github.com/sienori/Tab-Session-Manager
+        # vimium
+        # darkreader
+        # ublock-origin
+        # sponsorblock
+        # df-youtube
+        # decentraleyes
+        # clearurls
+        # h264ify
+        # browserpass
+        # foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
+        # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
+        # privacy-badger
+        # facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
+        # stylus
+        # leechblock-ng
       ];
       settings = {
+        # user.js
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
         # "mousewheel.with_shift.action" = 0;
         # "mousewheel.with_shift.action.override_x" = 1;
@@ -166,24 +192,7 @@
       '';
     };
   };
-  programs.firefox.profiles.root.bookmarks = [
-    {
-      name = "about";
-      toolbar = true;
-      bookmarks = [
-        {
-          tags = [ "a:a" ];
-          name = "about:about";
-          url = "about:about";
-        }
-        {
-          tags = [ "a:s" ];
-          name = "about:support";
-          url = "about:support";
-        }
-      ];
-    }
-  ];
+
   programs.firefox.profiles.root.search = {
     force = true;
     default = "DuckDuckGo";
