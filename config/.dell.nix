@@ -41,47 +41,15 @@
     bluetooth.powerOnBoot = true;
   };
   services.blueman.enable = true;
-  # https://www.youtube.com/watch?v=qlfm3MEbqYA&t=256s
-  # https://wiki.archlinux.org/title/Hardware_video_acceleration
-  # https://wiki.archlinux.org/title/Firefox
-  # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
-  # environment.variables.VDPAU_DRIVER = "nvidia";
-  # environment.variables.VAAPI_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-render";
-  # environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
-  # environment.variables.NVD_BACKEND = "direct";
   environment.systemPackages = with pkgs; [
     lshw
     mesa-demos # glxinfo glxgears
     libva-utils # vainfo
-    # nvtopPackages.intel
     nvtopPackages.nvidia
     vdpauinfo
   ];
-  # hardware.graphics.enable32Bit = true;
   services.switcherooControl.enable = true;
-  # hardware.nvidia = {
-  #   powerManagement.enable = false;
-  #   powerManagement.finegrained = false;
-  # };
-
-  # https://wiki.nixos.org/wiki/NVIDIA
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  # hardware.nvidia.prime.reverseSync.enable = true;
-  # hardware.nvidia.prime = {
-  #   offload = {
-  #     enable = false;
-  #     enableOffloadCmd = false;
-  #   };
-  #   sync.enable = true;
-  # };
-
-  # specialisation = {
-  #   external-display.configuration = {
-  #     system.nixos.tags = [ "external-display" ];
-  #     hardware.nvidia.prime.offload.enable = lib.mkForce true;
-  #     hardware.nvidia.powerManagement.enable = lib.mkForce false;
-  #   };
-  # };
   networking = {
     hostName = "dell";
     hostId = "8425e349";

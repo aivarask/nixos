@@ -14,8 +14,12 @@ let
   ];
 in
 {
+
+  environment.extraInit = ''
+    		. /etc/nixos/config/environment.extraInit
+  '';
   environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
-  environment.variables.EDITOR = "nvr";
+  environment.variables.EDITOR = "vim";
   environment.shellAliases = {
     ".." = "cd ..";
     "..." = "../..";

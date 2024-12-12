@@ -43,13 +43,16 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 require('which-key').add({
-	{ 'qq', [[:NvimTreeToggle<CR>]], noremap = true },
+	{ 'q', '<nop>' },
+	{ 'Q', '<nop>' },
+	{ 'qq', [[:NvimTreeToggle<CR>]] },
 	{ 'qw', [[:NvimTreeCollapse<CR>]] },
 	{
 		'qQ',
 		function()
 			tree.open({ find_file = true } --[[@as ApiTreeOpenOpts]])
 		end,
+		desc = 'tree.open find_file',
 	},
 	{
 		'[q',

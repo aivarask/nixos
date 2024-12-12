@@ -48,3 +48,9 @@ function! RegistersClear_()
 		call setreg(r, [])
 	endfor
 endfunction
+
+function! Syn()
+	for id in synstack(line('.'), col('.'))
+		 echo synIDattr(id, 'name')
+	endfor
+endfunction

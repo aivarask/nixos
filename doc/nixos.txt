@@ -96,11 +96,6 @@ https://github.com/LuaLS/lua-language-server/issues/2455
 # LUA_LIB = "${myLuaLib}/share/lua/5.1";
 
 ============
-direnv
-https://github.com/direnv/direnv/blob/master/docs/hook.md
-https://mynixos.com/home-manager/options/programs.direnv
-
-============
 *php*
 https://wiki.nixos.org/wiki/PHP
 https://www.php.net/manual/en/ini.list.php

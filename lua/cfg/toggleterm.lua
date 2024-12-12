@@ -6,18 +6,9 @@ toggleterm.setup({
 			or (term.direction == 'vertical' and vim.o.columns * 0.3)
 	end,
 	float_opts = {
-		width = function()
-			return math.ceil(vim.o.columns * 0.8)
-		end,
-		height = function()
-			return math.ceil(vim.o.lines * 0.8)
-		end,
+		width = function() return math.ceil(vim.o.columns * 0.8) end,
+		height = function() return math.ceil(vim.o.lines * 0.8) end,
 	},
-})
-
-require('which-key').add({
-	{ '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
-	{ '`', '<cmd>ToggleTerm<CR>', mode = { 'n', 't' } },
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -30,17 +21,17 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
-local Terminal = require('toggleterm.terminal').Terminal
+local t = require('toggleterm.terminal').Terminal
 
-lf = Terminal:new({ cmd = 'lf', display_name = 'lf toggleterm', hidden = true, direction = 'float' })
-vim.api.nvim_set_keymap('n', '<leader>1', '<cmd>lua lf:toggle()<CR>', { noremap = true, silent = true })
+lf = t:new({ cmd = 'lf', hidden = true, direction = 'float' })
+htop = t:new({ cmd = 'htop', hidden = true, direction = 'float' })
+nix_repl_self = t:new({ cmd = 'nix repl self', hidden = true, direction = 'float' })
+ncmpcpp = t:new({ cmd = 'ncmpcpp', hidden = true, direction = 'float' })
 
-nix_repl = Terminal:new({ cmd = 'nix repl', hidden = true, direction = 'tab' })
-vim.api.nvim_set_keymap('n', '<leader>2', '<cmd>lua nix_repl:toggle()<CR>', { noremap = true, silent = true })
-
-ncmpcpp = Terminal:new({ cmd = 'ncmpcppcxz< ', hidden = true, direction = 'float' })
-vim.api.nvim_set_keymap('n', '<leader>3', '<cmd>lua ncmpcpp:toggle()<CR>', { noremap = true, silent = true })
-
--- vim.api.nvim_set_keymap('n', '<leader>4', function()
--- 	Terminal:new({ direction = 'tab' })
--- end, { noremap = true, silent = true })
+local mode = { 'n', 't' }
+require('which-key').add({
+	{ '<C-\\>', '<cmd>ToggleTerm<CR>', mode = { 'n', 'i', 't' } },
+	{ '`', '<cmd>ToggleTerm direction=horizontal<CR>', mode = { 'n', 't' } },
+	{ '<C-`>', '<cmd>ToggleTerm direction=tab<CR>', mode = { 'n', 't' } },
+	{ '<C-1>', function() nix_repl_self:toggle(nil, 'tab') end, mode = mode },
+})

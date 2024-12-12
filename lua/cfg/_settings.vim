@@ -1,3 +1,4 @@
+syntax on
 filetype plugin indent on
 set termguicolors
 set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
@@ -27,6 +28,9 @@ set updatetime=250
 set timeoutlen=600
 set bufhidden=wipe
 setglobal commentstring="# %s"
+set conceallevel=2
+
+
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -38,7 +42,13 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
+let g:switch_custom_definitions =
+    \ [
+    \   ['foldenable', 'nofoldenable']
+    \ ]
 
+map q <nop>
+map Q <nop>
 map - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 map <C-s> <Plug>(Save)
@@ -62,11 +72,13 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
-nnoremap ?f :edit /etc/nixos/flake.nix<CR>
+nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?F :edit /etc/nixos/config/programs_/firefox.nix<CR>
-nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
+nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
+nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
+nnoremap ?T :edit /etc/nixos/lua/cfg/toggleterm.lua
 nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>
 nnoremap ?z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
 
@@ -119,6 +131,7 @@ if !has('nvim')
 	cnoremap <nowait> <Esc>h <Left>
 	cnoremap <nowait> <Esc>l <Right>
 else
+" HateWord
 	set undodir=$XDG_STATE_HOME/nvim/undo
 	set foldmethod=expr
 	set foldexpr=nvim_treesitter#foldexpr()

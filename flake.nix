@@ -2,8 +2,9 @@
 {
   description = "NixOS config";
   inputs = {
+    dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
     systems.url = "github:nix-systems/x86_64-linux";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +45,7 @@
       nix-colors,
       nix-on-droid,
       LS_COLORS,
+      dev-templates,
       ...
     }@inputs:
     let

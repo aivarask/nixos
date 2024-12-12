@@ -21,7 +21,7 @@ map \\m %{{ xdg-mime query filetype "$f" }}
 map A push :mkdir<space>
 map a push :touch<space>
 map D %trash-put $fx
-map E $nvr $fx
+map E $EDITOR $fx
 map gd $lf -remote "send $id cd ~/Downloads"
 map gn $lf -remote "send $id cd /etc/nixos"
 map gtd $lf -remote "send $id cd /var/lib/transmission/Downloads"

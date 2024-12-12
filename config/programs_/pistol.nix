@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [ pistol ];
   programs.pistol = {
-    enable = true;
+    enable = false;
     associations = [
       {
         mime = "inode/directory";
@@ -35,7 +36,6 @@
         mime = "text/*";
         command = "bat --color=always --style=plain --pager=never %pistol-filename%";
       }
-
       # escape characters needed
       # inkview display chafa feh
       # {

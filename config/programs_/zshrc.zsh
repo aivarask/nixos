@@ -29,14 +29,17 @@ export NCMPCPP_CONFIG=/etc/nixos/config/files/ncmpcpp_config
 export NCMPCPP_BINDINGS=/etc/nixos/config/files/ncmpcpp_bindings
 alias ncmpcpp_='ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS'
 
+# cat -v	#	showkey
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 bindkey '^ ' forward-word            # C-Space
 bindkey '^[[1;5C' autosuggest-accept # C-Right
 bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[OQ" "manix_fzf\n"      # <F2>
+bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 bindkey -s "^F" "fzf -m\n"
 bindkey -s "^G" "Rg\n"
+
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=(

@@ -5,20 +5,39 @@
 { pkgs, ... }:
 {
   home.sessionVariables = {
+    # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
+    # environment.variables.VDPAU_DRIVER = "nvidia";
+    # environment.variables.VAAPI_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-render";
+    # environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
+    # environment.variables.NVD_BACKEND = "direct";
     # https://unix.stackexchange.com/a/596888
     # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
-    BROWSER = "firefox";
+    # BROWSER = "";
     MOZ_X11_EGL = "1";
     MOZ_USE_XINPUT2 = "1";
     GDK_DPI_SCALE = "0.75"; # firefox
   };
-  home.packages = with pkgs; [ geckodriver ];
+  home.packages = with pkgs; [
+    geckodriver
+  ];
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-devedition-bin;
-
+    package = pkgs.firefox;
+    # package = pkgs.firefox-devedition;
     profiles.root = {
+      isDefault = true;
       bookmarks = [
+        {
+          name = "r:pc";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "r:pc";
+              tags = [ "remote-touchpad:pc" ];
+              url = "http://pcw.local:9000/#pc";
+            }
+          ];
+        }
         {
           name = "about";
           toolbar = true;
@@ -30,12 +49,17 @@
             }
             {
               tags = [ "a:c" ];
-              name = "a:c";
+              name = "a:config";
               url = "about:config";
             }
             {
+              tags = [ "a:p" ];
+              name = "a:policies";
+              url = "about:policies#documentation";
+            }
+            {
               tags = [ "a:s" ];
-              name = "a:s";
+              name = "a:support";
               url = "about:support";
             }
           ];
@@ -45,7 +69,7 @@
         # https://nur.nix-community.org/repos/rycee
         # vimium
         # darkreader
-        # ublock-origin
+        ublock-origin
         # sponsorblock
         # df-youtube
         # decentraleyes
@@ -202,7 +226,6 @@
       "Google"
     ];
     engines =
-      # https://mynixos.com/home-manager/option/programs.firefox.profiles.%3Cname%3E.search.engines
       let
         reddit = "https://www.reddit.com";
         duck = "https://duckduckgo.com/?q="; # https://duckduckgo.com/duckduckgo-help-pages/results/syntax/
