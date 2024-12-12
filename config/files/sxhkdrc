@@ -17,10 +17,11 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	,alacritty -e sysz\
 	}
 
-{q,w,e} + super
+{q,w,e,r} + super
   {tdrop alacritty\
   ,firefox\
   ,alacritty --working-directory=/etc/nixos -e 'nvr'\
+  ,alacritty --working-directory=/etc/nixos -e 'lf'\
   }
 {W,E,R,T,Y} + super
   {\

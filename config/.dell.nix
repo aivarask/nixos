@@ -63,4 +63,12 @@
   };
   system.stateVersion = "23.05";
 
+  # Virtualization
+  # https://wiki.nixos.org/wiki/Virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+  };
+
 }

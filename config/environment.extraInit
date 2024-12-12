@@ -1,4 +1,1 @@
-#!/usr/bin/env sh
-
-export ZZZ="ZZZ"
-echo $ZZZ
+echo "$SHELL"

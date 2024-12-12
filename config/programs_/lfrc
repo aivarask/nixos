@@ -1,9 +1,17 @@
 # vim:ft=conf
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
+set hidden
+set icons
+set ifs "\n"
+set info "size"
+set ratios "1:2"
+set scrolloff 8
+set shell "zsh"
+set shellopts "-ey"
+set previewer pistol_
+#
 $mkdir -p ~/.trash
-set previewer pistol_bin
-set hidden!
 map t
 
 map ++ set ratios 1:2:3
@@ -52,7 +60,7 @@ map Yc $cat $f | xclip -selection clipboard
 # }}
 # maps            ${{ "$lf" -remote "query $id maps" | $PAGER }}
 # cmd get-mime-type   # mkdir           %{{ mkdir "$@" }}
-# open            ${{ $OPENER $f }}
+cmd open            ${{ $OPENER $f }}
 # quit-and-cd     &{{ pwd > "$LF_CD_FILE" ... }}
 # recol           %{{ if [ $lf_width -le 80 ]; then ... }}
 # touch           %{{ touch "$@" }}
