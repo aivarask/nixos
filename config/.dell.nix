@@ -7,7 +7,10 @@
   ...
 }:
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    # (lib.mkAliasOptionModule [ "aiva" ] [ "nixosConfigurations" "dell" "options" ])
+  ];
   boot = {
     initrd.availableKernelModules = [
       "xhci_pci"

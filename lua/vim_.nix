@@ -129,7 +129,6 @@ in
     '';
   };
   home.packages = with pkgs; [
-    lnav
     neovim-remote
     manix
     awesome

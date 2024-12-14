@@ -1,5 +1,5 @@
 # vim: nofoldenable
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   xorgPackages = with pkgs.xorg; [
     xbacklight
@@ -15,6 +15,9 @@ let
 in
 {
 
+  imports = [
+    (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
+  ];
   environment.extraInit = ''
     		. /etc/nixos/config/environment.extraInit
   '';

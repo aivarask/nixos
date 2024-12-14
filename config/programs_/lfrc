@@ -1,7 +1,7 @@
 # vim:ft=conf
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
-set hidden
+# set hidden!
 set icons
 set ifs "\n"
 set info "size"
