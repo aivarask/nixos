@@ -28,6 +28,10 @@
     suckless.url = "path:/etc/nixos/overlays/suckless";
     conky.url = "github:brndnmtthws/conky";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
+    };
     # https://nix-community.github.io/haumea/intro/getting-started.html
   };
   outputs =
