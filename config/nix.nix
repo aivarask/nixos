@@ -48,12 +48,9 @@
         ## https://jade.fyi/blog/pinning-nixos-with-npins/
         ## https://github.com/infinisil/sanix?tab=readme-ov-file
         ## https://dotfiles.cgdct.moe/nix/nixos/#removing-channels-and-flake-registries
-        # Enable flakes and new 'nix' command
         experimental-features = "nix-command flakes";
-        # Opinionated: disable global registry
-        flake-registry = "";
-        # Workaround for https://github.com/NixOS/nix/issues/9574
-        nix-path = config.nix.nixPath;
+        flake-registry = ""; # Opinionated: disable global registry
+        nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
       };
       # Opinionated: disable channels
       channel.enable = false;

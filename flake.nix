@@ -28,6 +28,7 @@
     suckless.url = "path:/etc/nixos/overlays/suckless";
     conky.url = "github:brndnmtthws/conky";
     hyprland.url = "github:hyprwm/Hyprland";
+    # https://nix-community.github.io/haumea/intro/getting-started.html
   };
   outputs =
     {
@@ -84,6 +85,7 @@
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
+      devShell."${system}" = pkgs.mkShell { };
       homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs system username; };

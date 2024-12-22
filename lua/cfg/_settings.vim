@@ -29,7 +29,7 @@ set timeoutlen=600
 set bufhidden=wipe
 setglobal commentstring="# %s"
 set conceallevel=2
-
+set clipboard=unnamedplus
 
 
 let &t_EI = "\<Esc>[2 q"
@@ -71,6 +71,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
+nnoremap ?C :edit /etc/nixos/config/containers.nix<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?F :edit /etc/nixos/config/programs_/firefox.nix<CR>

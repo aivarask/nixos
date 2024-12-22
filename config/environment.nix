@@ -1,17 +1,6 @@
 # vim: nofoldenable
 { pkgs, lib, ... }:
 let
-  xorgPackages = with pkgs.xorg; [
-    xbacklight
-    xorgserver
-    xdpyinfo
-    xev
-    xmodmap
-    xmessage
-    transset
-    xwininfo
-    xwd
-  ];
 in
 {
 
@@ -21,6 +10,7 @@ in
   environment.extraInit = ''
     		. /etc/nixos/config/environment.extraInit
   '';
+  environment.variables.SELF = "/etc/nixos/";
   environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
   environment.variables.EDITOR = "vim";
   environment.shellAliases = {
@@ -47,9 +37,23 @@ in
     "${pkgs.zsh-completions}"
     "/etc/nixos"
   ];
-  environment.systemPackages =
+  environment.systemPackages = (
+    with pkgs;
+    let
+      xorgPackages = with pkgs.xorg; [
+        xbacklight
+        xorgserver
+        xdpyinfo
+        xev
+        xmodmap
+        xmessage
+        transset
+        xwininfo
+        xwd
+      ];
+    in
     xorgPackages
-    ++ (with pkgs; [
+    ++ [
       file
       dolphin
       blender
@@ -155,5 +159,6 @@ in
       libwebp
       # debug
       lldb
-    ]);
+    ]
+  );
 }

@@ -32,6 +32,20 @@
       # programs.zsh.initExtra
       source /etc/nixos/config/programs_/zshrc.zsh
     '';
-    plugins = [ ];
+    plugins = [
+      # {
+      #   # https://github.com/jeffreytse/zsh-vi-mode
+      #   name = "vi-mode";
+      #   src = pkgs.zsh-vi-mode;
+      #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      # }
+      # {
+      #   # https://github.com/kutsan/zsh-system-clipboard
+      #   # https://github.com/kutsan/zsh-system-clipboard#options
+      #   name = "system-clipboard";
+      #   src = pkgs.zsh-system-clipboard;
+      #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
+      # }
+    ];
   };
 }

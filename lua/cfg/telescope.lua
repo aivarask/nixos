@@ -16,8 +16,6 @@ require('telescope').setup({
 			'--glob=!*/suckless/*.{h,diff}',
 			'--glob=!public-resolvers.md',
 			'--glob=!gruvbox.{yaml,toml}',
-			'--glob=!*.jpg',
-			-- '--ignore-file \'/root/.config/git/ignore\'',
 		},
 	},
 	extensions = {
@@ -31,7 +29,6 @@ require('telescope').setup({
 })
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('lazygit')
-require('telescope').load_extension('dap')
 
 require('which-key').add({
 	{ '<leader>t', group = 'Telescope', icon = '' },

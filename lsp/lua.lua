@@ -22,6 +22,7 @@ for _, name in ipairs({
 	'nvim%-dap',
 	'nvim%-dap%-ui',
 	'lualine.nvim',
+	'telescope.nvim',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(path, name) then
@@ -88,6 +89,7 @@ vim.api.nvim_create_autocmd('FileType', {
 						checkThirdParty = false,
 						library = library,
 						preloadFileSize = 600,
+						ignoreDir = { 'node_modules', 'vendor' },
 					},
 				},
 			},
@@ -98,7 +100,5 @@ require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	pattern = { '*.lua' },
 	desc = 'format null-ls',
-	callback = function()
-		vim.lsp.buf.format({ name = 'null-ls' })
-	end,
+	callback = function() vim.lsp.buf.format({ name = 'null-ls' }) end,
 })

@@ -27,7 +27,6 @@
       load-module module-cli-protocol-tcp listed=192.168.1.0/24
       # https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#module-native-protocol-unixtcp
       load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1;192.168.1.0/24 auth-anonymous=1 auth-cookie-enabled=0
-
     '';
     # tcp = {
     #   enable = true;

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 IFS=: read -ra selected < <(
-  rg --column --line-number --no-heading --color=always --smart-case \
+	rg --column --line-number --no-heading --color=always --smart-case \
 		--hidden --ignore-file "$HOME/.config/git/ignore" \
-    -L "${*:-}" \
+		-L "${*:-}" \
 		-g "!.git" \
 		-g "!*/suckless/*.{h,diff}" \
-		-g "!{dnscrypt-proxy.toml,public-resolvers.md,relays.md}" \
-	|fzf --ansi \
-		--color "hl:-1:underline,hl+:-1:underline:reverse" \
-		--delimiter : \
-		--preview 'bat --color=always {1} --highlight-line {2}' \
-		--preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+		-g "!{dnscrypt-proxy.toml,public-resolvers.md,relays.md}" |
+		fzf --ansi \
+			--color "hl:-1:underline,hl+:-1:underline:reverse" \
+			--delimiter : \
+			--preview 'bat --color=always {1} --highlight-line {2}' \
+			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
 )
 [ -n "${selected[0]}" ] && $EDITOR "${selected[0]}" "+${selected[1]}"

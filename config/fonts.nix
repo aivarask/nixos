@@ -2,6 +2,11 @@
 {
   environment.systemPackages = with pkgs; [ fontpreview ];
   fonts = {
+    enableDefaultPackages = false;
+    packages = with pkgs; [
+      noto-fonts-color-emoji
+      nerd-fonts.dejavu-sans-mono
+    ];
     fontconfig = {
       defaultFonts = {
         emoji = [
@@ -22,10 +27,5 @@
         ];
       };
     };
-    enableDefaultPackages = false;
-    packages = with pkgs; [
-      noto-fonts-color-emoji
-      nerd-fonts.dejavu-sans-mono
-    ];
   };
 }

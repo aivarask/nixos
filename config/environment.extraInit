@@ -1,1 +1,3 @@
-echo "$SHELL"
+#!/bin/sh
+# echo "$SHELL"
+# echo "ZOO"

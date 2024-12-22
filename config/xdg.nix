@@ -12,8 +12,8 @@
     defaultApplications = {
       "text/plain" = "nvim.desktop";
       "text/markdown" = "nvim.desktop";
-      "text/html" = "nvim.desktop";
-      # "text/html" = "firefox.desktop";
+      # "text/html" = "nvim.desktop";
+      "text/html" = "firefox.desktop";
       "text/css" = "nvim.desktop";
       "text/x-lua" = "nvim.desktop";
       "text/x-csrx" = "nvim.desktop";

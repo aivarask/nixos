@@ -1,4 +1,4 @@
--- vim:foldlevel=3
+-- vim:foldlevel=3 nofoldenable
 require('genghis').setup({
 	backdrop = {
 		enabled = true,
@@ -323,10 +323,10 @@ vim.api.nvim_create_autocmd('FileType', {
 			settings = {
 				nixd = {
 					formatting = { command = { 'nixfmt' } },
-					nixpkgs = { expr = '(builtins.getFlake "self").inputs.nixpkgs.legacyPackages.x86_64-linux' },
+					nixpkgs = { expr = 'import (builtins.getFlake "self").inputs.nixpkgs {}' },
 					options = {
 						nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
-						home_manager = { expr = '(builtins.getFlake "self").homeConfigurations.root.options' },
+						-- home_manager = { expr = '(builtins.getFlake "self").homeConfigurations.root.options' },
 					},
 				},
 			},

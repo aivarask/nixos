@@ -1,9 +1,16 @@
+export __ETC_PROFILE_SOURCED=
+export __NIXOS_SET_ENVIRONMENT_DONE=
+source /etc/profile
+
 fpath=(/etc/nixos/zfunc $fpath);
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
 # source $(dirname $0)/zhooks.zsh
 # source ${0:A:h}/mycommand.zsh
 source /etc/nixos/zfunc/mycommand.zsh
 # compinit # ../../zfunc/_scrot
+
+typeset -TU PATH path ':'
+path+=( /etc/nixos/*(N-/) )
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
 autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
@@ -16,15 +23,20 @@ zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 export NIXPKGS_ALLOW_INSECURE=1
-# GDK_SCALE = "2"; # nicotine
-# alias inkscape_="GDK_SCALE=1.5; inkscape"
 alias nf='nixos-rebuild switch --fast'\
 	nrl='nix registry list'\
-	oras='curl wttr.in/Vilnius'
+	oras='curl wttr.in/Vilnius'\
+	lnav_='lnav -I /etc/nixos/lnav/ /var/log/Xorg.0.log $XDG_STATE_HOME/nvim/*.log'\
+	nicotine_='export GDK_SCALE="1.5"; nicotine'\
+	inkscape_='export GDK_SCALE="1.5"; inkscape'\
 
-alias tmux_lf='tmux split -h lf; lf'
-alias lazygit='lazygit -ucf /etc/nixos/config/files/lazygit.yml'
-alias \\l='lazygit'
+export TMUX_CONFIG='/etc/nixos/config/files/tmux.conf'
+alias tmux_='tmux -f $TMUX_CONFIG'
+
+export LAZYGIT_CONFIG='/etc/nixos/config/files/lazygit.yml'
+alias lazygit_='lazygit -ucf $LAZYGIT_CONFIG'
+alias \\l='lazygit_'
+
 export NCMPCPP_CONFIG=/etc/nixos/config/files/ncmpcpp_config
 export NCMPCPP_BINDINGS=/etc/nixos/config/files/ncmpcpp_bindings
 alias ncmpcpp_='ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS'
@@ -40,16 +52,23 @@ bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 bindkey -s "^F" "fzf -m\n"
 bindkey -s "^G" "Rg\n"
 
+# cd $(nix flake metadata nixpkgs | grep 'Path' | awk '{print $2}')
+
+cmd_preview () {
+	# res=`$BUFFER | awk '{print $1}'`
+	bat $BUFFER
+}
+zle -N cmd_preview cmd_preview
+bindkey -v '^]' cmd_preview
+
+cmd_xclip ()  {
+	echo $BUFFER | xclip
+}
+zle -N cmd_xclip cmd_xclip
+bindkey -v '' cmd_xclip
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=(
 	'/etc/nixos/lua/?.lua'
 )
 export LUA_PATH
-
-typeset -TU PATH path ':'
-path+=(
-	'/etc/nixos'
-	'/etc/nixos/lua'
-)
-

@@ -68,9 +68,9 @@
   };
   services.xserver = {
     enable = true;
+    displayManager.startx.enable = true;
     windowManager.awesome.enable = lib.mkDefault false;
     windowManager.dwm.enable = lib.mkDefault true;
-    displayManager.startx.enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 50;
     enableCtrlAltBackspace = true;

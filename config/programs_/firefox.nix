@@ -68,18 +68,17 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # https://nur.nix-community.org/repos/rycee
         # vimium
-        # darkreader
+        privacy-badger
+        facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
+        clearurls
         ublock-origin
         # sponsorblock
         # df-youtube
         # decentraleyes
-        # clearurls
         # h264ify
         # browserpass
         # foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
         # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
-        # privacy-badger
-        # facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
         # stylus
         # leechblock-ng
       ];
@@ -94,119 +93,76 @@
         "gfx.webrender.enabled" = true;
         "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = false;
-        browser = {
-          "download.lastDir" = "~";
-          "fixup.fallback-to-https" = false;
-          "newtabpage.activity-stream.feeds.section.topstories" = true;
-          "newtabpage.activity-stream.feeds.topsites" = true;
-          "newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "DuckDuckGo";
-          "newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "DuckDuckGo";
-          "newtabpage.activity-stream.section.highlights.includePocket" = false;
-          "newtabpage.activity-stream.showSponsoredTopSites" = false;
-          "newtabpage.pinned" = true;
-          "safebrowsing.downloads.remote.enabled" = false;
-          "search.suggest.enabled" = false;
-          "send_pings" = false;
-          "tabs.closeWindowWithLastTab" = false;
-          "tabs.loadDivertedInBackground" = true;
-          "tabs.loadInBackground" = true;
-          "toolbars.bookmarks.visibility" = "never";
-          "uidensity" = 1;
-          "urlbar.placeholderName" = "DuckDuckGo";
-          "urlbar.shortcuts.bookmarks" = false;
-          "urlbar.shortcuts.history" = false;
-          "urlbar.shortcuts.tabs" = false;
-          "urlbar.speculativeConnect.enabled" = false;
-          "urlbar.suggest.bookmark" = true;
-          "urlbar.suggest.engines" = false;
-          "urlbar.suggest.history" = true;
-          "urlbar.suggest.openpage" = false;
-          "urlbar.suggest.topsites" = false;
-          "urlbar.trimHttps" = true;
-        };
-        devtools = {
-          "dom.enabled" = true;
-          "cache.disabled" = false;
-          performance = {
-            enabled = false;
-          };
-          inspector = {
-            "showUserAgentStyles" = false;
-          };
-          "debugger" = {
-            remote-enabled = true;
-          };
-          editor = {
-            keymap = "vim";
-          };
-          "responsive" = {
-            "html.displayedDeviceList" = {
-              added = [
-                "iPhone 6/7/8"
-                "1080p Full HD Television (Custom)"
-                "Some custom "
-              ];
-              removed = [
-                "Galaxy Note 20"
-                "Galaxy Note 20 Ultra"
-                "Galaxy S10/S10+"
-                "Galaxy S20"
-                "Galaxy S20 Ultra"
-                "Galaxy S20+"
-                "iPhone 11 Pro"
-                "iPhone 11 Pro Max"
-                "iPhone 12/13 + Pro"
-                "iPhone 12/13 mini"
-                "iPhone 12/13 Pro Max"
-                "iPhone SE 2nd gen"
-                "iPad"
-                "Kindle Fire HDX"
-              ];
-            };
-          };
-        };
-        dom = {
-          "event.clipboardevents.enabled" = false;
-          "security.https_only_mode_ever_enabled" = true;
-        };
-        extensions = {
-          "activeThemeID" = "firefox-compact-dark@mozilla.org";
-          "autoDisableScopes" = false;
-          "pocket.enabled" = false;
-        };
-        media = {
-          "autoplay.enabled" = false;
-          "ffmpeg.vaapi.enabled" = true;
-          "ffvpx.enabled" = false;
-          "navigator.enabled" = false;
-          "peerconnection.enabled" = false;
-          "peerconnection.identity.timeout" = 1;
-          "peerconnection.turn.disable" = true;
-          "peerconnection.use_document_iceservers" = false;
-          "peerconnection.video.enabled" = false;
-        };
-        network = {
-          "prefetch-next" = false;
-          "IDN_show_punycode" = true;
-          "cookie.cookieBehavior" = 1;
-          "dns.disablePrefetch" = true;
-          "dns.disablePrefetchFromHTTPS" = true;
-          "http.referer.XOriginPolicy" = 2;
-          "http.referer.XOriginTrimmingPolicy" = 2;
-          "predictor.enable-prefetch" = false;
-          "predictor.enabled" = false;
-        };
-        privacy = {
-          "firstparty.isolate" = true;
-          "resistFingerprinting" = true;
-          "trackingprotection.cryptomining.enabled" = true;
-          "trackingprotection.enable" = true;
-          "trackingprotection.fingerprinting.enabled" = true;
-        };
-        toolkit = {
-          "legacyUserProfileCustomizations.stylesheets" = true;
-          "zoomManager.zoomValues" = ".8,.95,1,1.1,1.2,1.3";
-        };
+        "browser.aboutwelcome.enabled" = false;
+        "browser.aboutConfig.showWarning" = false;
+        "browser.fixup.fallback-to-https" = false;
+        "browser.startup.firstrunSkipsHomepage" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
+        "browser.newtabpage.activity-stream.feeds.topsites" = true;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "DuckDuckGo";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" =
+          "DuckDuckGo";
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.pinned" = true;
+        "browser.safebrowsing.downloads.remote.enabled" = false;
+        "browser.search.suggest.enabled" = false;
+        "browser.send_pings" = false;
+        "browser.tabs.closeWindowWithLastTab" = false;
+        "browser.tabs.loadDivertedInBackground" = true;
+        "browser.tabs.loadInBackground" = true;
+        "browser.toolbars.bookmarks.visibility" = "newtab";
+        "browser.uidensity" = 1;
+        "browser.urlbar.autoFill" = false;
+        "browser.urlbar.placeholderName" = "DuckDuckGo";
+        "browser.urlbar.shortcuts.bookmarks" = false;
+        "browser.urlbar.shortcuts.history" = false;
+        "browser.urlbar.shortcuts.tabs" = false;
+        "browser.urlbar.speculativeConnect.enabled" = false;
+        "browser.urlbar.suggest.bookmark" = true;
+        "browser.urlbar.suggest.engines" = false;
+        "browser.urlbar.suggest.history" = true;
+        "browser.urlbar.suggest.openpage" = false;
+        "browser.urlbar.suggest.topsites" = false;
+        "browser.urlbar.trimHttps" = true;
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        "extensions.autoDisableScopes" = false;
+        "extensions.pocket.enabled" = false;
+        "extensions.htmlaboutaddons.recommendations.enabled" = false;
+        "extensions.recommendations.privacyPolicyUrl" = ""; # "https://www.mozilla.org/privacy/firefox/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_content=privacy-policy-link#addons";
+        "devtools.dom.enabled" = true;
+        "devtools.cache.disabled" = false;
+        "devtools.performance.enabled" = false;
+        "devtools.inspetor.showUserAgentStyles" = false;
+        "devtools.debugger.remote-enabled" = true;
+        "devtools.editor.keymap" = "vim";
+        "dom.event.clipboardevents.enabled" = false;
+        "dom.security.https_only_mode_ever_enabled" = true;
+        "media.autoplay.enabled" = false;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.ffvpx.enabled" = false;
+        "media.navigator.enabled" = false;
+        "media.peerconnection.enabled" = false;
+        "media.peerconnection.identity.timeout" = 1;
+        "media.peerconnection.turn.disable" = true;
+        "media.peerconnection.use_document_iceservers" = false;
+        "media.peerconnection.video.enabled" = false;
+        "network.prefetch-next" = false;
+        "network.IDN_show_punycode" = true;
+        "network.cookie.cookieBehavior" = 1;
+        "network.dns.disablePrefetch" = true;
+        "network.dns.disablePrefetchFromHTTPS" = true;
+        "network.http.referer.XOriginPolicy" = 2;
+        "network.http.referer.XOriginTrimmingPolicy" = 2;
+        "network.predictor.enable-prefetch" = false;
+        "network.predictor.enabled" = false;
+        "privacy.firstparty.isolate" = true;
+        "privacy.resistFingerprinting" = true;
+        "privacy.trackingprotection.cryptomining.enabled" = true;
+        "privacy.trackingprotection.enable" = true;
+        "privacy.trackingprotection.fingerprinting.enabled" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2,1.3";
       };
       userChrome = ''
         * {
