@@ -1,7 +1,4 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
-# https://searchfox.org
-# ~/.mozilla/firefox/root/user.js
-# ~/.mozilla/firefox/root/prefs.js
 { pkgs, ... }:
 {
   home.sessionVariables = {
@@ -12,7 +9,6 @@
     # environment.variables.NVD_BACKEND = "direct";
     # https://unix.stackexchange.com/a/596888
     # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
-    # BROWSER = "";
     MOZ_X11_EGL = "1";
     MOZ_USE_XINPUT2 = "1";
     GDK_DPI_SCALE = "0.75"; # firefox
@@ -67,29 +63,31 @@
       ];
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # https://nur.nix-community.org/repos/rycee
-        # vimium
         privacy-badger
         facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
         clearurls
         ublock-origin
+        foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
         # sponsorblock
+        # vimium
         # df-youtube
         # decentraleyes
         # h264ify
         # browserpass
-        # foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
         # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
         # stylus
         # leechblock-ng
       ];
       settings = {
-        # user.js
+        # https://searchfox.org
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
         # "mousewheel.with_shift.action" = 0;
         # "mousewheel.with_shift.action.override_x" = 1;
+        # "general.useragent.override" = "";
+        "dom.webnotifications.enabled" = false;
+        "intl.accept_languages" = "en-US, en, lt";
         "app.shield.optoutstudies.enabled" = false;
-        "beacon.enabled" = false; # https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API
-        general.useragent.override = "";
+        "beacon.enabled" = false;
         "gfx.webrender.enabled" = true;
         "gfx.webrender.all" = true;
         "identity.fxaccounts.enabled" = false;
@@ -147,6 +145,8 @@
         "media.peerconnection.turn.disable" = true;
         "media.peerconnection.use_document_iceservers" = false;
         "media.peerconnection.video.enabled" = false;
+        "media.videocontrols.picture-in-picture.enabled" = true;
+        "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "network.prefetch-next" = false;
         "network.IDN_show_punycode" = true;
         "network.cookie.cookieBehavior" = 1;
