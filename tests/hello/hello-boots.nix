@@ -3,8 +3,9 @@
 pkgs.nixosTest {
   name = "hello-boots";
   nodes.machine =
-    { config, pkgs, ... }:
+    { ... }:
     {
+      system.stateVersion = "23.11";
       imports = [
         self.nixosModules.helloNixosModule
       ];
@@ -12,7 +13,6 @@ pkgs.nixosTest {
         enable = true;
       };
 
-      system.stateVersion = "23.11";
     };
 
   testScript = ''

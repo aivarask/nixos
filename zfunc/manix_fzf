@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 manix "" |
 	grep '^# ' |
 	sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' |

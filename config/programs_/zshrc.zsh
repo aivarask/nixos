@@ -6,7 +6,6 @@ fpath=(/etc/nixos/zfunc $fpath);
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
 # source $(dirname $0)/zhooks.zsh
 # source ${0:A:h}/mycommand.zsh
-source /etc/nixos/zfunc/mycommand.zsh
 # compinit # ../../zfunc/_scrot
 
 typeset -TU PATH path ':'

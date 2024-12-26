@@ -2,11 +2,7 @@
 
 set -x
 
-echo $(dirname $0)/zsh.foo.zsh
-
+# echo $(dirname $0)/zsh.foo.zsh
 # readlink -f ${(%):-%N}
-
 # source $(dirname $0)
-
-# References
-#
+echo ${(%):-%N}

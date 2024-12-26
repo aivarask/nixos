@@ -156,7 +156,7 @@ lib.mkMerge [
         pm2
         dotenv-cli
         prettierd
-        # typescript-language-server
+        typescript-language-server
         jsdoc
       ]);
   }

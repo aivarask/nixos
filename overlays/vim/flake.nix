@@ -36,6 +36,11 @@
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
+
+    tree-sitter-language-injection = {
+      url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
+      flake = false;
+    };
   };
   outputs =
     { ... }@inputs:
@@ -133,6 +138,13 @@
                 src = smart-semicolon;
                 meta = {
                   homepage = "https://github.com/iagotito/smart-semicolon.nvim";
+                };
+              };
+              tree-sitter-language-injection = buildVimPlugin {
+                name = "tree-sitter-language-injection";
+                src = tree-sitter-language-injection;
+                meta = {
+                  homepage = "https://github.com/DariusCorvus/tree-sitter-language-injection.nvim";
                 };
               };
             };

@@ -7,9 +7,7 @@ in
   imports = [
     (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
   ];
-  environment.extraInit = ''
-    		. /etc/nixos/config/environment.extraInit
-  '';
+  environment.extraInit = '''';
   environment.variables.SELF = "/etc/nixos/";
   environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
   environment.variables.EDITOR = "vim";

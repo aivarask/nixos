@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734992499,
-        "narHash": "sha256-f9UyHMTb+BwF6RDZ8eO9HOkSlKeeSPBlcYhMmV1UNIk=",
+        "lastModified": 1735053786,
+        "narHash": "sha256-Gm+0DcbUS338vvkwyYWms5jsWlx8z8MeQBzcnIDuIkw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f1b1786ea77739dcd181b920d430e30fb1608b8a",
+        "rev": "35b98d20ca8f4ca1f6a2c30b8a2c8bb305a36d84",
         "type": "github"
       },
       "original": {
@@ -449,11 +449,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1734988658,
-        "narHash": "sha256-SSPQCHeqMRsR6rhONWFAHDMtQ5NEKnU8G2BktlDwIoY=",
+        "lastModified": 1735140790,
+        "narHash": "sha256-Zz1EEW4bb75t8jn56Uglz0spelTBXQ9EgvQS4el0Jrk=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "2e2e2e2cad97eb017ab02f8a67b751e0abe3bb72",
+        "rev": "1a3d17da9150f255ff2144cbe8317c0200de0ee4",
         "type": "github"
       },
       "original": {
@@ -479,11 +479,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734887159,
-        "narHash": "sha256-boPq+l4/D/Q+MvDqAI79fCdp/3Dit57YBuPbXa1cjW0=",
+        "lastModified": 1735139532,
+        "narHash": "sha256-AHVMD57jYgs1FfLXOUBRQyP7K9QenD/gCYITUfiAvXw=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "859b9cd371b4e1bf1043cedc8ab6c514e13ab358",
+        "rev": "7dc20bdf16ce876966e7a904c416a8e520a14793",
         "type": "github"
       },
       "original": {
@@ -652,11 +652,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1734999862,
-        "narHash": "sha256-CJ3dXoCQzbSR/b8kbswlf/JIGKIN/6c9ywRw2rQAIYY=",
+        "lastModified": 1735143314,
+        "narHash": "sha256-e+0LQ1ROseQid473/orCI+KuuqGl3epTc5bwX+iVxjw=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "0d0beafd94c34915fb951b31e165be5cf1cf3a7c",
+        "rev": "141f2db491ab484a2372ee8368fcd3a31422ec2f",
         "type": "github"
       },
       "original": {
@@ -1075,11 +1075,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1735023107,
-        "narHash": "sha256-2SGa/zt8L3VnYIOXZ22tyKtyqfrHKp8VvwvBBhipBlY=",
+        "lastModified": 1735151236,
+        "narHash": "sha256-2G3N5P7t1BFi9LAdNbrI5eNq8qTwToqX9dJGORzaheM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "93d9e3ea11110b392a313a7568b830570314fe3c",
+        "rev": "fb0e94a5940a4b6fd389e09ad4cffda84a356ad2",
         "type": "github"
       },
       "original": {
@@ -1206,11 +1206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735007320,
-        "narHash": "sha256-NdhUgB9BkLGW9I+Q1GyUUCc3CbDgsg7HLWjG7WZBR5Q=",
+        "lastModified": 1735093658,
+        "narHash": "sha256-eIUYGDtairggo7+JXSwN7b6Zr03BJ7tsZL/U0NkDr0s=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "fb5fdba697ee9a2391ca9ceea3b853b4e3ce37a5",
+        "rev": "ca249a1d98eff27e92665ac462b9d47f58141925",
         "type": "github"
       },
       "original": {
@@ -1345,6 +1345,22 @@
         "type": "github"
       }
     },
+    "tree-sitter-language-injection": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728632916,
+        "narHash": "sha256-aUEHsuccFE4AHZ6Zct7vb1n/S0LXlGehQWP53CyEInU=",
+        "owner": "DariusCorvus",
+        "repo": "tree-sitter-language-injection.nvim",
+        "rev": "453d6b08053b3c7df4491d1ffb84fc395da110d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DariusCorvus",
+        "repo": "tree-sitter-language-injection.nvim",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -1428,12 +1444,13 @@
         "persistent-breakpoints": "persistent-breakpoints",
         "smart-semicolon": "smart-semicolon",
         "sxhkd-vim": "sxhkd-vim",
+        "tree-sitter-language-injection": "tree-sitter-language-injection",
         "vim-interestingwords": "vim-interestingwords",
         "vim-log-highlighting": "vim-log-highlighting"
       },
       "locked": {
-        "lastModified": 1733271551,
-        "narHash": "sha256-nxsMCCy0DNC3hCapp7GVKzvL5LuJciuq4D0Z4X/+iRY=",
+        "lastModified": 1735153156,
+        "narHash": "sha256-Qf09NgGMcrkFThz4D5timORCg95TUdZ6FC9b3atndk0=",
         "path": "/etc/nixos/overlays/vim",
         "type": "path"
       },

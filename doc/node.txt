@@ -1,7 +1,0 @@
-*node.txt* webdev related help            *node*
-
-============
-*biome* https://biomejs.dev/
-
-vim:tw=78:ts=8:ft=help:modifiable:noreadonly
-

@@ -1,20 +1,4 @@
 {
-	"nixosModule": {
-		"prefix": [
-			"nixosModule"
-		],
-		"body": [
-			"{ ${1:pkgs,} ... }: {${0}}"
-		]
-	},
-	"environment.systemPackages": {
-		"prefix": [
-			"environment.systemPackages"
-		],
-		"body": [
-			"environment.systemPackages = with pkgs; [ ${0} ]; "
-		]
-	},
 	"flake": {
 		"prefix": [
 			"flake"
@@ -24,14 +8,6 @@
 			"\tinputs = {};",
 			"\toutputs = _: {  };",
 			"}"
-		]
-	},
-	"overlay": {
-		"prefix": [
-			"overlay"
-		],
-		"body": [
-			"(final: prev: { $0 })"
 		]
 	}
 }

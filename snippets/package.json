@@ -2,23 +2,29 @@
 	"contributes": {
 		"snippets": [
 			{
+				"path": "./nix.json",
+				"language": [
+					"nix"
+				]
+			},
+			{
+				"path": "./php.json",
+				"language": [
+					"php"
+				]
+			},
+			{
+				"path": "./snippet.json",
 				"language": [
 					"json",
 					"jsonc"
-				],
-				"path": "./snippet.json"
+				]
 			},
 			{
+				"path": "./twig.json",
 				"language": [
-					"php"
-				],
-				"path": "./php.json"
-			},
-			{
-				"language": [
-					"lua"
-				],
-				"path": "./lua.json"
+					"twig"
+				]
 			}
 		]
 	}

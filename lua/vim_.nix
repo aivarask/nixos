@@ -185,6 +185,7 @@ in
     ++ treesitter
     ++ next
     ++ (with pkgs.vimPlugins; [
+      tree-sitter-language-injection
       auto-session
       which-key-nvim
       nvim-surround
