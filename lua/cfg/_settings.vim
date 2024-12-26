@@ -81,7 +81,7 @@ nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
 nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
 nnoremap ?T :edit /etc/nixos/lua/cfg/toggleterm.lua
 nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>
-nnoremap ?z :edit /etc/nixos/config/programs_/zshrc.zsh<CR>
+nnoremap ?z :edit /etc/nixos/zsh/zshrc<CR>
 
 if !has('gui_running')
 	set t_Co=256

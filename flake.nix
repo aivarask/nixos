@@ -28,11 +28,10 @@
     suckless.url = "path:/etc/nixos/overlays/suckless";
     conky.url = "github:brndnmtthws/conky";
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
-    };
-    # https://nix-community.github.io/haumea/intro/getting-started.html
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+    hyprland-plugins.inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
+    # https://nix-community.github.io/haumea
+    zsh.url = "./zsh";
   };
   outputs =
     {
@@ -52,7 +51,10 @@
       f = import ./func.nix;
       common = {
         imports =
-          [ inputs.suckless.nixosModules.default ]
+          [
+            inputs.suckless.nixosModules.default
+            inputs.zsh.nixosModules.default
+          ]
           ++ f.i ./config
           ++ f.i ./config/systemd
           ++ f.i ./config/systemd/timers
@@ -80,6 +82,7 @@
           [
             inputs.nix-index-database.hmModules.nix-index
             inputs.vim-overlay.home.default
+            inputs.zsh.hmModules.default
             nix-colors.homeManagerModules.default
           ]
           ++ f.i_ ./config
@@ -122,9 +125,7 @@
         pc = nixpkgs.lib.nixosSystem {
           # B450 AORUS M
           inherit system;
-          specialArgs = {
-            inherit inputs;
-          };
+          specialArgs = { inherit inputs; };
           modules = [
             inputs.suckless.nixosModules.default
             common

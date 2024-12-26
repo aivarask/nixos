@@ -2,11 +2,11 @@ export __ETC_PROFILE_SOURCED=
 export __NIXOS_SET_ENVIRONMENT_DONE=
 source /etc/profile
 
-fpath=(/etc/nixos/zfunc $fpath);
+fpath=(/etc/nixos/zsh $fpath);
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
 # source $(dirname $0)/zhooks.zsh
 # source ${0:A:h}/mycommand.zsh
-# compinit # ../../zfunc/_scrot
+# compinit ${0:A:h}/_scrot
 
 typeset -TU PATH path ':'
 path+=( /etc/nixos/*(N-/) )
