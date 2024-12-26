@@ -33,6 +33,19 @@
       source /etc/nixos/config/programs_/zshrc.zsh
     '';
     plugins = [
+      {
+        # https://github.com/olets/zsh-abbr
+        name = "zsh-abbr";
+        src = pkgs.zsh-abbr;
+        file = "share/zsh/zsh-abbr/zsh-abbr.plugin.zsh";
+      }
+      {
+        # https://github.com/olets/zsh-autosuggestions-abbreviations-strategy
+        name = "zsh-autosuggestions-abbreviations-strategy";
+        src = pkgs.zsh-autosuggestions-abbreviations-strategy;
+        file = "share/zsh/site-functions/zsh-autosuggestions-abbreviations-strategy.plugin.zsh";
+
+      }
       # {
       #   # https://github.com/jeffreytse/zsh-vi-mode
       #   name = "vi-mode";
