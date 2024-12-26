@@ -24,12 +24,11 @@
       isDefault = true;
       bookmarks = [
         {
-          name = "r:pc";
+          name = ":pc";
           toolbar = true;
           bookmarks = [
             {
-              name = "r:pc";
-              tags = [ "remote-touchpad:pc" ];
+              name = ":pc";
               url = "http://pcw.local:9000/#pc";
             }
           ];
@@ -39,24 +38,26 @@
           toolbar = true;
           bookmarks = [
             {
-              tags = [ "a:a" ];
-              name = "a:a";
-              url = "about:about";
-            }
-            {
-              tags = [ "a:c" ];
-              name = "a:config";
-              url = "about:config";
-            }
-            {
-              tags = [ "a:p" ];
-              name = "a:policies";
-              url = "about:policies#documentation";
-            }
-            {
-              tags = [ "a:s" ];
-              name = "a:support";
-              url = "about:support";
+              name = "about:";
+              bookmarks = [
+                {
+                  name = ":about";
+                  url = "about:about";
+                }
+                {
+                  name = ":config";
+                  url = "about:config";
+                  # tags = [ ":config" ];
+                }
+                {
+                  name = ":policies";
+                  url = "about:policies#documentation";
+                }
+                {
+                  name = ":support";
+                  url = "about:support";
+                }
+              ];
             }
           ];
         }
@@ -79,6 +80,7 @@
         # leechblock-ng
       ];
       settings = {
+        # ~/.mozilla/firefox/root/user.js
         # https://searchfox.org
         # "network.stricttransportsecurity.preloadlist" = true; # not recommended
         # "mousewheel.with_shift.action" = 0;
@@ -95,21 +97,25 @@
         "browser.aboutConfig.showWarning" = false;
         "browser.fixup.fallback-to-https" = false;
         "browser.startup.firstrunSkipsHomepage" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = true;
-        "browser.newtabpage.activity-stream.feeds.topsites" = true;
+        # newtabpage
+        "browser.newtabpage.pinned" = true;
+        "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.newtabpage.activity-stream.section.highlights.rows" = 1;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "DuckDuckGo";
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" =
           "DuckDuckGo";
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.pinned" = true;
+        #
         "browser.safebrowsing.downloads.remote.enabled" = false;
         "browser.search.suggest.enabled" = false;
         "browser.send_pings" = false;
         "browser.tabs.closeWindowWithLastTab" = false;
         "browser.tabs.loadDivertedInBackground" = true;
         "browser.tabs.loadInBackground" = true;
-        "browser.toolbars.bookmarks.visibility" = "newtab";
+        "browser.tabs.loadBookmarksInTabs" = false;
+        "browser.toolbars.bookmarks.visibility" = "always";
+        # "browser.toolbars.bookmarks.visibility" = "newtab";
         "browser.uidensity" = 1;
         "browser.urlbar.autoFill" = false;
         "browser.urlbar.placeholderName" = "DuckDuckGo";

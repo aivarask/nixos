@@ -1,4 +1,4 @@
-# vim:nofoldenable
+# vim: nofoldenable
 { pkgs, ... }:
 {
   # sh
@@ -35,6 +35,7 @@
     plugins = [
       {
         # https://github.com/olets/zsh-abbr
+        # https://zsh-abbr.olets.dev
         name = "zsh-abbr";
         src = pkgs.zsh-abbr;
         file = "share/zsh/zsh-abbr/zsh-abbr.plugin.zsh";
@@ -44,7 +45,6 @@
         name = "zsh-autosuggestions-abbreviations-strategy";
         src = pkgs.zsh-autosuggestions-abbreviations-strategy;
         file = "share/zsh/site-functions/zsh-autosuggestions-abbreviations-strategy.plugin.zsh";
-
       }
       # {
       #   # https://github.com/jeffreytse/zsh-vi-mode
