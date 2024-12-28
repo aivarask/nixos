@@ -1,3 +1,4 @@
+# vim: nofoldenable
 {
   description = "Matrix";
 

@@ -1,3 +1,4 @@
+# vim: nofoldenable
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
