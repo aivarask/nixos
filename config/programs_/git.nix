@@ -21,6 +21,7 @@
       pull.rebase = true;
     };
     ignores = [
+      ".direnv/"
       "*.lock"
       "!flake.lock"
       "*lock.json"

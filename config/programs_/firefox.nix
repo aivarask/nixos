@@ -167,8 +167,8 @@
         "network.http.referer.XOriginTrimmingPolicy" = 2;
         "network.predictor.enable-prefetch" = false;
         "network.predictor.enabled" = false;
-        "privacy.firstparty.isolate" = true;
-        "privacy.resistFingerprinting" = true;
+        "privacy.firstparty.isolate" = false;
+        "privacy.resistFingerprinting" = false;
         "privacy.trackingprotection.cryptomining.enabled" = true;
         "privacy.trackingprotection.enable" = true;
         "privacy.trackingprotection.fingerprinting.enabled" = true;

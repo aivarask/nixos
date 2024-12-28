@@ -5,6 +5,7 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     nixvirt.url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
     nixvirt.inputs.nixpkgs.follows = "nixpkgs";
+    templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
     systems.url = "github:nix-systems/x86_64-linux";
     home-manager.url = "github:nix-community/home-manager";
@@ -32,6 +33,7 @@
     hyprland-plugins.inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
     # https://nix-community.github.io/haumea
     zsh.url = "./zsh";
+    matrix.url = "./matrix";
   };
   outputs =
     {
@@ -54,6 +56,7 @@
           [
             inputs.suckless.nixosModules.default
             inputs.zsh.nixosModules.default
+            inputs.matrix.nixosModules.default
           ]
           ++ f.i ./config
           ++ f.i ./config/systemd
