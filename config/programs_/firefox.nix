@@ -23,6 +23,7 @@
     profiles.root = {
       isDefault = true;
       bookmarks = [
+        # https://blog.thalheim.io
         {
           name = ":pc";
           toolbar = true;
@@ -48,6 +49,10 @@
                   name = ":config";
                   url = "about:config";
                   # tags = [ ":config" ];
+                }
+                {
+                  name = ":logins";
+                  url = "about:logins";
                 }
                 {
                   name = ":policies";

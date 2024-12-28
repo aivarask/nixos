@@ -1,9 +1,6 @@
 # vim: nofoldenable
 { pkgs, lib, ... }:
-let
-in
 {
-
   imports = [
     (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
   ];
@@ -62,7 +59,7 @@ in
       playwright-driver.browsers
       poedit
       gettext
-      intelephense
+      # intelephense
       obs-cli
       difftastic
       tuir
@@ -102,7 +99,7 @@ in
       tremc
       mpv
       telegram-desktop # QT_SCALE_FACTOR = "1.75";
-      gimp-with-plugins
+      # gimp-with-plugins
       # krita
 
       # hardware

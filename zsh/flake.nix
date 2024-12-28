@@ -20,7 +20,6 @@
             environment.systemPackages = [ pkgs.zsh ];
           };
         testScript = builtins.readFile ./flake.test.py;
-
       };
       nixosModules.default =
         { pkgs, ... }:
