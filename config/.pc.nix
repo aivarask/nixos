@@ -1,4 +1,4 @@
-# vim:foldlevel=3
+# vim: foldlevel=3 nofoldenable
 {
   config,
   lib,
@@ -57,6 +57,7 @@
   };
   system.stateVersion = "23.05";
   networking = {
+    enableIPv6 = false;
     hostName = "pc";
     hostId = "007f0200";
     wireless.enable = true;
