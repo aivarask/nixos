@@ -1,4 +1,5 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
+{ firefox-nightly, ... }:
 { pkgs, ... }:
 {
   home.sessionVariables = {
@@ -13,13 +14,19 @@
     MOZ_USE_XINPUT2 = "1";
     GDK_DPI_SCALE = "0.75"; # firefox
   };
-  home.packages = with pkgs; [
-    geckodriver
+  home.packages = [
+    pkgs.geckodriver
+    # firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin
+    # pkgs.firefox-devedition
   ];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
     # package = pkgs.firefox-devedition;
+    # package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+    # preferences = {
+    #   "widget.use-xdg-desktop-portal.file-picker" = 1;
+    # };
     profiles.root = {
       isDefault = true;
       bookmarks = [
@@ -31,6 +38,10 @@
             {
               name = ":pc";
               url = "http://pcw.local:9000/#pc";
+            }
+            {
+              name = ":m";
+              url = "https://www.messenger.com/";
             }
           ];
         }

@@ -1,7 +1,0 @@
-{
-  "keyMappings": "unmap f\nmap \\ LinkHints.activateMode\nmap <a-x> removeTab\nmap <a-q> removeTab\nmap <m-q> removeTab",
-  "linkHintCharacters": "hjklasd",
-  "scrollStepSize": 40,
-  "searchEngines": "qw: https://www.qwant.com/?q=%s Qwant",
-  "settingsVersion": "2.1.2"
-}

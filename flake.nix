@@ -1,4 +1,4 @@
-# vim:nofoldenable
+# vim: nofoldenable
 {
   description = "NixOS config";
   inputs = {
@@ -34,6 +34,7 @@
     # https://nix-community.github.io/haumea
     zsh.url = "./zsh";
     matrix.url = "./matrix";
+    firefox.url = "./firefox";
   };
   outputs =
     {
@@ -86,6 +87,7 @@
             inputs.nix-index-database.hmModules.nix-index
             inputs.vim-overlay.home.default
             inputs.zsh.hmModules.default
+            inputs.firefox.nixosModules.default
             nix-colors.homeManagerModules.default
           ]
           ++ f.i_ ./config
