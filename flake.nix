@@ -35,6 +35,7 @@
     zsh.url = "./zsh";
     matrix.url = "./matrix";
     firefox.url = "./firefox";
+    pistol.url = "./pistol";
   };
   outputs =
     {
@@ -57,6 +58,7 @@
           [
             inputs.suckless.nixosModules.default
             inputs.zsh.nixosModules.default
+            inputs.pistol.nixosModules.default
             inputs.matrix.nixosModules.default
           ]
           ++ f.i ./config

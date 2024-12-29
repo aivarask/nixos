@@ -26,6 +26,7 @@
         {
           environment.profiles = [
             "${./.}"
+            "${pkgs.zsh-completions}"
             "${pkgs.zsh-abbr}"
           ];
         };
