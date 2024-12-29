@@ -1,11 +1,10 @@
 {
-  inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
-  };
+  description = "zsh";
+  inputs.nixpkgs.url = "nixpkgs";
   outputs =
-    { nixpkgs, ... }@inputs:
+    { nixpkgs, ... }:
     let
-      pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
     in
     {
       # https://github.com/NixOS/nix/blob/master/src/nix/flake-check.md

@@ -2,7 +2,8 @@
 {
   description = "firefox";
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
+    nixpkgs.url = "nixpkgs";
+    systems.url = "systems";
     firefox-nightly.url = "github:nix-community/flake-firefox-nightly";
     firefox-nightly.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -10,16 +11,13 @@
     {
       self,
       nixpkgs,
+      systems,
       firefox-nightly,
     }:
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
       forEachSupportedSystem =
         f:
-        nixpkgs.lib.genAttrs supportedSystems (
+        nixpkgs.lib.genAttrs systems (
           system:
           f {
             pkgs = import nixpkgs { inherit system; };

@@ -7,7 +7,6 @@
     nixvirt.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
-    systems.url = "github:nix-systems/x86_64-linux";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -32,6 +31,7 @@
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
     hyprland-plugins.inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
     # https://nix-community.github.io/haumea
+    systems.url = "github:nix-systems/default-linux";
     zsh.url = "./zsh";
     matrix.url = "./matrix";
     firefox.url = "./firefox";
@@ -99,6 +99,12 @@
     in
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
+      templates = rec {
+        default = {
+          path = ./templates/nix;
+          description = "nixos template";
+        };
+      };
       devShell."${system}" = pkgs.mkShell { };
       homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

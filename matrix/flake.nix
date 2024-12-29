@@ -1,22 +1,19 @@
 # vim: nofoldenable
 {
-  description = "Matrix";
-
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
-
+  description = "matrix";
+  inputs = {
+    nixpkgs.url = "nixpkgs";
+    systems.url = "systems";
+  };
   outputs =
-    { self, nixpkgs }:
+    { ... }@inputs:
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
       forEachSupportedSystem =
         f:
-        nixpkgs.lib.genAttrs supportedSystems (
+        inputs.nixpkgs.lib.genAttrs inputs.systems (
           system:
           f {
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = import inputs.nixpkgs { inherit system; };
           }
         );
     in
