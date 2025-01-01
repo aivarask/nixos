@@ -7,7 +7,7 @@ require('genghis').setup({
 	-- default is `"trash"` on Mac/Windows, and `{ "gio", "trash" }` on Linux
 	trashCmd = 'trash', -- gio trash
 })
-require('lsp-file-operations').setup({})
+-- require('lsp-file-operations').setup({})
 require('null-ls').setup()
 require('outline').setup({
 	outline_window = {

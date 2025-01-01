@@ -1,3 +1,4 @@
+# vim: nofolenable
 {
   inputs = {
     vim-log-highlighting = {
@@ -12,10 +13,10 @@
       url = "github:lfv89/vim-interestingwords";
       flake = false;
     };
-    nvim-lsp-file-operations = {
-      url = "github:antosha417/nvim-lsp-file-operations";
-      flake = false;
-    };
+    # nvim-lsp-file-operations = {
+    #   url = "github:antosha417/nvim-lsp-file-operations";
+    #   flake = false;
+    # };
     nvim-dap-vscode-js = {
       url = "github:mxsdev/nvim-dap-vscode-js";
       flake = false;
@@ -60,11 +61,12 @@
               vim-interestingwords
               # nvim
               one-small-step-for-vimkind
-              nvim-lsp-file-operations
-              nvim-dap-vscode-js
-              neotest-playwright
+              # nvim-lsp-file-operations
+              # nvim-dap-vscode-js
+              # neotest-playwright
               persistent-breakpoints
               # smart-semicolon
+              tree-sitter-language-injection
             ]);
         };
       overlays.default = (
@@ -105,27 +107,27 @@
                   homepage = "https://github.com/lfv89/vim-interestingwords";
                 };
               };
-              nvim-lsp-file-operations = buildVimPlugin {
-                name = "nvim-lsp-file-operations";
-                src = nvim-lsp-file-operations;
-                meta = {
-                  homepage = "https://github.com/antosha417/nvim-lsp-file-operations";
-                };
-              };
-              nvim-dap-vscode-js = buildVimPlugin {
-                name = "nvim-dap-vscode-js";
-                src = nvim-dap-vscode-js;
-                meta = {
-                  homepage = "https://github.com/mxsdev/nvim-dap-vscode-js";
-                };
-              };
-              neotest-playwright = buildVimPlugin {
-                name = "neotest-playwright";
-                src = neotest-playwright;
-                meta = {
-                  homepage = "https://github.com/thenbe/neotest-playwright";
-                };
-              };
+              # nvim-lsp-file-operations = buildVimPlugin {
+              #   name = "nvim-lsp-file-operations";
+              #   src = nvim-lsp-file-operations;
+              #   meta = {
+              #     homepage = "https://github.com/antosha417/nvim-lsp-file-operations";
+              #   };
+              # };
+              # nvim-dap-vscode-js = buildVimPlugin {
+              #   name = "nvim-dap-vscode-js";
+              #   src = nvim-dap-vscode-js;
+              #   meta = {
+              #     homepage = "https://github.com/mxsdev/nvim-dap-vscode-js";
+              #   };
+              # };
+              # neotest-playwright = buildVimPlugin {
+              #   name = "neotest-playwright";
+              #   src = neotest-playwright;
+              #   meta = {
+              #     homepage = "https://github.com/thenbe/neotest-playwright";
+              #   };
+              # };
               persistent-breakpoints = buildVimPlugin {
                 name = "persistent-breakpoints";
                 src = persistent-breakpoints;

@@ -75,7 +75,6 @@
       xsel
       xclip
       sxiv
-      unclutter-xfixes
       numlockx
       xautomation
       xbindkeys
@@ -115,7 +114,7 @@
       ueberzug
       ueberzugpp
       ollama
-      tilda
+      # tilda
       cheat
       feh
       gdu

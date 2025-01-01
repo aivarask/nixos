@@ -2,10 +2,10 @@
 vim.fn.sign_define('DapBreakpoint', { text = '🟢', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '🟡', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '🔴', texthl = '', linehl = '', numhl = '' })
-require('persistent-breakpoints').setup({
-	save_dir = vim.fn.stdpath('data') .. '/breakpoints',
-	load_breakpoints_event = 'BufReadPost',
-})
+-- require('persistent-breakpoints').setup({
+-- 	save_dir = vim.fn.stdpath('data') .. '/breakpoints',
+-- 	load_breakpoints_event = 'BufReadPost',
+-- })
 
 dapui = require('dapui')
 --- @see dap-adapter
@@ -14,7 +14,6 @@ dap = require('dap')
 local widgets = require('dap.ui.widgets')
 dap.defaults.fallback.focus_terminal = true
 require('nvim-dap-virtual-text').setup({})
-require('persistent-breakpoints').setup({ load_breakpoints_event = { 'BufReadPost' } })
 
 local osv = require('osv')
 dap.adapters = {

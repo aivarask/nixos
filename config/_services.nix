@@ -58,7 +58,8 @@
     };
   };
   services.unclutter = {
-    enable = true;
+    # unclutter-xfixes
+    enable = false;
     timeout = 1;
     extraOptions = [
       # "noevents"

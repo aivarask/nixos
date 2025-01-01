@@ -36,7 +36,6 @@ require('which-key').add({
 	{ '<leader>tc', [[:Telescope commands<cr>]] },
 	{ '<leader>td', [[:Telescope diagnostics<cr>]] },
 	{ '<leader>tk', [[:Telescope keymaps<cr>]] },
-	{ '<leader>tm', [[:Telescope manix<CR>]] },
 	{ '<leader>tn', [[:Telescope notify<CR>]] },
 	{ '<leader>to', [[:Telescope vim_options<CR>]] },
 	{ '<leader>tp', [[:Telescope paths<CR>]] },

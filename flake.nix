@@ -24,7 +24,7 @@
     LS_COLORS.url = "github:trapd00r/LS_COLORS";
     LS_COLORS.flake = false;
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    vim-overlay.url = "path:/etc/nixos/overlays/vim";
+    # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     suckless.url = "path:/etc/nixos/overlays/suckless";
     conky.url = "github:brndnmtthws/conky";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -70,10 +70,10 @@
           neovim-nightly-overlay.overlays.default
           nur.overlays.default
           rust-overlay.overlays.default
-          vim-overlay.overlays.default
+          # vim-overlay.overlays.default
           suckless.overlays.default
           (import ./overlays/LS_COLORS.nix LS_COLORS)
-          (import ./overlays/manix.nix { })
+          # (import ./overlays/manix.nix { })
           (import ./overlays/gow.nix pkgs)
         ];
       };
@@ -87,7 +87,7 @@
         imports =
           [
             inputs.nix-index-database.hmModules.nix-index
-            inputs.vim-overlay.home.default
+            # inputs.vim-overlay.home.default
             inputs.zsh.hmModules.default
             inputs.firefox.nixosModules.default
             nix-colors.homeManagerModules.default

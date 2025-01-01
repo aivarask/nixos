@@ -5,7 +5,7 @@ lib.mkMerge [
     # c
     environment.systemPackages = with pkgs; [
       glibc
-      glibcInfo
+      # glibcInfo
       clang
       clang-tools
       cmake

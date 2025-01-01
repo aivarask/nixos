@@ -46,6 +46,21 @@
           ];
         }
         {
+          name = "nix";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "nix";
+              bookmarks = [
+                { url = "https://nix.dev/"; }
+                { url = "https://nixos.org/manual/nixos/unstable/"; }
+                { url = "https://nixos.org/manual/nixpkgs/unstable/"; }
+                { url = "https://wiki.nixos.org/wiki/NixOS_Wiki"; }
+              ];
+            }
+          ];
+        }
+        {
           name = "about";
           toolbar = true;
           bookmarks = [
