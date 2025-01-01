@@ -100,16 +100,17 @@
     {
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       templates = rec {
-        default = {
-          path = ./templates/nix;
-          description = "nixos template";
+        default = module;
+        module = {
+          path = ./templates/module;
+          description = "module template";
         };
       };
       devShell."${system}" = pkgs.mkShell { };
       homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
+        modules = [ commonHome ];
         inherit pkgs;
         extraSpecialArgs = { inherit inputs system username; };
-        modules = [ commonHome ];
       };
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs { system = "aarch64-linux"; };

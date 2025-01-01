@@ -6,7 +6,7 @@
     systems.url = "systems";
   };
   outputs =
-    { ... }@inputs:
+    { nixpkgs, systems, ... }:
     let
       forEachSupportedSystem =
         f:

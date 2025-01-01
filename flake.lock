@@ -158,11 +158,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-LQWKBPgu9TpAB9e9LgoRPWSdInKH93QP6SBTiJbhUTc=",
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/firefox",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/firefox",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/firefox",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/firefox",
         "type": "path"
       }
     },
@@ -743,11 +743,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-EhEPYJfrPTNxLvsChxa1r9A9sRLD7qGPrs+yO4odIYo=",
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/matrix",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/matrix",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/matrix",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/matrix",
         "type": "path"
       }
     },
@@ -1369,11 +1369,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Wuv8ikhLRdj28gOl6/jSoClXZb+XC7QUUuBkC/ISjmQ=",
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/pistol",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/pistol",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/pistol",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/pistol",
         "type": "path"
       }
     },
@@ -1806,11 +1806,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-p+cvxk8HSAIiGH6dJX4B4ep7aGj6fPN926MkqGkAp4o=",
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/zsh",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/zsh",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/hxyjqh497anm6fvmczqdxw80290hch5l-source/zsh",
+        "path": "/nix/store/rbk2xh87hlxs0c800z8a8w41s49bj3gp-source/zsh",
         "type": "path"
       }
     }
