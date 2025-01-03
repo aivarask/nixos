@@ -3,3 +3,5 @@ manix "" |
 	grep '^# ' |
 	sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' |
 	fzf --preview="manix '{}'"
+
+# bindkey -s "^[OQ" "manix_fzf\n" # <F2>

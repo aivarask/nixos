@@ -17,6 +17,7 @@
     firefox.url = "./firefox";
     go.url = "./go";
     LS_COLORS.url = "./LS_COLORS";
+    manix.url = "./manix";
     matrix.url = "./matrix";
     suckless.url = "./suckless";
     pistol.url = "./pistol";
@@ -59,21 +60,16 @@
       };
       common = {
         imports =
-          [
-          ]
-          ++ f.i ./config
+          f.i ./config
           ++ f.i ./config/systemd
           ++ f.i ./config/systemd/timers
           ++ f.idash ./config/systemd/services
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
-          LS_COLORS.overlays.default
           firefox.overlays.nur
-          # --
           neovim-nightly-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default
-          # (import ./overlays/manix.nix { })
         ];
       };
     in
@@ -82,14 +78,17 @@
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = [
+          nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+          inputs.LS_COLORS.nixosModules.default
+          inputs.go.nixosModules.default
           inputs.suckless.nixosModules.default
           inputs.zsh.nixosModules.default
           inputs.pistol.nixosModules.default
+          inputs.manix.nixosModules.default
           inputs.matrix.nixosModules.default
           inputs.rust.nixosModules.default
           common
           ./hosts/dell.nix
-          nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           home-manager.nixosModules.home-manager
           {
             home-manager = {

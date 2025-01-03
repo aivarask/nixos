@@ -46,7 +46,6 @@ let
     telescope-symbols-nvim
     trouble-nvim
     todo-comments-nvim
-    # telescope-manix
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
@@ -130,7 +129,6 @@ in
   };
   home.packages = with pkgs; [
     neovim-remote
-    # manix
     awesome
     stylua
     lua-language-server
