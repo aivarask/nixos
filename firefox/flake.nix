@@ -13,7 +13,10 @@
           nixpkgs.overlays = [
             nur.overlays.default
           ];
-          imports = [ ./bookmarks.nix.nix ];
+          imports = [
+            ./_about.nix
+            ./_nix.nix
+          ];
           home.sessionVariables = {
             # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
             # environment.variables.VDPAU_DRIVER = "nvidia";
@@ -57,38 +60,7 @@
                     }
                   ];
                 }
-                {
-                  name = "about";
-                  toolbar = true;
-                  bookmarks = [
-                    {
-                      name = ":";
-                      bookmarks = [
-                        {
-                          name = ":about";
-                          url = "about:about";
-                        }
-                        {
-                          name = ":config";
-                          url = "about:config";
-                          # tags = [ ":config" ];
-                        }
-                        {
-                          name = ":logins";
-                          url = "about:logins";
-                        }
-                        {
-                          name = ":policies";
-                          url = "about:policies#documentation";
-                        }
-                        {
-                          name = ":support";
-                          url = "about:support";
-                        }
-                      ];
-                    }
-                  ];
-                }
+
               ];
               extensions = with pkgs.nur.repos.rycee.firefox-addons; [
                 # https://nur.nix-community.org/repos/rycee
