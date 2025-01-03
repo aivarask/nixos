@@ -1,39 +1,8 @@
 # vim: nofoldenable
 {
-  description = "matrix";
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-    systems.url = "systems";
-  };
   outputs =
-    { ... }@inputs:
-    let
-      forEachSupportedSystem =
-        f:
-        inputs.nixpkgs.lib.genAttrs inputs.systems (
-          system:
-          f {
-            pkgs = import inputs.nixpkgs { inherit system; };
-          }
-        );
-    in
+    { ... }:
     {
-      devShells = forEachSupportedSystem (
-        { pkgs }:
-        {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              cachix
-              lorri
-              niv
-              nixfmt-classic
-              statix
-              vulnix
-              haskellPackages.dhall-nix
-            ];
-          };
-        }
-      );
       nixosModules.default =
         # https://wiki.nixos.org/wiki/Matrix
         # https://nixos.org/manual/nixos/stable/#module-services-matrix

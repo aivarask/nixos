@@ -13,19 +13,16 @@
     nix-colors.url = "github:misterio77/nix-colors";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # vim-overlay.url = "path:/etc/nixos/overlays/vim";
-    suckless.url = "path:/etc/nixos/overlays/suckless";
     conky.url = "github:brndnmtthws/conky";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    hyprland-plugins.inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
-    # https://nix-community.github.io/haumea
-    systems.url = "github:nix-systems/default-linux";
-    zsh.url = "./zsh";
-    matrix.url = "./matrix";
     firefox.url = "./firefox";
-    pistol.url = "./pistol";
     LS_COLORS.url = "./LS_COLORS";
+    matrix.url = "./matrix";
+    suckless.url = "./suckless";
+    pistol.url = "./pistol";
     rust.url = "./rust";
+    wayland = "./wayland";
+    zsh.url = "./zsh";
+    # https://nix-community.github.io/haumea
   };
   outputs =
     {
@@ -124,12 +121,6 @@
             };
           }
         ];
-      };
-      templates = rec {
-        default = main;
-        main = {
-          path = ./templates/main;
-        };
       };
     };
 }

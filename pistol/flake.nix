@@ -1,27 +1,7 @@
 # vim: nofoldenable
 {
-  description = "pistol";
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-    systems.url = "systems";
-  };
-
   outputs =
-    {
-      self,
-      nixpkgs,
-      systems,
-    }:
-    let
-      forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs systems (
-          system:
-          f {
-            pkgs = import nixpkgs { inherit system; };
-          }
-        );
-    in
+    { ... }:
     {
       nixosModules.default =
         { pkgs, ... }:
@@ -29,7 +9,7 @@
           environment.systemPackages = with pkgs; [ pistol ];
           environment.profiles = [ "${./.}" ];
         };
-      nixosModules.hm =
+      nixosModules.home =
         { ... }:
         {
           programs.pistol = {
@@ -81,21 +61,5 @@
           };
 
         };
-      devShells = forEachSupportedSystem (
-        { pkgs }:
-        {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              cachix
-              lorri
-              niv
-              nixfmt-classic
-              statix
-              vulnix
-              haskellPackages.dhall-nix
-            ];
-          };
-        }
-      );
     };
 }
