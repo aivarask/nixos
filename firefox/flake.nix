@@ -3,15 +3,18 @@
   inputs.nur.url = "github:nix-community/NUR";
   # inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
-    { self, nur, ... }:
+    { self, ... }@inputs:
     {
-      overlays.nur = nur.overlays.default;
+      overlays.default = inputs.nur.overlays.default;
       nixosModules.home =
         { pkgs, ... }:
+        let
+          PKGS = (pkgs.extend self.overlays.default);
+        in
         {
           nixpkgs.overlays = [
-            # self.overlays.nur
-            nur.overlays.default
+            self.overlays.default
+            # nur.overlays.default
           ];
           imports = [
             ./_about.nix
@@ -44,7 +47,7 @@
             # };
             profiles.root = {
               isDefault = true;
-              extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              extensions = with PKGS.nur.repos.rycee.firefox-addons; [
                 # https://nur.nix-community.org/repos/rycee
                 privacy-badger
                 facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/

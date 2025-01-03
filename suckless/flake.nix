@@ -17,21 +17,6 @@
   outputs =
     { ... }@inputs:
     {
-      nixosModules.default =
-        { pkgs, ... }:
-        {
-          environment.systemPackages = with pkgs; [
-            dmenu
-            dwm
-            st
-            tabbed
-            emojipick
-            wmname
-            surf
-            svkbd
-            nsxiv
-          ];
-        };
       overlays.default = (
         _: super: with inputs; {
           dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
@@ -60,6 +45,21 @@
           });
         }
       );
+      nixosModules.default =
+        { pkgs, ... }:
+        {
+          environment.systemPackages = with pkgs; [
+            dmenu
+            dwm
+            st
+            tabbed
+            emojipick
+            wmname
+            surf
+            svkbd
+            nsxiv
+          ];
+        };
 
     };
 }

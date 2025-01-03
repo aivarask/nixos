@@ -35,7 +35,7 @@ static int borderpx = 2;
 
 #if OPENURLONCLICK_PATCH
 /* modkey options: ControlMask, ShiftMask or XK_ANY_MOD */
-static uint url_opener_modkey = XK_ANY_MOD;
+static uint url_opener_modkeY = XK_ANY_MOD;
 static char *url_opener = "xdg-open";
 #endif // OPENURLONCLICK_PATCH
 

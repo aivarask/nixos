@@ -66,7 +66,6 @@
           ++ f.idash ./config/systemd/services
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
-          firefox.overlays.nur
           neovim-nightly-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default
