@@ -3,13 +3,16 @@
   inputs.nur.url = "github:nix-community/NUR";
   # inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
-    { nur, ... }:
+    { self, nur, ... }:
     {
       overlays.nur = nur.overlays.default;
       nixosModules.home =
         { pkgs, ... }:
         {
-          nixpkgs.overlays = [ nur.overlays.default ];
+          nixpkgs.overlays = [
+            self.overlays.nur
+            # nur.overlays.default
+          ];
           imports = [
             ./_about.nix
             ./_nix.nix

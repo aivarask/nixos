@@ -20,7 +20,7 @@
     suckless.url = "./suckless";
     pistol.url = "./pistol";
     rust.url = "./rust";
-    wayland = "./wayland";
+    wayland.url = "./wayland";
     zsh.url = "./zsh";
     # https://nix-community.github.io/haumea
   };
