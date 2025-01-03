@@ -1,3 +1,4 @@
+# vim: nofoldenable
 {
   inputs = {
     dmenu-flexipatch = {
@@ -38,7 +39,7 @@
             configFile = super.writeText "config.h" (builtins.readFile ./dmenu-config.h);
             postPatch = ''
               ${oldAttrs.postPatch}
-              cp ${configFile} config.h 
+              cp ${configFile} config.h
             '';
           });
           dwm = super.dwm.overrideAttrs (oldAttrs: rec {
@@ -54,7 +55,7 @@
             configFile = super.writeText "config.h" (builtins.readFile ./st-config.h);
             postPatch = ''
               ${oldAttrs.postPatch}
-              cp ${configFile} config.h 
+              cp ${configFile} config.h
             '';
           });
         }

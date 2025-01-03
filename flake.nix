@@ -19,8 +19,6 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
-    LS_COLORS.url = "github:trapd00r/LS_COLORS";
-    LS_COLORS.flake = false;
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     suckless.url = "path:/etc/nixos/overlays/suckless";
@@ -34,6 +32,7 @@
     matrix.url = "./matrix";
     firefox.url = "./firefox";
     pistol.url = "./pistol";
+    LS_COLORS.url = "./LS_COLORS";
   };
   outputs =
     {
@@ -41,7 +40,6 @@
       home-manager,
       nixos-hardware,
       nix-colors,
-      LS_COLORS,
       ...
     }@inputs:
     let
@@ -71,9 +69,6 @@
       common = {
         imports =
           [
-            inputs.zsh.nixosModules.default
-            inputs.pistol.nixosModules.default
-            inputs.matrix.nixosModules.default
           ]
           ++ f.i ./config
           ++ f.i ./config/systemd
@@ -81,12 +76,12 @@
           ++ f.idash ./config/systemd/services
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
+          LS_COLORS.overlays.default
           neovim-nightly-overlay.overlays.default
           nur.overlays.default
           rust-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default
-          (import ./overlays/LS_COLORS.nix LS_COLORS)
           # (import ./overlays/manix.nix { })
           (import ./overlays/gow.nix pkgs)
         ];
@@ -98,6 +93,9 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = [
           inputs.suckless.nixosModules.default
+          inputs.zsh.nixosModules.default
+          inputs.pistol.nixosModules.default
+          inputs.matrix.nixosModules.default
           common
           ./config/.dell.nix
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia

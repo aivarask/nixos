@@ -136,12 +136,12 @@
     "firefox": {
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-aV+OaTegqS7q7PsaAQmuytxXsy57xgwqAE72H1WZPaY=",
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/firefox",
+        "narHash": "sha256-XaZzmPnNrDhBzYJuoxE64bzd0wUWcWLt5IuqoiV4/NQ=",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/firefox",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/firefox",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/firefox",
         "type": "path"
       }
     },
@@ -645,11 +645,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-EhEPYJfrPTNxLvsChxa1r9A9sRLD7qGPrs+yO4odIYo=",
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/matrix",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/matrix",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/matrix",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/matrix",
         "type": "path"
       }
     },
@@ -1111,11 +1111,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Wuv8ikhLRdj28gOl6/jSoClXZb+XC7QUUuBkC/ISjmQ=",
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/pistol",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/pistol",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/pistol",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/pistol",
         "type": "path"
       }
     },
@@ -1414,11 +1414,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-p+cvxk8HSAIiGH6dJX4B4ep7aGj6fPN926MkqGkAp4o=",
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/zsh",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/zsh",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/0qzy2v8dvh9l6zw2alhknixhhw3yp4hz-source/zsh",
+        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/zsh",
         "type": "path"
       }
     }
