@@ -13,7 +13,6 @@
     nil
     nurl
     deadnix
-    nixos-generators
     fh # flakehub
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";

@@ -9,15 +9,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    nix-on-droid.url = "github:nix-community/nix-on-droid/release-24.05";
-    nix-on-droid.inputs.nixpkgs.follows = "nixpkgs";
-    nix-on-droid.inputs.home-manager.follows = "home-manager";
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     suckless.url = "path:/etc/nixos/overlays/suckless";
@@ -32,6 +25,7 @@
     firefox.url = "./firefox";
     pistol.url = "./pistol";
     LS_COLORS.url = "./LS_COLORS";
+    rust = "./rust";
   };
   outputs =
     {
@@ -58,7 +52,7 @@
             inputs.nix-index-database.hmModules.nix-index
             # inputs.vim-overlay.home.default
             inputs.zsh.hmModules.default
-            inputs.firefox.nixosModules.default
+            inputs.firefox.nixosModules.home
             nix-colors.homeManagerModules.default
           ]
           ++ f.i_ ./config
@@ -76,8 +70,9 @@
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           LS_COLORS.overlays.default
+          # firefox.overlays.nur
+          # --
           neovim-nightly-overlay.overlays.default
-          rust-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default
           # (import ./overlays/manix.nix { })
@@ -95,7 +90,7 @@
           inputs.pistol.nixosModules.default
           inputs.matrix.nixosModules.default
           common
-          ./config/.dell.nix
+          ./hosts/dell.nix
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           home-manager.nixosModules.home-manager
           {

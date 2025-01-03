@@ -1,18 +1,15 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
 {
-  inputs = {
-    nur.url = "github:nix-community/NUR";
-  };
-
+  inputs.nur.url = "github:nix-community/NUR";
+  # inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nur, ... }:
     {
-      nixosModules.default =
+      overlays.nur = nur.overlays.default;
+      nixosModules.home =
         { pkgs, ... }:
         {
-          nixpkgs.overlays = [
-            nur.overlays.default
-          ];
+          nixpkgs.overlays = [ nur.overlays.default ];
           imports = [
             ./_about.nix
             ./_nix.nix
@@ -44,6 +41,23 @@
             # };
             profiles.root = {
               isDefault = true;
+              # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              #   # https://nur.nix-community.org/repos/rycee
+              #   privacy-badger
+              #   facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
+              #   clearurls
+              #   ublock-origin
+              #   foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
+              #   # sponsorblock
+              #   # vimium
+              #   # df-youtube
+              #   # decentraleyes
+              #   # h264ify
+              #   # browserpass
+              #   # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
+              #   # stylus
+              #   # leechblock-ng
+              # ];
               bookmarks = [
                 # https://blog.thalheim.io
                 {
@@ -60,24 +74,6 @@
                     }
                   ];
                 }
-
-              ];
-              extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-                # https://nur.nix-community.org/repos/rycee
-                privacy-badger
-                facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
-                clearurls
-                ublock-origin
-                foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
-                # sponsorblock
-                # vimium
-                # df-youtube
-                # decentraleyes
-                # h264ify
-                # browserpass
-                # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
-                # stylus
-                # leechblock-ng
               ];
               settings = {
                 # ~/.mozilla/firefox/root/user.js
