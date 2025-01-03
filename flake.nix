@@ -49,10 +49,28 @@
       pkgs = nixpkgs.legacyPackages.${system};
       username = "root";
       f = import ./func.nix;
+      commonHome = {
+        home.stateVersion = "23.05";
+        home.username = username;
+        home.homeDirectory = "/root";
+        home.enableNixpkgsReleaseCheck = false;
+        manual.json.enable = true;
+        colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+        imports =
+          [
+            inputs.nix-index-database.hmModules.nix-index
+            # inputs.vim-overlay.home.default
+            inputs.zsh.hmModules.default
+            inputs.firefox.nixosModules.default
+            nix-colors.homeManagerModules.default
+          ]
+          ++ f.i_ ./config
+          ++ f.i ./config/programs_
+          ++ f.i_ ./lua;
+      };
       common = {
         imports =
           [
-            inputs.suckless.nixosModules.default
             inputs.zsh.nixosModules.default
             inputs.pistol.nixosModules.default
             inputs.matrix.nixosModules.default
@@ -73,32 +91,11 @@
           (import ./overlays/gow.nix pkgs)
         ];
       };
-      commonHome = {
-        home.stateVersion = "23.05";
-        home.username = username;
-        home.homeDirectory = "/root";
-        home.enableNixpkgsReleaseCheck = false;
-        manual.json.enable = true;
-        colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports =
-          [
-            inputs.nix-index-database.hmModules.nix-index
-            # inputs.vim-overlay.home.default
-            inputs.zsh.hmModules.default
-            inputs.firefox.nixosModules.default
-            nix-colors.homeManagerModules.default
-          ]
-          ++ f.i_ ./config
-          ++ f.i ./config/programs_
-          ++ f.i_ ./lua;
-      };
     in
     {
       devShell."${system}" = pkgs.mkShell { };
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
         modules = [
           inputs.suckless.nixosModules.default
           common
@@ -113,6 +110,7 @@
             };
           }
         ];
+        specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
         # B450 AORUS M
