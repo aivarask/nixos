@@ -18,7 +18,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    nur.url = "github:nix-community/NUR";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     suckless.url = "path:/etc/nixos/overlays/suckless";
@@ -78,7 +77,6 @@
         nixpkgs.overlays = with inputs; [
           LS_COLORS.overlays.default
           neovim-nightly-overlay.overlays.default
-          nur.overlays.default
           rust-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default

@@ -1,6 +1,21 @@
 {
   "nodes": {
     "LS_COLORS": {
+      "inputs": {
+        "LS_COLORS": "LS_COLORS_2"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-oTi0qsygMyUKtg/PkECM89kc2QQ+InkAmfgXO4Tjhu4=",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/LS_COLORS",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/LS_COLORS",
+        "type": "path"
+      }
+    },
+    "LS_COLORS_2": {
       "flake": false,
       "locked": {
         "lastModified": 1734720078,
@@ -137,11 +152,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-XaZzmPnNrDhBzYJuoxE64bzd0wUWcWLt5IuqoiV4/NQ=",
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/firefox",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/firefox",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/firefox",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/firefox",
         "type": "path"
       }
     },
@@ -645,11 +660,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-EhEPYJfrPTNxLvsChxa1r9A9sRLD7qGPrs+yO4odIYo=",
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/matrix",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/matrix",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/matrix",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/matrix",
         "type": "path"
       }
     },
@@ -1111,11 +1126,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Wuv8ikhLRdj28gOl6/jSoClXZb+XC7QUUuBkC/ISjmQ=",
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/pistol",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/pistol",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/pistol",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/pistol",
         "type": "path"
       }
     },
@@ -1414,11 +1429,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-p+cvxk8HSAIiGH6dJX4B4ep7aGj6fPN926MkqGkAp4o=",
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/zsh",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/zsh",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/rjq7a13vvv5sy2k8w8sl0gkhwli1wvyv-source/zsh",
+        "path": "/nix/store/k5g6bn8rzlm8n6x27kf9f3n8ap3s4i1c-source/zsh",
         "type": "path"
       }
     }

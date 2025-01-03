@@ -1,11 +1,18 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
 {
+  inputs = {
+    nur.url = "github:nix-community/NUR";
+  };
+
   outputs =
-    { ... }:
+    { nur, ... }:
     {
       nixosModules.default =
         { pkgs, ... }:
         {
+          nixpkgs.overlays = [
+            nur.overlays.default
+          ];
           imports = [ ./bookmarks.nix.nix ];
           home.sessionVariables = {
             # environment.variables.LIBVA_DRIVER_NAME = "nvidia";

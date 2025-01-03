@@ -25,6 +25,10 @@
               name = "wiki.nixos.org/wiki";
               url = "https://wiki.nixos.org/wiki/NixOS_Wiki";
             }
+            {
+              name = "nur.nix-community.org/";
+              url = "https://nur.nix-community.org/";
+            }
           ];
         }
       ];
