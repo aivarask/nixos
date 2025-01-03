@@ -52,7 +52,10 @@
             {
               name = "nix";
               bookmarks = [
-                { url = "https://nix.dev/"; }
+                {
+                  name = "nix.dev/";
+                  url = "https://nix.dev/";
+                }
                 { url = "https://nixos.org/manual/nixos/unstable/"; }
                 { url = "https://nixos.org/manual/nixpkgs/unstable/"; }
                 { url = "https://wiki.nixos.org/wiki/NixOS_Wiki"; }

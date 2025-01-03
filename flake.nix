@@ -3,8 +3,6 @@
   description = "NixOS config";
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
-    nixvirt.url = "https://flakehub.com/f/AshleyYakeley/NixVirt/0.5.0.tar.gz";
-    nixvirt.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
     home-manager.url = "github:nix-community/home-manager";
@@ -43,9 +41,7 @@
       home-manager,
       nixos-hardware,
       nix-colors,
-      nix-on-droid,
       LS_COLORS,
-      nixvirt,
       ...
     }@inputs:
     let
@@ -98,64 +94,51 @@
       };
     in
     {
-      formatter."${system}" = pkgs.nixfmt-rfc-style;
-      templates = rec {
-        default = module;
-        module = {
-          path = ./templates/module;
-          description = "module template";
-        };
-      };
       devShell."${system}" = pkgs.mkShell { };
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
-        modules = [ commonHome ];
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs system username; };
+      formatter."${system}" = pkgs.nixfmt-rfc-style;
+      nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          inputs.suckless.nixosModules.default
+          common
+          ./config/.dell.nix
+          nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.root = commonHome;
+            };
+          }
+        ];
       };
-      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-linux"; };
-        modules = [ ./hosts/.redmi.nix ];
+      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+        # B450 AORUS M
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          inputs.suckless.nixosModules.default
+          common
+          ./config/.pc.nix
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          nixos-hardware.nixosModules.common-hidpi
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.root = commonHome;
+            };
+          }
+        ];
       };
-      nixosConfigurations = {
-        dell = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            nixvirt.nixosModules.default
-            inputs.suckless.nixosModules.default
-            common
-            ./config/.dell.nix
-            nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = commonHome;
-              };
-            }
-          ];
-        };
-        pc = nixpkgs.lib.nixosSystem {
-          # B450 AORUS M
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.suckless.nixosModules.default
-            common
-            ./config/.pc.nix
-            nixos-hardware.nixosModules.common-cpu-amd-pstate
-            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-            nixos-hardware.nixosModules.common-hidpi
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.root = commonHome;
-              };
-            }
-          ];
+      templates = rec {
+        default = main;
+        main = {
+          path = ./templates/main;
         };
       };
     };

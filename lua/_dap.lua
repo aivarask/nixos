@@ -15,13 +15,13 @@ local widgets = require('dap.ui.widgets')
 dap.defaults.fallback.focus_terminal = true
 require('nvim-dap-virtual-text').setup({})
 
-local osv = require('osv')
+-- local osv = require('osv')
 dap.adapters = {
 	nlua = function(callback, config)
 		callback({ type = 'server', host = '127.0.0.1', port = 8086 })
 	end,
 	run_this = function(callback, config, parent)
-		require('osv').run_this()
+		-- require('osv').run_this()
 	end,
 }
 dap.configurations.lua = {
