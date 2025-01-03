@@ -25,7 +25,7 @@
     firefox.url = "./firefox";
     pistol.url = "./pistol";
     LS_COLORS.url = "./LS_COLORS";
-    rust = "./rust";
+    rust.url = "./rust";
   };
   outputs =
     {
@@ -89,6 +89,7 @@
           inputs.zsh.nixosModules.default
           inputs.pistol.nixosModules.default
           inputs.matrix.nixosModules.default
+          inputs.rust.nixosModules.default
           common
           ./hosts/dell.nix
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
