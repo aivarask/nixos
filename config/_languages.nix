@@ -28,19 +28,6 @@ lib.mkMerge [
       # ];
     };
   }
-  rec {
-    # go
-    environment.sessionVariables.GOPATH = "$HOME/.go";
-    environment.sessionVariables.PATH = [ "${environment.sessionVariables.GOPATH}" ];
-    environment.systemPackages = with pkgs; [
-      go
-      gotools
-      gopls
-      templ
-      gow
-      delve
-    ];
-  }
   {
     # sql
     environment.systemPackages = with pkgs; [

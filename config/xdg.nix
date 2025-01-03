@@ -3,17 +3,17 @@
 {
   # environment.variables.GTK_USE_PORTAL = "1";
   environment.systemPackages = with pkgs; [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-kde
   ];
   xdg = {
     portal = {
-      enable = true;
+      enable = false;
       extraPortals = with pkgs; [
+        # xdg-desktop-portal
         # xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
+        xdg-desktop-portal-kde
       ];
+      config = { };
     };
   };
   xdg.mime = {

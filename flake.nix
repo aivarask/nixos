@@ -15,6 +15,7 @@
     # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     conky.url = "github:brndnmtthws/conky";
     firefox.url = "./firefox";
+    go.url = "./go";
     LS_COLORS.url = "./LS_COLORS";
     matrix.url = "./matrix";
     suckless.url = "./suckless";
@@ -67,13 +68,12 @@
           ++ f.i ./network;
         nixpkgs.overlays = with inputs; [
           LS_COLORS.overlays.default
-          # firefox.overlays.nur
+          firefox.overlays.nur
           # --
           neovim-nightly-overlay.overlays.default
           # vim-overlay.overlays.default
           suckless.overlays.default
           # (import ./overlays/manix.nix { })
-          (import ./overlays/gow.nix pkgs)
         ];
       };
     in

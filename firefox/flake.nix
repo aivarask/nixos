@@ -10,8 +10,8 @@
         { pkgs, ... }:
         {
           nixpkgs.overlays = [
-            self.overlays.nur
-            # nur.overlays.default
+            # self.overlays.nur
+            nur.overlays.default
           ];
           imports = [
             ./_about.nix
@@ -44,23 +44,23 @@
             # };
             profiles.root = {
               isDefault = true;
-              # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-              #   # https://nur.nix-community.org/repos/rycee
-              #   privacy-badger
-              #   facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
-              #   clearurls
-              #   ublock-origin
-              #   foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
-              #   # sponsorblock
-              #   # vimium
-              #   # df-youtube
-              #   # decentraleyes
-              #   # h264ify
-              #   # browserpass
-              #   # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
-              #   # stylus
-              #   # leechblock-ng
-              # ];
+              extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                # https://nur.nix-community.org/repos/rycee
+                privacy-badger
+                facebook-container # https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
+                clearurls
+                ublock-origin
+                foxytab # https://addons.mozilla.org/en-US/firefox/addon/foxytab/
+                # sponsorblock
+                # vimium
+                # df-youtube
+                # decentraleyes
+                # h264ify
+                # browserpass
+                # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
+                # stylus
+                # leechblock-ng
+              ];
               bookmarks = [
                 # https://blog.thalheim.io
                 {
