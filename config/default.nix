@@ -61,16 +61,5 @@ lib.mkMerge [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIANknZM5gmvqk6PlxOsiiPtmGEOH6HCIGs/YSarBXfEW root@pc"
       ];
     };
-    users.users.ak = {
-      shell = pkgs.zsh;
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "audio"
-        "pulse"
-        "video"
-        "disk"
-      ];
-    };
   }
 ]

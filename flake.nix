@@ -6,7 +6,7 @@
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    conky.url = "github:brndnmtthws/conky";
+    audio.url = "./audio";
     go.url = "./go";
     lib.url = "./lib";
     LS_COLORS.url = "./LS_COLORS";
@@ -31,6 +31,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       commonModules = [
+        inputs.audio.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
         inputs.go.nixosModules.default
