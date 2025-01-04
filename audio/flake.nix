@@ -1,4 +1,6 @@
 # vim: nofoldenable
+# https://wiki.nixos.org/wiki/Audio_production
+# https://github.com/musnix/musnix
 {
   inputs = {
     musnix.url = "github:musnix/musnix";
@@ -7,7 +9,7 @@
     { ... }@inputs:
     {
       nixosModules.default =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
         {
           imports = [
             inputs.musnix.nixosModules.musnix
@@ -16,16 +18,23 @@
             libbs2b
             ladspaPlugins
             lsof
-            # vital
-            # bitwig-studio
+            vital
+            distrho-ports
+            lsp-plugins
+            bitwig-studio
             mixxx
+            yoshimi
+            guitarix
+            # muse
+            infamousPlugins
+            mamba
           ];
           # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
           # environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "0";
-          # environment.variables.QT_FONT_DPI = "144";
+          environment.variables.QT_FONT_DPI = config.services.xserver.dpi;
           services.udev.packages = [
             pkgs.mixxx
-            # pkgs.bitwig-studio
+            pkgs.bitwig-studio
           ];
         };
     };

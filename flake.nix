@@ -1,6 +1,5 @@
 # vim: nofoldenable
 {
-  description = "NixOS config";
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     templates.url = "github:NixOS/templates";
@@ -8,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     audio.url = "./audio";
     go.url = "./go";
+    lf.url = "./lf";
     lib.url = "./lib";
     LS_COLORS.url = "./LS_COLORS";
     manix.url = "./manix";
@@ -32,6 +32,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       commonModules = [
         inputs.audio.nixosModules.default
+        inputs.lf.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
         inputs.go.nixosModules.default
@@ -63,6 +64,7 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
+                  inputs.lf.nixosModules.home
                   inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default
