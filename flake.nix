@@ -8,7 +8,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     conky.url = "github:brndnmtthws/conky";
     go.url = "./go";
-    hm.url = "./hm";
     lib.url = "./lib";
     LS_COLORS.url = "./LS_COLORS";
     manix.url = "./manix";
@@ -19,6 +18,12 @@
     vim.url = "./vim";
     wayland.url = "./wayland";
     zsh.url = "./zsh";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-colors.url = "github:misterio77/nix-colors";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    firefox.url = "./firefox";
     # https://nix-community.github.io/haumea
   };
   outputs =
@@ -26,11 +31,11 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
       commonModules = [
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
         inputs.go.nixosModules.default
-        inputs.hm.nixosModules.default
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.pistol.nixosModules.default
@@ -50,6 +55,33 @@
               ++ i ./network
             );
         }
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.root = {
+              imports =
+                with inputs.lib.packages."${system}".lib;
+                [
+                  inputs.zsh.hmModules.default
+                  inputs.firefox.nixosModules.home
+                  inputs.nix-colors.homeManagerModules.default
+                  inputs.nix-index-database.hmModules.nix-index
+                ]
+                ++ i_ ./config
+                ++ i ./config/programs_
+                ++ i_ ./lua;
+
+              home.stateVersion = "23.05";
+              home.username = "root";
+              home.homeDirectory = "/root";
+              home.enableNixpkgsReleaseCheck = false;
+              manual.json.enable = true;
+              colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+            };
+          };
+        }
 
       ];
     in
@@ -60,7 +92,6 @@
         modules = commonModules ++ [
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           ./dell.nix
-
         ];
         specialArgs = { inherit inputs; };
       };
