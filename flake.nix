@@ -11,8 +11,6 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # vim-overlay.url = "path:/etc/nixos/overlays/vim";
     conky.url = "github:brndnmtthws/conky";
     firefox.url = "./firefox";
     go.url = "./go";
@@ -22,6 +20,7 @@
     suckless.url = "./suckless";
     pistol.url = "./pistol";
     rust.url = "./rust";
+    vim.url = "./vim";
     wayland.url = "./wayland";
     zsh.url = "./zsh";
     # https://nix-community.github.io/haumea
@@ -65,11 +64,6 @@
           ++ f.i ./config/systemd/timers
           ++ f.idash ./config/systemd/services
           ++ f.i ./network;
-        nixpkgs.overlays = with inputs; [
-          neovim-nightly-overlay.overlays.default
-          # vim-overlay.overlays.default
-          suckless.overlays.default
-        ];
       };
     in
     {
@@ -80,12 +74,13 @@
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           inputs.LS_COLORS.nixosModules.default
           inputs.go.nixosModules.default
-          inputs.suckless.nixosModules.default
-          inputs.zsh.nixosModules.default
-          inputs.pistol.nixosModules.default
           inputs.manix.nixosModules.default
           inputs.matrix.nixosModules.default
+          inputs.pistol.nixosModules.default
           inputs.rust.nixosModules.default
+          inputs.suckless.nixosModules.default
+          inputs.vim.nixosModules.default
+          inputs.zsh.nixosModules.default
           common
           ./hosts/dell.nix
           home-manager.nixosModules.home-manager

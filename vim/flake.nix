@@ -1,6 +1,7 @@
 # vim: nofolenable
 {
   inputs = {
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = {
       url = "github:MTDL9/vim-log-highlighting";
       flake = false;
@@ -37,38 +38,14 @@
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
-
     tree-sitter-language-injection = {
       url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
       flake = false;
     };
   };
   outputs =
-    { ... }@inputs:
+    { self, ... }@inputs:
     {
-      home.default =
-        { pkgs, ... }:
-        let
-          common = with pkgs.vimPlugins; [ sxhkd-vim ];
-        in
-        {
-          programs.vim.plugins = common;
-          programs.neovim.plugins =
-            common
-            ++ (with pkgs.vimPlugins; [
-              # common
-              vim-log-highlighting
-              vim-interestingwords
-              # nvim
-              one-small-step-for-vimkind
-              # nvim-lsp-file-operations
-              # nvim-dap-vscode-js
-              # neotest-playwright
-              persistent-breakpoints
-              # smart-semicolon
-              tree-sitter-language-injection
-            ]);
-        };
       overlays.default = (
         _: prev:
         let
@@ -152,5 +129,36 @@
             };
         }
       );
+      nixosModules.default =
+        { ... }:
+        {
+          nixpkgs.overlays = [
+            inputs.neovim-nightly-overlay.overlays.default
+            self.overlays.default
+          ];
+        };
+      nixosModules.home =
+        { pkgs, ... }:
+        let
+          common = with pkgs.vimPlugins; [ sxhkd-vim ];
+        in
+        {
+          programs.vim.plugins = common;
+          programs.neovim.plugins =
+            common
+            ++ (with pkgs.vimPlugins; [
+              # common
+              vim-log-highlighting
+              vim-interestingwords
+              # nvim
+              one-small-step-for-vimkind
+              # nvim-lsp-file-operations
+              # nvim-dap-vscode-js
+              # neotest-playwright
+              persistent-breakpoints
+              # smart-semicolon
+              tree-sitter-language-injection
+            ]);
+        };
     };
 }

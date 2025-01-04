@@ -15,7 +15,7 @@
     };
   };
   outputs =
-    { ... }@inputs:
+    { self, ... }@inputs:
     {
       overlays.default = (
         _: super: with inputs; {
@@ -48,6 +48,7 @@
       nixosModules.default =
         { pkgs, ... }:
         {
+          nixpkgs.overlays = [ self.overlays.default ];
           environment.systemPackages = with pkgs; [
             dmenu
             dwm
