@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-pistol -c "${%:A:h}"/../pistol.conf "$@"
+# echo "${0:A:h}"/../pistol.conf "$@"
+pistol -c "${0:A:h}"/../pistol.conf "$@"

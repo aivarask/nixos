@@ -1,17 +1,17 @@
 {
-  description = "zsh";
   inputs.nixpkgs.url = "nixpkgs";
   outputs =
     { nixpkgs, ... }:
     let
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages."${system}";
     in
     {
       # https://github.com/NixOS/nix/blob/master/src/nix/flake-check.md
       # devShells."x86_64-linux".default = pkgs.mkShell {};
       # checks."x86_64-linux".zoo = import ./test.nix nixpkgs.legacyPackages."x86_64-linux";
 
-      checks."x86_64-linux".zsh = pkgs.testers.runNixOSTest {
+      checks."${system}".zsh = pkgs.testers.runNixOSTest {
         name = "zsh";
         nodes.machine =
           { pkgs, ... }:
@@ -29,7 +29,7 @@
             "${pkgs.zsh-abbr}"
           ];
         };
-      hmModules.default =
+      nixosModules.home =
         {
           pkgs,
           lib,

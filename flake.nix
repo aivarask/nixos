@@ -24,14 +24,12 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     firefox.url = "./firefox";
-    # https://nix-community.github.io/haumea
   };
   outputs =
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-
       commonModules = [
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
@@ -64,7 +62,7 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
-                  inputs.zsh.hmModules.default
+                  inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
@@ -72,7 +70,6 @@
                 ++ i_ ./config
                 ++ i ./config/programs_
                 ++ i_ ./lua;
-
               home.stateVersion = "23.05";
               home.username = "root";
               home.homeDirectory = "/root";
@@ -82,10 +79,14 @@
             };
           };
         }
-
       ];
     in
     {
+      checks."${system}".default = pkgs.testers.runNixOSTest {
+        name = "self";
+        nodes.machine = { pkgs, ... }: { };
+        testScript = builtins.readFile ./flake.test.py;
+      };
       devShell."${system}" = pkgs.mkShell { };
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
