@@ -1,6 +1,6 @@
+# vim: nofoldenable
 {
   outputs = _: {
-
     nixosModules.default =
       { pkgs, ... }:
       {

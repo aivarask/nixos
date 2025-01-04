@@ -7,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     audio.url = "./audio";
     fzf.url = "./fzf";
+    git.url = "./git";
     go.url = "./go";
     lf.url = "./lf";
     lib.url = "./lib";
@@ -32,8 +33,10 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       commonModules = [
+        { environment.systemPackages = [ pkgs.git ]; }
         inputs.audio.nixosModules.default
         inputs.fzf.nixosModules.default
+        inputs.git.nixosModules.default
         inputs.lf.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
@@ -67,6 +70,7 @@
                 with inputs.lib.packages."${system}".lib;
                 [
                   inputs.fzf.nixosModules.home
+                  inputs.git.nixosModules.home
                   inputs.lf.nixosModules.home
                   inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
@@ -74,7 +78,6 @@
                   inputs.nix-index-database.hmModules.nix-index
                 ]
                 ++ i_ ./config
-                ++ i ./config/programs_
                 ++ i_ ./lua;
               home.stateVersion = "23.05";
               home.username = "root";
