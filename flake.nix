@@ -14,6 +14,7 @@
     conky.url = "github:brndnmtthws/conky";
     firefox.url = "./firefox";
     go.url = "./go";
+    lib.url = "./lib";
     LS_COLORS.url = "./LS_COLORS";
     manix.url = "./manix";
     matrix.url = "./matrix";
@@ -72,6 +73,7 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = [
           nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+          inputs.lib.nixosModules.default
           inputs.LS_COLORS.nixosModules.default
           inputs.go.nixosModules.default
           inputs.manix.nixosModules.default
