@@ -6,6 +6,7 @@
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     audio.url = "./audio";
+    fzf.url = "./fzf";
     go.url = "./go";
     lf.url = "./lf";
     lib.url = "./lib";
@@ -32,6 +33,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       commonModules = [
         inputs.audio.nixosModules.default
+        inputs.fzf.nixosModules.default
         inputs.lf.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
@@ -64,6 +66,7 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
+                  inputs.fzf.nixosModules.home
                   inputs.lf.nixosModules.home
                   inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
