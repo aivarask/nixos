@@ -30,9 +30,6 @@ alias nf='nixos-rebuild switch --fast'\
 	nicotine_='export GDK_SCALE="1.5"; nicotine'\
 	inkscape_='export GDK_SCALE="1.5"; inkscape'\
 
-export TMUX_CONFIG='/etc/nixos/config/files/tmux.conf'
-alias tmux_='tmux -f $TMUX_CONFIG'
-
 export LAZYGIT_CONFIG='/etc/nixos/config/files/lazygit.yml'
 alias lazygit_='lazygit -ucf $LAZYGIT_CONFIG'
 alias \\l='lazygit_'

@@ -1,5 +1,0 @@
-# https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
-[[language]]
-name = "toml"
-formatter = { command = "taplo", args = ["fmt", "-"] }
-auto-format = true

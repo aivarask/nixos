@@ -1,3 +1,0 @@
-# vim:nofoldenable
-_: {
-}
