@@ -5,8 +5,6 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -14,6 +12,7 @@
     conky.url = "github:brndnmtthws/conky";
     firefox.url = "./firefox";
     go.url = "./go";
+    hm.url = "./hm";
     lib.url = "./lib";
     LS_COLORS.url = "./LS_COLORS";
     manix.url = "./manix";
@@ -30,7 +29,6 @@
     {
       nixpkgs,
       home-manager,
-      nixos-hardware,
       nix-colors,
       ...
     }@inputs:
@@ -58,67 +56,49 @@
           ++ f.i ./config/programs_
           ++ f.i_ ./lua;
       };
-      common = {
-        imports =
-          f.i ./config
-          ++ f.i ./config/systemd
-          # ++ f.i ./config/systemd/timers
-          ++ f.idash ./config/systemd/services
-        # ++ f.i ./network
-        ;
-      };
+      commonModules = [
+        inputs.lib.nixosModules.default
+        inputs.LS_COLORS.nixosModules.default
+        inputs.go.nixosModules.default
+        inputs.manix.nixosModules.default
+        inputs.matrix.nixosModules.default
+        inputs.pistol.nixosModules.default
+        inputs.rust.nixosModules.default
+        inputs.suckless.nixosModules.default
+        inputs.vim.nixosModules.default
+        inputs.zsh.nixosModules.default
+        {
+          imports =
+            with inputs.lib.packages."${system}".lib;
+            (
+              [ ]
+              ++ i ./config
+              ++ i ./config/systemd
+              ++ i ./config/systemd/timers
+              ++ idash ./config/systemd/services
+              ++ i ./network
+            );
+        }
+
+      ];
     in
     {
       devShell."${system}" = pkgs.mkShell { };
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        modules = [
-          nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-          inputs.lib.nixosModules.default
-          inputs.LS_COLORS.nixosModules.default
-          inputs.go.nixosModules.default
-          inputs.manix.nixosModules.default
-          inputs.matrix.nixosModules.default
-          inputs.pistol.nixosModules.default
-          inputs.rust.nixosModules.default
-          inputs.suckless.nixosModules.default
-          inputs.vim.nixosModules.default
-          inputs.zsh.nixosModules.default
-          {
-            imports =
-              with inputs.lib.packages."${system}".lib;
-              (
-                [ ]
-                ++ i ./config
-                ++ i ./config/systemd
-                ++ i ./config/systemd/timers
-                ++ idash ./config/systemd/services
-                ++ i ./network
-              );
-          }
+        modules = commonModules ++ [
+          inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           ./dell.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.root = commonHome;
-            };
-          }
+
         ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-        # B450 AORUS M
-        inherit system;
-        specialArgs = { inherit inputs; };
         modules = [
-          inputs.suckless.nixosModules.default
-          common
-          ./config/.pc.nix
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nixos-hardware.nixosModules.common-hidpi
+          inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          inputs.nixos-hardware.nixosModules.common-hidpi
+          ./pc.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -128,6 +108,7 @@
             };
           }
         ];
+        specialArgs = { inherit inputs; };
       };
     };
 }

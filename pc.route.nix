@@ -1,9 +1,6 @@
 # vim: nofoldenable
 {
-  config,
-  pkgs,
   lib,
-  inputs,
   ...
 }:
 {

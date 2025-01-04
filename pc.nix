@@ -1,4 +1,5 @@
 # vim: foldlevel=3 nofoldenable
+# B450 AORUS M
 {
   config,
   lib,
@@ -9,7 +10,7 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./.pc.route.nix
+    ./pc.route.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot = {
@@ -40,6 +41,7 @@
     };
   };
   swapDevices = [ ];
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     fancontrol = {
