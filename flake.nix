@@ -5,12 +5,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-colors.url = "github:misterio77/nix-colors";
     conky.url = "github:brndnmtthws/conky";
-    firefox.url = "./firefox";
     go.url = "./go";
     hm.url = "./hm";
     lib.url = "./lib";
@@ -26,40 +22,15 @@
     # https://nix-community.github.io/haumea
   };
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      nix-colors,
-      ...
-    }@inputs:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      username = "root";
-      f = import ./func.nix;
-      commonHome = {
-        home.stateVersion = "23.05";
-        home.username = username;
-        home.homeDirectory = "/root";
-        home.enableNixpkgsReleaseCheck = false;
-        manual.json.enable = true;
-        colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-        imports =
-          [
-            inputs.nix-index-database.hmModules.nix-index
-            # inputs.vim-overlay.home.default
-            inputs.zsh.hmModules.default
-            inputs.firefox.nixosModules.home
-            nix-colors.homeManagerModules.default
-          ]
-          ++ f.i_ ./config
-          ++ f.i ./config/programs_
-          ++ f.i_ ./lua;
-      };
       commonModules = [
         inputs.lib.nixosModules.default
         inputs.LS_COLORS.nixosModules.default
         inputs.go.nixosModules.default
+        inputs.hm.nixosModules.default
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.pistol.nixosModules.default
@@ -94,19 +65,11 @@
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-        modules = [
+        modules = commonModules ++ [
           inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           inputs.nixos-hardware.nixosModules.common-hidpi
           ./pc.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.root = commonHome;
-            };
-          }
         ];
         specialArgs = { inherit inputs; };
       };
