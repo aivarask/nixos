@@ -8,9 +8,6 @@
     in
     {
       # https://github.com/NixOS/nix/blob/master/src/nix/flake-check.md
-      # devShells."x86_64-linux".default = pkgs.mkShell {};
-      # checks."x86_64-linux".zoo = import ./test.nix nixpkgs.legacyPackages."x86_64-linux";
-
       checks."${system}".zsh = pkgs.testers.runNixOSTest {
         name = "zsh";
         nodes.machine =

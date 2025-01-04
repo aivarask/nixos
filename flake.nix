@@ -84,10 +84,10 @@
     {
       checks."${system}".default = pkgs.testers.runNixOSTest {
         name = "self";
-        nodes.machine = { pkgs, ... }: { };
+        nodes.machine = { ... }: { };
         testScript = builtins.readFile ./flake.test.py;
       };
-      devShell."${system}" = pkgs.mkShell { };
+      devShells."${system}".default = pkgs.mkShell { };
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
