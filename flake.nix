@@ -7,7 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     audio.url = "./audio";
     fzf.url = "./fzf";
-    git.url = "./git";
+    git.url = "./_git";
     go.url = "./go";
     lf.url = "./lf";
     lib.url = "./lib";
