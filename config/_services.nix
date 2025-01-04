@@ -77,6 +77,9 @@
     enableCtrlAltBackspace = true;
     enableTCP = true;
     upscaleDefaultCursor = true;
+    config = ''
+
+      		'';
     xkb = {
       layout = "us,lt";
       options = "grp:menu_toggle"; # localectl list-x11-keymap-options

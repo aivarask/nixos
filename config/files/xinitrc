@@ -26,6 +26,11 @@ sxhkd -c "$SXHKDRC" &
 
 numlockx
 xset r rate 200 50
+# https://unix.stackexchange.com/questions/329893/screen-turns-off-after-10-minutes-and-i-cant-find-out-why
+# man xorg.conf /etc/X11/xorg.conf
+# Option "BlankTime"  "time"
+#xset s off # Disables screen saver xset s off # Disables screen saver
+xset s 3600
 
 session=${1:-dwm}
 case $session in
