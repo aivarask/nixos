@@ -62,9 +62,10 @@
         imports =
           f.i ./config
           ++ f.i ./config/systemd
-          ++ f.i ./config/systemd/timers
+          # ++ f.i ./config/systemd/timers
           ++ f.idash ./config/systemd/services
-          ++ f.i ./network;
+        # ++ f.i ./network
+        ;
       };
     in
     {
@@ -83,8 +84,19 @@
           inputs.suckless.nixosModules.default
           inputs.vim.nixosModules.default
           inputs.zsh.nixosModules.default
-          common
-          ./hosts/dell.nix
+          {
+            imports =
+              with inputs.lib.packages."${system}".lib;
+              (
+                [ ]
+                ++ i ./config
+                ++ i ./config/systemd
+                ++ i ./config/systemd/timers
+                ++ idash ./config/systemd/services
+                ++ i ./network
+              );
+          }
+          ./dell.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

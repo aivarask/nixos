@@ -14,7 +14,7 @@
     #jack.enable = true;
     wireplumber.enable = true;
   };
-  hardware.pulseaudio = {
+  services.pulseaudio = {
     # https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#pulseaudiomodules
     package = pkgs.pulseaudioFull;
     enable = true;
