@@ -3,7 +3,7 @@
 {
   programs.firefox.profiles.root.bookmarks = [
     {
-      name = "nix";
+      name = "about";
       toolbar = true;
       bookmarks = [
         {

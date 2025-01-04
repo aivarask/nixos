@@ -17,8 +17,8 @@
             # nur.overlays.default
           ];
           imports = [
-            ./_about.nix
-            ./_nix.nix
+            ./book_about.nix
+            ./book_nix.nix
           ];
           home.sessionVariables = {
             # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
@@ -67,7 +67,7 @@
               bookmarks = [
                 # https://blog.thalheim.io
                 {
-                  name = ":pc";
+                  name = "";
                   toolbar = true;
                   bookmarks = [
                     {
