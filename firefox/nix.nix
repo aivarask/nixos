@@ -1,7 +1,17 @@
+# vim: nofoldenable
 {
   name = "nix";
   toolbar = true;
   bookmarks = [
+    {
+      name = "nix_";
+      bookmarks = [
+        {
+          name = "";
+          url = "https://github.com/nix-community/nix-on-droid";
+        }
+      ];
+    }
     {
       name = "nix";
       bookmarks = [
@@ -32,15 +42,6 @@
         {
           name = "noogle.dev/";
           url = "https://noogle.dev/";
-        }
-      ];
-    }
-    {
-      name = "nix_";
-      bookmarks = [
-        {
-          name = "";
-          url = "https://github.com/nix-community/nix-on-droid";
         }
       ];
     }
