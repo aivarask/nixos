@@ -35,6 +35,7 @@
       commonModules = [
         { environment.systemPackages = [ pkgs.git ]; }
         inputs.audio.nixosModules.default
+        inputs.firefox.nixosModules.default
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.lf.nixosModules.default

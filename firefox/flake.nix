@@ -6,6 +6,9 @@
     { self, ... }@inputs:
     {
       overlays.default = inputs.nur.overlays.default;
+      nixosModules.default = _: {
+        environment.profiles = [ "${./.}" ];
+      };
       nixosModules.home =
         { pkgs, ... }:
         let
