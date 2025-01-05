@@ -158,7 +158,7 @@ in
       runtime! lsp/**/*.lua
 
       set scrolloff=12
-      set cmdheight=3
+      set cmdheight=1
     '';
     extraLuaConfig = ''
       vim.loader.enable()

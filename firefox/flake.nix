@@ -16,10 +16,6 @@
             self.overlays.default
             # nur.overlays.default
           ];
-          imports = [
-            ./book_about.nix
-            ./book_nix.nix
-          ];
           home.sessionVariables = {
             # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
             # environment.variables.VDPAU_DRIVER = "nvidia";
@@ -65,9 +61,9 @@
                 # leechblock-ng
               ];
               bookmarks = [
-                # https://blog.thalheim.io
+                (import ./about.nix)
                 {
-                  name = "";
+                  name = "popular";
                   toolbar = true;
                   bookmarks = [
                     {

@@ -13,7 +13,7 @@ set noshowmode
 set signcolumn=yes number
 set splitright splitbelow
 set showtabline=2 statusline+=%F
-set cmdheight=3
+set cmdheight=1
 set autoindent
 set smartindent
 set tabstop=2
