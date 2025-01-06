@@ -1,0 +1,18 @@
+{
+  name = "popular";
+  toolbar = true;
+  bookmarks = [
+    {
+      name = "";
+      url = "http://pcw.local:9000/#pc";
+    }
+    {
+      name = "";
+      url = "https://www.messenger.com/";
+    }
+    {
+      name = "";
+      url = "https://www.youtube.com/";
+    }
+  ];
+}

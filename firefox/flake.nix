@@ -64,22 +64,9 @@
                 # leechblock-ng
               ];
               bookmarks = [
-                (import ./about.nix)
-                (import ./nix.nix)
-                {
-                  name = "popular";
-                  toolbar = true;
-                  bookmarks = [
-                    {
-                      name = "";
-                      url = "http://pcw.local:9000/#pc";
-                    }
-                    {
-                      name = "";
-                      url = "https://www.messenger.com/";
-                    }
-                  ];
-                }
+                (import ./bookmarks_about.nix)
+                (import ./bookmarks_nix.nix)
+                (import ./bookmarks_.nix)
               ];
               settings = {
                 # ~/.mozilla/firefox/root/user.js
