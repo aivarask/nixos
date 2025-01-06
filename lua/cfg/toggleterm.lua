@@ -34,4 +34,5 @@ require('which-key').add({
 	{ '`', '<cmd>ToggleTerm direction=horizontal<CR>', mode = { 'n', 't' } },
 	{ '<C-`>', '<cmd>ToggleTerm direction=tab<CR>', mode = { 'n', 't' } },
 	{ '<C-1>', function() nix_repl_self:toggle(nil, 'tab') end, mode = mode },
+	{ '<C-2>', function() lf:toggle(nil, 'float') end, mode = mode },
 })

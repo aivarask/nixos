@@ -53,10 +53,12 @@
           imports =
             with inputs.lib.packages."${system}".lib;
             (
-              [ ]
+              [
+                ./lnav
+              ]
               ++ i ./config
               ++ i ./config/systemd
-              ++ i ./config/systemd/timers
+              # ++ i ./config/systemd/timers
               ++ idash ./config/systemd/services
               ++ i ./network
             );
@@ -73,6 +75,7 @@
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.lf.nixosModules.home
+                  inputs.vim.nixosModules.home
                   inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default

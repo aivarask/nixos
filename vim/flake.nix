@@ -1,4 +1,4 @@
-# vim: nofolenable
+# vim: nofoldenable
 {
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -98,19 +98,21 @@
               #     homepage = "https://github.com/mxsdev/nvim-dap-vscode-js";
               #   };
               # };
-              # neotest-playwright = buildVimPlugin {
-              #   name = "neotest-playwright";
-              #   src = neotest-playwright;
-              #   meta = {
-              #     homepage = "https://github.com/thenbe/neotest-playwright";
-              #   };
-              # };
+              neotest-playwright = buildVimPlugin {
+                name = "neotest-playwright";
+                src = neotest-playwright;
+                meta = {
+                  homepage = "https://github.com/thenbe/neotest-playwright";
+                };
+                doCheck = false;
+              };
               persistent-breakpoints = buildVimPlugin {
                 name = "persistent-breakpoints";
                 src = persistent-breakpoints;
                 meta = {
                   homepage = "https://github.com/Weissle/persistent-breakpoints.nvim";
                 };
+                doCheck = false;
               };
               smart-semicolon = buildVimPlugin {
                 name = "smart-semicolon";
@@ -140,9 +142,14 @@
       nixosModules.home =
         { pkgs, ... }:
         let
-          common = with pkgs.vimPlugins; [ sxhkd-vim ];
+          common = with pkgs.vimPlugins; [
+            # sxhkd-vim
+          ];
         in
         {
+          nixpkgs.overlays = [
+            self.overlays.default
+          ];
           programs.vim.plugins = common;
           programs.neovim.plugins =
             common
@@ -154,7 +161,8 @@
               one-small-step-for-vimkind
               # nvim-lsp-file-operations
               # nvim-dap-vscode-js
-              # neotest-playwright
+              neotest-playwright
+              nvim-dap
               persistent-breakpoints
               # smart-semicolon
               tree-sitter-language-injection
