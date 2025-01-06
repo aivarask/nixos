@@ -7,6 +7,7 @@
     man-pages-posix
     groff
   ];
+
   documentation = {
     enable = true;
     dev.enable = true;
@@ -14,6 +15,7 @@
     info.enable = true;
     nixos = {
       enable = true;
+      # includeAllModules = true;
     };
     man = {
       enable = true;

@@ -55,6 +55,8 @@
             (
               [
                 ./lnav
+                ./timers/hello-world.nix
+                ./timers/wallpaper.nix
               ]
               ++ i ./config
               ++ i ./config/systemd

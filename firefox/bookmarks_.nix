@@ -14,5 +14,9 @@
       name = "";
       url = "https://www.youtube.com/";
     }
+    {
+      name = "";
+      url = "https://zalgiris.lt/";
+    }
   ];
 }

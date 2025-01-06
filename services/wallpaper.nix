@@ -6,9 +6,12 @@
       Type = "oneshot";
       User = "root";
     };
+    environment = {
+      DISPLAY = ":0";
+    };
     script = ''
       set -eu
-      DISPLAY=:0 ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/images/wallpaper/abstract
+      ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/images/wallpaper/abstract
     '';
   };
   systemd.timers."wallpaper" = {
