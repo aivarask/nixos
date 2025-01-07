@@ -6,10 +6,6 @@
       url = "github:MTDL9/vim-log-highlighting";
       flake = false;
     };
-    sxhkd-vim = {
-      url = "github:kovetskiy/sxhkd-vim";
-      flake = false;
-    };
     vim-interestingwords = {
       url = "github:lfv89/vim-interestingwords";
       flake = false;
@@ -38,7 +34,7 @@
       url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
       flake = false;
     };
-    plugins = "./plugins";
+    plugins.url = "./plugins";
   };
   outputs =
     { self, ... }@inputs:
@@ -65,13 +61,6 @@
                 src = vim-log-highlighting;
                 meta = {
                   homepage = "https://github.com/MTDL9/vim-log-highlighting";
-                };
-              };
-              sxhkd-vim = buildVimPlugin {
-                name = "sxhkd-vim";
-                src = sxhkd-vim;
-                meta = {
-                  homepage = "https://github.com/kovetskiy/sxhkd-vim";
                 };
               };
               vim-interestingwords = buildVimPlugin {
@@ -130,12 +119,12 @@
             self.overlays.default
           ];
         };
+      nixosModules.plugins = inputs.plugins.nixosModules.default;
+      nixosModules.plugins_home = inputs.plugins.nixosModules.home;
       nixosModules.home =
         { pkgs, ... }:
         let
-          common = with pkgs.vimPlugins; [
-            sxhkd-vim
-          ];
+          common = with pkgs.vimPlugins; [ ];
         in
         {
           nixpkgs.overlays = [
