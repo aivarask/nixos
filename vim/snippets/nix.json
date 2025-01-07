@@ -5,9 +5,51 @@
 		],
 		"body": [
 			"{",
-			"\tinputs = {};",
-			"\toutputs = _: {  };",
+			"\tinputs = {",
+			"\t};",
+			"\toutputs =",
+			"\t\t{ self, ... }@inputs:",
+			"\t\t{",
+			"\t\t};",
 			"}"
-		]
+		],
+		"description": "https://wiki.nixos.org/wiki/Flakes#Flake_schema"
+	},
+	"overlays": {
+		"prefix": [
+			"overlays"
+		],
+		"body": [
+			"overlays.${1:default} = final: prev: {",
+			"${0}",
+			"};"
+		],
+		"description": "Overlay, consumed by other flakes"
+	},
+	"nixosModules": {
+		"prefix": [
+			"nixosModules"
+		],
+		"body": [
+			"nixosModules.${1:default} =",
+			"\t{ config, ... }:",
+			"\t{",
+			"\t\toptions = { };",
+			"\t\tconfig = { }; ",
+			"\t};"
+		],
+		"description": "Nixos module, consumed by other flakes"
+	},
+	"templates": {
+		"prefix": [
+			"templates"
+		],
+		"body": [
+			"templates.${1:default} = {",
+			"\tpath = \"${2}\";",
+			"\tdescription = \"${3}\";",
+			"};"
+		],
+		"description": "Used by `nix flake init -t <flake>#<name>`"
 	}
 }

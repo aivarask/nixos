@@ -128,12 +128,12 @@
   };
   services.dwm-status = {
     enable = true;
+    # https://github.com/Gerschtli/dwm-status
     extraConfig = ''
       separator = " "
 
       [audio]
-      # backend = "pulseaudio" # separate branch without flake
-      # control = "Master Playback Volume"
+      control = "Master"
       mute = "MUTE"
       template = "{ICO}{VOL}"
       icons = ["🔈", "🔉", "🔊"]
@@ -169,7 +169,7 @@
     order = lib.mkMerge [
       # [ "audio" ]
       (lib.mkIf (config.networking.hostName == "dell") [
-        # "audio"
+        "audio"
         "backlight"
         "battery"
       ])

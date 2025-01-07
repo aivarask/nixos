@@ -141,7 +141,7 @@ else
 	" set foldnestmax=4
 	let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
-	set foldenable
+	set nofoldenable
 
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>

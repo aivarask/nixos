@@ -14,12 +14,8 @@
       url = "github:lfv89/vim-interestingwords";
       flake = false;
     };
-    # nvim-lsp-file-operations = {
-    #   url = "github:antosha417/nvim-lsp-file-operations";
-    #   flake = false;
-    # };
-    nvim-dap-vscode-js = {
-      url = "github:mxsdev/nvim-dap-vscode-js";
+    nvim-lsp-file-operations = {
+      url = "github:antosha417/nvim-lsp-file-operations";
       flake = false;
     };
     neotest-playwright = {
@@ -42,6 +38,7 @@
       url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
       flake = false;
     };
+    plugins = "./plugins";
   };
   outputs =
     { self, ... }@inputs:
@@ -84,20 +81,14 @@
                   homepage = "https://github.com/lfv89/vim-interestingwords";
                 };
               };
-              # nvim-lsp-file-operations = buildVimPlugin {
-              #   name = "nvim-lsp-file-operations";
-              #   src = nvim-lsp-file-operations;
-              #   meta = {
-              #     homepage = "https://github.com/antosha417/nvim-lsp-file-operations";
-              #   };
-              # };
-              # nvim-dap-vscode-js = buildVimPlugin {
-              #   name = "nvim-dap-vscode-js";
-              #   src = nvim-dap-vscode-js;
-              #   meta = {
-              #     homepage = "https://github.com/mxsdev/nvim-dap-vscode-js";
-              #   };
-              # };
+              nvim-lsp-file-operations = buildVimPlugin {
+                name = "nvim-lsp-file-operations";
+                src = nvim-lsp-file-operations;
+                meta = {
+                  homepage = "https://github.com/antosha417/nvim-lsp-file-operations";
+                };
+                doCheck = false;
+              };
               neotest-playwright = buildVimPlugin {
                 name = "neotest-playwright";
                 src = neotest-playwright;
@@ -143,7 +134,7 @@
         { pkgs, ... }:
         let
           common = with pkgs.vimPlugins; [
-            # sxhkd-vim
+            sxhkd-vim
           ];
         in
         {
@@ -159,7 +150,7 @@
               vim-interestingwords
               # nvim
               one-small-step-for-vimkind
-              # nvim-lsp-file-operations
+              nvim-lsp-file-operations
               # nvim-dap-vscode-js
               neotest-playwright
               nvim-dap

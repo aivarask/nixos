@@ -5,7 +5,7 @@ local luasnip = require('luasnip') --- @see luasnip
 -- require('luasnip').filetype_extend('twig', { 'html' })
 -- require('luasnip').filetype_extend('html', { 'twig' })
 require('luasnip.loaders.from_vscode').lazy_load({ exclude = { 'all' } })
-require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/snippets' })
+require('luasnip.loaders.from_vscode').load({ paths = '/etc/nixos/vim/snippets' })
 
 require('smart_semicolon').setup()
 local cmp = require('cmp') --- @see nvim-cmp
@@ -18,7 +18,7 @@ local config = {
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', group_index = 2 }, --- @see cmp-nvim-lsp
 		{ name = 'path', group_index = 2 }, --- @see cmp-path
-		-- { name = 'luasnip', group_index = 2, keyword_length = 2 },
+		{ name = 'luasnip', group_index = 2, keyword_length = 2 },
 		-- { name = "emoji", group_index = 2 }, --- @see cmp-emoji
 		{ name = 'buffer' }, --- @see https://github.com/hrsh7th/cmp-buffer
 	}),

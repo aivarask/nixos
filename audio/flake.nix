@@ -18,6 +18,7 @@
             inputs.musnix.nixosModules.musnix
           ];
           environment.systemPackages = with pkgs; [
+            ardour
             libbs2b
             ladspaPlugins
             lsof
