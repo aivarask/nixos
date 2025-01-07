@@ -34,7 +34,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
       commonModules = [
         { environment.systemPackages = [ pkgs.git ]; }
-        inputs.audio.nixosModules.default
+        inputs.audio.nixosModules.mpd
+        # inputs.audio.nixosModules.pulseaudio
+        inputs.audio.nixosModules.pipewire
         inputs.firefox.nixosModules.default
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
@@ -55,13 +57,9 @@
             (
               [
                 ./lnav
-                ./timers/hello-world.nix
-                ./timers/wallpaper.nix
+                ./services/wallpaper.nix
               ]
               ++ i ./config
-              ++ i ./config/systemd
-              # ++ i ./config/systemd/timers
-              ++ idash ./config/systemd/services
               ++ i ./network
             );
         }

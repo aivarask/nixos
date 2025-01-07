@@ -1,6 +1,4 @@
 # vim: nofoldenable
-# https://wiki.nixos.org/wiki/Audio_production
-# https://github.com/musnix/musnix
 {
   inputs = {
     musnix.url = "github:musnix/musnix";
@@ -8,9 +6,14 @@
   outputs =
     { ... }@inputs:
     {
-      nixosModules.default =
+      nixosModules.mpd = _: { imports = [ ./mpd.nix ]; };
+      nixosModules.pipewire = _: { imports = [ ./pipewire.nix ]; };
+      nixosModules.pulseaudio = _: { imports = [ ./pulseaudio.nix ]; };
+      nixosModules.production =
         { pkgs, config, ... }:
         {
+          # https://wiki.nixos.org/wiki/Audio_production
+          # https://github.com/musnix/musnix
           imports = [
             inputs.musnix.nixosModules.musnix
           ];
