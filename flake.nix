@@ -58,7 +58,7 @@
             (
               [
                 ./lnav
-                ./services/wallpaper.nix
+                ./systemd/wallpaper.nix
               ]
               ++ i ./config
               ++ i ./network
@@ -70,6 +70,12 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.root = {
+              home.stateVersion = "23.05";
+              home.username = "root";
+              home.homeDirectory = "/root";
+              home.enableNixpkgsReleaseCheck = false;
+              manual.json.enable = true;
+              colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
@@ -85,12 +91,6 @@
                 ]
                 ++ i_ ./config
                 ++ i_ ./lua;
-              home.stateVersion = "23.05";
-              home.username = "root";
-              home.homeDirectory = "/root";
-              home.enableNixpkgsReleaseCheck = false;
-              manual.json.enable = true;
-              colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
             };
           };
         }
@@ -107,6 +107,7 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+          ./bluetooth
           ./dell.nix
         ];
         specialArgs = { inherit inputs; };

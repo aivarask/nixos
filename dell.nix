@@ -39,8 +39,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
   };
   services.blueman.enable = true;
   environment.systemPackages = with pkgs; [
