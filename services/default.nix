@@ -4,4 +4,7 @@
     systemctl-tui
     sysz
   ];
+  services.geoclue2 = {
+    enable = true;
+  };
 }
