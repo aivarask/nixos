@@ -50,7 +50,7 @@
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
-        inputs.vim.nixosModules.plugins
+        inputs.vim.nixosModules.plugins.default
         inputs.zsh.nixosModules.default
         {
           imports =
@@ -77,7 +77,7 @@
                   inputs.git.nixosModules.home
                   inputs.lf.nixosModules.home
                   inputs.vim.nixosModules.home
-                  inputs.vim.nixosModules.plugins_home
+                  inputs.vim.nixosModules.plugins.home
                   inputs.zsh.nixosModules.home
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default

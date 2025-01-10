@@ -16,21 +16,21 @@
             name = "sxhkd-vim";
             src = inputs.plugin;
             meta = {
-              homepage = inputs.plugin.url;
+              # homepage = inputs.plugin.url;
             };
           };
         };
       };
-      nixosModules.default =
-        { ... }:
-        {
-        };
-      nixosModules.home =
-        { pkgs, ... }:
-        {
+      nixosModules = {
+        default = _: {
           nixpkgs.overlays = [ self.overlays.default ];
-          programs.vim.plugins = [ pkgs.vimPlugins.sxhkd-vim ];
-          programs.neovim.plugins = [ pkgs.vimPlugins.sxhkd-vim ];
         };
+        home =
+          { pkgs, ... }:
+          {
+            programs.vim.plugins = [ pkgs.vimPlugins.sxhkd-vim ];
+            programs.neovim.plugins = [ pkgs.vimPlugins.sxhkd-vim ];
+          };
+      };
     };
 }

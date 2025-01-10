@@ -21,15 +21,15 @@
           };
         };
       };
-      nixosModules.default =
-        { ... }:
-        {
-        };
-      nixosModules.home =
-        { config, ... }:
-        {
-          options = { };
-          config = { };
-        };
+      nixosModules = {
+        default =
+          { ... }:
+          {
+          };
+        home =
+          { ... }:
+          {
+          };
+      };
     };
 }

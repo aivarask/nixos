@@ -111,42 +111,33 @@
             };
         }
       );
-      nixosModules.default =
-        { ... }:
-        {
-          nixpkgs.overlays = [
-            inputs.neovim-nightly-overlay.overlays.default
-            self.overlays.default
-          ];
-        };
-      nixosModules.plugins = inputs.plugins.nixosModules.default;
-      nixosModules.plugins_home = inputs.plugins.nixosModules.home;
-      nixosModules.home =
-        { pkgs, ... }:
-        let
-          common = with pkgs.vimPlugins; [ ];
-        in
-        {
-          nixpkgs.overlays = [
-            self.overlays.default
-          ];
-          programs.vim.plugins = common;
-          programs.neovim.plugins =
-            common
-            ++ (with pkgs.vimPlugins; [
-              # common
-              vim-log-highlighting
-              vim-interestingwords
-              # nvim
-              one-small-step-for-vimkind
-              nvim-lsp-file-operations
-              # nvim-dap-vscode-js
-              neotest-playwright
-              nvim-dap
-              persistent-breakpoints
-              # smart-semicolon
-              tree-sitter-language-injection
-            ]);
-        };
+      nixosModules = {
+        plugins = inputs.plugins.nixosModules;
+        default =
+          { ... }:
+          {
+            nixpkgs.overlays = [
+              inputs.neovim-nightly-overlay.overlays.default
+              self.overlays.default
+            ];
+          };
+        home =
+          { pkgs, ... }:
+          {
+            programs.neovim.plugins = (
+              with pkgs.vimPlugins;
+              [
+                vim-log-highlighting
+                vim-interestingwords
+                one-small-step-for-vimkind
+                nvim-lsp-file-operations
+                neotest-playwright
+                persistent-breakpoints
+                smart-semicolon
+                tree-sitter-language-injection
+              ]
+            );
+          };
+      };
     };
 }

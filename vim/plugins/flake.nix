@@ -5,19 +5,19 @@
   outputs =
     { self, ... }@inputs:
     {
-      overlays.default = [ inputs.foo.overlays.default ];
-      nixosModules.default =
-        { ... }:
-        {
+      # overlays.default = [ inputs.sxhkd-vim.overlays.default ];
+      nixosModules = {
+        default = _: {
           imports = [
-            inputs.foo.nixosModules.default
+            inputs.sxhkd-vim.nixosModules.default
           ];
         };
-      nixosModules.home =
-        { ... }:
-        {
-          imports = [ inputs.foo.nixosModules.home ];
+        home = _: {
+          imports = [
+            inputs.sxhkd-vim.nixosModules.home
+          ];
         };
+      };
       templates._ = {
         path = ./_;
       };
