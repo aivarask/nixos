@@ -1,5 +1,6 @@
 { lib, config, ... }:
 {
+  environment.variables.XINITRC = "/etc/nixos/services/xinitrc";
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;

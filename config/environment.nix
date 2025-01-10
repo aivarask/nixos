@@ -6,7 +6,6 @@
   ];
   environment.extraInit = '''';
   environment.variables.SELF = "/etc/nixos/";
-  environment.variables.XINITRC = "/etc/nixos/config/files/xinitrc";
   environment.variables.EDITOR = "vim";
   environment.shellAliases = {
     ".." = "cd ..";
