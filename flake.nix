@@ -62,7 +62,7 @@
               ]
               ++ i ./config
               ++ i ./network
-              ++ i ./services
+              ++ idash ./services
             );
         }
         inputs.home-manager.nixosModules.home-manager
@@ -77,6 +77,7 @@
               home.enableNixpkgsReleaseCheck = false;
               manual.json.enable = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+              services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
