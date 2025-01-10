@@ -41,12 +41,12 @@
       update_seconds = false
     '';
     order = lib.mkMerge [
-      [ "audio" ]
       (lib.mkIf (config.networking.hostName == "dell") [
         "backlight"
         "battery"
       ])
       [
+        "audio"
         # "cpu_load"
         "network"
         "time"

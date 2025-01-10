@@ -57,16 +57,6 @@
       watch-dir-enabled = true;
     };
   };
-  services.unclutter = {
-    # unclutter-xfixes
-    enable = false;
-    timeout = 1;
-    extraOptions = [
-      # "noevents"
-      # "grab"
-      # "fork"
-    ];
-  };
 
   services.maddy = {
     enable = true;
