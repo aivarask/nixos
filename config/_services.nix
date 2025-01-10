@@ -10,19 +10,9 @@
     enable = false;
   };
 
-  services.libinput = {
-    mouse = {
-      accelSpeed = "+0.5";
-    };
-    touchpad = {
-      naturalScrolling = true;
-      accelSpeed = "+0.5";
-    };
-  };
   services.locate = {
     enable = true;
   };
-
   services.maddy = {
     enable = true;
     primaryDomain = "localhost";
