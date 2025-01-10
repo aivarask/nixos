@@ -49,14 +49,6 @@
     temperature.day = 6500;
     temperature.night = 5500;
   };
-  services.transmission = {
-    enable = true;
-    openPeerPorts = true;
-    settings = {
-      watch-dir = "/var/lib/transmission/watch-dir";
-      watch-dir-enabled = true;
-    };
-  };
 
   services.maddy = {
     enable = true;

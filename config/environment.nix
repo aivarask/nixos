@@ -93,7 +93,6 @@
 
       inotify-tools
       fswatch
-      tremc
       mpv
       telegram-desktop # QT_SCALE_FACTOR = "1.75";
       # gimp-with-plugins
