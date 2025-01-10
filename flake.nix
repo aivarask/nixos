@@ -92,6 +92,7 @@
                   inputs.nix-index-database.hmModules.nix-index
                 ]
                 ++ i_ ./config
+                ++ i_ ./services
                 ++ i_ ./lua;
             };
           };

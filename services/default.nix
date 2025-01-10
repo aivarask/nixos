@@ -7,4 +7,10 @@
   services.geoclue2 = {
     enable = true;
   };
+  services.caddy = {
+    enable = false;
+  };
+  services.locate = {
+    enable = true;
+  };
 }

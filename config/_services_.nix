@@ -29,6 +29,4 @@
       };
     };
   };
-  home.sessionVariables.SXHKDRC = "/etc/nixos/config/files/sxhkdrc";
-  services.sxhkd.enable = true;
 }
