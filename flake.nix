@@ -78,6 +78,7 @@
               manual.json.enable = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
+              services.blueman-applet.enable = true;
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [

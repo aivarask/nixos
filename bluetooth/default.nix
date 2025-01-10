@@ -14,5 +14,4 @@
   services.blueman.enable = true;
   # hm
   # services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
-  # services.blueman-applet.enable = true;
 }

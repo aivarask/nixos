@@ -18,7 +18,7 @@ elif [ "$(hostname)" = dell ]; then
 	systemctl --user restart redshift.service &
 fi
 
-# systemctl --user restart unclutter.service &
+systemctl --user restart unclutter.service &
 systemctl --user restart dwm-status.service &
 systemctl restart wallpaper.service &
 systemctl --user restart dunst.service &
