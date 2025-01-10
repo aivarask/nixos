@@ -36,6 +36,10 @@ export NCMPCPP_CONFIG=/etc/nixos/config/files/ncmpcpp_config
 export NCMPCPP_BINDINGS=/etc/nixos/config/files/ncmpcpp_bindings
 alias ncmpcpp_='ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS'
 
+
+# export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh
+
+
 # cat -v	#	showkey
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 bindkey '^ ' forward-word            # C-Space

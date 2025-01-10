@@ -12,21 +12,21 @@ fi
 if [ "$(hostname)" = pc ]; then
 	# https://www.iodocs.com/how-to-enable-gpu-fan-settings-nvidia-in-linux/
 	# nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
-	remote-touchpad -bind :9000 -secret 'pc' &
+	# remote-touchpad -bind :9000 -secret 'pc' &
 	imwheel -b 45 & # ./config/services/xserver.nix
 elif [ "$(hostname)" = dell ]; then
-	systemctl --user restart redshift.service &
+	# systemctl --user restart redshift.service &
+	echo ""
 fi
-
-systemctl --user restart unclutter.service &
-systemctl --user restart dwm-status.service &
-systemctl restart wallpaper.service &
-systemctl --user restart dunst.service &
+# numlockx
+xset r rate 250 50 s 3600
 sxhkd -c "$SXHKDRC" &
+# systemctl restart wallpaper.service &
 
-numlockx
-xset r rate 200 50
-xset s 3600
+# systemctl --user restart blueman-applet.service &
+# systemctl --user restart dunst.service &
+# systemctl --user restart dwm-status.service &
+# systemctl --user restart unclutter.service &
 
 session=${1:-dwm}
 case $session in

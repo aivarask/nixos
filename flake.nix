@@ -35,6 +35,7 @@
       commonModules = [
         { environment.systemPackages = [ pkgs.git ]; }
         inputs.audio.nixosModules.mpd
+        inputs.audio.nixosModules.production
         # inputs.audio.nixosModules.pulseaudio
         inputs.audio.nixosModules.pipewire
         inputs.firefox.nixosModules.default

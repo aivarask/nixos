@@ -1,14 +1,22 @@
 { pkgs, ... }:
 {
-  services.unclutter = {
-    package = pkgs.unclutter-xfixes;
+  environment.systemPackages = [
+    # pkgs.unclutter
+    # pkgs.xorg.libX11
+  ];
+  services.xbanish = {
     enable = true;
-    threshold = 1;
-    timeout = 1;
-    extraOptions = [
-      # "noevents"
-      # "grab"
-      # "fork"
-    ];
+    arguments = "";
   };
+  # services.unclutter = {
+  #   package = pkgs.unclutter-xfixes;
+  #   enable = true;
+  #   threshold = 1;
+  #   timeout = 1;
+  #   extraOptions = [
+  #     # "noevents"
+  #     # "grab"
+  #     # "fork"
+  #   ];
+  # };
 }

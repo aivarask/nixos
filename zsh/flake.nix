@@ -27,7 +27,7 @@
           environment.profiles = [
             "${./.}"
             "${pkgs.zsh-completions}"
-            "${pkgs.zsh-abbr}"
+            # "${pkgs.zsh-abbr}"
           ];
         };
       nixosModules.home =
@@ -69,13 +69,13 @@
               source /etc/nixos/zsh/zshrc
             '';
             plugins = [
-              {
-                # https://github.com/olets/zsh-abbr
-                # https://zsh-abbr.olets.dev
-                name = "zsh-abbr";
-                src = pkgs.zsh-abbr;
-                file = "share/zsh/zsh-abbr/zsh-abbr.plugin.zsh";
-              }
+              # {
+              #   # https://github.com/olets/zsh-abbr
+              #   # https://zsh-abbr.olets.dev
+              #   name = "zsh-abbr";
+              #   src = pkgs.zsh-abbr;
+              #   file = "share/zsh/zsh-abbr/zsh-abbr.plugin.zsh";
+              # }
               {
                 # https://github.com/olets/zsh-autosuggestions-abbreviations-strategy
                 name = "zsh-autosuggestions-abbreviations-strategy";
