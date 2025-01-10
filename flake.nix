@@ -62,6 +62,7 @@
               ]
               ++ i ./config
               ++ i ./network
+              ++ i ./services
             );
         }
         inputs.home-manager.nixosModules.home-manager
