@@ -4,7 +4,7 @@
   bookmarks = [
     {
       name = "";
-      url = "http://pcw.local:9000/#";
+      url = "http://pcw.local:9000/#pc";
     }
     {
       name = "";
