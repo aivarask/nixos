@@ -86,5 +86,4 @@
   };
   environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   environment.systemPackages = with pkgs; [ libva-utils ];
-
 }

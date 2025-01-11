@@ -16,6 +16,7 @@
     fh # flakehub
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
+  environment.shellAliases.nf = "nixos-rebuild switch --fast";
   environment.shellAliases.nfu = "nix flake update";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.android_sdk.accept_license = true;

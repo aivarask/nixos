@@ -5,7 +5,9 @@
 { lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    ookla-speedtest
     curlFull
+    httpie
     tcpdump
     tcpflow
     lftp
@@ -27,6 +29,11 @@
     websocat
     websocketd
   ];
+  programs.bandwhich.enable = true;
+  programs.iftop.enable = true;
+  programs.sharing.enable = true;
+  programs.mtr.enable = true;
+  programs.wireshark.enable = true;
   # https://nixos.wiki/wiki/Systemd-networkd
   systemd.network.enable = true;
   networking = {

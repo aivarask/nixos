@@ -22,8 +22,7 @@ zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 export NIXPKGS_ALLOW_INSECURE=1
-alias nf='nixos-rebuild switch --fast'\
-	nrl='nix registry list'\
+alias nrl='nix registry list'\
 	oras='curl wttr.in/Vilnius'\
 
 

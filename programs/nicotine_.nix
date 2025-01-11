@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     nicotine-plus
+    slskd
   ];
   xdg.configFile = {
     "nicotine/config_def" = {

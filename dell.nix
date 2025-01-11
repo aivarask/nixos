@@ -37,10 +37,8 @@
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware = {
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  };
-  services.blueman.enable = true;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
   environment.systemPackages = with pkgs; [
     lshw
     mesa-demos # glxinfo glxgears
@@ -48,12 +46,12 @@
     nvtopPackages.nvidia
     vdpauinfo
   ];
+  services.blueman.enable = true;
   services.switcherooControl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  networking = {
-    hostName = "dell";
-    hostId = "8425e349";
-  };
+  networking.hostName = "dell";
+  networking.hostId = "8425e349";
+
   systemd.network.networks."10-hw" = {
     name = "wlp59s0";
     matchConfig.Name = "wlp59s0";
@@ -67,7 +65,6 @@
   # https://wiki.nixos.org/wiki/Virt-manager
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  # boot.kernelPackages = pkgs.linux
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
   };

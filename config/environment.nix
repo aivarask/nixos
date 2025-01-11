@@ -32,106 +32,71 @@
   ];
   environment.systemPackages = (
     with pkgs;
-    let
-      xorgPackages = with pkgs.xorg; [
-        xbacklight
-        xorgserver
-        xdpyinfo
-        xev
-        xmodmap
-        xmessage
-        transset
-        xwininfo
-        xwd
-      ];
-    in
-    xorgPackages
-    ++ [
+    [
+      # hardware
+      kmon
+      brightnessctl
+      usbutils
+      lm_sensors
+      pciutils
+      libxkbcommon
+      # udevil
+
+      mpv
+      telegram-desktop # QT_SCALE_FACTOR = "1.75";
       file
       dolphin
       blender
+      figma-linux
+      inkscape-with-extensions
+      libreoffice-qt
+      # gimp-with-plugins # bimp plugin fails
+      krita
+      #
       ticker
       tickrs
       cointop
-      inkscape-with-extensions
       playwright-driver.browsers
       poedit
       gettext
       # intelephense
       obs-cli
       difftastic
-      tuir
-      josm
-      merkaartor
       android-tools
+
       # https://nixos.wiki/wiki/MTP
+      gdu
+      duf
       jmtpfs
       mtpfs
       go-mtpfs
-      # xorg
-      xcompmgr
-      xdotool
-      xsel
-      xclip
-      sxiv
-      numlockx
-      xautomation
-      xbindkeys
 
       glib # gio trash
       ffuf
-      libreoffice-qt
-      # --
       hyperfine
-      xvkbd
-      soulseekqt
-      slskd
-      figma-linux
       parallel
-
       inotify-tools
       fswatch
-      mpv
-      telegram-desktop # QT_SCALE_FACTOR = "1.75";
-      # gimp-with-plugins
-      # krita
-
-      # hardware
-      kmon
-      brightnessctl
-      usbutils
-      lm_sensors
-      # udevil
-      pciutils
-      libxkbcommon
 
       # terminal
       tdrop
       ueberzug
       ueberzugpp
-      ollama
-      # tilda
       cheat
       feh
-      gdu
-      duf
       glow
       scrot
-      httpie
-      lf
       loc
       tree
       fd
       ripgrep
       trash-cli
       neofetch
-      ookla-speedtest
       translate-shell
       remarshal # json2yaml...
       w3m
       chafa
       tiv
-      bat
 
       # utils
       libnotify

@@ -25,7 +25,7 @@
             # environment.variables.VAAPI_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-render";
             # environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
             # environment.variables.NVD_BACKEND = "direct";
-            # https://unix.stackexchange.com/a/596888
+            # (https://unix.stackexchange.com/a/596888)
             # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
             MOZ_X11_EGL = "1";
             MOZ_USE_XINPUT2 = "1";
@@ -35,7 +35,9 @@
             # firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin
             # pkgs.firefox-devedition
           ];
+          programs.browserpass.enable = true;
           programs.firefox = {
+            # nativeMessagingHosts.browserpass = true;
             enable = true;
             package = pkgs.firefox;
             # package = pkgs.firefox-devedition;
@@ -57,7 +59,7 @@
                 # df-youtube
                 # decentraleyes
                 # h264ify
-                # browserpass
+                browserpass
                 # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
                 # stylus
                 # leechblock-ng
@@ -278,10 +280,6 @@
                 "@gu github users" = {
                   definedAliases = [ "@gu" ];
                   urls = [ { template = "${github}/search?type=users&q={searchTerms}"; } ];
-                };
-                "@npm npmjs.com" = {
-                  definedAliases = [ "@npm" ];
-                  urls = [ { template = "https://www.npmjs.com/search?q={searchTerms}"; } ];
                 };
 
               };

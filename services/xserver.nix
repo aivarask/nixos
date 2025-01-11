@@ -1,5 +1,35 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages =
+    with pkgs;
+    [
+      xcompmgr
+      xdotool
+      xsel
+      xclip
+      sxiv
+      numlockx
+      xautomation
+      xbindkeys
+      xvkbd
+    ]
+    ++ (with pkgs.xorg; [
+      xbacklight
+      xorgserver
+      xdpyinfo
+      xev
+      xmodmap
+      xmessage
+      transset
+      xwininfo
+      xwd
+    ]);
+
   environment.variables.XINITRC = "/etc/nixos/services/xinitrc";
   services.xserver = {
     enable = true;
