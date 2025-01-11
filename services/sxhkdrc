@@ -24,7 +24,7 @@ super + {q,w,e,r}
 super + {W,E,R,T,Y}
   {\
 	,firefox --private-window\
-  ,\
+  ,chromium\
 	,firefox\
 	,telegram-desktop\
 	,brave 'https://youtube.com'\
