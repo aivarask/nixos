@@ -9,7 +9,6 @@
     # pavucontrol
     # pulsemixer
     pwvucontrol
-    pw-volume
     coppwr
     qpwgraph
     sonusmix

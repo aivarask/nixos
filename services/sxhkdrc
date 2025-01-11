@@ -6,7 +6,7 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	,alacritty -e htop\
 	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
 	,env GDK_SCALE=2 pwvucontrol\
-	,kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded' && pkill -USR1 hx\
+	,kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded'\
 	,alacritty -e tremc\
 	,alacritty -e sysz\
 	,alacritty -e sysz -u\
@@ -14,21 +14,23 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	}
 
 super + {q,w,e,r}
-  {tdrop alacritty\
+  {\
+	,tdrop alacritty\
   ,env GDK_DPI_SCALE=0.75 firefox\
   ,alacritty --working-directory=/etc/nixos -e 'nvr'\
   ,alacritty --working-directory=/etc/nixos -e 'lf'\
   }
+
 super + {W,E,R,T,Y}
   {\
 	,firefox --private-window\
-  ,firefox 'pcw.local:9000/#pc'\
-	,firefox 'lrt.lt'\
+  ,\
+	,firefox\
 	,telegram-desktop\
 	,brave 'https://youtube.com'\
   }
 super + {a,s}
-  pw-volume change "{-,+}2%"
+	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
 super + {z,x,c,v}
 	{\
 	,brightnessctl set 10%-\
@@ -37,7 +39,7 @@ super + {z,x,c,v}
 	,alacritty --working-directory=/nix/store\
 	}
 super + {A,S}
-	ssh pcw -t 'pulsemixer --change-volume {-,+}2 --max-volume 100'
+	ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
 
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
@@ -47,7 +49,6 @@ super + r; {1,2,n,p,F1}
 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
 	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
-	,tdrop alacritty -e ssh pcw -t 'pulsemixer'\
 	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
 	}
 super + o; {1,2,3,4,5,6,7,8,9,0}
@@ -57,9 +58,9 @@ super + o; {1,2,3,4,5,6,7,8,9,0}
 	,inkscape '/etc/nixos/a/img/logo.svg'
 	}
 XF86AudioMute
-	pw-volume mute toggle
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 XF86Audio{Lower,Raise}Volume
-	pw-volume change "{-,+}2%"
+	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
 XF86Audio{Play,Prev,Next}
   mpc {toggle,prev,next}
 XF86MonBrightness{Down,Up}

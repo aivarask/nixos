@@ -60,6 +60,7 @@
               [
                 ./lnav
                 ./systemd/wallpaper.nix
+                ./systemd/remote-touchpad.nix
               ]
               ++ i ./config
               ++ i ./network
