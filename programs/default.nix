@@ -1,14 +1,5 @@
-{ pkgs, inputs, ... }:
+{ ... }:
 {
-  environment.variables.HTOPRC = "/etc/nixos/config/files/htoprc";
-  programs.htop = {
-    enable = true;
-    settings = {
-      hide_kernel_threads = true;
-      hide_userland_threads = true;
-    };
-  };
-
   programs.mtr.enable = true;
   programs.bandwhich.enable = false;
   programs.browserpass.enable = false;

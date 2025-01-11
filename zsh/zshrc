@@ -25,16 +25,7 @@ export NIXPKGS_ALLOW_INSECURE=1
 alias nf='nixos-rebuild switch --fast'\
 	nrl='nix registry list'\
 	oras='curl wttr.in/Vilnius'\
-	nicotine_='export GDK_SCALE="1.5"; nicotine'\
-	inkscape_='export GDK_SCALE="1.5"; inkscape'\
-
-export LAZYGIT_CONFIG='/etc/nixos/config/files/lazygit.yml'
-alias lazygit_='lazygit -ucf $LAZYGIT_CONFIG'
-alias \\l='lazygit_'
-
-export NCMPCPP_CONFIG=/etc/nixos/config/files/ncmpcpp_config
-export NCMPCPP_BINDINGS=/etc/nixos/config/files/ncmpcpp_bindings
-alias ncmpcpp_='ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS'
+	inkscape_='export GDK_SCALE="2"; inkscape'\
 
 
 # export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh

@@ -85,7 +85,6 @@
       hyperfine
       xvkbd
       soulseekqt
-      nicotine-plus # GDK_SCALE = "2";
       slskd
       figma-linux
       parallel
