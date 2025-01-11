@@ -7,7 +7,6 @@
     man-pages-posix
     groff
   ];
-
   documentation = {
     enable = true;
     dev.enable = true;

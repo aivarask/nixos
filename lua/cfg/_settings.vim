@@ -31,7 +31,6 @@ setglobal commentstring="# %s"
 set conceallevel=2
 set clipboard=unnamedplus
 
-
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
@@ -46,6 +45,7 @@ let g:switch_custom_definitions =
     \ [
     \   ['foldenable', 'nofoldenable']
     \ ]
+let g:vim_markdown_no_default_key_mappings = 1
 
 map q <nop>
 map Q <nop>

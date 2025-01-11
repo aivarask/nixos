@@ -15,8 +15,7 @@
           programs.lf = {
             enable = true;
             extraConfig = ''
-              					# source ${./lfrc}
-              					source /etc/nixos/lf/lfrc
+              source /etc/nixos/lf/lfrc
             '';
           };
         };
