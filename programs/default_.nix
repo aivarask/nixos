@@ -1,5 +1,5 @@
 # vim:fdl=4
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     chromedriver

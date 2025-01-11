@@ -29,7 +29,6 @@
             # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
             MOZ_X11_EGL = "1";
             MOZ_USE_XINPUT2 = "1";
-            # GDK_DPI_SCALE = "0.75"; # firefox
           };
           home.packages = [
             pkgs.geckodriver

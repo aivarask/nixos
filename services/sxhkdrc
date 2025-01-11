@@ -5,18 +5,18 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	,notify-send "$(vimcat $SXHKDRC)"\
 	,alacritty -e htop\
 	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
-	,env GDK_SCALE=2 pwvucontrol\
+	,pwvucontrol\
 	,kill -SIGUSR1 $(pidof sxhkd) && dunstify 'sxhkd reloaded'\
 	,alacritty -e tremc\
 	,alacritty -e sysz\
 	,alacritty -e sysz -u\
-	,env GDK_SCALE=2 nicotine\
+	,nicotine\
 	}
 
 super + {q,w,e,r}
   {\
 	,tdrop alacritty\
-  ,env GDK_DPI_SCALE=0.75 firefox\
+  ,firefox\
   ,alacritty --working-directory=/etc/nixos -e 'nvr'\
   ,alacritty --working-directory=/etc/nixos -e 'lf'\
   }

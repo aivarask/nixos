@@ -25,7 +25,6 @@ export NIXPKGS_ALLOW_INSECURE=1
 alias nf='nixos-rebuild switch --fast'\
 	nrl='nix registry list'\
 	oras='curl wttr.in/Vilnius'\
-	inkscape_='export GDK_SCALE="2"; inkscape'\
 
 
 # export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh

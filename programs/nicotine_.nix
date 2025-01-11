@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    nicotine-plus # GDK_SCALE = "2";
+    nicotine-plus
   ];
   xdg.configFile = {
     "nicotine/config_def" = {
