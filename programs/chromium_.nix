@@ -6,6 +6,7 @@
     commandLineArgs = [
       "--no-sandbox"
       "--no-default-browser-check"
+      "--force-device-scale-factor=2"
       # "--remote-debugging-port=9222"
       "--enable-features=TouchpadOverscrollHistoryNavigation"
     ];

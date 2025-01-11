@@ -6,14 +6,15 @@ localhost ::1
 
 # accounts.google.com 		0.0.0.0
 
-wh.local								192.168.1.1
+hw.local								192.168.1.1
 redmi										192.168.1.140
 pcw											192.168.1.195
 pcw.*										192.168.1.195
 dell										192.168.1.180
 dell.local							192.168.1.180
-
 # gettransfer.lt					79.98.24.174
 
 a.local 	dell
 dell.gettransfer.lt dell
+
+mini.local 							192.168.100.11

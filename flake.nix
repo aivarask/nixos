@@ -57,9 +57,10 @@
             with inputs.lib.packages."${system}".lib;
             (
               [
+                ./containers/mini
                 ./lnav
-                ./wallpaper
                 ./systemd/remote-touchpad.nix
+                ./wallpaper
               ]
               ++ i ./config
               ++ i ./network

@@ -22,10 +22,17 @@ in
         users.users.root.openssh.authorizedKeys.keys = keys;
         networking.nat.enable = true;
         networking.nat.internalInterfaces = [ "ve-+" ];
-        networking.nat.externalInterface = "eth0";
-        #
-        environment.systemPackages = with pkgs; [ vim ];
-
+        networking.nat.externalInterface =
+          if config.networking.hostName == "dell" then "wlp59s0" else "wlp6s0";
+        environment.systemPackages = with pkgs; [
+          vim
+          wget
+        ];
+        networking.firewall.allowedTCPPorts = [ 80 ];
+        services.httpd.enable = true;
+        services.httpd.adminAddr = "mini@example.org";
+        # services.httpd.virtualHosts.localhost.documentRoot = "/webroot";
+        services.httpd.virtualHosts.localhost.documentRoot = ./.;
       };
   };
   containers.midi = {
