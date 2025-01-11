@@ -9,7 +9,6 @@
     };
   };
 
-  programs.zsh.enable = true;
   programs.mtr.enable = true;
   programs.bandwhich.enable = false;
   programs.browserpass.enable = false;

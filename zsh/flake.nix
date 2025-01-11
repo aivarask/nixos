@@ -29,6 +29,7 @@
             "${pkgs.zsh-completions}"
             # "${pkgs.zsh-abbr}"
           ];
+          programs.zsh.enable = true;
         };
       nixosModules.home =
         {

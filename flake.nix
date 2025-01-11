@@ -64,6 +64,7 @@
               ]
               ++ i ./config
               ++ i ./network
+              ++ i ./programs
               ++ idash ./services
             );
         }
@@ -95,6 +96,7 @@
                   inputs.nix-index-database.hmModules.nix-index
                 ]
                 ++ i_ ./config
+                ++ i_ ./programs
                 ++ i_ ./services
                 ++ i_ ./lua;
             };
