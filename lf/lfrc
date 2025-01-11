@@ -42,7 +42,7 @@ map ox &xdg-open $fx
 map oz &zathura $fx
 map U !du -hs $fx
 map Yc $cat $f | xclip -selection clipboard
-map <enter> &mpv $f
+map <enter> &xdg-open $fx
 
 # map Q quit-and-cd
 # cmd quit-and-cd &{{
