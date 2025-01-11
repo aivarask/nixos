@@ -1,7 +1,7 @@
 # vim: nofoldenable
 { pkgs, ... }:
 {
-  systemd.services."wallpaper" = {
+  systemd.user.services."wallpaper" = {
     serviceConfig = {
       Type = "oneshot";
       User = "root";
@@ -11,7 +11,7 @@
     };
     script = ''
       set -eu
-      ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/images/wallpaper/abstract
+      ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/wallpaper/bluemoon
     '';
   };
   systemd.timers."wallpaper" = {

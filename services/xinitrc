@@ -23,7 +23,7 @@ sxhkd -c "$SXHKDRC" &
 systemctl --user restart dunst.service &
 systemctl --user restart dwm-status.service &
 systemctl --user restart unclutter-xfixes.service &
-systemctl restart wallpaper.service &
+systemctl --user restart wallpaper.service &
 
 session=${1:-dwm}
 case $session in
