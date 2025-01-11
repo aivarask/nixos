@@ -21,12 +21,12 @@ fi
 # numlockx
 xset r rate 250 50 s 3600
 sxhkd -c "$SXHKDRC" &
-# systemctl restart wallpaper.service &
+systemctl --user restart dunst.service &
+systemctl --user restart dwm-status.service &
+systemctl --user restart unclutter-xfixes.service &
+systemctl restart wallpaper.service &
 
 # systemctl --user restart blueman-applet.service &
-# systemctl --user restart dunst.service &
-# systemctl --user restart dwm-status.service &
-# systemctl --user restart unclutter.service &
 
 session=${1:-dwm}
 case $session in
