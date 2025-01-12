@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-$lang = $_GET['lang']
 ?>
 
 <!DOCTYPE html>
-<html lang="<?= $lang ?>">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">

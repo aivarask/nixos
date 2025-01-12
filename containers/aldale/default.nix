@@ -28,7 +28,7 @@ in
         ];
         networking.firewall.allowedTCPPorts = [ 80 ];
         services.httpd.enable = true;
-        services.httpd.adminAddr = "mini@example.org";
+        # services.httpd.adminAddr = "mini@example.org";
         # services.httpd.virtualHosts.localhost.documentRoot = "/webroot";
         services.httpd.virtualHosts."localhost" = rec {
           # forceSSL = true;

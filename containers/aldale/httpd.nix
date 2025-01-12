@@ -28,7 +28,7 @@ in
   ];
   services.httpd = {
     enable = true;
-    # user = "root";
+    user = "root";
     group = "root";
     logPerVirtualHost = false;
     logFormat = "common"; # combined, *common, referer, agent, none
