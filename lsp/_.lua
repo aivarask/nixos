@@ -327,7 +327,14 @@ vim.api.nvim_create_autocmd('FileType', {
 					nixpkgs = { expr = 'import (builtins.getFlake "self").inputs.nixpkgs {}' },
 					options = {
 						nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
-						-- home_manager = { expr = '(builtins.getFlake "self").homeConfigurations.root.options' },
+						home_manager = {
+							expr = '(builtins.getFlake "self").nixosConfigurations.dell.options.home-manager.users.type.getSubOptions []',
+						},
+					},
+					diagnostic = {
+						suppress = {
+							'sema-extra-with',
+						},
 					},
 				},
 			},

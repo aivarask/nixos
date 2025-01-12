@@ -16,10 +16,9 @@ in
     localAddress = "192.168.100.11";
     config =
       { pkgs, ... }:
-      {
+      ssh
+      // {
         system.stateVersion = "25.05";
-        services.openssh.enable = true;
-        users.users.root.openssh.authorizedKeys.keys = keys;
         networking.nat.enable = true;
         networking.nat.internalInterfaces = [ "ve-+" ];
         networking.nat.externalInterface =
@@ -34,17 +33,5 @@ in
         # services.httpd.virtualHosts.localhost.documentRoot = "/webroot";
         services.httpd.virtualHosts.localhost.documentRoot = ./.;
       };
-  };
-  containers.midi = {
-    autoStart = true;
-    config =
-      { ... }:
-      ssh
-      // {
-        system.stateVersion = "25.05";
-
-      }
-      // { };
-
   };
 }
