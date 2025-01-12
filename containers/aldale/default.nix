@@ -30,7 +30,20 @@ in
         services.httpd.enable = true;
         services.httpd.adminAddr = "mini@example.org";
         # services.httpd.virtualHosts.localhost.documentRoot = "/webroot";
-        services.httpd.virtualHosts.localhost.documentRoot = ./.;
+        services.httpd.virtualHosts."localhost" = rec {
+          # forceSSL = true;
+          # addSSL = true;
+          # sslServerKey = "/etc/nixos/a/cert.key";
+          # sslServerCert = "/etc/nixos/a/cert.pem";
+          # serverAliases = [ "a.local" ];
+          documentRoot = ./.;
+          extraConfig = ''
+            <Directory "${documentRoot}">
+            	Options FollowSymlinks
+            	AllowOverride All
+            </Directory>
+          '';
+        };
       };
   };
 }
