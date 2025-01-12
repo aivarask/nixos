@@ -26,6 +26,7 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     firefox.url = "./firefox";
+    aldale.url = "./containers/aldale";
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -52,6 +53,7 @@
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.plugins.default
         inputs.zsh.nixosModules.default
+        inputs.aldale.nixosModules.default
         {
           imports =
             with inputs.lib.packages."${system}".lib;
