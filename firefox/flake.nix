@@ -1,7 +1,7 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
 {
   inputs.nur.url = "github:nix-community/NUR";
-  # inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { self, ... }@inputs:
     {
@@ -89,7 +89,6 @@
                 "browser.fixup.domainsuffixwhitelist.lan" = true;
                 "browser.fixup.domainsuffixwhitelist.containers" = true;
                 "browser.startup.firstrunSkipsHomepage" = false;
-                # newtabpage
                 "browser.newtabpage.pinned" = true;
                 "browser.newtabpage.activity-stream.feeds.topsites" = false;
                 "browser.newtabpage.activity-stream.section.highlights.rows" = 1;
@@ -98,7 +97,6 @@
                 "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "DuckDuckGo";
                 "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" =
                   "DuckDuckGo";
-                #
                 "browser.safebrowsing.downloads.remote.enabled" = false;
                 "browser.search.suggest.enabled" = false;
                 "browser.send_pings" = false;
@@ -106,8 +104,7 @@
                 "browser.tabs.loadDivertedInBackground" = true;
                 "browser.tabs.loadInBackground" = true;
                 "browser.tabs.loadBookmarksInTabs" = false;
-                "browser.toolbars.bookmarks.visibility" = "always";
-                # "browser.toolbars.bookmarks.visibility" = "newtab";
+                "browser.toolbars.bookmarks.visibility" = "always"; # "newtab"
                 "browser.uidensity" = 1;
                 "browser.urlbar.autoFill" = false;
                 "browser.urlbar.placeholderName" = "DuckDuckGo";
