@@ -86,6 +86,8 @@
                 "browser.aboutwelcome.enabled" = false;
                 "browser.aboutConfig.showWarning" = false;
                 "browser.fixup.fallback-to-https" = false;
+                "browser.fixup.domainsuffixwhitelist.lan" = true;
+                "browser.fixup.domainsuffixwhitelist.containers" = true;
                 "browser.startup.firstrunSkipsHomepage" = false;
                 # newtabpage
                 "browser.newtabpage.pinned" = true;

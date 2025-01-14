@@ -1,5 +1,4 @@
 # vim: nofoldenable
-# https://nixos.org/manual/nixos/unstable/#ch-containers
 { config, ... }:
 let
   ssh = {
@@ -28,8 +27,6 @@ in
         ];
         networking.firewall.allowedTCPPorts = [ 80 ];
         services.httpd.enable = true;
-        # services.httpd.adminAddr = "mini@example.org";
-        # services.httpd.virtualHosts.localhost.documentRoot = "/webroot";
         services.httpd.virtualHosts."localhost" = rec {
           # forceSSL = true;
           # addSSL = true;
