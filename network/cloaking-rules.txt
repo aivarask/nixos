@@ -2,9 +2,7 @@
 
 # https://raw.githubusercontent.com/DNSCrypt/dnscrypt-proxy/refs/heads/master/dnscrypt-proxy/example-cloaking-rules.txt
 localhost	127.0.0.1
-localhost ::1
 
-# accounts.google.com 		0.0.0.0
 
 hw.local								192.168.1.1
 redmi										192.168.1.140

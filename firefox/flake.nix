@@ -35,7 +35,7 @@
             # firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin
             # pkgs.firefox-devedition
           ];
-          programs.browserpass.enable = true;
+          programs.browserpass.enable = true; # mkdir ~/.password-store/
           programs.firefox = {
             # nativeMessagingHosts.browserpass = true;
             enable = true;

@@ -31,9 +31,9 @@
 
 # server_names = ['scaleway-fr', 'google', 'yandex', 'cloudflare']
 server_names = [
-	'cloudflare',
+	# 'cloudflare',
 	'dnscry.pt-vilnius-ipv4',
-	'nextdns-ultralow',
+	# 'nextdns-ultralow',
 ]
 
 

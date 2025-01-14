@@ -22,5 +22,9 @@
       name = "";
       url = "https://www.lrt.lt/";
     }
+    {
+      name = "";
+      url = "https://stackoverflow.com/";
+    }
   ];
 }

@@ -77,4 +77,7 @@
       RestartSec = "2s";
     };
   };
+  services.privoxy = {
+    enable = false;
+  };
 }
