@@ -1,7 +1,7 @@
 # vim: foldlevel=6 foldnestmax=6 nowrap nofoldenable
 {
   inputs.nur.url = "github:nix-community/NUR";
-  inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
+  # inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { self, ... }@inputs:
     {
