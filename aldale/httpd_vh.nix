@@ -1,8 +1,8 @@
-rec {
-  documentRoot = "${./.}";
+arg: rec {
+  documentRoot = arg;
   extraConfig = ''
     <Directory "${documentRoot}">
-    	Options FollowSymlinks
+    	Options Indexes FollowSymlinks
     	AllowOverride All
     </Directory>
   '';

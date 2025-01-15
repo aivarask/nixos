@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [ ./httpd.nix ];
-  services.httpd.virtualHosts."aldale.containers" = import ./httpd_vh.nix;
+  services.httpd.virtualHosts."aldale.local" = import ./httpd_vh.nix "/etc/nixos/aldale";
   containers.aldale = {
     autoStart = true;
     privateNetwork = true;
@@ -23,7 +23,8 @@
           ./php.nix
           ./httpd.nix
         ];
-        services.httpd.virtualHosts."localhost" = import ./httpd_vh.nix;
+        services.httpd.virtualHosts."localhost" = import ./httpd_vh.nix "${./.}";
+        networking.firewall.allowedTCPPorts = [ 80 ];
       };
   };
 }
