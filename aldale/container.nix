@@ -1,5 +1,7 @@
 { config, ... }:
 {
+  imports = [ ./httpd.nix ];
+  services.httpd.virtualHosts."aldale.containers" = import ./httpd_vh.nix;
   containers.aldale = {
     autoStart = true;
     privateNetwork = true;
@@ -7,15 +9,21 @@
     localAddress = "192.168.200.11";
     config =
       { pkgs, ... }:
-      {
-        imports = [ ];
+      (import ./ssh.nix config)
+      // (import ./nat.nix config)
+      // {
         system.stateVersion = "25.05";
         environment.systemPackages = with pkgs; [
+          nmap
           vim
           wget
+          lf
         ];
-      }
-      // (import ./ssh.nix config)
-      // (import ./nat.nix config);
+        imports = [
+          ./php.nix
+          ./httpd.nix
+        ];
+        services.httpd.virtualHosts."localhost" = import ./httpd_vh.nix;
+      };
   };
 }

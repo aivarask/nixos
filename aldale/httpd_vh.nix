@@ -1,5 +1,5 @@
 rec {
-  documentRoot = ./.;
+  documentRoot = "${./.}";
   extraConfig = ''
     <Directory "${documentRoot}">
     	Options FollowSymlinks

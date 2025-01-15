@@ -11,5 +11,5 @@
     ];
     extraConfig = '''';
   };
-  services.httpd.virtualHosts."localhost" = import ./httpd_vh.nix;
+  # services.httpd.virtualHosts."localhost" = import ./httpd_vh.nix;
 }
