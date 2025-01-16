@@ -10,6 +10,7 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
 fi
 
 if [ "$(hostname)" = pc ]; then
+	xset s 60 60
 	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
 	XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 	systemctl --user start imwheel.service &
