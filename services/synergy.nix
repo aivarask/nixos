@@ -3,13 +3,14 @@
   environment.systemPackages = [
     # pkgs.quicksynergy
     pkgs.synergy
+    pkgs.deskflow
   ];
   services.synergy.server = {
-    enable = true;
+    enable = false;
     configFile = ./synergy-server.conf;
   };
   services.synergy.client = {
-    enable = true;
+    enable = false;
     serverAddress = "pcw"; # 24800 default port
   };
 }

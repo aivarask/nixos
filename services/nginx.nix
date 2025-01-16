@@ -2,7 +2,7 @@
 { pkgs, lib, ... }:
 {
   services.nginx = {
-    enable = true;
+    enable = false;
     recommendedProxySettings = true;
     recommendedOptimisation = true;
     recommendedTlsSettings = true;
