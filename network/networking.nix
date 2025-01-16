@@ -3,6 +3,7 @@
 # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
 # https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
 # netstat -antup
+# nestat --all --numeric --tcp --udp --program
 # dig +short myip.opendns.com @resolver1.opendns.com
 { lib, pkgs, ... }:
 {

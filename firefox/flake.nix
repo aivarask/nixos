@@ -282,7 +282,7 @@
                 };
                 "@ex explainshell.com" = {
                   definedAliases = [ "@ex" ];
-                  urls = [ { template = "explainshell.com/explain?cmd={searchTerms}"; } ];
+                  urls = [ { template = "https://explainshell.com/explain?cmd={searchTerms}"; } ];
                 };
 
               };
