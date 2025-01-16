@@ -42,9 +42,6 @@
             package = pkgs.firefox;
             # package = pkgs.firefox-devedition;
             # package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
-            # preferences = {
-            #   "widget.use-xdg-desktop-portal.file-picker" = 1;
-            # };
             profiles.root = {
               isDefault = true;
               extensions = with PKGS.nur.repos.rycee.firefox-addons; [
@@ -158,6 +155,11 @@
                 "privacy.trackingprotection.fingerprinting.enabled" = true;
                 "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
                 "toolkit.zoomManager.zoomValues" = ".8,.95,1,1.1,1.2,1.3";
+                "widget.use-xdg-desktop-portal.file-picker" = 1;
+                # "widget.use-xdg-desktop-portal.location" = 2;
+                # "widget.use-xdg-desktop-portal.mime-handler" = 2;
+                # "widget.use-xdg-desktop-portal.open-uri" = 2;
+                # "widget.use-xdg-desktop-portal.settings" = 2;
               };
               userChrome = ''
                 * {
