@@ -18,7 +18,9 @@ elif [ "$(hostname)" = dell ]; then
 	systemctl --user restart redshift.service &
 fi
 numlockx
-xset r rate 250 50 s 3600
+# xset q
+xset r rate 250 50
+xset s 3600 3600
 sxhkd -c "$SXHKDRC" &
 systemctl --user restart dunst.service &
 systemctl --user restart dwm-status.service &
