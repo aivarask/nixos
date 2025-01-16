@@ -14,6 +14,7 @@ if [ "$(hostname)" = pc ]; then
 	XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 	systemctl --user start imwheel.service &
 elif [ "$(hostname)" = dell ]; then
+	deskflow-server -f --no-tray --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem
 	systemctl --user restart blueman-applet.service &
 	systemctl --user restart redshift.service &
 fi

@@ -4,6 +4,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "deskflow-1.18.0"
   ];
+  networking.firewall.allowedTCPPorts = [ 24800 ];
   environment.systemPackages = [
     # pkgs.quicksynergy
     # pkgs.synergy
