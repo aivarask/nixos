@@ -20,6 +20,10 @@
     }
     {
       name = "";
+      url = "https://www.euroleaguebasketball.net/euroleague/standings/";
+    }
+    {
+      name = "";
       url = "https://www.lrt.lt/";
     }
     {

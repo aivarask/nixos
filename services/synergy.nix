@@ -1,8 +1,12 @@
+# https://wiki.archlinux.org/title/Deskflow
 { pkgs, ... }:
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "deskflow-1.18.0"
+  ];
   environment.systemPackages = [
     # pkgs.quicksynergy
-    pkgs.synergy
+    # pkgs.synergy
     pkgs.deskflow
   ];
   services.synergy.server = {
