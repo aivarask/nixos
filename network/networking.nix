@@ -2,6 +2,8 @@
 # https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration
 # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
 # https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
+# netstat -antup
+# dig +short myip.opendns.com @resolver1.opendns.com
 { lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [

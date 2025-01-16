@@ -280,6 +280,10 @@
                   definedAliases = [ "@gu" ];
                   urls = [ { template = "${github}/search?type=users&q={searchTerms}"; } ];
                 };
+                "@ex explainshell.com" = {
+                  definedAliases = [ "@ex" ];
+                  urls = [ { template = "explainshell.com/explain?cmd={searchTerms}"; } ];
+                };
 
               };
           };
