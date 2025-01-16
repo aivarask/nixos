@@ -1,5 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = [
+    # pkgs.quicksynergy
+    pkgs.synergy
+  ];
   services.synergy.server = {
     enable = true;
   };
