@@ -1,4 +1,3 @@
-# vim: nofoldenable
 {
   inputs = {
     musnix.url = "github:musnix/musnix";
@@ -17,6 +16,9 @@
           imports = [
             inputs.musnix.nixosModules.musnix
           ];
+          musnix = {
+            enable = true;
+          };
           environment.systemPackages = with pkgs; [
             ardour
             libbs2b
@@ -29,7 +31,7 @@
             mixxx
             yoshimi
             guitarix
-            # muse
+            # muse # fails
             infamousPlugins
             mamba
           ];

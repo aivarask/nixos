@@ -59,7 +59,7 @@
       playwright-driver.browsers
       poedit
       gettext
-      # intelephense
+      intelephense
       obs-cli
       difftastic
       android-tools
