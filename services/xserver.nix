@@ -35,7 +35,7 @@
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
-    displayManager.xpra.enable = true;
+    # displayManager.xpra.enable = true;
     windowManager.awesome.enable = lib.mkDefault false;
     windowManager.dwm.enable = lib.mkDefault true;
     autoRepeatDelay = 200;
