@@ -21,14 +21,15 @@
       "text/css" = "nvim.desktop";
       "text/x-lua" = "nvim.desktop";
       "text/x-csrx" = "nvim.desktop";
+      "text/x-php" = "nvim.desktop";
       "text/*" = "nvim.desktop";
 
       "application/pdf" = "firefox.desktop";
       "application/json" = "nvim.desktop";
       "application/sql" = "nvim.desktop";
+      "application/javascript" = "nvim.desktop";
       "application/x-yaml" = "nvim.desktop";
       "application/x-shellscript" = "nvim.desktop";
-      "application/javascript" = "nvim.desktop";
       "application/x-*" = "nvim.desktop";
       "application/*" = "nvim.desktop";
 

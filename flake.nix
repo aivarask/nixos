@@ -27,6 +27,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     firefox.url = "./firefox";
     aldale.url = "./aldale";
+    _g.url = "./_g";
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -54,12 +55,12 @@
         inputs.vim.nixosModules.plugins.default
         inputs.zsh.nixosModules.default
         inputs.aldale.nixosModules.default
+        inputs._g.nixosModules.default
         {
           imports =
             with inputs.lib.packages."${system}".lib;
             (
               [
-                ./containers/mini
                 ./lnav
                 ./systemd/remote-touchpad.nix
                 ./wallpaper

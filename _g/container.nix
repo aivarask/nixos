@@ -1,15 +1,15 @@
 { config, ... }:
 {
   imports = [
-    ./httpd.nix
-    ./php.nix
+    # ./php.nix
+    # ./httpd.nix
   ];
-  services.httpd.virtualHosts."aldale.local" = import ./httpd_vh.nix "/etc/nixos/aldale";
-  containers.aldale = {
+  services.httpd.virtualHosts."g.local" = import ./httpd_vh.nix "/etc/nixos/_g";
+  containers.g = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.200.10";
-    localAddress = "192.168.200.11";
+    hostAddress = "192.168.100.10";
+    localAddress = "192.168.100.11";
     config =
       { pkgs, ... }:
       (import ./ssh.nix config)

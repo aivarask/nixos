@@ -41,6 +41,7 @@
           services.udev.packages = [
             pkgs.mixxx
             pkgs.bitwig-studio
+            pkgs.vital
           ];
         };
     };

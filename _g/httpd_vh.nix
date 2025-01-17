@@ -1,10 +1,11 @@
 path: rec {
   documentRoot = path;
   extraConfig = ''
-    <Directory "${documentRoot}">
-    	Options Indexes FollowSymlinks
-    	AllowOverride All
-    </Directory>
+        <Directory "${documentRoot}">
+        	Options Indexes FollowSymlinks
+        	AllowOverride All
+    			DirectoryIndex index.html index.php
+        </Directory>
   '';
   # forceSSL = true;
   # addSSL = true;

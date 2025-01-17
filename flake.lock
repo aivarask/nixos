@@ -31,7 +31,7 @@
         "type": "github"
       }
     },
-    "aldale": {
+    "_g": {
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-uSC20pdDd2EtLDqzgEZaDm7PpapXQShqmBb5KBvA3IQ=",
@@ -1176,6 +1176,7 @@
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
+        "_g": "_g",
         "aldale": "aldale",
         "audio": "audio",
         "dev-templates": "dev-templates",

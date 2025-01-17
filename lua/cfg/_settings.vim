@@ -71,7 +71,6 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
-nnoremap ?C :edit /etc/nixos/config/containers.nix<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
