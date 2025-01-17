@@ -14,7 +14,7 @@ dell.local							192.168.1.180
 # gettransfer.lt				79.98.24.174
 
 g.containers 192.168.100.11
-g.l g.containers
+g.c g.containers
 
 aldale.containers	192.168.200.11
-a.l aldale.containers
+a.c aldale.containers

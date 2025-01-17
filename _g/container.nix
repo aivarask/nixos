@@ -1,10 +1,10 @@
 { config, ... }:
 {
   imports = [
-    # ./php.nix
-    # ./httpd.nix
+    ./httpd.nix
+    ./php.nix
   ];
-  services.httpd.virtualHosts."g.local" = import ./httpd_vh.nix "/etc/nixos/_g";
+  services.httpd.virtualHosts."g.l" = import ./httpd_vh.nix "/etc/nixos/_g";
   containers.g = {
     autoStart = true;
     privateNetwork = true;

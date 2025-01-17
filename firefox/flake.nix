@@ -83,9 +83,10 @@
                 "browser.aboutwelcome.enabled" = false;
                 "browser.aboutConfig.showWarning" = false;
                 "browser.fixup.fallback-to-https" = false;
-                "browser.fixup.domainsuffixwhitelist.l" = true;
                 "browser.fixup.domainsuffixwhitelist.lan" = true;
+                "browser.fixup.domainsuffixwhitelist.l" = true;
                 "browser.fixup.domainsuffixwhitelist.containers" = true;
+                "browser.fixup.domainsuffixwhitelist.c" = true;
                 "browser.startup.firstrunSkipsHomepage" = false;
                 "browser.newtabpage.pinned" = true;
                 "browser.newtabpage.activity-stream.feeds.topsites" = false;
