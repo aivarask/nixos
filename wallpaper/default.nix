@@ -13,13 +13,14 @@
       set -eu
       ${pkgs.feh}/bin/feh --bg-fill --randomize /etc/nixos/wallpaper/bluemoon
     '';
+    startAt = "*:0/5";
   };
-  systemd.timers."wallpaper" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      # OnBootSec = "1h";
-      OnUnitActiveSec = "1h";
-      Unit = "wallpaper.service";
-    };
-  };
+  # systemd.timers."wallpaper" = {
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     # OnBootSec = "1h";
+  #     OnUnitActiveSec = "1h";
+  #     Unit = "wallpaper.service";
+  #   };
+  # };
 }
