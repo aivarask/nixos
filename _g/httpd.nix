@@ -9,6 +9,11 @@
     extraModules = [
       "proxy_wstunnel"
     ];
-    extraConfig = '''';
+    extraConfig = ''
+      			<IfModule "mod_proxy_http.c">
+            	ProxyPass "/ws/" "https://echo.websocket.org/" upgrade=websocket
+            </IfModule>
+
+            		'';
   };
 }

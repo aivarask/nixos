@@ -1,2 +1,2 @@
 <?php
-echo "g php1";
+echo "g php3 ";

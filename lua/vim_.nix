@@ -145,6 +145,8 @@ in
       inspect
       lpeglabel
       cjson
+      luasocket
+      luasec
     ];
 
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";

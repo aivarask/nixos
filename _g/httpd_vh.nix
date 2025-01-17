@@ -6,6 +6,7 @@ path: rec {
         	AllowOverride All
     			DirectoryIndex index.html index.php
         </Directory>
+
   '';
   # forceSSL = true;
   # addSSL = true;
