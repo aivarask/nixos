@@ -6,7 +6,6 @@
       gh-eco
       # gh-poi
       # gh-dash
-      # sh-screensaver
       # gh-actions-cache
       gh-markdown-preview
     ];
