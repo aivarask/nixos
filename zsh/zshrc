@@ -57,7 +57,9 @@ bindkey -v '' cmd_xclip
 typeset -TU LUA_PATH luapath ';'
 luapath+=(
 	'/etc/nixos/lua/?.lua'
-	'/etc/nixos/luvit/deps/?.lua'
-	'/etc/nixos/luvit/deps/?/init.lua'
+	'/etc/nixos/lua/luvit/deps/?.lua'
+	'/etc/nixos/lua/luvit/deps/?/init.lua'
+	'/etc/nixos/lua/luvit/deps/?.lua'
+	'/etc/nixos/lua/luvit/deps/?/init.lua'
 )
 export LUA_PATH

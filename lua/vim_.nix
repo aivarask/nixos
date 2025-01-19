@@ -154,10 +154,10 @@ in
     enable = true;
     extraConfig = ''
       let &packpath.=',/etc/nixos'
-      let &runtimepath.=',/etc/nixos,/etc/nixos/awe,/etc/nixos/luvit'
+      let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
       runtime! lua/cfg/**/*{.lua,.vim}
       runtime! lua/_*{.lua,.vim}
-      runtime! {deps,lsp }/**/*.lua
+      runtime! lsp/**/*.lua
 
       set scrolloff=12
       set cmdheight=1
