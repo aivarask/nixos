@@ -28,6 +28,7 @@
     firefox.url = "./firefox";
     # aldale.url = "./aldale";
     _g.url = "./_g";
+		# lua.url = "./lua";``
   };
   outputs =
     { nixpkgs, ... }@inputs:

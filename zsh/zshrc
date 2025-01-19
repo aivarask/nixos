@@ -25,9 +25,7 @@ export NIXPKGS_ALLOW_INSECURE=1
 alias nrl='nix registry list'\
 	oras='curl wttr.in/Vilnius'\
 
-
 # export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh
-
 # cat -v	#	showkey
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 bindkey '^ ' forward-word            # C-Space
@@ -57,9 +55,9 @@ bindkey -v '' cmd_xclip
 typeset -TU LUA_PATH luapath ';'
 luapath+=(
 	'/etc/nixos/lua/?.lua'
-	'/etc/nixos/lua/luvit/deps/?.lua'
-	'/etc/nixos/lua/luvit/deps/?/init.lua'
-	'/etc/nixos/lua/luvit/deps/?.lua'
-	'/etc/nixos/lua/luvit/deps/?/init.lua'
+	'/etc/nixos/lua_luvit/deps/?.lua'
+	'/etc/nixos/lua_luvit/deps/?/init.lua'
+	'/etc/nixos/lua_lit/deps/?.lua'
+	'/etc/nixos/lua_lit/deps/?/init.lua'
 )
 export LUA_PATH
