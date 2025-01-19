@@ -136,8 +136,12 @@ in
       ps: with ps; [
         luv
         cjson
+        http # https://github.com/daurnimator/lua-http
+        luasocket # https://github.com/lunarmodules/luasocket
+        # https://github.com/rest-nvim/rest.nvim
       ]
     ))
+    # pkgs.luajitPackages.http
   ];
   programs.neovim.extraLuaPackages =
     ps: with ps; [
@@ -145,7 +149,6 @@ in
       inspect
       lpeglabel
       cjson
-      luasocket
       luasec
     ];
 
@@ -153,16 +156,16 @@ in
   programs.neovim = {
     enable = true;
     extraConfig = ''
-      let &packpath.=',/etc/nixos'
+            let &packpath.=',/etc/nixos'
 
-      let &runtimepath.=',/etc/nixos,/etc/nixos/awe'
+            let &runtimepath.=',/etc/nixos'
 
-			runtime! lua/cfg/**/*{.lua,.vim}
-      runtime! lua/_*{.lua,.vim}
-      runtime! lsp/**/*.lua
+      			runtime! lua/cfg/**/*{.lua,.vim}
+            runtime! lua/_*{.lua,.vim}
+            runtime! lsp/**/*.lua
 
-      set scrolloff=12
-      set cmdheight=1
+            set scrolloff=12
+            set cmdheight=1
     '';
     extraLuaConfig = ''
       vim.loader.enable()
