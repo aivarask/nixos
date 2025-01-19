@@ -17,7 +17,7 @@ if [ "$(hostname)" = pc ]; then
 	systemctl --user start imwheel.service &
 	deskflow-client -f --no-tray --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
-	deskflow-server -f --no-tray --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
+	# deskflow-server -f --no-tray --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
 	systemctl --user restart blueman-applet.service &
 	systemctl --user restart redshift.service &
 fi

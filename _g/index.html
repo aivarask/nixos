@@ -1,0 +1,31 @@
+<html>
+
+<head>
+	<script>
+		var ws = new WebSocket('ws://dell:8080/');
+		ws.onopen = function () {
+			ws.send("Hi, from the client."); // this works
+		};
+		ws.onclose = function () {
+			setTimeout(function () {
+				console.warn("Connection closed...");
+				// return location.reload()
+			}, 1000)
+
+		}
+		ws.onmessage = function (event) {
+			console.log('Count is: ' + event.data);
+			if (event.data === '10') {
+				// return location.reload()
+			}
+		};
+	</script>
+</head>
+
+<body>
+	_g
+
+	<button onclick="() => { ws.send('test') }">test</button>
+</body>
+
+</html>

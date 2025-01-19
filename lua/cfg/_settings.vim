@@ -1,3 +1,5 @@
+runtime! _g/*.lua
+
 syntax on
 filetype plugin indent on
 set termguicolors

@@ -11,6 +11,8 @@ for i = #library, 1, -1 do
 	end
 end
 for _, name in ipairs({
+	'plenary.nvim',
+	'nvim%-nio',
 	'nvim%-cmp',
 	'outline.nvim',
 	'nvim%-tree',

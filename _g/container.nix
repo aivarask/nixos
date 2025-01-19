@@ -1,9 +1,11 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./httpd.nix
     ./php.nix
   ];
+  # environment.profiles = [ "${./.}" ];
+  environment.systemPackages = [ pkgs.websocketd ];
   services.httpd.virtualHosts."g.l" = import ./httpd_vh.nix "/etc/nixos/_g";
   containers.g = {
     autoStart = true;

@@ -28,7 +28,6 @@ alias nrl='nix registry list'\
 
 # export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh
 
-
 # cat -v	#	showkey
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 bindkey '^ ' forward-word            # C-Space
@@ -58,5 +57,7 @@ bindkey -v '' cmd_xclip
 typeset -TU LUA_PATH luapath ';'
 luapath+=(
 	'/etc/nixos/lua/?.lua'
+	'/etc/nixos/luvit/deps/?.lua'
+	'/etc/nixos/luvit/deps/?/init.lua'
 )
 export LUA_PATH

@@ -55,7 +55,7 @@
                 # vimium
                 # df-youtube
                 # decentraleyes
-                # h264ify
+                h264ify
                 browserpass
                 # tab-session-manager # https://github.com/sienori/Tab-Session-Manager
                 stylus
