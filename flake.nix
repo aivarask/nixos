@@ -102,6 +102,7 @@
                   inputs.lua.nixosModules.common.home
                   inputs.lua.nixosModules.vim.home
                   inputs.lua.nixosModules.neovim.home
+                  ./lua/foo.nix
                 ]
                 ++ i_ ./config
                 ++ i_ ./programs

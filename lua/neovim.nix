@@ -107,10 +107,7 @@ let
   ];
 in
 {
-  programs.neovim.extraLuaPackages =
-    ps: with ps; [
-    ];
-
+  programs.neovim.extraLuaPackages = ps: with ps; [ ];
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
     enable = true;

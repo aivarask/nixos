@@ -40,7 +40,11 @@
             ];
 
         };
-      neovim.home = import ./neovim.nix;
+      neovim.home =
+        { ... }:
+        {
+          imports = [ ./neovim.nix ];
+        };
       common.home =
         { pkgs, ... }:
         let
