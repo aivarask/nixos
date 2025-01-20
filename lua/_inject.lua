@@ -1,6 +1,6 @@
 -- vim: nofoldenable
 local runtime_path = vim.api.nvim_list_runtime_paths()[1]
-print(runtime_path)
+-- print(runtime_path)
 local after_path = runtime_path .. '/after'
 local queries_path = runtime_path .. '/after/queries'
 

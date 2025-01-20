@@ -24,7 +24,6 @@
           );
         in
         {
-          environment.etc."lua/lsp".source = pkgs.lua-language-server;
           environment.etc."luajit".source = myLua;
           environment.systemPackages =
             with pkgs;

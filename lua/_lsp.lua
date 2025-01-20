@@ -4,7 +4,7 @@ local library = {
 	'/etc/static/luajit/share/lua/5.1',
 	-- '${3rd}/busted/library',
 	-- '${3rd}/luassert/library',
-	-- '${3rd}/luv/library',
+	'${3rd}/luv/library',
 }
 
 for i = #library, 1, -1 do
