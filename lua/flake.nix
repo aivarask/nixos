@@ -6,28 +6,38 @@
     nixosModules = {
       default =
         { pkgs, ... }:
+        let
+          myLua = pkgs.luajit.withPackages (
+            ps: with ps; [
+              luv
+              cjson
+              luasocket # https://github.com/lunarmodules/luasocket
+              # https://github.com/rest-nvim/rest.nvim
+              magick
+              cqueues
+              http # https://github.com/daurnimator/lua-http
+              inspect
+              lpeglabel
+              cjson
+              luasec
+            ]
+          );
+        in
         {
-          environment.systemPackages = with pkgs; [
-            neovim-remote
-            awesome
-            stylua
-            lua-language-server
-            (pkgs.luajit.withPackages (
-              ps: with ps; [
-                luv
-                cjson
-                luasocket # https://github.com/lunarmodules/luasocket
-                # https://github.com/rest-nvim/rest.nvim
-                magick
-                cqueues
-                http # https://github.com/daurnimator/lua-http
-                inspect
-                lpeglabel
-                cjson
-                luasec
-              ]
-            ))
-          ];
+          environment.etc."lua/lsp".source = pkgs.lua-language-server;
+          environment.etc."luajit".source = myLua;
+          environment.systemPackages =
+            with pkgs;
+            [
+              neovim-remote
+              awesome
+              stylua
+              lua-language-server
+              myLua
+            ]
+            ++ [
+              # pkgs.luajitPackages.inspect
+            ];
 
         };
       neovim.home = import ./neovim.nix;

@@ -8,9 +8,10 @@ local ui_select = {
 			vim.fn.expand('<cexpr>'),
 		}, {}, function(first)
 			if first then
-				vim.ui.select({ 'help', 'nix' }, {}, function(second)
+				vim.ui.select({ 'help', 'nixos-option', 'nixos-option -r' }, {}, function(second)
 					if second == 'help' then
 						vim.cmd.help(first)
+					else
 					end
 				end)
 			end

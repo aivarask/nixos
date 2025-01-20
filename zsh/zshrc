@@ -23,6 +23,7 @@ zstyle ':completion:*:*:make:*' tag-order 'targets'
 
 export NIXPKGS_ALLOW_INSECURE=1
 alias nrl='nix registry list'\
+	no='nixos-option'\
 	oras='curl wttr.in/Vilnius'\
 
 # export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh
