@@ -20,11 +20,13 @@
               lpeglabel
               cjson
               luasec
+              luasql-sqlite3
             ]
           );
         in
         {
           environment.etc."luajit".source = myLua;
+          environment.etc."lua-language-server".source = pkgs.lua-language-server;
           environment.systemPackages =
             with pkgs;
             [
@@ -42,6 +44,10 @@
       neovim.home =
         { ... }:
         {
+          programs.neovim.extraLuaPackages =
+            ps: with ps; [
+              cjson
+            ];
           imports = [ ./neovim.nix ];
         };
       common.home =

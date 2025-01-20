@@ -4,8 +4,19 @@ local library = {
 	'/etc/static/luajit/share/lua/5.1',
 	-- '${3rd}/busted/library',
 	-- '${3rd}/luassert/library',
-	'${3rd}/luv/library',
 }
+local userThirdParty = {
+	--
+	-- '/etc/static/lua-language-server/share/lua-language-server/meta/3rd',
+}
+local path = {
+	'lua/?/init.lua',
+	'lua/?.lua',
+	--
+	'?/init.lua',
+	'?.lua',
+}
+local pathStrict = true
 
 for i = #library, 1, -1 do
 	local value = library[i]
@@ -51,17 +62,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'lua',
 	callback = function()
-		if false then
-			vim.lsp.start({
-				name = 'ls.lua',
-				cmd = { 'ls.lua' },
-				-- 	cmd = { 'lua', '/etc/nixos/lua/ls.lua' },
-				-- 	cmd_env = { LUA_PATH = '/etc/nixos/lua/?.lua' },
-				-- 	settings = {
-				-- 		a = 1,
-				-- 	},
-			})
-		end
 		vim.lsp.start({
 			name = 'luals',
 			capabilities = capabilities,
@@ -87,14 +87,16 @@ vim.api.nvim_create_autocmd('FileType', {
 					},
 					runtime = {
 						version = 'LuaJIT',
-						pathStrict = true,
-						path = { 'lua/?/init.lua', 'lua/?.lua', '?/init.lua', '?.lua' },
+						pathStrict = pathStrict,
+						path = path,
 					},
 					workspace = {
-						checkThirdParty = false,
+						checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
 						library = library,
 						preloadFileSize = 600,
 						ignoreDir = { 'node_modules', 'vendor' },
+						-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty
+						userThirdParty = userThirdParty,
 					},
 				},
 			},
