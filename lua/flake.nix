@@ -9,10 +9,10 @@
         let
           myLua = pkgs.luajit.withPackages (
             ps: with ps; [
+              # https://github.com/rest-nvim/rest.nvim
               luv
               cjson
               luasocket # https://github.com/lunarmodules/luasocket
-              # https://github.com/rest-nvim/rest.nvim
               magick
               cqueues
               http # https://github.com/daurnimator/lua-http

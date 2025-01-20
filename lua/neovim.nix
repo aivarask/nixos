@@ -106,7 +106,8 @@ let
     tabular
   ];
 in
-{
+rec {
+
   programs.neovim.extraLuaPackages = ps: with ps; [ ];
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
@@ -131,6 +132,7 @@ in
     withPython3 = true;
     withRuby = false;
   };
+  xdg.dataFile."nvim/plugins".source = programs.neovim.plugins;
   programs.neovim.plugins =
     common
     ++ (with pkgs.vimPlugins; [
