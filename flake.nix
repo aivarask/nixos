@@ -57,6 +57,7 @@
         inputs.zsh.nixosModules.default
         # inputs.aldale.nixosModules.default
         inputs.aiva.nixosModules.default
+        inputs.lua.nixosModules.default
         {
           imports =
             with inputs.lib.packages."${system}".lib;
@@ -100,6 +101,7 @@
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.lua.nixosModules.common.home
                   inputs.lua.nixosModules.vim.home
+                  inputs.lua.nixosModules.neovim.home
                 ]
                 ++ i_ ./config
                 ++ i_ ./programs

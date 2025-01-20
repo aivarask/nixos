@@ -107,30 +107,8 @@ let
   ];
 in
 {
-  home.packages = with pkgs; [
-    neovim-remote
-    awesome
-    stylua
-    lua-language-server
-    (pkgs.luajit.withPackages (
-      ps: with ps; [
-        luv
-        cjson
-        luasocket # https://github.com/lunarmodules/luasocket
-        # https://github.com/rest-nvim/rest.nvim
-      ]
-    ))
-    # pkgs.luajitPackages.http
-  ];
   programs.neovim.extraLuaPackages =
     ps: with ps; [
-      magick
-      cqueues
-      http # https://github.com/daurnimator/lua-http
-      inspect
-      lpeglabel
-      cjson
-      luasec
     ];
 
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
