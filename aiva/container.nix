@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  name = "aiva";
+in
 {
   imports = [
     ./httpd.nix
@@ -6,8 +9,8 @@
   ];
   # environment.profiles = [ "${./.}" ];
   environment.systemPackages = [ pkgs.websocketd ];
-  services.httpd.virtualHosts."g.l" = import ./httpd_vh.nix "/etc/nixos/_g";
-  containers.g = {
+  services.httpd.virtualHosts."${name}.l" = import ./httpd_vh.nix "/etc/nixos/${name}";
+  containers.${name} = {
     autoStart = true;
     privateNetwork = true;
     hostAddress = "192.168.100.10";
