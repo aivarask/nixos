@@ -107,26 +107,6 @@ let
   ];
 in
 {
-  programs.vim = {
-    enable = true;
-    plugins =
-      common
-      ++ (with pkgs.vimPlugins; [
-        # vim-repeat vim-sensible vim-matchit
-        vim-airline
-        vim-which-key
-        vim-surround
-        auto-pairs
-        nerdtree
-      ]);
-    settings = { };
-    extraConfig = ''
-      let &packpath.=',/etc/nixos'
-      let &runtimepath.=',/etc/nixos'
-      runtime! lua/cfg/**/*.vim
-      runtime! lua/_*.vim
-    '';
-  };
   home.packages = with pkgs; [
     neovim-remote
     awesome
@@ -136,7 +116,6 @@ in
       ps: with ps; [
         luv
         cjson
-        http # https://github.com/daurnimator/lua-http
         luasocket # https://github.com/lunarmodules/luasocket
         # https://github.com/rest-nvim/rest.nvim
       ]
@@ -146,6 +125,8 @@ in
   programs.neovim.extraLuaPackages =
     ps: with ps; [
       magick
+      cqueues
+      http # https://github.com/daurnimator/lua-http
       inspect
       lpeglabel
       cjson

@@ -35,7 +35,7 @@ end
 
 local client = vim.lsp.get_clients({ name = 'luals' })[1] or nil
 if client ~= nil then
-	-- vim.print(client.settings.Lua.workspace.library)
+	vim.print(client.settings.Lua.workspace.library)
 	client.settings.Lua.workspace.library = library
 	client.notify('workspace/didChangeConfiguration', { settings = client.settings })
 end

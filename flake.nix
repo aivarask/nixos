@@ -28,7 +28,7 @@
     firefox.url = "./firefox";
     # aldale.url = "./aldale";
     _g.url = "./_g";
-    # lua.url = "./lua";``
+    lua.url = "./lua";
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -98,6 +98,7 @@
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
+                  inputs.lua.nixosModules.vim.home
                 ]
                 ++ i_ ./config
                 ++ i_ ./programs
