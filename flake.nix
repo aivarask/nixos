@@ -98,6 +98,7 @@
                   inputs.firefox.nixosModules.home
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
+                  inputs.lua.nixosModules.common.home
                   inputs.lua.nixosModules.vim.home
                 ]
                 ++ i_ ./config
