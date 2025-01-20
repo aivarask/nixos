@@ -1,6 +1,6 @@
 {
   inputs = {
-    # nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
   };
   outputs = _: {
     nixosModules = {
