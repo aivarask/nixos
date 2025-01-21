@@ -77,8 +77,8 @@ vim.api.nvim_create_autocmd('FileType', {
 						keywordSnippet = 'Both',
 						postfix = '@',
 					},
-					diagnostics = {
-						disable = { 'lowercase-global' },
+					diagnostics = { -- luals.github.io/wiki/diagnostics
+						disable = { 'lowercase-global', 'unused-local', 'need-check-nil' },
 					},
 					hint = {
 						enable = true,

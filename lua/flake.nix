@@ -21,6 +21,8 @@
               cjson
               luasec
               luasql-sqlite3
+              penlight
+              nlua # nvim as lua interpreter
             ]
           );
         in
@@ -46,7 +48,19 @@
         {
           programs.neovim.extraLuaPackages =
             ps: with ps; [
+              penlight
               cjson
+              http
+              cqueues
+              luaossl
+              basexx
+              lpeg
+              lpeg_patterns
+              binaryheap
+              fifo # dep in neovim only
+              lua-zlib
+              compat53
+              # lua-psl
             ];
           imports = [ ./neovim.nix ];
         };

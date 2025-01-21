@@ -1,31 +1,36 @@
+<!DOCTYPE html>
 <html>
 
 <head>
 	<script>
-		var ws = new WebSocket('ws://dell:8080/');
-		ws.onopen = function () {
-			ws.send("Hi, from the client."); // this works
-		};
-		ws.onclose = function () {
+		var socket = new WebSocket('ws://localhost:4000/');
+		socket.addEventListener("open", (event) => {
+			socket.send("Hello Server!");
+		});
+
+		socket.addEventListener("message", (event) => {
+			console.log(event.data);
+			if (event.data === 'reload') {
+				return location.reload()
+			}
+		});
+		socket.onclose = function () {
 			setTimeout(function () {
 				console.warn("Connection closed...");
-				// return location.reload()
-			}, 1000)
+				return location.reload()
+			}, 2000)
 
 		}
-		ws.onmessage = function (event) {
-			console.log('Count is: ' + event.data);
-			if (event.data === '10') {
-				// return location.reload()
-			}
-		};
+
+		function test() {
+			socket.send('test')
+		}
 	</script>
 </head>
 
 <body>
-	_g
-
-	<button onclick="() => { ws.send('test') }">test</button>
+	aiva
+	<button onclick="test()">test</button>
 </body>
 
 </html>
