@@ -1,5 +1,5 @@
 quote_style               = "ForceSingle"
-collapse_simple_statement = "FunctionOnly"
+collapse_simple_statement = "Never"
 
 # syntax                     = "All"
 # column_width               = 120

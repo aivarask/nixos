@@ -7,6 +7,8 @@ let
     friendly-snippets
     nvim-cmp
     cmp-nvim-lsp
+    cmp-nvim-lsp-signature-help
+    cmp-nvim-lsp-document-symbol
     cmp-path
     cmp-emoji
     cmp-buffer
@@ -124,7 +126,7 @@ rec {
             set cmdheight=1
     '';
     extraLuaConfig = ''
-      vim.loader.enable()
+      	vim.loader.enable()
     '';
     vimdiffAlias = true;
     withNodeJs = true;

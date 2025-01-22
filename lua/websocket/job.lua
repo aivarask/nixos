@@ -9,5 +9,9 @@ Job:new({
 		vim.notify(line)
 		table.insert(data, line)
 	end,
-	on_exit = function() print('done') end,
+	on_exit = function()
+		print('done')
+	end,
 }):start()
+
+-- Job:new({})

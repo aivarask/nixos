@@ -2,6 +2,7 @@
 local library = {
 	vim.env.VIMRUNTIME,
 	'/etc/static/luajit/share/lua/5.1',
+	'${3rd}/luv/library',
 	-- '${3rd}/busted/library',
 	-- '${3rd}/luassert/library',
 }
@@ -55,7 +56,8 @@ if client ~= nil then
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 -- capabilities.workspace.fileOperations.didRename
 
@@ -107,5 +109,7 @@ require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 	pattern = { '*.lua' },
 	desc = 'format null-ls',
-	callback = function() vim.lsp.buf.format({ name = 'null-ls' }) end,
+	callback = function()
+		vim.lsp.buf.format({ name = 'null-ls' })
+	end,
 })

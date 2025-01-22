@@ -43,7 +43,9 @@
     lshw
     mesa-demos # glxinfo glxgears
     libva-utils # vainfo
-    nvtopPackages.nvidia
+    intel-gpu-tools # intel_gpu_top
+    nvtopPackages.nvidia # nvtop
+    nvtopPackages.intel
     vdpauinfo
   ];
   services.blueman.enable = true;

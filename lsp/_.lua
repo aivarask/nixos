@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd('Filetype', {
 			cmd = { 'typescript-language-server', '--stdio' },
 			root_dir = vim.fs.root(0, { 'package.json' }),
 			init_options = { hostInfo = 'neovim' },
-			-- capabilities = capabilities,
+			capabilities = capabilities,
 		})
 	end,
 })
