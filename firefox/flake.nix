@@ -180,7 +180,7 @@
               "DuckDuckGo"
               "Google"
             ];
-            engines = (import ./search_engines.nix);
+            engines = import ./search_engines.nix;
           };
         };
     };
