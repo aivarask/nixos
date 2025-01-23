@@ -36,8 +36,8 @@
           url = "https://github.com/nix-community/NUR";
         }
         {
-          name = "nur.nix-community.org/";
-          url = "https://nur.nix-community.org/";
+          name = "nur.nix-community.org/repos/rycee/";
+          url = "https://nur.nix-community.org/repos/rycee/";
         }
         {
           name = "noogle.dev/";
