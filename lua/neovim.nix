@@ -121,7 +121,7 @@ rec {
       			runtime! lua/cfg/**/*{.lua,.vim}
             runtime! lua/_*{.lua,.vim}
 
-            set scrolloff=12
+            set scrolloff=18
             set cmdheight=1
     '';
     extraLuaConfig = ''

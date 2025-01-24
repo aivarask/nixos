@@ -86,4 +86,5 @@
   };
   environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   environment.systemPackages = with pkgs; [ libva-utils ];
+  services.xserver.dpi = builtins.ceil (90 * 2.5);
 }

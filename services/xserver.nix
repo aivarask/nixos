@@ -68,15 +68,12 @@
       };
     };
     # xdpyinfo | grep -E 'dimensions|resolution'
-    # 15.6" 3840x2160 345x194
-    # 27" 3840x2160 597x336
-    dpi =
-      {
-        dell = 282;
-        # pc = 163;
-        pc = builtins.ceil (90 * 2.5);
-      }
-      ."${config.networking.hostName}" or 144;
+    # https://pixelcalculator.com/en
+    # http://www.screen-size.info/
+    # Dell XPS 7590 		15.6" 3840x2160 345x194 = 283 dpi
+    # Dell P2715Q 			27" 3840x2160 597x336 	= 163 dpi
+    # TOSHIBA 49U6763DG 49" 3840x2160 1085x610	= 90 dpi
+    dpi = lib.mkDefault null;
   };
 
 }

@@ -96,7 +96,17 @@
                   inputs.vim.nixosModules.home
                   inputs.vim.nixosModules.plugins.home
                   inputs.zsh.nixosModules.home
-                  inputs.firefox.nixosModules.home
+                  inputs.firefox.nixosModules.main
+                  inputs.firefox.nixosModules.extensions
+                  inputs.firefox.nixosModules.basic
+                  inputs.firefox.nixosModules.dns
+                  inputs.firefox.nixosModules.devtools
+                  inputs.firefox.nixosModules.newtabpage
+                  inputs.firefox.nixosModules.urlbar
+                  inputs.firefox.nixosModules.telemetry
+                  inputs.firefox.nixosModules.tabs
+                  inputs.firefox.nixosModules.privacy
+                  inputs.firefox.nixosModules.media
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.lua.nixosModules.common.home
