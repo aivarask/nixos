@@ -23,20 +23,32 @@ elif [ "$(hostname)" = dell ]; then
 fi
 numlockx
 # xset q
-xset r rate 250 50
+# xset r rate 250 50
 sxhkd -c "$SXHKDRC" &
 systemctl --user restart dunst.service &
 systemctl --user restart dwm-status.service &
-systemctl --user restart unclutter-xfixes.service &
 systemctl --user restart wallpaper.service &
 
 session=${1:-dwm}
 case $session in
-i3 | i3wm) exec i3 ;;
-kde) exec startplasma-x11 ;;
-xfce | xfce4) exec startxfce4 ;;
-dwm) exec dwm ;;
-# Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
-awesome) exec awesome -c /etc/nixos/awe/_rc.lua ;;
-*) exec "$1" ;;
-esac
+i3 | i3wm)
+	exec i3
+	;;
+kde)
+	exec startplasma-x11
+	;;
+xfce | xfce4)
+	exec startxfce4
+	;;
+dwm)
+	exec dwm
+	;;
+awesome)
+	# Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
+	exec awesome -c /etc/nixos/awe/_rc.lua
+	;;
+*)
+	exec "$1"
+	;;
+esac &
+systemctl --user restart unclutter-xfixes.service
