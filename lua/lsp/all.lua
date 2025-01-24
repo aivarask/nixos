@@ -75,14 +75,6 @@ end
 vim.api.nvim_create_autocmd('Filetype', {
 	pattern = { 'javascript', 'typescript' },
 	callback = function()
-		if false then
-			vim.lsp.start({
-				name = 'lsjs',
-				cmd = { 'ls.js' },
-				root_dir = vim.fs.root(0, { 'package.json' }),
-				-- capabilities = capabilities,
-			})
-		end
 		vim.lsp.start({
 			name = 'tsserver',
 			-- https://github.com/microsoft/TypeScript
@@ -137,7 +129,9 @@ require('null-ls').register({
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-	callback = function() vim.lsp.start({ cmd = { 'clangd' } }) end,
+	callback = function()
+		vim.lsp.start({ cmd = { 'clangd' } })
+	end,
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -213,7 +207,9 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'zig', 'zir' },
 	desc = 'lsp zig',
-	callback = function() vim.lsp.start({ cmd = { 'zls' } }) end,
+	callback = function()
+		vim.lsp.start({ cmd = { 'zls' } })
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -231,19 +227,25 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'rust' },
 	desc = 'lsp rust_analyzer',
-	callback = function() vim.lsp.start({ cmd = { 'rust-analyzer' } }) end,
+	callback = function()
+		vim.lsp.start({ cmd = { 'rust-analyzer' } })
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'go', 'gomod', 'gowork', 'gotmpl' },
 	desc = 'lsp gopls',
-	callback = function() vim.lsp.start({ cmd = { 'gopls' } }) end,
+	callback = function()
+		vim.lsp.start({ cmd = { 'gopls' } })
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'templ' },
 	desc = 'lsp templ',
-	callback = function() vim.lsp.start({ cmd = { 'templ', 'lsp' } }) end,
+	callback = function()
+		vim.lsp.start({ cmd = { 'templ', 'lsp' } })
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {

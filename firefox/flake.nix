@@ -20,13 +20,6 @@
             # nur.overlays.default
           ];
           home.sessionVariables = {
-            # environment.variables.LIBVA_DRIVER_NAME = "nvidia";
-            # environment.variables.VDPAU_DRIVER = "nvidia";
-            # environment.variables.VAAPI_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-render";
-            # environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
-            # environment.variables.NVD_BACKEND = "direct";
-            # (https://unix.stackexchange.com/a/596888)
-            # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
             MOZ_X11_EGL = "1";
             MOZ_USE_XINPUT2 = "1";
           };

@@ -216,7 +216,9 @@ local function deepMerge(target, source)
 end
 
 local function createCaseInsensitivePattern(str)
-	local pattern = str:gsub('.', function(c) return '[' .. c:lower() .. c:upper() .. ']' end)
+	local pattern = str:gsub('.', function(c)
+		return '[' .. c:lower() .. c:upper() .. ']'
+	end)
 	return pattern
 end
 
@@ -271,6 +273,8 @@ local function init(config)
 	end
 end
 
-local function setup(config) init(config) end
+local function setup(config)
+	init(config)
+end
 
 return { setup = setup }

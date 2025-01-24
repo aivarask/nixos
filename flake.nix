@@ -122,6 +122,14 @@
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
+          # inputs.nixos-hardware.nixosModules.common-hidpi
+          # {
+          #   boot.kernelParams = [
+          #     "i915.enable_guc=2"
+          #   ];
+
+          #   hardware.intelgpu.vaapiDriver = "intel-media-driver";
+          # }
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           ./bluetooth
           ./dell.nix

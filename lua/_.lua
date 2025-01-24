@@ -1,3 +1,5 @@
 require('help')
-require('lsp')
+require('lsp.all')
+require('lsp.lua')
+require('lsp.markup')
 require('completion')
