@@ -71,8 +71,8 @@
               # leechblock-ng
             ];
             programs.firefox.profiles.root.settings = {
-              "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
               "extensions.autoDisableScopes" = false;
+              "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
               "extensions.pocket.enabled" = false;
               "extensions.htmlaboutaddons.recommendations.enabled" = false;
               "extensions.recommendations.privacyPolicyUrl" = "";
@@ -84,10 +84,12 @@
           };
         basic = _: {
           programs.firefox.profiles.root.settings = {
+            "layout.css.prefers-color-scheme.content-override" = 3;
+            "layout.css.iframe-embedder-prefers-color-scheme.content.enabled" = true;
+            "reader.color_scheme" = "dark";
             "app.normandy.first_run" = false;
             "toolkit.telemetry.reportingpolicy.firstRun" = false;
             "trailhead.firstrun.didSeeAboutWelcome" = true;
-            "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
             "intl.accept_languages" = "en, lt";
             "browser.aboutwelcome.enabled" = false;
             "browser.aboutConfig.showWarning" = false;
@@ -258,7 +260,6 @@
             "app.shield.optoutstudies.enabled" = false;
             "gfx.webrender.enabled" = true;
             "gfx.webrender.all" = true;
-            "identity.fxaccounts.enabled" = false;
             "browser.safebrowsing.downloads.remote.enabled" = false;
             "dom.security.https_only_mode_ever_enabled" = true;
             # https://github.com/elFarto/nvidia-vaapi-driver

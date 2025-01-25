@@ -1,6 +1,5 @@
 # vim: foldlevel=4
 {
-  pkgs,
   config,
   lib,
   modulesPath,
@@ -41,14 +40,10 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  powerManagement = {
-    # powertop.enable = true;
-    # cpuFreqGovernor = "ondemand";
-  };
 
   services.blueman.enable = true;
   services.switcherooControl.enable = true;
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; # stable returns from suspend
   networking.hostName = "dell";
   networking.hostId = "8425e349";
 
@@ -61,14 +56,10 @@
   };
   system.stateVersion = "23.05";
 
-  # Virtualization
-  # https://wiki.nixos.org/wiki/Virt-manager
-  # virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
   };
-
   users.users.nixosvmtest.isSystemUser = true;
   users.users.nixosvmtest.initialPassword = "test";
   users.users.nixosvmtest.group = "nixosvmtest";

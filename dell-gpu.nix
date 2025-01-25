@@ -11,11 +11,9 @@
   # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
 
   environment.systemPackages = with pkgs; [
-    kmscon
-    #
     # lshw
     # mesa-demos # glxinfo glxgears
-    nvidia-vaapi-driver
+    # nvidia-vaapi-driver
     libva-utils # vainfo
     intel-gpu-tools # intel_gpu_top
     nvtopPackages.nvidia # nvtop

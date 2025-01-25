@@ -27,6 +27,10 @@
           name = ":support";
           url = "about:support";
         }
+        {
+          name = ":preferences";
+          url = "about:preferences";
+        }
       ];
     }
   ];
