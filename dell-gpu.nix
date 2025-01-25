@@ -1,15 +1,21 @@
 { pkgs, config, ... }:
 {
 
-  # environment.variables.LIBVA_DRIVER_NAME = "nouveau"; # nvidia /run/opengl-driver/lib/dri
+  environment.variables.LIBVA_DRIVER_NAME = "nvidia"; # nvidia nouveau /run/opengl-driver/lib/dri
   # environment.variables.VDPAU_DRIVER = "nouveau"; # /run/opengl-driver/lib/vdpau
   # environment.variables.MOZ_DRM_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-card"; # stat /dev/dri/*
   # environment.variables.VAAPI_DEVICE = "/dev/dri/by-path/pci-0000:01:00.0-card";
-  # environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
+  environment.variables.MOZ_DISABLE_RDD_SANDBOX = 1;
+  environment.variables.__EGL_VENDOR_LIBRARY_FILENAMES = "";
   # environment.variables.NVD_BACKEND = "direct"; # direct (default) or egl
   # (https://unix.stackexchange.com/a/596888)
   # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
 
+  # https://github.com/elFarto/nvidia-vaapi-driver?tab=readme-ov-file#mpv
+  boot.kernelModules = [ "nvidia_drm" ];
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+  ];
   environment.systemPackages = with pkgs; [
     # lshw
     # mesa-demos # glxinfo glxgears
