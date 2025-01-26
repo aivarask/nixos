@@ -26,7 +26,7 @@
         {
           environment.profiles = [
             "${./.}"
-            "${pkgs.zsh-completions}"
+            # "${pkgs.zsh-completions}"
             # "${pkgs.zsh-abbr}"
           ];
           programs.zsh.enable = true;

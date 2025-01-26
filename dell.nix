@@ -3,6 +3,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -43,7 +44,7 @@
 
   services.blueman.enable = true;
   services.switcherooControl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; # stable returns from suspend
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta; # stable returns from suspend
   networking.hostName = "dell";
   networking.hostId = "8425e349";
 

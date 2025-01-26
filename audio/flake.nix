@@ -20,7 +20,7 @@
             enable = true;
           };
           environment.systemPackages = with pkgs; [
-            ardour
+            # ardour # long build fails
             libbs2b
             ladspaPlugins
             lsof

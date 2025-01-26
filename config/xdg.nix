@@ -11,6 +11,7 @@
   ];
   # xdg.portal.config.common.default = "gtk";
   xdg.portal.config.common.default = "kde";
+
   xdg.mime = {
     enable = true;
     defaultApplications = {

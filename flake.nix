@@ -35,7 +35,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      commonModules = [
+      commonModules = with inputs; [
         { environment.systemPackages = [ pkgs.git ]; }
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.production
@@ -58,6 +58,8 @@
         # inputs.aldale.nixosModules.default
         inputs.aiva.nixosModules.default
         inputs.lua.nixosModules.default
+        inputs.lua.nixosModules.default
+        # inputs.wayland.nixosModules.default
         {
           imports =
             with inputs.lib.packages."${system}".lib;
@@ -107,6 +109,7 @@
                   inputs.firefox.nixosModules.tabs
                   inputs.firefox.nixosModules.privacy
                   inputs.firefox.nixosModules.media
+                  # inputs.firefox.nixosModules.vaapi
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.lua.nixosModules.common.home

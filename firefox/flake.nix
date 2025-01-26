@@ -12,6 +12,10 @@
         main =
           { pkgs, ... }:
           {
+            dconf = {
+              enable = true;
+              settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+            };
             nixpkgs.overlays = [ self.overlays.default ];
             home.sessionVariables = {
               MOZ_USE_XINPUT2 = "1";
@@ -85,7 +89,7 @@
         basic = _: {
           programs.firefox.profiles.root.settings = {
             "layout.css.prefers-color-scheme.content-override" = 3;
-            "layout.css.iframe-embedder-prefers-color-scheme.content.enabled" = true;
+            # "layout.css.iframe-embedder-prefers-color-scheme.content.enabled" = true;
             "reader.color_scheme" = "dark";
             "app.normandy.first_run" = false;
             "toolkit.telemetry.reportingpolicy.firstRun" = false;
@@ -192,7 +196,6 @@
         };
         tabs = {
           programs.firefox.profiles.root.settings = {
-
             "browser.tabs.groups.enabled" = true;
             "browser.tabs.closeWindowWithLastTab" = false;
             "browser.tabs.loadBookmarksInBackground" = false;
@@ -209,6 +212,7 @@
             # "browser.sessionstore.max_tabs_undo" = 0;
             # "browser.bookmarks.max_backups" = 0;
             # "signon.rememberSignons" = false;
+            "webgl.disabled" = true;
             "beacon.enabled" = false;
             "browser.cache.disk.enable" = false;
             "browser.cache.memory.enable" = true;
@@ -242,7 +246,6 @@
             "privacy.trackingprotection.fingerprinting.enabled" = true;
             "privacy.trackingprotection.emailtracking.enabled" = true;
             "privacy.trackingprotection.socialtracking.enabled" = true;
-            "webgl.disabled" = true;
           };
         };
         media = {
@@ -253,7 +256,18 @@
           };
         };
         vaapi = _: {
-          # https://github.com/elFarto/nvidia-vaapi-driver#firefox
+          # https://github.com/elFarto/nvidia-vaapi-driver
+          home.sessionVariables.MOZ_X11_EGL = "1";
+          programs.firefox.profiles.root.settings = {
+            "media.ffmpeg.vaapi.enabled" = true;
+            "media.rdd-ffmpeg.enabled" = true;
+            "media.av1.enabled" = true;
+            "gfx.x11-egl.force-enabled" = true;
+            "widget.dmabuf.force-enabled" = true;
+          };
+
+        };
+        vaapi_bc = _: {
           home.sessionVariables.MOZ_X11_EGL = "1";
           programs.firefox.profiles.root.settings = {
             # https://searchfox.org
@@ -262,7 +276,6 @@
             "gfx.webrender.all" = true;
             "browser.safebrowsing.downloads.remote.enabled" = false;
             "dom.security.https_only_mode_ever_enabled" = true;
-            # https://github.com/elFarto/nvidia-vaapi-driver
             "media.ffmpeg.vaapi.enabled" = true;
             "media.ffvpx.enabled" = false;
             "media.rdd-vpx.enabled" = false;

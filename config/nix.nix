@@ -61,6 +61,7 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
       extraOptions = ''
         warn-dirty = false
+        download-buffer-size = ${toString (67108864 * 4)}
       '';
     };
 
