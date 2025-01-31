@@ -31,18 +31,22 @@
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
     {
+
+      optimise = {
+        automatic = true;
+      };
       # package = pkgs.nixVersions.latest; # stable
       # nixPath = options.nix.nixPath.default ++ [ ];
       # nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
       gc = {
         automatic = true;
         dates = "daily";
-        options = "--delete-older-than 7d";
+        options = "--delete-older-than 1d";
       };
       settings = {
         max-jobs = 8;
         cores = 4;
-        auto-optimise-store = false;
+        auto-optimise-store = true;
         substituters = [
           "https://hyprland.cachix.org"
           "https://cache.nixos.org/"
