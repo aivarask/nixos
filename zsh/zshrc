@@ -21,7 +21,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-export NIXPKGS_ALLOW_INSECURE=1
 alias nrl='nix registry list'\
 	no='nixos-option'\
 	oras='curl wttr.in/Vilnius'\

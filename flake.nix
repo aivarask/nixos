@@ -29,12 +29,21 @@
     # aldale.url = "./aldale";
     aiva.url = "./aiva";
     lua.url = "./lua";
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          inputs.nur.overlays.default
+          # inputs.firefox.overlays.default
+        ];
+      };
       commonModules = with inputs; [
         { environment.systemPackages = [ pkgs.git ]; }
         inputs.audio.nixosModules.mpd
@@ -60,6 +69,7 @@
         inputs.lua.nixosModules.default
         inputs.lua.nixosModules.default
         # inputs.wayland.nixosModules.default
+        # inputs.firefox.nixosModules.pass.default
         {
           imports =
             with inputs.lib.packages."${system}".lib;

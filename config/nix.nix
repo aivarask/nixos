@@ -18,7 +18,11 @@
   environment.shellAliases.nrs = "nixos-rebuild switch";
   environment.shellAliases.nf = "nixos-rebuild switch --fast";
   environment.shellAliases.nfu = "nix flake update";
+  # export NIXPKGS_ALLOW_INSECURE=1
+
+  # nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
   nixpkgs.config.android_sdk.accept_license = true;
   nixpkgs.flake.setNixPath = true;
 

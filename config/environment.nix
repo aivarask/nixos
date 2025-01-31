@@ -86,7 +86,7 @@
       feh
       glow
       scrot
-      loc
+      tokei # loc unmaintained
       tree
       fd
       ripgrep

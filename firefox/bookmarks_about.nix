@@ -11,6 +11,10 @@
           url = "about:about";
         }
         {
+          name = ":addons";
+          url = "about:addons";
+        }
+        {
           name = ":config";
           url = "about:config";
           # tags = [ ":config" ];
