@@ -14,6 +14,7 @@
     nurl
     deadnix
     fh # flakehub
+    nix-tree # https://github.com/utdemir/nix-tree
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
   environment.shellAliases.nf = "nixos-rebuild switch --fast";
@@ -68,6 +69,7 @@
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
       extraOptions = ''
+        use-xdg-base-directories = true
         warn-dirty = false
         download-buffer-size = ${toString (67108864 * 4)}
       '';
