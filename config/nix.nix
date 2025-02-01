@@ -49,10 +49,14 @@
         cores = 4;
         auto-optimise-store = true;
         substituters = [
+          "http://binarycache.dell.local"
           "https://hyprland.cachix.org"
-          "https://cache.nixos.org/"
+          # "https://cache.nixos.org/" # added by default
         ];
-        trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+        trusted-public-keys = [
+          "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        ];
         ## https://discourse.nixos.org/t/why-is-an-older-version-of-an-app-getting-installed-here/49413/6
         ## https://github.com/Misterio77/nix-starter-configs/blob/cd2634edb7742a5b4bbf6520a2403c22be7013c6/standard/nixos/configuration.nix
         ## https://jade.fyi/blog/pinning-nixos-with-npins/

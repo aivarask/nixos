@@ -2,7 +2,7 @@
 {
   virtualisation.virtualbox.host = {
     enable = true;
-    enableKvm = true;
+    # enableKvm = true;
   };
   # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
   virtualisation.virtualbox.guest.enable = true;

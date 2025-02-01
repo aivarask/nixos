@@ -2,14 +2,14 @@
 { pkgs, lib, ... }:
 {
   services.nginx = {
-    enable = false;
-    recommendedProxySettings = true;
-    recommendedOptimisation = true;
-    recommendedTlsSettings = true;
+    # enable = false;
+    # recommendedProxySettings = true;
+    # recommendedOptimisation = true;
+    # recommendedTlsSettings = true;
     # recommendedGzipSettings = true;
     # recommendedZstdSettings = true;
     # recommendedBrotliSettings = true;
-    defaultHTTPListenPort = 8080;
+    # defaultHTTPListenPort = 8080;
   };
   systemd.services.nginx.serviceConfig = {
     SupplementaryGroups = [ "shadow" ];

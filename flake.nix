@@ -69,7 +69,7 @@
         inputs.vim.nixosModules.plugins.default
         inputs.zsh.nixosModules.default
         # inputs.aldale.nixosModules.default
-        inputs.aiva.nixosModules.default
+        # inputs.aiva.nixosModules.default
         inputs.lua.nixosModules.default
         # inputs.wayland.nixosModules.default
         # inputs.firefox.nixosModules.pass.default
