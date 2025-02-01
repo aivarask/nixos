@@ -35,6 +35,7 @@
           "tags"
           "node_modules/"
           "vendor/"
+          "result/"
           "CMakeFiles/"
           "Session.vim"
           ".pytest_cache/"

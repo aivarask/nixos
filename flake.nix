@@ -71,7 +71,6 @@
         # inputs.aldale.nixosModules.default
         inputs.aiva.nixosModules.default
         inputs.lua.nixosModules.default
-        inputs.lua.nixosModules.default
         # inputs.wayland.nixosModules.default
         # inputs.firefox.nixosModules.pass.default
         {
@@ -81,6 +80,7 @@
               [
                 ./lnav
                 ./systemd/remote-touchpad.nix
+                ./virt/virtualbox.nix
                 ./wallpaper
               ]
               ++ i ./config
@@ -140,6 +140,17 @@
       ];
     in
     {
+      packages.x86_64-linux = {
+        iso = inputs.nixos-generators.nixosGenerate {
+          system = system;
+          format = "iso"; # https://github.com/nix-community/nixos-generators#supported-formats
+          modules = [ ];
+        };
+        vbox = inputs.nixos-generators.nixosGenerate {
+          system = system;
+          format = "virtualbox";
+        };
+      };
       checks."${system}".default = pkgs.testers.runNixOSTest {
         name = "self";
         nodes.machine = { ... }: { };
