@@ -36,6 +36,7 @@
           "node_modules/"
           "vendor/"
           "result/"
+          "result/null"
           "CMakeFiles/"
           "Session.vim"
           ".pytest_cache/"

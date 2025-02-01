@@ -48,7 +48,7 @@
         max-jobs = 8;
         cores = 4;
         auto-optimise-store = true;
-        substituters = [
+        substituters = lib.mkForce [
           "http://binarycache.dell.local"
           "https://hyprland.cachix.org"
           # "https://cache.nixos.org/" # added by default
