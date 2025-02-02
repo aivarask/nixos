@@ -49,9 +49,9 @@
         cores = 4;
         auto-optimise-store = true;
         substituters = lib.mkForce [
-          "http://binarycache.dell.local"
-          "https://hyprland.cachix.org"
-          # "https://cache.nixos.org/" # added by default
+          "https://cache.nixos.org/" # added by default
+          # "http://binarycache.dell.local"
+          # "https://hyprland.cachix.org"
         ];
         trusted-public-keys = [
           "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="

@@ -104,22 +104,16 @@
               # };
             };
             programs.firefox.profiles.root.extensions = with PKGS.nur.repos.rycee.firefox-addons; [
-              # nur.repos.rycee.firefox-addons.bitwarden
+              # https://addons.mozilla.org/en-US/firefox/search/?promoted=recommended&type=extension
               bitwarden
               ublock-origin
-              # https://nur.nix-community.org/repos/rycee
-              # privacy-badger
-              # facebook-container
+              h264ify
               # clearurls
               # foxytab
-              # sponsorblock
               # vimium
               # df-youtube
-              # decentraleyes
-              # h264ify
               # tab-session-manager
               # stylus
-              # leechblock-ng
             ];
 
             programs.firefox.profiles.root.settings = {
