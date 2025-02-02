@@ -11,6 +11,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./dell-gpu.nix
     ./dell-linux.nix
+    ./bitwarden.nix
   ];
   boot = {
     initrd.availableKernelModules = [

@@ -48,9 +48,10 @@
         max-jobs = 8;
         cores = 4;
         auto-optimise-store = true;
+        # nixos-rebuild switch --option binary-caches 'https://cache.nixos.org/'
         substituters = lib.mkForce [
+          "http://binarycache.dell.local"
           "https://cache.nixos.org/" # added by default
-          # "http://binarycache.dell.local"
           # "https://hyprland.cachix.org"
         ];
         trusted-public-keys = [

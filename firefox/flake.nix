@@ -91,6 +91,7 @@
               # https://mozilla.github.io/policy-templates/#extensions
               Extensions = {
                 Locked = [
+                  # "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
                   # "firefox-compact-dark@mozilla.org"
                   "uBlock0@raymondhill.net"
                   # "{effbb402-8ffa-4e7c-ab0d-ac8dab9a580b}"
