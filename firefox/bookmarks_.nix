@@ -8,6 +8,10 @@
     }
     {
       name = "";
+      url = "https://huggingface.co/";
+    }
+    {
+      name = "";
       url = "https://www.facebook.com/";
     }
     {

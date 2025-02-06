@@ -3,12 +3,8 @@
   outputs =
     { self, ... }@inputs:
     {
-      # overlays.default = [ inputs.nur.overlays.default ];
-
       nixosModules = {
-        default = _: {
-          environment.profiles = [ "${./.}" ];
-        };
+        default = _: { environment.profiles = [ "${./.}" ]; };
         main =
           { pkgs, ... }:
           {
@@ -54,34 +50,9 @@
               };
             };
           };
-        pass.default =
-          { pkgs, ... }:
-          {
-          };
-        pass.home =
-          { pkgs, ... }:
-          {
-            # https://discourse.nixos.org/t/cant-make-gpg-agent-work-with-ssh-on-a-non-gui-system/24750/4
-            programs.keychain = {
-              enable = true;
-              keys = [ "id_ed25519" ];
-            };
-            programs.password-store = {
-              enable = true;
-              package = pkgs.pass.withExtensions (exts: [
-                # exts.pass-otp
-              ]);
-              settings = {
-                PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
-                PASSWORD_STORE_KEY = "12345678";
-                PASSWORD_STORE_CLIP_TIME = "60";
-              };
-            };
-          };
         extensions =
           { pkgs, ... }:
           let
-            # pkgs = (pkgs.extend self.overlays.default);
             PKGS = (pkgs.extend inputs.nur.overlays.default);
           in
           {
@@ -91,24 +62,32 @@
               # https://mozilla.github.io/policy-templates/#extensions
               Extensions = {
                 Locked = [
-                  # "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
                   # "firefox-compact-dark@mozilla.org"
                   "uBlock0@raymondhill.net"
+                  "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
                   # "{effbb402-8ffa-4e7c-ab0d-ac8dab9a580b}"
                 ];
               };
               # https://mozilla.github.io/policy-templates/#extensionsettings
-              # ExtensionSettings = {
-              #   "uBlock0@raymondhill.net" = {
-              #     default_area = "navbar";
-              #   };
-              # };
+              ExtensionSettings = {
+                "uBlock0@raymondhill.net" = {
+                  default_area = "navbar";
+                  installation_mode = "force_installed";
+                  install_url = "http://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
+                };
+                # bitwarden
+                "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+                  default_area = "navbar";
+                  installation_mode = "force_installed";
+                  install_url = "http://addons.mozilla.org/firefox/downloads/latest/{446900e4-71c2-419f-a6a7-df9c091e268b}/latest.xpi";
+                };
+              };
             };
             programs.firefox.profiles.root.extensions = with PKGS.nur.repos.rycee.firefox-addons; [
               # https://addons.mozilla.org/en-US/firefox/search/?promoted=recommended&type=extension
-              bitwarden
-              ublock-origin
-              h264ify
+              # bitwarden
+              # ublock-origin
+              # h264ify
               # clearurls
               # foxytab
               # vimium

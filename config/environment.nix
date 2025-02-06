@@ -4,7 +4,9 @@
   imports = [
     (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
   ];
-  environment.extraInit = '''';
+  environment.extraInit = ''
+    		source /etc/nixos/profile
+    	'';
   environment.variables.SELF = "/etc/nixos/";
   environment.variables.EDITOR = "vim";
   environment.shellAliases = {
