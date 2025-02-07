@@ -44,6 +44,8 @@ local config = {
 		end, { 'i', 'c' }),
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-s>'] = cmp.mapping.complete({ config = { sources = cmp.config.sources({ { name = 'luasnip' } }) } }),
+
 		['<C-n>'] = function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
@@ -55,7 +57,8 @@ local config = {
 			if cmp.visible() then
 				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
 			else
-				cmp.complete()
+				fallback()
+				-- cmp.complete()
 			end
 		end,
 		['<Tab>'] = cmp.mapping(function(fallback)
@@ -89,10 +92,10 @@ local config = {
 		},
 		{ name = 'nvim_lsp_signature_help' },
 	}, {
-		{ name = 'luasnip' },
+		-- { name = 'luasnip' },
 		{ name = 'path' },
 		-- { name = 'emoji'},
-		{ name = 'buffer' },
+		-- { name = 'buffer' },
 	}),
 }
 cmp.setup(config)

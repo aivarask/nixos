@@ -51,7 +51,7 @@ map q <nop>
 map Q <nop>
 map - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
-map <C-s> <Plug>(Save)
+nmap <C-s> <Plug>(Save)
 " inoremap <Space> <C-G>u<Space>
 map <silent> <TAB> :bn<CR>
 map <silent> <S-TAB> :bp<CR>

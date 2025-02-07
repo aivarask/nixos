@@ -16,6 +16,10 @@
       name = "nix";
       bookmarks = [
         {
+          name = "nixd";
+          url = "https://github.com/nix-community/nixd";
+        }
+        {
           name = "nix.dev/";
           url = "https://nix.dev/";
         }
