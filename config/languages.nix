@@ -174,6 +174,7 @@ lib.mkMerge [
     environment.systemPackages = with pkgs; [
       pyright
       black
+
       (python3.withPackages (
         ps: with ps; [
           pip
