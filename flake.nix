@@ -73,6 +73,8 @@
         inputs.lua.nixosModules.default
         # inputs.wayland.nixosModules.default
         # inputs.firefox.nixosModules.pass.default
+        ./ai
+        ./dialog
         {
           imports =
             with inputs.lib.packages."${system}".lib;
