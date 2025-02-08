@@ -123,6 +123,7 @@
                   inputs.firefox.nixosModules.tabs
                   inputs.firefox.nixosModules.privacy
                   inputs.firefox.nixosModules.media
+                  inputs.firefox.nixosModules.chromium
                   # inputs.firefox.nixosModules.vaapi
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index

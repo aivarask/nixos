@@ -48,7 +48,12 @@
             shellharden
           ];
           programs.bash = {
+            # https://mynixos.com/home-manager/options/programs.bash
             enable = true;
+            profileExtra = '''';
+            initExtra = ''
+
+              						'';
           };
           programs.zsh = {
             enable = true;

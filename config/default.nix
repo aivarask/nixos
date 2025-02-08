@@ -1,7 +1,6 @@
 # vim: fdl=4
 {
   pkgs,
-  config,
   lib,
   ...
 }:

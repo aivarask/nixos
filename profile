@@ -1,2 +1,4 @@
-export FOO='foo'
-export ZOO='zo'
+# vim: ft=sh
+export zxc='zxc'
+
+# echo $zxc
