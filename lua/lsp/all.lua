@@ -89,30 +89,30 @@ vim.api.nvim_create_autocmd('Filetype', {
 })
 
 require('null-ls').register({ require('null-ls.builtins.diagnostics.vint') })
-vim.api.nvim_create_autocmd('Filetype', {
-	pattern = { 'vim' },
-	callback = function(ev)
-		vim.lsp.start({
-			name = 'vimls',
-			cmd = { 'vim-language-server', '--stdio' },
-			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
-			init_options = {
-				isNeovim = true,
-				iskeyword = '@,48-57,_,192-255,-#',
-				vimruntime = '',
-				runtimepath = '',
-				diagnostic = { enable = true },
-				indexes = {
-					runtimepath = true,
-					gap = 100,
-					count = 3,
-					projectRootPatterns = { 'runtime', 'nvim', '.git', 'autoload', 'plugin' },
-				},
-				suggest = { fromVimruntime = true, fromRuntimepath = true },
-			},
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd('Filetype', {
+-- 	pattern = { 'vim' },
+-- 	callback = function(ev)
+-- 		vim.lsp.start({
+-- 			name = 'vimls',
+-- 			cmd = { 'vim-language-server', '--stdio' },
+-- 			root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
+-- 			init_options = {
+-- 				isNeovim = true,
+-- 				iskeyword = '@,48-57,_,192-255,-#',
+-- 				vimruntime = '',
+-- 				runtimepath = '',
+-- 				diagnostic = { enable = true },
+-- 				indexes = {
+-- 					runtimepath = true,
+-- 					gap = 100,
+-- 					count = 3,
+-- 					projectRootPatterns = { 'runtime', 'nvim', '.git', 'autoload', 'plugin' },
+-- 				},
+-- 				suggest = { fromVimruntime = true, fromRuntimepath = true },
+-- 			},
+-- 		})
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd('Filetype', {
 	pattern = { 'markdown', 'markdown.mdx' },

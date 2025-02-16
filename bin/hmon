@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+xid="$(tabbed -c -d -s -r 2 st -w x)"
+alacritty --embed "$xid" --command htop &
+alacritty --embed "$xid" --command nvtop &
+alacritty --embed "$xid" --command kmon &

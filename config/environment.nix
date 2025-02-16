@@ -48,7 +48,7 @@
       telegram-desktop # QT_SCALE_FACTOR = "1.75";
       file
       dolphin
-      blender
+      # blender
       figma-linux
       inkscape-with-extensions
       libreoffice-qt
@@ -114,7 +114,7 @@
       imagemagick
       libwebp
       # debug
-      lldb
+      # lldb
     ]
   );
 }

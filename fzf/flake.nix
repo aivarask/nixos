@@ -15,8 +15,8 @@
         changeDirWidgetOptions = defaultOptions;
         defaultCommand = "fd -tf -H --exclude  '*.drv'"; # Ctrl-f
         defaultOptions = [
-          "--style full"
-          "--bind 'focus:transform-header:file --brief {}'"
+          # "--style full"
+          # "--bind 'focus:transform-header:file --brief {}'"
           "--layout reverse"
           "--height 100%"
           "--preview 'pistol_ {}'"
@@ -32,6 +32,7 @@
           "--bind 'ctrl-y:execute-silent(echo {} | xclip -selection clipboard)+abort'"
           "--bind 'ctrl-e:become($EDITOR {})'"
           "--bind 'ctrl-o:become(xdg-open {})'"
+          "--bind 'ctrl-h:become(fzf-man-widget {})'"
         ];
       };
     };

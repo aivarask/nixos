@@ -1,4 +1,24 @@
 local ui_select = {
+	test = function()
+		vim.fn.jobstart('echo hello', {
+			cwd = vim.uv.cwd(),
+			-- on_exit = some_function,
+			-- on_stderr = some_third_function,
+			on_stdout = function(jobid, data, event)
+				-- vim.notify(data)
+				vim.api.nvim_open_win(vim.cmd('!echo hello'), true, {
+					relative = 'cursor',
+					width = 64,
+					height = 12,
+					row = 1,
+					col = 1,
+					style = 'minimal',
+					border = 'solid',
+				})
+			end,
+		})
+	end,
+
 	help = function()
 		local mode = vim.fn.mode()
 		vim.ui.select({
@@ -8,9 +28,18 @@ local ui_select = {
 			vim.fn.expand('<cexpr>'),
 		}, {}, function(first)
 			if first then
-				vim.ui.select({ 'help', 'nixos-option', 'nixos-option -r' }, {}, function(second)
+				local opts = {
+					'help',
+					'Man',
+					'nixos-option -F self -r',
+				}
+				vim.ui.select(opts, {}, function(second)
 					if second == 'help' then
 						vim.cmd.help(first)
+					elseif second == 'Man' then
+						vim.cmd.Man(first)
+					elseif second == opts[3] then
+						vim.cmd('!' .. second .. ' ' .. first)
 					else
 					end
 				end)
@@ -21,6 +50,9 @@ local ui_select = {
 
 require('which-key').add({
 	{ '<F1>', ui_select.help, mode = { 'n', 'i', 'v' } },
+	{ '<F2>', ui_select.test, mode = { 'n', 'i', 'v' } },
+	{ '<F3>', vim.cmd.term('echo hello'), mode = { 'n', 'i', 'v' } },
+	-- vim.keymap.set({'n', 'v', 'i'}, "<F5>", "<cmd>term ./build.sh<cr>")
 })
 
 local function get_visual_selection()

@@ -37,7 +37,6 @@ let
     outline-nvim
     flatten-nvim
     glow-nvim
-    dressing-nvim
     nvim-colorizer-lua
     nvim-web-devicons
     image-nvim
@@ -51,7 +50,7 @@ let
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
-    # neotest
+    neotest
     neotest-bash
     neotest-go
     neotest-jest
@@ -108,7 +107,7 @@ let
     tabular
   ];
 in
-rec {
+{
 
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
@@ -143,7 +142,7 @@ rec {
     ++ dap
     ++ lsp
     ++ misc
-    ++ testing
+    # ++ testing
     ++ telescope
     ++ treesitter
     ++ next
@@ -153,7 +152,7 @@ rec {
       nvim-surround
       indent-blankline-nvim
       lazygit-nvim
-      neogit
+      # neogit
       gitsigns-nvim
       lualine-nvim
       nvim-tree-lua

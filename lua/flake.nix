@@ -69,6 +69,7 @@
         let
           common = with pkgs.vimPlugins; [
             # pkgs.vimPlugins.vim-indentwise
+            vimux
             vim-auto-save
             vim-indentwise
             bclose-vim

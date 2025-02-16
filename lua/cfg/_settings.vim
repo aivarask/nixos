@@ -74,6 +74,7 @@ nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
+nnoremap ?g :edit /etc/nixos/lua/cfg/git.lua<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
 nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
@@ -89,7 +90,7 @@ endif
 if !has('nvim')
 	aug VimOnly
 		au!
-		autocmd VimLeavePre,QuitPre * mksession!
+		" autocmd VimLeavePre,QuitPre * mksession!
 	aug END
 	if !isdirectory($HOME.'/.vim')
 		call mkdir($HOME.'/.vim', '', 0770)
@@ -136,9 +137,9 @@ else
 	set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 	set foldclose=all
-	set foldlevel=3
+	" set foldlevel=3
 	" set foldnestmax=4
-	let &foldnestmax = &foldlevel+3
+	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
 	set nofoldenable
 

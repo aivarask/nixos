@@ -135,7 +135,7 @@ lib.mkMerge [
         eslint_d
         # typescript
         vscode-js-debug
-        stylelint-lsp
+        # stylelint-lsp
       ]
       ++ (with pkgs.nodePackages; [
         pnpm # ~/.pnpm-global
@@ -159,7 +159,7 @@ lib.mkMerge [
     # vim
     environment.systemPackages = with pkgs; [
       vim-vint
-      nodePackages.vim-language-server
+      # nodePackages.vim-language-server
     ];
   }
   {

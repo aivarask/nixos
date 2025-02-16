@@ -1,4 +1,19 @@
-require('which-key').setup({ preset = 'helix', sort = { 'alphanum' } })
+require('which-key').setup({
+	preset = 'helix',
+	sort = { 'alphanum' },
+	replace = {
+		desc = {
+			{ '<Plug>%(?(.*)%)?', '%1' },
+			{ '^%+', '' },
+			{ '<[cC]md>', '' },
+			{ '<[cC][rR]>', '' },
+			{ '<[sS]ilent>', '' },
+			{ '^lua%s+', '' },
+			{ '^call%s+', '' },
+			{ '^:%s*', '' },
+		},
+	},
+})
 require('nvim-surround').setup({})
 require('auto-session').setup({
 	auto_session_allowed_dirs = { '/etc/nixos', '/root/foo' },

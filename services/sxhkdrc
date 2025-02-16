@@ -2,16 +2,12 @@ super + ctrl + Return
   tabbed -c alacritty --embed
 super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	{\
-	,notify-send "$(vimcat $SXHKDRC)"\
-	,alacritty -e htop\
+	,alacritty -e man-fzf\
+	,hmon \
 	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
 	,pwvucontrol\
 	,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
-	,alacritty -e tremc\
-	,alacritty -e sysz\
-	,alacritty -e sysz -u\
-	,nicotine\
-	,alacritty -e nvtop\
+	,notify-send "$(vimcat $SXHKDRC)"\
 	}
 
 super + {q,w,e,r}

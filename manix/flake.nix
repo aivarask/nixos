@@ -30,7 +30,7 @@
           nixpkgs.overlays = [ self.overlays.default ];
           environment.profiles = [ "${./.}" ];
           environment.systemPackages = [
-            pkgs.manix
+            # pkgs.manix
             # telescope-manix
           ];
         };

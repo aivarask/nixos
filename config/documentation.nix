@@ -6,6 +6,8 @@
     man-pages
     man-pages-posix
     groff
+    cht-sh
+    tldr
   ];
   documentation = {
     enable = true;
@@ -18,12 +20,13 @@
     };
     man = {
       enable = true;
-      generateCaches = false;
+      generateCaches = true;
       man-db = {
         enable = true;
       };
       mandoc = {
         enable = false;
+        settings.manpath = [ "/run/current-system/sw/share/man" ];
       };
     };
   };

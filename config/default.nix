@@ -24,12 +24,6 @@ lib.mkMerge [
       # keyMap = "${pkgs.kbd}/share/keymaps/i386/qwerty/lt.map.gz";
     };
 
-    i18n.defaultLocale = "en_US.UTF-8";
-    i18n.supportedLocales = [
-      "C.UTF-8/UTF-8"
-      "en_US.UTF-8/UTF-8"
-    ];
-
     location = {
       # provider = lib.mkDefault "geoclue2"; # manual
       provider = lib.mkDefault "manual";

@@ -76,6 +76,7 @@
           {
             # https://mozilla.github.io/policy-templates/
             programs.firefox.policies = {
+              HardwareAcceleration = true;
               # about:debugging#/runtime/this-firefox
               # https://mozilla.github.io/policy-templates/#extensions
               Extensions = {

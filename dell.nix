@@ -46,7 +46,8 @@
 
   services.blueman.enable = true;
   services.switcherooControl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta; # stable returns from suspend
+  # For GeForce GTX 1650 nvidia.com recommends 550 version (stable), but 570 (beta) returns from suspend
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   networking.hostName = "dell";
   networking.hostId = "8425e349";
 

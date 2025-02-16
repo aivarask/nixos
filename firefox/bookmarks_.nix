@@ -8,6 +8,10 @@
     }
     {
       name = "";
+      url = "https://data.nordpoolgroup.com/auction/day-ahead/prices?deliveryDate=latest&currency=EUR&aggregation=DailyAggregate&deliveryAreas=LT";
+    }
+    {
+      name = "";
       url = "https://huggingface.co/";
     }
     {
@@ -17,6 +21,10 @@
     {
       name = "";
       url = "https://www.messenger.com/";
+    }
+    {
+      name = "";
+      url = "https://keep.google.com/";
     }
     {
       name = "";
