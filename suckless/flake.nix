@@ -30,8 +30,10 @@
           dwm = super.dwm.overrideAttrs (oldAttrs: rec {
             src = dwm-flexipatch;
             configFile = super.writeText "config.h" (builtins.readFile ./dwm-config.h);
+            patchesFile = super.writeText "patches.h" (builtins.readFile ./dwm-patches.h);
             postPatch = ''
               ${oldAttrs.postPatch}
+              cp ${patchesFile} patches.h
               cp ${configFile} config.h
             '';
           });
