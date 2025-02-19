@@ -10,6 +10,8 @@
       font = {
         size = if osConfig.networking.hostName == "pc" then 28 else 8;
       };
+      window.dimensions.columns = 120;
+      window.dimensions.lines = 40;
       keyboard = {
         bindings = [
           {

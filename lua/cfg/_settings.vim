@@ -10,7 +10,7 @@ set ignorecase
 set lazyredraw
 set modeline
 set noshowmode
-set signcolumn=yes number
+set signcolumn=yes number relativenumber
 set splitright splitbelow
 set showtabline=2 statusline+=%F
 set cmdheight=1

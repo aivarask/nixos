@@ -51,7 +51,7 @@ local ui_select = {
 require('which-key').add({
 	{ '<F1>', ui_select.help, mode = { 'n', 'i', 'v' } },
 	{ '<F2>', ui_select.test, mode = { 'n', 'i', 'v' } },
-	{ '<F3>', vim.cmd.term('echo hello'), mode = { 'n', 'i', 'v' } },
+	-- { '<F3>', vim.cmd.term('echo hello'), mode = { 'n', 'i', 'v' } },
 	-- vim.keymap.set({'n', 'v', 'i'}, "<F5>", "<cmd>term ./build.sh<cr>")
 })
 

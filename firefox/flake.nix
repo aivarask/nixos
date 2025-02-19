@@ -15,6 +15,7 @@
               "--force-device-scale-factor=2"
               "--enable-features=TouchpadOverscrollHistoryNavigation"
               # "--remote-debugging-port=9222"
+              "-test-type"
             ];
             # https://mynixos.com/search?q=programs.chromium
             programs.chromium.extensions = [
@@ -30,7 +31,7 @@
               enable = true;
               settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
             };
-            nixpkgs.overlays = [ self.overlays.default ];
+            # nixpkgs.overlays = [ self.overlays.default ];
             home.sessionVariables = {
               MOZ_USE_XINPUT2 = "1";
             };
@@ -129,6 +130,7 @@
           };
         basic = _: {
           programs.firefox.profiles.root.settings = {
+            "accessibility.typeaheadfind.autostart" = true;
             "layout.css.prefers-color-scheme.content-override" = 3;
             # "layout.css.iframe-embedder-prefers-color-scheme.content.enabled" = true;
             "reader.color_scheme" = "dark";

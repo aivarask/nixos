@@ -30,7 +30,7 @@ if has('nvim')
 		autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
 
 		autocmd FileType sh,bash,zsh autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='bash-language-server'})
-		autocmd Filetype c,cpp autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='clang'})
+		autocmd Filetype c,cpp autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='null-ls'})
 		autocmd Filetype css,scss,less autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='vscode-css-language-server'})
 		autocmd Filetype go autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='gopls'})
 		autocmd Filetype javascript,typescript autocmd BufWritePre <buffer> lua vim.lsp.buf.format({name='tsserver'})

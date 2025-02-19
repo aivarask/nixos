@@ -143,10 +143,6 @@
               home.enableNixpkgsReleaseCheck = false;
               manual.json.enable = true;
               programs.man.generateCaches = true;
-              # environment.pathsToLink = [
-              #   "/share/zsh"
-              #   "/share/fish"
-              # ];
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
               services.blueman-applet.enable = true;
