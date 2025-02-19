@@ -5,25 +5,36 @@
     {
       nixosModules = {
         default = _: { environment.profiles = [ "${./.}" ]; };
-        chromium =
-          { ... }:
+        chromium.default =
+          { pkgs, ... }:
           {
             programs.chromium.enable = true;
-            programs.chromium.commandLineArgs = [
-              "--no-sandbox"
-              "--no-default-browser-check"
-              "--force-device-scale-factor=2"
-              "--enable-features=TouchpadOverscrollHistoryNavigation"
-              # "--remote-debugging-port=9222"
-              "-test-type"
-            ];
-            # https://mynixos.com/search?q=programs.chromium
             programs.chromium.extensions = [
-              { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+              "mlomiejdfkolichcflejclcbmpeaniij" # https://github.com/ghostery/ghostery-extension
             ];
-            # programs.chromium.homepageLocation = "https://nixos.org";
-            # programs.chromium.defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=ffab&q={searchTerms}";
           };
+        # chromium.home =
+        #   { pkgs, ... }:
+        #   {
+        #     programs.chromium.enable = true;
+        #     # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
+        #     programs.chromium.commandLineArgs = [
+        #       "--no-sandbox"
+        #       "--no-default-browser-check"
+        #       "--force-device-scale-factor=2"
+        #       "--enable-features=TouchpadOverscrollHistoryNavigation"
+        #       # "--remote-debugging-port=9222"
+        #       "--test-type"
+        #       # https://wiki.nixos.org/wiki/Chromium
+        #       "--enable-features=AcceleratedVideoEncoder"
+        #       "--ignore-gpu-blocklist"
+        #       "--enable-zero-copy"
+        #     ];
+        #     # https://mynixos.com/search?q=programs.chromium
+        #     programs.chromium.extensions = [ ];
+        #     programs.chromium.homepageLocation = "https://nixos.org";
+        #     # programs.chromium.defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=ffab&q={searchTerms}";
+        #   };
         main =
           { pkgs, ... }:
           {

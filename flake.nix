@@ -94,6 +94,7 @@
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
         inputs.firefox.nixosModules.default
+        inputs.firefox.nixosModules.chromium.default
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
@@ -153,7 +154,7 @@
                   #
                   # inputs.firefox.nixosModules.vaapi
                   inputs.firefox.nixosModules.basic
-                  inputs.firefox.nixosModules.chromium
+                  # inputs.firefox.nixosModules.chromium.home
                   inputs.firefox.nixosModules.devtools
                   inputs.firefox.nixosModules.dns
                   inputs.firefox.nixosModules.extensions

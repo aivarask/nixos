@@ -23,11 +23,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-alias nrl='nix registry list'\
-	no='nixos-option'\
-	oras='curl wttr.in/Vilnius'\
+alias oras='curl wttr.in/Vilnius'\
 
-# export ABBR_USER_ABBREVIATIONS_FILE=/etc/nixos/zsh/abbr.zsh
 # cat -v	#	showkey
 bindkey '^[[Z' reverse-menu-complete # S-Tab
 bindkey '^ ' forward-word            # C-Space
