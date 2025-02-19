@@ -1,4 +1,3 @@
-# vim:fdl=4
 { pkgs, ... }:
 {
   home.packages = with pkgs; [

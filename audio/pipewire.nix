@@ -1,4 +1,3 @@
-# vim: nofoldenable
 # https://wiki.nixos.org/wiki/PipeWire
 # https://nixos.org/manual/nixos/unstable/options#opt-services.pipewire.enable
 { pkgs, ... }:

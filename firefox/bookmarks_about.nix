@@ -1,4 +1,3 @@
-# vim: nofoldenable
 {
   name = "about";
   toolbar = true;

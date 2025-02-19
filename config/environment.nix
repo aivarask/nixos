@@ -1,4 +1,3 @@
-# vim: nofoldenable
 { pkgs, lib, ... }:
 {
   imports = [

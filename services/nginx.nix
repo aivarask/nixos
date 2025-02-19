@@ -1,4 +1,3 @@
-# vim: nowrap
 { pkgs, lib, ... }:
 {
   services.nginx = {

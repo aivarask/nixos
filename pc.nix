@@ -1,4 +1,3 @@
-# vim: foldlevel=3 nofoldenable
 # B450 AORUS M
 {
   config,

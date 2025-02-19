@@ -1,4 +1,3 @@
-# vim: nofoldenable
 {
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -40,12 +39,12 @@
       url = "github:samsze0/websocket.nvim";
       flake = false;
     };
-		# https://github.com/noib3/nvim-oxi
-		nvim-oxi = {
-			url = "github:noib3/nvim-oxi";
-			flake = false;
-		};
-		# https://github.com/mlua-rs/mlua
+    # https://github.com/noib3/nvim-oxi
+    nvim-oxi = {
+      url = "github:noib3/nvim-oxi";
+      flake = false;
+    };
+    # https://github.com/mlua-rs/mlua
   };
   outputs =
     { self, ... }@inputs:
@@ -66,12 +65,12 @@
                 meta.homepage = "github.com/samsze0/websocket.nvim";
                 doCheck = false;
               };
-							nvim-oxi = buildVimPlugin {
-								name="nvim-oxi";
-								src = nvim-oxi;
-								meta.home = "https://github.com/noib3/nvim-oxi";
+              nvim-oxi = buildVimPlugin {
+                name = "nvim-oxi";
+                src = nvim-oxi;
+                meta.home = "https://github.com/noib3/nvim-oxi";
 
-							};
+              };
               one-small-step-for-vimkind = buildVimPlugin {
                 name = "one-small-step-for-vimkind";
                 src = one-small-step-for-vimkind;
@@ -159,7 +158,7 @@
                 smart-semicolon
                 tree-sitter-language-injection
                 websocket-nvim
-								nvim-oxi
+                nvim-oxi
               ]
             );
           };

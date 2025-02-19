@@ -1,4 +1,3 @@
-# vim: nofoldenable
 { pkgs, ... }:
 {
   systemd.user.services."wallpaper" = {

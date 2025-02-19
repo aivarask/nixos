@@ -1,4 +1,3 @@
-# vim: nofoldenable
 {
   inputs = {
     # nixpkgs.url = "nixpkgs";

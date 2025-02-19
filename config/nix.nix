@@ -1,4 +1,3 @@
-# vim: nofoldenable
 {
   config,
   pkgs,

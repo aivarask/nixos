@@ -1,4 +1,3 @@
-# vim: foldlevel=4
 {
   config,
   lib,
@@ -40,10 +39,7 @@
     };
   };
   swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 32 * 1024;
-    }
+
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

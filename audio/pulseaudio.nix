@@ -1,4 +1,3 @@
-# vim: nofoldenable
 { pkgs, ... }:
 {
   environment.systemPackages = [ pkgs.pulsemixer ];

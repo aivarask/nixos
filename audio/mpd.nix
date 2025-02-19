@@ -1,4 +1,3 @@
-# vim: nofoldenable
 # https://wiki.nixos.org/wiki/MPD
 { pkgs, config, ... }:
 {

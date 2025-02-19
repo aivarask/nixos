@@ -1,4 +1,3 @@
-# vim:foldlevel=3
 { pkgs, lib, ... }:
 lib.mkMerge [
   {

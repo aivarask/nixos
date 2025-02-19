@@ -1,4 +1,3 @@
-# vim: nofoldenable
 { pkgs, ... }:
 {
   # environment.variables.GTK_USE_PORTAL = "1";
