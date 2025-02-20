@@ -5,36 +5,29 @@
     {
       nixosModules = {
         default = _: { environment.profiles = [ "${./.}" ]; };
-        chromium.default =
+        chromium.home =
           { pkgs, ... }:
           {
             programs.chromium.enable = true;
+            # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
+            programs.chromium.commandLineArgs = [
+              "--no-sandbox"
+              "--no-default-browser-check"
+              "--force-device-scale-factor=2"
+              "--enable-features=TouchpadOverscrollHistoryNavigation"
+              "--remote-debugging-port=9222"
+              "--test-type"
+              "--enable-features=AcceleratedVideoEncoder"
+              "--ignore-gpu-blocklist"
+              "--enable-zero-copy"
+              "--enable-force-dark"
+            ];
             programs.chromium.extensions = [
-              "mlomiejdfkolichcflejclcbmpeaniij" # https://github.com/ghostery/ghostery-extension
+              {
+                id = "mlomiejdfkolichcflejclcbmpeaniij"; # https://github.com/ghostery/ghostery-extension
+              }
             ];
           };
-        # chromium.home =
-        #   { pkgs, ... }:
-        #   {
-        #     programs.chromium.enable = true;
-        #     # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
-        #     programs.chromium.commandLineArgs = [
-        #       "--no-sandbox"
-        #       "--no-default-browser-check"
-        #       "--force-device-scale-factor=2"
-        #       "--enable-features=TouchpadOverscrollHistoryNavigation"
-        #       # "--remote-debugging-port=9222"
-        #       "--test-type"
-        #       # https://wiki.nixos.org/wiki/Chromium
-        #       "--enable-features=AcceleratedVideoEncoder"
-        #       "--ignore-gpu-blocklist"
-        #       "--enable-zero-copy"
-        #     ];
-        #     # https://mynixos.com/search?q=programs.chromium
-        #     programs.chromium.extensions = [ ];
-        #     programs.chromium.homepageLocation = "https://nixos.org";
-        #     # programs.chromium.defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=ffab&q={searchTerms}";
-        #   };
         main =
           { pkgs, ... }:
           {

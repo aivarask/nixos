@@ -87,7 +87,6 @@
 
       # terminal
       tdrop
-      ueberzug
       ueberzugpp
       cheat
       feh

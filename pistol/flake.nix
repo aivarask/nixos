@@ -3,10 +3,11 @@
     { ... }:
     {
       nixosModules.default =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
         {
           environment.systemPackages = with pkgs; [ pistol ];
-          environment.profiles = [ "${./.}" ];
+          # environment.profiles = [ "${./.}" ];
+          environment.sessionVariables.PATH = [ "/etc/nixos/pistol/bin" ];
         };
       nixosModules.home =
         { ... }:
@@ -25,6 +26,10 @@
               {
                 mime = "application/json";
                 command = "sh: jq '.' %pistol-filename% -C";
+              }
+              {
+                mime = "application/vnd.sqlite3";
+                command = "sqlite3 --header --json %pistol-filename% '.tables'";
               }
               {
                 mime = "application/pdf";

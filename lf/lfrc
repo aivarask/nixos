@@ -10,6 +10,7 @@ set scrolloff 8
 set shell "zsh"
 set shellopts "-ey"
 set previewer pistol_
+set cleaner cleaner
 #
 $mkdir -p ~/.trash
 map t
@@ -66,3 +67,11 @@ cmd open            ${{ $OPENER $f }}
 # recol           %{{ if [ $lf_width -le 80 ]; then ... }}
 # touch           %{{ touch "$@" }}
 
+cmd on-init &{{
+    fmt="$(STARSHIP_SHELL= starship prompt | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+cmd on-cd &{{
+    fmt="$(STARSHIP_SHELL= starship prompt | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}

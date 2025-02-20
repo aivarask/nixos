@@ -94,7 +94,6 @@
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
         inputs.firefox.nixosModules.default
-        inputs.firefox.nixosModules.chromium.default
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
@@ -149,12 +148,21 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
+                  {
+                    xdg.configFile."sqlite3/sqliterc" = {
+                      # https://sqlite.org/cli.html#changing_output_formats
+
+                      text = ''
+                        .mode list
+                      '';
+                    };
+                  }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   #
                   # inputs.firefox.nixosModules.vaapi
                   inputs.firefox.nixosModules.basic
-                  # inputs.firefox.nixosModules.chromium.home
+                  inputs.firefox.nixosModules.chromium.home
                   inputs.firefox.nixosModules.devtools
                   inputs.firefox.nixosModules.dns
                   inputs.firefox.nixosModules.extensions

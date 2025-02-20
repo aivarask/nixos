@@ -29,10 +29,12 @@ lib.mkMerge [
   }
   {
     # sql
+    environment.shellAliases."sqlite" = "sqlite3";
     environment.systemPackages = with pkgs; [
       sqlite-interactive
       sqlite-analyzer
       sqlite-web
+      harlequin
 
       sqlint
       sqlfluff # 7k
