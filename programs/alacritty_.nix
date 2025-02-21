@@ -23,8 +23,4 @@
       };
     };
   };
-  programs.wezterm = {
-    enable = true;
-  };
-
 }

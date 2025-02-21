@@ -12,6 +12,14 @@
       url = "github:bakkeby/st-flexipatch";
       flake = false;
     };
+    tabbed-flexipatch = {
+      url = "github:bakkeby/tabbed-flexipatch";
+      flake = false;
+    };
+    sxiv-tabbed = {
+      url = "github:bakkeby/sxiv-flexipatch";
+      flake = false;
+    };
   };
   outputs =
     { self, ... }@inputs:
@@ -44,6 +52,27 @@
               cp ${configFile} config.h
             '';
           });
+          tabbed = super.tabbed.overrideAttrs (oldAttrs: rec {
+            src = tabbed-flexipatch;
+            configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h);
+            patchesFile = super.writeText "patches.h" (builtins.readFile ./tabbed-patches.h);
+            postPatch = ''
+              ${oldAttrs.postPatch}
+              cp ${patchesFile} patches.h
+              cp ${configFile} config.h
+            '';
+          });
+          sxiv = super.sxiv.overrideAttrs (oldAttrs: rec {
+            src = sxiv-flexipatch;
+            configFile = super.writeText "config.h" (builtins.readFile ./sxiv-config.h);
+            patchesFile = super.writeText "patches.h" (builtins.readFile ./sxiv-patches.h);
+            postPatch = ''
+              ${oldAttrs.postPatch}
+              cp ${patchesFile} patches.h
+              cp ${configFile} config.h
+            '';
+          });
+
         }
       );
       nixosModules.default =
