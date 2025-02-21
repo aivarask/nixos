@@ -2,20 +2,35 @@
 
 manpage="echo {} | sed 's/\([[:alnum:][:punct:]]*\) (\([[:alnum:]]*\)).*/\2 \1/'"
 batman="${manpage} | xargs -r man | col -bx | bat --language=man --plain --color always --theme=\"Monokai Extended\""
-man -k . | sort |
-	awk -v cyan=$(tput setaf 6) -v blue=$(tput setaf 4) -v res=$(tput sgr0) -v bld=$(tput bold) '{ $1=cyan bld $1; $2=res blue $2; } 1' |
+# man -k . | sort |
+# awk -v cyan=$(tput setaf 6) -v blue=$(tput setaf 4) -v res=$(tput sgr0) -v bld=$(tput bold) '{ $1=cyan bld $1; $2=res blue $2; } 1' |
+man -k . |
 	fzf \
 		-q "$1" \
 		--ansi \
 		--tiebreak=begin \
-		--prompt=' Man > ' \
+		--prompt='man> ' \
 		--preview-window '50%,rounded,<50(up,65%,border-bottom)' \
 		--preview "${batman}" \
 		--bind "enter:execute(${manpage} | xargs -r man)" \
-		--header 'alt-m: man / alt-c: cht.sh / alt-t: tldr' \
+		--header 'man>m-m  cht.sh>m-c  m-t>tldr' \
 		--bind "alt-m:+change-preview(${batman})+change-prompt(man> )" \
+		--bind "alt-a:reload(man -k . -a)" \
+		--bind "alt-1:reload(man -k . -s1)" \
+		--bind "alt-2:reload(man -k . -s2)" \
+		--bind "alt-3:reload(man -k . -s3)" \
 		--bind "alt-c:+change-preview(cht.sh {1})+change-prompt(cht.sh> )" \
 		--bind "alt-t:+change-preview(tldr {1})+change-prompt(tldr> )"
+
+# 1   Executable programs or shell commands
+# 2   System calls (functions provided by the kernel)
+# 3   Library calls (functions within program libraries)
+# 4   Special files (usually found in /dev)
+# 5   File formats and conventions, e.g. /etc/passwd
+# 6   Games
+# 7   Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7), man-pages(7)
+# 8   System administration commands (usually only for root)
+# 9   Kernel routines [Non standard]
 
 # bindkey '^h' fzf-man-widget
 # zle -N fzf-man-widget

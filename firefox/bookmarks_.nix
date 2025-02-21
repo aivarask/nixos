@@ -4,6 +4,10 @@
   bookmarks = [
     {
       name = "";
+      url = "translate.google.com";
+    }
+    {
+      name = "";
       url = "http://pcw.local:9000/#pc";
     }
     {

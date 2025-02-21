@@ -62,17 +62,16 @@
               cp ${configFile} config.h
             '';
           });
-          sxiv = super.sxiv.overrideAttrs (oldAttrs: rec {
-            src = sxiv-flexipatch;
-            configFile = super.writeText "config.h" (builtins.readFile ./sxiv-config.h);
-            patchesFile = super.writeText "patches.h" (builtins.readFile ./sxiv-patches.h);
-            postPatch = ''
-              ${oldAttrs.postPatch}
-              cp ${patchesFile} patches.h
-              cp ${configFile} config.h
-            '';
-          });
-
+          # sxiv = super.sxiv.overrideAttrs (oldAttrs: rec {
+          #   src = sxiv-flexipatch;
+          #   configFile = super.writeText "config.h" (builtins.readFile ./sxiv-config.h);
+          #   patchesFile = super.writeText "patches.h" (builtins.readFile ./sxiv-patches.h);
+          #   postPatch = ''
+          #     ${oldAttrs.postPatch}
+          #     cp ${patchesFile} patches.h
+          #     cp ${configFile} config.h
+          #   '';
+          # });
         }
       );
       nixosModules.default =

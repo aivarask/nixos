@@ -107,7 +107,7 @@
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.plugins.default
-        inputs.zsh.nixosModules.default
+        inputs.zsh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
@@ -182,7 +182,9 @@
                   inputs.tmux.nixosModules.home
                   inputs.vim.nixosModules.home
                   inputs.vim.nixosModules.plugins.home
-                  inputs.zsh.nixosModules.home
+                  inputs.zsh.nixosModules.env.hm
+                  inputs.zsh.nixosModules.hm
+                  inputs.zsh.nixosModules.bookmarks
                   ./rofi
                 ]
                 ++ i_ ./config

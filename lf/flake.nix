@@ -8,12 +8,12 @@
           {
             # environment.profiles = [ "${./.}" ];
             environment.sessionVariables.PATH = [ "/etc/nixos/lf/bin" ];
-
           };
-        yazi.home = {
-          # https://github.com/sxyazi/yazi
-
-        };
+        yazi.home =
+          { ... }:
+          {
+            # https://github.com/sxyazi/yazi
+          };
         home =
           { ... }:
           {
@@ -22,6 +22,7 @@
             programs.lf = {
               enable = true;
               extraConfig = ''
+                source /etc/nixos/lf/lf_hooks
                 source /etc/nixos/lf/lfrc
               '';
             };

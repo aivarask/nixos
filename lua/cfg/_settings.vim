@@ -14,11 +14,7 @@ set signcolumn=yes number relativenumber
 set splitright splitbelow
 set showtabline=2 statusline+=%F
 set cmdheight=1
-set autoindent
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set nolisp
+
 set noswapfile
 set background=dark
 set undofile
@@ -27,9 +23,15 @@ set autowriteall
 set updatetime=250
 set timeoutlen=600
 set bufhidden=wipe
-setglobal commentstring="# %s"
+set commentstring=#\ %s
 set conceallevel=2
 set clipboard=unnamedplus
+
+" set nolisp
+" set autoindent
+" set smartindent
+" set shiftwidth=2
+" set tabstop=2
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -69,12 +71,16 @@ nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
 
+noremap <C-S-,> :left<CR>
+
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
+nnoremap ?b :edit /etc/nixos/bashrc<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?g :edit /etc/nixos/lua/cfg/git.lua<CR>
+nnoremap ?p :edit /etc/nixos/profile<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
 nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
@@ -133,10 +139,10 @@ if !has('nvim')
 else
 " HateWord
 	set undodir=$XDG_STATE_HOME/nvim/undo
-	set foldmethod=expr
+	" set foldmethod=expr
 	set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-	set foldclose=all
+	" set foldclose=all
 	" set foldlevel=3
 	" set foldnestmax=4
 	" let &foldnestmax = &foldlevel+3

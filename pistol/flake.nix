@@ -5,8 +5,8 @@
       nixosModules.default =
         { pkgs, config, ... }:
         {
-          environment.systemPackages = with pkgs; [ pistol ];
           # environment.profiles = [ "${./.}" ];
+          environment.systemPackages = with pkgs; [ pistol ];
           environment.sessionVariables.PATH = [ "/etc/nixos/pistol/bin" ];
         };
       nixosModules.home =

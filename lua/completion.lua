@@ -19,9 +19,7 @@ local config = {
 	preselect = 'item',
 	confirmation = {
 		default_behavior = 'replace',
-		get_commit_characters = function(commit_characters)
-			return commit_characters
-		end,
+		get_commit_characters = function(commit_characters) return commit_characters end,
 	},
 	view = { docs = { auto_open = true } },
 	experimental = { ghost_text = true },
@@ -77,9 +75,7 @@ local config = {
 		end, { 'i', 's' }),
 	},
 
-	['snippet.expand'] = function(args)
-		luasnip.lsp_expand(args.body)
-	end,
+	['snippet.expand'] = function(args) luasnip.lsp_expand(args.body) end,
 
 	-- cmp-nvim-lsp cmp-path
 	-- https://github.com/hrsh7th/cmp-buffer
@@ -95,7 +91,7 @@ local config = {
 		-- { name = 'luasnip' },
 		{ name = 'path' },
 		-- { name = 'emoji'},
-		-- { name = 'buffer' },
+		{ name = 'buffer' },
 	}),
 }
 cmp.setup(config)

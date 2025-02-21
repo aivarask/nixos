@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 export __ETC_PROFILE_SOURCED=
 export __NIXOS_SET_ENVIRONMENT_DONE=
 source /etc/profile
@@ -35,6 +37,8 @@ bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 bindkey -s "^[[24~" "systemctl restart kmsconvt@tty1.service\n" # <F12>
 bindkey -s "^F" "fzf -m\n"
 bindkey -s "^G" "Rg\n"
+
+
 
 # cd $(nix flake metadata nixpkgs | grep 'Path' | awk '{print $2}')
 

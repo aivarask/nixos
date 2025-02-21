@@ -18,7 +18,7 @@ require('nvim-treesitter.configs').setup({ --- @see nvim-treesitter
 			scope_incremental = 'ti',
 			node_decremental = '<S-Tab>',
 		},
-	}, --- @see nvim-treesitter-indentation-mod
+	},
 	matchup = { enable = true }, --- @see vim-matchup
 	endwise = { enable = true }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
 	textsubjects = { --- @see https://github.com/RRethy/nvim-treesitter-textsubjects

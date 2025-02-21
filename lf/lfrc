@@ -9,8 +9,8 @@ set ratios "1:2"
 set scrolloff 8
 set shell "zsh"
 set shellopts "-ey"
-set previewer pistol_
-set cleaner cleaner
+set previewer pistol
+# set cleaner cleaner
 #
 $mkdir -p ~/.trash
 map t
