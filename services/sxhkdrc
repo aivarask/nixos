@@ -1,13 +1,20 @@
 super + ctrl + Return
   tabbed -c alacritty --embed
+
 super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
-	{\
+  {\
 	,alacritty -T man-fzf -e man-fzf\
 	,hmon \
 	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
 	,pwvucontrol\
 	,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
 	,notify-send "$(vimcat $SXHKDRC)"\
+	,notify-send "$(vimcat $SXHKDRC)"\
+	,notify-send "$(vimcat $SXHKDRC)"\
+  ,wezterm\
+	,alacritty -e sh\
+	,alacritty -e bash\
+	,alacritty -e zsh\
 	}
 
 super + {q,w,e,r}
@@ -16,45 +23,50 @@ super + {q,w,e,r}
   ,firefox\
 	,chromium\
   ,alacritty --working-directory=/etc/nixos -e 'nvr'\
-  ,alacritty --working-directory=/etc/nixos -e 'lf'\
   }
 
 super + {W,E,R,T,Y}
   {\
 	,firefox --private-window\
-  ,chromium\
+  ,chromium --incognito\
 	,firefox\
 	,telegram-desktop\
 	,brave 'https://youtube.com'\
   }
+
 super + {a,s}
 	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
+
 super + {z,x,c,v}
-	{\
+  {\
 	,brightnessctl set 10%-\
 	,brightnessctl set 10%+\
 	,alacritty --working-directory=/nix/store\
 	,alacritty --working-directory=/nix/store\
 	}
+
 super + {A,S}
-	ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
+  ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
 
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
 # ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
 super + r; {1,2,n,p,F1}
-	{\
+  {\
 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
 	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
 	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
 	}
+
 super + o; {1,2,3,4,5,6,7,8,9,0}
-	{\
+  {\
+  ,alacritty -e sh
 	,notify-send "echo $SHELL"\
 	,notify-send "echo two"\
 	,inkscape '/etc/nixos/a/img/logo.svg'
 	}
+
 XF86AudioMute
 	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 XF86Audio{Lower,Raise}Volume

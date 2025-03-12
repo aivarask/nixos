@@ -184,7 +184,7 @@
                   inputs.vim.nixosModules.plugins.home
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
-                  inputs.zsh.nixosModules.bookmarks
+                  inputs.zsh.nixosModules.ff.bookmarks
                   ./rofi
                 ]
                 ++ i_ ./config

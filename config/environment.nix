@@ -3,9 +3,7 @@
   imports = [
     (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
   ];
-  environment.extraInit = ''
-    		source /etc/nixos/profile
-    	'';
+
   environment.variables.SELF = "/etc/nixos/";
   environment.variables.EDITOR = "vim";
   environment.variables.CPATH = [ "${pkgs.xorg.libX11.dev}/include" ];
@@ -52,7 +50,6 @@
       mpv
       telegram-desktop # QT_SCALE_FACTOR = "1.75";
       file
-      dolphin
       # blender
       figma-linux
       inkscape-with-extensions

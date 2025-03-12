@@ -2,11 +2,13 @@
 {
   # environment.variables.GTK_USE_PORTAL = "1";
   environment.systemPackages = with pkgs; [
+    kdePackages.dolphin
   ];
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
     # pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-kde
+    # pkgs.xdg-desktop-portal-kde
+    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
   # xdg.portal.config.common.default = "gtk";
   xdg.portal.config.common.default = "kde";

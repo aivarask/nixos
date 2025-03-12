@@ -11,30 +11,35 @@
         env.sys =
           { ... }:
           {
-            # /etc/profile
-            # /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
             environment.profiles = [
               "${./.}"
               # "${pkgs.zsh-completions}"
             ];
+
+            # /etc/profile
+            programs.bash.shellInit = ''
+              # OS programs.bash.shellInit
+            '';
             environment.shellInit = ''
               # OS environment.shellInit
+              source /etc/nixos/profile
             '';
-            environment.interactiveShellInit = ''
-              # OS environment.interactiveShellInit
-            '';
+
+            # /etc/set-environment
             environment.extraInit = ''
               # OS environment.extraInit
             '';
 
-            # /etc/set-environment
             # /etc/bashrc
-            programs.bash.shellInit = ''
-              # OS programs.bash.shellInit
-            '';
             programs.bash.interactiveShellInit = ''
               # OS programs.bash.interactiveShellInit
             '';
+            environment.interactiveShellInit = ''
+              # OS environment.interactiveShellInit
+            '';
+
+            # /etc/zshenv
+            # /etc/zshrc
             programs.zsh.enable = true;
             programs.zsh.shellInit = ''
               # OS programs.zsh.shellInit
@@ -43,6 +48,7 @@
         env.hm =
           { ... }:
           {
+            # /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
             xsession.enable = true;
             xsession.profileExtra = ''
