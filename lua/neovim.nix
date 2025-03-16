@@ -45,7 +45,7 @@ let
     telescope-nvim
     telescope-fzf-native-nvim
     telescope-symbols-nvim
-    trouble-nvim
+    # trouble-nvim
     todo-comments-nvim
   ];
   testing = with pkgs.vimPlugins; [

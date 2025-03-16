@@ -114,14 +114,14 @@ require('null-ls').register({ require('null-ls.builtins.diagnostics.vint') })
 -- 	end,
 -- })
 
-vim.api.nvim_create_autocmd('Filetype', {
-	pattern = { 'markdown', 'markdown.mdx' },
-	callback = function()
-		vim.lsp.start({
-			cmd = { 'marksman', 'server' },
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd('Filetype', {
+-- 	pattern = { 'markdown', 'markdown.mdx' },
+-- 	callback = function()
+-- 		vim.lsp.start({
+-- 			cmd = { 'marksman', 'server' },
+-- 		})
+-- 	end,
+-- })
 require('null-ls').register({
 	require('null-ls.builtins.formatting.markdownlint'),
 	require('null-ls.builtins.diagnostics.markdownlint'),
