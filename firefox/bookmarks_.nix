@@ -4,6 +4,10 @@
   bookmarks = [
     {
       name = "";
+      url = "mail.google.com";
+    }
+    {
+      name = "";
       url = "translate.google.com";
     }
     {

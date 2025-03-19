@@ -38,13 +38,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.lsp.enable('luals')
-print(foo)
+vim.diagnostic.config({
+  virtual_lines = true,
+  virtual_text = true
+
+})
+
+
 
 require('which-key').add({
   { '<C-N>', vim.lsp.completion.trigger, mode = 'i' }
 })
-
-vim.keymap.set('n', 'gK', function()
-  local new_config = not vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = 'Toggle diagnostic virtual_lines' })
