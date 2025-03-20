@@ -5,6 +5,8 @@
     nps.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
     dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
+    inputs.disko.url = "github:nix-community/disko/latest";
+    inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";

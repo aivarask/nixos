@@ -39,6 +39,7 @@
     with pkgs;
     [
       # hardware
+      mtools
       kmon
       brightnessctl
       usbutils
