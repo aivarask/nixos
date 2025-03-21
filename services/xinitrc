@@ -1,25 +1,26 @@
 #!/bin/sh
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
-	eval "$(dbus-launch --exit-with-session --sh-syntax)"
+  eval "$(dbus-launch --exit-with-session --sh-syntax)"
 fi
 systemctl --user import-environment DISPLAY XAUTHORITY
 
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-	dbus-update-activation-environment DISPLAY XAUTHORITY
+  dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
 if [ "$(hostname)" = pc ]; then
-	xset s 3600 3600
-	xset dpms 3600 3600 3600
-	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
-	XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-	systemctl --user start imwheel.service &
-	deskflow-client -f --no-tray --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
+  xset s 3600 3600
+  xset dpms 3600 3600 3600
+  nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
+  XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
+  systemctl --user start imwheel.service &
+  # --no-tray
+  deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
-	deskflow-server -f --no-tray --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
-	systemctl --user restart blueman-applet.service &
-	systemctl --user restart redshift.service &
+  deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
+  systemctl --user restart blueman-applet.service &
+  systemctl --user restart redshift.service &
 fi
 numlockx
 # xset q
@@ -33,22 +34,22 @@ systemctl --user restart dwm-status.service &
 session=${1:-dwm}
 case $session in
 i3 | i3wm)
-	exec i3
-	;;
+  exec i3
+  ;;
 kde)
-	exec startplasma-x11
-	;;
+  exec startplasma-x11
+  ;;
 xfce | xfce4)
-	exec startxfce4
-	;;
+  exec startxfce4
+  ;;
 dwm)
-	exec dwm
-	;;
-	# awesome)
-	# Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
-	# exec awesome -c ...
-	# ;;
+  exec dwm
+  ;;
+  # awesome)
+  # Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
+  # exec awesome -c ...
+  # ;;
 *)
-	exec "$1"
-	;;
+  exec "$1"
+  ;;
 esac

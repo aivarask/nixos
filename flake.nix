@@ -203,7 +203,13 @@
         iso = inputs.nixos-generators.nixosGenerate {
           system = system;
           format = "iso"; # https://github.com/nix-community/nixos-generators#supported-formats
-          modules = [ ];
+          modules = [
+            {
+              environment.systemPackages = [
+                pkgs.vim
+              ];
+            }
+          ];
         };
         vbox = inputs.nixos-generators.nixosGenerate {
           system = system;
@@ -239,6 +245,8 @@
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           inputs.nixos-hardware.nixosModules.common-hidpi
           ./pc.nix
+          # ./pc_disks.nix
+
         ];
         specialArgs = { inherit inputs; };
       };
