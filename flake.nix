@@ -123,6 +123,8 @@
               [
                 ./lnav
                 ./systemd/remote-touchpad.nix
+                ./systemd/music.nix
+                ./systemd/video.nix
                 ./virt/virtualbox.nix
                 ./wallpaper
               ]

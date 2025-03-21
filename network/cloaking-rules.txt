@@ -5,6 +5,8 @@ localhost	127.0.0.1
 *.local	127.0.0.1
 *.l	127.0.0.1
 
+music.local					    localhost
+video.local					    localhost
 hw.local								192.168.1.1
 redmi										192.168.1.140
 pcw											192.168.1.195
