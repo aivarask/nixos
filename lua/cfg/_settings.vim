@@ -15,6 +15,10 @@ set signcolumn=yes number relativenumber
 set splitright splitbelow
 set showtabline=2 statusline+=%F
 set cmdheight=1
+set nowrap
+set breakindent
+set breakindentopt=sbr
+" set showbreak=↪>\
 
 set noswapfile
 set background=dark
@@ -52,7 +56,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 map q <nop>
 map Q <nop>
-map - :cd ..<CR>
+nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 nmap <C-s> <Plug>(Save)
 " inoremap <Space> <C-G>u<Space>

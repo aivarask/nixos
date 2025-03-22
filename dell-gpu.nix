@@ -10,10 +10,12 @@
   # (https://unix.stackexchange.com/a/596888)
   # https://wiki.archlinux.org/title/HiDPI#GDK_3_(GTK_3)
 
-  # environment.variables.GTK_THEME = "Adwaita:dark";
   qt = {
+    # environment.variables.GTK_THEME = "Adwaita:dark";
+    # environment.sessionVariables.QT_STYLE_OVERRIDE = "adwaita-dark";
     enable = true;
-    platformTheme = "kde";
+    # platformTheme = "kde";
+    platformTheme = "gnome";
     style = "adwaita-dark";
   };
 

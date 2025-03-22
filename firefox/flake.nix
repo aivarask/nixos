@@ -30,11 +30,37 @@
           };
         main =
           { pkgs, ... }:
-          {
-            dconf = {
-              enable = false;
-              settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+          let
+            bookmarks = [
+              (import ./bookmarks_about.nix)
+              (import ./bookmarks_nix.nix)
+              (import ./bookmarks_.nix)
+            ];
+            search = {
+              force = true;
+              default = "DuckDuckGo";
+              privateDefault = "DuckDuckGo";
+              order = [
+                "DuckDuckGo"
+                "Google"
+              ];
+              engines = import ./search_engines.nix;
             };
+            # https://www.reddit.com/r/FirefoxCSS/wiki/index/tutorials/
+            # https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html
+            userChrome = ''
+              * {
+                box-shadow: none !important;
+                border: 0px solid !important;
+                }
+            '';
+            userContent = ''
+              * {
+                scrollbar-width:none !important;
+              }
+            '';
+          in
+          {
             # nixpkgs.overlays = [ self.overlays.default ];
             home.sessionVariables = {
               MOZ_USE_XINPUT2 = "1";
@@ -45,31 +71,30 @@
             programs.firefox = {
               enable = true;
               package = pkgs.firefox;
+              profiles.arkenfox = {
+                inherit
+                  bookmarks
+                  search
+                  userChrome
+                  userContent
+                  ;
+                id = 1;
+                name = "arkenfox";
+                isDefault = false;
+                settings = {
+                };
+              };
               profiles.root = {
+                inherit
+                  bookmarks
+                  search
+                  userChrome
+                  userContent
+                  ;
                 id = 0;
                 name = "root";
                 isDefault = true;
-                bookmarks = [
-                  (import ./bookmarks_about.nix)
-                  (import ./bookmarks_nix.nix)
-                  (import ./bookmarks_.nix)
-                ];
-                search = {
-                  force = true;
-                  default = "DuckDuckGo";
-                  privateDefault = "DuckDuckGo";
-                  order = [
-                    "DuckDuckGo"
-                    "Google"
-                  ];
-                  engines = import ./search_engines.nix;
-                };
-                userChrome = ''
-                  * {
-                    box-shadow: none !important;
-                    border: 0px solid !important;
-                    }
-                '';
+
               };
             };
           };
@@ -79,34 +104,7 @@
             PKGS = (pkgs.extend inputs.nur.overlays.default);
           in
           {
-            # https://mozilla.github.io/policy-templates/
-            programs.firefox.policies = {
-              HardwareAcceleration = true;
-              # about:debugging#/runtime/this-firefox
-              # https://mozilla.github.io/policy-templates/#extensions
-              Extensions = {
-                Locked = [
-                  # "firefox-compact-dark@mozilla.org"
-                  "uBlock0@raymondhill.net"
-                  "{446900e4-71c2-419f-a6a7-df9c091e268b}" # bitwarden
-                  # "{effbb402-8ffa-4e7c-ab0d-ac8dab9a580b}"
-                ];
-              };
-              # https://mozilla.github.io/policy-templates/#extensionsettings
-              ExtensionSettings = {
-                "uBlock0@raymondhill.net" = {
-                  default_area = "navbar";
-                  installation_mode = "force_installed";
-                  install_url = "http://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
-                };
-                # bitwarden
-                "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-                  default_area = "navbar";
-                  installation_mode = "force_installed";
-                  install_url = "http://addons.mozilla.org/firefox/downloads/latest/{446900e4-71c2-419f-a6a7-df9c091e268b}/latest.xpi";
-                };
-              };
-            };
+            programs.firefox.policies = import ./policies.nix;
             programs.firefox.profiles.root.extensions = with PKGS.nur.repos.rycee.firefox-addons; [
               # https://addons.mozilla.org/en-US/firefox/search/?promoted=recommended&type=extension
               # bitwarden
@@ -120,6 +118,7 @@
               # stylus
             ];
 
+            # https://github.com/arkenfox/user.js/
             programs.firefox.profiles.root.settings = {
               "extensions.autoDisableScopes" = false;
               "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
