@@ -1,12 +1,12 @@
 {
   inputs.nur.url = "github:nix-community/NUR";
   outputs =
-    { self, ... }@inputs:
+    { ... }@inputs:
     {
       nixosModules = {
         default = _: { environment.profiles = [ "${./.}" ]; };
         chromium.home =
-          { pkgs, ... }:
+          { ... }:
           {
             programs.chromium.enable = true;
             # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
@@ -65,12 +65,14 @@
             home.sessionVariables = {
               MOZ_USE_XINPUT2 = "1";
             };
+            home.sessionVariables.MOZ_X11_EGL = "1";
             home.packages = [
               pkgs.geckodriver
             ];
             programs.firefox = {
               enable = true;
               package = pkgs.firefox;
+              policies = import ./policies.nix;
               profiles.arkenfox = {
                 inherit
                   bookmarks
@@ -80,8 +82,13 @@
                   ;
                 id = 1;
                 name = "arkenfox";
-                isDefault = false;
+                isDefault = true;
                 settings = {
+                  "media.ffmpeg.vaapi.enabled" = true;
+                  "media.rdd-ffmpeg.enabled" = true;
+                  "media.av1.enabled" = true;
+                  "gfx.x11-egl.force-enabled" = true;
+                  "widget.dmabuf.force-enabled" = true;
                 };
               };
               profiles.root = {
@@ -93,7 +100,7 @@
                   ;
                 id = 0;
                 name = "root";
-                isDefault = true;
+                isDefault = false;
 
               };
             };
@@ -104,11 +111,8 @@
             PKGS = (pkgs.extend inputs.nur.overlays.default);
           in
           {
-            programs.firefox.policies = import ./policies.nix;
             programs.firefox.profiles.root.extensions = with PKGS.nur.repos.rycee.firefox-addons; [
               # https://addons.mozilla.org/en-US/firefox/search/?promoted=recommended&type=extension
-              # bitwarden
-              # ublock-origin
               # h264ify
               # clearurls
               # foxytab

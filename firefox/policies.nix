@@ -7,7 +7,7 @@
       # https://github.com/mkaply/queryamoid
       installation_mode = "force_installed";
       install_url = "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
-      default_area = "navbar";
+      default_area = "menupanel";
     };
     "{830f38bd-efc5-45dc-a5a6-064d9a638806}" = {
       # https://addons.mozilla.org/en-US/firefox/addon/dark-mode-by-albert-inc/
@@ -62,15 +62,17 @@
   PasswordManagerEnabled = true;
   Permissions = {
     # https://mozilla.github.io/policy-templates/#permissions
+    "Notifications" = {
+      "BlockNewRequests" = true;
+      "Locked" = true;
+    };
     "Autoplay" = {
-      # "Allow" = [ "" ];
-      # "Block" = [ ];
       "Default" = "allow-audio-video";
       "Locked" = true;
     };
   };
   PictureInPicture = {
-    "Enabled" = true;
+    "Enabled" = false;
     "Locked" = true;
   };
   PopupBlocking = {
