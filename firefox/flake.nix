@@ -5,10 +5,6 @@
     {
       nixosModules = {
         default = _: { environment.profiles = [ "${./.}" ]; };
-        chromium.home =
-          { ... }:
-          {
-          };
         main =
           { pkgs, ... }:
           let
