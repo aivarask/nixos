@@ -9,7 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./binarycache.nix
     ./gpu.nix
-    ./network
+    ./network.nix
   ];
   boot = {
     initrd.availableKernelModules = [

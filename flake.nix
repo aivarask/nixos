@@ -228,8 +228,7 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-          ./bluetooth
-          ./dell.nix
+          ./dell
         ];
         specialArgs = { inherit inputs; };
       };
