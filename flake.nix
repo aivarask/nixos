@@ -127,6 +127,7 @@
                 ./systemd/video.nix
                 ./virt/virtualbox.nix
                 ./wallpaper
+                ./sql.nix
               ]
               ++ i ./config
               ++ i ./network
@@ -152,7 +153,6 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
-
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.firefox.nixosModules.home
@@ -171,6 +171,8 @@
                   ./mpv.nix
                   ./chromium.nix
                   ./rofi
+                  ./sql_.nix
+                  ./wezterm_.nix
                 ]
                 ++ i_ ./config
                 ++ i_ ./programs
@@ -207,9 +209,7 @@
       devShells."${system}".default = pkgs.mkShell { };
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [
-          ./dell
-        ];
+        modules = commonModules ++ [ ./dell ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
