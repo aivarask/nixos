@@ -1,4 +1,5 @@
 # https://github.com/nicolas-goudry/nix-config/blob/main/hosts/g-xps/default.nix
+# https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/intel/disable.nix
 {
   config,
   lib,
@@ -15,7 +16,6 @@
     ./binarycache.nix
     # ./bluetooth.nix
     ./boot.nix
-    ./hardware.nix
     ./kmscon.nix
     ./network.nix
     ./qt.nix

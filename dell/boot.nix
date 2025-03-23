@@ -1,12 +1,11 @@
-{ ... }:
+{ pkgs, config, ... }:
 {
   # boot.kernelPackages = pkgs.linuxPackages_latest; # fails zfs
   boot.blacklistedKernelModules = [
   ];
   boot.kernelParams = [
     "boot.shell_on_fail"
-    # Set kernel log level to ERROR
-    "loglevel=3"
+    "loglevel=3" # ERROR
   ];
   boot.kernelModules = [
     "kvm-intel"
@@ -27,4 +26,20 @@
     "rtsx_pci_sdmmc"
     "usb_storage"
   ];
+  environment.systemPackages = with pkgs; [
+    # lshw
+    # mesa-demos # glxinfo glxgears
+    # nvidia-vaapi-driver
+    libva-utils # vainfo
+    intel-gpu-tools # intel_gpu_top
+    nvtopPackages.nvidia # nvtop
+    nvtopPackages.intel
+    # vdpauinfo # vdpauinfo
+    # libvdpau
+    # libvdpau-va-gl
+    # vulkan-tools # vulkaninfo
+    # clinfo # clinfo
+  ];
+  # For GeForce GTX 1650 nvidia.com recommends 550 version (stable), but 570 (beta) returns from suspend
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 }
