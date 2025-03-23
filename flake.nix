@@ -248,7 +248,6 @@
       formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
-          inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
           ./dell
         ];
         specialArgs = { inherit inputs; };
