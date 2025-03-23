@@ -33,7 +33,7 @@
     libva-utils # vainfo
     intel-gpu-tools # intel_gpu_top
     nvtopPackages.nvidia # nvtop
-    # nvtopPackages.intel
+    nvtopPackages.intel
     # vdpauinfo # vdpauinfo
     # libvdpau
     # libvdpau-va-gl
