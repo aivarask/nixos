@@ -166,17 +166,8 @@
                   inputs.nix-index-database.hmModules.nix-index
                   #
                   # inputs.firefox.nixosModules.vaapi
-                  inputs.firefox.nixosModules.basic
-                  inputs.firefox.nixosModules.devtools
-                  inputs.firefox.nixosModules.dns
-                  inputs.firefox.nixosModules.extensions
                   inputs.firefox.nixosModules.main
-                  inputs.firefox.nixosModules.media
-                  inputs.firefox.nixosModules.newtabpage
-                  inputs.firefox.nixosModules.privacy
-                  inputs.firefox.nixosModules.tabs
-                  inputs.firefox.nixosModules.telemetry
-                  inputs.firefox.nixosModules.urlbar
+
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.lf.nixosModules.home
