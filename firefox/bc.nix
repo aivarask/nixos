@@ -1,3 +1,4 @@
+# inputs.nur.url = "github:nix-community/NUR";
 {
   extensions =
     { pkgs, ... }:

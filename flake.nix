@@ -153,21 +153,9 @@
                 with inputs.lib.packages."${system}".lib;
                 [
 
-                  {
-                    xdg.configFile."sqlite3/sqliterc" = {
-                      # https://sqlite.org/cli.html#changing_output_formats
-
-                      text = ''
-                        .mode list
-                      '';
-                    };
-                  }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
-                  #
-                  # inputs.firefox.nixosModules.vaapi
-                  inputs.firefox.nixosModules.main
-
+                  inputs.firefox.nixosModules.home
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.lf.nixosModules.home

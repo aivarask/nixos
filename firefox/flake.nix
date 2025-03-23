@@ -1,11 +1,10 @@
 {
-  # inputs.nur.url = "github:nix-community/NUR";
   outputs =
     { ... }:
     {
       nixosModules = {
         default = _: { environment.profiles = [ "${./.}" ]; };
-        main =
+        home =
           { pkgs, ... }:
           let
             bookmarks = [
@@ -40,9 +39,7 @@
           {
             home.sessionVariables.MOZ_USE_XINPUT2 = "1";
             home.sessionVariables.MOZ_X11_EGL = "1";
-            home.packages = [
-              pkgs.geckodriver
-            ];
+            home.packages = [ pkgs.geckodriver ];
             programs.firefox = {
               enable = true;
               package = pkgs.firefox;
