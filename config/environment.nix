@@ -48,7 +48,6 @@
       libxkbcommon
       # udevil
 
-      mpv
       telegram-desktop # QT_SCALE_FACTOR = "1.75";
       file
       # blender

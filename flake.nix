@@ -153,6 +153,27 @@
                 with inputs.lib.packages."${system}".lib;
                 [
                   {
+                    programs.mpv = {
+                      enable = true;
+                      package = (
+                        pkgs.mpv-unwrapped.wrapper {
+                          scripts = with pkgs.mpvScripts; [
+                            uosc
+                            sponsorblock
+                          ];
+                          mpv = pkgs.mpv-unwrapped.override {
+                            # waylandSupport = true;
+                          };
+                        }
+                      );
+                      config = {
+                        profile = "high-quality";
+                        ytdl-format = "bestvideo+bestaudio";
+                        cache-default = 4000000;
+                      };
+                    };
+                  }
+                  {
                     xdg.configFile."sqlite3/sqliterc" = {
                       # https://sqlite.org/cli.html#changing_output_formats
 

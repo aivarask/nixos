@@ -330,7 +330,8 @@ vim.api.nvim_create_autocmd('FileType', {
           diagnostic = {
             suppress = {
               'sema-extra-with',
-              'sema-unused-def-let'
+              'sema-unused-def-let',
+              'sema-unused-def-lambda-noarg-formal'
             },
           },
         },
