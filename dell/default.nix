@@ -2,33 +2,34 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./binarycache.nix
+    ./boot.nix
     ./gpu.nix
     ./kmscon.nix
     ./network.nix
+    ./qt.nix
   ];
-  boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "sd_mod"
-      "rtsx_pci_sdmmc"
-      "usb_storage"
-    ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
-  };
-  # boot.kernelPackages = pkgs.linuxPackages_latest; # fails zfs
-  boot.blacklistedKernelModules = [
-    "nouveou"
-    "nvidiafb"
+  environment.systemPackages = with pkgs; [
+    # lshw
+    # mesa-demos # glxinfo glxgears
+    # nvidia-vaapi-driver
+    libva-utils # vainfo
+    intel-gpu-tools # intel_gpu_top
+    nvtopPackages.nvidia # nvtop
+    nvtopPackages.intel
+    # vdpauinfo # vdpauinfo
+    # libvdpau
+    # libvdpau-va-gl
+    # vulkan-tools # vulkaninfo
+    # clinfo # clinfo
   ];
+  services.xserver.dpi = 283;
   fileSystems = {
     "/" = {
       device = "zroot/root/nixos";
