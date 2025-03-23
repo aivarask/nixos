@@ -8,30 +8,6 @@
         chromium.home =
           { ... }:
           {
-            programs.chromium.enable = true;
-            # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
-            programs.chromium.commandLineArgs = [
-              "--no-sandbox"
-              "--no-default-browser-check"
-              "--remote-debugging-port=9222"
-              "--force-device-scale-factor=2"
-              # "--enable-force-dark"
-              "--test-type"
-              #
-              "--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
-              "--enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport"
-              "--enable-features=UseMultiPlaneFormatForHardwareVideo"
-              "--ignore-gpu-blocklist"
-              "--enable-zero-copy"
-              #
-              "--ozone-platform-hint=auto"
-              "--enable-features=TouchpadOverscrollHistoryNavigation"
-            ];
-            programs.chromium.extensions = [
-              {
-                id = "mlomiejdfkolichcflejclcbmpeaniij"; # https://github.com/ghostery/ghostery-extension
-              }
-            ];
           };
         main =
           { pkgs, ... }:
@@ -89,11 +65,11 @@
                 name = "arkenfox";
                 isDefault = true;
                 settings = {
-                  "media.ffmpeg.vaapi.enabled" = true;
-                  "media.rdd-ffmpeg.enabled" = true;
-                  "media.av1.enabled" = true;
-                  "gfx.x11-egl.force-enabled" = true;
-                  "widget.dmabuf.force-enabled" = true;
+                  # "media.ffmpeg.vaapi.enabled" = true;
+                  # "media.rdd-ffmpeg.enabled" = true;
+                  # "media.av1.enabled" = true;
+                  # "gfx.x11-egl.force-enabled" = true;
+                  # "widget.dmabuf.force-enabled" = true;
                 };
               };
               profiles.root = {
@@ -106,7 +82,6 @@
                 id = 0;
                 name = "root";
                 isDefault = false;
-
               };
             };
           };

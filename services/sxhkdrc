@@ -21,14 +21,14 @@ super + {q,w,e,r}
   {\
 	,tdrop alacritty\
   ,firefox\
-	,chromium\
+	,chrome\
   ,alacritty --working-directory=/etc/nixos -e 'nvr'\
   }
 
 super + {W,E,R,T,Y}
   {\
 	,firefox --private-window\
-  ,chromium --incognito\
+  ,chrome --incognito\
 	,firefox\
 	,telegram-desktop\
 	,brave 'https://youtube.com'\

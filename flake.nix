@@ -187,7 +187,6 @@
                   #
                   # inputs.firefox.nixosModules.vaapi
                   inputs.firefox.nixosModules.basic
-                  inputs.firefox.nixosModules.chromium.home
                   inputs.firefox.nixosModules.devtools
                   inputs.firefox.nixosModules.dns
                   inputs.firefox.nixosModules.extensions
@@ -210,6 +209,7 @@
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
+                  ./chromium.nix
                   ./rofi
                 ]
                 ++ i_ ./config

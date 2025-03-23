@@ -1,5 +1,3 @@
-# https://github.com/nicolas-goudry/nix-config/blob/main/hosts/g-xps/default.nix
-# https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/intel/disable.nix
 {
   config,
   lib,
@@ -12,7 +10,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-    inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
+    # inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
     ./binarycache.nix
     # ./bluetooth.nix
     ./boot.nix
@@ -28,5 +26,4 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.switcherooControl.enable = true;
   services.xserver.dpi = 283;
-
 }
