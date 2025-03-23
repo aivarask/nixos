@@ -9,8 +9,9 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./binarycache.nix
+    ./bluetooth.nix
     ./boot.nix
-    ./gpu.nix
+    ./hardware.nix
     ./kmscon.nix
     ./network.nix
     ./qt.nix
