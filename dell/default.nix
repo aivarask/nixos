@@ -9,6 +9,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./binarycache.nix
     ./gpu.nix
+    ./kmscon.nix
     ./network.nix
   ];
   boot = {
