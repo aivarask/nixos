@@ -1,11 +1,12 @@
 { pkgs, ... }:
 {
+  # https://mpv.io/manual/master/#playlist-manipulation
   programs.mpv = {
     enable = true;
     package = (
       pkgs.mpv-unwrapped.wrapper {
         scripts = with pkgs.mpvScripts; [
-          # uosc
+          uosc
           # sponsorblock
         ];
         mpv = pkgs.mpv-unwrapped.override {
@@ -14,9 +15,8 @@
       }
     );
     config = {
-      profile = "high-quality";
-      ytdl-format = "bestvideo+bestaudio";
-      cache-default = 4000000;
+      # https://mpv.io/manual/master/#options-hwdec
+      hwdec = "vaapi";
     };
   };
 }

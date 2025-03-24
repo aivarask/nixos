@@ -4,12 +4,16 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
+      # twitter-color-emoji
+      # twemoji-color-font
+      noto-fonts-emoji
       noto-fonts-color-emoji
       nerd-fonts.dejavu-sans-mono
     ];
     fontconfig = {
       defaultFonts = {
         emoji = [
+          # "Twitter Color Emoji"
           "Noto Color Emoji"
           "DejaVuSansM Nerd Font"
         ];

@@ -9,6 +9,10 @@
           name = "";
           url = "https://github.com/nix-community/nix-on-droid";
         }
+        {
+          name = "";
+          url = "https://github.com/nix-community/home-manager";
+        }
       ];
     }
     {
