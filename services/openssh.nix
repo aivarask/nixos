@@ -17,6 +17,7 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "yes";
+      KeepAlive = "yes";
     };
   };
 }

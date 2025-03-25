@@ -144,7 +144,7 @@ lib.mkMerge [
           pytest
           pytest-watch
           pytest-timeout
-          pytest-playwright
+          # pytest-playwright
           pynvim
           livereload
           debugpy

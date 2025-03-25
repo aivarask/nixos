@@ -1,7 +1,7 @@
 { ... }:
 {
   # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
-  programs.chromium.enable = true;
+  programs.chromium.enable = false;
   programs.chromium.commandLineArgs = [ ];
   programs.chromium.extensions = [
     {
