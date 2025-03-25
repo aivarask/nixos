@@ -215,11 +215,7 @@
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
-          inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          inputs.nixos-hardware.nixosModules.common-hidpi
           ./pc.nix
-          # ./pc_disks.nix
 
         ];
         specialArgs = { inherit inputs; };
