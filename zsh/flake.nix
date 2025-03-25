@@ -108,30 +108,32 @@
         ff.bookmarks =
           { lib, config, ... }:
           {
-            programs.firefox.profiles.root.bookmarks = lib.mkIf config.programs.firefox.enable [
-              # ~/.mozilla/firefox/root/user.js
-              {
-                name = "zsh-toolbar";
-                toolbar = true;
-                bookmarks = [
-                  {
-                    name = "zsh"; # folder
-                    bookmarks = [
-                      {
-                        name = "zsh-abbr";
-                        url = "${pkgs.zsh-abbr.meta.homepage}";
-                        # tags = [ "zsh-abbr" ];
-                        # keyword = "";
-                      }
-                      {
-                        name = "zsh-autosuggestions-abbreviations-strategy";
-                        url = "${pkgs.zsh-autosuggestions-abbreviations-strategy.meta.homepage}";
-                      }
-                    ];
-                  }
-                ];
-              }
-            ];
+            programs.firefox.profiles.root.bookmarks = lib.mkIf config.programs.firefox.enable {
+              force = true;
+              settings = [
+                {
+                  name = "zsh-toolbar";
+                  toolbar = true;
+                  bookmarks = [
+                    {
+                      name = "zsh"; # folder
+                      bookmarks = [
+                        {
+                          name = "zsh-abbr";
+                          url = "${pkgs.zsh-abbr.meta.homepage}";
+                          # tags = [ "zsh-abbr" ];
+                          # keyword = "";
+                        }
+                        {
+                          name = "zsh-autosuggestions-abbreviations-strategy";
+                          url = "${pkgs.zsh-autosuggestions-abbreviations-strategy.meta.homepage}";
+                        }
+                      ];
+                    }
+                  ];
+                }
+              ];
+            };
           };
         plugins =
           { ... }:

@@ -28,6 +28,7 @@
             };
             # https://www.reddit.com/r/FirefoxCSS/wiki/index/tutorials/
             # https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html
+            # https://github.com/doc-han/xtensio
             userChrome = ''
               * {
                 box-shadow: none !important;
@@ -52,21 +53,23 @@
                 inherit
                   bookmarks
                   search
-                  userChrome
-                  userContent
+                  # userChrome
+                  # userContent
                   ;
                 id = 1;
                 name = "arkenfox";
                 isDefault = true;
                 settings = {
+                  "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+                  "devtools.debugger.remote-enabled" = true;
                 };
               };
               profiles.root = {
                 inherit
                   bookmarks
                   search
-                  userChrome
-                  userContent
+                  # userChrome
+                  # userContent
                   ;
                 id = 0;
                 name = "root";

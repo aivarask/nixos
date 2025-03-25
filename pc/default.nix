@@ -9,6 +9,7 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    ./network.nix
     ./pc.route.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_6_1;

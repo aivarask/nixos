@@ -1,26 +1,26 @@
 let
   reddit = "https://www.reddit.com";
-  duck = "https://duckduckgo.com/?q="; # https://duckduckgo.com/duckduckgo-help-pages/results/syntax/
+  ddg = "https://duckduckgo.com/?q="; # https://duckduckgo.com/duckduckgo-help-pages/results/syntax/
   github = "https://github.com";
 in
 {
-  "Bing".metaData.hidden = true;
-  "Google".metaData.alias = "@g";
+  "bing".metaData.hidden = true;
+  "google".metaData.alias = "@g";
   "@ad httpd.apache.org/docs/2.4" = {
     definedAliases = [ "@ad" ];
-    urls = [ { template = "${duck}site:httpd.apache.org/docs/2.4+{searchTerms}"; } ];
+    urls = [ { template = "${ddg}site:httpd.apache.org/docs/2.4+{searchTerms}"; } ];
   };
   "@ah askapache.com/htaccess" = {
     definedAliases = [ "@ah" ];
-    urls = [ { template = "${duck}site:askapache.com/htaccess+{searchTerms}"; } ];
+    urls = [ { template = "${ddg}site:askapache.com/htaccess+{searchTerms}"; } ];
   };
   "@php php.net" = {
     definedAliases = [ "@php" ];
-    urls = [ { template = "${duck}site:php.net+{searchTerms}"; } ];
+    urls = [ { template = "${ddg}site:php.net+{searchTerms}"; } ];
   };
   "@nur" = {
     definedAliases = [ "@nur" ];
-    urls = [ { template = "${duck}site:nur.nix-community.org+{searchTerms}"; } ];
+    urls = [ { template = "${ddg}site:nur.nix-community.org+{searchTerms}"; } ];
   };
   # Reddit
   "@reddit" = {
@@ -109,5 +109,4 @@ in
     definedAliases = [ "@ex" ];
     urls = [ { template = "https://explainshell.com/explain?cmd={searchTerms}"; } ];
   };
-
 }

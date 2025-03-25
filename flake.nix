@@ -128,6 +128,7 @@
                 ./virt/virtualbox.nix
                 ./wallpaper
                 ./sql.nix
+                ./playwright.nix
               ]
               ++ i ./config
               ++ i ./network
