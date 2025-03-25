@@ -7,20 +7,24 @@
         home =
           { pkgs, ... }:
           let
-            bookmarks = [
-              (import ./bookmarks_about.nix)
-              (import ./bookmarks_nix.nix)
-              (import ./bookmarks_.nix)
-            ];
+            bookmarks = {
+              force = true;
+              settings = [
+                (import ./bookmarks_about.nix)
+                (import ./bookmarks_nix.nix)
+                (import ./bookmarks_.nix)
+              ];
+            };
             search = {
               force = true;
-              default = "DuckDuckGo";
-              privateDefault = "DuckDuckGo";
+              default = "ddg";
+              privateDefault = "ddg";
               order = [
-                "DuckDuckGo"
-                "Google"
+                "ddg"
+                "google"
+                "bing"
               ];
-              engines = import ./search_engines.nix;
+              engines = import ./engines.nix;
             };
             # https://www.reddit.com/r/FirefoxCSS/wiki/index/tutorials/
             # https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html
