@@ -10,7 +10,7 @@
       fsType = "zfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/CFAB-7FF4";
+      device = "/dev/disk/by-uuid/CE3C-0926";
       fsType = "vfat";
     };
   };

@@ -13,6 +13,7 @@
     # inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
     ./binarycache.nix
     # ./bluetooth.nix
+    ./common/boot.nix
     ./boot.nix
     ./kmscon.nix
     ./network.nix
