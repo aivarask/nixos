@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot.kernelModules = [
     "kvm-amd"
     "vhost_vsock"

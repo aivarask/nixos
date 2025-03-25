@@ -14,13 +14,14 @@
     # inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
     ./binarycache.nix
     # ./bluetooth.nix
-    ./common/boot.nix
+    ../common/boot.nix
     ./boot.nix
     ./kmscon.nix
     ./network.nix
     ./qt.nix
     ./storage.nix
     # ./virt.nix
+    ../lsp
   ];
 
   system.stateVersion = "23.05";

@@ -214,10 +214,7 @@
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [
-          ./pc.nix
-
-        ];
+        modules = commonModules ++ [ ./pc ];
         specialArgs = { inherit inputs; };
       };
     };
