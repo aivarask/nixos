@@ -17,6 +17,7 @@
       xautomation
       xbindkeys
       xvkbd
+      wmctrl
       xpra # https://github.com/Xpra-org/xpra/blob/master/docs/Usage/README.md
     ]
     ++ (with pkgs.xorg; [

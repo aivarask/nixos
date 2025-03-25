@@ -84,6 +84,8 @@
 
       # terminal
       tdrop
+      procps
+      guake
       ueberzugpp
       cheat
       feh
