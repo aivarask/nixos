@@ -6,8 +6,6 @@
 
   environment.variables.SELF = "/etc/nixos/";
   environment.variables.EDITOR = "vim";
-  environment.variables.CPATH = [ "${pkgs.xorg.libX11.dev}/include" ];
-  # environment.extraOutputsToInstall = [ "dev" ];
   # environment.pathsToLink = [
   #   "/share/zsh"
   #   "/share/fish"

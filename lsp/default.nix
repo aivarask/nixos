@@ -14,14 +14,31 @@ lib.mkMerge [
       # libcpr
       # nlohmann_json
     ];
-    environment.sessionVariables = {
-      C_INCLUDE_PATH = builtins.concatStringsSep ":" [
-        "${pkgs.xorg.xorgproto}/include"
+    environment.pathsToLink = [ "/include" ];
+    environment.extraOutputsToInstall = [
+      # "dev"
+      # "info"
+    ];
+    environment.sessionVariables.CPATH = [
+      "/etc/nixos/include"
+      "/root/include"
+      "${pkgs.xorg.libXrender.dev}/include"
+      "${pkgs.xorg.libX11.dev}/include"
+      "${pkgs.xorg.xorgproto}/include"
+      "${pkgs.xorg.libXft.dev}/include"
+      "${pkgs.freetype.dev}/include"
+      "${pkgs.fontconfig.dev}/include"
+    ];
 
-        # "${pkgs.zlib.dev}/include"
-        # "${pkgs.libuv.dev}/include"
-        # "${pkgs.check}/include"
-      ];
+    environment.sessionVariables = {
+      # CPATH = "";
+      # C_INCLUDE_PATH = builtins.concatStringsSep ":" [
+      # "${pkgs.xorg.xorgproto}"
+
+      # "${pkgs.zlib.dev}/include"
+      # "${pkgs.libuv.dev}/include"
+      # "${pkgs.check}/include"
+      # ];
       # CPLUS_INCLUDE_PATH = builtins.concatStringsSep ":" [
       #   "${pkgs.curl.dev}/include"
       #   "${pkgs.libcpr.dev}/include"

@@ -127,14 +127,6 @@ require('null-ls').register({
   require('null-ls.builtins.diagnostics.markdownlint'),
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-  callback = function() vim.lsp.start({ cmd = { 'clangd' } }) end,
-})
-require('null-ls').register({
-  require('null-ls.builtins.formatting.clang_format'),
-})
-
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'css', 'scss', 'less' },
   desc = 'lsp stylelint',

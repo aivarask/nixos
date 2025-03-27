@@ -37,11 +37,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-vim.lsp.enable('luals')
+vim.lsp.enable({ 'luals', 'clangd' })
+
+require('null-ls').register({
+  require('null-ls.builtins.formatting.clang_format'),
+})
+
 vim.diagnostic.config({
   virtual_lines = true,
   virtual_text = true
-
 })
 
 
