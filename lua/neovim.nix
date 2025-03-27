@@ -138,9 +138,9 @@ in
       vim-sensible
       nvim-nio
     ])
-    ++ completion
+    # ++ completion
     ++ dap
-    ++ lsp
+    # ++ lsp
     ++ misc
     # ++ testing
     ++ telescope

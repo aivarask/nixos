@@ -1,0 +1,18 @@
+# https://clangd.llvm.org/config
+# CompileFlags:
+# StandardLibrary: Yes
+
+ArgumentList: OpenDelimiter
+
+# https://clangd.llvm.org/config#inlayhints
+InlayHints:
+  BlockEnd: true
+  Designators: true
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  # DefaultArguments: false
+  TypeNameLimit: 24
+
+Index:
+  StandardLibrary: true
