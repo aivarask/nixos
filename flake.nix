@@ -170,7 +170,7 @@
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
                   ./mpv
-                  ./chromium.nix
+                  ./browsers/chromium.nix
                   ./rofi
                   ./sql_.nix
                   ./wezterm_.nix

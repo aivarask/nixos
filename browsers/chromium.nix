@@ -8,4 +8,9 @@
       id = "mlomiejdfkolichcflejclcbmpeaniij"; # https://github.com/ghostery/ghostery-extension
     }
   ];
+  programs.chromium.initialPrefs = {
+    "first_run_tabs" = [
+      "https://nixos.org/"
+    ];
+  };
 }

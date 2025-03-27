@@ -3,7 +3,7 @@
 	"dependencies": {
 		"@zackad/prettier-plugin-twig": "^0.9.1"
 	},
-	"devDependencies": {
+  "devDependencies": {
 		"@types/node": "^22.9.0",
 		"typescript": "^5.6.3",
 		"typescript-language-server": "^4.3.3"

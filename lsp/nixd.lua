@@ -1,6 +1,6 @@
 return {
   cmd = { 'nixd' },
-  root_markers = { '.flake.lock' },
+  root_markers = { 'flake.lock' },
   -- root_dir = vim.fs.root(ev.buf, { 'flake.lock' }),
   filetypes = { 'nix' },
   settings = {

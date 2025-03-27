@@ -26,7 +26,6 @@ let
   lsp = with pkgs.vimPlugins; [
     conform-nvim
     nvim-lspconfig
-    SchemaStore-nvim
     none-ls-nvim
     goto-preview
     lsp-overloads-nvim
@@ -34,6 +33,7 @@ let
     nvim-genghis
   ];
   misc = with pkgs.vimPlugins; [
+    SchemaStore-nvim
     outline-nvim
     flatten-nvim
     glow-nvim
@@ -113,15 +113,15 @@ in
   programs.neovim = {
     enable = true;
     extraConfig = ''
-            let &packpath.=',/etc/nixos'
+      let &packpath.=',/etc/nixos'
 
-            let &runtimepath.=',/etc/nixos'
+      let &runtimepath.=',/etc/nixos'
 
-            runtime! lua/cfg/**/*{.lua,.vim}
-            runtime! lua/_*{.lua,.vim}
+      runtime! lua/cfg/**/*{.lua,.vim}
+      runtime! lua/_*{.lua,.vim}
 
-            set scrolloff=18
-            set cmdheight=1
+      set scrolloff=18
+      set cmdheight=1
     '';
     extraLuaConfig = ''
       	vim.loader.enable()

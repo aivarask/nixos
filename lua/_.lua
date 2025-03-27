@@ -1,6 +1,7 @@
 require('help')
 
 vim.lsp.config('*', {
+  root_markers = { '.git' },
   capabilities = {
     textDocument = {
       semanticTokens = {
@@ -19,7 +20,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client:supports_method('textDocument/codeLens') then
-      vim.notify(args.data.client_id .. ' textDocument/codeLens')
     end
     -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
     if client:supports_method('textDocument/completion') then
@@ -43,16 +43,48 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client:supports_method('textDocument/signatureHelp') then
-      vim.notify(args.data.client_id .. ' textDocument/signatureHelp')
     end
   end,
 })
-vim.keymap.set('n', '<Space>lr', function()
-  vim.lsp.codelens.run()
-end)
 
 -- vim.lsp.inlay_hint.enable()
-vim.lsp.enable({ 'luals', 'clangd', 'nixd' }, true)
+vim.lsp.config.jsonls = {
+  name = 'jsonls',
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  root_markers = { 'packages.json' },
+  filetypes = { 'json', 'jsonc' },
+  settings = {
+    json = {
+      validate = { enable = true },
+      format = { enable = true },
+      schemas = require('schemastore').json.schemas({
+        select = {
+          '.eslintrc',
+          'prettierrc.json',
+          'package.json',
+          'jsconfig.json',
+          'tsconfig.json',
+          'composer.json',
+        },
+        extra = {
+          {
+            fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
+            name = 'snippets',
+            url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
+          },
+        },
+      }),
+    },
+  },
+}
+
+vim.lsp.enable({
+  'luals',
+  -- --
+  'jsonls',
+  'clangd',
+  'nixd'
+}, true)
 vim.diagnostic.config({
   virtual_lines = true,
   virtual_text = true

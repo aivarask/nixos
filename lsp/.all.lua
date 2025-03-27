@@ -233,40 +233,6 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function() vim.lsp.start({ cmd = { 'templ', 'lsp' } }) end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'json', 'jsonc' },
-  desc = 'lsp vscode-json-language-server',
-  callback = function()
-    require('lspconfig.configs.jsonls')
-    vim.lsp.start({
-      cmd = { 'vscode-json-language-server', '--stdio' },
-      capabilities = capabilities,
-      settings = {
-        json = {
-          validate = { enable = true },
-          format = { enable = true },
-          schemas = require('schemastore').json.schemas({
-            select = {
-              '.eslintrc',
-              'prettierrc.json',
-              'package.json',
-              'jsconfig.json',
-              'tsconfig.json',
-              'composer.json',
-            },
-            extra = {
-              {
-                fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
-                name = 'snippets',
-                url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
-              },
-            },
-          }),
-        },
-      },
-    })
-  end,
-})
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'yaml' },

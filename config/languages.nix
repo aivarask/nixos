@@ -29,13 +29,7 @@ lib.mkMerge [
       html-tidy
     ];
   }
-  {
-    # json
-    environment.systemPackages = with pkgs; [
-      vscode-langservers-extracted
-      nodePackages.fixjson
-    ];
-  }
+
   {
     # make
     environment.systemPackages = with pkgs; [
