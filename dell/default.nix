@@ -13,7 +13,7 @@
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
     ./binarycache.nix
-    # ./bluetooth.nix
+    ./bluetooth.nix
     ../common/boot.nix
     ./boot.nix
     ./kmscon.nix

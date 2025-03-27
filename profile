@@ -8,8 +8,8 @@ export A=7
 
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --info=inline"
 
-export WEZTERM_CONFIG_FILE=/etc/nixos/wezterm.lua
 # export CPATH=/run/current-systems/sw/include
 # export C_INCLUDE_PATH=/run/current-systems/sw/include
 export MPV_HOME=/etc/nixos/mpv
+export WEZTERM_CONFIG_FILE=/etc/nixos/term/wezterm.lua
 

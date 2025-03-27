@@ -173,7 +173,8 @@
                   ./browsers/chromium.nix
                   ./rofi
                   ./sql_.nix
-                  ./wezterm_.nix
+                  ./term/alacritty_.nix
+                  ./term/wezterm_.nix
                 ]
                 ++ i_ ./config
                 ++ i_ ./programs

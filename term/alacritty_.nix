@@ -1,6 +1,5 @@
 { osConfig, ... }:
 {
-  # home.shellAliases.alacritty = "alacritty --config-file=/etc/nixos/config/files/alacritty.toml";
   programs.alacritty = {
     enable = true;
     settings = {
