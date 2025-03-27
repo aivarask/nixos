@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
+
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd('BufWritePre', {
@@ -38,6 +39,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    else
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ name = 'jsonls' })
         end,
       })
     end
@@ -48,39 +57,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- vim.lsp.inlay_hint.enable()
-vim.lsp.config.jsonls = {
-  name = 'jsonls',
-  cmd = { 'vscode-json-language-server', '--stdio' },
-  root_markers = { 'packages.json' },
-  filetypes = { 'json', 'jsonc' },
-  settings = {
-    json = {
-      validate = { enable = true },
-      format = { enable = true },
-      schemas = require('schemastore').json.schemas({
-        select = {
-          '.eslintrc',
-          'prettierrc.json',
-          'package.json',
-          'jsconfig.json',
-          'tsconfig.json',
-          'composer.json',
-        },
-        extra = {
-          {
-            fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
-            name = 'snippets',
-            url = 'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
-          },
-        },
-      }),
-    },
-  },
-}
+
 
 vim.lsp.enable({
   'luals',
-  -- --
   'jsonls',
   'clangd',
   'nixd'

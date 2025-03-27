@@ -13,6 +13,7 @@ lib.mkMerge [
       # meson
       # libcpr
       # nlohmann_json
+      vscode-langservers-extracted
     ];
     environment.pathsToLink = [ "/include" ];
     environment.extraOutputsToInstall = [
