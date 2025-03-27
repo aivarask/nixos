@@ -75,14 +75,14 @@ return {
   root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml' },
   -- root_dir = vim.fs.root(0, { 'flake.lock' }),
   filetypes = { 'lua' },
-  on_attach = function(client, bufnr)
-    vim.lsp.completion.enable(true, client.id, bufnr, {
-      autotrigger = true,
-      convert = function(item)
-        return { abbr = item.label:gsub('%b()', '') }
-      end,
-    })
-  end,
+  -- on_attach = function(client, bufnr)
+  --   vim.lsp.completion.enable(true, client.id, bufnr, {
+  --     autotrigger = true,
+  --     convert = function(item)
+  --       return { abbr = item.label:gsub('%b()', '') }
+  --     end,
+  --   })
+  -- end,
   settings = {
     Lua = { --- @type LuaSettings
       completion = {

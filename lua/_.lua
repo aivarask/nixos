@@ -23,7 +23,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
     -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
     if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+      vim.lsp.completion.enable(true, client.id, args.buf, {
+        autotrigger = true,
+        convert = function(item)
+          return { abbr = item.label:gsub('%b()', '') }
+        end,
+      })
     end
 
     if not client:supports_method('textDocument/willSaveWaitUntil')
@@ -47,7 +52,7 @@ vim.keymap.set('n', '<Space>lr', function()
 end)
 
 -- vim.lsp.inlay_hint.enable()
-vim.lsp.enable({ 'luals', 'clangd' }, true)
+vim.lsp.enable({ 'luals', 'clangd', 'nixd' }, true)
 vim.diagnostic.config({
   virtual_lines = true,
   virtual_text = true

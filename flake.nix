@@ -169,7 +169,7 @@
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
-                  ./mpv.nix
+                  ./mpv
                   ./chromium.nix
                   ./rofi
                   ./sql_.nix

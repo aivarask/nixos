@@ -10,7 +10,7 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
 	,notify-send "$(vimcat $SXHKDRC)"\
 	,notify-send "$(vimcat $SXHKDRC)"\
-	,mpv /root/astrix.webp\
+	,(cd /var/p; mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog .) \
   ,wezterm\
 	,alacritty -e sh\
 	,alacritty -e bash\

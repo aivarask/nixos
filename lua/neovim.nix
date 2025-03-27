@@ -88,23 +88,23 @@ let
   common = with pkgs.vimPlugins; [
     # pkgs.vimPlugins.vim-indentwise
     vim-auto-save
-    vim-indentwise
     bclose-vim
     fzf-vim
     gruvbox-material
     switch-vim
     vim-abolish
-    vim-commentary
+    # vim-commentary
     vim-cool
     vim-cursorword
     vim-devicons
     vim-highlightedyank
     vim-lastplace
-    vim-matchup
     direnv-vim
     vim-markdown
     vim-fugitive
     tabular
+    # vim-indentwise # disabled of keymaps
+    # vim-matchup # disabled of keymaps
   ];
 in
 {
@@ -117,7 +117,7 @@ in
 
             let &runtimepath.=',/etc/nixos'
 
-      			runtime! lua/cfg/**/*{.lua,.vim}
+            runtime! lua/cfg/**/*{.lua,.vim}
             runtime! lua/_*{.lua,.vim}
 
             set scrolloff=18
@@ -131,6 +131,7 @@ in
     withPython3 = true;
     withRuby = false;
   };
+
   # xdg.dataFile."nvim/plugins".source = programs.neovim.plugins;
   programs.neovim.plugins =
     common
@@ -149,7 +150,7 @@ in
     ++ (with pkgs.vimPlugins; [
       auto-session
       which-key-nvim
-      nvim-surround
+      # nvim-surround
       indent-blankline-nvim
       lazygit-nvim
       # neogit

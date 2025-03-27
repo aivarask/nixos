@@ -1,42 +1,47 @@
 ---@diagnostic disable-next-line: missing-fields
 require('which-key').setup({
-	preset = 'helix',
-	sort = { 'alphanum' },
-	replace = {
-		desc = {
-			{ '<Plug>%(?(.*)%)?', '%1' },
-			{ '^%+', '' },
-			{ '<[cC]md>', '' },
-			{ '<[cC][rR]>', '' },
-			{ '<[sS]ilent>', '' },
-			{ '^lua%s+', '' },
-			{ '^call%s+', '' },
-			{ '^:%s*', '' },
-		},
-	},
+  preset = 'helix',
+  sort = { 'alphanum' },
+  replace = {
+    desc = {
+      { '<Plug>%(?(.*)%)?', '%1' },
+      { '^%+',              '' },
+      { '<[cC]md>',         '' },
+      { '<[cC][rR]>',       '' },
+      { '<[sS]ilent>',      '' },
+      { '^lua%s+',          '' },
+      { '^call%s+',         '' },
+      { '^:%s*',            '' },
+    },
+  },
 })
-require('nvim-surround').setup({})
+
+-- require('nvim-surround').setup({})
+
 require('auto-session').setup({
-	auto_session_allowed_dirs = { '/etc/nixos', '/root/foo' },
-	log_level = vim.log.levels.ERROR,
+  auto_session_allowed_dirs = { '/etc/nixos', '/root/foo' },
+  log_level = vim.log.levels.ERROR,
 })
+
 require('glow').setup({
-	-- your override config
+  -- your override config
 })
+
 require('colorizer').setup({})
 if vim.uv.os_getenv('DISPLAY') then
-	require('image').setup({ backend = 'ueberzug' })
+  require('image').setup({ backend = 'ueberzug' })
 end
+
 require('nvim-web-devicons').setup({
-	override = {
-		['nix'] = { icon = '', color = '#ffffff', cterm_color = '110', name = 'Nix' },
-	},
+  override = {
+    ['nix'] = { icon = '', color = '#ffffff', cterm_color = '110', name = 'Nix' },
+  },
 })
 
 require('fidget').setup({})
 require('notify').setup({
-	-- render = 'wrapped-compact',
-	-- timeout = 1000,
-	top_down = false,
+  -- render = 'wrapped-compact',
+  -- timeout = 1000,
+  top_down = false,
 })
 vim.notify = require('notify')

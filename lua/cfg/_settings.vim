@@ -5,6 +5,8 @@ set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
 " complete-items
 set completeopt=menu,menuone,noselect
+set wildmenu
+set wildmode=noselect
 set cursorline mouse=a
 set hidden
 set ignorecase
