@@ -139,7 +139,7 @@ in
       nvim-nio
     ])
     # ++ completion
-    ++ dap
+    # ++ dap
     # ++ lsp
     ++ misc
     # ++ testing
