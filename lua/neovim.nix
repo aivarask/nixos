@@ -100,7 +100,7 @@ let
     vim-highlightedyank
     vim-lastplace
     direnv-vim
-    vim-markdown
+    # vim-markdown
     vim-fugitive
     tabular
     # vim-indentwise # disabled of keymaps

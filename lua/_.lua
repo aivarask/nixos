@@ -31,7 +31,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
-
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd('BufWritePre', {
@@ -46,7 +45,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ name = 'jsonls' })
+          local ft = vim.fn.getbufvar(args.buf, '&filetype')
+          if ft == 'json' or ft == 'jsonc' then
+            vim.lsp.buf.format({ name = 'jsonls' })
+          elseif ft == 'markdown' then
+            vim.lsp.buf.format({ name = 'marksman' })
+          end
         end,
       })
     end
@@ -57,14 +61,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- vim.lsp.inlay_hint.enable()
-
-
 vim.lsp.enable({
-  'luals',
-  'jsonls',
   'clangd',
-  'nixd'
+  'gopls',
+  'jsonls',
+  'luals',
+  'marksman',
+  'nixd',
+  'rustls',
+  'templls',
+  'tomlls',
+  'yamlls',
+  'zigls'
 }, true)
+
 vim.diagnostic.config({
   virtual_lines = true,
   virtual_text = true

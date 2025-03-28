@@ -2,14 +2,6 @@
 lib.mkMerge [
 
   {
-    # haskell
-    environment.systemPackages = with pkgs; [
-      ghc
-      ghcid
-      ghciwatch
-    ];
-  }
-  {
     # zig
     environment.systemPackages = with pkgs; [
       zig
@@ -35,15 +27,6 @@ lib.mkMerge [
     environment.systemPackages = with pkgs; [
       gnumake
       checkmake
-    ];
-  }
-  {
-    # markdown
-    environment.systemPackages = with pkgs; [
-      marksman
-      mdformat
-      markdownlint-cli
-      markdownlint-cli2
     ];
   }
   {
@@ -78,27 +61,13 @@ lib.mkMerge [
       ]);
   }
   {
-    # toml
-    environment.systemPackages = with pkgs; [
-      taplo
-      taplo-cli
-      taplo-lsp
-    ];
-  }
-  {
     # vim
     environment.systemPackages = with pkgs; [
       vim-vint
       # nodePackages.vim-language-server
     ];
   }
-  {
-    # yaml
-    environment.systemPackages = with pkgs; [
-      yaml-language-server
-      yq-go
-    ];
-  }
+
   {
     # python
     environment.systemPackages = with pkgs; [

@@ -85,7 +85,7 @@
             vim-lastplace
             vim-matchup
             direnv-vim
-            vim-markdown
+            # vim-markdown
             vim-fugitive
             tabular
           ];

@@ -13,7 +13,25 @@ lib.mkMerge [
       # meson
       # libcpr
       # nlohmann_json
+
+      # haskell
+      ghc
+      ghcid
+      ghciwatch
+      # json
       vscode-langservers-extracted
+      # markdown
+      marksman
+      mdformat
+      markdownlint-cli
+      markdownlint-cli2
+      # toml
+      taplo
+      taplo-cli
+      taplo-lsp
+      # yaml
+      yaml-language-server
+      yq-go
     ];
     environment.pathsToLink = [ "/include" ];
     environment.extraOutputsToInstall = [

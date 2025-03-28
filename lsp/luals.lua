@@ -29,11 +29,8 @@ end
 for _, name in ipairs({
   'plenary.nvim',
   'nvim%-nio',
-  'nvim%-cmp',
-  'outline.nvim',
   'nvim%-tree',
   'none%-ls.nvim',
-  'nvim%-lspconfig',
   'toggleterm.nvim',
   'which%-key.nvim',
   'lsp%-file%-operations',
@@ -50,39 +47,11 @@ for _, name in ipairs({
   end
 end
 
--- local client = vim.lsp.get_clients({ name = 'luals' })[1] or nil
--- if client ~= nil then
--- 	vim.print(client.settings.Lua.workspace.library)
--- 	client.settings.Lua.workspace.library = library
--- 	client.notify('workspace/didChangeConfiguration', { settings = client.settings })
--- end
-
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
--- -- capabilities.workspace.fileOperations.didRename
-
--- require('null-ls').register({ require('null-ls.builtins.formatting.stylua') })
--- vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
--- 	pattern = { '*.lua' },
--- 	desc = 'format null-ls',
--- 	callback = function() vim.lsp.buf.format({ name = 'null-ls' }) end,
--- })
-
 return {
   cmd = { 'lua-language-server' },
   root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml' },
   -- root_dir = vim.fs.root(0, { 'flake.lock' }),
   filetypes = { 'lua' },
-  -- on_attach = function(client, bufnr)
-  --   vim.lsp.completion.enable(true, client.id, bufnr, {
-  --     autotrigger = true,
-  --     convert = function(item)
-  --       return { abbr = item.label:gsub('%b()', '') }
-  --     end,
-  --   })
-  -- end,
   settings = {
     Lua = { --- @type LuaSettings
       completion = {
