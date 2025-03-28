@@ -2,34 +2,6 @@
 lib.mkMerge [
 
   {
-    # zig
-    environment.systemPackages = with pkgs; [
-      zig
-      zls
-      zig-shell-completions
-      zap
-    ];
-  }
-  {
-    environment.systemPackages = with pkgs; [
-      # html
-      stylelint
-      htmx-lsp
-      emmet-ls
-      emmet-language-server
-      ludtwig
-      html-tidy
-    ];
-  }
-
-  {
-    # make
-    environment.systemPackages = with pkgs; [
-      gnumake
-      checkmake
-    ];
-  }
-  {
     # node
     environment.sessionVariables = rec {
       NODE_OPTIONS = "--no-warnings";
@@ -60,38 +32,8 @@ lib.mkMerge [
         jsdoc
       ]);
   }
-  {
-    # vim
-    environment.systemPackages = with pkgs; [
-      vim-vint
-      # nodePackages.vim-language-server
-    ];
-  }
 
   {
-    # python
-    environment.systemPackages = with pkgs; [
-      pyright
-      black
-
-      (python3.withPackages (
-        ps: with ps; [
-          pip
-          requests
-          pytest
-          pytest-watch
-          pytest-timeout
-          # pytest-playwright
-          pynvim
-          livereload
-          debugpy
-          python-dotenv
-          httpie
-          # playwright
-          yt-dlp
-        ]
-      ))
-    ];
   }
 
 ]

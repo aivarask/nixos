@@ -28,7 +28,6 @@
     ];
   };
   environment.profiles = [
-    # "${pkgs.zig-shell-completions}"
     "/etc/nixos"
   ];
   environment.systemPackages = (
