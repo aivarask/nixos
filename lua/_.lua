@@ -1,5 +1,6 @@
 require('help')
 
+
 vim.lsp.config('*', {
   root_markers = { '.git' },
   capabilities = {
@@ -62,15 +63,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- vim.lsp.inlay_hint.enable()
 vim.lsp.enable({
+  'bashls',
   'clangd',
   'gopls',
+  'htmx-lsp',
   'jsonls',
   'luals',
   'marksman',
   'nixd',
+  'phpls',
+  'pyright',
   'rustls',
+  'sql',
+  'stylelint',
   'templls',
   'tomlls',
+  'tsserver',
+  'twigls',
+  'vscode-css',
+  'vscode-html',
   'yamlls',
   'zigls'
 }, true)

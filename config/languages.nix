@@ -11,8 +11,8 @@ lib.mkMerge [
     ];
   }
   {
-    # html
     environment.systemPackages = with pkgs; [
+      # html
       stylelint
       htmx-lsp
       emmet-ls
