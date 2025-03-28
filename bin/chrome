@@ -10,8 +10,7 @@ chromium \
   --ozone-platform-hint=auto \
   --enable-features=TouchpadOverscrollHistoryNavigation \
   --remote-debugging-port=9222 \
+  --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE \
+  --enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport \
+  --enable-features=UseMultiPlaneFormatForHardwareVideo \
   "$@"
-
-# "--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
-# "--enable-features=VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport"
-# "--enable-features=UseMultiPlaneFormatForHardwareVideo"
