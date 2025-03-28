@@ -32,6 +32,7 @@
     manix.url = "./manix";
     matrix.url = "./matrix";
     pistol.url = "./pistol";
+    python.url = "./python";
     rust.url = "./rust";
     suckless.url = "./suckless";
     tmux.url = "./tmux";
@@ -105,6 +106,7 @@
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.pistol.nixosModules.default
+        inputs.python.nixosModules.default
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
