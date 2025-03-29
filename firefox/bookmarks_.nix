@@ -4,11 +4,27 @@
   bookmarks = [
     {
       name = "";
-      url = "mail.google.com";
+      url = "https://www.google.com/";
     }
     {
       name = "";
-      url = "translate.google.com";
+      url = "https://www.youtube.com/";
+    }
+    {
+      name = "";
+      url = "https://keep.google.com/";
+    }
+    {
+      name = "";
+      url = "https://mail.google.com/";
+    }
+    {
+      name = "";
+      url = "https://translate.google.com/";
+    }
+    {
+      name = "";
+      url = "https://soundcloud.com/";
     }
     {
       name = "";
@@ -29,14 +45,6 @@
     {
       name = "";
       url = "https://www.messenger.com/";
-    }
-    {
-      name = "";
-      url = "https://keep.google.com/";
-    }
-    {
-      name = "";
-      url = "https://www.youtube.com/";
     }
     {
       name = "";

@@ -1,7 +1,7 @@
 {
   inputs = { };
   outputs =
-    { }:
+    { ... }:
     {
       nixosModules.default =
         { pkgs, ... }:

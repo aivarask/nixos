@@ -59,7 +59,8 @@
   HardwareAcceleration = true;
   # https://mozilla.github.io/policy-templates/#homepage
   OverrideFirstRunPage = "";
-  PasswordManagerEnabled = true;
+  OfferToSaveLogins = false;
+  PasswordManagerEnabled = false;
   Permissions = {
     # https://mozilla.github.io/policy-templates/#permissions
     "Notifications" = {
@@ -86,6 +87,7 @@
   SanitizeOnShutdown = {
     # https://mozilla.github.io/policy-templates/#sanitizeonshutdown-selective
   };
+  SearchBar = "unified";
   ShowHomeButton = true;
   TranslateEnabled = false;
   UserMessaging = {

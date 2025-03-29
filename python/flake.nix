@@ -22,6 +22,9 @@
               python-dotenv
               httpie
               # playwright
+
+              # -S ext:mp3
+              # --alias
               yt-dlp
             ]
           ))

@@ -31,6 +31,7 @@
     lua.url = "./lua";
     manix.url = "./manix";
     matrix.url = "./matrix";
+    node.url = "./node";
     pistol.url = "./pistol";
     python.url = "./python";
     rust.url = "./rust";
@@ -105,6 +106,7 @@
         inputs.lua.nixosModules.default
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
+        inputs.node.nixosModules.default
         inputs.pistol.nixosModules.default
         inputs.python.nixosModules.default
         inputs.rust.nixosModules.default
