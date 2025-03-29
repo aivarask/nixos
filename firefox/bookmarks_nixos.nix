@@ -1,9 +1,9 @@
 {
-  name = "nix";
+  name = "nixos";
   toolbar = true;
   bookmarks = [
     {
-      name = "nix_";
+      name = "n_";
       bookmarks = [
         {
           name = "";
@@ -16,7 +16,7 @@
       ];
     }
     {
-      name = "nix";
+      name = "n";
       bookmarks = [
         {
           name = "nixd";

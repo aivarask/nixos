@@ -1,4 +1,30 @@
 {
+  # Cookies = { };
+  DefaultDownloadDirectory = "/root";
+  DisableAccounts = true;
+  DisableFeedbackCommands = true;
+  DisableFirefoxAccounts = true;
+  DisableFirefoxStudies = true;
+  DisablePocket = true;
+  DisableTelemetry = true;
+  DisplayBookmarksToolbar = "newtab";
+  DisplayMenuBar = "always";
+  # DNSOverHTTPS = {
+  #   Enabled = true;
+  #   ProviderURL = "";
+  #   ExcludeDomains = [ ];
+  #   Fallback = true;
+  #   Locked = false;
+  # };
+  DontCheckDefaultBrowser = true;
+  EnableTrackingProtection = {
+    Value = true;
+    Locked = true;
+    Cryptomining = true;
+    Fingerprinting = true;
+    EmailTracking = true;
+    Exceptions = [ ];
+  };
   # https://mozilla.github.io/policy-templates/
   # about:debugging#/runtime/this-firefox
   ExtensionSettings = {
@@ -51,13 +77,21 @@
   FirefoxSuggest = {
     "WebSuggestions" = false;
     "SponsoredSuggestions" = false;
-    "ImproveSuggest" = true;
+    "ImproveSuggest" = false;
     "Locked" = true;
   };
   GoToIntranetSiteForSingleWordEntryInAddressBar = true;
   # https://mozilla.github.io/policy-templates/#handlers
   HardwareAcceleration = true;
   # https://mozilla.github.io/policy-templates/#homepage
+  Homepage = {
+    # "URL" = "http://localhost";
+    "Locked" = true;
+    "Additional" = [
+      "http://hw.local"
+    ];
+    "StartPage" = "previous-session";
+  };
   OverrideFirstRunPage = "";
   OfferToSaveLogins = false;
   PasswordManagerEnabled = false;
@@ -88,6 +122,7 @@
     # https://mozilla.github.io/policy-templates/#sanitizeonshutdown-selective
   };
   SearchBar = "unified";
+  SearchSuggestEnabled = false;
   ShowHomeButton = true;
   TranslateEnabled = false;
   UserMessaging = {

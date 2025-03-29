@@ -6,6 +6,10 @@ in
 {
   "bing".metaData.hidden = true;
   "google".metaData.alias = "@g";
+  "@yt youtube.com" = {
+    definedAliases = [ "@yt" ];
+    urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
+  };
   "@ad httpd.apache.org/docs/2.4" = {
     definedAliases = [ "@ad" ];
     urls = [ { template = "${ddg}site:httpd.apache.org/docs/2.4+{searchTerms}"; } ];
@@ -13,6 +17,17 @@ in
   "@ah askapache.com/htaccess" = {
     definedAliases = [ "@ah" ];
     urls = [ { template = "${ddg}site:askapache.com/htaccess+{searchTerms}"; } ];
+  };
+  "@ff searchfox.org" = {
+    definedAliases = [
+      "@ff"
+      "@sf"
+    ];
+    urls = [
+      {
+        template = "https://searchfox.org/mozilla-central/search?q={searchTerms}&path=&case=false&regexp=false";
+      }
+    ];
   };
   "@php php.net" = {
     definedAliases = [ "@php" ];

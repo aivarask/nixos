@@ -214,7 +214,6 @@
   vaapi_bc = _: {
     home.sessionVariables.MOZ_X11_EGL = "1";
     programs.firefox.profiles.root.settings = {
-      # https://searchfox.org
       "app.shield.optoutstudies.enabled" = false;
       "gfx.webrender.enabled" = true;
       "gfx.webrender.all" = true;

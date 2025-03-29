@@ -40,6 +40,14 @@
                 scrollbar-width:none !important;
               }
             '';
+            settings = {
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+              "devtools.debugger.remote-enabled" = true;
+              "browser.aboutConfig.showWarning" = false;
+              "accessibility.typeaheadfind" = true;
+              "accessibility.typeaheadfind.manual" = false;
+              "browser.urlbar.suggest.recentSearches" = false;
+            };
           in
           {
             home.sessionVariables.MOZ_USE_XINPUT2 = "1";
@@ -55,14 +63,11 @@
                   search
                   # userChrome
                   # userContent
+                  settings
                   ;
                 id = 1;
                 name = "arkenfox";
-                isDefault = true;
-                settings = {
-                  "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-                  "devtools.debugger.remote-enabled" = true;
-                };
+                isDefault = false;
               };
               profiles.root = {
                 inherit
@@ -70,10 +75,11 @@
                   search
                   # userChrome
                   # userContent
+                  settings
                   ;
                 id = 0;
                 name = "root";
-                isDefault = false;
+                isDefault = true;
               };
             };
           };
