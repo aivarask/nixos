@@ -35,8 +35,9 @@ set conceallevel=2
 set clipboard=unnamedplus
 
 " set nolisp
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
+set paste
 " set shiftwidth=2
 " set tabstop=2
 

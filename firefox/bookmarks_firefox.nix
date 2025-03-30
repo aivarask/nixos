@@ -3,7 +3,7 @@
   toolbar = true;
   bookmarks = [
     {
-      name = ":";
+      name = "ff";
       bookmarks = [
         {
           name = "searchfox.org";
@@ -12,6 +12,7 @@
             "sf"
           ];
           url = "https://searchfox.org/mozilla-central/search?q=typeahead&path=&case=false&regexp=false";
+          # url = "https://searchfox.org/mozilla-central/search?q=typeahead";
         }
         {
           name = ":about";

@@ -74,12 +74,13 @@
     Snippets = false;
     Locked = false;
   };
-  FirefoxSuggest = {
-    "WebSuggestions" = false;
-    "SponsoredSuggestions" = false;
-    "ImproveSuggest" = false;
-    "Locked" = true;
-  };
+  # SearchSuggestEnabled = false;
+  # FirefoxSuggest = {
+  #   "WebSuggestions" = false;
+  #   "SponsoredSuggestions" = false;
+  #   "ImproveSuggest" = false;
+  #   "Locked" = true;
+  # };
   GoToIntranetSiteForSingleWordEntryInAddressBar = true;
   # https://mozilla.github.io/policy-templates/#handlers
   HardwareAcceleration = true;
@@ -122,7 +123,6 @@
     # https://mozilla.github.io/policy-templates/#sanitizeonshutdown-selective
   };
   SearchBar = "unified";
-  SearchSuggestEnabled = false;
   ShowHomeButton = true;
   TranslateEnabled = false;
   UserMessaging = {

@@ -11,11 +11,17 @@ in
     urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
   };
   "@ad httpd.apache.org/docs/2.4" = {
-    definedAliases = [ "@ad" ];
+    definedAliases = [
+      "@ad"
+      "@apache"
+    ];
     urls = [ { template = "${ddg}site:httpd.apache.org/docs/2.4+{searchTerms}"; } ];
   };
   "@ah askapache.com/htaccess" = {
-    definedAliases = [ "@ah" ];
+    definedAliases = [
+      "@ah"
+      "@apache"
+    ];
     urls = [ { template = "${ddg}site:askapache.com/htaccess+{searchTerms}"; } ];
   };
   "@ff searchfox.org" = {
