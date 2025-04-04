@@ -51,6 +51,10 @@
               "accessibility.typeaheadfind.manual" = false;
               "toolkit.tabbox.switchByScrolling" = true;
               "browser.tabs.insertAfterCurrent" = true;
+              # Enable DRM
+              "media.eme.enabled" = true;
+              # "media.gmp-widevinecdm.visible" = true;
+              # "media.gmp-widevinecdm.enabled" = true;
 
               # Disable location bar making speculative connections
               "browser.urlbar.speculativeConnect.enabled" = false;

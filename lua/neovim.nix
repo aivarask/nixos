@@ -1,20 +1,5 @@
 { pkgs, ... }:
 let
-  completion = with pkgs.vimPlugins; [
-    nvim-autopairs
-    cmp_luasnip
-    luasnip
-    friendly-snippets
-    nvim-cmp
-    cmp-nvim-lsp
-    cmp-nvim-lsp-signature-help
-    cmp-nvim-lsp-document-symbol
-    cmp-path
-    cmp-emoji
-    cmp-buffer
-    cmp-cmdline
-    cmp-zsh
-  ];
   dap = with pkgs.vimPlugins; [
     nvim-dap
     nvim-dap-virtual-text
@@ -43,10 +28,10 @@ let
   ];
   telescope = with pkgs.vimPlugins; [
     telescope-nvim
-    telescope-fzf-native-nvim
+    # telescope-fzf-native-nvim
     telescope-symbols-nvim
     # trouble-nvim
-    todo-comments-nvim
+    # todo-comments-nvim
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
@@ -114,17 +99,14 @@ in
     enable = true;
     extraConfig = ''
       let &packpath.=',/etc/nixos'
-
       let &runtimepath.=',/etc/nixos'
-
       runtime! lua/cfg/**/*{.lua,.vim}
       runtime! lua/_*{.lua,.vim}
-
       set scrolloff=18
       set cmdheight=1
     '';
     extraLuaConfig = ''
-      	vim.loader.enable()
+      vim.loader.enable()
     '';
     vimdiffAlias = true;
     withNodeJs = true;
@@ -139,7 +121,6 @@ in
       vim-sensible
       nvim-nio
     ])
-    # ++ completion
     # ++ dap
     # ++ lsp
     ++ misc

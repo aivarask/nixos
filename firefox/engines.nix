@@ -6,6 +6,32 @@ in
 {
   "bing".metaData.hidden = true;
   "google".metaData.alias = "@g";
+  # "" = {
+  #   definedAliases = [ "" ];
+  #   urls = [
+  #     { template = ""; }
+  #   ];
+  # };
+  "@nb https://nix-builtins-search.extranix.com" = {
+    definedAliases = [
+      "@nb"
+      "@nix-builtins"
+    ];
+    urls = [
+      { template = "https://nix-builtins-search.extranix.com/?query={searchTerms}&release=nix-v2.24"; }
+    ];
+  };
+  "@hm home-manager-options.extranix.com" = {
+    definedAliases = [
+      "@hm"
+      "@home-manager"
+    ];
+    urls = [
+      {
+        template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=release-24.11";
+      }
+    ];
+  };
   "@yt youtube.com" = {
     definedAliases = [ "@yt" ];
     urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];

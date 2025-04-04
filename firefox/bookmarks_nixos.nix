@@ -13,6 +13,10 @@
           name = "";
           url = "https://github.com/nix-community/home-manager";
         }
+        {
+          name = "";
+          url = "https://github.com/nix-community/neovim-nightly-overlay";
+        }
       ];
     }
     {

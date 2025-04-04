@@ -136,12 +136,16 @@
       nixosModules = {
         plugins = inputs.plugins.nixosModules;
         default =
-          { ... }:
+          { pkgs, ... }:
           {
             nixpkgs.overlays = [
-              inputs.neovim-nightly-overlay.overlays.default
+              # inputs.neovim-nightly-overlay.overlays.default
               self.overlays.default
             ];
+            # programs.neovim = {
+            #   enable = true;
+            #   package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+            # };
           };
         home =
           { pkgs, ... }:

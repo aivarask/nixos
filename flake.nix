@@ -145,6 +145,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            # extraSpecialArgs = { inherit inputs; };
             users.root = {
               home.stateVersion = "23.05";
               home.username = "root";

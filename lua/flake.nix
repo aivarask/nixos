@@ -22,7 +22,7 @@
               luasec
               luasql-sqlite3
               penlight
-              nlua # nvim as lua interpreter
+              # nlua # nvim as lua interpreter
             ]
           );
         in
