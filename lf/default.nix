@@ -7,7 +7,7 @@
     #   source /etc/nixos/lf/lfrc
     # '';
   };
-  home.sessionVariables.PATH = [ "{$SELF}/lf/bin" ];
-  xdg.configFile."lf".source = config.lib.file.mkOutOfStoreSymlink "{$SELF}/lf";
+  home.sessionPath = [ "/etc/nixos/lf/bin" ];
+  xdg.configFile."lf".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lf";
   # xdg.configFile."lf/icons".source = ./icons;
 }

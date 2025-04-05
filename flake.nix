@@ -27,7 +27,6 @@
     fzf.url = "./fzf";
     git.url = "./_git";
     go.url = "./go";
-    lf.url = "./lf";
     lib.url = "./lib";
     lua.url = "./lua";
     manix.url = "./manix";
@@ -120,7 +119,6 @@
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
-        inputs.lf.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.lua.nixosModules.default
         inputs.manix.nixosModules.default
@@ -183,7 +181,6 @@
                   inputs.firefox.nixosModules.home
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
-                  inputs.lf.nixosModules.home
                   inputs.lua.nixosModules.common.home
                   inputs.lua.nixosModules.neovim.home
                   inputs.lua.nixosModules.vim.home
