@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-  home.packages = [ pkgs.lf ];
   # programs.lf.enable = true;
   # programs.lf = {
   # enable = true;
@@ -10,6 +9,13 @@
   # '';
   # };
   home.sessionPath = [ "/etc/nixos/lf/bin" ];
+  home.packages = [
+    pkgs.lf
+    # (pkgs.buildEnv {
+    #   name = "my-scripts";
+    #   paths = [ ./path/to/scripts ];
+    # })
+  ];
   xdg.configFile."lf".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lf";
   # xdg.configFile."lf/icons".source = ./icons;
 }
