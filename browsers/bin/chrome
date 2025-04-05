@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+chromium \
+  --no-sandbox \
+  --no-default-browser-check \
+  --force-device-scale-factor=2 \
+  --test-type \
+  --enable-zero-copy \
+  --ignore-gpu-blocklist \
+  --ozone-platform-hint=auto \
+  --remote-debugging-port=9222 \
+  --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo,TouchpadOverscrollHistoryNavigation \
+  "$@"

@@ -1,5 +1,6 @@
 { lib, osConfig, ... }:
 {
+
   # HM
   # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
   programs.chromium.enable = lib.mkIf (osConfig.networking.hostName == "dell") true;

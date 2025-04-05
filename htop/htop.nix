@@ -1,6 +1,6 @@
 { ... }:
 {
-  environment.variables.HTOPRC = "/etc/nixos/programs/htoprc";
+  # HTOPRC
   programs.htop = {
     enable = true;
     settings = {
@@ -8,4 +8,5 @@
       hide_userland_threads = true;
     };
   };
+  xdg.configFile."htop".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/htop";
 }

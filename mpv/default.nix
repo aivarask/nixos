@@ -1,9 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  # MPV_HOME="/etc/nixos/mpv";
-  # https://github.com/mpv-player/mpv/blob/master/etc/input.conf
   programs.mpv.enable = true;
-
   programs.mpv.package = (
     pkgs.mpv-unwrapped.wrapper {
       mpv = pkgs.mpv-unwrapped.override {
@@ -12,5 +9,6 @@
       scripts = with pkgs.mpvScripts; [ pkgs.mpvScripts.uosc ];
     }
   );
-
+  # MPV_HOME="/etc/nixos/mpv";
+  xdg.configFile."mpv".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/mpv";
 }
