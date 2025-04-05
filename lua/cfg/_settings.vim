@@ -149,7 +149,7 @@ else
 " HateWord
 	set undodir=$XDG_STATE_HOME/nvim/undo
 	" set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
+	"set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 	" set foldclose=all
 	" set foldlevel=3

@@ -6,6 +6,8 @@
     # python3Packages.transformers
     # python3Packages.trlib
     cudatoolkit
+    python3Packages.llama-index-cli
+    python3Packages.llama-index-llms-ollama
   ];
   # https://wiki.nixos.org/wiki/Ollama
   # https://ollama.com/library
@@ -19,10 +21,12 @@
       LD_LIBRARY_PATH = "run/opengl-driver/lib";
     };
     acceleration = "cuda"; # long build
+    # ollama pull deepseek
     loadModels = [
       # "deepseek-r1"
       # "deepseek-r1:14b"
       "deepseek-r1:32b"
+      "llama3.2-vision"
     ];
   };
 }

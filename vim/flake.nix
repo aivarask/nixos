@@ -1,6 +1,6 @@
 {
   inputs = {
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = {
       url = "github:MTDL9/vim-log-highlighting";
       flake = false;
@@ -33,7 +33,6 @@
       url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
       flake = false;
     };
-    plugins.url = "./plugins";
     # https://github.com/samsze0/websocket.nvim
     websocket-nvim = {
       url = "github:samsze0/websocket.nvim";
@@ -134,7 +133,6 @@
         }
       );
       nixosModules = {
-        plugins = inputs.plugins.nixosModules;
         default =
           { pkgs, ... }:
           {

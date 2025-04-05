@@ -8,7 +8,7 @@
   DisablePocket = true;
   DisableTelemetry = true;
   DisplayBookmarksToolbar = "newtab";
-  DisplayMenuBar = "always";
+  DisplayMenuBar = "default-off";
   # DNSOverHTTPS = {
   #   Enabled = true;
   #   ProviderURL = "";

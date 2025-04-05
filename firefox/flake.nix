@@ -17,7 +17,6 @@
               ];
             };
             search = {
-
               force = true;
               default = "ddg";
               privateDefault = "ddg";
@@ -46,7 +45,7 @@
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "devtools.debugger.remote-enabled" = true;
               "browser.aboutConfig.showWarning" = false;
-              "accessibility.warn_on_browsewithcaret" = false;
+              "accessibility.warn_on_browsewithcaret" = false; # F7
               "accessibility.typeaheadfind" = true;
               "accessibility.typeaheadfind.manual" = false;
               "toolkit.tabbox.switchByScrolling" = true;

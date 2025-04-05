@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nipkgs/0.1.0.tar.gz";
+  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nps.url = "github:OleMussmann/nps";
     nps.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
@@ -38,6 +39,7 @@
     suckless.url = "./suckless";
     tmux.url = "./tmux";
     vim.url = "./vim";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     wayland.url = "./wayland";
     zsh.url = "./zsh";
     #
@@ -60,6 +62,11 @@
         ];
       };
       commonModules = with inputs; [
+                  {
+environment.systemPackages = [pkgs.utf8proc];
+nixpkgs.overlays = [
+                    # inputs.neovim-nightly-overlay.overlays.default
+                  ];}
         {
           environment.systemPackages = [
             pkgs.nps # https://github.com/OleMussmann/nps
@@ -112,7 +119,6 @@
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
-        inputs.vim.nixosModules.plugins.default
         inputs.zsh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
@@ -170,7 +176,6 @@
                   inputs.lua.nixosModules.vim.home
                   inputs.tmux.nixosModules.home
                   inputs.vim.nixosModules.home
-                  inputs.vim.nixosModules.plugins.home
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks

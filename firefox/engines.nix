@@ -12,6 +12,12 @@ in
   #     { template = ""; }
   #   ];
   # };
+  "@ol https://ollama.com/search" = {
+    definedAliases = [ "" ];
+    urls = [
+      { template = "https://ollama.com/search?q={searchTerms}"; }
+    ];
+  };
   "@nb https://nix-builtins-search.extranix.com" = {
     definedAliases = [
       "@nb"
