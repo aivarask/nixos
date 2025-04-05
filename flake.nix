@@ -189,10 +189,10 @@
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
+                  ./browsers/chromium.nix
                   ./htop
                   ./lf
                   ./mpv
-                  ./browsers/chromium.nix
                   ./rofi
                   ./sql_.nix
                   ./term/alacritty_.nix
