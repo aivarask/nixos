@@ -192,6 +192,8 @@
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
+                  ./htop
+                  ./lf
                   ./mpv
                   ./browsers/chromium.nix
                   ./rofi

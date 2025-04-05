@@ -4,7 +4,7 @@
       environment.profiles = [ "${./.}" ];
     };
     nixosModules.home = _: {
-      programs.fzf = rec {
+      programs.fzf = {
         enable = true;
         enableZshIntegration = true;
         enableBashIntegration = true;

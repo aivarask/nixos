@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 {
   programs.mpv.enable = true;
   programs.mpv.package = (
