@@ -8,7 +8,8 @@
   #   source /etc/nixos/lf/lfrc
   # '';
   # };
-  home.sessionPath = [ "/etc/nixos/lf/bin" ];
+  # home.sessionPath = [ "/etc/nixos/lf/bin" ];
+  home.sessionVariables.PATH = "$PATH";
   home.packages = [
     pkgs.lf
     # (pkgs.buildEnv {

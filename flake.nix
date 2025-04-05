@@ -178,6 +178,9 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
+                  {
+                    home.sessionPath = [ "/root/foo/bin" ];
+                  }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.firefox.nixosModules.home

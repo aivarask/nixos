@@ -12,3 +12,6 @@ export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --info=inline"
 # export C_INCLUDE_PATH=/run/current-systems/sw/include
 export WEZTERM_CONFIG_FILE=/etc/nixos/term/wezterm.lua
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
+
+export __HM_SESS_VARS_SOURCED=
+. "/root/.profile"

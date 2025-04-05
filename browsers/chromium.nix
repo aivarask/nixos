@@ -1,4 +1,9 @@
-{ lib, osConfig, ... }:
+{
+  lib,
+  osConfig,
+  config,
+  ...
+}:
 {
   # HM
   # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
@@ -11,6 +16,8 @@
   ];
   # https://discourse.nixos.org/t/link-scripts-to-bin-home-manager/41774/3
   home.sessionPath = [ "/etc/nixos/browsers/bin" ];
+  xdg.configFile."chromium/Default/Bookmarks".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/browsers/Bookmarks";
   # programs.chromium.initialPrefs = lib.mkIf {
   #   "first_run_tabs" = [
   #     "https://nixos.org/"
