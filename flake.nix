@@ -1,7 +1,7 @@
 {
   inputs = {
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nipkgs/0.1.0.tar.gz";
-  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nps.url = "github:OleMussmann/nps";
     nps.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
@@ -62,11 +62,12 @@
         ];
       };
       commonModules = with inputs; [
-                  {
-environment.systemPackages = [pkgs.utf8proc];
-nixpkgs.overlays = [
-                    # inputs.neovim-nightly-overlay.overlays.default
-                  ];}
+        {
+          environment.systemPackages = [ pkgs.utf8proc ];
+          nixpkgs.overlays = [
+            # inputs.neovim-nightly-overlay.overlays.default
+          ];
+        }
         {
           environment.systemPackages = [
             pkgs.nps # https://github.com/OleMussmann/nps
@@ -124,7 +125,7 @@ nixpkgs.overlays = [
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
         # inputs.firefox.nixosModules.pass.default
-        ./ai
+        ./ollama.nix
         ./dialog
         {
           imports =
