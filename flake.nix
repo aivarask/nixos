@@ -1,5 +1,10 @@
 {
   inputs = {
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nipkgs/0.1.0.tar.gz";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nps.url = "github:OleMussmann/nps";
@@ -23,7 +28,8 @@
     #
     LS_COLORS.url = "./LS_COLORS";
     audio.url = "./audio";
-    firefox.url = "./firefox";
+    browsers.url = "./browsers";
+    browsers.inputs.nixpkgs.follows = "nixpkgs";
     fzf.url = "./fzf";
     git.url = "./_git";
     go.url = "./go";
@@ -60,7 +66,7 @@
           (final: prev: {
             nps = inputs.nps.packages.${prev.system}.default;
           })
-          # inputs.firefox.overlays.default
+          # inputs.browsers.overlays.default
         ];
       };
       commonModules = with inputs; [
@@ -115,7 +121,7 @@
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
-        inputs.firefox.nixosModules.default
+        inputs.browsers.nixosModules.default
         inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
@@ -183,7 +189,7 @@
                   }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
-                  inputs.firefox.nixosModules.home
+                  inputs.browsers.nixosModules.home
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.lua.nixosModules.common.home

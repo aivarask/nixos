@@ -17,6 +17,10 @@
           name = "";
           url = "https://github.com/nix-community/neovim-nightly-overlay";
         }
+        {
+          name = "";
+          url = "https://github.com/nix-community/browser-previews";
+        }
       ];
     }
     {

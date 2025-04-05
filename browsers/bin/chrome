@@ -9,5 +9,17 @@ chromium \
   --ignore-gpu-blocklist \
   --ozone-platform-hint=auto \
   --remote-debugging-port=9222 \
-  --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo,TouchpadOverscrollHistoryNavigation \
+  --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
   "$@"
+
+# AcceleratedVideoEncoder
+# VaapiOnNvidiaGPUs
+# VaapiIgnoreDriverChecks
+# Vulkan
+# DefaultANGLEVulkan
+# VulkanFromANGLE
+# VaapiIgnoreDriverChecks
+# VaapiVideoDecoder
+# PlatformHEVCDecoderSupport
+# UseMultiPlaneFormatForHardwareVideo
+# TouchpadOverscrollHistoryNavigation
