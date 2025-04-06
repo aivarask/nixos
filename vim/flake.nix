@@ -217,9 +217,30 @@
 
           };
         neovim =
-          { ... }:
+          { config, ... }:
           {
+            xdg.configFile."nvim/init.vim".source =
+              config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim/init.vim";
             imports = [ ./neovim.nix ];
+            home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
+            programs.neovim = {
+              enable = true;
+              extraConfig = ''
+                let &packpath.=',/etc/nixos'
+                let &runtimepath.=',/etc/nixos'
+                runtime! lua/cfg/**/*{.lua,.vim}
+                runtime! lua/_*{.lua,.vim}
+                set scrolloff=18
+                set cmdheight=1
+              '';
+              extraLuaConfig = ''
+                vim.loader.enable()
+              '';
+              vimdiffAlias = true;
+              withNodeJs = true;
+              withPython3 = true;
+              withRuby = false;
+            };
             programs.neovim.extraLuaPackages =
               ps: with ps; [
                 penlight
