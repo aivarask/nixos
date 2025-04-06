@@ -1,10 +1,25 @@
 {
+  inputs.nixpkgs.url = "nixpkgs";
+  inputs.browser-previews = {
+    url = "github:nix-community/browser-previews";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
   outputs =
-    { ... }:
+    { ... }@inputs:
     {
       nixosModules = {
-        default = _: { environment.profiles = [ "${./.}" ]; };
-        home =
+        default =
+          { pkgs, ... }:
+          {
+            environment.profiles = [ "${./.}" ];
+            environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
+              google-chrome # Stable Release
+              google-chrome-beta # Beta Release
+              google-chrome-dev # Dev Release
+            ];
+          };
+        chromium = import ./chromium.nix;
+        firefox =
           { pkgs, ... }:
           let
             bookmarks = {

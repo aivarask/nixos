@@ -1,12 +1,9 @@
 {
   inputs = {
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nipkgs/0.1.0.tar.gz";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     nps.url = "github:OleMussmann/nps";
     nps.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
@@ -117,6 +114,7 @@
             pkgs.git
           ];
         }
+
         inputs.LS_COLORS.nixosModules.default
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
@@ -189,7 +187,8 @@
                   }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
-                  inputs.browsers.nixosModules.home
+                  inputs.browsers.nixosModules.firefox
+                  inputs.browsers.nixosModules.chromium
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.lua.nixosModules.common.home
@@ -202,6 +201,7 @@
                   inputs.zsh.nixosModules.ff.bookmarks
                   ./browsers/chromium.nix
                   ./htop
+                  ./kitty
                   ./lf
                   ./mpv
                   ./rofi

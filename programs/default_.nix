@@ -4,9 +4,6 @@
     # chromedriver
     vimpager
   ];
-  programs.kitty = {
-    enable = true;
-  };
   programs.eza = {
     enable = true;
     icons = "auto";
