@@ -4,7 +4,7 @@
     (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
   ];
 
-  environment.variables.SELF = "/etc/nixos/";
+  environment.variables.SELF = "/etc/nixos";
   environment.variables.EDITOR = "vim";
   # environment.pathsToLink = [
   #   "/share/zsh"

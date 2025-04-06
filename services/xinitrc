@@ -25,7 +25,7 @@ fi
 numlockx
 # xset q
 xset r rate 250 50
-sxhkd -c "$SXHKDRC" &
+sxhkd &
 systemctl --user restart dunst.service &
 systemctl --user restart wallpaper.service &
 systemctl --user restart unclutter-xfixes.service &

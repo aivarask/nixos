@@ -1,7 +1,5 @@
 {
-  inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
-  };
+  inputs.nixpkgs.url = "nixpkgs";
   outputs = _: {
     nixosModules = {
       default =
@@ -94,8 +92,9 @@
           programs.vim.plugins = common;
         };
       vim.home =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
         {
+          xdg.configFile."sxhkd".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim";
           programs.vim = {
             enable = true;
             plugins = with pkgs.vimPlugins; [
@@ -106,13 +105,7 @@
               auto-pairs
               nerdtree
             ];
-            settings = { };
-            extraConfig = ''
-              let &packpath.=',/etc/nixos'
-              let &runtimepath.=',/etc/nixos'
-              runtime! lua/cfg/**/*.vim
-              runtime! lua/_*.vim
-            '';
+            extraConfig = '''';
           };
 
         };

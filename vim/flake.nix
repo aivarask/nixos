@@ -1,6 +1,5 @@
 {
   inputs = {
-    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     vim-log-highlighting = {
       url = "github:MTDL9/vim-log-highlighting";
       flake = false;
@@ -38,8 +37,8 @@
       url = "github:samsze0/websocket.nvim";
       flake = false;
     };
-    # https://github.com/noib3/nvim-oxi
     nvim-oxi = {
+    # https://github.com/noib3/nvim-oxi
       url = "github:noib3/nvim-oxi";
       flake = false;
     };
@@ -136,14 +135,7 @@
         default =
           { pkgs, ... }:
           {
-            nixpkgs.overlays = [
-              # inputs.neovim-nightly-overlay.overlays.default
-              self.overlays.default
-            ];
-            # programs.neovim = {
-            #   enable = true;
-            #   package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-            # };
+            nixpkgs.overlays = [ self.overlays.default ];
           };
         home =
           { pkgs, ... }:

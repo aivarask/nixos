@@ -3,7 +3,6 @@ filetype plugin indent on
 set termguicolors
 set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
-" complete-items
 set completeopt=menu,menuone,noselect
 "set wildmenu
 "set wildmode=noselect
@@ -108,14 +107,16 @@ if !has('nvim')
 		au!
 		" autocmd VimLeavePre,QuitPre * mksession!
 	aug END
-	if !isdirectory($HOME.'/.vim')
-		call mkdir($HOME.'/.vim', '', 0770)
-		if !isdirectory($HOME.'/.vim/undo')
-			call mkdir($HOME.'/.vim/undo', '', 0700)
-		endif
-	endif
+	" call mkdir($HOME."/.vim/undo-dir", "p", 0700)
+	"if !isdirectory($HOME.'/.vim')
+	"	call mkdir($HOME.'/.vim', '', 0770)
+	"	if !isdirectory($HOME.'/.vim/undo')
+	"		call mkdir($HOME.'/.vim/undo', '', 0700)
+	"	endif
+	"endif
 	set showcmd
-	set undodir=~/.vim/undo
+	call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
+	set undodir=$XDG_STATE_HOME/vim/undo/
 	set foldmethod=indent
 	let g:AutoPairsFlyMode = 0
 	let g:AutoPairsShortcutBackInsert = ''

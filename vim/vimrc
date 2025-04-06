@@ -1,0 +1,5 @@
+let &packpath.=',/etc/nixos'
+let &runtimepath.=',/etc/nixos'
+runtime! lua/cfg/**/*.vim
+runtime! lua/_*.vim
+
