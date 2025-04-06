@@ -3,3 +3,44 @@ let &runtimepath.=',/etc/nixos'
 runtime! lua/cfg/**/*.vim
 runtime! lua/_*.vim
 
+" https://askubuntu.com/questions/487595/resuming-a-vim-session-i-have-accidentally-disconnected-from
+"set showcmd
+"set foldmethod=indent
+set bufhidden=unload
+set sessionoptions-=options
+set sessionoptions+=localoptions
+aug quit | au! | autocmd VimLeavePre,QuitPre * mksession! | aug END
+aug enter | au! | autocmd! VimEnter * source ./Session.vim | aug END
+
+call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
+set undodir=$XDG_STATE_HOME/vim/undo/
+
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = ''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:webdevicons_enable_nerdtree = 0
+let g:which_key_vertical = 1
+let g:NERDTreeMapPreview = '<TAB>'
+nnoremap qq <cmd>NERDTreeToggle<CR>
+nnoremap <leader>c :Commands<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :Rg<CR>
+nnoremap <leader>h :Helptags<CR>
+nnoremap <leader>k :Maps<CR>
+nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
+nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+
+nnoremap <Esc>h :wincmd h<CR>
+nnoremap <Esc>j :wincmd j<CR>
+nnoremap <Esc>k :wincmd k<CR>
+nnoremap <Esc>l :wincmd l<CR>
+
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
+
+
+" nnoremap <Esc>J :m .+1<CR>==
+" nnoremap <Esc>K :m .-2<CR>==

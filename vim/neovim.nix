@@ -62,38 +62,8 @@ let
     plenary-nvim
     fidget-nvim
   ];
-  disabled = with pkgs.vimPlugins; [
-    vim-indentwise
-    # vim-floaterm
-    # copilot-cmp
-    # copilot-lua
-    lf-vim
-  ];
-
-  common = with pkgs.vimPlugins; [
-    # pkgs.vimPlugins.vim-indentwise
-    vim-auto-save
-    bclose-vim
-    fzf-vim
-    gruvbox-material
-    switch-vim
-    vim-abolish
-    # vim-commentary
-    vim-cool
-    vim-cursorword
-    vim-devicons
-    vim-highlightedyank
-    vim-lastplace
-    direnv-vim
-    # vim-markdown
-    vim-fugitive
-    tabular
-    # vim-indentwise # disabled of keymaps
-    # vim-matchup # disabled of keymaps
-  ];
 in
 {
-
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
   programs.neovim = {
     enable = true;
@@ -114,36 +84,12 @@ in
     withRuby = false;
   };
 
-  # xdg.dataFile."nvim/plugins".source = programs.neovim.plugins;
   programs.neovim.plugins =
-    common
-    ++ (with pkgs.vimPlugins; [
-      vim-sensible
-      nvim-nio
-    ])
     # ++ dap
     # ++ lsp
-    ++ misc
+    misc
     # ++ testing
     ++ telescope
     ++ treesitter
-    ++ next
-    ++ (with pkgs.vimPlugins; [
-      auto-session
-      which-key-nvim
-      # nvim-surround
-      indent-blankline-nvim
-      lazygit-nvim
-      # neogit
-      gitsigns-nvim
-      lualine-nvim
-      nvim-tree-lua
-      neorepl-nvim
-      iron-nvim
-      toggleterm-nvim
-      {
-        plugin = sqlite-lua;
-        config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
-      }
-    ]);
+    ++ next;
 }

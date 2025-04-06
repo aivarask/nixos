@@ -38,7 +38,7 @@
       flake = false;
     };
     nvim-oxi = {
-    # https://github.com/noib3/nvim-oxi
+      # https://github.com/noib3/nvim-oxi
       url = "github:noib3/nvim-oxi";
       flake = false;
     };
@@ -137,14 +137,112 @@
           {
             nixpkgs.overlays = [ self.overlays.default ];
           };
-        home =
+        commonPlugins =
+          {
+            pkgs,
+            lib,
+            config,
+            ...
+          }:
+          let
+            vimOnlyPlugins = with pkgs.vimPlugins; [
+              vim-indentwise
+              vim-commentary
+              vim-matchup
+              # vim-markdown
+              # vim-floaterm
+              # lf-vim
+            ];
+            neovimOnlyPlugins = with pkgs.vimPlugins; [
+              vim-sensible
+              nvim-nio
+              auto-session
+              which-key-nvim
+              # nvim-surround
+              indent-blankline-nvim
+              lazygit-nvim
+              # neogit
+              gitsigns-nvim
+              lualine-nvim
+              nvim-tree-lua
+              neorepl-nvim
+              iron-nvim
+              toggleterm-nvim
+              {
+                plugin = sqlite-lua;
+                config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
+              }
+            ];
+            common = with pkgs.vimPlugins; [
+              vim-auto-save
+              bclose-vim
+              fzf-vim
+              gruvbox-material
+              switch-vim
+              vim-abolish
+              vim-cool
+              vim-cursorword
+              vim-devicons
+              vim-highlightedyank
+              vim-lastplace
+              direnv-vim
+              vim-fugitive
+              tabular
+              vim-log-highlighting
+              vim-interestingwords
+            ];
+          in
+          {
+            programs.vim.plugins = lib.mkIf config.programs.vim.enable common ++ vimOnlyPlugins;
+            programs.neovim.plugins = lib.mkIf config.programs.neovim.enable common ++ neovimOnlyPlugins;
+          };
+        vim =
+          { pkgs, config, ... }:
+          {
+            xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim";
+            programs.vim = {
+              enable = true;
+              extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
+              plugins = with pkgs.vimPlugins; [
+                # vim-repeat
+                # vim-sensible
+                # vim-matchit
+                vim-airline
+                vim-which-key
+                vim-surround
+                auto-pairs
+                nerdtree
+              ];
+            };
+
+          };
+        neovim =
+          { ... }:
+          {
+            imports = [ ./neovim.nix ];
+            programs.neovim.extraLuaPackages =
+              ps: with ps; [
+                penlight
+                cjson
+                http
+                cqueues
+                luaossl
+                basexx
+                lpeg
+                lpeg_patterns
+                binaryheap
+                fifo # dep in neovim only
+                lua-zlib
+                compat53
+                # lua-psl
+              ];
+          };
+        neovimOverlays =
           { pkgs, ... }:
           {
             programs.neovim.plugins = (
               with pkgs.vimPlugins;
               [
-                vim-log-highlighting
-                vim-interestingwords
                 one-small-step-for-vimkind
                 nvim-lsp-file-operations
                 neotest-playwright

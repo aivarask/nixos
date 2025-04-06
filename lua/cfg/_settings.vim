@@ -2,7 +2,6 @@ syntax on
 filetype plugin indent on
 set termguicolors
 set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
-set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
 set completeopt=menu,menuone,noselect
 "set wildmenu
 "set wildmode=noselect
@@ -102,53 +101,8 @@ if !has('gui_running')
 	set guioptions-=e
 endif
 
-if !has('nvim')
-	aug VimOnly
-		au!
-		" autocmd VimLeavePre,QuitPre * mksession!
-	aug END
-	" call mkdir($HOME."/.vim/undo-dir", "p", 0700)
-	"if !isdirectory($HOME.'/.vim')
-	"	call mkdir($HOME.'/.vim', '', 0770)
-	"	if !isdirectory($HOME.'/.vim/undo')
-	"		call mkdir($HOME.'/.vim/undo', '', 0700)
-	"	endif
-	"endif
-	set showcmd
-	call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
-	set undodir=$XDG_STATE_HOME/vim/undo/
-	set foldmethod=indent
-	let g:AutoPairsFlyMode = 0
-	let g:AutoPairsShortcutBackInsert = ''
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#formatter = 'unique_tail'
-	let g:airline#extensions#whitespace#enabled = 0
-	let g:airline_powerline_fonts = 1
-	let g:webdevicons_enable_nerdtree = 0
-	let g:which_key_vertical = 1
-	let g:NERDTreeMapPreview = '<TAB>'
-	nnoremap qq <cmd>NERDTreeToggle<CR>
-	nnoremap <leader>c :Commands<CR>
-	nnoremap <leader>f :Files<CR>
-	nnoremap <leader>g :Rg<CR>
-	nnoremap <leader>h :Helptags<CR>
-	nnoremap <leader>k :Maps<CR>
-	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
-	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
-
-	inoremap <Esc>h <C-O>h
-	inoremap <Esc>j <C-O>j
-	inoremap <Esc>k <C-O>k
-	inoremap <Esc>l <C-O>l
-
-	nnoremap <Esc>h :wincmd h<CR>
-	nnoremap <Esc>j :wincmd j<CR>
-	nnoremap <Esc>l :wincmd l<CR>
-
-	cnoremap <nowait> <Esc>h <Left>
-	cnoremap <nowait> <Esc>l <Right>
-else
-" HateWord
+if has('nvim')
+  set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
 	set undodir=$XDG_STATE_HOME/nvim/undo
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
@@ -166,30 +120,25 @@ else
 	nnoremap <leader>h :Telescope help_tags<CR>
 	nnoremap <leader>k :Telescope keymaps<CR>
 
-	inoremap <M-h> <C-O>h
-	inoremap <M-j> <C-O>j
-	inoremap <M-k> <C-O>k
-	inoremap <M-l> <C-O>l
 
 	nnoremap <M-h> :wincmd h<CR>
-	nnoremap <M-j> :wincmd j<CR>
+  nnoremap <M-j> :wincmd j<CR>
+  nnoremap <M-k> :wincmd k<CR>
 	nnoremap <M-l> :wincmd l<CR>
 	tnoremap <M-h> <C-\><C-n>:wincmd h<CR>
 	tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
 	tnoremap <M-k> <C-\><C-n>:wincmd k<CR>
 	tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
-
-	cnoremap <M-h> <Left>
-	cnoremap <M-l> <Right>
-
-	nnoremap <M-J> :m .+1<CR>==
-	nnoremap <M-K> :m .-2<CR>==
-	inoremap <M-J> <Esc>:m .+1<CR>==gi
-	inoremap <M-K> <Esc>:m .-2<CR>==gi
-	vnoremap <M-J> :m '>+1<CR>gv=gv
-	vnoremap <M-K> :m '<-2<CR>gv=gv
-	inoremap <M-x> <C-O>x
 endif
+
+nnoremap <Esc>J :m .+1<CR>==
+nnoremap <Esc>K :m .-2<CR>==
+inoremap <M-J> <Esc>:m .+1<CR>==gi
+inoremap <M-K> <Esc>:m .-2<CR>==gi
+vnoremap <Esc>J :m '>+1<CR>gv=gv
+vnoremap <Esc>K :m '<-2<CR>gv=gv
+
+
 
 " CTRL-W    delete word to the left of cursor
 " CTRL-O D  delete everything to the right of cursor

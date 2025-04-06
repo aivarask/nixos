@@ -191,11 +191,10 @@
                   inputs.browsers.nixosModules.chromium
                   inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
-                  inputs.lua.nixosModules.common.home
-                  inputs.lua.nixosModules.neovim.home
-                  inputs.lua.nixosModules.vim.home
                   inputs.tmux.nixosModules.home
-                  inputs.vim.nixosModules.home
+                  inputs.vim.nixosModules.commonPlugins
+                  inputs.vim.nixosModules.vim
+                  inputs.vim.nixosModules.neovim
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks
