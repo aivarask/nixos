@@ -64,7 +64,6 @@ let
   ];
 in
 {
-
   programs.neovim.plugins =
     # ++ dap
     # ++ lsp

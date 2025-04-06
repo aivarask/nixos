@@ -31,7 +31,6 @@
     git.url = "./_git";
     go.url = "./go";
     lib.url = "./lib";
-    lua.url = "./lua";
     manix.url = "./manix";
     matrix.url = "./matrix";
     node.url = "./node";
@@ -124,7 +123,6 @@
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
         inputs.lib.nixosModules.default
-        inputs.lua.nixosModules.default
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.node.nixosModules.default
@@ -133,6 +131,7 @@
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
+        inputs.vim.nixosModules.lua
         inputs.zsh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
