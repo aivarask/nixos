@@ -9,7 +9,7 @@ chromium \
   --ignore-gpu-blocklist \
   --ozone-platform-hint=auto \
   --remote-debugging-port=9222 \
-  --enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
+  --enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
   "$@"
 
 # AcceleratedVideoEncoder
@@ -22,4 +22,3 @@ chromium \
 # VaapiVideoDecoder
 # PlatformHEVCDecoderSupport
 # UseMultiPlaneFormatForHardwareVideo
-# TouchpadOverscrollHistoryNavigation

@@ -1,8 +1,5 @@
 { config, ... }:
 {
-  # programs.htop = {
-  #   enable = true;
-  # };
-  # HTOPRC=/etc/nixos/htop
+  programs.htop.enable = true;
   xdg.configFile."htop".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/htop";
 }

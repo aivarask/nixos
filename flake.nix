@@ -204,6 +204,8 @@
                   ./kitty
                   ./lf
                   ./mpv
+                  ./sxhkd
+                  #
                   ./rofi
                   ./sql_.nix
                   ./term/alacritty_.nix

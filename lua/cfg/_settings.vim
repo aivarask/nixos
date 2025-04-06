@@ -82,6 +82,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 
 noremap <C-S-,> :left<CR>
 
+
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?b :edit /etc/nixos/bashrc<CR>
 nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
@@ -91,7 +92,7 @@ nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?g :edit /etc/nixos/lua/cfg/git.lua<CR>
 nnoremap ?p :edit /etc/nixos/profile<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
-nnoremap ?S :execute 'edit ' . getenv("SXHKDRC")<CR>
+nnoremap ?S :execute 'edit ' . getenv("XDG_CONFIG_HOME") . 'sxhkd/sxhkdrc'<CR>
 nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
 nnoremap ?T :edit /etc/nixos/lua/cfg/toggleterm.lua
 nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>

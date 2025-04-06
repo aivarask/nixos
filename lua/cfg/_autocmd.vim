@@ -1,7 +1,8 @@
+augroup sxhkd |	autocmd! | autocmd BufWritePost sxhkdrc :!kill -SIGUSR1 $(pidof sxhkd) && notify-send 'sxhkd'
+
 augroup _help
 	autocmd!
 	autocmd BufWritePost */doc/*.txt :helptags doc
-	autocmd BufWritePost sxhkdrc :!kill -SIGUSR1 $(pidof sxhkd) && notify-send 'autocmd reload'
 	autocmd BufWritePost cloaking-rules.txt :!systemctl restart dnscrypt-proxy2.service
 	" autocmd FileType help autocmd TextChanged,InsertLeave <buffer> ++nested if &readonly == 0 && filereadable(bufname('%')) | update | endif
 augroup END
