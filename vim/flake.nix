@@ -261,8 +261,7 @@
           {
             imports = [ ./neovim.nix ];
             home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
-            xdg.configFile."nvim/init.vim".source =
-              config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim/init.vim";
+            xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim";
             programs.neovim = {
               enable = true;
               # extraConfig = ''source $XDG_CONFIG_HOME/nvim/init.vim'';
