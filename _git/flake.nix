@@ -13,9 +13,8 @@
       };
     nixosModules.home = _: {
       programs.git = {
-        delta.enable = false;
-        lfs.enable = true;
         enable = true;
+        lfs.enable = true;
         aliases = {
           ci = "commit";
           pr = "pull --rebase";
@@ -25,23 +24,23 @@
           init.defaultBranch = "main";
           pull.rebase = true;
         };
-        ignores = [
-          ".direnv/"
-          "*.lock"
-          "!flake.lock"
-          "*lock.json"
-          "*lock.yaml"
-          "tags"
-          "node_modules/"
-          "vendor/"
-          "result/"
-          "result/null"
-          "CMakeFiles/"
-          "Session.vim"
-          ".pytest_cache/"
-          "__pycache__"
-          ".zig-cache/"
-        ];
+        # ignores = [
+        #   ".direnv/"
+        #   "*.lock"
+        #   "!flake.lock"
+        #   "*lock.json"
+        #   "*lock.yaml"
+        #   "tags"
+        #   "node_modules/"
+        #   "vendor/"
+        #   "result/"
+        #   "result/null"
+        #   "CMakeFiles/"
+        #   "Session.vim"
+        #   ".pytest_cache/"
+        #   "__pycache__"
+        #   ".zig-cache/"
+        # ];
         userName = "Aivaras Kalesnykas";
         userEmail = "kalesnykas.aivaras@gmail.com";
       };

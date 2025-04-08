@@ -15,7 +15,6 @@ set noshowmode
 set signcolumn=yes number relativenumber
 set splitright splitbelow
 set showtabline=2 statusline+=%F
-set cmdheight=1
 set nowrap
 set breakindent
 set breakindentopt=sbr
@@ -24,7 +23,6 @@ set breakindentopt=sbr
 set noswapfile
 set background=dark
 set undofile
-set scrolloff=15
 set autowriteall
 set updatetime=250
 set timeoutlen=600
