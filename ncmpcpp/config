@@ -1,7 +1,7 @@
 mpd_music_dir = "/var/music";
 connected_message_on_startup = "no";
 display_bitrate = "yes";
-playlist_show_mpd_host = "no";
+playlist_show_mpd_host = "yes";
 allow_for_physical_item_deletion = "yes";
 
 user_interface = "alternative";
