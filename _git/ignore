@@ -3,6 +3,7 @@
 # *
 *.lock
 *lock.yaml
+error.log
 
 # nix
 !flake.lock

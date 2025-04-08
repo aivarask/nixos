@@ -5,7 +5,7 @@ super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
   {\
 	,alacritty -T man-fzf -e man-fzf\
 	,hmon\
-	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS\
+	,alacritty -e ncmpcpp\
 	,pwvucontrol\
 	,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
 	,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\

@@ -1,5 +1,9 @@
 {
   inputs = {
+    sxhkd-vim = {
+      url = "https://github.com/kovetskiy/sxhkd-vim";
+      flake = false;
+    };
     vim-log-highlighting = {
       url = "github:MTDL9/vim-log-highlighting";
       flake = false;
@@ -57,6 +61,11 @@
             with inputs;
             prev.vimPlugins
             // {
+              sxhkd-vim = buildVimPlugin {
+                name = "sxhkd-vim";
+                src = inputs.sxhkd-vim;
+                meta.home = inputs.sxhkd-vim.url;
+              };
               websocket-nvim = buildVimPlugin {
                 name = "websocket-nvim";
                 src = websocket-nvim;
@@ -67,7 +76,6 @@
                 name = "nvim-oxi";
                 src = nvim-oxi;
                 meta.home = "https://github.com/noib3/nvim-oxi";
-
               };
               one-small-step-for-vimkind = buildVimPlugin {
                 name = "one-small-step-for-vimkind";
@@ -213,6 +221,7 @@
               # }
             ];
             common = with pkgs.vimPlugins; [
+              sxhkd-vim
               vim-auto-save
               bclose-vim
               fzf-vim

@@ -202,6 +202,7 @@
                   ./kitty
                   ./lf
                   ./mpv
+                  ./ncmpcpp
                   ./sxhkd
                   #
                   ./rofi
