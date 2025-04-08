@@ -1,21 +1,22 @@
 # vim: ft=gitconfig
+
 [user]
-email = "kalesnykas.aivaras@gmail.com"
-name = "Aivaras Kalesnykas"
+  email = "kalesnykas.aivaras@gmail.com"
+  name = "Aivaras Kalesnykas"
 
 [alias]
-ci = "commit"
-pr = "pull --rebase"
+  ci = "commit"
+  pr = "pull --rebase"
 
 [core]
-editor = "vim"
-hookspath = ".githooks"
+  editor = "vim"
+  hookspath = ".githooks"
 
 [init]
-defaultBranch = main
+  defaultBranch = main
 
 [pull]
-rebase = true
+  rebase = true
 
 [color]
-ui = false
+  ui = false

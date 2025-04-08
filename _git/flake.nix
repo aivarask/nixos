@@ -20,8 +20,12 @@
         programs.git.package = pkgs.gitFull;
         programs.git.enable = true;
         programs.git.lfs.enable = true;
+        programs.git.maintenance.enable = true;
         programs.git.extraConfig = {
-          include.path = "/etc/nixos/_git/config_user";
+          include.path = [
+            "/etc/nixos/_git/config_global"
+            "/etc/nixos/_git/config_user"
+          ];
         };
         xdg.configFile."git/config_global".source =
           config.lib.file.mkOutOfStoreSymlink "/etc/nixos/_git/config_global";
