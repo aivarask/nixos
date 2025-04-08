@@ -1,6 +1,5 @@
-let &packpath.=',/etc/nixos'
 let &runtimepath.=',/etc/nixos'
-runtime! lua/cfg/**/*.vim
+runtime! lua/_config/**/*.vim
 runtime! lua/_*.vim
 call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/

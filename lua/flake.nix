@@ -252,7 +252,7 @@
         vim =
           { pkgs, config, ... }:
           {
-            xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim";
+            xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
             programs.vim = {
               enable = true;
               extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
@@ -272,14 +272,11 @@
           { config, ... }:
           {
             home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
-            xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/vim";
+            xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
             programs.neovim = {
               enable = true;
               # extraConfig = ''source $XDG_CONFIG_HOME/nvim/init.vim'';
-              # extraLuaConfig = ''
-              #   vim.loader.enable()
-              #
-              # '';
+              # extraLuaConfig = ''vim.loader.enable()'';
               vimdiffAlias = true;
               withPython3 = true;
               withNodeJs = true;

@@ -39,7 +39,7 @@
     rust.url = "./rust";
     suckless.url = "./suckless";
     tmux.url = "./tmux";
-    vim.url = "./vim";
+    vim.url = "./lua";
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -195,6 +195,8 @@
                   inputs.vim.nixosModules.commonPlugins
                   inputs.vim.nixosModules.vim
                   inputs.vim.nixosModules.neovim
+                  inputs.vim.nixosModules.neovimPlugins
+                  # inputs.vim.nixosModules.neovimOverlays
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.hm
                   inputs.zsh.nixosModules.ff.bookmarks

@@ -45,6 +45,9 @@ let g:gruvbox_material_background = 'medium'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_events = ['CursorHold']
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
