@@ -24,7 +24,7 @@
   };
 
   xdg.mime.enable = true;
-  # /etc
+  # /etc/profiles/per-user/root/share/applications
   xdg.mime.defaultApplications = {
     "text/plain" = "nvim.desktop";
     "text/markdown" = "nvim.desktop";
@@ -56,7 +56,7 @@
     ];
     "text/vnd.trolltech.linguist" = "nvim.desktop";
   };
-  removedAssociations = {
+  xdg.mime.removedAssociations = {
     "audio/mpeg" = [ "mpv.desktop" ];
     "audio/mp3" = [
       "mpv.desktop"
