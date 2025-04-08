@@ -138,6 +138,7 @@
         # inputs.wayland.nixosModules.default
         ./ollama.nix
         ./dialog
+        ./xdg
         {
           imports =
             with inputs.lib.packages."${system}".lib;

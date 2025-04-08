@@ -1,83 +1,86 @@
 super + ctrl + Return
-  tabbed -c alacritty --embed
+ tabbed -c alacritty --embed
 
 super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
-  {\
-	,alacritty -T man-fzf -e man-fzf\
-	,hmon\
-	,alacritty -e ncmpcpp\
-	,pwvucontrol\
-	,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
-	,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
-	,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
-	,(cd /var/p; mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog .) \
-  ,wezterm\
-	,alacritty -e sh\
-	,alacritty -e bash\
-	,alacritty -e zsh\
-	}
+ {\
+ ,alacritty -T man-fzf -e man-fzf\
+ ,hmon\
+ ,alacritty -e ncmpcpp\
+ ,pwvucontrol\
+ ,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
+ ,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
+ ,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
+ ,(cd /var/p && mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog ./*) \
+ ,wezterm\
+ ,alacritty -e sh\
+ ,alacritty -e bash\
+ ,alacritty -e zsh\
+ }
 
 super + {q,w,e,r}
-  {\
-  ,tdrop alacritty\
-  ,firefox\
-  ,chrome\
-  ,alacritty --working-directory=/etc/nixos -e 'nvr'\
-  }
+ {\
+ ,tdrop alacritty\
+ ,firefox\
+ ,chrome\
+ ,alacritty --working-directory=/etc/nixos -e 'nvr'\
+ }
 
 super + {W,E,R,T,Y}
-  {\
-	,firefox --private-window\
-  ,chrome --incognito\
-	,firefox\
-	,telegram-desktop\
-	,brave 'https://youtube.com'\
-  }
+ {\
+ ,firefox --private-window\
+ ,chrome --incognito\
+ ,firefox\
+ ,telegram-desktop\
+ ,brave 'https://youtube.com'\
+ }
 
 super + {a,s}
-	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
+ wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
+ # pavucontrol
 
 super + {z,x,c,v}
-  {\
-	,brightnessctl set 10%-\
-	,brightnessctl set 10%+\
-	,alacritty --working-directory=/nix/store\
-	,alacritty --working-directory=/nix/store\
-	}
+ {\
+ ,brightnessctl set 10%-\
+ ,brightnessctl set 10%+\
+ ,alacritty --working-directory=/nix/store\
+ ,alacritty --working-directory=/nix/store\
+ }
 
 super + {A,S}
-  ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
+ wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2%{-,+}
+ # ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
 
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
 # ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
 super + r; {1,2,n,p,F1}
-  {\
-	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
-	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
-	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
-	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
-	}
+ {\
+ ,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
+ ,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
+ ,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
+ ,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
+ }
 
 super + o; {1,2,3,4,5,6,7,8,9,0}
-  {\
-  ,alacritty -e sh
-	,notify-send "echo $SHELL"\
-	,notify-send "echo two"\
-	,inkscape '/etc/nixos/a/img/logo.svg'
-	}
+ {\
+ ,alacritty -e sh
+ ,notify-send "echo $SHELL"\
+ ,notify-send "echo two"\
+ ,inkscape '/etc/nixos/a/img/logo.svg'
+ }
 
 XF86AudioMute
-	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+ wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 XF86Audio{Lower,Raise}Volume
-	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
+ wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
 XF86Audio{Play,Prev,Next}
-  mpc {toggle,prev,next}
+ mpc {toggle,prev,next}
 XF86MonBrightness{Down,Up}
-  brightnessctl set 10%{-,+}
+ brightnessctl set 10%{-,+}
+
 # Break Pause Print Scroll_Lock XF86Calculator XF86HomePage XF86Mail XF86Search
 # {XF86HomePage,XF86Mail,XF86Calculator,Print}
-# 	{firefox 'https://youtube.com/' \
-# 	,firefox \
-# 	,scrot \
-# 	}
+# {firefox 'https://youtube.com/' \
+# ,firefox \
+# ,scrot \
+# }

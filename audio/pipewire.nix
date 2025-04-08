@@ -5,12 +5,13 @@
   environment.systemPackages = with pkgs; [
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=pipewire
     alsa-utils
-    # pavucontrol
-    # pulsemixer
+    pavucontrol
+    pulsemixer
     pwvucontrol
     coppwr
     qpwgraph
     sonusmix
+    wireplumber
   ];
   security.rtkit.enable = true;
   services.pipewire = {

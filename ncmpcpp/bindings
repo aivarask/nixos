@@ -1,3 +1,4 @@
+# /etc/profiles/per-user/root/share/doc/ncmpcpp/bindings
 def_key "j"
 	scroll_down
 
@@ -18,3 +19,14 @@ def_key "alt-j"
 def_key "alt-k"
 	move_selected_items_up
 
+# def_key "up"
+#   volume_up
+#
+# def_key "down"
+#   volume_down
+#
+# def_key "left"
+#   seek_backward
+#
+# def_key "right"
+#   seek_forward

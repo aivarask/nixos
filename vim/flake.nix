@@ -1,7 +1,7 @@
 {
   inputs = {
     sxhkd-vim = {
-      url = "https://github.com/kovetskiy/sxhkd-vim";
+      url = "github:kovetskiy/sxhkd-vim";
       flake = false;
     };
     vim-log-highlighting = {
@@ -64,6 +64,7 @@
               sxhkd-vim = buildVimPlugin {
                 name = "sxhkd-vim";
                 src = inputs.sxhkd-vim;
+                doCheck = false;
                 meta.home = inputs.sxhkd-vim.url;
               };
               websocket-nvim = buildVimPlugin {
@@ -80,9 +81,7 @@
               one-small-step-for-vimkind = buildVimPlugin {
                 name = "one-small-step-for-vimkind";
                 src = one-small-step-for-vimkind;
-                meta = {
-                  homepage = "https://github.com/jbyuki/one-small-step-for-vimkind";
-                };
+                meta.homepage = "https://github.com/jbyuki/one-small-step-for-vimkind";
               };
               vim-log-highlighting = buildVimPlugin {
                 name = "vim-log-highlighting";
@@ -143,6 +142,10 @@
         default =
           { pkgs, ... }:
           {
+            environment.systemPackages = with pkgs; [
+              editorconfig-checker
+              editorconfig-core-c
+            ];
             nixpkgs.overlays = [ self.overlays.default ];
           };
         lua =

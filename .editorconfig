@@ -14,6 +14,9 @@ insert_final_newline = true
 max_line_length = 120
 # max_line_length = 120
 
+[sxhkdrc]
+indent_style = space
+indent_size = 1
 
 [*.nix]
 indent_style = space

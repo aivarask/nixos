@@ -88,7 +88,7 @@ nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?g :edit /etc/nixos/lua/cfg/git.lua<CR>
 nnoremap ?p :edit /etc/nixos/profile<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
-nnoremap ?S :execute 'edit ' . getenv("XDG_CONFIG_HOME") . 'sxhkd/sxhkdrc'<CR>
+nnoremap ?S :execute 'edit ' . getenv("XDG_CONFIG_HOME") . '/sxhkd/sxhkdrc'<CR>
 nnoremap ?t :edit /etc/nixos/lua/cfg/nvim-tree.lua
 nnoremap ?T :edit /etc/nixos/lua/cfg/toggleterm.lua
 nnoremap ?x :execute 'edit' . getenv("XINITRC")<CR>
