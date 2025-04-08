@@ -3,8 +3,6 @@
     nixosModules.default =
       { pkgs, lib, ... }:
       {
-        # programs.git.enable = true;
-        # environment.etc."gitconfig".source = lib.mkForce "/etc/nixos/_git/gitconfig";
         environment.systemPackages = with pkgs; [
           git
           git-lfs
