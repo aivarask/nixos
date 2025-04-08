@@ -79,6 +79,5 @@ XF86MonBrightness{Down,Up}
 # {XF86HomePage,XF86Mail,XF86Calculator,Print}
 # 	{firefox 'https://youtube.com/' \
 # 	,firefox \
-# 	,alacritty -e ncmpcpp -c $NCMPCPP_CONFIG -b $NCMPCPP_BINDINGS \
 # 	,scrot \
 # 	}

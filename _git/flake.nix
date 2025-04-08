@@ -5,7 +5,6 @@
       {
         # programs.git.enable = true;
         # environment.etc."gitconfig".source = lib.mkForce "/etc/nixos/_git/gitconfig";
-        # programs.git.
         environment.systemPackages = with pkgs; [
           git
           git-lfs
@@ -17,8 +16,8 @@
     nixosModules.home =
       { pkgs, config, ... }:
       {
-        programs.git.package = pkgs.gitFull;
         programs.git.enable = true;
+        programs.git.package = pkgs.gitFull;
         programs.git.lfs.enable = true;
         programs.git.maintenance.enable = true;
         programs.git.extraConfig = {
