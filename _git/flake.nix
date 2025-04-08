@@ -1,11 +1,11 @@
 {
   outputs = _: {
     nixosModules.default =
-      { pkgs, config, ... }:
+      { pkgs, lib, ... }:
       {
-        programs.git.enable = true;
-        environment.etc."gitconfig".source = "/etc/nixos/_git/gitconfig";
-        # programs.git
+        # programs.git.enable = true;
+        # environment.etc."gitconfig".source = lib.mkForce "/etc/nixos/_git/gitconfig";
+        # programs.git.
         environment.systemPackages = with pkgs; [
           git
           git-lfs
@@ -14,39 +14,20 @@
           pre-commit
         ];
       };
-    nixosModules.home = _: {
-      programs.git = {
-        enable = true;
-        lfs.enable = true;
-        aliases = {
-          ci = "commit";
-          pr = "pull --rebase";
+    nixosModules.home =
+      { pkgs, config, ... }:
+      {
+        programs.git.package = pkgs.gitFull;
+        programs.git.enable = true;
+        programs.git.lfs.enable = true;
+        programs.git.extraConfig = {
+          include.path = "/etc/nixos/_git/config_user";
         };
-        extraConfig = {
-          core.hookspath = ".githooks";
-          init.defaultBranch = "main";
-          pull.rebase = true;
-        };
-        # ignores = [
-        #   ".direnv/"
-        #   "*.lock"
-        #   "!flake.lock"
-        #   "*lock.json"
-        #   "*lock.yaml"
-        #   "tags"
-        #   "node_modules/"
-        #   "vendor/"
-        #   "result/"
-        #   "result/null"
-        #   "CMakeFiles/"
-        #   "Session.vim"
-        #   ".pytest_cache/"
-        #   "__pycache__"
-        #   ".zig-cache/"
-        # ];
-        userName = "Aivaras Kalesnykas";
-        userEmail = "kalesnykas.aivaras@gmail.com";
+        xdg.configFile."git/config_global".source =
+          config.lib.file.mkOutOfStoreSymlink "/etc/nixos/_git/config_global";
+        xdg.configFile."git/config_user".source =
+          config.lib.file.mkOutOfStoreSymlink "/etc/nixos/_git/config_user";
+        xdg.configFile."git/ignore".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/_git/ignore";
       };
-    };
   };
 }
