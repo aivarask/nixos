@@ -21,8 +21,8 @@ super + {q,w,e,r}
  {\
  ,tdrop alacritty\
  ,firefox\
- ,chrome\
- ,alacritty --working-directory=/etc/nixos -e 'nvr'\
+ ,xid="$(tabbed -c -d -s -r 2 st -w x)"; cd /etc/nixos; st -w "$xid" nvim & st -w "$xid" vim \
+ ,alacritty --working-directory=/etc/nixos -e 'nvr' \
  }
 
 super + {W,E,R,T,Y}
@@ -47,8 +47,8 @@ super + {z,x,c,v}
  }
 
 super + {A,S}
- wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2%{-,+}
- # ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
+ ssh pcw -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}'
+ # wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2%{-,+}
 
 # DISPLAY=:0 xdotool getactivewindow key "Super+F1"
 # https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
