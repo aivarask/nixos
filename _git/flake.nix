@@ -1,8 +1,11 @@
 {
   outputs = _: {
     nixosModules.default =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
       {
+        programs.git.enable = true;
+        environment.etc."gitconfig".source = "/etc/nixos/_git/gitconfig";
+        # programs.git
         environment.systemPackages = with pkgs; [
           git
           git-lfs
