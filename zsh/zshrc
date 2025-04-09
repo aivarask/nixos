@@ -8,11 +8,15 @@ setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
 # source $(dirname $0)/zhooks.zsh
 # source ${0:A:h}/mycommand.zsh
 # compinit ${0:A:h}/_scrot
-# source ${0:A:h}/../fzf/man.zsh
 
 typeset -TU PATH path ':'
 # path+=( /etc/nixos/*(N-/) )
 # path+=/etc/nixos/zsh/bin
+
+typeset -TU LUA_PATH luapath ';'
+luapath+=('/etc/nixos/lua/?.lua')
+
+export LUA_PATH
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
 autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
@@ -34,10 +38,8 @@ bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 bindkey -s "^[[24~" "systemctl restart kmsconvt@tty1.service\n" # <F12>
-bindkey -s "^F" "fzf -m\n"
-bindkey -s "^G" "Rg\n"
-
-
+# bindkey -s "^F" "fzf -m\n"
+# bindkey -s "^G" "Rg\n"
 
 # cd $(nix flake metadata nixpkgs | grep 'Path' | awk '{print $2}')
 
@@ -54,9 +56,21 @@ cmd_xclip ()  {
 zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
-typeset -TU LUA_PATH luapath ';'
-luapath+=(
-	'/etc/nixos/lua/?.lua'
+# ripgrep->fzf->vim [QUERY]
+rfv() (
+  RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+  OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+            vim {1} +{2}     # No selection. Open the current line in Vim.
+          else
+            vim +cw -q {+f}  # Build quickfix list for the selected items.
+          fi'
+  fzf --disabled --ansi --multi \
+      --bind "start:$RELOAD" --bind "change:$RELOAD" \
+      --bind "enter:become:$OPENER" \
+      --bind "ctrl-o:execute:$OPENER" \
+      --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+      --delimiter : \
+      --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+      --preview-window '~4,+{2}+4/3,<80(up)' \
+      --query "$*"
 )
-export LUA_PATH
-

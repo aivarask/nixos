@@ -1,4 +1,3 @@
-# vim:ft=conf
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
 set hidden!
@@ -11,7 +10,7 @@ set shell "zsh"
 set shellopts "-ey"
 set previewer pistol
 # set cleaner cleaner
-#
+
 $mkdir -p ~/.trash
 map t
 

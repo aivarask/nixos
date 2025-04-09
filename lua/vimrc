@@ -11,8 +11,8 @@ set bufhidden=unload
 " set sessionoptions-=options
 set sessionoptions+=localoptions
 
-aug quit | au! | autocmd VimLeavePre,QuitPre * mksession! | aug END
-aug enter | au! | autocmd! VimEnter * source ./Session.vim | aug END
+"aug quit | au! | autocmd VimLeavePre,QuitPre * mksession! | aug END
+"aug enter | au! | autocmd! VimEnter * source ./Session.vim | aug END
 
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''

@@ -183,7 +183,7 @@
                 with inputs.lib.packages."${system}".lib;
                 [
                   {
-                    home.sessionPath = [ "/root/foo/bin" ];
+                    home.sessionPath = [ "/root/zoo/bin" ];
                   }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
@@ -198,8 +198,8 @@
                   inputs.vim.nixosModules.neovimPlugins
                   # inputs.vim.nixosModules.neovimOverlays
                   inputs.zsh.nixosModules.env.hm
-                  inputs.zsh.nixosModules.hm
-                  inputs.zsh.nixosModules.ff.bookmarks
+                  inputs.zsh.nixosModules.zsh
+                  inputs.zsh.nixosModules.fzf
                   ./browsers/chromium.nix
                   ./htop
                   ./kitty
