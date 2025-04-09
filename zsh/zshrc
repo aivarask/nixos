@@ -1,6 +1,7 @@
 # shellcheck shell=zsh
 export __ETC_PROFILE_SOURCED=
 export __NIXOS_SET_ENVIRONMENT_DONE=
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 source /etc/profile
 
 fpath=(/etc/nixos/zsh $fpath)

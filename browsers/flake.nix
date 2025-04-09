@@ -11,14 +11,30 @@
         default =
           { pkgs, ... }:
           {
-            environment.profiles = [ "${./.}" ];
             environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
               google-chrome # Stable Release
               google-chrome-beta # Beta Release
               google-chrome-dev # Dev Release
             ];
           };
-        chromium = import ./chromium.nix;
+        chromium =
+          {
+            pkgs,
+            lib,
+            osConfig,
+            ...
+          }:
+          {
+            home.sessionPath = [ "/etc/nixos/browsers/bin" ];
+            # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
+            programs.chromium.enable = lib.mkIf (osConfig.networking.hostName == "dell") true;
+            programs.chromium.commandLineArgs = [ ];
+            programs.chromium.extensions = [
+              {
+                id = "mlomiejdfkolichcflejclcbmpeaniij"; # https://github.com/ghostery/ghostery-extension
+              }
+            ];
+          };
         firefox =
           { pkgs, ... }:
           let

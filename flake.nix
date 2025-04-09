@@ -27,7 +27,6 @@
     audio.url = "./audio";
     browsers.url = "./browsers";
     browsers.inputs.nixpkgs.follows = "nixpkgs";
-    fzf.url = "./fzf";
     git.url = "./_git";
     go.url = "./go";
     lib.url = "./lib";
@@ -119,7 +118,6 @@
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
         inputs.browsers.nixosModules.default
-        inputs.fzf.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
         inputs.lib.nixosModules.default
@@ -182,14 +180,10 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
-                  {
-                    home.sessionPath = [ "/root/zoo/bin" ];
-                  }
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.browsers.nixosModules.firefox
                   inputs.browsers.nixosModules.chromium
-                  inputs.fzf.nixosModules.home
                   inputs.git.nixosModules.home
                   inputs.tmux.nixosModules.home
                   inputs.vim.nixosModules.commonPlugins
