@@ -1,21 +1,19 @@
-vim.o.pumheight = 10
+vim.o.pumheight = 16
 
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 -- vim.o.completeopt = "menu,menuone,nosort,preview"
 -- vim.o.completeopt = "fuzzy,menu,menuone,noselect,preview"
 
-
-
--- vim.lsp.config('*', {
--- root_markers = { '.git' },
--- capabilities = {
---   textDocument = {
---     semanticTokens = {
---       multilineTokenSupport = true,
---     }
---   }
--- }
--- })
+vim.lsp.config('*', {
+  root_markers = { '.git' },
+  capabilities = {
+    textDocument = {
+      semanticTokens = {
+        multilineTokenSupport = true,
+      }
+    }
+  }
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
@@ -65,7 +63,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
-
 
 
 

@@ -12,10 +12,6 @@
       url = "github:lfv89/vim-interestingwords";
       flake = false;
     };
-    nvim-lsp-file-operations = {
-      url = "github:antosha417/nvim-lsp-file-operations";
-      flake = false;
-    };
     neotest-playwright = {
       url = "github:thenbe/neotest-playwright";
       flake = false;
@@ -36,13 +32,11 @@
       url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
       flake = false;
     };
-    # https://github.com/samsze0/websocket.nvim
     websocket-nvim = {
       url = "github:samsze0/websocket.nvim";
       flake = false;
     };
     nvim-oxi = {
-      # https://github.com/noib3/nvim-oxi
       url = "github:noib3/nvim-oxi";
       flake = false;
     };
@@ -86,24 +80,12 @@
               vim-log-highlighting = buildVimPlugin {
                 name = "vim-log-highlighting";
                 src = vim-log-highlighting;
-                meta = {
-                  homepage = "https://github.com/MTDL9/vim-log-highlighting";
-                };
+                meta.homepage = "https://github.com/MTDL9/vim-log-highlighting";
               };
               vim-interestingwords = buildVimPlugin {
                 name = "vim-interestingwords";
                 src = vim-interestingwords;
-                meta = {
-                  homepage = "https://github.com/lfv89/vim-interestingwords";
-                };
-              };
-              nvim-lsp-file-operations = buildVimPlugin {
-                name = "nvim-lsp-file-operations";
-                src = nvim-lsp-file-operations;
-                meta = {
-                  homepage = "https://github.com/antosha417/nvim-lsp-file-operations";
-                };
-                doCheck = false;
+                meta.homepage = "https://github.com/lfv89/vim-interestingwords";
               };
               neotest-playwright = buildVimPlugin {
                 name = "neotest-playwright";
@@ -173,19 +155,13 @@
           {
             environment.etc."luajit".source = myLua;
             environment.etc."lua-language-server".source = pkgs.lua-language-server;
-            environment.systemPackages =
-              with pkgs;
-              [
-                neovim-remote
-                awesome
-                stylua
-                lua-language-server
-                myLua
-              ]
-              ++ [
-                # pkgs.luajitPackages.inspect
-              ];
-
+            environment.systemPackages = with pkgs; [
+              neovim-remote
+              awesome
+              stylua
+              lua-language-server
+              myLua
+            ];
           };
         commonPlugins =
           {
@@ -199,9 +175,6 @@
               vim-indentwise
               vim-commentary
               vim-matchup
-              # vim-markdown
-              # vim-floaterm
-              # lf-vim
             ];
             neovimOnlyPlugins = with pkgs.vimPlugins; [
               vim-sensible
@@ -215,7 +188,6 @@
               gitsigns-nvim
               lualine-nvim
               nvim-tree-lua
-              neorepl-nvim
               iron-nvim
               toggleterm-nvim
               # {
@@ -237,7 +209,6 @@
               vim-highlightedyank
               vim-lastplace
               direnv-vim
-              vim-fugitive
               tabular
               vim-log-highlighting
               vim-interestingwords
@@ -252,7 +223,7 @@
         vim =
           { pkgs, config, ... }:
           {
-            xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
+            xdg.configFile."vim/vimrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua/vimrc";
             programs.vim = {
               enable = true;
               extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
@@ -262,9 +233,6 @@
                 vim-surround
                 auto-pairs
                 nerdtree
-                # vim-repeat
-                # vim-sensible
-                # vim-matchit
               ];
             };
           };
@@ -272,7 +240,8 @@
           { config, ... }:
           {
             home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
-            xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
+            xdg.configFile."nvim/init.lua".source =
+              config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua/init.lua";
             programs.neovim = {
               enable = true;
               # extraConfig = ''source $XDG_CONFIG_HOME/nvim/init.vim'';
@@ -327,15 +296,6 @@
               # nvim-dap-go
               # nvim-dap-python
             ];
-            lsp = with pkgs.vimPlugins; [
-              conform-nvim
-              nvim-lspconfig
-              none-ls-nvim
-              goto-preview
-              lsp-overloads-nvim
-              lspkind-nvim
-              nvim-genghis
-            ];
             misc = with pkgs.vimPlugins; [
               SchemaStore-nvim
               outline-nvim
@@ -347,10 +307,8 @@
             ];
             telescope = with pkgs.vimPlugins; [
               telescope-nvim
-              # telescope-fzf-native-nvim
+              telescope-fzf-native-nvim
               telescope-symbols-nvim
-              # trouble-nvim
-              # todo-comments-nvim
             ];
             testing = with pkgs.vimPlugins; [
               # vim-test
@@ -385,7 +343,6 @@
           {
             programs.neovim.plugins =
               # ++ dap
-              # ++ lsp
               misc
               # ++ testing
               ++ telescope

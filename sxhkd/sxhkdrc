@@ -22,7 +22,7 @@ super + {q,w,e,r}
  ,tdrop alacritty\
  ,firefox\
  ,xid="$(tabbed -c -d -s -r 2 st -w x)"; cd /etc/nixos; st -w "$xid" nvim & st -w "$xid" vim \
- ,alacritty --working-directory=/etc/nixos -e 'nvr' \
+ ,alacritty --working-directory=/etc/nixos -e 'nvim -V1' \
  }
 
 super + {W,E,R,T,Y}

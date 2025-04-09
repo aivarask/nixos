@@ -11,39 +11,21 @@
         env.sys =
           { ... }:
           {
-            environment.profiles = [
-              "${./.}"
-              # "${pkgs.zsh-completions}"
-            ];
-
+            environment.profiles = [ "${./.}" ];
             # /etc/profile
-            programs.bash.shellInit = ''
-              # OS programs.bash.shellInit
-            '';
+            programs.bash.shellInit = ''# OS programs.bash.shellInit '';
             environment.shellInit = ''
               # OS environment.shellInit
               source /etc/nixos/profile
             '';
-
             # /etc/set-environment
-            environment.extraInit = ''
-              # OS environment.extraInit
-            '';
-
+            environment.extraInit = ''# OS environment.extraInit '';
             # /etc/bashrc
-            programs.bash.interactiveShellInit = ''
-              # OS programs.bash.interactiveShellInit
-            '';
-            environment.interactiveShellInit = ''
-              # OS environment.interactiveShellInit
-            '';
-
-            # /etc/zshenv
-            # /etc/zshrc
+            programs.bash.interactiveShellInit = ''# OS programs.bash.interactiveShellInit '';
+            environment.interactiveShellInit = ''# OS environment.interactiveShellInit '';
+            # /etc/zshenv /etc/zshrc
             programs.zsh.enable = true;
-            programs.zsh.shellInit = ''
-              # OS programs.zsh.shellInit
-            '';
+            programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
           };
         env.hm =
           { ... }:
@@ -51,36 +33,21 @@
             # /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
             xsession.enable = true;
-            xsession.profileExtra = ''
-              # HM xsession.profileExtra
-            '';
-            xsession.initExtra = ''
-              # HM xsession.initExtra
-            '';
+            xsession.profileExtra = ''# HM xsession.profileExtra '';
+            xsession.initExtra = ''# HM xsession.initExtra '';
             # https://mynixos.com/home-manager/options/programs.bash
             programs.bash.enable = true;
-            programs.bash.profileExtra = ''
-              # HM programs.bash.profileExtra
-            '';
-            programs.bash.initExtra = ''
-              # HM programs.bash.initExtra
-            '';
+            programs.bash.profileExtra = ''# HM programs.bash.profileExtra '';
+            programs.bash.initExtra = ''# HM programs.bash.initExtra '';
             programs.zsh.enable = true;
-            programs.zsh.profileExtra = ''
-              # HM programs.zsh.profileExtra
-            '';
-            programs.zsh.initExtraBeforeCompInit = ''
-              # HM programs.zsh.initExtraBeforeCompinit
-            '';
-            programs.zsh.completionInit = ''
-              # HM programs.zsh.completionInit
-            '';
+            programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra '';
+            programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit '';
+            programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
             programs.zsh.initExtra = ''
-              # programs.zsh.initExtra
+               # programs.zsh.initExtra
               source /etc/nixos/zsh/zshrc
             '';
           };
-
         hm =
           { pkgs, ... }:
           {
@@ -92,17 +59,12 @@
               dotenv-linter
               shellharden
             ];
-            programs.zsh = {
-              autocd = true;
-              syntaxHighlighting.enable = true;
-              autosuggestion.enable = true;
-              dotDir = ".config/zsh";
-              history = {
-                size = 10000;
-                extended = true;
-              };
-            };
-
+            programs.zsh.autocd = true;
+            programs.zsh.syntaxHighlighting.enable = true;
+            programs.zsh.autosuggestion.enable = true;
+            programs.zsh.dotDir = ".config/zsh";
+            programs.zsh.history.size = 10000;
+            programs.zsh.history.extended = true;
           };
         ff.bookmarks =
           { lib, config, ... }:

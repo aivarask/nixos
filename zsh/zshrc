@@ -1,5 +1,4 @@
-# shellcheck shell=bash
-
+# shellcheck shell=zsh
 export __ETC_PROFILE_SOURCED=
 export __NIXOS_SET_ENVIRONMENT_DONE=
 source /etc/profile

@@ -26,7 +26,7 @@ set undofile
 set autowriteall
 set updatetime=250
 set timeoutlen=600
-set bufhidden=wipe
+set bufhidden=unload
 set commentstring=#\ %s
 set conceallevel=2
 set clipboard=unnamedplus
@@ -34,9 +34,10 @@ set clipboard=unnamedplus
 " set nolisp
 set autoindent
 set smartindent
-set paste
+"set paste
 " set shiftwidth=2
 " set tabstop=2
+
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -79,8 +80,7 @@ nnoremap <silent> <leader>a :call SaveExec()<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
 
-noremap <C-S-,> :left<CR>
-
+"noremap <C-S-,> :left<CR>
 
 nnoremap ?a :edit /etc/nixos/lua/cfg/_autocmd.vim<CR>
 nnoremap ?b :edit /etc/nixos/bashrc<CR>
@@ -88,7 +88,6 @@ nnoremap ?c :edit /etc/nixos/lua/_completion.lua<CR>
 nnoremap ?d :edit /etc/nixos/lua/_dap.lua<CR>
 nnoremap ?e :edit /etc/nixos/config/environment.nix<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
-nnoremap ?g :edit /etc/nixos/lua/cfg/git.lua<CR>
 nnoremap ?p :edit /etc/nixos/profile<CR>
 nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
 nnoremap ?S :execute 'edit ' . getenv("XDG_CONFIG_HOME") . '/sxhkd/sxhkdrc'<CR>
@@ -104,7 +103,7 @@ endif
 
 if has('nvim')
   set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
-	set undodir=$XDG_STATE_HOME/nvim/undo
+  set nofoldenable
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
@@ -113,7 +112,6 @@ if has('nvim')
 	" set foldnestmax=4
 	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
-	set nofoldenable
 
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
