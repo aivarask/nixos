@@ -33,22 +33,26 @@
             # /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
             xsession.enable = true;
+            # $HOME/.xprofile
             xsession.profileExtra = ''# HM xsession.profileExtra '';
+            # $HOME/.xsession
             xsession.initExtra = ''# HM xsession.initExtra '';
             programs.bash.enable = true;
+            # $HOME/.bash_profile
             programs.bash.profileExtra = ''# HM programs.bash.profileExtra '';
+            # $HOME/.bashrc
             programs.bash.initExtra = ''# HM programs.bash.initExtra '';
             programs.zsh.enable = true;
-            # ~/.config/zsh/.zprofile
+            # $HOME/.zprofile
             programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra '';
-            # ~/.config/zsh/.zshenv
+            # $HOME/.zshenv
             programs.zsh.envExtra = ''# HM programs.zsh.envExtra '';
-            # ~/.config/zsh/.zshrc
+            # $HOME/.zshrc
             programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit '';
             programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
             programs.zsh.initExtra = ''
                # programs.zsh.initExtra
-              source /etc/nixos/zsh/zshrc
+              . $SELF/
             '';
           };
         zsh =

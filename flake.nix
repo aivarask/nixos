@@ -45,7 +45,7 @@
     };
     wayland.url = "./wayland";
     x11.url = "./x11";
-    zsh.url = "./zsh";
+    sh.url = "./sh";
     #
     # aldale.url = "./aldale";
     aiva.url = "./aiva";
@@ -132,7 +132,7 @@
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
         inputs.x11.nixosModules.default
-        inputs.zsh.nixosModules.env.sys
+        inputs.sh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
@@ -193,9 +193,9 @@
                   inputs.vim.nixosModules.neovim
                   inputs.vim.nixosModules.neovimPlugins
                   # inputs.vim.nixosModules.neovimOverlays
-                  inputs.zsh.nixosModules.env.hm
-                  inputs.zsh.nixosModules.zsh
-                  inputs.zsh.nixosModules.fzf
+                  inputs.sh.nixosModules.env.hm
+                  inputs.sh.nixosModules.sh
+                  inputs.sh.nixosModules.fzf
                   inputs.x11.nixosModules.hm
                   ./htop
                   ./kitty

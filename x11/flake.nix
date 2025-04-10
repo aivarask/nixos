@@ -2,9 +2,12 @@
   outputs = _: {
     nixosModules = {
       hm =
-        { config, ... }:
+        { config, osConfig, ... }:
         {
-          home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "$SELF/x11/xinitrc";
+          home.file.".xinitrc".source =
+            #
+            config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc";
+          # config.lib.file.mkOutOfStoreSymlink "${osConfig.environment.variables.SELF}/x11/xinitrc";
         };
       default =
         {

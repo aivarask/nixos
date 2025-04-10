@@ -2,9 +2,8 @@
 # export __ETC_PROFILE_SOURCED=
 # export __NIXOS_SET_ENVIRONMENT_DONE=
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-# source /etc/profile
 
-fpath=(/etc/nixos/zsh $fpath)
+fpath=(/etc/nixos/sh $fpath)
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
 # source $(dirname $0)/zhooks.zsh
 # source ${0:A:h}/mycommand.zsh
