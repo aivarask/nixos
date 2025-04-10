@@ -23,7 +23,7 @@
             programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
           };
         env.hm =
-          { config, ... }:
+          { config, SELF, ... }:
           {
             # /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
@@ -42,7 +42,7 @@
                # HM programs.zsh.initExtra
               . $SELF/sh/zsh/zshrc.extra
             '';
-            home.file.".zshrc.extra".source = config.lib.file.mkOutOfStoreSymlink "";
+            home.file.".zshrc.extra".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshrc.extra";
           };
         zsh =
           { pkgs, ... }:
