@@ -12,48 +12,37 @@
           { ... }:
           {
             environment.profiles = [ "${./.}" ];
-            # /etc/profile
-            programs.bash.shellInit = ''# OS programs.bash.shellInit '';
-            environment.shellInit = ''
-              # OS environment.shellInit
-              # source /etc/nixos/profile
-            '';
-            # /etc/set-environment
-            environment.extraInit = ''# OS environment.extraInit '';
+            environment.shellInit = ''# OS environment.shellInit ''; # /etc/profile
+            environment.extraInit = ''# OS environment.extraInit ''; # /etc/set-environment
             # /etc/bashrc
+            programs.bash.shellInit = ''# OS programs.bash.shellInit ''; # /etc/bashrc
             programs.bash.interactiveShellInit = ''# OS programs.bash.interactiveShellInit '';
             environment.interactiveShellInit = ''# OS environment.interactiveShellInit '';
-            # /etc/zshenv /etc/zshrc
+            # /etc/zshenv /etc/zshrc /etc/zinputrc
             programs.zsh.enable = true;
             programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
           };
         env.hm =
-          { ... }:
+          { config, ... }:
           {
-            # /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
+            # /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
             xsession.enable = true;
-            # $HOME/.xprofile
-            xsession.profileExtra = ''# HM xsession.profileExtra '';
-            # $HOME/.xsession
-            xsession.initExtra = ''# HM xsession.initExtra '';
+            xsession.profileExtra = ''# HM xsession.profileExtra ''; # $HOME/.xprofile
+            xsession.initExtra = ''# HM xsession.initExtra ''; # $HOME/.xsession
             programs.bash.enable = true;
-            # $HOME/.bash_profile
-            programs.bash.profileExtra = ''# HM programs.bash.profileExtra '';
-            # $HOME/.bashrc
-            programs.bash.initExtra = ''# HM programs.bash.initExtra '';
+            programs.bash.profileExtra = ''# HM programs.bash.profileExtra ''; # $HOME/.bash_profile
+            programs.bash.initExtra = ''# HM programs.bash.initExtra ''; # $HOME/.bashrc
             programs.zsh.enable = true;
-            # $HOME/.zprofile
-            programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra '';
-            # $HOME/.zshenv
-            programs.zsh.envExtra = ''# HM programs.zsh.envExtra '';
-            # $HOME/.zshrc
-            programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit '';
+            programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra ''; # $HOME/.zprofile
+            programs.zsh.envExtra = ''# HM programs.zsh.envExtra ''; # $HOME/.zshenv
+            programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
             programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
             programs.zsh.initExtra = ''
-               # programs.zsh.initExtra
-              . $SELF/
+               # HM programs.zsh.initExtra
+              . $SELF/sh/zsh/zshrc.extra
             '';
+            home.file.".zshrc.extra".source = config.lib.file.mkOutOfStoreSymlink "";
           };
         zsh =
           { pkgs, ... }:
@@ -86,6 +75,23 @@
             ];
 
           };
+        starship = _: {
+          programs.starship = {
+            enable = true;
+            enableBashIntegration = true;
+            enableZshIntegration = true;
+            enableNushellIntegration = true;
+            settings = {
+              add_newline = false;
+              package.disabled = true;
+              golang.disabled = true;
+              lua.disabled = true;
+              nodejs.disabled = true;
+              php.disabled = true;
+              rust.disabled = true;
+            };
+          };
+        };
         fzf =
           { config, ... }:
           {

@@ -168,6 +168,7 @@
             sharedModules = [ ];
             extraSpecialArgs = {
               inherit inputs;
+              SELF = "/etc/nixos";
             };
             users.root = {
               home.stateVersion = "23.05";
@@ -194,8 +195,9 @@
                   inputs.vim.nixosModules.neovimPlugins
                   # inputs.vim.nixosModules.neovimOverlays
                   inputs.sh.nixosModules.env.hm
-                  inputs.sh.nixosModules.sh
+                  inputs.sh.nixosModules.zsh
                   inputs.sh.nixosModules.fzf
+                  inputs.sh.nixosModules.starship
                   inputs.x11.nixosModules.hm
                   ./htop
                   ./kitty
