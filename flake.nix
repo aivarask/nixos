@@ -33,7 +33,6 @@
     manix.url = "./manix";
     matrix.url = "./matrix";
     node.url = "./node";
-    pistol.url = "./pistol";
     python.url = "./python";
     rust.url = "./rust";
     suckless.url = "./suckless";
@@ -125,7 +124,6 @@
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.node.nixosModules.default
-        inputs.pistol.nixosModules.default
         inputs.python.nixosModules.default
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
@@ -197,6 +195,7 @@
                   inputs.sh.nixosModules.env.hm
                   inputs.sh.nixosModules.zsh
                   inputs.sh.nixosModules.bat
+                  inputs.sh.nixosModules.pistol
                   inputs.sh.nixosModules.fzf
                   inputs.sh.nixosModules.starship
                   inputs.x11.nixosModules.hm
