@@ -196,6 +196,7 @@
                   # inputs.vim.nixosModules.neovimOverlays
                   inputs.sh.nixosModules.env.hm
                   inputs.sh.nixosModules.zsh
+                  inputs.sh.nixosModules.bat
                   inputs.sh.nixosModules.fzf
                   inputs.sh.nixosModules.starship
                   inputs.x11.nixosModules.hm

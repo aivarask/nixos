@@ -9,17 +9,45 @@
     {
       nixosModules = {
         env.sys =
-          { ... }:
+          { lib, ... }:
           {
-            environment.profiles = [ "${./.}" ];
+            imports = [
+              (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
+            ];
+            environment.variables.SELF = "/etc/nixos";
+            environment.variables.EDITOR = "vim";
+            # environment.pathsToLink = [
+            #   "/share/zsh"
+            #   "/share/fish"
+            # ];
+            environment.shellAliases = {
+              ".." = "cd ..";
+              "..." = "../..";
+              x = "startx";
+              wol_pc = "wol b4:2e:99:61:09:cf";
+            };
+            environment.sessionVariables = rec {
+              XDG_CACHE_HOME = "$HOME/.cache";
+              XDG_CONFIG_HOME = "$HOME/.config";
+              XDG_DATA_HOME = "$HOME/.local/share";
+              XDG_STATE_HOME = "$HOME/.local/state";
+              XDG_BIN_HOME = "$HOME/.local/bin";
+              PATH = [
+                "${XDG_BIN_HOME}"
+                "/etc/nixos/bin"
+              ];
+            };
+            environment.profiles = [
+              "/etc/nixos"
+            ];
+            # environment.profiles = [ "${./.}" ];
             environment.shellInit = ''# OS environment.shellInit ''; # /etc/profile
             environment.extraInit = ''# OS environment.extraInit ''; # /etc/set-environment
-            # /etc/bashrc
             programs.bash.shellInit = ''# OS programs.bash.shellInit ''; # /etc/bashrc
             programs.bash.interactiveShellInit = ''# OS programs.bash.interactiveShellInit '';
             environment.interactiveShellInit = ''# OS environment.interactiveShellInit '';
-            # /etc/zshenv /etc/zshrc /etc/zinputrc
             programs.zsh.enable = true;
+            # /etc/zshenv /etc/zshrc /etc/zinputrc
             programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
           };
         env.hm =
@@ -40,13 +68,14 @@
             programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
             programs.zsh.initExtra = ''
                # HM programs.zsh.initExtra
-              . $SELF/sh/zsh/zshrc.extra
+              source $HOME/.zshrc.extra
             '';
             home.file.".zshrc.extra".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshrc.extra";
           };
         zsh =
           { pkgs, ... }:
           {
+            # https://github.com/rothgar/mastering-zsh
             home.packages = with pkgs; [
               zed-editor
               bash-language-server
@@ -62,6 +91,7 @@
             programs.zsh.history.size = 10000;
             programs.zsh.history.extended = true;
             programs.zsh.plugins = [
+              #https://github.com/agkozak/zhooks
               # {
               #   name = "vi-mode";
               #   src = pkgs.zsh-vi-mode; # https://github.com/jeffreytse/zsh-vi-mode
@@ -92,7 +122,26 @@
             };
           };
         };
-        fzf =
+        bat =
+          {
+            pkgs,
+            config,
+            SELF,
+            ...
+          }:
+          {
+            programs.bat.enable = true;
+            xdg.configFile."bat/config".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/bat.config";
+            programs.bat.extraPackages = with pkgs.bat-extras; [
+              batgrep
+              batman
+              batpipe
+              batwatch
+              batdiff
+              prettybat
+            ];
+          };
+        fzf = # https://junegunn.github.io/
           { config, ... }:
           {
             home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/zsh/ripgreprc";

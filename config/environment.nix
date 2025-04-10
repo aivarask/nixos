@@ -1,35 +1,5 @@
 { pkgs, lib, ... }:
 {
-  imports = [
-    (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
-  ];
-
-  environment.variables.SELF = "/etc/nixos";
-  environment.variables.EDITOR = "vim";
-  # environment.pathsToLink = [
-  #   "/share/zsh"
-  #   "/share/fish"
-  # ];
-  environment.shellAliases = {
-    ".." = "cd ..";
-    "..." = "../..";
-    x = "startx";
-    wol_pc = "wol b4:2e:99:61:09:cf";
-  };
-  environment.sessionVariables = rec {
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
-    XDG_BIN_HOME = "$HOME/.local/bin";
-    PATH = [
-      "${XDG_BIN_HOME}"
-      "/etc/nixos/bin"
-    ];
-  };
-  environment.profiles = [
-    "/etc/nixos"
-  ];
   environment.systemPackages = (
     with pkgs;
     [

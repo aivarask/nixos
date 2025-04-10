@@ -15,7 +15,6 @@ typeset -TU PATH path ':'
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=('/etc/nixos/lua/?.lua')
-
 export LUA_PATH
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
