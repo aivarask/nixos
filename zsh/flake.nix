@@ -39,7 +39,11 @@
             programs.bash.profileExtra = ''# HM programs.bash.profileExtra '';
             programs.bash.initExtra = ''# HM programs.bash.initExtra '';
             programs.zsh.enable = true;
+            # ~/.config/zsh/.zprofile
             programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra '';
+            # ~/.config/zsh/.zshenv
+            programs.zsh.envExtra = ''# HM programs.zsh.envExtra '';
+            # ~/.config/zsh/.zshrc
             programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit '';
             programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
             programs.zsh.initExtra = ''
@@ -58,9 +62,6 @@
               dotenv-linter
               shellharden
             ];
-            home.sessionPath = [ "/root/woo/bin" ];
-            home.sessionVariables.AIVA = "1";
-
             programs.zsh.autocd = true;
             programs.zsh.syntaxHighlighting.enable = true;
             programs.zsh.autosuggestion.enable = true;

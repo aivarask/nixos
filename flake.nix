@@ -44,6 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wayland.url = "./wayland";
+    x11.url = "./x11";
     zsh.url = "./zsh";
     #
     # aldale.url = "./aldale";
@@ -130,6 +131,7 @@
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
+        inputs.x11.nixosModules.default
         inputs.zsh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
@@ -194,7 +196,7 @@
                   inputs.zsh.nixosModules.env.hm
                   inputs.zsh.nixosModules.zsh
                   inputs.zsh.nixosModules.fzf
-                  ./browsers/chromium.nix
+                  inputs.x11.nixosModules.hm
                   ./htop
                   ./kitty
                   ./lf

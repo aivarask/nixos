@@ -1,8 +1,8 @@
 # shellcheck shell=zsh
-export __ETC_PROFILE_SOURCED=
-export __NIXOS_SET_ENVIRONMENT_DONE=
+# export __ETC_PROFILE_SOURCED=
+# export __NIXOS_SET_ENVIRONMENT_DONE=
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-source /etc/profile
+# source /etc/profile
 
 fpath=(/etc/nixos/zsh $fpath)
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
