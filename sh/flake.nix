@@ -149,15 +149,13 @@
               config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/pistol.conf";
           };
         fzf = # https://junegunn.github.io/
-          { config, ... }:
+          { config, SELF, ... }:
           {
-            home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/zsh/ripgreprc";
+            programs.ripgrep.enable = true;
+            home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/ripgreprc";
             programs.fzf.enable = true;
             programs.fzf.enableBashIntegration = true;
             programs.fzf.enableZshIntegration = true;
-            # fileWidgetCommand = "fd -tf --exclude '*.drv'"; # Ctrl-t
-            # changeDirWidgetCommand = "fd -td"; # Alt-c
-            # defaultCommand = "fd -tf -H --exclude  '*.drv'"; # Ctrl-f
             # defaultOptions = [
             #   # "--style full"
             #   # "--bind 'focus:transform-header:file --brief {}'"

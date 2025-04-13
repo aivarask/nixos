@@ -118,6 +118,7 @@
           {
             home.sessionVariables.MOZ_USE_XINPUT2 = "1";
             home.sessionVariables.MOZ_X11_EGL = "1";
+            home.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
             home.packages = [ pkgs.geckodriver ];
             programs.firefox = {
               enable = true;

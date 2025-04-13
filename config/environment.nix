@@ -59,7 +59,6 @@
       tokei # loc unmaintained
       tree
       fd
-      ripgrep
       trash-cli
       neofetch
       translate-shell
