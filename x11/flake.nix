@@ -29,7 +29,7 @@
               xbindkeys
               xvkbd
               wmctrl
-              # xpra # https://github.com/Xpra-org/xpra/blob/master/docs/Usage/README.md
+              xpra # https://github.com/Xpra-org/xpra/blob/master/docs/Usage/README.md
             ]
             ++ (with pkgs.xorg; [
               xbacklight
@@ -47,7 +47,7 @@
           services.libinput.touchpad.accelSpeed = "+0.5";
           services.xserver.enable = true;
           services.xserver.config = '''';
-          services.xserver.displayManager.xpra.enable = true;
+          services.xserver.displayManager.xpra.enable = false;
           services.xserver.windowManager.awesome.enable = lib.mkDefault false;
           services.xserver.windowManager.dwm.enable = lib.mkDefault true;
           services.xserver.autoRepeatDelay = 200;
@@ -55,6 +55,7 @@
           services.xserver.enableCtrlAltBackspace = true;
           services.xserver.enableTCP = true;
           services.xserver.upscaleDefaultCursor = true;
+          services.xserver.xkb.model = "pc104";
           services.xserver.xkb.layout = "us,lt";
           services.xserver.xkb.options = "grp:menu_toggle"; # localectl list-x11-keymap-options
           services.xserver.xkb.variant = "qwerty"; # localectl list-x11-keymap-variants
@@ -70,7 +71,7 @@
           services.xserver.dpi = lib.mkDefault null;
           services.xserver.tty = null;
           services.xserver.displayManager.startx.enable = true;
-          services.xserver.displayManager.startx.generateScript = true;
+          services.xserver.displayManager.startx.generateScript = false;
           services.xserver.imwheel.enable = true;
           services.xserver.imwheel.rules = {
             "^(telegram-desktop|chromium|brave|firefox).*" = ''
