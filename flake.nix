@@ -43,30 +43,13 @@
     aiva.url = "./aiva";
   };
   outputs =
-    { ... }@inputs:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      # pkgs = nixpkgs.legacyPackages.${system};
-      # pkgs = import inputs.nixpkgs {
-      #   inherit system;
-      #   overlays = [
-      #     inputs.nur.overlays.default
-      #     # inputs.browsers.overlays.default
-      #   ];
-      # };
-      pkgs3 = final: prev: {
-        nps = inputs.nps.packages.${prev.system}.default;
-      };
       commonModules = with inputs; [
         (
-          { config, pkgs, ... }:
+          { pkgs, ... }:
           {
-            imports = [ ./nps.nix ];
-            nixpkgs.overlays = [
-              pkgs3
-              (_: _: { inherit LS_COLORS; })
-
-            ];
             environment.systemPackages = [
               pkgs.utf8proc
               pkgs.git
@@ -191,10 +174,16 @@
       ];
     in
     {
-      # devShells."${system}".default = pkgs.mkShell { };
       # formatter."${system}" = pkgs.nixfmt-rfc-style;
-      nixosConfigurations.dell = inputs.nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./dell ];
+      nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
+        modules =
+          [
+            ./LS_COLORS.nix
+            ./nps.nix
+
+          ]
+          ++ commonModules
+          ++ [ ./dell ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {

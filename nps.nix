@@ -1,7 +1,15 @@
-{ pkgs3, inputs, ... }:
+{ pkgs, inputs, ... }:
+let
+
+in
 {
+  nixpkgs.overlays = with inputs; [
+    (final: prev: {
+      aiv.nps = inputs.nps.packages.${prev.system}.default;
+    })
+  ];
   environment.systemPackages = [
-    pkgs3.nps # https://github.com/OleMussmann/nps
+    pkgs.aiv.nps # https://github.com/OleMussmann/nps
   ];
   systemd.timers."refresh-nps-cache" = {
     wantedBy = [ "timers.target" ];
@@ -22,7 +30,7 @@
     script = ''
       set -eu
       echo "Start refreshing nps cache..."
-      ${pkgs3.nps}/bin/nps -dddd -e -r
+      ${pkgs.aiv.nps}/bin/nps -dddd -e -r
       echo "... finished nps cache with exit code $?."
     '';
   };
