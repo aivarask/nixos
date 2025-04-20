@@ -13,6 +13,8 @@
           {
             imports = [
               (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
+
+              (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "root" ])
             ];
             environment.variables.SELF = "/etc/nixos";
             environment.variables.EDITOR = "vim";

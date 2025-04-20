@@ -40,7 +40,7 @@
     sh.url = "./sh";
     #
     # aldale.url = "./aldale";
-    aiva.url = "./aiva";
+    # aiva.url = "./aiva";
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -84,6 +84,7 @@
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
+        ./sql/sql.nix
         ./ollama.nix
         ./dialog
         ./xdg
@@ -98,7 +99,6 @@
                 ./systemd/video.nix
                 ./virt/virtualbox.nix
                 ./wallpaper
-                ./sql.nix
                 ./playwright.nix
               ]
               ++ i ./config
@@ -134,7 +134,6 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
-                  ( lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "root"] )
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.browsers.nixosModules.firefox
@@ -161,7 +160,7 @@
                   ./sxhkd
                   #
                   ./rofi
-                  ./sql_.nix
+                  ./sql/sql_.nix
                   ./term/alacritty_.nix
                   ./term/wezterm_.nix
                 ]
@@ -179,6 +178,7 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules =
           [
+
             ./LS_COLORS.nix
             ./nps.nix
           ]

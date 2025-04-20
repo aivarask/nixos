@@ -16,17 +16,6 @@
         "type": "github"
       }
     },
-    "aiva": {
-      "locked": {
-        "path": "./aiva",
-        "type": "path"
-      },
-      "original": {
-        "path": "./aiva",
-        "type": "path"
-      },
-      "parent": []
-    },
     "audio": {
       "inputs": {
         "musnix": "musnix"
@@ -877,7 +866,6 @@
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
-        "aiva": "aiva",
         "audio": "audio",
         "browsers": "browsers",
         "dev-templates": "dev-templates",

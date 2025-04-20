@@ -1,8 +1,15 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 let
 
 in
 {
+  imports = [
+  ];
   nixpkgs.overlays = with inputs; [
     (final: prev: {
       aiv.nps = inputs.nps.packages.${prev.system}.default;
