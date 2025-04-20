@@ -134,6 +134,7 @@
               imports =
                 with inputs.lib.packages."${system}".lib;
                 [
+                  ( lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "root"] )
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
                   inputs.browsers.nixosModules.firefox
@@ -180,7 +181,6 @@
           [
             ./LS_COLORS.nix
             ./nps.nix
-
           ]
           ++ commonModules
           ++ [ ./dell ];
