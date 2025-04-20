@@ -9,10 +9,7 @@ return {
       nixpkgs = { expr = 'import (builtins.getFlake "self").inputs.nixpkgs {}' },
       options = {
         nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
-        home_manager = {
-          expr =
-          '(builtins.getFlake "self").nixosConfigurations.dell.options.home-manager.users.type.getSubOptions []',
-        },
+        -- home_manager = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options.home-manager.users.type.getSubOptions []', },
       },
       diagnostic = {
         suppress = {

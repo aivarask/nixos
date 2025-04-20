@@ -12,8 +12,8 @@
     nil
     nurl
     deadnix
-    fh # flakehub
-    nix-tree # https://github.com/utdemir/nix-tree
+    fh
+    nix-tree
     nixos-generators
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";

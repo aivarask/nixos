@@ -6,8 +6,8 @@
     # python3Packages.transformers
     # python3Packages.trlib
     cudatoolkit
-    python3Packages.llama-index-cli
-    python3Packages.llama-index-llms-ollama
+    # python3Packages.llama-index-cli
+    # python3Packages.llama-index-llms-ollama
   ];
   # https://wiki.nixos.org/wiki/Ollama
   # https://ollama.com/library

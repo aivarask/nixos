@@ -28,7 +28,7 @@
             distrho-ports
             lsp-plugins
             # bitwig-studio
-            mixxx
+            # mixxx
             yoshimi
             guitarix
             # muse # fails
@@ -39,7 +39,7 @@
           # environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "0";
           environment.variables.QT_FONT_DPI = config.services.xserver.dpi;
           services.udev.packages = [
-            pkgs.mixxx
+            # pkgs.mixxx
             pkgs.bitwig-studio
             pkgs.vital
           ];

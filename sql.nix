@@ -6,7 +6,7 @@
     sqlite-interactive
     sqlite-analyzer
     sqlite-web
-    harlequin
+    # harlequin
 
     sqlint
     sqlfluff # 7k

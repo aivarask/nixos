@@ -1,9 +1,6 @@
 {
   inputs = {
-
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nipkgs/0.1.0.tar.gz";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     nps.url = "github:OleMussmann/nps";
     nps.inputs.nixpkgs.follows = "nixpkgs";
     templates.url = "github:NixOS/templates";
@@ -11,10 +8,8 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -22,8 +17,10 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
-    #
-    LS_COLORS.url = "./LS_COLORS";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    LS_COLORS.url = "github:trapd00r/LS_COLORS";
+    LS_COLORS.flake = false;
     audio.url = "./audio";
     browsers.url = "./browsers";
     browsers.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,10 +35,6 @@
     suckless.url = "./suckless";
     tmux.url = "./tmux";
     vim.url = "./lua";
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wayland.url = "./wayland";
     x11.url = "./x11";
     sh.url = "./sh";
@@ -50,21 +43,36 @@
     aiva.url = "./aiva";
   };
   outputs =
-    { nixpkgs, ... }@inputs:
+    { ... }@inputs:
     let
       system = "x86_64-linux";
       # pkgs = nixpkgs.legacyPackages.${system};
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          inputs.nur.overlays.default
-          (final: prev: {
-            nps = inputs.nps.packages.${prev.system}.default;
-          })
-          # inputs.browsers.overlays.default
-        ];
+      # pkgs = import inputs.nixpkgs {
+      #   inherit system;
+      #   overlays = [
+      #     inputs.nur.overlays.default
+      #     # inputs.browsers.overlays.default
+      #   ];
+      # };
+      pkgs3 = final: prev: {
+        nps = inputs.nps.packages.${prev.system}.default;
       };
       commonModules = with inputs; [
+        (
+          { config, pkgs, ... }:
+          {
+            imports = [ ./nps.nix ];
+            nixpkgs.overlays = [
+              pkgs3
+              (_: _: { inherit LS_COLORS; })
+
+            ];
+            environment.systemPackages = [
+              pkgs.utf8proc
+              pkgs.git
+            ];
+          }
+        )
         {
           # gestures
           # https://www.youtube.com/watch?v=qeVzPaBifPc
@@ -73,47 +81,6 @@
           # https://mynixos.com/search?q=touchegg
           services.touchegg.enable = true;
         }
-        {
-          environment.systemPackages = [ pkgs.utf8proc ];
-          nixpkgs.overlays = [
-            # inputs.neovim-nightly-overlay.overlays.default
-          ];
-        }
-        {
-          environment.systemPackages = [
-            pkgs.nps # https://github.com/OleMussmann/nps
-          ];
-          systemd.timers."refresh-nps-cache" = {
-            wantedBy = [ "timers.target" ];
-            timerConfig = {
-              OnCalendar = "5m"; # daily
-              Persistent = true;
-              Unit = "refresh-nps-cache.service";
-            };
-          };
-
-          systemd.services."refresh-nps-cache" = {
-            # Make sure `nix` and `nix-env` are findable by systemd.services.
-            path = [ "/run/current-system/sw/" ];
-            serviceConfig = {
-              Type = "oneshot";
-              User = "REPLACE_ME"; # ⚠️ replace with your "username" or "${user}", if it's defined
-            };
-            script = ''
-              set -eu
-              echo "Start refreshing nps cache..."
-              ${pkgs.nps}/bin/nps -dddd -e -r
-              echo "... finished nps cache with exit code $?."
-            '';
-          };
-        }
-        {
-          environment.systemPackages = [
-            pkgs.git
-          ];
-        }
-
-        inputs.LS_COLORS.nixosModules.default
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
@@ -163,13 +130,16 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
-            sharedModules = [ ];
+            sharedModules = [
+              {
+                home.stateVersion = "23.05";
+              }
+            ];
             extraSpecialArgs = {
               inherit inputs;
               SELF = "/etc/nixos";
             };
             users.root = {
-              home.stateVersion = "23.05";
               home.username = "root";
               home.homeDirectory = "/root";
               home.enableNixpkgsReleaseCheck = false;
@@ -221,35 +191,13 @@
       ];
     in
     {
-      packages.x86_64-linux = {
-        iso = inputs.nixos-generators.nixosGenerate {
-          system = system;
-          format = "iso"; # https://github.com/nix-community/nixos-generators#supported-formats
-          modules = [
-            {
-              environment.systemPackages = [
-                pkgs.vim
-              ];
-            }
-          ];
-        };
-        vbox = inputs.nixos-generators.nixosGenerate {
-          system = system;
-          format = "virtualbox";
-        };
-      };
-      checks."${system}".default = pkgs.testers.runNixOSTest {
-        name = "self";
-        nodes.machine = { ... }: { };
-        testScript = builtins.readFile ./flake.test.py;
-      };
-      devShells."${system}".default = pkgs.mkShell { };
-      formatter."${system}" = pkgs.nixfmt-rfc-style;
-      nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
+      # devShells."${system}".default = pkgs.mkShell { };
+      # formatter."${system}" = pkgs.nixfmt-rfc-style;
+      nixosConfigurations.dell = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./dell ];
         specialArgs = { inherit inputs; };
       };
-      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./pc ];
         specialArgs = { inherit inputs; };
       };
