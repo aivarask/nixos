@@ -734,6 +734,7 @@
         "dwm-flexipatch": "dwm-flexipatch",
         "home-manager": "home-manager",
         "musnix": "musnix",
+        "neotest-playwright": "neotest-playwright",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nix-index-database": "nix-index-database",
@@ -742,13 +743,20 @@
         "nixpkgs": "nixpkgs_3",
         "nps": "nps",
         "nur": "nur",
+        "nvim-oxi": "nvim-oxi",
+        "one-small-step-for-vimkind": "one-small-step-for-vimkind",
+        "persistent-breakpoints": "persistent-breakpoints",
         "rust-overlay": "rust-overlay",
+        "smart-semicolon": "smart-semicolon",
         "st-flexipatch": "st-flexipatch",
+        "sxhkd-vim": "sxhkd-vim",
         "sxiv-tabbed": "sxiv-tabbed",
         "tabbed-flexipatch": "tabbed-flexipatch",
         "templates": "templates",
-        "vim": "vim",
-        "wayland": "wayland"
+        "tree-sitter-language-injection": "tree-sitter-language-injection",
+        "vim-interestingwords": "vim-interestingwords",
+        "vim-log-highlighting": "vim-log-highlighting",
+        "websocket-nvim": "websocket-nvim"
       }
     },
     "rust-overlay": {
@@ -937,29 +945,6 @@
         "type": "github"
       }
     },
-    "vim": {
-      "inputs": {
-        "neotest-playwright": "neotest-playwright",
-        "nvim-oxi": "nvim-oxi",
-        "one-small-step-for-vimkind": "one-small-step-for-vimkind",
-        "persistent-breakpoints": "persistent-breakpoints",
-        "smart-semicolon": "smart-semicolon",
-        "sxhkd-vim": "sxhkd-vim",
-        "tree-sitter-language-injection": "tree-sitter-language-injection",
-        "vim-interestingwords": "vim-interestingwords",
-        "vim-log-highlighting": "vim-log-highlighting",
-        "websocket-nvim": "websocket-nvim"
-      },
-      "locked": {
-        "path": "./lua",
-        "type": "path"
-      },
-      "original": {
-        "path": "./lua",
-        "type": "path"
-      },
-      "parent": []
-    },
     "vim-interestingwords": {
       "flake": false,
       "locked": {
@@ -991,17 +976,6 @@
         "repo": "vim-log-highlighting",
         "type": "github"
       }
-    },
-    "wayland": {
-      "locked": {
-        "path": "./wayland",
-        "type": "path"
-      },
-      "original": {
-        "path": "./wayland",
-        "type": "path"
-      },
-      "parent": []
     },
     "websocket-nvim": {
       "flake": false,

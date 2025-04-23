@@ -26,8 +26,6 @@
     musnix.url = "github:musnix/musnix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     #
-    # aldale.url = "./aldale";
-    # aiva.url = "./aiva";
     dmenu-flexipatch.url = "github:bakkeby/dmenu-flexipatch";
     dmenu-flexipatch.flake = false;
     dwm-flexipatch.url = "github:bakkeby/dwm-flexipatch";
@@ -83,10 +81,6 @@
           # https://mynixos.com/search?q=touchegg
           services.touchegg.enable = true;
         }
-        inputs.vim.nixosModules.default
-        inputs.vim.nixosModules.lua
-        # inputs.aldale.nixosModules.default
-        # inputs.aiva.nixosModules.default
         ./audio/pipewire.nix
         ./audio/mpd.nix
         ./audio/production.nix
@@ -117,7 +111,6 @@
             ./config/fonts.nix
             ./config/i18n.nix
             ./config/nix.nix
-
             #
             ./network/networking.nix
             ./network/networkingwireless.nix
@@ -134,7 +127,6 @@
             ./services/redshift.nix
             ./services/transmission.nix
             ./services/unclutter.nix
-
           ];
         }
         inputs.home-manager.nixosModules.home-manager
