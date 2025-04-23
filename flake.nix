@@ -149,7 +149,7 @@
                 ./mpv
                 ./ncmpcpp
                 ./sxhkd
-                ./sh/bat.nx
+                # ./sh/bat.nx
                 ./sh/env_hm.nix
                 ./sh/fzf.nix
                 ./sh/pistol.nix
