@@ -51,7 +51,6 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "browsers",
           "nixpkgs"
         ],
         "systems": "systems"
@@ -68,24 +67,6 @@
         "owner": "nix-community",
         "repo": "browser-previews",
         "type": "github"
-      }
-    },
-    "browsers": {
-      "inputs": {
-        "browser-previews": "browser-previews",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745403301,
-        "narHash": "sha256-Efvy4YW7zempIM3Oh3o9uApB9Tv7UmSjtrXZCSAHV10=",
-        "path": "/etc/nixos/browsers",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/nixos/browsers",
-        "type": "path"
       }
     },
     "dev-templates": {
@@ -270,7 +251,6 @@
     "flake-utils": {
       "inputs": {
         "systems": [
-          "browsers",
           "browser-previews",
           "systems"
         ]
@@ -869,7 +849,7 @@
       "inputs": {
         "LS_COLORS": "LS_COLORS",
         "audio": "audio",
-        "browsers": "browsers",
+        "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
         "git": "git",

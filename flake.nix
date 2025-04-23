@@ -26,7 +26,6 @@
       url = "github:nix-community/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    git.url = "./_git";
     go.url = "./go";
     lib.url = "./lib";
     manix.url = "./manix";
@@ -69,7 +68,6 @@
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
-        inputs.git.nixosModules.default
         inputs.go.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.manix.nixosModules.default
@@ -137,7 +135,6 @@
                 [
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
-                  inputs.git.nixosModules.home
                   inputs.tmux.nixosModules.home
                   inputs.vim.nixosModules.commonPlugins
                   inputs.vim.nixosModules.vim
@@ -151,6 +148,7 @@
                   inputs.sh.nixosModules.fzf
                   inputs.sh.nixosModules.starship
                   inputs.x11.nixosModules.hm
+                  ./_git
                   ./browsers/chromium.nix
                   ./browsers/firefox.nix
                   ./htop
