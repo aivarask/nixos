@@ -59,7 +59,6 @@
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
-        inputs.x11.nixosModules.default
         inputs.sh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
@@ -150,7 +149,6 @@
                 inputs.sh.nixosModules.pistol
                 inputs.sh.nixosModules.fzf
                 inputs.sh.nixosModules.starship
-                inputs.x11.nixosModules.hm
                 ./_git
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
@@ -173,6 +171,7 @@
                 ./programs/lazygit_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
+        ./tmux
                 ./x11/hm_.nix
               ];
             };

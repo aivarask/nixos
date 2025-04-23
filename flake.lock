@@ -759,8 +759,7 @@
         "templates": "templates",
         "tmux": "tmux",
         "vim": "vim",
-        "wayland": "wayland",
-        "x11": "x11"
+        "wayland": "wayland"
       }
     },
     "rust-overlay": {
@@ -1073,17 +1072,6 @@
         "repo": "websocket.nvim",
         "type": "github"
       }
-    },
-    "x11": {
-      "locked": {
-        "path": "./x11",
-        "type": "path"
-      },
-      "original": {
-        "path": "./x11",
-        "type": "path"
-      },
-      "parent": []
     }
   },
   "root": "root",
