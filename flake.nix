@@ -26,7 +26,6 @@
       url = "github:nix-community/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    go.url = "./go";
     lib.url = "./lib";
     manix.url = "./manix";
     matrix.url = "./matrix";
@@ -53,7 +52,7 @@
           {
             environment.systemPackages = [
               pkgs.utf8proc
-              pkgs.git
+              # pkgs.git
             ];
           }
         )
@@ -68,7 +67,6 @@
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
-        inputs.go.nixosModules.default
         inputs.lib.nixosModules.default
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
@@ -83,6 +81,7 @@
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
+        ./go
         ./sql/sql.nix
         ./ollama.nix
         ./dialog

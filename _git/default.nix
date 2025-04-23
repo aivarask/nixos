@@ -8,7 +8,7 @@
     pre-commit
   ];
   programs.git.enable = true;
-  programs.git.package = pkgs.gitFull;
+  # programs.git.package = pkgs.gitFull;
   programs.git.lfs.enable = true;
   programs.git.maintenance.enable = true;
   programs.git.extraConfig = {

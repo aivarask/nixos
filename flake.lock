@@ -284,17 +284,6 @@
         "type": "github"
       }
     },
-    "git": {
-      "locked": {
-        "path": "./_git",
-        "type": "path"
-      },
-      "original": {
-        "path": "./_git",
-        "type": "path"
-      },
-      "parent": []
-    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -852,7 +841,6 @@
         "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
-        "git": "git",
         "go": "go",
         "home-manager": "home-manager",
         "lib": "lib",
