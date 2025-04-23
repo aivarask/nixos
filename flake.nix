@@ -28,7 +28,6 @@
     suckless.url = "./suckless";
     vim.url = "./lua";
     wayland.url = "./wayland";
-    sh.url = "./sh";
     #
     # aldale.url = "./aldale";
     # aiva.url = "./aiva";
@@ -67,7 +66,7 @@
         ./go
         ./node
         ./python
-        ./sh
+        ./sh/env.nix
         ./sql/sql.nix
         ./ollama.nix
         ./dialog

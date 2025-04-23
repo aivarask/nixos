@@ -3,6 +3,7 @@
   config,
   SELF,
   ...
+
 }:
 {
   programs.bat.enable = true;

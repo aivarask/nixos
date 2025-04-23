@@ -631,19 +631,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1745234285,
-        "narHash": "sha256-GfpyMzxwkfgRVN0cTGQSkTC0OHhEkv3Jf6Tcjm//qZ0=",
-        "path": "/nix/store/kcmmd6alr3lx56vkf72503h3pxgf6iv4-source",
-        "rev": "c11863f1e964833214b767f4a369c6e6a7aba141",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "nps": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -754,10 +741,8 @@
         "nps": "nps",
         "nur": "nur",
         "rust-overlay": "rust-overlay",
-        "sh": "sh",
         "suckless": "suckless",
         "templates": "templates",
-        "tmux": "tmux",
         "vim": "vim",
         "wayland": "wayland"
       }
@@ -779,20 +764,6 @@
         "repo": "rust-overlay",
         "type": "github"
       }
-    },
-    "sh": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "path": "./sh",
-        "type": "path"
-      },
-      "original": {
-        "path": "./sh",
-        "type": "path"
-      },
-      "parent": []
     },
     "smart-semicolon": {
       "flake": false,
@@ -921,17 +892,6 @@
         "repo": "templates",
         "type": "github"
       }
-    },
-    "tmux": {
-      "locked": {
-        "path": "./tmux",
-        "type": "path"
-      },
-      "original": {
-        "path": "./tmux",
-        "type": "path"
-      },
-      "parent": []
     },
     "tree-sitter-language-injection": {
       "flake": false,
