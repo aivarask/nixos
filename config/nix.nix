@@ -76,7 +76,7 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
       extraOptions = ''
         use-xdg-base-directories = true
-        warn-dirty = false
+        warn-dirty = true
         download-buffer-size = ${toString (67108864 * 4)}
       '';
     };

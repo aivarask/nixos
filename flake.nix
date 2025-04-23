@@ -21,9 +21,11 @@
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     LS_COLORS.url = "github:trapd00r/LS_COLORS";
     LS_COLORS.flake = false;
-    audio.url = "./audio";
-    browsers.url = "./browsers";
-    browsers.inputs.nixpkgs.follows = "nixpkgs";
+    audio.url = "/etc/nixos/audio";
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     git.url = "./_git";
     go.url = "./go";
     lib.url = "./lib";
@@ -67,7 +69,6 @@
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
-        inputs.browsers.nixosModules.default
         inputs.git.nixosModules.default
         inputs.go.nixosModules.default
         inputs.lib.nixosModules.default
@@ -136,8 +137,6 @@
                 [
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
-                  inputs.browsers.nixosModules.firefox
-                  inputs.browsers.nixosModules.chromium
                   inputs.git.nixosModules.home
                   inputs.tmux.nixosModules.home
                   inputs.vim.nixosModules.commonPlugins
@@ -152,6 +151,8 @@
                   inputs.sh.nixosModules.fzf
                   inputs.sh.nixosModules.starship
                   inputs.x11.nixosModules.hm
+                  ./browsers/chromium.nix
+                  ./browsers/firefox.nix
                   ./htop
                   ./kitty
                   ./lf
@@ -178,7 +179,6 @@
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules =
           [
-
             ./LS_COLORS.nix
             ./nps.nix
           ]

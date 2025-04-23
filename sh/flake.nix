@@ -13,7 +13,6 @@
           {
             imports = [
               (lib.mkAliasOptionModule [ "env" ] [ "environment" ])
-
               (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "root" ])
             ];
             environment.variables.SELF = "/etc/nixos";
@@ -53,7 +52,12 @@
             programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
           };
         env.hm =
-          { config, SELF, ... }:
+          {
+            config,
+            SELF,
+            lib,
+            ...
+          }:
           {
             # /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
             # https://mynixos.com/home-manager/options/xsession
@@ -66,12 +70,18 @@
             programs.zsh.enable = true;
             programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra ''; # $HOME/.zprofile
             programs.zsh.envExtra = ''# HM programs.zsh.envExtra ''; # $HOME/.zshenv
-            programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
+            # programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
+            # programs.zsh.initContent = lib.mkOrder 550 ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
             programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
-            programs.zsh.initExtra = ''
-               # HM programs.zsh.initExtra
+            # programs.zsh.initExtra = ''
+            #    # HM programs.zsh.initExtra
+            #   source $HOME/.zshrc.extra
+            # '';
+            programs.zsh.initContent = ''
+               # HM programs.zsh.initContent
               source $HOME/.zshrc.extra
             '';
+
             home.file.".zshrc.extra".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshrc.extra";
           };
         zsh =
