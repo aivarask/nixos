@@ -29,7 +29,6 @@
     tmux.url = "./tmux";
     vim.url = "./lua";
     wayland.url = "./wayland";
-    x11.url = "./x11";
     sh.url = "./sh";
     #
     # aldale.url = "./aldale";
@@ -57,7 +56,6 @@
           # https://mynixos.com/search?q=touchegg
           services.touchegg.enable = true;
         }
-        inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
@@ -75,6 +73,7 @@
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
+        ./x11
         ./xdg
         {
           imports = [
@@ -174,6 +173,7 @@
                 ./programs/lazygit_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
+                ./x11/hm_.nix
               ];
             };
           };

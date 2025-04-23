@@ -753,7 +753,7 @@
         "nixpkgs": "nixpkgs_3",
         "nps": "nps",
         "nur": "nur",
-        "rust": "rust",
+        "rust-overlay": "rust-overlay",
         "sh": "sh",
         "suckless": "suckless",
         "templates": "templates",
@@ -762,20 +762,6 @@
         "wayland": "wayland",
         "x11": "x11"
       }
-    },
-    "rust": {
-      "inputs": {
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "path": "./rust",
-        "type": "path"
-      },
-      "original": {
-        "path": "./rust",
-        "type": "path"
-      },
-      "parent": []
     },
     "rust-overlay": {
       "inputs": {
