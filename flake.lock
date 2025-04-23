@@ -329,20 +329,6 @@
         "type": "github"
       }
     },
-    "go": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "path": "./go",
-        "type": "path"
-      },
-      "original": {
-        "path": "./go",
-        "type": "path"
-      },
-      "parent": []
-    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -438,7 +424,7 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1733346208,
@@ -652,19 +638,6 @@
       "locked": {
         "lastModified": 1745234285,
         "narHash": "sha256-GfpyMzxwkfgRVN0cTGQSkTC0OHhEkv3Jf6Tcjm//qZ0=",
-        "path": "/nix/store/kcmmd6alr3lx56vkf72503h3pxgf6iv4-source",
-        "rev": "c11863f1e964833214b767f4a369c6e6a7aba141",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1745234285,
-        "narHash": "sha256-GfpyMzxwkfgRVN0cTGQSkTC0OHhEkv3Jf6Tcjm//qZ0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "c11863f1e964833214b767f4a369c6e6a7aba141",
@@ -677,7 +650,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1734323986,
         "narHash": "sha256-m/lh6hYMIWDYHCAsn81CDAiXoT3gmxXI9J987W5tZrE=",
@@ -690,7 +663,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -706,7 +679,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1745234285,
         "narHash": "sha256-GfpyMzxwkfgRVN0cTGQSkTC0OHhEkv3Jf6Tcjm//qZ0=",
@@ -823,17 +796,6 @@
         "type": "github"
       }
     },
-    "python": {
-      "locked": {
-        "path": "./python",
-        "type": "path"
-      },
-      "original": {
-        "path": "./python",
-        "type": "path"
-      },
-      "parent": []
-    },
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
@@ -841,7 +803,6 @@
         "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
-        "go": "go",
         "home-manager": "home-manager",
         "lib": "lib",
         "manix": "manix",
@@ -851,11 +812,10 @@
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "node": "node",
         "nps": "nps",
         "nur": "nur",
-        "python": "python",
         "rust": "rust",
         "sh": "sh",
         "suckless": "suckless",
@@ -882,7 +842,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1745375696,
@@ -900,7 +860,7 @@
     },
     "sh": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "path": "./sh",

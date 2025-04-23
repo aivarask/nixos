@@ -26,9 +26,6 @@
       url = "github:nix-community/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lib.url = "./lib";
-    manix.url = "./manix";
-    matrix.url = "./matrix";
     node.url = "./node";
     rust.url = "./rust";
     suckless.url = "./suckless";
@@ -45,6 +42,7 @@
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
+      myLib = import ./lib;
       commonModules = with inputs; [
         (
           { pkgs, ... }:
@@ -66,9 +64,6 @@
         inputs.audio.nixosModules.mpd
         inputs.audio.nixosModules.pipewire
         inputs.audio.nixosModules.production
-        inputs.lib.nixosModules.default
-        inputs.manix.nixosModules.default
-        inputs.matrix.nixosModules.default
         inputs.node.nixosModules.default
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
@@ -80,7 +75,8 @@
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
         ./go
-        ./python/
+        ./lib
+        ./python
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
@@ -129,7 +125,7 @@
               services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
               # services.blueman-applet.enable = true;
               imports =
-                with inputs.lib.packages."${system}".lib;
+                with myLib;
                 [
                   inputs.nix-colors.homeManagerModules.default
                   inputs.nix-index-database.hmModules.nix-index
