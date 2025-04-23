@@ -1,0 +1,28 @@
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    pyright
+    black
+
+    (python3.withPackages (
+      ps: with ps; [
+        pip
+        requests
+        pytest
+        pytest-watch
+        pytest-timeout
+        # pytest-playwright
+        pynvim
+        livereload
+        debugpy
+        python-dotenv
+        httpie
+        # playwright
+
+        # -S ext:mp3
+        # --alias
+        yt-dlp
+      ]
+    ))
+  ];
+}

@@ -30,7 +30,6 @@
     manix.url = "./manix";
     matrix.url = "./matrix";
     node.url = "./node";
-    python.url = "./python";
     rust.url = "./rust";
     suckless.url = "./suckless";
     tmux.url = "./tmux";
@@ -71,7 +70,6 @@
         inputs.manix.nixosModules.default
         inputs.matrix.nixosModules.default
         inputs.node.nixosModules.default
-        inputs.python.nixosModules.default
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
@@ -82,6 +80,7 @@
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
         ./go
+        ./python/
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
