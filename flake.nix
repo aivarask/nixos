@@ -25,8 +25,6 @@
     browser-previews.inputs.nixpkgs.follows = "nixpkgs";
     musnix.url = "github:musnix/musnix";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    vim.url = "./lua";
-    wayland.url = "./wayland";
     #
     # aldale.url = "./aldale";
     # aiva.url = "./aiva";
@@ -40,6 +38,28 @@
     tabbed-flexipatch.flake = false;
     sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
     sxiv-tabbed.flake = false;
+    #
+    sxhkd-vim.url = "github:kovetskiy/sxhkd-vim";
+    sxhkd-vim.flake = false;
+    vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
+    vim-log-highlighting.flake = false;
+    vim-interestingwords.url = "github:lfv89/vim-interestingwords";
+    vim-interestingwords.flake = false;
+    neotest-playwright.url = "github:thenbe/neotest-playwright";
+    neotest-playwright.flake = false;
+    persistent-breakpoints.url = "github:Weissle/persistent-breakpoints.nvim";
+    persistent-breakpoints.flake = false;
+    smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
+    smart-semicolon.flake = false;
+    one-small-step-for-vimkind.url = "github:jbyuki/one-small-step-for-vimkind";
+    one-small-step-for-vimkind.flake = false;
+    tree-sitter-language-injection.url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
+    tree-sitter-language-injection.flake = false;
+    websocket-nvim.url = "github:samsze0/websocket.nvim";
+    websocket-nvim.flake = false;
+    nvim-oxi.url = "github:noib3/nvim-oxi";
+    nvim-oxi.flake = false;
+    # https://github.com/mlua-rs/mlua
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -67,11 +87,11 @@
         inputs.vim.nixosModules.lua
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
-        # inputs.wayland.nixosModules.default
         ./audio/pipewire.nix
         ./audio/mpd.nix
         ./audio/production.nix
         ./go
+        ./lua
         ./node
         ./python
         ./sh/env.nix
@@ -144,17 +164,17 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.hmModules.nix-index
-                inputs.vim.nixosModules.commonPlugins
-                inputs.vim.nixosModules.vim
-                inputs.vim.nixosModules.neovim
-                inputs.vim.nixosModules.neovimPlugins
-                # inputs.vim.nixosModules.neovimOverlays
                 ./_git
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
                 ./htop
                 ./kitty
                 ./lf
+                ./lua/vim.nix
+                ./lua/nvim.nix
+                ./lua/common_plugins.nix
+                ./lua/nvim_plugins.nix
+                ./lua/nvim_over.nix
                 ./mpv
                 ./ncmpcpp
                 ./sxhkd

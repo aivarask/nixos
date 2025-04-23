@@ -730,6 +730,8 @@
         "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
+        "dmenu-flexipatch": "dmenu-flexipatch",
+        "dwm-flexipatch": "dwm-flexipatch",
         "home-manager": "home-manager",
         "musnix": "musnix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
@@ -741,7 +743,9 @@
         "nps": "nps",
         "nur": "nur",
         "rust-overlay": "rust-overlay",
-        "suckless": "suckless",
+        "st-flexipatch": "st-flexipatch",
+        "sxiv-tabbed": "sxiv-tabbed",
+        "tabbed-flexipatch": "tabbed-flexipatch",
         "templates": "templates",
         "vim": "vim",
         "wayland": "wayland"
@@ -796,24 +800,6 @@
         "repo": "st-flexipatch",
         "type": "github"
       }
-    },
-    "suckless": {
-      "inputs": {
-        "dmenu-flexipatch": "dmenu-flexipatch",
-        "dwm-flexipatch": "dwm-flexipatch",
-        "st-flexipatch": "st-flexipatch",
-        "sxiv-tabbed": "sxiv-tabbed",
-        "tabbed-flexipatch": "tabbed-flexipatch"
-      },
-      "locked": {
-        "path": "./suckless",
-        "type": "path"
-      },
-      "original": {
-        "path": "./suckless",
-        "type": "path"
-      },
-      "parent": []
     },
     "sxhkd-vim": {
       "flake": false,
