@@ -26,7 +26,6 @@
     musnix.url = "github:musnix/musnix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     suckless.url = "./suckless";
-    tmux.url = "./tmux";
     vim.url = "./lua";
     wayland.url = "./wayland";
     sh.url = "./sh";
@@ -59,7 +58,6 @@
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
-        inputs.sh.nixosModules.env.sys
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
@@ -69,6 +67,7 @@
         ./go
         ./node
         ./python
+        ./sh
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
@@ -137,18 +136,11 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.hmModules.nix-index
-                inputs.tmux.nixosModules.home
                 inputs.vim.nixosModules.commonPlugins
                 inputs.vim.nixosModules.vim
                 inputs.vim.nixosModules.neovim
                 inputs.vim.nixosModules.neovimPlugins
                 # inputs.vim.nixosModules.neovimOverlays
-                inputs.sh.nixosModules.env.hm
-                inputs.sh.nixosModules.zsh
-                inputs.sh.nixosModules.bat
-                inputs.sh.nixosModules.pistol
-                inputs.sh.nixosModules.fzf
-                inputs.sh.nixosModules.starship
                 ./_git
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
@@ -158,6 +150,12 @@
                 ./mpv
                 ./ncmpcpp
                 ./sxhkd
+                ./sh/bat.nx
+                ./sh/env_hm.nix
+                ./sh/fzf.nix
+                ./sh/pistol.nix
+                ./sh/starship.nix
+                ./sh/zsh.nix
                 #
                 ./rofi
                 ./sql/sql_.nix
@@ -171,7 +169,6 @@
                 ./programs/lazygit_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
-        ./tmux
                 ./x11/hm_.nix
               ];
             };
