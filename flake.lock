@@ -371,39 +371,6 @@
         "type": "github"
       }
     },
-    "lib": {
-      "locked": {
-        "path": "./lib",
-        "type": "path"
-      },
-      "original": {
-        "path": "./lib",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "manix": {
-      "locked": {
-        "path": "./manix",
-        "type": "path"
-      },
-      "original": {
-        "path": "./manix",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "matrix": {
-      "locked": {
-        "path": "./matrix",
-        "type": "path"
-      },
-      "original": {
-        "path": "./matrix",
-        "type": "path"
-      },
-      "parent": []
-    },
     "musnix": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -804,9 +771,6 @@
         "dev-templates": "dev-templates",
         "disko": "disko",
         "home-manager": "home-manager",
-        "lib": "lib",
-        "manix": "manix",
-        "matrix": "matrix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nix-index-database": "nix-index-database",

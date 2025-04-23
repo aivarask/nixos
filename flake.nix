@@ -42,7 +42,6 @@
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      myLib = import ./lib;
       commonModules = with inputs; [
         (
           { pkgs, ... }:
@@ -75,7 +74,6 @@
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
         ./go
-        ./lib
         ./python
         ./sql/sql.nix
         ./ollama.nix
@@ -83,22 +81,41 @@
         ./xdg
         {
           imports =
-            with inputs.lib.packages."${system}".lib;
-            (
-              [
-                ./lnav
-                ./systemd/remote-touchpad.nix
-                ./systemd/music.nix
-                ./systemd/video.nix
-                ./virt/virtualbox.nix
-                ./wallpaper
-                ./playwright.nix
-              ]
-              ++ i ./config
-              ++ i ./network
-              ++ i ./programs
-              ++ idash ./services
-            );
+            [
+              ./lnav
+              ./systemd/remote-touchpad.nix
+              ./systemd/music.nix
+              ./systemd/video.nix
+              ./virt/virtualbox.nix
+              ./wallpaper
+              ./playwright.nix
+              #
+              ./config/
+              ./config/documentation.nix
+              ./config/environment.nix
+              ./config/fonts.nix
+              ./config/i18n.nix
+              ./config/nix.nix
+
+              #
+              ./network/networking.nix
+              ./network/networkingwireless.nix
+              #
+              ./programs
+              #
+              ./services
+              ./services/deskflow.nix
+              ./services/dwm-status.nix
+              ./services/kmscon.nix
+              ./services/maddy.nix
+              ./services/nginx.nix
+              ./services/openssh.nix
+              ./services/redshift.nix
+              ./transmission.nix
+              ./unclutter.nix
+
+            ]
+;
         }
         inputs.home-manager.nixosModules.home-manager
         {
@@ -124,43 +141,45 @@
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
               # services.blueman-applet.enable = true;
-              imports =
-                with myLib;
-                [
-                  inputs.nix-colors.homeManagerModules.default
-                  inputs.nix-index-database.hmModules.nix-index
-                  inputs.tmux.nixosModules.home
-                  inputs.vim.nixosModules.commonPlugins
-                  inputs.vim.nixosModules.vim
-                  inputs.vim.nixosModules.neovim
-                  inputs.vim.nixosModules.neovimPlugins
-                  # inputs.vim.nixosModules.neovimOverlays
-                  inputs.sh.nixosModules.env.hm
-                  inputs.sh.nixosModules.zsh
-                  inputs.sh.nixosModules.bat
-                  inputs.sh.nixosModules.pistol
-                  inputs.sh.nixosModules.fzf
-                  inputs.sh.nixosModules.starship
-                  inputs.x11.nixosModules.hm
-                  ./_git
-                  ./browsers/chromium.nix
-                  ./browsers/firefox.nix
-                  ./htop
-                  ./kitty
-                  ./lf
-                  ./mpv
-                  ./ncmpcpp
-                  ./sxhkd
-                  #
-                  ./rofi
-                  ./sql/sql_.nix
-                  ./term/alacritty_.nix
-                  ./term/wezterm_.nix
-                ]
-                ++ i_ ./config
-                ++ i_ ./programs
-                ++ i_ ./services
-                ++ i_ ./lua;
+              imports = [
+                inputs.nix-colors.homeManagerModules.default
+                inputs.nix-index-database.hmModules.nix-index
+                inputs.tmux.nixosModules.home
+                inputs.vim.nixosModules.commonPlugins
+                inputs.vim.nixosModules.vim
+                inputs.vim.nixosModules.neovim
+                inputs.vim.nixosModules.neovimPlugins
+                # inputs.vim.nixosModules.neovimOverlays
+                inputs.sh.nixosModules.env.hm
+                inputs.sh.nixosModules.zsh
+                inputs.sh.nixosModules.bat
+                inputs.sh.nixosModules.pistol
+                inputs.sh.nixosModules.fzf
+                inputs.sh.nixosModules.starship
+                inputs.x11.nixosModules.hm
+                ./_git
+                ./browsers/chromium.nix
+                ./browsers/firefox.nix
+                ./htop
+                ./kitty
+                ./lf
+                ./mpv
+                ./ncmpcpp
+                ./sxhkd
+                #
+                ./rofi
+                ./sql/sql_.nix
+                ./term/alacritty_.nix
+                ./term/wezterm_.nix
+                #
+                ./config/hm_.nix
+                ./programs/default_.nix
+                ./programs/direnv_.nix
+                ./programs/gh_.nix
+                ./programs/lazygit_.nix
+                ./programs/nicotine_.nix
+                ./programs/nixindex_.nix
+              ];
             };
           };
         }
@@ -173,6 +192,7 @@
           [
             ./LS_COLORS.nix
             ./nps.nix
+            ./lib
           ]
           ++ commonModules
           ++ [ ./dell ];
