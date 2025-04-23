@@ -21,12 +21,11 @@
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     LS_COLORS.url = "github:trapd00r/LS_COLORS";
     LS_COLORS.flake = false;
-    audio.url = "/etc/nixos/audio";
     browser-previews = {
       url = "github:nix-community/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    node.url = "./node";
+    musnix.url = "github:musnix/musnix";
     rust.url = "./rust";
     suckless.url = "./suckless";
     tmux.url = "./tmux";
@@ -60,10 +59,6 @@
           # https://mynixos.com/search?q=touchegg
           services.touchegg.enable = true;
         }
-        inputs.audio.nixosModules.mpd
-        inputs.audio.nixosModules.pipewire
-        inputs.audio.nixosModules.production
-        inputs.node.nixosModules.default
         inputs.rust.nixosModules.default
         inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
@@ -73,49 +68,51 @@
         # inputs.aldale.nixosModules.default
         # inputs.aiva.nixosModules.default
         # inputs.wayland.nixosModules.default
+        ./audio/pipewire.nix
+        ./audio/mpd.nix
+        ./audio/production.nix
         ./go
+        ./node
         ./python
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
         ./xdg
         {
-          imports =
-            [
-              ./lnav
-              ./systemd/remote-touchpad.nix
-              ./systemd/music.nix
-              ./systemd/video.nix
-              ./virt/virtualbox.nix
-              ./wallpaper
-              ./playwright.nix
-              #
-              ./config/
-              ./config/documentation.nix
-              ./config/environment.nix
-              ./config/fonts.nix
-              ./config/i18n.nix
-              ./config/nix.nix
+          imports = [
+            ./lnav
+            ./systemd/remote-touchpad.nix
+            ./systemd/music.nix
+            ./systemd/video.nix
+            ./virt/virtualbox.nix
+            ./wallpaper
+            ./playwright.nix
+            #
+            ./config
+            ./config/documentation.nix
+            ./config/environment.nix
+            ./config/fonts.nix
+            ./config/i18n.nix
+            ./config/nix.nix
 
-              #
-              ./network/networking.nix
-              ./network/networkingwireless.nix
-              #
-              ./programs
-              #
-              ./services
-              ./services/deskflow.nix
-              ./services/dwm-status.nix
-              ./services/kmscon.nix
-              ./services/maddy.nix
-              ./services/nginx.nix
-              ./services/openssh.nix
-              ./services/redshift.nix
-              ./transmission.nix
-              ./unclutter.nix
+            #
+            ./network/networking.nix
+            ./network/networkingwireless.nix
+            #
+            ./programs
+            #
+            ./services
+            ./services/deskflow.nix
+            ./services/dwm-status.nix
+            ./services/kmscon.nix
+            ./services/maddy.nix
+            ./services/nginx.nix
+            ./services/openssh.nix
+            ./services/redshift.nix
+            ./services/transmission.nix
+            ./services/unclutter.nix
 
-            ]
-;
+          ];
         }
         inputs.home-manager.nixosModules.home-manager
         {

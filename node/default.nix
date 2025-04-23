@@ -1,9 +1,3 @@
-{
-  inputs = { };
-  outputs =
-    { ... }:
-    {
-      nixosModules.default =
         { pkgs, ... }:
         {
           environment.sessionVariables = rec {
@@ -34,6 +28,4 @@
               typescript-language-server
               jsdoc
             ]);
-        };
-    };
-}
+        }
