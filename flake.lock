@@ -16,21 +16,6 @@
         "type": "github"
       }
     },
-    "audio": {
-      "inputs": {
-        "musnix": "musnix"
-      },
-      "locked": {
-        "lastModified": 1745139541,
-        "narHash": "sha256-t2UvHA2Xlm2dGDmb7adrQeBvc5jRGC2DIqNMDWytp1Y=",
-        "path": "/etc/nixos/audio",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/nixos/audio",
-        "type": "path"
-      }
-    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -71,7 +56,7 @@
     },
     "dev-templates": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1744061992,
@@ -373,7 +358,7 @@
     },
     "musnix": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1741303672,
@@ -558,18 +543,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1740695751,
-        "narHash": "sha256-D+R+kFxy1KsheiIzkkx/6L63wEHBYX21OIwlFV8JvDs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "6313551cd05425cd5b3e63fe47dbc324eabb15e4",
-        "type": "github"
+        "lastModified": 1739758141,
+        "narHash": "sha256-uq6A2L7o1/tR6VfmYhZWoVAwb3gTy7j4Jx30MIrH0rE=",
+        "rev": "c618e28f70257593de75a7044438efc1c1fc0791",
+        "revCount": 714614,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2411.714614%2Brev-c618e28f70257593de75a7044438efc1c1fc0791/0195155d-20df-7b25-ad70-45871483b8d2/source.tar.gz"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.2411.%2A"
       }
     },
     "nixpkgs-lib": {
@@ -589,16 +572,18 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1739758141,
-        "narHash": "sha256-uq6A2L7o1/tR6VfmYhZWoVAwb3gTy7j4Jx30MIrH0rE=",
-        "rev": "c618e28f70257593de75a7044438efc1c1fc0791",
-        "revCount": 714614,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2411.714614%2Brev-c618e28f70257593de75a7044438efc1c1fc0791/0195155d-20df-7b25-ad70-45871483b8d2/source.tar.gz"
+        "lastModified": 1740695751,
+        "narHash": "sha256-D+R+kFxy1KsheiIzkkx/6L63wEHBYX21OIwlFV8JvDs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6313551cd05425cd5b3e63fe47dbc324eabb15e4",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.2411.%2A"
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_3": {
@@ -658,17 +643,6 @@
         "id": "nixpkgs",
         "type": "indirect"
       }
-    },
-    "node": {
-      "locked": {
-        "path": "./node",
-        "type": "path"
-      },
-      "original": {
-        "path": "./node",
-        "type": "path"
-      },
-      "parent": []
     },
     "nps": {
       "inputs": {
@@ -766,18 +740,17 @@
     "root": {
       "inputs": {
         "LS_COLORS": "LS_COLORS",
-        "audio": "audio",
         "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
         "home-manager": "home-manager",
+        "musnix": "musnix",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "node": "node",
         "nps": "nps",
         "nur": "nur",
         "rust": "rust",

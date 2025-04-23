@@ -21,12 +21,10 @@
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     LS_COLORS.url = "github:trapd00r/LS_COLORS";
     LS_COLORS.flake = false;
-    browser-previews = {
-      url = "github:nix-community/browser-previews";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    browser-previews.url = "github:nix-community/browser-previews";
+    browser-previews.inputs.nixpkgs.follows = "nixpkgs";
     musnix.url = "github:musnix/musnix";
-    rust.url = "./rust";
+    rust-overlay.url = "github:oxalica/rust-overlay";
     suckless.url = "./suckless";
     tmux.url = "./tmux";
     vim.url = "./lua";
