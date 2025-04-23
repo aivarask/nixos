@@ -25,12 +25,21 @@
     browser-previews.inputs.nixpkgs.follows = "nixpkgs";
     musnix.url = "github:musnix/musnix";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    suckless.url = "./suckless";
     vim.url = "./lua";
     wayland.url = "./wayland";
     #
     # aldale.url = "./aldale";
     # aiva.url = "./aiva";
+    dmenu-flexipatch.url = "github:bakkeby/dmenu-flexipatch";
+    dmenu-flexipatch.flake = false;
+    dwm-flexipatch.url = "github:bakkeby/dwm-flexipatch";
+    dwm-flexipatch.flake = false;
+    st-flexipatch.url = "github:bakkeby/st-flexipatch";
+    st-flexipatch.flake = false;
+    tabbed-flexipatch.url = "github:bakkeby/tabbed-flexipatch";
+    tabbed-flexipatch.flake = false;
+    sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
+    sxiv-tabbed.flake = false;
   };
   outputs =
     { nixpkgs, ... }@inputs:
@@ -54,7 +63,6 @@
           # https://mynixos.com/search?q=touchegg
           services.touchegg.enable = true;
         }
-        inputs.suckless.nixosModules.default
         inputs.vim.nixosModules.default
         inputs.vim.nixosModules.lua
         # inputs.aldale.nixosModules.default
@@ -67,6 +75,7 @@
         ./node
         ./python
         ./sh/env.nix
+        ./suckless
         ./sql/sql.nix
         ./ollama.nix
         ./dialog
@@ -149,7 +158,7 @@
                 ./mpv
                 ./ncmpcpp
                 ./sxhkd
-                # ./sh/bat.nx
+                ./sh/bat.nix
                 ./sh/env_hm.nix
                 ./sh/fzf.nix
                 ./sh/pistol.nix
