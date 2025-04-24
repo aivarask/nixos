@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
   environment.variables.MANROFFOPT = "-P -c";
