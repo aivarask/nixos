@@ -116,7 +116,7 @@
         (
           { lib, ... }:
           {
-            imports = [ ];
+            imports = [ ] ++ lib.i;
           }
         )
         inputs.home-manager.nixosModules.home-manager
