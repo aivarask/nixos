@@ -157,6 +157,7 @@
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.hmModules.nix-index
                 ./_git
+                ./awesome
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
                 ./htop
