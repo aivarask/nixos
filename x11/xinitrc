@@ -31,7 +31,6 @@ systemctl --user restart wallpaper.service &
 systemctl --user restart unclutter-xfixes.service &
 systemctl --user restart dwm-status.service &
 
-# Xephyr :0 -ac -br -noreset -screen 1152x720 & DISPLAY=:0.1 startx $XINITRC awesome
 session=${1:-dwm}
 case $session in
 dwm)

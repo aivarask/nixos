@@ -3,6 +3,7 @@ let
   myLua = pkgs.luajit.withPackages (
     ps: with ps; [
       # https://github.com/rest-nvim/rest.nvim
+      lgi
       luv
       cjson
       luasocket # https://github.com/lunarmodules/luasocket
@@ -20,6 +21,7 @@ let
   );
 in
 {
+  environment.etc."awesome".source = pkgs.awesome;
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [

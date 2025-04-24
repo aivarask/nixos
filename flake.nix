@@ -73,77 +73,63 @@
             ];
           }
         )
-        {
-          # gestures
-          # https://www.youtube.com/watch?v=qeVzPaBifPc
-          # https://www.reddit.com/r/gnome/comments/td8irt/touchpad_gestures_in_chromechromium/
-          # https://wiki.archlinux.org/title/Touchegg
-          # https://mynixos.com/search?q=touchegg
-          services.touchegg.enable = true;
-        }
-        ./audio/pipewire.nix
         ./audio/mpd.nix
+        ./audio/pipewire.nix
         ./audio/production.nix
-        ./go
-        ./lua
-        ./node
-        ./python
-        ./sh/env.nix
-        ./suckless
-        ./sql/sql.nix
-        ./ollama.nix
+        ./config
+        ./config/documentation.nix
+        ./config/environment.nix
+        ./config/fonts.nix
+        ./config/i18n.nix
+        ./config/nix.nix
         ./dialog
+        ./go
+        ./lnav
+        ./lua
+        ./network/networking.nix
+        ./network/networkingwireless.nix
+        ./node
+        ./ollama.nix
+        ./playwright.nix
+        ./programs
+        ./python
+        ./services
+        ./services/deskflow.nix
+        ./services/dwm-status.nix
+        ./services/kmscon.nix
+        ./services/maddy.nix
+        ./services/nginx.nix
+        ./services/openssh.nix
+        ./services/redshift.nix
+        ./services/transmission.nix
+        ./services/unclutter.nix
+        ./sh/env.nix
+        ./sql/sql.nix
+        ./suckless
+        ./systemd/music.nix
+        ./systemd/remote-touchpad.nix
+        ./systemd/video.nix
+        ./virt/virtualbox.nix
+        ./wallpaper
         ./x11
         ./xdg
-        {
-          imports = [
-            ./lnav
-            ./systemd/remote-touchpad.nix
-            ./systemd/music.nix
-            ./systemd/video.nix
-            ./virt/virtualbox.nix
-            ./wallpaper
-            ./playwright.nix
-            #
-            ./config
-            ./config/documentation.nix
-            ./config/environment.nix
-            ./config/fonts.nix
-            ./config/i18n.nix
-            ./config/nix.nix
-            #
-            ./network/networking.nix
-            ./network/networkingwireless.nix
-            #
-            ./programs
-            #
-            ./services
-            ./services/deskflow.nix
-            ./services/dwm-status.nix
-            ./services/kmscon.nix
-            ./services/maddy.nix
-            ./services/nginx.nix
-            ./services/openssh.nix
-            ./services/redshift.nix
-            ./services/transmission.nix
-            ./services/unclutter.nix
-          ];
-        }
+        (
+          { lib, ... }:
+          {
+            imports = [ ];
+          }
+        )
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
-            sharedModules = [
-              {
-                home.stateVersion = "23.05";
-              }
-            ];
             extraSpecialArgs = {
               inherit inputs;
               SELF = "/etc/nixos";
             };
+            sharedModules = [ { home.stateVersion = "23.05"; } ];
             users.root = {
               home.username = "root";
               home.homeDirectory = "/root";
@@ -151,8 +137,7 @@
               manual.json.enable = true;
               programs.man.generateCaches = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-              services.mpris-proxy.enable = true; # https://specifications.freedesktop.org/mpris-spec/latest/
-              # services.blueman-applet.enable = true;
+              services.mpris-proxy.enable = true;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.hmModules.nix-index
@@ -160,36 +145,34 @@
                 ./awesome
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
+                ./config/hm_.nix
                 ./htop
                 ./kitty
                 ./lf
-                ./lua/vim.nix
-                ./lua/nvim.nix
                 ./lua/common_plugins.nix
-                ./lua/nvim_plugins.nix
+                ./lua/nvim.nix
                 ./lua/nvim_over.nix
+                ./lua/nvim_plugins.nix
+                ./lua/vim.nix
                 ./mpv
                 ./ncmpcpp
-                ./sxhkd
-                ./sh/bat.nix
-                ./sh/env_hm.nix
-                ./sh/fzf.nix
-                ./sh/pistol.nix
-                ./sh/starship.nix
-                ./sh/zsh.nix
-                #
-                ./rofi
-                ./sql/sql_.nix
-                ./term/alacritty_.nix
-                ./term/wezterm_.nix
-                #
-                ./config/hm_.nix
                 ./programs/default_.nix
                 ./programs/direnv_.nix
                 ./programs/gh_.nix
                 ./programs/lazygit_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
+                ./rofi
+                ./sh/bat.nix
+                ./sh/env_hm.nix
+                ./sh/fzf.nix
+                ./sh/pistol.nix
+                ./sh/starship.nix
+                ./sh/zsh.nix
+                ./sql/sql_.nix
+                ./sxhkd
+                ./term/alacritty_.nix
+                ./term/wezterm_.nix
                 ./x11/hm_.nix
               ];
             };

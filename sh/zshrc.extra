@@ -15,6 +15,8 @@ typeset -TU PATH path ':'
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=('/etc/nixos/lua/?.lua')
+luapath+=('/etc/luajit/share/lua/5.1/?/init.lua')
+luapath+=('/etc/luajit/share/lua/5.1/?.lua')
 export LUA_PATH
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
