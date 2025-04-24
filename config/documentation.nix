@@ -8,6 +8,7 @@
     groff
     cht-sh
     tldr
+    manix
   ];
   documentation = {
     enable = true;

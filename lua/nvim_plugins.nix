@@ -21,6 +21,7 @@ let
     telescope-nvim
     telescope-fzf-native-nvim
     telescope-symbols-nvim
+    telescope-manix
   ];
   testing = with pkgs.vimPlugins; [
     # vim-test
