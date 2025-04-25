@@ -1,8 +1,7 @@
 { config, ... }:
 {
   home.sessionVariables.NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
-  xdg.configFile."nvim/init.lua".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua/init.lua";
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.neovim = {
     enable = true;
     # extraConfig = ''source $XDG_CONFIG_HOME/nvim/init.vim'';

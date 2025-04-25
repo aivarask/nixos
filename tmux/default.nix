@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # home.packages = [ pkgs.tmux ];
-  # xdg.configFile."tmux/tmux.conf" = ./tmux.conf;
+  xdg.configFile."tmux".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/tmux";
   programs.tmux.enable = true;
   programs.tmux.keyMode = "vi";
   programs.tmux.terminal = "screen-256color"; # xterm-256color tmux-direct
@@ -27,15 +27,15 @@
     {
       plugin = pkgs.tmuxPlugins.continuum;
       extraConfig = ''
-        					      set -g @continuum-restore 'on'
-        					      set -g @continuum-save-interval '60' # minutes
-        					    '';
+        set -g @continuum-restore 'on'
+        set -g @continuum-save-interval '60' # minutes
+      '';
     }
     # {
     #   plugin = tmuxPlugins.resurrect;
     #   extraConfig = ''
     #     set -g @resurrect-strategy-nvim 'session'
-    #     							'';
+    #   '';
     # }
   ];
 }

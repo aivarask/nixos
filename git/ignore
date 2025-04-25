@@ -1,0 +1,33 @@
+# vim: ft=gitignore
+
+# *
+*.lock
+*lock.yaml
+error.log
+
+# nix
+!flake.lock
+result/
+result/null
+.direnv/
+
+# node
+node_modules/
+*lock.json
+
+# php
+vendor/
+
+# cmake
+CMakeFiles/
+
+# vim
+tags
+Session.vim
+
+# python
+.pytest_cache/
+__pycache__
+
+# zig
+.zig-cache/

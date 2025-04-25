@@ -114,9 +114,17 @@
         ./x11
         ./xdg
         (
-          { lib, ... }:
+          { pkgs, ... }:
           {
-            imports = [ ] ++ lib.i;
+            nixpkgs.overlays = [
+              (final: prev: {
+                lib = prev.lib.extend (
+                  libFinal: libPrev: {
+                    plusOne = x: x + 1;
+                  }
+                );
+              })
+            ];
           }
         )
         inputs.home-manager.nixosModules.home-manager
@@ -141,7 +149,7 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.hmModules.nix-index
-                ./_git
+                ./git
                 ./awesome
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix

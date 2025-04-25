@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  xdg.configFile."vim/vimrc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua/vimrc";
+  xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.vim = {
     enable = true;
     extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';

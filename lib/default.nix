@@ -1,6 +1,6 @@
-{ ... }:
+{ lib, ... }:
 {
-  nixpkgs.overlays = [
+  nixpkgs.overlays = lib.mkBefore [
     (final: prev: {
       lib = prev.lib.extend (
         final: prev:
