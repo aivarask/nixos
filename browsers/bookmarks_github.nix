@@ -7,7 +7,15 @@
       bookmarks = [
         {
           name = "";
+          url = "https://github.com/junegunn/fzf";
+        }
+        {
+          name = "";
           url = "https://github.com/gokcehan/lf";
+        }
+        {
+          name = "";
+          url = "https://github.com/doronbehar/pistol";
         }
         {
           name = "";

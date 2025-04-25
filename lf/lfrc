@@ -1,32 +1,31 @@
-# :read $shell %shell-pipe !shell-wait &shell-async
-# f fs fx
 set hidden!
 set icons
 set ifs "\n"
 set info "size"
-set ratios "1:2"
+set ratios "1:1:2"
 set scrolloff 8
 set shell "zsh"
 set shellopts "-ey"
-set previewer pistol
+set previewer lf_preview
+# set previewer pistol
 # set cleaner cleaner
 
+# :read $shell %shell-pipe !shell-wait &shell-async
+# f fs fx
 map t
-
 map ++ set ratios 1:2:3
-map +w $chmod +w $fx
-map +x $chmod +x $fx
+map +w ${{ chmod +w $fx; lf -remote "send $id reload" }}
+map +x ${{ chmod +x $fx; lf -remote "send $id reload" }}
 map -- set ratios 1:2
-map -w $chmod -w $fx
-map -x $chmod -x $fx
+map -w ${{ chmod -w $fx; lf -remote "send $id reload" }}
+map -x ${{ chmod -x $fx; lf -remote "send $id reload" }}
 map . set hidden!
-map <c-f> $fzf
-map <c-g> $Rg
-map <esc> :quit
+map \\f $fzf
+map \\r $rfv
 map \\l $lazygit
 map \\m %{{ xdg-mime query filetype "$f" }}
-map A push :mkdir<space>
-map a push :touch<space>
+map A push $mkdir<space>
+map a push $touch<space>
 map D %trash-put $fx
 map E $EDITOR $fx
 map gc $lf -remote "send $id cd $XDG_CONFIG_HOME"
@@ -42,27 +41,40 @@ map ox &xdg-open $fx
 map oz &zathura $fx
 map U !du -hs $fx
 map Yc $cat $f | xclip -selection clipboard
+# map <esc> :quit
 map <enter> &xdg-open $fx
 
-# map Q quit-and-cd
-# cmd quit-and-cd &{{
-# 	pwd > "$LF_CD_FILE"
-# 	lf -remote "send $id quit"
-# }}
 
-# cmd recol %{{
-# 		if [ $lf_width -le 80 ]; then
-# 				lf -remote "send $id set ratios 1:2"
-# 		elif [ $lf_width -le 160 ]; then
-# 				lf -remote "send $id set ratios 1:2:3"
-# 		else
-# 				lf -remote "send $id set ratios 1:2:3:5"
-# 		fi
-# }}
-# maps            ${{ "$lf" -remote "query $id maps" | $PAGER }}
-# cmd get-mime-type   # mkdir           %{{ mkdir "$@" }}
-cmd open            ${{ $OPENER $f }}
-# quit-and-cd     &{{ pwd > "$LF_CD_FILE" ... }}
-# recol           %{{ if [ $lf_width -le 80 ]; then ... }}
-# touch           %{{ touch "$@" }}
+map <f-5> source-lfrc
+cmd source-lfrc ${{ lf -remote "send $id source ~/.config/lf/lfrc" }}
 
+cmd move-parent &{{
+    dironly="setlocal \"$(dirname -- "$PWD" | sed 's/\\/\\\\/g;s/"/\\"/g')\" dironly"
+    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
+map J move-parent down
+map K move-parent up
+
+
+set incfilter
+map f filter
+cmap <enter> &{{
+    # select and open file
+    if [ "$lf_mode" = filter ]; then
+        lf -remote "send $id :cmd-enter; setfilter; open"
+    else
+        lf -remote "send $id cmd-enter"
+    fi
+}}
+cmap <a-n> &{{
+    # go to next file
+    if [ "$lf_mode" = filter ]; then
+        lf -remote "send $id down"
+    fi
+}}
+cmap <a-p> &{{
+    # go to previous file
+    if [ "$lf_mode" = filter ]; then
+        lf -remote "send $id up"
+    fi
+}}

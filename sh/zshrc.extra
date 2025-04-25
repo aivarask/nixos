@@ -1,16 +1,14 @@
 # shellcheck shell=zsh
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
+# export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 
 fpath=(/etc/nixos/sh $fpath)
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
-# source $(dirname $0)/zhooks.zsh
-# source ${0:A:h}/mycommand.zsh
-# compinit ${0:A:h}/_scrot
 
 typeset -TU PATH path ':'
 # path+=( /etc/nixos/*(N-/) )
-# path+=/etc/nixos/zsh/bin
+path+=( ${0:a:h}/bin )
 
 typeset -TU LUA_PATH luapath ';'
 luapath+=('/etc/nixos/lua/?.lua')
@@ -19,6 +17,7 @@ luapath+=('/etc/luajit/share/lua/5.1/?.lua')
 export LUA_PATH
 
 typeset -TU CPATH cpath ':'
+cpath+=('/run/current-system/sw/include/')
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
 autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
@@ -33,47 +32,37 @@ zstyle ':completion:*:*:make:*' tag-order 'targets'
 alias oras='curl wttr.in/Vilnius'\
 
 # cat -v	#	showkey
-bindkey '^[[Z' reverse-menu-complete # S-Tab
+bindkey '^N' menu-complete
+bindkey '^P' reverse-menu-complete
 bindkey '^ ' forward-word            # C-Space
 bindkey '^[[1;5C' autosuggest-accept # C-Right
 bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 bindkey -s "^[[24~" "systemctl restart kmsconvt@tty1.service\n" # <F12>
-# bindkey -s "^F" "fzf -m\n"
-# bindkey -s "^G" "Rg\n"
 
-# cd $(nix flake metadata nixpkgs | grep 'Path' | awk '{print $2}')
-
-cmd_preview () {
-	# res=`$BUFFER | awk '{print $1}'`
-	bat $BUFFER
-}
+cmd_preview () { pistol $BUFFER }
 zle -N cmd_preview cmd_preview
 bindkey -v '^]' cmd_preview
 
-cmd_xclip ()  {
-	echo $BUFFER | xclip
-}
+cmd_xclip ()  { echo $BUFFER | xclip }
 zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
-# ripgrep->fzf->vim [QUERY]
-rfv() (
-  RELOAD='reload:rg --column --color=always --smart-case {q} || :'
-  OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+rfv() {
+RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
             vim {1} +{2}     # No selection. Open the current line in Vim.
           else
             vim +cw -q {+f}  # Build quickfix list for the selected items.
           fi'
-  fzf --disabled --ansi --multi \
-      --bind "start:$RELOAD" --bind "change:$RELOAD" \
-      --bind "enter:become:$OPENER" \
-      --bind "ctrl-o:execute:$OPENER" \
-      --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
-      --delimiter : \
-      --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
-      --preview-window '~4,+{2}+4/3,<80(up)' \
-      --query "$*"
-)
-
+fzf --disabled --ansi --multi \
+	--bind "start:$RELOAD" --bind "change:$RELOAD" \
+	--bind "enter:become:$OPENER" \
+	--bind "ctrl-o:execute:$OPENER" \
+	--bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+	--delimiter : \
+	--preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+	--preview-window '~4,+{2}+4/3,<80(up)' \
+	--query "$*"
+}

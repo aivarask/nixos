@@ -4,6 +4,7 @@ let
     force = true;
     settings = [
       (import ./bookmarks_firefox.nix)
+      (import ./bookmarks_github.nix)
       (import ./bookmarks_google.nix)
       (import ./bookmarks_nixos.nix)
       (import ./bookmarks_.nix)

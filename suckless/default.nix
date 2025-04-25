@@ -42,15 +42,11 @@
       }
     )
   ];
-  environment.sessionVariables.CPATH = with pkgs; [
-    # "${pkgs.xorg.libXrender.dev}/include"
-    # "${pkgs.xorg.libX11.dev}/include"
-    # "${pkgs.xorg.xorgproto}/include"
-    # "${pkgs.xorg.libXft.dev}/include"
-    # "${pkgs.freetype.dev}/include"
-    # "${pkgs.fontconfig.dev}/include"
-  ];
+  environment.sessionVariables.CPATH = with pkgs; [ ];
   environment.systemPackages = with pkgs; [
+    xorg.xorgproto
+    freetype
+    xorg.libXrender
     dmenu
     #
     fontconfig
