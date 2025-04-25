@@ -28,6 +28,3 @@ Session.vim
 # python
 .pytest_cache/
 __pycache__
-
-# zig
-.zig-cache/

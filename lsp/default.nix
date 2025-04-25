@@ -42,26 +42,11 @@ lib.mkMerge [
       # yaml
       yaml-language-server
       yq-go
-      # zig
-      zig
-      zls
-      zig-shell-completions
-      zap
     ];
     environment.pathsToLink = [ "/include" ];
     environment.extraOutputsToInstall = [
-      # "dev"
+      "dev"
       # "info"
-    ];
-    environment.sessionVariables.CPATH = [
-      "/etc/nixos/include"
-      "/root/include"
-      "${pkgs.xorg.libXrender.dev}/include"
-      "${pkgs.xorg.libX11.dev}/include"
-      "${pkgs.xorg.xorgproto}/include"
-      "${pkgs.xorg.libXft.dev}/include"
-      "${pkgs.freetype.dev}/include"
-      "${pkgs.fontconfig.dev}/include"
     ];
 
     environment.sessionVariables = {

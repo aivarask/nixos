@@ -2,58 +2,63 @@
 {
   nixpkgs.overlays = [
     (
-      _: super: with inputs; {
-        dmenu = super.dmenu.overrideAttrs (oldAttrs: rec {
+      final: prev: with inputs; {
+        dmenu = prev.dmenu.overrideAttrs (old: rec {
           src = dmenu-flexipatch;
-          configFile = super.writeText "config.h" (builtins.readFile ./dmenu-config.h);
+          configFile = prev.writeText "config.h" (builtins.readFile ./dmenu-config.h);
           postPatch = ''
-            ${oldAttrs.postPatch}
+            ${old.postPatch}
             cp ${configFile} config.h
           '';
         });
-        dwm = super.dwm.overrideAttrs (oldAttrs: rec {
+        dwm = prev.dwm.overrideAttrs (old: rec {
           src = dwm-flexipatch;
-          configFile = super.writeText "config.h" (builtins.readFile ./dwm-config.h);
-          patchesFile = super.writeText "patches.h" (builtins.readFile ./dwm-patches.h);
+          configFile = prev.writeText "config.h" (builtins.readFile ./dwm-config.h);
+          patchesFile = prev.writeText "patches.h" (builtins.readFile ./dwm-patches.h);
           postPatch = ''
-            ${oldAttrs.postPatch}
+            ${old.postPatch}
             cp ${patchesFile} patches.h
             cp ${configFile} config.h
           '';
         });
-        st = super.st.overrideAttrs (oldAttrs: rec {
+        st = prev.st.overrideAttrs (old: rec {
           src = st-flexipatch;
-          configFile = super.writeText "config.h" (builtins.readFile ./st-config.h);
+          configFile = prev.writeText "config.h" (builtins.readFile ./st-config.h);
           postPatch = ''
-            ${oldAttrs.postPatch}
+            ${old.postPatch}
             cp ${configFile} config.h
           '';
         });
-        tabbed = super.tabbed.overrideAttrs (oldAttrs: rec {
+        tabbed = prev.tabbed.overrideAttrs (old: rec {
           src = tabbed-flexipatch;
-          configFile = super.writeText "config.h" (builtins.readFile ./tabbed-config.h);
-          patchesFile = super.writeText "patches.h" (builtins.readFile ./tabbed-patches.h);
+          configFile = prev.writeText "config.h" (builtins.readFile ./tabbed-config.h);
+          patchesFile = prev.writeText "patches.h" (builtins.readFile ./tabbed-patches.h);
           postPatch = ''
-            ${oldAttrs.postPatch}
+            ${old.postPatch}
             cp ${patchesFile} patches.h
             cp ${configFile} config.h
           '';
         });
-        # sxiv = super.sxiv.overrideAttrs (oldAttrs: rec {
-        #   src = sxiv-flexipatch;
-        #   configFile = super.writeText "config.h" (builtins.readFile ./sxiv-config.h);
-        #   patchesFile = super.writeText "patches.h" (builtins.readFile ./sxiv-patches.h);
-        #   postPatch = ''
-        #     ${oldAttrs.postPatch}
-        #     cp ${patchesFile} patches.h
-        #     cp ${configFile} config.h
-        #   '';
-        # });
       }
     )
   ];
+  environment.sessionVariables.CPATH = with pkgs; [
+    # "${pkgs.xorg.libXrender.dev}/include"
+    # "${pkgs.xorg.libX11.dev}/include"
+    # "${pkgs.xorg.xorgproto}/include"
+    # "${pkgs.xorg.libXft.dev}/include"
+    # "${pkgs.freetype.dev}/include"
+    # "${pkgs.fontconfig.dev}/include"
+  ];
   environment.systemPackages = with pkgs; [
     dmenu
+    #
+    fontconfig
+    xorg.libX11
+    xorg.libXinerama
+    zlib
+    xorg.libXft
+    #
     dwm
     st
     tabbed

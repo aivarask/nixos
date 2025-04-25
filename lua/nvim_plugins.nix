@@ -34,7 +34,6 @@ let
     # neotest-plenary
     neotest-python
     neotest-rust
-    neotest-zig
     neotest-vitest
   ];
   treesitter = with pkgs.vimPlugins; [

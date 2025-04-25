@@ -25,7 +25,7 @@ in
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [
-    neovim-remote
+    # neovim-remote
     awesome
     stylua
     lua-language-server

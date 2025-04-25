@@ -53,9 +53,9 @@ let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
 let g:switch_custom_definitions =
-    \ [
-    \   ['foldenable', 'nofoldenable']
-    \ ]
+			\ [
+			\   ['foldenable', 'nofoldenable']
+			\ ]
 let g:vim_markdown_no_default_key_mappings = 1
 
 map q <nop>
@@ -83,9 +83,10 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 "noremap <C-S-,> :left<CR>
 
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
-nnoremap ?s :edit /etc/nixos/lua/cfg/_settings.vim<CR>
-nnoremap ?S :execute 'edit ' . getenv("XDG_CONFIG_HOME") . '/sxhkd/sxhkdrc'<CR>
-nnoremap ?x :execute 'edit' . getenv("HOME").'/.xinitrc'<CR>
+nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
+nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
+nnoremap ?x :edit ~/.xinitrc<CR>
+nnoremap ?z :edit ~/.zshrc.extra<CR>
 
 if !has('gui_running')
 	set t_Co=256
@@ -93,16 +94,16 @@ if !has('gui_running')
 endif
 
 if has('nvim')
-  set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
-  set nofoldenable
+	set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
+	set nofoldenable
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
-	" set foldclose=all
-	" set foldlevel=3
-	" set foldnestmax=4
-	" let &foldnestmax = &foldlevel+3
-	" set foldminlines=3
+		" set foldclose=all
+		" set foldlevel=3
+		" set foldnestmax=4
+		" let &foldnestmax = &foldlevel+3
+		" set foldminlines=3
 
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
@@ -112,8 +113,8 @@ if has('nvim')
 
 
 	nnoremap <M-h> :wincmd h<CR>
-  nnoremap <M-j> :wincmd j<CR>
-  nnoremap <M-k> :wincmd k<CR>
+	nnoremap <M-j> :wincmd j<CR>
+	nnoremap <M-k> :wincmd k<CR>
 	nnoremap <M-l> :wincmd l<CR>
 	tnoremap <M-h> <C-\><C-n>:wincmd h<CR>
 	tnoremap <M-j> <C-\><C-n>:wincmd j<CR>
@@ -121,24 +122,24 @@ if has('nvim')
 	tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
 endif
 
-nnoremap <Esc>J :m .+1<CR>==
-nnoremap <Esc>K :m .-2<CR>==
-inoremap <M-J> <Esc>:m .+1<CR>==gi
-inoremap <M-K> <Esc>:m .-2<CR>==gi
-vnoremap <Esc>J :m '>+1<CR>gv=gv
-vnoremap <Esc>K :m '<-2<CR>gv=gv
+	nnoremap <Esc>J :m .+1<CR>==
+	nnoremap <Esc>K :m .-2<CR>==
+	inoremap <M-J> <Esc>:m .+1<CR>==gi
+	inoremap <M-K> <Esc>:m .-2<CR>==gi
+	vnoremap <Esc>J :m '>+1<CR>gv=gv
+	vnoremap <Esc>K :m '<-2<CR>gv=gv
 
 
 
-" CTRL-W    delete word to the left of cursor
-" CTRL-O D  delete everything to the right of cursor
-" CTRL-U    delete everything to the left of cursor
-" CTRL-H    backspace/delete
-" CTRL-J    insert newline (easier than reaching for the return key)
-" CTRL-T    indent current line
-" CTRL-D    un-indent current line
+	" CTRL-W    delete word to the left of cursor
+	" CTRL-O D  delete everything to the right of cursor
+	" CTRL-U    delete everything to the left of cursor
+	" CTRL-H    backspace/delete
+	" CTRL-J    insert newline (easier than reaching for the return key)
+	" CTRL-T    indent current line
+	" CTRL-D    un-indent current line
 
-" map <M--> :wincmd <<CR>
-" tmap <M--> <C-\><C-n>:wincmd <<CR>
-" map <M-=> :wincmd ><CR>
-" tmap <M-=> <C-\><C-n>:wincmd ><CR>
+	" map <M--> :wincmd <<CR>
+	" tmap <M--> <C-\><C-n>:wincmd <<CR>
+	" map <M-=> :wincmd ><CR>
+	" tmap <M-=> <C-\><C-n>:wincmd ><CR>

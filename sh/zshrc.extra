@@ -1,7 +1,6 @@
 # shellcheck shell=zsh
-# export __ETC_PROFILE_SOURCED=
-# export __NIXOS_SET_ENVIRONMENT_DONE=
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
 
 fpath=(/etc/nixos/sh $fpath)
 setopt extended_glob; autoload -Uz $fpath[1]/**/*(.:t)
@@ -18,6 +17,8 @@ luapath+=('/etc/nixos/lua/?.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?/init.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?.lua')
 export LUA_PATH
+
+typeset -TU CPATH cpath ':'
 
 autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
 autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo

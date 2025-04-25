@@ -2,7 +2,6 @@
 {
   # https://github.com/rothgar/mastering-zsh
   home.packages = with pkgs; [
-    zed-editor
     bash-language-server
     shellcheck
     shfmt
