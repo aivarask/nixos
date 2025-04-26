@@ -181,6 +181,7 @@
                 ./sxhkd
                 ./term/alacritty_.nix
                 ./term/wezterm_.nix
+                ./tmux
                 ./x11/hm_.nix
               ];
             };

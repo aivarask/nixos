@@ -2,18 +2,18 @@ set hidden!
 set icons
 set ifs "\n"
 set info "size"
-set ratios "1:1:2"
+set ratios "1:2"
 set scrolloff 8
 set shell "zsh"
 set shellopts "-ey"
-set previewer lf_preview
-# set previewer pistol
+# set previewer lf_preview
+set previewer pistol
 # set cleaner cleaner
 
 # :read $shell %shell-pipe !shell-wait &shell-async
 # f fs fx
 map t
-map ++ set ratios 1:2:3
+map ++ set ratios 1:1:2
 map +w ${{ chmod +w $fx; lf -remote "send $id reload" }}
 map +x ${{ chmod +x $fx; lf -remote "send $id reload" }}
 map -- set ratios 1:2
@@ -43,7 +43,6 @@ map U !du -hs $fx
 map Yc $cat $f | xclip -selection clipboard
 # map <esc> :quit
 map <enter> &xdg-open $fx
-
 
 map <f-5> source-lfrc
 cmd source-lfrc ${{ lf -remote "send $id source ~/.config/lf/lfrc" }}
