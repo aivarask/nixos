@@ -123,12 +123,12 @@ if has('nvim')
 	tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
 endif
 
-	nnoremap <Esc>J :m .+1<CR>==
-	nnoremap <Esc>K :m .-2<CR>==
+	nnoremap <M-J> :m .+1<CR>==
+	nnoremap <M-K> :m .-2<CR>==
 	inoremap <M-J> <Esc>:m .+1<CR>==gi
 	inoremap <M-K> <Esc>:m .-2<CR>==gi
-	vnoremap <Esc>J :m '>+1<CR>gv=gv
-	vnoremap <Esc>K :m '<-2<CR>gv=gv
+	vnoremap <M-J> :m '>+1<CR>gv=gv
+	vnoremap <M-K> :m '<-2<CR>gv=gv
 
 
 

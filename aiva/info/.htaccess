@@ -1,4 +1,0 @@
-<IfModule "mod_info.c">
-	SetHandler server-info
-</IfModule>
-

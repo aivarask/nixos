@@ -35,9 +35,8 @@ set clipboard=unnamedplus
 set autoindent
 set smartindent
 "set paste
-" set shiftwidth=2
+set shiftwidth=2
 " set tabstop=2
-
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -112,7 +111,6 @@ if has('nvim')
 	nnoremap <leader>h :Telescope help_tags<CR>
 	nnoremap <leader>k :Telescope keymaps<CR>
 
-
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>
 	nnoremap <M-k> :wincmd k<CR>
@@ -123,12 +121,12 @@ if has('nvim')
 	tnoremap <M-l> <C-\><C-n>:wincmd l<CR>
 endif
 
-	nnoremap <Esc>J :m .+1<CR>==
-	nnoremap <Esc>K :m .-2<CR>==
+	nnoremap <M-J> :m .+1<CR>==
+	nnoremap <M-K> :m .-2<CR>==
 	inoremap <M-J> <Esc>:m .+1<CR>==gi
 	inoremap <M-K> <Esc>:m .-2<CR>==gi
-	vnoremap <Esc>J :m '>+1<CR>gv=gv
-	vnoremap <Esc>K :m '<-2<CR>gv=gv
+	vnoremap <M-J> :m '>+1<CR>gv=gv
+	vnoremap <M-K> :m '<-2<CR>gv=gv
 
 
 

@@ -64,15 +64,6 @@
     let
       system = "x86_64-linux";
       commonModules = with inputs; [
-        (
-          { pkgs, ... }:
-          {
-            environment.systemPackages = [
-              pkgs.utf8proc
-              # pkgs.git
-            ];
-          }
-        )
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
@@ -84,11 +75,14 @@
         ./config/nix.nix
         ./dialog
         ./go
+        ./lib
         ./lnav
+        ./LS_COLORS.nix
         ./lua
         ./network/networking.nix
         ./network/networkingwireless.nix
         ./node
+        ./nps.nix
         ./ollama.nix
         ./playwright.nix
         ./programs
@@ -113,20 +107,6 @@
         ./wallpaper
         ./x11
         ./xdg
-        (
-          { pkgs, ... }:
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                lib = prev.lib.extend (
-                  libFinal: libPrev: {
-                    plusOne = x: x + 1;
-                  }
-                );
-              })
-            ];
-          }
-        )
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -190,16 +170,8 @@
       ];
     in
     {
-      # formatter."${system}" = pkgs.nixfmt-rfc-style;
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        modules =
-          [
-            ./LS_COLORS.nix
-            ./nps.nix
-            ./lib
-          ]
-          ++ commonModules
-          ++ [ ./dell ];
+        modules = commonModules ++ [ ./dell ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {

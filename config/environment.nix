@@ -3,6 +3,7 @@
   environment.systemPackages = (
     with pkgs;
     [
+      utf8proc
       reptyr
       # hardware
       mtools

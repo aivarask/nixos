@@ -40,7 +40,3 @@ nnoremap <Esc>l :wincmd l<CR>
 
 cnoremap <nowait> <Esc>h <Left>
 cnoremap <nowait> <Esc>l <Right>
-
-
-" nnoremap <Esc>J :m .+1<CR>==
-" nnoremap <Esc>K :m .-2<CR>==
