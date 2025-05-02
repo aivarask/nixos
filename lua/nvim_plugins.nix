@@ -48,7 +48,6 @@ let
   next = with pkgs.vimPlugins; [
     nui-nvim
     nvim-notify
-    plenary-nvim
     fidget-nvim
   ];
 in

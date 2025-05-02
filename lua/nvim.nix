@@ -12,6 +12,7 @@
   };
   programs.neovim.extraLuaPackages =
     ps: with ps; [
+      plenary-nvim
       penlight
       cjson
       http

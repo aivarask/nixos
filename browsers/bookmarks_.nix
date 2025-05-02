@@ -9,6 +9,10 @@
     }
     {
       name = "";
+      url = "http://localhost:8080";
+    }
+    {
+      name = "";
       url = "http://pcw.local:9000/#pc";
     }
     {

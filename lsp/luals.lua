@@ -1,91 +1,91 @@
 local library = {
-  vim.env.VIMRUNTIME,
-  '/etc/static/luajit/share/lua/5.1',
-  '${3rd}/luv/library',
-  -- '${3rd}/busted/library',
-  -- '${3rd}/luassert/library',
+	vim.env.VIMRUNTIME,
+	'/etc/static/luajit/share/lua/5.1',
+	'${3rd}/luv/library',
+	-- '${3rd}/busted/library',
+	-- '${3rd}/luassert/library',
 }
 
 local userThirdParty = {
-  -- '/etc/static/lua-language-server/share/lua-language-server/meta/3rd',
+	-- '/etc/static/lua-language-server/share/lua-language-server/meta/3rd',
 }
 
 local path = {
-  'lua/?/init.lua',
-  'lua/?.lua',
-  --
-  '?/init.lua',
-  '?.lua',
+	'lua/?/init.lua',
+	'lua/?.lua',
+	--
+	'?/init.lua',
+	'?.lua',
 }
 
 local pathStrict = true
 
 for i = #library, 1, -1 do
-  local value = library[i]
-  if string.find(value, 'myNeovimPackages') then
-    table.remove(library, i)
-  end
+	local value = library[i]
+	if string.find(value, 'myNeovimPackages') then
+		table.remove(library, i)
+	end
 end
 for _, name in ipairs({
-  -- 'plenary.nvim',
-  -- 'nvim%-nio',
-  -- 'nvim%-tree',
-  -- 'none%-ls.nvim',
-  -- 'toggleterm.nvim',
-  -- 'which%-key.nvim',
-  -- 'lsp%-file%-operations',
-  -- 'nvim%-dap',
-  -- 'nvim%-dap%-ui',
-  -- 'lualine.nvim',
-  -- 'telescope.nvim',
-  -- 'gitsigns.nvim',
+	-- 'plenary.nvim',
+	-- 'nvim%-nio',
+	-- 'nvim%-tree',
+	-- 'none%-ls.nvim',
+	-- 'toggleterm.nvim',
+	-- 'which%-key.nvim',
+	-- 'lsp%-file%-operations',
+	-- 'nvim%-dap',
+	-- 'nvim%-dap%-ui',
+	-- 'lualine.nvim',
+	-- 'telescope.nvim',
+	-- 'gitsigns.nvim',
 }) do
-  for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
-    if string.find(path, name) then
-      table.insert(library, path)
-    end
-  end
+	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
+		if string.find(path, name) then
+			table.insert(library, path)
+		end
+	end
 end
 
 return {
-  cmd = { 'lua-language-server' },
-  root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml' },
-  -- root_dir = vim.fs.root(0, { 'flake.lock' }),
-  filetypes = { 'lua' },
-  settings = {
-    Lua = { --- @type LuaSettings
-      completion = {
-        autoRequire = true,
-        callSnippet = 'Disable',
-        displayContext = 7,
-        enable = true,
-        keywordSnippet = 'Both',
-        postfix = '@',
-      },
-      diagnostics = { -- luals.github.io/wiki/diagnostics
-        disable = { 'lowercase-global', 'unused-local', 'need-check-nil', 'empty-block' },
-      },
-      format = {
-        enable = true
-      },
-      hint = {
-        enable = true,
-        arrayIndex = 'Auto',
-        setType = true,
-      },
-      runtime = {
-        version = 'LuaJIT',
-        pathStrict = pathStrict,
-        path = path,
-      },
-      workspace = {
-        checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
-        library = library,
-        preloadFileSize = 600,
-        ignoreDir = { 'node_modules', 'vendor' },
-        -- https://luals.github.io/wiki/settings/#workspaceuserthirdparty
-        userThirdParty = userThirdParty,
-      },
-    },
-  }
+	cmd = { 'lua-language-server' },
+	root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml' },
+	-- root_dir = vim.fs.root(0, { 'flake.lock' }),
+	filetypes = { 'lua' },
+	settings = {
+		Lua = { --- @type LuaSettings
+			completion = {
+				autoRequire = true,
+				callSnippet = 'Disable',
+				displayContext = 7,
+				enable = true,
+				keywordSnippet = 'Both',
+				postfix = '@',
+			},
+			diagnostics = { -- luals.github.io/wiki/diagnostics
+				disable = { 'lowercase-global', 'unused-local', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
+			},
+			format = {
+				enable = true
+			},
+			hint = {
+				enable = true,
+				arrayIndex = 'Auto',
+				setType = true,
+			},
+			runtime = {
+				version = 'LuaJIT',
+				pathStrict = pathStrict,
+				path = path,
+			},
+			workspace = {
+				checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
+				library = library,
+				preloadFileSize = 600,
+				ignoreDir = { 'node_modules', 'vendor' },
+				-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty
+				userThirdParty = userThirdParty,
+			},
+		},
+	}
 }

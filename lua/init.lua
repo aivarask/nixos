@@ -5,9 +5,12 @@ runtime! lua/_config/**/*{.lua,.vim}
 runtime! lua/_*{.lua,.vim}
 ]]
 vim.loader.enable()
-
+uv = vim.uv
 vim.keymap.set({ 'n', 'i', 'v' }, '<F1>', require('help').select)
--- vim.keymap.set({ 'n', 'i', 'v' }, '<F2>', vim.lsp.buf.signature_help)
--- vim.keymap.set('i', '<C-n>', function()
---   return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-x><C-o>"
--- end, { expr = true })
+vim.keymap.set({ 'n' }, 'grd', vim.lsp.buf.definition)
+
+if (vim.system({ 'fuser', '4000/tcp' }):wait().code ~= 1) then
+	assert(vim.system({ 'fuser', '4000/tcp', '-k' }):wait().code == 0)
+end
+
+require 'wsocat'

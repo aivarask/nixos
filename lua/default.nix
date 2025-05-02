@@ -16,6 +16,7 @@ let
       luasec
       luasql-sqlite3
       penlight
+      plenary-nvim
       # nlua # nvim as lua interpreter
     ]
   );

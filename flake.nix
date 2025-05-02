@@ -75,6 +75,7 @@
         ./config/nix.nix
         ./dialog
         ./go
+        ./httpd
         ./lib
         ./lnav
         ./LS_COLORS.nix
@@ -151,6 +152,7 @@
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
                 ./rofi
+                ./services/dunst_.nix
                 ./sh/bat.nix
                 ./sh/env_hm.nix
                 ./sh/fzf.nix
