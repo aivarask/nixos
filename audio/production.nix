@@ -21,7 +21,7 @@
     vital
     distrho-ports
     lsp-plugins
-    # bitwig-studio
+    bitwig-studio
     # mixxx
     yoshimi
     guitarix

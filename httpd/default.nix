@@ -8,7 +8,7 @@
     "proxy_wstunnel"
   ];
 
-  services.httpd.virtualHosts."gettransfer.lt" = {
+  services.httpd.virtualHosts."gettransfer.lt" = rec {
     documentRoot = "/etc/nixos/httpd";
     serverAliases = [ "get.l" ];
     listen = [
@@ -17,6 +17,7 @@
         port = 8080;
       }
     ];
+    extraConfig = "<Directory ${documentRoot}>\n  Options FollowSymlinks\n  AllowOverride All\n</Directory>\n";
   };
   systemd.tmpfiles.rules = [
     # "d /var/www/gettransfer.local"

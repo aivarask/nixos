@@ -13,10 +13,11 @@ print("process opened", handle, pid)
 uv.read_start(stdout, function(err, data)
 	assert(not err, err)
 	if data then
-		if data == 'save\n' then
-			uv.write(stdin, 'reload\n')
+		if data == 'save' then
+			uv.write(stdin, 'save\n')
 		else
 			print("stdout chunk", stdout, data)
+			uv.write(stdin, data)
 		end
 	else
 		print("stdout end", stdout)

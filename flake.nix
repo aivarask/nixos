@@ -85,7 +85,6 @@
         ./node
         ./nps.nix
         ./ollama.nix
-        ./playwright.nix
         ./programs
         ./python
         ./services

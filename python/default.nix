@@ -11,13 +11,13 @@
         pytest
         pytest-watch
         pytest-timeout
-        # pytest-playwright
+        pytest-playwright
+        playwright
         pynvim
         livereload
         debugpy
         python-dotenv
         httpie
-        # playwright
 
         # -S ext:mp3
         # --alias
@@ -25,4 +25,6 @@
       ]
     ))
   ];
+  environment.sessionVariables.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+  environment.sessionVariables.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = 1;
 }
