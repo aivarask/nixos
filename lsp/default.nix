@@ -1,12 +1,13 @@
 { lib, pkgs, ... }:
 lib.mkMerge [
   {
-    # c
     environment.systemPackages = with pkgs; [
       glibc
       # glibcInfo
       clang
       clang-tools
+      cunit
+      bear
       cmake
       # ccls
       # check

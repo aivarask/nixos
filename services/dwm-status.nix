@@ -47,7 +47,7 @@
       ])
       [
         "audio"
-        # "cpu_load"
+        "cpu_load"
         "network"
         "time"
       ]

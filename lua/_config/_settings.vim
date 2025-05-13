@@ -84,6 +84,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?l :edit ~/.config/lf/lfrc<CR>
 nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
+nnoremap ?k :edit ~/.config/vim/_keys.lua<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
 nnoremap ?z :edit ~/.zshrc.extra<CR>

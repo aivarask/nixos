@@ -49,7 +49,13 @@ cmd_xclip ()  { echo $BUFFER | xclip }
 zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
-rfv() {
+fzf-find(){
+  FZF_DEFAULT_COMMAND='find . -type f' \
+  fzf --bind 'ctrl-d:reload(find . -type d),ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")' \
+      --height=50% --layout=reverse --preview 'pistol {}'
+}
+
+rg-fzf-vim() {
 RELOAD='reload:rg --column --color=always --smart-case {q} || :'
 OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
             vim {1} +{2}     # No selection. Open the current line in Vim.
@@ -59,6 +65,8 @@ OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
 fzf --disabled --ansi --multi \
 	--bind "start:$RELOAD" --bind "change:$RELOAD" \
 	--bind "enter:become:$OPENER" \
+	--bind 'ctrl-f:reload(fd)' \
+	# --bind 'ctrl-r:reload(ps -ef)' \
 	--bind "ctrl-o:execute:$OPENER" \
 	--bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
 	--delimiter : \

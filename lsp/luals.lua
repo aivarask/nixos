@@ -37,7 +37,7 @@ for _, name in ipairs({
 	-- 'nvim%-dap',
 	-- 'nvim%-dap%-ui',
 	-- 'lualine.nvim',
-	-- 'telescope.nvim',
+	'telescope.nvim',
 	-- 'gitsigns.nvim',
 }) do
 	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
@@ -53,7 +53,7 @@ return {
 	-- root_dir = vim.fs.root(0, { 'flake.lock' }),
 	filetypes = { 'lua' },
 	settings = {
-		Lua = { --- @type LuaSettings
+		Lua = {
 			completion = {
 				autoRequire = true,
 				callSnippet = 'Disable',

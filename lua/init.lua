@@ -13,4 +13,5 @@ if (vim.system({ 'fuser', '4000/tcp' }):wait().code ~= 1) then
 	assert(vim.system({ 'fuser', '4000/tcp', '-k' }):wait().code == 0)
 end
 
-require 'wsocat'
+-- require 'wsocat'
+-- require 'wserv'

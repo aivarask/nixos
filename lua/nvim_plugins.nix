@@ -49,6 +49,7 @@ let
     nui-nvim
     nvim-notify
     fidget-nvim
+    luvit-meta
   ];
 in
 {
