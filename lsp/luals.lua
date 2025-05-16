@@ -4,6 +4,7 @@ local library = {
 	'${3rd}/luv/library',
 	-- '${3rd}/busted/library',
 	-- '${3rd}/luassert/library',
+	'/etc/nixos/httpd'
 }
 
 local userThirdParty = {

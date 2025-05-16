@@ -1,6 +1,10 @@
 return {
 	cmd = { 'intelephense', '--stdio' },
-	filetypes = { 'php' },
+	filetypes = {
+		'php',
+		'phtml',
+		-- 'html'
+	},
 	settings = {
 		intelephense = {
 			files = {

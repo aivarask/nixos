@@ -1,5 +1,5 @@
-if !exists('*SaveExec')
-	function! SaveExec() abort
+if !exists('*SourceLuafile')
+	function! SourceLuafile() abort
 		if &filetype ==?'vim'
 			" :%s/\s\+$//e
 			:silent! write

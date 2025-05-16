@@ -1,13 +1,6 @@
 <?php
 $COMPANY = 'gettransfer';
-$LANGS = array('LT', 'EN', 'RU');
-foreach ($LANGS as $lang):
-endforeach;
-$lang = $_GET['lang'] ?? 'LT';
-if (in_array($lang, $LANGS)) {
-	$_SESSION['lang'] = $lang;
-}
-$lang = strtolower($lang)
+$CONTENT_PATH = '/etc/nixos/httpd/content';
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +12,22 @@ $lang = strtolower($lang)
 	<link rel="icon" type="image/x-icon" href="about:blank" />
 	<link rel="stylesheet" href="style.css" />
 	<title><?= $COMPANY ?></title>
+	<style>
+		p {
+			white-space: pre-line;
+		}
+	</style>
 </head>
 
 <body>
-	<p> <?php $about = file("/etc/nixos/httpd/txt/aboutus_{$lang}.txt") ?> <?= implode('<br>', $about) ?> </p>
-	<p> <?php $services = file("/etc/nixos/httpd/txt/services_{$lang}.txt") ?> <?= implode('<br>', $services) ?> </p>
-	<p> <?php $contact = file("/etc/nixos/httpd/txt/contactus_{$lang}.txt") ?> <?= implode('<br>', $contact) ?> </p>
+	<?php include('lang.php'); ?>
+	<?php include('branch.php'); ?>
+
+	<p> <?php $about = file("{$CONTENT_PATH}/about_{$lang}.txt") ?> <?= implode('', $about); ?> </p>
+	<p> <?php $services = file("{$CONTENT_PATH}/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p>
+	<p> <?php $contact = file("{$CONTENT_PATH}/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p>
+	<pre> <?= var_dump($_SESSION) ?>
+	</pre>
 </body>
 
 <script>

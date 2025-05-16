@@ -75,7 +75,7 @@ map ]T :tabclose<CR>
 map [T :tabclose<CR>
 nmap <C-k> [%
 nnoremap <silent> <leader>q :Bclose<CR>
-nnoremap <silent> <leader>a :call SaveExec()<CR>
+nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
 
@@ -85,6 +85,7 @@ nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?l :edit ~/.config/lf/lfrc<CR>
 nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
 nnoremap ?k :edit ~/.config/vim/_keys.lua<CR>
+nnoremap ?i :edit ~/.config/vim/init.lua<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
 nnoremap ?z :edit ~/.zshrc.extra<CR>
@@ -106,12 +107,14 @@ if has('nvim')
 	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
 
+	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
 	nnoremap <leader>g :Telescope live_grep<CR>
 	nnoremap <leader>h :Telescope help_tags<CR>
 	nnoremap <leader>k :Telescope keymaps<CR>
-
+	nnoremap <leader>r :Telescope reloader<CR>
+	      
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>
 	nnoremap <M-k> :wincmd k<CR>

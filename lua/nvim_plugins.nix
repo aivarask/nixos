@@ -26,15 +26,15 @@ let
   testing = with pkgs.vimPlugins; [
     # vim-test
     neotest
-    neotest-bash
-    neotest-go
-    neotest-jest
-    neotest-phpunit
-    neotest-pest
+    # neotest-bash
+    # neotest-go
+    # neotest-jest
+    # neotest-phpunit
+    # neotest-pest
     # neotest-plenary
     neotest-python
-    neotest-rust
-    neotest-vitest
+    # neotest-rust
+    # neotest-vitest
   ];
   treesitter = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
@@ -55,9 +55,5 @@ in
 {
   programs.neovim.plugins =
     # ++ dap
-    misc
-    # ++ testing
-    ++ telescope
-    ++ treesitter
-    ++ next;
+    misc ++ testing ++ telescope ++ treesitter ++ next;
 }
