@@ -5,6 +5,9 @@
   inputs,
   ...
 }:
+let
+  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+in
 {
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
@@ -27,58 +30,34 @@
   nixpkgs.config.android_sdk.accept_license = true;
   nixpkgs.flake.setNixPath = true;
 
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      optimise = {
-        automatic = true;
-      };
-      # package = pkgs.nixVersions.latest; # stable
-      # nixPath = options.nix.nixPath.default ++ [ ];
-      # nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-      gc = {
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 1d";
-      };
-      settings = {
-        max-jobs = 8;
-        cores = 4;
-        auto-optimise-store = true;
-        # nixos-rebuild switch --option binary-caches 'https://cache.nixos.org/'
-        substituters = lib.mkForce [
-          "http://binarycache.dell.local"
-          "https://nix-community.cachix.org"
-          "https://cache.nixos.org/" # added by default
-          # "https://hyprland.cachix.org"
-        ];
-        trusted-public-keys = [
-          "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        ];
-        ## https://discourse.nixos.org/t/why-is-an-older-version-of-an-app-getting-installed-here/49413/6
-        ## https://github.com/Misterio77/nix-starter-configs/blob/cd2634edb7742a5b4bbf6520a2403c22be7013c6/standard/nixos/configuration.nix
-        ## https://jade.fyi/blog/pinning-nixos-with-npins/
-        ## https://github.com/infinisil/sanix?tab=readme-ov-file
-        ## https://dotfiles.cgdct.moe/nix/nixos/#removing-channels-and-flake-registries
-        experimental-features = "nix-command flakes";
-        flake-registry = ""; # Opinionated: disable global registry
-        nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
-      };
-      # Opinionated: disable channels
-      channel.enable = false;
-
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-      extraOptions = ''
-        use-xdg-base-directories = true
-        warn-dirty = true
-        download-buffer-size = ${toString (67108864 * 4)}
-      '';
-    };
-
+  nix.optimise.automatic = true;
+  # nix.package = pkgs.nixVersions.latest; # stable
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 1d";
+  nix.channel.enable = false;
+  nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+  nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  nix.extraOptions = ''
+    use-xdg-base-directories = true
+    warn-dirty = true
+    download-buffer-size = ${toString (67108864 * 4)}
+  '';
+  nix.settings.max-jobs = 8;
+  nix.settings.cores = 4;
+  nix.settings.auto-optimise-store = true;
+  nix.settings.substituters = lib.mkForce [
+    "http://binarycache.dell.local"
+    "https://nix-community.cachix.org"
+    "https://cache.nixos.org/"
+    # "https://hyprland.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+  ];
+  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.flake-registry = "";
+  nix.settings.nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
 }

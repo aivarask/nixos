@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+printf "one\ntwo\n" | dmenu -l 10 -i

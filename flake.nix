@@ -1,69 +1,70 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nps.url = "github:OleMussmann/nps";
-    nps.inputs.nixpkgs.follows = "nixpkgs";
-    templates.url = "github:NixOS/templates";
-    dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
-    disko.url = "github:nix-community/disko/latest";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    LS_COLORS.url = "github:trapd00r/LS_COLORS";
-    LS_COLORS.flake = false;
-    browser-previews.url = "github:nix-community/browser-previews";
-    browser-previews.inputs.nixpkgs.follows = "nixpkgs";
-    musnix.url = "github:musnix/musnix";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    #
-    dmenu-flexipatch.url = "github:bakkeby/dmenu-flexipatch";
-    dmenu-flexipatch.flake = false;
-    dwm-flexipatch.url = "github:bakkeby/dwm-flexipatch";
-    dwm-flexipatch.flake = false;
-    st-flexipatch.url = "github:bakkeby/st-flexipatch";
-    st-flexipatch.flake = false;
-    tabbed-flexipatch.url = "github:bakkeby/tabbed-flexipatch";
-    tabbed-flexipatch.flake = false;
-    sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
-    sxiv-tabbed.flake = false;
-    #
-    sxhkd-vim.url = "github:kovetskiy/sxhkd-vim";
-    sxhkd-vim.flake = false;
-    vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
-    vim-log-highlighting.flake = false;
-    vim-interestingwords.url = "github:lfv89/vim-interestingwords";
-    vim-interestingwords.flake = false;
-    neotest-playwright.url = "github:thenbe/neotest-playwright";
-    neotest-playwright.flake = false;
-    persistent-breakpoints.url = "github:Weissle/persistent-breakpoints.nvim";
-    persistent-breakpoints.flake = false;
-    smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
-    smart-semicolon.flake = false;
-    one-small-step-for-vimkind.url = "github:jbyuki/one-small-step-for-vimkind";
-    one-small-step-for-vimkind.flake = false;
-    tree-sitter-language-injection.url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
-    tree-sitter-language-injection.flake = false;
-    websocket-nvim.url = "github:samsze0/websocket.nvim";
-    websocket-nvim.flake = false;
-    nvim-oxi.url = "github:noib3/nvim-oxi";
-    nvim-oxi.flake = false;
-    # https://github.com/mlua-rs/mlua
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.systems.url = "github:nix-systems/x86_64-linux";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs.flake-utils.inputs.systems.follows = "systems";
+  inputs.nps.url = "github:OleMussmann/nps";
+  inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.templates.url = "github:NixOS/templates";
+  inputs.dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
+  inputs.disko.url = "github:nix-community/disko/latest";
+  inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  inputs.nixos-generators.url = "github:nix-community/nixos-generators";
+  inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nixgl.url = "github:nix-community/nixGL";
+  inputs.nix-colors.url = "github:misterio77/nix-colors";
+  inputs.nix-index-database.url = "github:nix-community/nix-index-database";
+  inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nur.url = "github:nix-community/NUR";
+  inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+  inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.browser-previews.url = "github:nix-community/browser-previews";
+  inputs.browser-previews.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.musnix.url = "github:musnix/musnix";
+  inputs.rust-overlay.url = "github:oxalica/rust-overlay";
+  inputs.LS_COLORS.url = "github:trapd00r/LS_COLORS";
+  inputs.LS_COLORS.flake = false;
+  #
+  inputs.dmenu-flexipatch.url = "github:bakkeby/dmenu-flexipatch";
+  inputs.dmenu-flexipatch.flake = false;
+  inputs.dwm-flexipatch.url = "github:bakkeby/dwm-flexipatch";
+  inputs.dwm-flexipatch.flake = false;
+  inputs.st-flexipatch.url = "github:bakkeby/st-flexipatch";
+  inputs.st-flexipatch.flake = false;
+  inputs.tabbed-flexipatch.url = "github:bakkeby/tabbed-flexipatch";
+  inputs.tabbed-flexipatch.flake = false;
+  inputs.sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
+  inputs.sxiv-tabbed.flake = false;
+  #
+  inputs.sxhkd-vim.url = "github:kovetskiy/sxhkd-vim";
+  inputs.sxhkd-vim.flake = false;
+  inputs.vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
+  inputs.vim-log-highlighting.flake = false;
+  inputs.vim-interestingwords.url = "github:lfv89/vim-interestingwords";
+  inputs.vim-interestingwords.flake = false;
+  inputs.neotest-playwright.url = "github:thenbe/neotest-playwright";
+  inputs.neotest-playwright.flake = false;
+  inputs.persistent-breakpoints.url = "github:Weissle/persistent-breakpoints.nvim";
+  inputs.persistent-breakpoints.flake = false;
+  inputs.smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
+  inputs.smart-semicolon.flake = false;
+  inputs.one-small-step-for-vimkind.url = "github:jbyuki/one-small-step-for-vimkind";
+  inputs.one-small-step-for-vimkind.flake = false;
+  inputs.tree-sitter-language-injection.url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
+  inputs.tree-sitter-language-injection.flake = false;
+  inputs.websocket-nvim.url = "github:samsze0/websocket.nvim";
+  inputs.websocket-nvim.flake = false;
+  inputs.nvim-oxi.url = "github:noib3/nvim-oxi";
+  inputs.nvim-oxi.flake = false;
+  # https://github.com/mlua-rs/mlua
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";
-      commonModules = with inputs; [
+      commonModules = [
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
@@ -114,7 +115,6 @@
             useUserPackages = true;
             verbose = true;
             extraSpecialArgs = {
-              inherit inputs;
               SELF = "/etc/nixos";
             };
             sharedModules = [ { home.stateVersion = "23.05"; } ];
@@ -137,11 +137,7 @@
                 ./htop
                 ./kitty
                 ./lf
-                ./lua/common_plugins.nix
-                ./lua/nvim.nix
-                ./lua/nvim_over.nix
-                ./lua/nvim_plugins.nix
-                ./lua/vim.nix
+                ./lua/default_hm.nix
                 ./mpv
                 ./ncmpcpp
                 ./programs/default_.nix
@@ -170,7 +166,13 @@
         }
       ];
     in
-    {
+    inputs.flake-utils.lib.eachDefaultSystem (system: {
+      # checks./*<SYSTEM>.*/"<CHECK>" = /* ... */;
+      # devShells./*<SYSTEM>.*/"<DEV_SHELL>" = /* ... */;
+      # packages./*<SYSTEM>.*/"<PACKAGE>" = /* ... */;
+    })
+    // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
+
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./dell ];
         specialArgs = { inherit inputs; };
@@ -179,5 +181,5 @@
         modules = commonModules ++ [ ./pc ];
         specialArgs = { inherit inputs; };
       };
-    };
+    });
 }

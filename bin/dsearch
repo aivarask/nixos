@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+query="$(echo "" | dmenu -p "ff ddg: " <&-)"
+[ -n "${query}" ] && firefox https://duckduckgo.com/?q="${query}" &

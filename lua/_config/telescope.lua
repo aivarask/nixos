@@ -25,12 +25,15 @@ require('telescope').setup({
 			-- 	override_generic_sorter = true, -- override the generic sorter
 			case_mode = 'smart_case', -- default "smart_case" or "ignore_case" or "respect_case"
 		},
+		manix = {
+			cword = true,
+		}
 	},
 })
 
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('lazygit')
--- require('telescope').load_extension('manix')
+require('telescope').load_extension('manix')
 
 local builtin = require('telescope.builtin')

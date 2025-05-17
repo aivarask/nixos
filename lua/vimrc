@@ -3,16 +3,7 @@ runtime! lua/_config/**/*.vim
 runtime! lua/_*.vim
 call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/
-
-
-" https://askubuntu.com/questions/487595/resuming-a-vim-session-i-have-accidentally-disconnected-from
-"set foldmethod=indent
 set bufhidden=unload
-" set sessionoptions-=options
-"set sessionoptions+=localoptions
-
-"aug quit | au! | autocmd VimLeavePre,QuitPre * mksession! | aug END
-"aug enter | au! | autocmd! VimEnter * source ./Session.vim | aug END
 
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''

@@ -36,7 +36,6 @@ set autoindent
 set smartindent
 "set paste
 set shiftwidth=2
-" set tabstop=2
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -96,7 +95,7 @@ if !has('gui_running')
 endif
 
 if has('nvim')
-	set sessionoptions=buffers,curdir,help,tabpages,winsize,winpos,terminal
+	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions
 	set nofoldenable
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
