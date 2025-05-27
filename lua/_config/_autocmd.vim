@@ -7,7 +7,7 @@ augroup END
 
 augroup focus
 	autocmd!
-	autocmd FocusGained,BufEnter,CursorHold,VimResume * :silent! checktime
+	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
 augroup END
 

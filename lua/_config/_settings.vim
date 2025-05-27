@@ -31,7 +31,7 @@ set commentstring=#\ %s
 set conceallevel=2
 set clipboard=unnamedplus
 
-" set nolisp
+set tabstop=2
 set autoindent
 set smartindent
 "set paste
@@ -95,7 +95,7 @@ if !has('gui_running')
 endif
 
 if has('nvim')
-	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions
+	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
 	set nofoldenable
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
@@ -105,14 +105,21 @@ if has('nvim')
 	" set foldnestmax=4
 	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
+	set lisp
 
 	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
 	nnoremap <leader>g :Telescope live_grep<CR>
 	nnoremap <leader>h :Telescope help_tags<CR>
+	nnoremap <leader>H :Telescope command_history<CR>
 	nnoremap <leader>k :Telescope keymaps<CR>
 	nnoremap <leader>r :Telescope reloader<CR>
+	nnoremap <leader>M :Telescope manix<CR>
+	nmap <leader>N :Neotest
+	nnoremap <leader>n :Neotest summary toggle<CR>
+
+	nnoremap <leader>t :Telescope<CR>
 	      
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>

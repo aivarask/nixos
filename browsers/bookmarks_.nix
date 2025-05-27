@@ -2,7 +2,10 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
-
+    {
+      name = "";
+      url = "https://deepwiki.com";
+    }
     {
       name = "";
       url = "https://soundcloud.com/";

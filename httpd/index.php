@@ -1,6 +1,7 @@
 <?php
 $COMPANY = 'gettransfer';
-$CONTENT_PATH = '/etc/nixos/httpd/content';
+$server_name = $_SERVER['SERVER_NAME'];
+$document_root = $_SERVER['DOCUMENT_ROOT']
 ?>
 
 <!DOCTYPE html>
@@ -20,14 +21,25 @@ $CONTENT_PATH = '/etc/nixos/httpd/content';
 </head>
 
 <body>
+	<pre>
+			<?php
+			# var_dump($_SERVER);
+			# var_dump($_SESSION);
+			?>
+		</pre>
 	<?php include('lang.php'); ?>
 	<?php include('branch.php'); ?>
 
-	<p> <?php $about = file("{$CONTENT_PATH}/about_{$lang}.txt") ?> <?= implode('', $about); ?> </p>
-	<p> <?php $services = file("{$CONTENT_PATH}/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p>
-	<p> <?php $contact = file("{$CONTENT_PATH}/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p>
-	<pre> <?= var_dump($_SESSION) ?>
-	</pre>
+	<?php
+	$about = file("{$document_root}/content/about_{$lang}.txt");
+	$about_title = array_slice($about, 0, 2);
+	$about_content = array_slice($about, 2, count($about) - 2);
+	?>
+
+	<h1><?= implode('', $about_title); ?></h1>
+	<p> <?= implode('', $about_content); ?> </p>
+	<p> <?php $services = file("{$document_root}/content/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p>
+	<p> <?php $contact = file("{$document_root}/content/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p>
 </body>
 
 <script>

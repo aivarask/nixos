@@ -8,10 +8,10 @@ return {
 	settings = {
 		python = {
 			analysis = {
-				autoSearchPaths = true,
-				useLibraryCodeForTypes = true,
-				diagnosticMode = 'openFilesOnly',
-				stubPath = '/run/current-system/sw/lib/python3.12/site-packages',
+				autosearchpaths = true,
+				uselibrarycodefortypes = true,
+				diagnosticmode = 'openfilesonly',
+				stubpath = '/run/current-system/sw/lib/python3.12/site-packages',
 			},
 		},
 	},

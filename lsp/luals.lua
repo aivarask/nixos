@@ -28,22 +28,23 @@ for i = #library, 1, -1 do
 	end
 end
 for _, name in ipairs({
+	'telescope.nvim',
+	'neotest%-python',
+	'neotest',
 	-- 'plenary.nvim',
 	-- 'nvim%-nio',
 	-- 'nvim%-tree',
-	-- 'none%-ls.nvim',
 	-- 'toggleterm.nvim',
 	-- 'which%-key.nvim',
 	-- 'lsp%-file%-operations',
 	-- 'nvim%-dap',
 	-- 'nvim%-dap%-ui',
 	-- 'lualine.nvim',
-	'telescope.nvim',
 	-- 'gitsigns.nvim',
 }) do
-	for _, path in ipairs(vim.api.nvim_list_runtime_paths()) do
-		if string.find(path, name) then
-			table.insert(library, path)
+	for _, v in ipairs(vim.api.nvim_list_runtime_paths()) do
+		if string.find(v, name) then
+			table.insert(library, v)
 		end
 	end
 end
@@ -82,6 +83,7 @@ return {
 			workspace = {
 				checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
 				library = library,
+				-- library = vim.api.nvim_list_runtime_paths(),
 				preloadFileSize = 600,
 				ignoreDir = { 'node_modules', 'vendor' },
 				-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty

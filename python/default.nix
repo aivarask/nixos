@@ -3,10 +3,15 @@
   environment.systemPackages = with pkgs; [
     pyright
     black
+    isort
 
     (python3.withPackages (
       ps: with ps; [
         pip
+        python-lsp-server
+        pylsp-mypy
+        mypy
+        autopep8
         requests
         pytest
         pytest-watch

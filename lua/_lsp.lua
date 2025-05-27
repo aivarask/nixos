@@ -35,33 +35,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			})
 		end
 
+		if client:supports_method('textDocument/signatureHelp') then
+		end
+
 		if (not client:supports_method('textDocument/willSaveWaitUntil') or true)
-				or client:supports_method('textDocument/formatting') then
+				or client:supports_method('textDocument/formatting')
+		then
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup('lsp:format', { clear = false }),
 				buffer = args.buf,
 				callback = function()
 					local verbose = false
 					if verbose then os.execute('notify-send ' .. os.time()) end
-					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-				end,
-			})
-		else
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = vim.api.nvim_create_augroup('lsp:format', { clear = false }),
-				buffer = args.buf,
-				callback = function()
 					local ft = vim.fn.getbufvar(args.buf, '&filetype')
 					if ft == 'json' or ft == 'jsonc' then
 						vim.lsp.buf.format({ name = 'jsonls' })
 					elseif ft == 'markdown' then
 						vim.lsp.buf.format({ name = 'marksman' })
+					elseif ft == 'python' then
+						vim.lsp.buf.format({ name = 'pylsp', bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+					elseif ft == 'php' then
+						vim.lsp.buf.format({ name = 'phpls', bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+					else
+						vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
 					end
 				end,
 			})
-		end
-
-		if client:supports_method('textDocument/signatureHelp') then
 		end
 	end,
 })
@@ -79,14 +78,15 @@ vim.lsp.enable({
 	'marksman',
 	'nixd',
 	'phpls',
-	'pyright',
-	'rustls',
-	'sql',
+	'pylsp',
+	-- 'pyright',
+	-- 'rustls',
+	-- 'sql',
 	'stylelint',
 	'templls',
 	'tomlls',
 	'typescript-language-server',
-	'twigls',
+	-- 'twigls',
 	'vscode-css',
 	'vscode-html',
 	'yamlls',

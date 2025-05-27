@@ -28,19 +28,8 @@ let
 in
 {
   xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
-  programs.vim = {
-    enable = true;
-    extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
-  };
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
-  programs.neovim.enable = true;
-  programs.neovim = {
-    # extraConfig = ''source $XDG_CONFIG_HOME/nvim/init.vim'';
-    # extraLuaConfig = ''vim.loader.enable()'';
-    # vimdiffAlias = true; default false
-    # withNodeJs = true; # default false
-    # withRuby = false; # default true
-  };
+  programs.vim.enable = true;
+  programs.vim.extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (
     lib.mkMerge [
       common
@@ -56,6 +45,8 @@ in
       ])
     ]
   );
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
+  programs.neovim.enable = true;
   programs.neovim.extraLuaPackages =
     ps: with ps; [
       plenary-nvim

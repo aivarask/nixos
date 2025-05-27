@@ -1,7 +1,9 @@
 require('telescope').setup({
 	defaults = {
-		layout_strategy = 'vertical',
-		layout_config = { vertical = { width = 0.9 } },
+		layout_strategy = 'horizontal',
+		-- layout_strategy = 'vertical',
+
+		layout_config = { vertical = { width = 0.9 }, horizontal = { width = 0.9 } },
 		vimgrep_arguments = {
 			'rg',
 			'--color=never',

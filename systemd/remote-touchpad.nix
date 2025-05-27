@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 {
-  environment.systemPackages = with pkgs; [ remote-touchpad ];
+  environment.systemPackages = with pkgs; [
+    remote-touchpad
+  ];
   networking.firewall.allowedTCPPorts = [ 9000 ];
   systemd.services.remote-touchpad = {
     enable = if config.networking.hostName == "pc" then false else false;

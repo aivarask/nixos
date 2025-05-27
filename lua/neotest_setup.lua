@@ -2,10 +2,22 @@ require("neotest").setup({
 	summary = { open = "botright vsplit | vertical resize 30 | set winfixwidth" },
 	output_panel = { open = "botright vsplit | vertical resize 60 | set winfixwidth" },
 	adapters = {
+		--- @see https://github.com/nvim-neotest/neotest-python/
+		-- require("neotest-python")
+		require("neotest-python")({
+			-- is_test_file = function(file_path)
+			-- 	print(file_path)
+			-- 	if string.find(file_path, 'test%.py') then
+			-- 		return true
+			-- 	end
+			-- end,
+			-- pytest_discover_instances = true,
+		}),
+
 		-- require('neotest-busted'), -- local
 		--- @see https://github.com/nvim-neotest/neotest-plenary
 		--- @see _spec.lua no dap
-		require("neotest-plenary"),
+		-- require("neotest-plenary"),
 
 		--- @see https://github.com/nvim-neotest/neotest-go/
 		--- .go _test.go
@@ -16,12 +28,6 @@ require("neotest").setup({
 		--- .test.js
 		-- require('neotest-node'),
 
-		--- @see https://github.com/nvim-neotest/neotest-python/
-		--- ~= venv
-		--- test_*.py *_test.py
-		--- enabled when entered
-		--- dap preconfigured
-		-- require("neotest-python")({}), -- dap pytest builtin (usefull example)
 
 		--- @see https://github.com/olimorris/neotest-phpunit
 		--- ~= node_modules vendor

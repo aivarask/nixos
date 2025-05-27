@@ -1,7 +1,16 @@
-* {
-	color: black
+body {
+	/* background-image: url('img/bgs.jpg'); */
+	/* background-position: center center; */
+	background-position: calc(100% / 2) calc(100% / 2);
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
 }
 
-a {
-	text-decoration: none
+@media screen and (max-width: 500px) {
+	body {
+		background-position: calc(100% / 2) calc(100% / 2);
+	}
+
 }

@@ -29,7 +29,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-alias oras='curl wttr.in/Vilnius'\
+alias oras='curl wttr.in/Vilnius'
+alias lnav_='lnav -I /etc/nixos/lnav/ /var/log/Xorg.0.log $XDG_STATE_HOME/nvim/*.log'\
 
 # cat -v	#	showkey
 bindkey '^N' menu-complete

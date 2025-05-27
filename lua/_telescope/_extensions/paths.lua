@@ -7,14 +7,14 @@ return require("telescope").register_extension({
 		paths = function(opts)
 			opts = opts or {}
 			pickers
-				.new(opts, {
-					prompt_title = "runtime_paths",
-					finder = finders.new_table({
-						results = vim.api.nvim_list_runtime_paths(),
-					}),
-					sorter = conf.generic_sorter(opts),
-				})
-				:find()
+					.new(opts, {
+						prompt_title = "runtime_paths",
+						finder = finders.new_table({
+							results = vim.api.nvim_list_runtime_paths(),
+						}),
+						sorter = conf.generic_sorter(opts),
+					})
+					:find()
 		end,
 	},
 })
