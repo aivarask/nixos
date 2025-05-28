@@ -27,7 +27,7 @@ set autowriteall
 set updatetime=250
 set timeoutlen=600
 set bufhidden=unload
-set commentstring=#\ %s
+"set commentstring=#\ %s
 set conceallevel=2
 set clipboard=unnamedplus
 

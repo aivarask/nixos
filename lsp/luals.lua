@@ -34,7 +34,7 @@ for _, name in ipairs({
 	-- 'plenary.nvim',
 	-- 'nvim%-nio',
 	-- 'nvim%-tree',
-	-- 'toggleterm.nvim',
+	'toggleterm.nvim',
 	-- 'which%-key.nvim',
 	-- 'lsp%-file%-operations',
 	-- 'nvim%-dap',

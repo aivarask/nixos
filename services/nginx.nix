@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  services.nginx.defaultHTTPListenPort = 8080;
   services.nginx = {
     # enable = false;
     # recommendedProxySettings = true;

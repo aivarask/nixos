@@ -2,15 +2,18 @@ if not pcall(require, 'nvim-treesitter') then
 	return
 end
 
-require('treesitter-context').setup({ enable = false, max_lines = 1 }) --- @see nvim-treesitter-context
-vim.g.skip_ts_context_commentstring_module = true
-require('ts_context_commentstring').setup({}) --- @see ts-context-commentstring
+require('treesitter-context').setup({
+	enable = true,
+	max_lines = 3
+})                                                                                 --- @see nvim-treesitter-context
+vim.g.skip_ts_context_commentstring_module = false
+require('ts_context_commentstring').setup({})                                      --- @see ts-context-commentstring
 require('nvim-ts-autotag').setup({ filetypes = { 'html', 'php', 'twig', 'xml' } }) --- @see https://github.com/windwp/nvim-ts-autotag/
 ---@diagnostic disable-next-line: missing-fields
-require('nvim-treesitter.configs').setup({ --- @see nvim-treesitter
-	highlight = { enable = true }, --- @see nvim-treesitter-highlight-mod
-	indent = { enable = true }, --- @see nvim-treesitter-indentation-mod
-	incremental_selection = { --- @see nvim-treesitter-incremental-selection-mod
+require('nvim-treesitter.configs').setup({                                         --- @see nvim-treesitter
+	highlight = { enable = true },                                                   --- @see nvim-treesitter-highlight-mod
+	indent = { enable = true },                                                      --- @see nvim-treesitter-indentation-mod
+	incremental_selection = {                                                        --- @see nvim-treesitter-incremental-selection-mod
 		enable = true,
 		keymaps = {
 			init_selection = 'tt',
@@ -21,7 +24,7 @@ require('nvim-treesitter.configs').setup({ --- @see nvim-treesitter
 	},
 	matchup = { enable = true }, --- @see vim-matchup
 	endwise = { enable = true }, --- @see https://github.com/RRethy/nvim-treesitter-endwise/
-	textsubjects = { --- @see https://github.com/RRethy/nvim-treesitter-textsubjects
+	textsubjects = {            --- @see https://github.com/RRethy/nvim-treesitter-textsubjects
 		enable = true,
 		prev_selection = ',',
 		keymaps = {
@@ -31,7 +34,7 @@ require('nvim-treesitter.configs').setup({ --- @see nvim-treesitter
 		},
 	},
 	textobjects = { --- @see nvim-treesitter-textobjects
-		swap = { --- @see nvim-treesitter-text-objects-swap-submod
+		swap = {     --- @see nvim-treesitter-text-objects-swap-submod
 			enable = true,
 			swap_next = { ['<leader>>'] = '@swap.outer' },
 			swap_previous = { ['<leader><'] = '@swap.outer' },

@@ -27,7 +27,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.switcherooControl.enable = true;
-  services.xserver.dpi = 283;
+  # services.xserver.dpi = 283;
 
   # https://discourse.nixos.org/t/what-is-the-best-option-for-power-management/63406/6
   # https://wiki.nixos.org/wiki/Laptop

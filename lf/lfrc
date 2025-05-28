@@ -31,6 +31,7 @@ map E $EDITOR $fx
 map gc $lf -remote "send $id cd $XDG_CONFIG_HOME"
 map gd $lf -remote "send $id cd ~/Downloads"
 map gn $lf -remote "send $id cd /etc/nixos"
+map ga $lf -remote "send $id cd /var/www/aldale"
 map gtd $lf -remote "send $id cd /var/lib/transmission/Downloads"
 map gtw $lf -remote "send $id cd /var/lib/transmission/watch-dir"
 map gx &xdg-open $fx
