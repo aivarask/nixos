@@ -241,13 +241,13 @@
  * Set the tagindicatortype variable in config.h to INDICATOR_TOP_BAR to enable this.
  * https://dwm.suckless.org/patches/activetagindicatorbar/
  */
-#define BAR_ACTIVETAGINDICATORBAR_PATCH N/A
+#define BAR_ACTIVETAGINDICATORBAR_PATCH N / A
 
 /* Alternative patch to the activetagindicatorbar patch, adds the bar below the tag
  * icon rather than above.
  * Set the tagindicatortype variable in config.h to INDICATOR_BOTTOM_BAR to enable this.
  */
-#define BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH N/A
+#define BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH N / A
 
 /* The alpha patch adds transparency for the status bar.
  * You need to uncomment the corresponding line in config.mk to use the -lXrender library
@@ -302,7 +302,7 @@
  * Set the tagindicatortype variable in config.h to INDICATOR_CLIENT_DOTS to enable this.
  * https://dwm.suckless.org/patches/clientindicators/
  */
-#define BAR_CLIENTINDICATOR_PATCH N/A
+#define BAR_CLIENTINDICATOR_PATCH N / A
 
 /* Updates the position of dmenu to match that of the bar. I.e. if topbar is 0 then dmenu
  * will appear at the bottom and if 1 then dmenu will appear at the top.
@@ -893,7 +893,7 @@
  * https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8
  * https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
  */
-#define NO_TRANSPARENT_BORDERS_PATCH 0
+#define NO_TRANSPARENT_BORDERS_PATCH 1
 
 /* Port of InstantWM's on_empty_keys functionality allowing keybindings that apply only when
  * a tag is empty. An example use case is being able to launch applications with first hand

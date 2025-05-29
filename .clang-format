@@ -1,1 +1,7 @@
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#
+---
+# BasedOnStyle: GNU
+BasedOnStyle: LLVM
+ColumnLimit: 200
+WhitespaceSensitiveMacros:
+  [BAR_ACTIVETAGINDICATORBAR_PATCH, BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH]
