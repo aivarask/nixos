@@ -2,7 +2,7 @@
 # CompileFlags:
 # StandardLibrary: Yes
 
-ArgumentList: OpenDelimiter
+# ArgumentList: OpenDelimiter
 
 # https://clangd.llvm.org/config#inlayhints
 InlayHints:

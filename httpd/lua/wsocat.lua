@@ -3,6 +3,13 @@ local stdin = uv.new_pipe()
 local stdout = uv.new_pipe()
 local stderr = uv.new_pipe()
 
+local verbose = false
+if not verbose then
+	print = function(...)
+		return 0
+	end
+end
+
 local handle, pid = uv.spawn('websocat', {
 	args = { '-s', '4000' },
 	stdio = { stdin, stdout, stderr }

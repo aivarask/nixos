@@ -12,6 +12,7 @@ application/json=alacritty-nvim.desktop
 inode/directory=lf.desktop
 
 text/*=alacritty-nvim.desktop
+text/x-chdr=alacritty-nvim.desktop
 text/plain=alacritty-nvim.desktop
 text/html=firefox.desktop
 

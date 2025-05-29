@@ -65,7 +65,7 @@ return {
 				postfix = '@',
 			},
 			diagnostics = { -- luals.github.io/wiki/diagnostics
-				disable = { 'lowercase-global', 'unused-local', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
+				disable = { 'lowercase-global', 'unused-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
 			},
 			format = {
 				enable = true

@@ -110,6 +110,7 @@ if has('nvim')
 
 	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>c :Telescope commands<CR>
+	nnoremap <leader>d :Telescope diagnostics<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
 	nnoremap <leader>g :Telescope live_grep<CR>
 	nnoremap <leader>h :Telescope help_tags<CR>

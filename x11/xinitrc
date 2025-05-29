@@ -4,6 +4,15 @@ export GDK_DPI_SCALE="0.35"
 
 xcompmgr &
 devilspie2 -a &
+numlockx
+# xset q
+xset r rate 250 50
+sxhkd &
+systemctl --user restart dunst.service &
+systemctl --user restart wallpaper.service &
+systemctl --user restart unclutter-xfixes.service &
+systemctl --user restart dwm-status.service &
+xrandr_dpi &
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
 	eval "$(dbus-launch --exit-with-session --sh-syntax)"
@@ -25,14 +34,6 @@ elif [ "$(hostname)" = dell ]; then
 	deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
 	systemctl --user restart redshift.service &
 fi
-numlockx
-# xset q
-xset r rate 250 50
-sxhkd &
-systemctl --user restart dunst.service &
-systemctl --user restart wallpaper.service &
-systemctl --user restart unclutter-xfixes.service &
-systemctl --user restart dwm-status.service &
 
 session=${1:-dwm}
 case $session in
