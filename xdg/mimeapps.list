@@ -1,0 +1,21 @@
+[Added Associations]
+
+[Removed Associations]
+audio/mp3=mpv.desktop;umpv.desktop
+audio/mpeg=mpv.desktop
+inode/directory=codium.desktop
+
+[Default Applications]
+application/x-shellscript=alacritty.desktop
+
+inode/directory=lf.desktop
+text/*=gvim.desktop
+text/plain=kitty.desktop
+text/html=firefox.desktop
+application/json=nvim.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+image/*=sxiv.desktop;gimp.desktop
+x-scheme-handler/tonsite=userapp-Telegram Desktop-XZLU12.desktop
+x-scheme-handler/tg=telegram.desktop
+application/x-xdg-protocol-tg=telegram.desktop

@@ -31,6 +31,8 @@ require('lualine').setup({
 		lualine_b = {},
 		lualine_c = {
 			{ "filename", path = 1, },
+			'vim.g.mime',
+			'vim.g.app'
 		},
 		lualine_x = {
 			function()

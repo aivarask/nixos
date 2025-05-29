@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=alacritty-nvim
+StartupNotify=true
+TryExec=alacritty -e nvim
+Exec=alacritty -e nvim %F
+Icon=alacritty
+Categories=System;TerminalEmulator;
+X-TerminalArgExec=--
+X-TerminalArgTitle=--title
+X-TerminalArgAppId=--class
+X-TerminalArgDir=--working-directory
+X-TerminalArgHold=--hold
