@@ -160,6 +160,7 @@
                 ./term/wezterm_.nix
                 ./tmux
                 ./x11/hm_.nix
+                ./xdg/hm_.nix
               ];
             };
           };

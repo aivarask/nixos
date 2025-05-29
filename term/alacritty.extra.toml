@@ -2,12 +2,28 @@
 import = []
 
 [env]
-WINIT_X11_SCALE_FACTOR = "4.0"
+WINIT_X11_SCALE_FACTOR = "3.0"
 
 [window] # https://alacritty.org/config-alacritty.html#window
 opacity     = 0.95
 dimensions  = { lines = 40, columns = 120 }
 decorations = "Transparent"
+
+[[hints.enabled]]
+command = "xdg-open" # On Linux/BSD
+# command = "open" # On macOS
+# command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
+hyperlinks      = true
+post_processing = true
+persist         = false
+mouse.enabled   = true
+binding         = { key = "O", mods = "Control|Shift" }
+regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+[[hints.enabled]]
+regex   = "[^ ]+\\.rs:\\d+:\\d+"
+command = { program = "code", args = ["--goto"] }
+mouse   = { enabled = true }
 
 [font]
 size = 8

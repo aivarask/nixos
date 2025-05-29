@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export GDK_DPI_SCALE="0.35"
+
 xcompmgr &
 devilspie2 -a &
 
@@ -12,18 +14,15 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
 	dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
-export GDK_DPI_SCALE="0.35"
 if [ "$(hostname)" = pc ]; then
 	xset s 3600 3600
 	xset dpms 3600 3600 3600
 	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
 	XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 	systemctl --user start imwheel.service &
-	# --no-tray
 	deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
 	deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
-	# systemctl --user restart blueman-applet.service &
 	systemctl --user restart redshift.service &
 fi
 numlockx
