@@ -7,14 +7,17 @@ inode/directory=codium.desktop
 
 [Default Applications]
 application/x-shellscript=alacritty.desktop
-
+application/x-desktop=alacritty-nvim.desktop
+application/json=alacritty-nvim.desktop
 inode/directory=lf.desktop
-text/*=gvim.desktop
-text/plain=kitty.desktop
+
+text/*=alacritty-nvim.desktop
+text/plain=alacritty-nvim.desktop
 text/html=firefox.desktop
-application/json=nvim.desktop
+
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
+
 image/*=sxiv.desktop;gimp.desktop
 x-scheme-handler/tonsite=userapp-Telegram Desktop-XZLU12.desktop
 x-scheme-handler/tg=telegram.desktop
