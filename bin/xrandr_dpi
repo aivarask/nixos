@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# 15.4' 4k --dpi 286
+# 27' 4k --dpi 164
+xrandr \
+	--output eDP-1 --mode 3840x2160 --pos 0x0 --rotate normal --dpi $((96 * 3)) \
+	--output DP-3 --mode 3840x2160 --right-of eDP-1 --rotate normal --dpi $((96 * 3))
+# --scale 1.25x1.25

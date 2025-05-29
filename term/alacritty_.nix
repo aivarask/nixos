@@ -1,25 +1,14 @@
-{ osConfig, ... }:
+{ osConfig, config, ... }:
 {
+  xdg.configFile."alacritty/alacritty.extra.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/term/alacritty.extra.toml";
   programs.alacritty = {
     enable = true;
     settings = {
       general.import = [
         ./gruvbox.toml
+        "alacritty.extra.toml"
       ];
-      font = {
-        size = if osConfig.networking.hostName == "pc" then 28 else 8;
-      };
-      window.dimensions.columns = 120;
-      window.dimensions.lines = 40;
-      keyboard = {
-        bindings = [
-          {
-            key = "Return";
-            mods = "Control";
-            action = "SpawnNewInstance";
-          }
-        ];
-      };
     };
   };
 }

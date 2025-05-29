@@ -29,12 +29,12 @@
     gruvbox-dark-icons-gtk
   ];
   home.sessionVariables.GDK_SCALE = 2; # nicotine pwvucontrol inkscape ...
-  home.sessionVariables.GDK_DPI_SCALE =
-    {
-      dell = "0.35";
-      pc = "0.5";
-    }
-    ."${osConfig.networking.hostName}"; # firefox
+  # home.sessionVariables.GDK_DPI_SCALE =
+  #   {
+  #     dell = "0.35";
+  #     pc = "0.5";
+  #   }
+  #   ."${osConfig.networking.hostName}"; # firefox
   home.pointerCursor = {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;

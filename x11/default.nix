@@ -20,6 +20,8 @@
       wmctrl
       xpra # https://github.com/Xpra-org/xpra/blob/master/docs/Usage/README.md
       read-edid
+      picom
+      devilspie2 # https://web.archive.org/web/20160304040823/http://foosel.org/linux/devilspie
     ]
     ++ (with pkgs.xorg; [
       xbacklight

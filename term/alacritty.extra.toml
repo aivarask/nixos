@@ -1,0 +1,30 @@
+[general]
+import = []
+
+[env]
+WINIT_X11_SCALE_FACTOR = "4.0"
+
+[window] # https://alacritty.org/config-alacritty.html#window
+opacity     = 0.8
+dimensions  = { lines = 40, columns = 120 }
+decorations = "Transparent"
+
+[font]
+size = 8
+
+[colors]
+transparent_background_colors = true
+
+# evaluates on shell completion
+# [bell]
+# duration = 300
+# command  = { program = "notify-send", args = ["bell"] }
+
+[keyboard] # https://alacritty.org/config-alacritty.html#keyboard
+bindings = [
+	{ key = "Return", mods = "Control", action = "SpawnNewInstance" },
+	{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+	{ key = "L", mods = "Control|Shift", chars = "l" },
+]
+
+[debug] # https://alacritty.org/config-alacritty.html#debug

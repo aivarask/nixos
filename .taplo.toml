@@ -1,4 +1,4 @@
-include = [".taplo.toml", ".stylua.toml", "lsp/**/*.toml", ".foo.toml"]
+include = ["*.toml"]
 
 [formatting]
 align_entries = true
