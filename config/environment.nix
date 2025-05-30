@@ -3,6 +3,7 @@
   environment.systemPackages = (
     with pkgs;
     [
+      ddgr
       utf8proc
       reptyr
       # hardware
