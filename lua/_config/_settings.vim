@@ -91,6 +91,7 @@ nnoremap ?o :call system('xdg-open ' .. expand("%") .. ' &')<CR>
 nnoremap ?p :edit ~/.config/picom.conf<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
+nnoremap ?t :edit /etc/nixos/lua/_config/telescope.lua<CR>
 nnoremap ?z :edit ~/.zshrc.extra<CR>
 
 if !has('gui_running')

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# export GDK_DPI_SCALE="0.35"
-export GDK_SCALE="2"
+export GDK_DPI_SCALE="0.75"
+# export GDK_SCALE="2"
 
 # xcompmgr &
 picom -b &
@@ -14,6 +14,8 @@ systemctl --user restart wallpaper.service &
 systemctl --user restart unclutter-xfixes.service &
 systemctl --user restart dwm-status.service &
 # xrandr_dpi &
+
+xrdb -load /etc/nixos/x11/.Xresources
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
 	eval "$(dbus-launch --exit-with-session --sh-syntax)"

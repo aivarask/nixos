@@ -1,11 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  programs.steam = {
-    enable = true; # Master switch, already covered in installation
-    remotePlay.openFirewall = true; # For Steam Remote Play
-    dedicatedServer.openFirewall = true; # For Source Dedicated Server hosting
-    # Other general flags if available can be set here.
-    # Tip: For improved gaming performance, you can also enable GameMode:
-    # programs.gamemode.enable = true;
-  };
+  environment.systemPackages = with pkgs; [
+    steam-run
+    steamcmd
+    steam-tui
+  ];
+  programs.steam.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
+  programs.steam.dedicatedServer.openFirewall = true;
+  programs.gamemode.enable = true;
 }

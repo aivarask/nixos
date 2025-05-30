@@ -65,6 +65,7 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
+        { }
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
@@ -105,6 +106,7 @@
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
         ./steam
+        ./users/aiva.nix
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
@@ -120,6 +122,7 @@
               SELF = "/etc/nixos";
             };
             sharedModules = [ { home.stateVersion = "23.05"; } ];
+
             users.root = {
               home.username = "root";
               home.homeDirectory = "/root";

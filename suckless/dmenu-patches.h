@@ -67,7 +67,7 @@
  * Refer to https://github.com/DAFF0D11/dafmenu/ for documentation and example use cases.
  * https://github.com/DAFF0D11/dafmenu/blob/master/patches/dmenu-fzfexpect-5.1.diff
  */
-#define FZFEXPECT_PATCH 0
+#define FZFEXPECT_PATCH 1
 
 /* Allows dmenu's entries to be rendered in a grid by adding a new -g flag to specify
  * the number of grid columns. The -g and -l options can be used together to create a
