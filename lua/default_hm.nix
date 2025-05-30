@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   ...
 }:
 let
@@ -59,11 +60,13 @@ in
       lpeg
       lpeg_patterns
       binaryheap
+      luafilesystem
       fifo # dep in neovim only
       lua-zlib
       compat53
       # lua-psl
     ];
+  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
     lib.mkMerge [
       common
@@ -82,10 +85,7 @@ in
         nvim-tree-lua
         iron-nvim
         toggleterm-nvim
-        # {
-        #   plugin = sqlite-lua;
-        #   config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'";
-        # }
+        sqlite-lua
       ])
       (with pkgs.vimPlugins; [
         # new
@@ -117,6 +117,8 @@ in
           telescope-fzf-native-nvim
           telescope-symbols-nvim
           telescope-manix
+          telescope-smart-history-nvim
+          telescope-frecency-nvim
         ]
       ))
       # debug

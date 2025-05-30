@@ -25,6 +25,11 @@ regex   = "[^ ]+\\.rs:\\d+:\\d+"
 command = { program = "code", args = ["--goto"] }
 mouse   = { enabled = true }
 
+[[hints.enabled]]
+regex   = "^(/[^/]+)+/?$"
+command = { program = "cat", args = [] }
+binding = { key = "O", mods = "Control|Shift" }
+
 [font]
 size = 8
 

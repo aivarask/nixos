@@ -38,5 +38,5 @@
   environment.systemPackages = with pkgs; [
     libva-utils
   ];
-  services.xserver.dpi = builtins.ceil (96 * 2);
+  # services.xserver.dpi = builtins.ceil (96 * 2);
 }

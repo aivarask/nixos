@@ -48,7 +48,7 @@
   services.xserver.autoRepeatInterval = 50;
   services.xserver.enableCtrlAltBackspace = true;
   services.xserver.enableTCP = true;
-  services.xserver.upscaleDefaultCursor = true;
+  # services.xserver.upscaleDefaultCursor = true;
   services.xserver.xkb.model = "pc104";
   services.xserver.xkb.layout = "us,lt";
   services.xserver.xkb.options = "grp:menu_toggle"; # localectl list-x11-keymap-options

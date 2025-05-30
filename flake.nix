@@ -104,6 +104,7 @@
         ./systemd/music.nix
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
+        ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
         ./x11
@@ -159,6 +160,7 @@
                 ./term/alacritty_.nix
                 ./term/wezterm_.nix
                 ./tmux
+                ./touchegg/hm_.nix
                 ./x11/hm_.nix
                 ./xdg/hm_.nix
               ];

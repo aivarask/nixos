@@ -4,19 +4,18 @@ local stdout = uv.new_pipe()
 local stderr = uv.new_pipe()
 
 local verbose = false
-if not verbose then
-	print = function(...)
-		return 0
-	end
-end
+-- if not verbose then
+-- 	print = function(...)
+-- 		return 0
+-- 	end
+-- end
 
 local handle, pid = uv.spawn('websocat', {
 	args = { '-s', '4000' },
 	stdio = { stdin, stdout, stderr }
 }, print)
 
-print("process opened", handle, pid)
-
+if verbose then print("process opened", handle, pid) end
 uv.read_start(stdout, function(err, data)
 	assert(not err, err)
 	if data then
@@ -34,7 +33,7 @@ end)
 uv.read_start(stderr, function(err, data)
 	assert(not err, err)
 	if data then
-		print("stderr chunk", stderr, data)
+		if verbose then print("stderr chunk", stderr, data) end
 		-- 	uv.shutdown(stdin, function()
 		-- 		print("stdin shutdown", stdin)
 		-- 		uv.close(handle, function()
@@ -42,6 +41,6 @@ uv.read_start(stderr, function(err, data)
 		-- 		end)
 		-- 	end)
 	else
-		print("stderr end", stderr)
+		if verbose then print("stderr end", stderr) end
 	end
 end)

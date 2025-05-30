@@ -52,9 +52,11 @@ let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
 let g:switch_custom_definitions =
 			\ [
-			\   ['foldenable', 'nofoldenable']
+			\   ['foldenable', 'nofoldenable'],
+			\   ['horizontal', 'vertical']
 			\ ]
 let g:vim_markdown_no_default_key_mappings = 1
+let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 
 map q <nop>
 map Q <nop>
@@ -75,11 +77,11 @@ map [T :tabclose<CR>
 nmap <C-k> [%
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
-nnoremap <silent> <leader>m :messages<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
 
 "noremap <C-S-,> :left<CR>
 
+nnoremap ?a :edit /etc/nixos/term/alacritty.extra.toml<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?l :edit ~/.config/lf/lfrc<CR>
 nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
@@ -96,7 +98,7 @@ if !has('gui_running')
 endif
 
 if has('nvim')
-	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos,terminal
+	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 	set nofoldenable
 	" set foldmethod=expr
 	"set foldexpr=nvim_treesitter#foldexpr()
@@ -107,6 +109,9 @@ if has('nvim')
 	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
 	set lisp
+
+	nnoremap <leader><leader>n :Notifications<CR>
+	nnoremap <silent> <leader><leader>m :messages<CR>
 
 	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>c :Telescope commands<CR>
@@ -121,7 +126,8 @@ if has('nvim')
 	nmap <leader>N :Neotest
 	nnoremap <leader>n :Neotest summary toggle<CR>
 
-	nnoremap <leader>t :Telescope<CR>
+	nnoremap <leader>t :Telescope resume<CR>
+	nnoremap <leader>T :Telescope<CR>
 	      
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>

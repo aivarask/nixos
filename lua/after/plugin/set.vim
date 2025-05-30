@@ -1,3 +1,3 @@
 set scrolloff=15
-set cmdheight=4
+set cmdheight=1
 

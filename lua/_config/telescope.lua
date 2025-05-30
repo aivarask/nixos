@@ -1,8 +1,10 @@
+local lfs = require 'lfs'
+local data = vim.fn.stdpath('data')
+lfs.mkdir(data .. '/databases')
+
 require('telescope').setup({
 	defaults = {
 		layout_strategy = 'horizontal',
-		-- layout_strategy = 'vertical',
-
 		layout_config = { vertical = { width = 0.9 }, horizontal = { width = 0.9 } },
 		vimgrep_arguments = {
 			'rg',
@@ -19,6 +21,10 @@ require('telescope').setup({
 			'--glob=!public-resolvers.md',
 			'--glob=!gruvbox.{yaml,toml}',
 		},
+		history = {
+			path = data .. '/databases/telescope_history.sqlite3',
+			limit = 100,
+		}
 	},
 	extensions = {
 		fzf = {
@@ -32,10 +38,12 @@ require('telescope').setup({
 		}
 	},
 })
-
+require("telescope").load_extension("notify")
+require('telescope').load_extension('smart_history')
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('lazygit')
 require('telescope').load_extension('manix')
+require("telescope").load_extension "frecency"
 
 local builtin = require('telescope.builtin')

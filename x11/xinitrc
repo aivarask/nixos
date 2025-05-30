@@ -1,18 +1,18 @@
 #!/bin/sh
 
-export GDK_DPI_SCALE="0.35"
+# export GDK_DPI_SCALE="0.35"
+# export GDK_SCALE="2"
 
 xcompmgr &
 devilspie2 -a &
 numlockx
-# xset q
 xset r rate 250 50
 sxhkd &
 systemctl --user restart dunst.service &
 systemctl --user restart wallpaper.service &
 systemctl --user restart unclutter-xfixes.service &
 systemctl --user restart dwm-status.service &
-xrandr_dpi &
+# xrandr_dpi &
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
 	eval "$(dbus-launch --exit-with-session --sh-syntax)"

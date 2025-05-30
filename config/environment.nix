@@ -3,6 +3,7 @@
   environment.systemPackages = (
     with pkgs;
     [
+      tuir
       ddgr
       utf8proc
       reptyr
