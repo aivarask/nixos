@@ -88,6 +88,7 @@ nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
 nnoremap ?k :edit ~/.config/vim/_keys.lua<CR>
 nnoremap ?i :edit ~/.config/vim/init.lua<CR>
 nnoremap ?o :call system('xdg-open ' .. expand("%") .. ' &')<CR>
+nnoremap ?p :edit ~/.config/picom.conf<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
 nnoremap ?z :edit ~/.zshrc.extra<CR>

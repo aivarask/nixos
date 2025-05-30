@@ -104,6 +104,7 @@
         ./systemd/music.nix
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
+        ./steam
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
