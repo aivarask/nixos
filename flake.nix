@@ -141,6 +141,7 @@
                 ./lua/default_hm.nix
                 ./mpv
                 ./ncmpcpp
+                ./picom/hm_.nix
                 ./programs/default_.nix
                 ./programs/direnv_.nix
                 ./programs/gh_.nix

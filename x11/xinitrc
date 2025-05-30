@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # export GDK_DPI_SCALE="0.35"
-# export GDK_SCALE="2"
+export GDK_SCALE="2"
 
-xcompmgr &
+# xcompmgr &
+picom -b &
 devilspie2 -a &
 numlockx
 xset r rate 250 50
