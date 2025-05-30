@@ -114,7 +114,7 @@
         ./xdg
         inputs.home-manager.nixosModules.home-manager
         {
-          home-manager = {
+          home-manager = rec {
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
@@ -122,6 +122,10 @@
               SELF = "/etc/nixos";
             };
             sharedModules = [ { home.stateVersion = "23.05"; } ];
+            users.aiva = users.root // {
+              home.username = "aiva";
+              home.homeDirectory = "/home/aiva";
+            };
 
             users.root = {
               home.username = "root";
