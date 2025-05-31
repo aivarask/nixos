@@ -47,7 +47,7 @@ in
   nix.settings.cores = 4;
   nix.settings.auto-optimise-store = true;
   nix.settings.substituters = lib.mkForce [
-    "http://binarycache.dell.local"
+    # "http://binarycache.dell.local"
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
     # "https://hyprland.cachix.org"

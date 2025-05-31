@@ -41,6 +41,26 @@
   services.libinput.touchpad.naturalScrolling = true;
   services.libinput.touchpad.accelSpeed = "+0.5";
   services.xserver.enable = true;
+  services.xserver.autorun = false;
+  services.xserver.exportConfiguration = true;
+  services.xserver.resolutions = lib.mkIf false [
+    {
+      x = 3840;
+      y = 2160;
+    }
+    {
+      x = 1280;
+      y = 720;
+    }
+    {
+      x = 1920;
+      y = 1080;
+    }
+    {
+      x = 2560;
+      y = 1440;
+    }
+  ];
   services.xserver.config = '''';
   services.xserver.displayManager.xpra.enable = false;
   services.xserver.windowManager.awesome.enable = lib.mkDefault false;
@@ -55,8 +75,10 @@
   services.xserver.xkb.options = "grp:menu_toggle"; # localectl list-x11-keymap-options
   # services.xserver.xkb.variant = "qwerty"; # localectl list-x11-keymap-variants
   services.xserver.dpi = lib.mkDefault null;
-  services.xserver.tty = null;
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.tty = 7;
+  services.xserver.displayManager.startx.enable = false;
+  services.xserver.displayManager.autoLogin.enable = false;
+  services.xserver.displayManager.autoLogin.user = "aiva";
 
   services.xserver.displayManager.startx.generateScript = false;
   services.xserver.imwheel.enable = true;

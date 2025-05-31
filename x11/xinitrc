@@ -15,7 +15,7 @@ systemctl --user restart unclutter-xfixes.service &
 systemctl --user restart dwm-status.service &
 # xrandr_dpi &
 
-xrdb -load /etc/nixos/x11/.Xresources
+xrdb -load ~/.Xresources
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
 	eval "$(dbus-launch --exit-with-session --sh-syntax)"
@@ -36,7 +36,7 @@ if [ "$(hostname)" = pc ]; then
 	systemctl --user start imwheel.service &
 	deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
-	deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
+	# deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
 	systemctl --user restart redshift.service &
 fi
 

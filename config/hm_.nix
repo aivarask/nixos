@@ -28,11 +28,4 @@
     gruvbox-dark-gtk
     gruvbox-dark-icons-gtk
   ];
-  home.pointerCursor.x11.enable = false;
-  home.pointerCursor = {
-    name = "Vanilla-DMZ";
-    package = pkgs.vanilla-dmz;
-    size = lib.mkDefault 64;
-    gtk.enable = true;
-  };
 }

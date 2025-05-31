@@ -5,8 +5,13 @@
     isNormalUser = true;
     home = "/home/aiva";
     extraGroups = [
+      "root"
       "wheel"
+      "tty"
       "networkmanager"
+      "audio"
+      "video"
+      "pipewire"
     ];
   };
 }

@@ -1,16 +1,17 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 chromium \
-  --no-sandbox \
-  --no-default-browser-check \
-  --force-device-scale-factor=2 \
-  --test-type \
-  --enable-zero-copy \
-  --ignore-gpu-blocklist \
-  --ozone-platform-hint=auto \
-  --remote-debugging-port=9222 \
-  --enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
-  "$@"
+	--no-sandbox \
+	--no-default-browser-check \
+	--force-device-scale-factor=2 \
+	--test-type \
+	--enable-zero-copy \
+	--ignore-gpu-blocklist \
+	--ozone-platform-hint=auto \
+	--remote-debugging-port=9222 \
+	--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
+	--enable-unsafe-webgpu \
+	"$@"
 
 # AcceleratedVideoEncoder
 # VaapiOnNvidiaGPUs

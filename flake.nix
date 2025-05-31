@@ -82,7 +82,7 @@
         ./lnav
         ./LS_COLORS.nix
         ./lua
-        ./network/dns_basic.nix
+        # ./network/dns_basic.nix
         ./network/networking.nix
         ./network/networkingwireless.nix
         ./node

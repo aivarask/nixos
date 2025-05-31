@@ -1,9 +1,3 @@
-# https://nixos.wiki/wiki/Encrypted_DNS
-# https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration
-# https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-dnscrypt-proxy.toml
-# https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-# netstat -antup
-# nestat --all --numeric --tcp --udp --program
 { lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
@@ -31,33 +25,35 @@
     websocat
     websocketd
   ];
+  # netstat -antup
+  # nestat --all --numeric --tcp --udp --program
+  networking.nameservers = [
+    "192.168.1.1"
+  ];
   programs.bandwhich.enable = true;
   programs.iftop.enable = true;
   programs.sharing.enable = true;
   programs.mtr.enable = true;
   programs.wireshark.enable = true;
   # https://nixos.wiki/wiki/Systemd-networkd
-  systemd.network.enable = true;
-  services.resolved.enable = false;
-  networking.useNetworkd = true;
-  networking.resolvconf.useLocalResolver = true;
-  networking.nameservers = [
-    "127.0.0.1"
-    "::1"
-  ];
-  networking.firewall.enable = true;
-  networking.firewall.extraCommands = ''
-    ip6tables --table nat --flush OUTPUT
-    ${lib.flip (lib.concatMapStringsSep "\n")
-      [
-        "udp"
-        "tcp"
-      ]
-      (proto: ''
-        ip6tables --table nat --append OUTPUT \
-          --protocol ${proto} --destination ::1 --destination-port 53 \
-          --jump REDIRECT --to-ports 51
-      '')
-    }
-  '';
+  # systemd.network.enable = true;
+  # services.resolved.enable = true;
+  # networking.useNetworkd = true;
+  # networking.resolvconf.useLocalResolver = true;
+
+  # networking.firewall.enable = true;
+  #  networking.firewall.extraCommands = ''
+  #   ip6tables --table nat --flush OUTPUT
+  #   ${lib.flip (lib.concatMapStringsSep "\n")
+  #     [
+  #       "udp"
+  #       "tcp"
+  #     ]
+  #     (proto: ''
+  #       ip6tables --table nat --append OUTPUT \
+  #         --protocol ${proto} --destination ::1 --destination-port 53 \
+  #         --jump REDIRECT --to-ports 51
+  #     '')
+  #   }
+  # '';
 }

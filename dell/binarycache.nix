@@ -8,6 +8,7 @@
     80
   ];
   services.nginx = {
+
     enable = true;
     recommendedProxySettings = true;
     virtualHosts = {
