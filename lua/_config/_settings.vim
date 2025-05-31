@@ -89,6 +89,7 @@ nnoremap ?k :edit ~/.config/vim/_keys.lua<CR>
 nnoremap ?i :edit ~/.config/vim/init.lua<CR>
 nnoremap ?o :call system('xdg-open ' .. expand("%") .. ' &')<CR>
 nnoremap ?p :edit ~/.config/picom.conf<CR>
+nnoremap ?m :edit ~/.config/mimeapps.list<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
 nnoremap ?t :edit /etc/nixos/lua/_config/telescope.lua<CR>

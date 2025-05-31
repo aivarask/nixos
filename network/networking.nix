@@ -38,48 +38,26 @@
   programs.wireshark.enable = true;
   # https://nixos.wiki/wiki/Systemd-networkd
   systemd.network.enable = true;
-  networking = {
-    useNetworkd = true;
-    resolvconf.useLocalResolver = true;
-    nameservers = [
-      "127.0.0.1"
-      "::1"
-    ];
-    firewall = {
-      enable = true;
-      extraCommands = ''
-        ip6tables --table nat --flush OUTPUT
-        ${lib.flip (lib.concatMapStringsSep "\n")
-          [
-            "udp"
-            "tcp"
-          ]
-          (proto: ''
-            ip6tables --table nat --append OUTPUT \
-              --protocol ${proto} --destination ::1 --destination-port 53 \
-              --jump REDIRECT --to-ports 51
-          '')
-        }
-      '';
-    };
-  };
   services.resolved.enable = false;
-  services.dnscrypt-proxy2 = {
-    enable = true;
-    configFile = "/etc/nixos/network/dnscrypt-proxy.toml";
-  };
-  systemd.services.dnscrypt-proxy2 = {
-    wants = [ "network-online.target" ];
-    after = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      User = "root";
-      StateDirectory = "dnscrypt-proxy";
-      PermissionsStartOnly = "true";
-      RestartSec = "2s";
-    };
-  };
-  services.privoxy = {
-    enable = false;
-  };
+  networking.useNetworkd = true;
+  networking.resolvconf.useLocalResolver = true;
+  networking.nameservers = [
+    "127.0.0.1"
+    "::1"
+  ];
+  networking.firewall.enable = true;
+  networking.firewall.extraCommands = ''
+    ip6tables --table nat --flush OUTPUT
+    ${lib.flip (lib.concatMapStringsSep "\n")
+      [
+        "udp"
+        "tcp"
+      ]
+      (proto: ''
+        ip6tables --table nat --append OUTPUT \
+          --protocol ${proto} --destination ::1 --destination-port 53 \
+          --jump REDIRECT --to-ports 51
+      '')
+    }
+  '';
 }

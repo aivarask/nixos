@@ -25,6 +25,7 @@
       xdo
     ]
     ++ (with pkgs.xorg; [
+      libXext
       xbacklight
       xorgserver
       xdpyinfo

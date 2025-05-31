@@ -5,6 +5,7 @@ import = []
 WINIT_X11_SCALE_FACTOR = "3.0"
 
 [window] # https://alacritty.org/config-alacritty.html#window
+padding = { x = 4, y = 4 }
 # opacity     = 0.95
 # dimensions  = { lines = 40, columns = 120 }
 # decorations = "Transparent"

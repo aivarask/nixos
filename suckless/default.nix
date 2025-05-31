@@ -12,6 +12,7 @@
           '';
         });
         dwm = prev.dwm.overrideAttrs (old: rec {
+          buildInputs = old.buildInputs ++ [ prev.xorg.libXext ];
           src = dwm-flexipatch;
           configFile = prev.writeText "config.h" (builtins.readFile ./dwm-config.h);
           patchesFile = prev.writeText "patches.h" (builtins.readFile ./dwm-patches.h);
@@ -19,6 +20,10 @@
             ${old.postPatch}
             cp ${patchesFile} patches.h
             cp ${configFile} config.h
+          '';
+          prePatch = ''
+            ${old.prePatch}
+            sed -i '/XEXTLIB/s/^#//g' config.mk
           '';
         });
         st = prev.st.overrideAttrs (old: rec {

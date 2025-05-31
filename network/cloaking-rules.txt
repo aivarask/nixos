@@ -1,5 +1,3 @@
-#                  vim:ft=conf                                                                                                            
-#                  https://raw.githubusercontent.com/DNSCrypt/dnscrypt-proxy/refs/heads/master/dnscrypt-proxy/example-cloaking-rules.txt  
 localhost          127.0.0.1                                                                                                              
 *.local            127.0.0.1                                                                                                              
 *.lo               127.0.0.1                                                                                                              

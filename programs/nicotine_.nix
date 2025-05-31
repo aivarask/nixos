@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     nicotine-plus
@@ -10,7 +10,7 @@
       enable = true;
       recursive = true;
       onChange = ''
-        cat /root/.config/nicotine/config_def > /root/.config/nicotine/config
+        cat ${config.home.homeDirectory}/.config/nicotine/config_def > ${config.home.homeDirectory}/.config/nicotine/config
       '';
     };
   };
