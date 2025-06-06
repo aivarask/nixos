@@ -1,7 +1,9 @@
 #!/bin/sh
 
-export GDK_DPI_SCALE="0.75"
 # export GDK_SCALE="2"
+export GDK_DPI_SCALE="0.75"
+export GTK2_RC_FILES=/etc/nixos/x11/gtk2/gtkrc
+# export GTK_THEME=Adwaita:dark
 
 # xcompmgr &
 # picom -b &
@@ -42,18 +44,6 @@ session=${1:-dwm}
 case $session in
 dwm)
 	exec dwm
-	;;
-awesome | a)
-	exec awesome
-	;;
-i3 | i3wm)
-	exec i3
-	;;
-kde)
-	exec startplasma-x11
-	;;
-xfce | xfce4)
-	exec startxfce4
 	;;
 *)
 	exec "$1"

@@ -1,11 +1,10 @@
+vim.diagnostic.config({
+	severity_sort = true,
+	virtual_text = true,
+	virtual_lines = true,
+	-- float = true,
+})
 if false then
-	vim.diagnostic.config({
-		float = true,
-		severity_sort = true,
-		virtual_lines = false,
-		virtual_text = true
-	})
-
 	vim.api.nvim_create_user_command('DiagnosticQf', function(args)
 		if args.args == 'ERROR' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })

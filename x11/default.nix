@@ -7,34 +7,31 @@
       lib,
       ...
     }:
+    let
+      package = pkgs.xcursor-pro;
+      theme-name = "Adwaita-dark"; # /etc/profiles/per-user/root/share/themes/
+      cursor-name = "XCursor-Pro-Light"; # /etc/profiles/per-user/root/share/icons/
+    in
     {
       home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc";
-      home.file.".Xresources_extra".source =
-        config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/.Xresources_extra";
-      xresources.extraConfig = ''#include ".Xresources_extra"'';
+      home.file.".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
+      # xresources.extraConfig = ''#include ".Xresources_extra"'';
+      xdg.configFile."gtk-2.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/x11/gtk2";
+      xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/x11/gtk3";
 
       home.packages = [
+        pkgs.lxappearance
         pkgs.vanilla-dmz
         pkgs.gnome-themes-extra
+        pkgs.xcursor-pro
+        pkgs.orchis-theme
       ];
 
       # home.pointerCursor.x11.enable = true;
       # home.pointerCursor.gtk.enable = true;
-      # home.pointerCursor.name = "Vanilla-DMZ";
-      # home.pointerCursor.package = pkgs.vanilla-dmz;
-      # home.pointerCursor.size = lib.mkDefault 64;
-
-      gtk.enable = true;
-      gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-      gtk.gtk2.extraConfig = ''
-        gtk-theme-name = "Adwaita-dark"
-      '';
-      gtk.gtk3.extraConfig = {
-        gtk-theme-name = "Adwaita-dark";
-      };
-      # gtk.theme.package = pkgs.gnome-themes-extra; # /etc/profiles/per-user/root/share/themes/
-      # gtk.theme.name = "Adwaita-dark";
-
+      # home.pointerCursor.name = "${cursor-name}";
+      # home.pointerCursor.size = lib.mkDefault (32 * 2);
+      # home.pointerCursor.package = package;
     };
   default =
     {
