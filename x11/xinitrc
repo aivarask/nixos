@@ -4,7 +4,7 @@ export GDK_DPI_SCALE="0.75"
 # export GDK_SCALE="2"
 
 # xcompmgr &
-picom -b &
+# picom -b &
 devilspie2 -a &
 numlockx
 xset r rate 250 50
@@ -20,11 +20,9 @@ xrdb -load ~/.Xresources
 if test -z "$DBUS_SESSION_BUS_ADDRESS" = ""; then
 	eval "$(dbus-launch --exit-with-session --sh-syntax)"
 fi
-# systemctl --user import-environment DISPLAY XAUTHORITY XDG_SESSION_ID
 systemctl --user import-environment DISPLAY XDG_SESSION_ID
 
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-	# dbus-update-activation-environment DISPLAY XAUTHORITY
 	dbus-update-activation-environment DISPLAY
 fi
 

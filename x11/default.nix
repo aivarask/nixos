@@ -76,9 +76,9 @@
   # services.xserver.xkb.variant = "qwerty"; # localectl list-x11-keymap-variants
   services.xserver.dpi = lib.mkDefault null;
   # services.xserver.tty = 7;
-  services.xserver.displayManager.startx.enable = false;
-  services.xserver.displayManager.autoLogin.enable = false;
-  services.xserver.displayManager.autoLogin.user = "aiva";
+  services.xserver.displayManager.startx.enable = true;
+  services.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.user = "aiva";
 
   services.xserver.displayManager.startx.generateScript = false;
   services.xserver.imwheel.enable = true;

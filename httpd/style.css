@@ -1,6 +1,13 @@
 body {
-	/* background-image: url('img/bgs.jpg'); */
-	/* background-position: center center; */
+	font-family: 'serif';
+
+	a {
+		color: white;
+		text-decoration: none;
+	}
+
+	background-image: url('img/bgs.jpg');
+	background-position: center center;
 	background-position: calc(100% / 2) calc(100% / 2);
 
 	background-size: cover;
@@ -8,9 +15,29 @@ body {
 	min-height: 100vh;
 }
 
+#lang {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+#menu {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+section {
+	margin: 1rem;
+	padding: 2rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 1em;
+
+
+}
+
 @media screen and (max-width: 500px) {
 	body {
 		background-position: calc(100% / 2) calc(100% / 2);
 	}
-
 }

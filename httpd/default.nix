@@ -28,18 +28,18 @@
     # "d /var/www/gettransfer.local"
     # "f /var/www/gettransfer.local/index.php - - - - <?php phpinfo();"
   ];
-  services.httpd.virtualHosts."aldale" = rec {
-    serverAliases = [
-      "a.lo"
-      "aldale.local"
-    ];
-    documentRoot = "/var/www/aldale";
-    listen = [
-      {
-        ip = "*";
-        port = 80;
-      }
-    ];
-    extraConfig = "<Directory ${documentRoot}>\n  Options FollowSymlinks\n  AllowOverride All\n</Directory>\n";
-  };
+  # services.httpd.virtualHosts."aldale" = rec {
+  #   serverAliases = [
+  #     "a.lo"
+  #     "aldale.local"
+  #   ];
+  #   documentRoot = "/var/www/aldale";
+  #   listen = [
+  #     {
+  #       ip = "*";
+  #       port = 80;
+  #     }
+  #   ];
+  #   extraConfig = "<Directory ${documentRoot}>\n  Options FollowSymlinks\n  AllowOverride All\n</Directory>\n";
+  # };
 }

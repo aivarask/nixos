@@ -23,7 +23,7 @@
       figma-linux
       inkscape-with-extensions
       # libreoffice-qt
-      # gimp-with-plugins # bimp plugin fails
+      gimp-with-plugins # bimp plugin fails
       krita
       #
       ticker

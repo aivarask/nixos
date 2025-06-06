@@ -27,8 +27,17 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 			# var_dump($_SESSION);
 			?>
 		</pre>
-	<?php include('lang.php'); ?>
-	<?php include('branch.php'); ?>
+	<nav>
+		<?php include('lang.php'); ?>
+		<div id="menu">
+
+			<a href="/"><img src="/img/logo_white.svg" /></a>
+			<a href="">About</a>
+			<a href="">Services</a>
+			<a href="">Contact</a>
+		</div>
+		<!-- <?php include('branch.php'); ?> -->
+	</nav>
 
 	<?php
 	$about = file("{$document_root}/content/about_{$lang}.txt");
@@ -36,33 +45,40 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 	$about_content = array_slice($about, 2, count($about) - 2);
 	?>
 
-	<h1><?= implode('', $about_title); ?></h1>
-	<p> <?= implode('', $about_content); ?> </p>
-	<p> <?php $services = file("{$document_root}/content/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p>
-	<p> <?php $contact = file("{$document_root}/content/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p>
+
+	<section>
+		<h1><?= implode('', $about_title); ?></h1>
+		<p> <?= implode('', $about_content); ?> </p>
+		<!-- <p> <?php $services = file("{$document_root}/content/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p> -->
+		<!-- <p> <?php $contact = file("{$document_root}/content/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p> -->
+	</section>
 </body>
 
 <script>
-	const verbose = false
-	var socket = new WebSocket('ws://localhost:4000/');
-	socket.addEventListener("open", (event) => {
-		verbose && console.log('ws open')
-	});
-	socket.onclose = function() {
-		setTimeout(function() {
-			verbose && console.log("ws closed");
-			return location.reload()
-		}, 2000)
-	}
-	socket.addEventListener("message", (event) => {
-		verbose && console.log(event.data);
-		if (event.data === 'save\n') {
-			return location.reload()
-		}
-	});
+	if (location.hostname === 'localhost') {
 
-	function test() {
-		socket.send('test')
+		const verbose = false
+
+		var socket = new WebSocket('ws://localhost:4000/');
+		socket.addEventListener("open", (event) => {
+			verbose && console.log('ws open')
+		});
+		socket.onclose = function() {
+			setTimeout(function() {
+				verbose && console.log("ws closed");
+				return location.reload()
+			}, 2000)
+		}
+		socket.addEventListener("message", (event) => {
+			verbose && console.log(event.data);
+			if (event.data === 'save\n') {
+				return location.reload()
+			}
+		});
+
+		function test() {
+			socket.send('test')
+		}
 	}
 </script>
 

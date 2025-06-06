@@ -21,13 +21,22 @@
     vital
     distrho-ports
     lsp-plugins
-    bitwig-studio
-    # mixxx
+    mixxx
     yoshimi
     guitarix
     # muse # fails
     infamousPlugins
     mamba
+
+    bitwig-studio
+    renoise
+    reaper
+    # zrythm
+    # ardour
+    lmms
+    # rosegarden
+    qtractor
+
   ];
   # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
   # environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "0";
