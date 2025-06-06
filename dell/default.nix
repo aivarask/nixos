@@ -17,7 +17,6 @@
     ./boot.nix
     ./kmscon.nix
     ./network.nix
-    ./qt.nix
     ./storage.nix
     # ./virt.nix
     ../lsp

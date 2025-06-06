@@ -111,7 +111,7 @@
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
-        ./x11
+        (import ./x11).default
         ./xdg
         inputs.home-manager.nixosModules.home-manager
         {
@@ -171,7 +171,7 @@
                 ./term/wezterm_.nix
                 ./tmux
                 ./touchegg/hm_.nix
-                ./x11/hm_.nix
+                (import ./x11).hm
                 ./xdg/hm_.nix
               ];
             };
