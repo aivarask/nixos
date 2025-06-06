@@ -91,8 +91,3 @@ vim.lsp.enable({
 	'vscode-html',
 	'yamlls',
 }, true)
-
-vim.diagnostic.config({
-	virtual_lines = true,
-	virtual_text = true
-})

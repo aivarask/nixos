@@ -10,10 +10,15 @@
   imports = [
     inputs.musnix.nixosModules.musnix
   ];
-  musnix = {
-    enable = true;
-  };
+  musnix.enable = true;
+  services.udev.packages = [
+    pkgs.mixxx
+    pkgs.bitwig-studio
+    pkgs.vital
+  ];
   environment.systemPackages = with pkgs; [
+    mixxx # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
+
     # ardour # long build fails
     libbs2b
     ladspaPlugins
@@ -21,7 +26,6 @@
     vital
     distrho-ports
     lsp-plugins
-    mixxx
     yoshimi
     guitarix
     # muse # fails
@@ -37,13 +41,5 @@
     # rosegarden
     qtractor
 
-  ];
-  # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
-  # environment.variables.QT_AUTO_SCREEN_SCALE_FACTOR = "0";
-  # environment.variables.QT_FONT_DPI = config.services.xserver.dpi;
-  services.udev.packages = [
-    # pkgs.mixxx
-    pkgs.bitwig-studio
-    pkgs.vital
   ];
 }

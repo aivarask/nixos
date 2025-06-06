@@ -61,6 +61,7 @@
       scrot
       tokei # loc unmaintained
       tree
+      silver-searcher
       fd
       trash-cli
       neofetch

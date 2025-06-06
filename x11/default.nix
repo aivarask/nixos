@@ -13,6 +13,11 @@
         config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/.Xresources_extra";
       xresources.extraConfig = ''#include ".Xresources_extra"'';
 
+      home.packages = [
+        pkgs.vanilla-dmz
+        pkgs.gnome-themes-extra
+      ];
+
       # home.pointerCursor.x11.enable = true;
       # home.pointerCursor.gtk.enable = true;
       # home.pointerCursor.name = "Vanilla-DMZ";
@@ -20,17 +25,16 @@
       # home.pointerCursor.size = lib.mkDefault 64;
 
       gtk.enable = true;
-      gtk.theme.name = "Adwaita-dark";
-      gtk.theme.package = pkgs.gnome-themes-extra;
-      home.packages = with pkgs; [
-        gnome-themes-extra
-        layan-gtk-theme
-        # gruvbox-dark-gtk
-        # gruvbox-dark-icons-gtk
-      ];
-      qt.enable = true;
-      qt.platformTheme = "gnome";
-      qt.style = "adwaita-dark";
+      gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      gtk.gtk2.extraConfig = ''
+        gtk-theme-name = "Adwaita-dark"
+      '';
+      gtk.gtk3.extraConfig = {
+        gtk-theme-name = "Adwaita-dark";
+      };
+      # gtk.theme.package = pkgs.gnome-themes-extra; # /etc/profiles/per-user/root/share/themes/
+      # gtk.theme.name = "Adwaita-dark";
+
     };
   default =
     {
@@ -40,6 +44,10 @@
       ...
     }:
     {
+      # environment.variables.QT_FONT_DPI = config.services.xserver.dpi;
+      qt.enable = false;
+      # qt.platformTheme = "gnome";
+      # qt.style = "adwaita-dark";
       environment.systemPackages =
         with pkgs;
         [

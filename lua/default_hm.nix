@@ -7,6 +7,7 @@
 }:
 let
   common = with pkgs.vimPlugins; [
+    ack-vim
     sxhkd-vim
     vim-auto-save
     bclose-vim

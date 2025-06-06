@@ -1,5 +1,7 @@
 # vim: ft=bash
 
+# shopt -s globstar
+
 # /etc/bashrc
 
 # export __ETC_BASHRC_SOURCED=
