@@ -148,6 +148,7 @@
                 ./kitty
                 ./lf
                 ./lua/default_hm.nix
+                ./mixxx
                 ./mpv
                 ./ncmpcpp
                 ./picom/hm_.nix
