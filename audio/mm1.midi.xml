@@ -15,6 +15,15 @@
         </scriptfiles>
         <controls>
             <control>
+                <group></group>
+                <key></key>
+                <status>0xB4</status>
+                <midino>0x00</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
                 <group>[EffectRack1_EffectUnit2]</group>
                 <key>CMDMM.out2.input</key>
                 <description>Master Gain</description>
