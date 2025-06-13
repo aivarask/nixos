@@ -4,7 +4,7 @@ vim.diagnostic.config({
 	-- virtual_lines = true,
 	-- float = true,
 	loclist = {
-		open = true,
+		open = false,
 		severity = { min = vim.diagnostic.severity.ERROR },
 	}
 })

@@ -150,6 +150,11 @@ endif
 	inoremap <M-K> <Esc>:m .-2<CR>==gi
 	vnoremap <M-J> :m '>+1<CR>gv=gv
 	vnoremap <M-K> :m '<-2<CR>gv=gv
+	imap <M-h> <C-O>h
+	imap <M-j> <C-O>j
+	imap <M-k> <C-O>k
+	imap <M-l> <C-O>l
+
 
 
 

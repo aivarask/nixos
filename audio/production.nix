@@ -46,7 +46,7 @@
     reaper
     # zrythm
     # ardour
-    lmms
+    # lmms # gtk2
     # rosegarden
     qtractor
 

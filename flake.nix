@@ -143,7 +143,6 @@
                 ./audio/hm.nix
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
-                ./config/hm_.nix
                 ./htop
                 ./kitty
                 ./lf
@@ -172,7 +171,6 @@
                 ./tmux
                 ./touchegg/hm_.nix
                 (import ./x11).hm
-                ./xdg/hm_.nix
               ];
             };
           };

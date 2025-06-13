@@ -7,31 +7,70 @@
       lib,
       ...
     }:
-    let
-      package = pkgs.xcursor-pro;
-      theme-name = "Adwaita-dark"; # /etc/profiles/per-user/root/share/themes/
-      cursor-name = "XCursor-Pro-Light"; # /etc/profiles/per-user/root/share/icons/
-    in
     {
       home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc";
-      home.file.".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
-      # xresources.extraConfig = ''#include ".Xresources_extra"'';
-      xdg.configFile."gtk-2.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/x11/gtk2";
-      xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/x11/gtk3";
+      xdg.configFile."mimeapps.list".source =
+        config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/mimeapps.list";
+      # home.file.".Xresources_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
+      # xresources.extraConfig = ''#include ".Xresources_"'';
+      # xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/gtk3";
+      # xdg.dataFile."applications/alacritty.desktop".source =
+      #   config.lib.file.mkOutOfStoreSymlink "/etc/nixos/xdg/alacritty.desktop";
 
-      home.packages = [
-        pkgs.lxappearance
-        pkgs.vanilla-dmz
-        pkgs.gnome-themes-extra
-        pkgs.xcursor-pro
-        pkgs.orchis-theme
+      dconf.enable = false;
+      dconf.settings = {
+        # "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+        # "org/gnome/desktop/background" = {
+        #   picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+        # };
+      };
+
+      home.packages = lib.mkMerge [
+        [
+
+          pkgs.lxappearance
+          pkgs.xcursor-pro
+          pkgs.gnome-themes-extra
+          # pkgs.orchis-theme
+          # pkgs.gtk-engine-murrine
+          # qt
+          # pkgs.falcon
+          # pkgs.qutebrowser
+          # pkgs.minitube
+          # pkgs.adwaita-qt
+          # pkgs.adwaita-qt6
+          # pkgs.libsForQt5.qt5ct
+          # pkgs.libsForQt5.qtstyleplugin-kvantum
+          # pkgs.gruvbox-kvantum
+        ]
       ];
 
       # home.pointerCursor.x11.enable = true;
-      # home.pointerCursor.gtk.enable = true;
       # home.pointerCursor.name = "${cursor-name}";
-      # home.pointerCursor.size = lib.mkDefault (32 * 2);
+      # home.pointerCursor.size = 64;
       # home.pointerCursor.package = package;
+
+      # qt.enable = false;
+      # qt.platformTheme.name = "qtct";
+      # qt.style.name = "kvantum";
+
+      # xdg.configFile."Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
+      # xdg.configFile."Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
+      # xdg.configFile."Kvantum/kvantum.kvconfig".text = "[General]\ntheme=Gruvbox-Dark-Brown";
+
+      # environment.systemPackages = with pkgs; [
+      #   xdg-utils
+      #   # kdePackages.dolphin # gtk2
+      # ];
+      # xdg.portal.enable = true;
+      # xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+      # xdg.portal.config.common.default = "kde";
+      # xdg.mime.enable = true;
+      # https://discourse.nixos.org/t/creating-symlinks-in-nixos/50280/3
+      # xdg.terminal-exec.enable = true;
+      # xdg.terminal-exec.settings.default = [ "kitty.desktop" ];
+      # environment.variables.XDG_TERMINAL = "${pkgs.kitty}/bin/kitty";
+      # environment.variables.XDG_SYSTEM_MONITOR = "${pkgs.resources}/bin/resources";
     };
   default =
     {
@@ -41,13 +80,16 @@
       ...
     }:
     {
-      # environment.variables.QT_FONT_DPI = config.services.xserver.dpi;
-      qt.enable = false;
-      # qt.platformTheme = "gnome";
-      # qt.style = "adwaita-dark";
+
       environment.systemPackages =
         with pkgs;
         [
+          yad
+          zenity
+          # https://wiki.archlinux.org/title/List_of_applications/Utilities#GUI/TUI_prompts
+          # https://help.gnome.org/users/zenity/stable/index.html.en
+          # xprop | grep WM_CLASS
+          # xprop | grep WM_NAME
           xcompmgr
           xdotool
           xsel
@@ -65,6 +107,8 @@
           xdo
         ]
         ++ (with pkgs.xorg; [
+          xcursorthemes
+          libXcursor
           libXext
           xbacklight
           xorgserver
@@ -113,16 +157,6 @@
       services.displayManager.autoLogin.user = "aiva";
 
       services.xserver.displayManager.startx.generateScript = false;
-      services.xserver.imwheel.enable = true;
-      services.xserver.imwheel.rules = {
-        "^(telegram-desktop|chromium|brave|firefox).*" = ''
-          None, Up, Button4, 2
-          None, Down, Button5, 2
-          Shift_L,   Up,   Shift_L|Button4, 2
-          Shift_L,   Down, Shift_L|Button5, 2
-          Control_L, Up,   Control_L|Button4
-          Control_L, Down, Control_L|Button5
-        '';
-      };
+
     };
 }
