@@ -1,9 +1,26 @@
 vim.diagnostic.config({
 	severity_sort = true,
-	virtual_text = true,
-	virtual_lines = true,
+	-- virtual_text = true,
+	-- virtual_lines = true,
 	-- float = true,
+	loclist = {
+		open = true,
+		severity = { min = vim.diagnostic.severity.ERROR },
+	}
 })
+
+vim.diagnostic.handlers.loclist = {
+	show = function(_, _, _, opts)
+		---@diagnostic disable-next-line: undefined-field
+		opts.loclist.open = opts.loclist.open or false
+		local winid = vim.api.nvim_get_current_win()
+		---@diagnostic disable-next-line: undefined-field
+		vim.diagnostic.setloclist(opts.loclist)
+		vim.api.nvim_set_current_win(winid)
+	end
+}
+
+
 if false then
 	vim.api.nvim_create_user_command('DiagnosticQf', function(args)
 		if args.args == 'ERROR' then

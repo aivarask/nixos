@@ -28,10 +28,10 @@ require('telescope').setup({
 	},
 	extensions = {
 		fzf = {
-			fuzzy = true,                 -- false will only do exact matching
-			override_file_sorter = true,  -- override the file sorter
+			fuzzy = true,                -- false will only do exact matching
+			override_file_sorter = true, -- override the file sorter
 			override_generic_sorter = true, -- override the generic sorter
-			case_mode = 'smart_case',     -- default "smart_case" or "ignore_case" or "respect_case"
+			case_mode = 'smart_case',    -- default "smart_case" or "ignore_case" or "respect_case"
 		},
 		manix = {
 			cword = true,
@@ -47,3 +47,7 @@ require('telescope').load_extension('manix')
 require("telescope").load_extension "frecency"
 
 local builtin = require('telescope.builtin')
+
+vim.keymap.set({ 'n' }, '<leader>K', function()
+	builtin.keymaps({ only_buf = true })
+end)

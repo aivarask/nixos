@@ -6,7 +6,9 @@ set completeopt=menu,menuone,noselect
 "set wildmenu
 "set wildmode=noselect
 
-set cursorline mouse=a
+set cursorline 
+set mouse=a
+set mousefocus
 set hidden
 set ignorecase
 set lazyredraw

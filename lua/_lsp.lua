@@ -15,12 +15,32 @@ vim.lsp.config('*', {
 	}
 })
 
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp:attach', {}),
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method('textDocument/implementation') then
 			-- Create a keymap for vim.lsp.buf.implementation ...
+		end
+
+		if client:supports_method('textDocument/hover') then
+			vim.api.nvim_create_autocmd('CursorHold', {
+				group = vim.api.nvim_create_augroup('lsp:hover', { clear = false }),
+				buffer = args.buf,
+				callback = function(ev)
+					vim.lsp.buf.hover({
+						silent = true,
+						focus = false,
+						relative = 'editor',
+						-- anchor_bias = 'above'
+						max_width = math.ceil(vim.o.columns / 2),
+						max_height = vim.o.lines,
+						offset_x = vim.o.columns,
+						-- offset_y = vim.api.nvim_win_get_height(0) - 30,
+					})
+				end
+			})
 		end
 
 		if client:supports_method('textDocument/codeLens') then

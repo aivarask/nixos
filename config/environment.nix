@@ -3,6 +3,7 @@
   environment.systemPackages = (
     with pkgs;
     [
+      shot-scraper
       tuir
       ddgr
       utf8proc

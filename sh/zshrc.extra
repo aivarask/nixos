@@ -10,6 +10,7 @@ typeset -TU PATH path ':'
 # path+=( /etc/nixos/*(N-/) )
 path+=( ${0:a:h}/bin )
 
+typeset -TU NIX_PROFILES np ' '
 typeset -TU GTK_PATH gtk_path ':'
 typeset -TU XCURSOR_PATH xcursor_path ':'
 
