@@ -16,7 +16,17 @@
     pkgs.bitwig-studio
     pkgs.vital
   ];
+
+  environment.pathsToLink = [
+    "/share/mixxx"
+    "/doc/share"
+  ];
   environment.systemPackages = with pkgs; [
+    # nix-locate vst3
+    zam-plugins
+    ysfx
+
+    #
     mixxx # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
 
     # ardour # long build fails
@@ -25,7 +35,6 @@
     lsof
     vital
     distrho-ports
-    lsp-plugins
     yoshimi
     guitarix
     # muse # fails
