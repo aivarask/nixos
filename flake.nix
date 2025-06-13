@@ -75,7 +75,6 @@
         ./config/fonts.nix
         ./config/i18n.nix
         ./config/nix.nix
-        ./dialog
         ./go
         ./httpd
         ./lib
@@ -141,6 +140,7 @@
                 inputs.nix-index-database.hmModules.nix-index
                 ./git
                 ./awesome
+                ./audio/hm.nix
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
                 ./config/hm_.nix
@@ -148,7 +148,6 @@
                 ./kitty
                 ./lf
                 ./lua/default_hm.nix
-                ./mixxx
                 ./mpv
                 ./ncmpcpp
                 ./picom/hm_.nix
