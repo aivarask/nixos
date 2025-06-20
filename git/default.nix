@@ -6,6 +6,8 @@
     gh
     git-crypt
     pre-commit
+    delta
+    lazygit
   ];
   programs.git.enable = true;
   # programs.git.package = pkgs.gitFull;
@@ -22,4 +24,7 @@
   xdg.configFile."git/config_user".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/git/config_user";
   xdg.configFile."git/ignore".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/git/ignore";
+  xdg.configFile."lazygit/config.yml".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/git/config_lazygit.yml";
+
 }
