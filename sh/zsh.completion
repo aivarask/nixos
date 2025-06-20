@@ -35,4 +35,3 @@ zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
 
-echo 'im sourced'

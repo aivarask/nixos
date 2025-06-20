@@ -8,6 +8,10 @@
     pre-commit
     delta
     lazygit
+    difftastic
+    diff-so-fancy
+    python3Packages.ydiff
+    patchutils
   ];
   programs.git.enable = true;
   # programs.git.package = pkgs.gitFull;

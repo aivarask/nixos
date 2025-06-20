@@ -34,7 +34,6 @@
       gettext
       intelephense
       obs-cli
-      difftastic
       android-tools
 
       # https://nixos.wiki/wiki/MTP

@@ -11,7 +11,7 @@
       home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc";
       xdg.configFile."mimeapps.list".source =
         config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/mimeapps.list";
-      # home.file.".Xresources_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
+      home.file.".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
       # xresources.extraConfig = ''#include ".Xresources_"'';
       # xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/gtk3";
       # xdg.dataFile."applications/alacritty.desktop".source =
@@ -27,11 +27,11 @@
 
       home.packages = lib.mkMerge [
         [
-
           pkgs.lxappearance
+          pkgs.vanilla-dmz
           pkgs.xcursor-pro
           pkgs.gnome-themes-extra
-          # pkgs.orchis-theme
+          pkgs.orchis-theme
           # pkgs.gtk-engine-murrine
           # qt
           # pkgs.falcon

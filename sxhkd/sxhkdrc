@@ -22,7 +22,7 @@ super + {q,w,e,r}
  ,tdrop alacritty\
  ,firefox\
  ,chrome\
- ,alacritty --working-directory=/etc/nixos -e 'nvim' \
+ ,alacritty --working-directory=/etc/nixos -e nvim --listen $NVIM_REMOTE \
  }
 # ,xid="$(tabbed -c -d -s -r 2 st -w x)"; cd /etc/nixos; st -w "$xid" nvim & st -w "$xid" vim \
 

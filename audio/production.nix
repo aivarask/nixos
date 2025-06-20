@@ -22,6 +22,11 @@
     "/doc/share"
   ];
   environment.systemPackages = with pkgs; [
+    # MIDI monitoring
+    lilypond
+    midivisualizer
+    vkeybd
+
     # nix-locate vst3
     zam-plugins
     ysfx
@@ -46,7 +51,7 @@
     reaper
     # zrythm
     # ardour
-    # lmms # gtk2
+    lmms # gtk2
     # rosegarden
     qtractor
 

@@ -1,15 +1,42 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
+gui:
+  scrollOffMargin: 8
+  nerdFontsVersion: 3
+  # Whether to split the main window when viewing file changes.
+  # One of: 'auto' | 'always'
+  # If 'auto', only split the main window when a file has both staged and unstaged changes
+  splitDiff: auto
+  # One of: 'normal' (default) | 'half' | 'full'
+  screenMode: normal
+
+git:
+  paging:
+    # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
+    colorArg: never
+    # pager: ydiff -p cat -s --wrap --width={{columnWidth}}
+    pager: delta --dark --side-by-side --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+    # pager: diff-so-fancy
+    # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
+    useConfig: false
+    # e.g. 'difft --color=always'
+    externalDiffCommand: "difft --color=always"
+
 os:
+  edit: nvim --server $NVIM_REMOTE --remote {{filename}}
+  editAtLine: nvim --server $NVIM_REMOTE --remote-send {{line}}gg --remote {{filename}}
+  editAtLineAndWait: nvim --server $NVIM_REMOTE --remote-send {{line}}gg --remote {{filename}}
+  editInTerminal: true
+  openDirInEditor: nvim {{dir}}
+  editPreset: "nvim"
+  open: xdg-open {{filename}} >/dev/null
+  openLink: bash -C /path/to/your/shell-script.sh {{link}}
   copyToClipboardCmd: >
     if [[ "$TERM" =~ ^(screen|tmux) ]]; then
       printf "\033Ptmux;\033\033]52;c;$(printf {{text}} | base64 -w 0)\a\033\\" > /dev/tty
     else
       printf "\033]52;c;$(printf {{text}} | base64 -w 0)\a" > /dev/tty
     fi
-  edit: nvr {{filename}}
-  editAtLine: nvr --line={{line}} {{filename}}
-  editAtLineAndWait: nvr --block --line={{line}} {{filename}}
-  editInTerminal: true
-  open: xdg-open {{filename}} >/dev/null
-  openDirInEditor: nvr {{dir}}
-  openLink: bash -C /path/to/your/shell-script.sh {{link}}
   readFromClipboardCmd: ""
+  # A shell startup file containing shell aliases or shell functions. This will be sourced before running any shell commands, so that shell functions are available in the `:` command prompt or even in custom commands.
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#using-aliases-or-functions-in-shell-commands
+  shellFunctionsFile: ""

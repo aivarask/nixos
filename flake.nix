@@ -99,7 +99,6 @@
         ./services/redshift.nix
         ./services/transmission.nix
         ./services/unclutter.nix
-        ./sh/env.nix
         ./sql/sql.nix
         ./suckless
         ./systemd/music.nix
@@ -110,8 +109,8 @@
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
+        (import ./sh/env.nix).system
         (import ./x11).default
-        ./xdg
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = rec {
@@ -153,13 +152,11 @@
                 ./programs/default_.nix
                 ./programs/direnv_.nix
                 ./programs/gh_.nix
-                ./programs/lazygit_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
                 ./rofi
                 ./services/dunst_.nix
                 ./sh/bat.nix
-                ./sh/env_hm.nix
                 ./sh/fzf.nix
                 ./sh/pistol.nix
                 ./sh/starship.nix
@@ -170,6 +167,7 @@
                 ./term/wezterm_.nix
                 ./tmux
                 ./touchegg/hm_.nix
+                (import ./sh/env.nix).hm
                 (import ./x11).hm
               ];
             };

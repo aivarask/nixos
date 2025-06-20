@@ -1,7 +1,7 @@
 vim.diagnostic.config({
 	severity_sort = true,
-	-- virtual_text = true,
-	-- virtual_lines = true,
+	virtual_text = true,
+	virtual_lines = true,
 	-- float = true,
 	loclist = {
 		open = false,

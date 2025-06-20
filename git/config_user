@@ -9,16 +9,21 @@
   pr = "pull --rebase"
 
 [core]
-	pager = delta
-  editor = vim
+	; pager = ydiff -s
+	; pager = delta
+  ; editor = vim
   hookspath = .githooks
+	pager = delta --side-by-side --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 
 [interactive]
 	diffFilter = delta --color-only
+	; diffFilter = diff-so-fancy
+	; diffFilter = diff-highlight
 
 [delta]
-	navigate = true  # use n and N to move between diff sections
-	dark = true      # or light = true, or omit for auto-detection
+	navigate = true  # n and N 
+	; dark = true
+	; light = true
 	side-by-side = true
 	line-numbers = true
 

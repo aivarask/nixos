@@ -3,21 +3,21 @@
 export XCURSOR_THEME=XCursor-Pro-Light
 export XCURSOR_SIZE=64
 
-export GDK_DPI_SCALE="0.75"
 # export GDK_SCALE="2"
-# export GTK_THEME=Adwaita:dark
 # export GTK2_RC_FILES=/etc/nixos/x11/gtk2/gtkrc
 # export QT_QPA_PLATFORMTHEME=gtk2
 # export QT_STYLE_OVERRIDE=kvantum
+export GDK_DPI_SCALE="0.75"
+export GTK_THEME=Adwaita:dark
+export NVIM_REMOTE=~/.cache/nvim/server.pipe
+export EDITOR=nvim --server $NVIM_REMOTE
 
 # xcompmgr &
 # picom -b &
-xrandr_dpi &
-
-# xrdb -load ~/.Xresources
+xrandr_dpi
 xrdb ~/.Xresources
 #
-devilspie2 -a &
+devilspie2 -a
 numlockx
 xset r rate 250 50
 sxhkd &
@@ -37,7 +37,7 @@ fi
 
 if [ "$(hostname)" = pc ]; then
 	xset s 3600 3600
-	xset dpms 3600 3600 3600
+	xset dpms3600 3600 3600
 	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
 	XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 	systemctl --user start imwheel.service &

@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+precmd() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $HOST\a"
+}
+
+preexec() {
+	print -Pn "\e]83;title \"$1\"\a"
+	print -Pn "\e]0;$PWD $1 $HOST\a"
+}

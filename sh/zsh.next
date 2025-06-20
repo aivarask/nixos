@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+function zle_eval {
+	echo -en "\e[2K\r"
+	eval "$@"
+	zle redisplay
+}
+
+function zle_ls {
+	zle_eval ls --color=auto
+}
+zle -N zle_ls
+bindkey "[Your input string]" zle_ls

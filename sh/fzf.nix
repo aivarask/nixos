@@ -1,9 +1,8 @@
 # https://junegunn.github.io/
 { config, SELF, ... }:
 {
-
-  programs.ripgrep.enable = true;
   home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/ripgreprc";
+  programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableZshIntegration = true;

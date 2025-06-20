@@ -1,7 +1,6 @@
 ! vim: ft=xdefaults
 Xft.dpi: 288
-Xcursor.size: 64
-Xcursor.theme: Vanilla-DMZ
+! Xcursor.theme: Vanilla-DMZ
 ! Xcursor.theme: XCursor-Pro-Light
 ! Xcursor.size: 64
 

@@ -10,7 +10,7 @@
   ];
   programs.zsh.autocd = true;
   programs.zsh.syntaxHighlighting.enable = true;
-  programs.zsh.autosuggestion.enable = true;
+  programs.zsh.autosuggestion.enable = false;
   # programs.zsh.dotDir = ".config/zsh";
   programs.zsh.history.size = 10000;
   programs.zsh.history.extended = true;
