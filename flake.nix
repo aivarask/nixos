@@ -65,7 +65,10 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        { }
+        ./disks.nix
+        {
+          # disko.devices
+        }
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
