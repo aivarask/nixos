@@ -65,7 +65,6 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        ./disks.nix
         {
           # disko.devices
         }
