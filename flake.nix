@@ -113,7 +113,8 @@
         (import ./x11).default
         inputs.home-manager.nixosModules.home-manager
         {
-          home-manager = rec {
+          home-manager = {
+            backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
