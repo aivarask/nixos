@@ -14,7 +14,7 @@
   # https://mynixos.com/nixpkgs/options/services.ollama
   # https://wiki.nixos.org/wiki/CUDA
   services.ollama = {
-    enable = true;
+    enable = false;
     # package = pkgs.ollama-cuda;
     environmentVariables = {
       OLLAMA_LLM_LIBRARY = "cuda";
