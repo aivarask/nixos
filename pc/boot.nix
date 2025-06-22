@@ -48,9 +48,13 @@
     "sd_mod"
   ];
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = true;
+  hardware.nvidia.open = false;
   hardware.graphics.enable = true;
   hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.powerManagement.enable = true;
+  # powerManagement.finegrained = true;
+  hardware.nvidia.nvidiaSettings = true;
+
   # environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   environment.systemPackages = with pkgs; [
     # nvtopPackages.nvidia # nvtop
