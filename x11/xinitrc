@@ -10,7 +10,7 @@ export XCURSOR_SIZE=64
 export GDK_DPI_SCALE="0.75"
 export GTK_THEME=Adwaita:dark
 export NVIM_REMOTE=~/.cache/nvim/server.pipe
-export EDITOR=nvim --server $NVIM_REMOTE
+export EDITOR="nvim --server $NVIM_REMOTE"
 
 # xcompmgr &
 # picom -b &

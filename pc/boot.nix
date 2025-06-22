@@ -9,7 +9,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     # inputs.nixos-hardware.nixosModules.common-hidpi
   ];
   boot.kernelModules = [
@@ -50,7 +50,7 @@
   hardware.nvidia.open = true;
   hardware.graphics.enable = true;
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.powerManagement.enable = true;
+  # hardware.nvidia.powerManagement.enable = true;
   # hardware.nvidia.powerManagement.finegrained = true;
   hardware.nvidia.nvidiaSettings = true;
 
@@ -61,6 +61,6 @@
   ];
   services.xserver.videoDrivers = [
     "nvidia"
-    "modesetting"
+    # "modesetting"
   ];
 }

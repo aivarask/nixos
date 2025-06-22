@@ -149,7 +149,7 @@
       services.xserver.xkb.model = "pc104";
       services.xserver.xkb.layout = "us,lt";
       services.xserver.xkb.options = "grp:menu_toggle"; # localectl list-x11-keymap-options
-      # services.xserver.xkb.variant = "qwerty"; # localectl list-x11-keymap-variants
+      services.xserver.xkb.variant = "qwerty"; # localectl list-x11-keymap-variants
       services.xserver.dpi = lib.mkDefault null;
       # services.xserver.tty = 7;
       services.xserver.displayManager.startx.enable = true;
