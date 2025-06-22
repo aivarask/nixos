@@ -29,7 +29,7 @@ os:
   openDirInEditor: nvim {{dir}}
   editPreset: "nvim"
   open: xdg-open {{filename}} >/dev/null
-  openLink: bash -C /path/to/your/shell-script.sh {{link}}
+  openLink: xdg-open {{link}}
   copyToClipboardCmd: >
     if [[ "$TERM" =~ ^(screen|tmux) ]]; then
       printf "\033Ptmux;\033\033]52;c;$(printf {{text}} | base64 -w 0)\a\033\\" > /dev/tty
