@@ -3,11 +3,11 @@
   environment.systemPackages = [
     pkgs.wpa_supplicant_gui
   ];
-  networking.wireless.userControlled.enable = true;
   networking.wireless.enable = lib.mkDefault true;
-  networking.wireless.userControlled.group = "wheel";
+  # networking.wireless.userControlled.group = "wheel";
+  # networking.wireless.userControlled.enable = true;
   networking.wireless.networks.hw = {
-    priority = 10;
+    # priority = 10;
     pskRaw = "4ac51a255791c6ec52af3fd3f09cf6d9412f9305156d2d38f81798aec41eeb8f";
   };
   networking.wireless.networks."Laisvas Internetas_FC7A" = {
