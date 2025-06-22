@@ -62,7 +62,7 @@
   inputs.nvim-oxi.flake = false;
   # https://github.com/mlua-rs/mlua
   outputs =
-    { nixpkgs, ... }@inputs:
+    { nixpkgs, disko, ... }@inputs:
     let
       commonModules = [
         {
@@ -189,8 +189,20 @@
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./pc ];
-        specialArgs = { inherit inputs; };
+        modules = commonModules ++ [
+          ./pc
+          inputs.disko.nixosModules.disko
+          ./disko-config.nix
+          {
+            _module.args.disks = [ "/dev/vda" ];
+          }
+        ];
+        specialArgs = {
+          inherit
+            inputs
+            # disko
+            ;
+        };
       };
     });
 }
