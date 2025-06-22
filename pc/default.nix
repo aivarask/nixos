@@ -17,6 +17,10 @@
     ./boot.nix
     ./network.nix
     ./storage.nix
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
+    { _module.args.disks = [ "/dev/sda" ]; }
+
   ];
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
