@@ -3,33 +3,46 @@
   toolbar = true;
   bookmarks = [
     {
-      name = "n_";
+      name = "nixos";
       bookmarks = [
         {
-          name = "";
+          name = "nix-community/nixos-anywhere";
+          url = "https://github.com/nix-community/nixos-anywhere";
+        }
+        {
+          name = "nix-community/disko";
+          url = "https://github.com/nix-community/disko";
+        }
+        {
+          name = "nix-community/nix-on-droid";
           url = "https://github.com/nix-community/nix-on-droid";
         }
         {
-          name = "";
+          name = "nix-community/home-manager";
           url = "https://github.com/nix-community/home-manager";
         }
         {
-          name = "";
+          name = "nix-community/neovim-nightly-overlay";
           url = "https://github.com/nix-community/neovim-nightly-overlay";
         }
         {
-          name = "";
+          name = "nix-community/browser-previews";
           url = "https://github.com/nix-community/browser-previews";
+        }
+        {
+          name = "nix-community/nixos-generators";
+          url = "https://github.com/nix-community/nixos-generators";
+        }
+        {
+          name = "nix-community/nixd";
+          url = "https://github.com/nix-community/nixd";
         }
       ];
     }
     {
       name = "n";
       bookmarks = [
-        {
-          name = "nixd";
-          url = "https://github.com/nix-community/nixd";
-        }
+
         {
           name = "nix.dev/";
           url = "https://nix.dev/";
