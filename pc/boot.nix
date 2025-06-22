@@ -1,5 +1,17 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    # inputs.nixos-hardware.nixosModules.common-hidpi
+  ];
   boot.kernelModules = [
     "kvm-amd"
     "vhost_vsock"
@@ -22,10 +34,11 @@
   #   "net.ipv4.conf.ens2.proxy_arp" = 1;
   # };
 
+  boot.loader.systemd-boot.enable = true;
   boot.blacklistedKernelModules = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_5_10;
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  boot.initrd.kernelModules = [ "nvidia" ];
+  # boot.kernelPackages = pkgs.linuxPackages;
+  # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  # boot.initrd.kernelModules = [ "nvidia" ];
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
@@ -34,7 +47,7 @@
     "usb_storage"
     "sd_mod"
   ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = true;
   # environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   environment.systemPackages = with pkgs; [

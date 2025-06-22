@@ -35,3 +35,14 @@ source $SELF/sh/zsh.alias
 source $SELF/sh/zsh.completion
 source $SELF/sh/zsh.hooks
 source $SELF/sh/zshrc.dev
+
+nix-clean() {
+	nix-env --delete-generations old
+	nix-store --gc
+	nix-channel --update
+	nix-env -u --always
+	for link in /nix/var/nix/gcroots/auto/*; do
+		rm $(readlink "$link")
+	done
+	nix-collect-garbage -d
+}
