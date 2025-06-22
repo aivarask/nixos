@@ -49,6 +49,8 @@
   ];
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = true;
+  hardware.graphics.enable = true;
+  hardware.nvidia.modesetting.enable = true;
   # environment.variables.LIBVA_DRIVER_NAME = "vdpau";
   environment.systemPackages = with pkgs; [
     # nvtopPackages.nvidia # nvtop
