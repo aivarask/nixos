@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.cifs-utils ];
+  environment.systemPackages = with pkgs; [
+    cifs-utils
+    samba
+    smbclient-ng
+  ];
   fileSystems."/mnt/share" = {
     device = "//192.168.1.1/";
     fsType = "cifs";

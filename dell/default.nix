@@ -15,6 +15,7 @@
     ./bluetooth.nix
     ../common/boot.nix
     ./boot.nix
+    ./samba.nix
     ./kmscon.nix
     ./network.nix
     ./storage.nix
