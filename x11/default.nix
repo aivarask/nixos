@@ -8,7 +8,9 @@
       ...
     }:
     {
-      home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc";
+      home.file.".xinitrc".source = lib.mkDefault (
+        config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc"
+      );
       xdg.configFile."mimeapps.list".source =
         config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/mimeapps.list";
       home.file.".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";

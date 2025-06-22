@@ -107,7 +107,8 @@
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
         ./steam
-        ./users/aiva.nix
+
+        (import ./users/aiva.nix).system
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
@@ -170,6 +171,7 @@
                 ./term/wezterm_.nix
                 ./tmux
                 ./touchegg/hm_.nix
+                (import ./users/aiva.nix).hm
                 (import ./sh/env.nix).hm
                 (import ./x11).hm
               ];
