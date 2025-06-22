@@ -7,7 +7,7 @@
     enable = true;
     openPeerPorts = true;
     settings = {
-      watch-dir = "/var/lib/transmission/watch-dir";
+      watch-dir = "/var/lib/transmission/watchdir";
       watch-dir-enabled = true;
     };
   };

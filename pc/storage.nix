@@ -1,19 +1,14 @@
 { lib, ... }:
 {
-  fileSystems = {
-    "/" = {
-      device = "zroot/root/nixos";
-      fsType = "zfs";
+  fileSystems."/" =
+    { device = "/dev/disk/by-label/NIXROOT";
+      fsType = "ext4";
     };
-    "/home" = {
-      device = "zroot/home";
-      fsType = "zfs";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/CE3C-0926";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
-  };
-  swapDevices = [
-  ];
+  swapDevices = [ ];
 }

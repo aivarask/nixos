@@ -125,9 +125,9 @@
       services.libinput.touchpad.naturalScrolling = true;
       services.libinput.touchpad.accelSpeed = "+0.5";
       services.xserver.enable = true;
-      services.xserver.autorun = false;
+      services.xserver.autorun = true;
       services.xserver.exportConfiguration = true;
-      services.xserver.resolutions = lib.mkIf false [
+      services.xserver.resolutions = lib.mkIf true [
         {
           x = 3840;
           y = 2160;
