@@ -49,7 +49,8 @@ let
     # "media.gmp-widevinecdm.visible" = true;
     # "media.gmp-widevinecdm.enabled" = true;
 
-    "browser.uidensity" = 2;
+    "browser.uidensity" = 1;
+    "browser.compactmode.show" = true;
     # Disable location bar making speculative connections
     "browser.urlbar.speculativeConnect.enabled" = false;
     # Disable location bar contextual suggestions
