@@ -85,7 +85,7 @@
         ./lua
         # ./network/dns_basic.nix
         ./network/networking.nix
-        ./network/networkingwireless.nix
+        ./network/wireless.nix
         ./node
         ./nps.nix
         ./ollama.nix
