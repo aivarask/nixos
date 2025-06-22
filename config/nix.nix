@@ -40,7 +40,7 @@ in
   nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   nix.extraOptions = ''
     use-xdg-base-directories = true
-    warn-dirty = true
+    warn-dirty = false
     download-buffer-size = ${toString (67108864 * 4)}
   '';
   nix.settings.max-jobs = 8;
