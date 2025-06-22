@@ -14,6 +14,10 @@
           url = "https://github.com/nix-community/disko";
         }
         {
+          name = "nix-community/disko-templates";
+          url = "https://github.com/nix-community/disko-templates";
+        }
+        {
           name = "nix-community/nix-on-droid";
           url = "https://github.com/nix-community/nix-on-droid";
         }

@@ -92,6 +92,21 @@
         "type": "github"
       }
     },
+    "disko-templates": {
+      "locked": {
+        "lastModified": 1729934235,
+        "narHash": "sha256-w+op2qm/bhp9kuayhAqbYcJ8C/SrhiczN70/4a4v39M=",
+        "owner": "nix-community",
+        "repo": "disko-templates",
+        "rev": "6b12e5fe81fc0c06989a58bd0b01f4a2efca4906",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko-templates",
+        "type": "github"
+      }
+    },
     "dmenu-flexipatch": {
       "flake": false,
       "locked": {
@@ -799,6 +814,7 @@
         "browser-previews": "browser-previews",
         "dev-templates": "dev-templates",
         "disko": "disko",
+        "disko-templates": "disko-templates",
         "dmenu-flexipatch": "dmenu-flexipatch",
         "dwm-flexipatch": "dwm-flexipatch",
         "flake-utils": "flake-utils_2",

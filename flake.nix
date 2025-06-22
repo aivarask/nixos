@@ -7,6 +7,7 @@
   inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
   inputs.templates.url = "github:NixOS/templates";
   inputs.dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
+  inputs.disko-templates.url = "github:nix-community/disko-templates";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
