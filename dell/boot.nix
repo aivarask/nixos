@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 {
+
+  boot.blacklistedKernelModules = [
+    # "cirrusfb"
+    # "i2c_piix4"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.kernelModules = [
     "kvm-intel"

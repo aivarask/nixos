@@ -14,6 +14,7 @@ vim.cmd [[
 ]]
 require('gettransfer')
 require('neotest_setup')
+require('nixpect')
 
 -- vnew | put =luaeval('vim.inspect(vim)')
 -- vim.api.nvim_create_user_command('Lua', View, { nargs = '+', complete = 'command' })
