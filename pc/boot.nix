@@ -10,7 +10,7 @@
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-    # inputs.nixos-hardware.nixosModules.common-hidpi
+    inputs.nixos-hardware.nixosModules.common-hidpi
   ];
   boot.kernelModules = [
     "kvm-amd"
@@ -34,9 +34,8 @@
   #   "net.ipv4.conf.ens2.proxy_arp" = 1;
   # };
 
-  boot.loader.systemd-boot.enable = true;
   boot.blacklistedKernelModules = [ ];
-  # boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
   # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   # boot.initrd.kernelModules = [ "nvidia" ];
   boot.initrd.availableKernelModules = [
@@ -47,12 +46,12 @@
     "usb_storage"
     "sd_mod"
   ];
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = false;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.open = true;
   hardware.graphics.enable = true;
-  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.powerManagement.enable = true;
-  # powerManagement.finegrained = true;
+  # hardware.nvidia.powerManagement.finegrained = true;
   hardware.nvidia.nvidiaSettings = true;
 
   # environment.variables.LIBVA_DRIVER_NAME = "vdpau";
