@@ -66,7 +66,6 @@
     let
       commonModules = [
         {
-          # disko.devices
         }
         ./audio/mpd.nix
         ./audio/pipewire.nix
