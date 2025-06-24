@@ -1,8 +1,12 @@
 {
   hm =
-    { config, SELF, ... }:
     {
-      home.file.".xinitrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/users/xinitrc";
+      config,
+      SELF,
+      lib,
+      ...
+    }:
+    {
     };
   system =
     { ... }:

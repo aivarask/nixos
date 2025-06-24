@@ -20,8 +20,8 @@
     # { _module.args.disks = [ "/dev/sda" ]; }
 
   ];
-  system.stateVersion = "23.05";
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  system.stateVersion = "25.05";
+  nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = '''';

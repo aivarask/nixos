@@ -95,6 +95,7 @@ nnoremap ?m :edit ~/.config/mimeapps.list<CR>
 nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
 nnoremap ?x :edit ~/.xinitrc<CR>
 nnoremap ?t :edit /etc/nixos/lua/_config/telescope.lua<CR>
+nnoremap ?T :edit /etc/nixos/lua/_config/toggleterm.lua<CR>
 nnoremap ?z :edit ~/.zshrc_<CR>
 
 if !has('gui_running')

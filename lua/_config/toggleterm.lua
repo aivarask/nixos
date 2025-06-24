@@ -6,8 +6,8 @@ toggleterm.setup({
 				or (term.direction == 'vertical' and vim.o.columns * 0.3)
 	end,
 	float_opts = {
-		width = function() return math.ceil(vim.o.columns * 0.8) end,
-		height = function() return math.ceil(vim.o.lines * 0.8) end,
+		width = function() return math.ceil(vim.o.columns * 0.9) end,
+		height = function() return math.ceil(vim.o.lines * 0.9) end,
 	},
 })
 
@@ -27,11 +27,14 @@ vim.api.nvim_create_autocmd({
 	end,
 })
 
-local t = require('toggleterm.terminal').Terminal
-empty = t:new({ cmd = '', hidden = true, direction = 'float' })
-lf = t:new({ cmd = 'lf', hidden = true, direction = 'float' })
-lg = t:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
-man = t:new({ cmd = 'fzf-man-widget', hidden = true, direction = 'float' })
+local T = require('toggleterm.terminal').Terminal
+empty = T:new({ cmd = '', hidden = true, direction = 'float' })
 vim.keymap.set({ 'n', 't' }, '`', '<cmd>ToggleTerm direction=horizontal<CR>')
-vim.keymap.set({ 'n', 't' }, '\\l', function() lg:toggle(nil, 'float') end, { desc = 'lazygit' })
+lazygit = T:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+vim.keymap.set({ 'n', 't' }, '\\L', function() lazygit:toggle(nil, 'float') end, { desc = 'lazygit toggleterm' })
+lf = T:new({ cmd = 'lf', hidden = true, direction = 'float' })
 vim.keymap.set({ 'n', 't' }, '|1', function() lf:toggle(nil, 'float') end, { desc = 'lf' })
+man_fzf = T:new({ cmd = 'man-fzf', hidden = true, direction = 'float' })
+vim.keymap.set({ 'n', 't' }, '|2', function() man_fzf:toggle(nil, 'float') end, { desc = 'man-fzf' })
+nix = T:new({ cmd = 'nix repl self', hidden = true, direction = 'float' })
+vim.keymap.set({ 'n', 't' }, '|3', function() nix:toggle(nil, 'float') end, { desc = 'nix repl self' })
