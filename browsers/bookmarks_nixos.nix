@@ -6,6 +6,10 @@
       name = "nixos";
       bookmarks = [
         {
+          name = "nix-community/manix";
+          url = "https://github.com/nix-community/manix";
+        }
+        {
           name = "nixos/nixos-hardware";
           url = "https://github.com/nixos/nixos-hardware";
         }

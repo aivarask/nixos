@@ -36,7 +36,7 @@ require('nvim-tree').setup({
 
 vim.keymap.set('n', 'q', '<nop>')
 vim.keymap.set('n', 'Q', '<nop>')
-vim.keymap.set('n', 'qq', [[:NvimTreeToggle<CR>]])
+vim.keymap.set('n', 'qq', [[:NvimTreeToggle<CR>]], { silent = true })
 vim.keymap.set('n', 'qw', [[:NvimTreeCollapse<CR>]])
 vim.keymap.set('n', 'qQ', function() tree.open({ find_file = true }) end,
 	{ desc = 'tree.open find_file' })

@@ -1,11 +1,11 @@
-augroup sxhkd |	autocmd! | autocmd BufWritePost sxhkdrc :!kill -SIGUSR1 $(pidof sxhkd) && notify-send 'sxhkd'
-
-augroup dnscrypt
-	autocmd!
+augroup nixos
+	autocmd! 
+	autocmd BufWritePost sxhkdrc :!/run/current-system/sw/bin/kill -SIGUSR1 --verbose $(pidof sxhkd)
 	autocmd BufWritePost cloaking-rules.txt :!systemctl restart dnscrypt-proxy2.service
 augroup END
 
-augroup focus
+
+augroup nixos.edit
 	autocmd!
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =

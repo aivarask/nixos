@@ -8,13 +8,21 @@ runtime! lua/_*{.lua,.vim}
 vim.loader.enable()
 uv = vim.uv
 vim.keymap.set({ 'n', 'i', 'v' }, '<F1>', require('help').select)
-vim.keymap.set({ 'n' }, 'grd', vim.lsp.buf.definition, { desc = 'vim.lsp.buf.definition' })
+vim.keymap.set({ 'n' }, 'grd', vim.lsp.buf.definition, {
+	-- desc = 'vim.lsp.buf.definition'
+})
 vim.cmd [[
 "runtime! */_*{.lua,.vim}
 ]]
-require('gettransfer')
-require('neotest_setup')
-require('nixpect')
+require 'gettransfer'
+require 'nixpect'
+vim.keymap.set({ 'n' }, '<leader>\'', require 'nixpect'.test)
+require 'cf_diagnostic'
+require 'cf_lsp'
+require 'cf_neotest'
+require 'cf_nvim-tree'
+require 'cf_telescope'
+require 'cf_toggleterm'
 
 -- vnew | put =luaeval('vim.inspect(vim)')
 -- vim.api.nvim_create_user_command('Lua', View, { nargs = '+', complete = 'command' })

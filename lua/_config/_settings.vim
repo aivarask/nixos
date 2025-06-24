@@ -63,11 +63,12 @@ let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 map q <nop>
 map Q <nop>
 nmap - :cd ..<CR>
+
 nnoremap <silent> <Plug>(Save) :silent write<cr>
-" nmap <C-s> <Plug>(Save)
+
 " inoremap <Space> <C-G>u<Space>
-map <silent> <TAB> :bn<CR>
-map <silent> <S-TAB> :bp<CR>
+map <silent> ]b :bn<CR>
+map <silent> [b :bp<CR>
 map [c :cprevious<CR>
 map ]c :cnext<CR>
 map ]C :call Ctoggle()<CR>

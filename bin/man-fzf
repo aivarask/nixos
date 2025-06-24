@@ -13,13 +13,15 @@ man -k . |
 		--preview-window '50%,rounded,<50(up,65%,border-bottom)' \
 		--preview "${batman}" \
 		--bind "enter:execute(${manpage} | xargs -r man)" \
-		--header 'man>m-m  cht.sh>m-c  m-t>tldr' \
+		--header 'man>m-m  cht.sh>m-c  m-t>tldr  manix>m-n' \
 		--bind "alt-m:+change-preview(${batman})+change-prompt(man> )" \
 		--bind "alt-a:reload(man -k . -a)" \
 		--bind "alt-1:reload(man -k . -s1)" \
 		--bind "alt-2:reload(man -k . -s2)" \
 		--bind "alt-3:reload(man -k . -s3)" \
 		--bind "alt-c:+change-preview(cht.sh {1})+change-prompt(cht.sh> )" \
+		--bind "alt-c:+change-preview(cht.sh {1})+change-prompt(cht.sh> )" \
+		--bind "alt-n:reload(manix '' | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //')+change-preview(manix {1})+change-prompt(manix> )" \
 		--bind "alt-t:+change-preview(tldr {1})+change-prompt(tldr> )"
 
 # 1   Executable programs or shell commands
