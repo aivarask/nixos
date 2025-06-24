@@ -126,7 +126,7 @@
           xwd
         ]);
 
-      services.libinput.mouse.accelSpeed = "+0.5";
+      services.libinput.mouse.accelSpeed = "flat";
       services.libinput.touchpad.naturalScrolling = true;
       services.libinput.touchpad.accelSpeed = "+0.5";
       services.xserver.enable = true;

@@ -66,8 +66,6 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        {
-        }
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
@@ -153,8 +151,8 @@
                 ./mpv
                 ./ncmpcpp
                 ./picom/hm_.nix
-                ./programs/default_.nix
                 ./programs/direnv_.nix
+                ./programs/default_.nix
                 ./programs/gh_.nix
                 ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
@@ -174,6 +172,7 @@
                 (import ./users/aiva.nix).hm
                 (import ./sh/env.nix).hm
                 (import ./x11).hm
+                (import ./x11/notify.nix).hm
               ];
             };
           };

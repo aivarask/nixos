@@ -11,8 +11,8 @@
     # user = "root";
     group = "wheel";
     playlistDirectory = ./.;
-    # network.listenAddress = "any";
-    # network.port = 6600;
+    network.listenAddress = "any";
+    network.port = 6600;
     startWhenNeeded = true;
     extraConfig = ''
                   auto_update "yes"

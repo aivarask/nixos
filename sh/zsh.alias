@@ -3,3 +3,4 @@
 alias oras='curl wttr.in/Vilnius'
 alias lnav_='lnav -I /etc/nixos/lnav/ /var/log/Xorg.0.log $XDG_STATE_HOME/nvim/*.log'
 alias \\l='lazygit'
+alias \\s='systemctl-tui'
