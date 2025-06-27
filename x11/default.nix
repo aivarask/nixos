@@ -8,6 +8,7 @@
       ...
     }:
     {
+
       home.file.".xinitrc".source = lib.mkDefault (
         config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/xinitrc"
       );
@@ -49,6 +50,11 @@
           # pkgs.gruvbox-kvantum
         ]
       ];
+
+      xdg.enable = true;
+      xdg.configFile."xdg/user-dirs.dirs".source =
+        config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/user-dirs.dirs";
+      xdg.userDirs.enable = true;
 
       # home.pointerCursor.x11.enable = true;
       # home.pointerCursor.name = "${cursor-name}";
