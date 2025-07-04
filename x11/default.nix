@@ -51,10 +51,20 @@
         ]
       ];
 
+      services.syncthing.enable = true;
+      services.syncthing.settings.folders."sync".path = "${config.home.homeDirectory}/sync";
+
       xdg.enable = true;
-      xdg.configFile."xdg/user-dirs.dirs".source =
-        config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/user-dirs.dirs";
+      # xdg.configFile."user-dirs.dirs".source =
+      #   config.lib.file.mkOutOfStoreSymlink "$SELF/x11/user-dirs.dirs";
       xdg.userDirs.enable = true;
+
+      gtk.gtk3.bookmarks = [
+        "file://${config.xdg.userDirs.documents}"
+        "file://${config.xdg.userDirs.download}"
+        "file://${config.services.syncthing.settings.folders."sync".path}"
+        # "file://${config.varden.flakeDir}"
+      ];
 
       # home.pointerCursor.x11.enable = true;
       # home.pointerCursor.name = "${cursor-name}";

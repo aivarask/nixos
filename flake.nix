@@ -66,7 +66,7 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        ./audio/mpd.nix
+        (import ./audio/mpd.nix).system
         ./audio/pipewire.nix
         ./audio/production.nix
         ./config
@@ -142,6 +142,7 @@
                 ./git
                 ./awesome
                 ./audio/hm.nix
+                ./audio/nicotine.nix
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
                 ./htop
@@ -154,7 +155,6 @@
                 ./programs/direnv_.nix
                 ./programs/default_.nix
                 ./programs/gh_.nix
-                ./programs/nicotine_.nix
                 ./programs/nixindex_.nix
                 ./rofi
                 ./services/dunst_.nix

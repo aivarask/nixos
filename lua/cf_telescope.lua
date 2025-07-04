@@ -48,6 +48,5 @@ require("telescope").load_extension "frecency"
 
 local builtin = require('telescope.builtin')
 
-vim.keymap.set({ 'n' }, '<leader>K', function()
-	builtin.keymaps({ only_buf = true })
-end)
+vim.keymap.set({ 'n' }, '<leader>K', function() builtin.keymaps({ only_buf = true }) end,
+	{ desc = 'Telescope buf keymaps' })
