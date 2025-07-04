@@ -22,11 +22,11 @@ private_chatrooms = False
 command_aliases = {}
 
 [transfers]
-incompletedir = /var/music/_incomplete
-downloaddir = /var/music/_downloads
-uploaddir = /var/music/.received
-usernamesubfolders = False
-shared = [('/var/music')]
+incompletedir = $XDG_MUSIC_DIR/_incomplete
+downloaddir = $XDG_MUSIC_DIR/_downloads
+uploaddir = $XDG_MUSIC_DIR/.received
+usernamesubfolders = True
+shared = [('/var/lib/mpd/music/')]
 buddyshared = []
 uploadbandwidth = 50
 uselimit = False
@@ -127,13 +127,13 @@ buddy_list = {}
 chat_room = {'nicotine': {}}
 
 [searches]
-expand_searches = True
+expand_searches = False
 group_searches = folder_grouping
 maxresults = 150
-enable_history = True
-history = ['Excquis it Baby', 'gare du nord', 'inga kas mes tokie', 'erykah badu worldwide underground', 'Erykah Baduizm', 'Erykah Badizm', 'Erykah Badu best', 'Erykah Badu', 'chambre 13 tahiti', 'chambre 13', 'tahiti plage', 'jovani', 'gjan', 'lietuviski']
+enable_history = False
+history = []
 enablefilters = False
-filters_visible = False
+filters_visible = True
 defilter = ['', '', '', '', False, '', '']
 filtercc = []
 filterin = []
@@ -226,7 +226,7 @@ npformat =
 notification_window_title = True
 notification_tab_colors = False
 notification_popup_sound = False
-notification_popup_file = True
+notification_popup_file = False
 notification_popup_folder = True
 notification_popup_private_message = True
 notification_popup_chatroom = False

@@ -4,7 +4,7 @@
     nicotine-plus
     slskd
   ];
-  xdg.configFile."nicotine/config_def".source =
+  xdg.configFile."nicotine/config".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/audio/nicotine";
   # xdg.configFile = {
   #   "nicotine/config_def" = {

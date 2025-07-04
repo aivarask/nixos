@@ -1,44 +1,74 @@
-# https://wiki.nixos.org/wiki/MPD
-{ pkgs, config, ... }:
 {
-  environment.systemPackages = [ pkgs.mpc-cli ];
-  networking.firewall.allowedTCPPorts = [
-    6600
-    # 4712
-  ];
-  services.mpd = {
-    enable = true;
-    # user = "root";
-    group = "wheel";
-    playlistDirectory = ./.;
-    network.listenAddress = "any";
-    network.port = 6600;
-    startWhenNeeded = true;
-    extraConfig = ''
-                  auto_update "yes"
-                  music_directory "/var/music"
-                  # audio_output {
-                  # 	type "pulse"
-                  # 	name "Pulseaudio"
-                  # 	server "127.0.0.1"
-                  # }
-            			audio_output {
-      							type "pipewire"
-      							name "My PipeWire Output"
-      						}
-                  playlist_plugin {
-                  	name "m3u"
-                  	enabled "true"
-                  }
-                  # bind_to_address "0.0.0.0:6600"
-                  # bind_to_address "/var/lib/mpd/socket"
-                  bind_to_address "/run/mpd/socket"
-    '';
-  };
-  services.mpd.user = "root";
-  systemd.services.mpd.environment = {
-    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users."root".uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
-  };
+  hm = { ... }: { };
+  system =
+    # https://wiki.nixos.org/wiki/MPD
+    # https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/master/doc/mpdconf.example
+    { pkgs, config, ... }:
+    rec {
+      environment.systemPackages = [
+        pkgs.mpd
+        pkgs.mpc-cli
+      ];
+      networking.firewall.allowedTCPPorts = [ 6600 ];
+      services.mpd.enable = true;
+      services.mpd.user = "pipewire";
+      services.mpd.group = "wheel";
+      # services.mpd.network.listenAddress = "any";
+      # services.mpd.network.port = 6600;
+      services.mpd.startWhenNeeded = true;
+      # /run/mpd/mpd.conf
+      services.mpd.extraConfig = ''
+        auto_update "yes"
+        playlist_plugin {
+        name "m3u"
+        enabled "true"
+        }
+        audio_output {
+        type "pipewire"
+        name "PipeWire Output"
+        }
 
+      '';
+      systemd.services.mpd.environment = {
+        # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+        XDG_RUNTIME_DIR = "/run/user/${toString config.users.users."pipewire".uid}";
+      };
+      systemd.tmpfiles.settings."10-mpd" = {
+        "/var/lib/mpd/playlists/" = {
+          "L+" = {
+            user = services.mpd.user;
+            group = services.mpd.group;
+            mode = "0755";
+            type = "L+";
+            argument = "/etc/nixos/audio/playlists";
+          };
+        };
+        "/var/lib/mpd/music" = {
+          # https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
+          "L+" = {
+            user = services.mpd.user;
+            group = services.mpd.group;
+            mode = "0755";
+            type = "L+";
+            argument = "${config.hm.xdg.userDirs.music}";
+          };
+        };
+      };
+      # https://search.nixos.org/options?channel=unstable&show=systemd.tmpfiles.rules&from=0&size=50&sort=relevance&type=packages&query=systemd.tmpfiles
+
+      system.userActivationScripts.linktoplaylist = {
+        text = ''
+          su="${pkgs.su}/bin/su"
+                    				su aiva --shell ${pkgs.runtimeShell} --command "mkdir /home/aiva/foo"
+                              # if [[ ! -h "/var/lib/mpd/playlists/audio" ]]; then
+                              # notify-send 'create symlink'
+                              # ln -s "/var/lib/mpd/playlists/audio" "/etc/nixos/audio/" 
+                              # else
+                              # unlink "/var/lib/mpd/playlists/audio"
+                              # notify-send 'unlink'
+                              # fi
+        '';
+
+      };
+    };
 }
