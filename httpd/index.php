@@ -32,9 +32,9 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 		<div id="menu">
 
 			<a href="/"><img src="/img/logo_white.svg" /></a>
-			<a href="">About</a>
-			<a href="">Services</a>
-			<a href="">Contact</a>
+			<a href="/about">About</a>
+			<a href="/services">Services</a>
+			<a href="/contact">Contact</a>
 		</div>
 		<!-- <?php include('branch.php'); ?> -->
 	</nav>
@@ -44,8 +44,6 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 	$about_title = array_slice($about, 0, 2);
 	$about_content = array_slice($about, 2, count($about) - 2);
 	?>
-
-
 	<section>
 		<h1><?= implode('', $about_title); ?></h1>
 		<p> <?= implode('', $about_content); ?> </p>
@@ -57,7 +55,7 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 <script>
 	if (location.hostname === 'localhost') {
 
-		const verbose = false
+		const verbose = true
 
 		var socket = new WebSocket('ws://localhost:4000/');
 		socket.addEventListener("open", (event) => {
