@@ -1,13 +1,15 @@
 { osConfig, config, ... }:
 {
-  xdg.configFile."alacritty/alacritty.extra.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/term/alacritty.extra.toml";
+  xdg.configFile."alacritty/alacritty_.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/term/alacritty_.toml";
+  xdg.configFile."alacritty/alacritty_hints.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/term/alacritty_hints.toml";
   programs.alacritty = {
     enable = true;
     settings = {
       general.import = [
         ./gruvbox.toml
-        "alacritty.extra.toml"
+        "alacritty_.toml"
       ];
     };
   };
