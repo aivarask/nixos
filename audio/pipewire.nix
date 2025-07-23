@@ -14,18 +14,16 @@
     wireplumber
   ];
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-    systemWide = true;
-  };
+  services.pipewire.enable = true;
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
+  services.pipewire.jack.enable = true;
+  services.pipewire.wireplumber.enable = true;
+  services.pipewire.systemWide = true;
   # systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
   # users.users."root".linger = true; # keep user services running
-  # users.users."root".extraGroups = [ "audio" ];
+  users.users."root".extraGroups = [ "audio" ];
 
   services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
     "context.properties" = [
