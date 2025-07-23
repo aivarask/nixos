@@ -1,4 +1,4 @@
-include = ["*.toml"]
+include = ["*.toml", "alacritty_hints.toml"]
 
 [formatting]
 align_entries = true
