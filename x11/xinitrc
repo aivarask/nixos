@@ -12,6 +12,11 @@ export GTK_THEME=Adwaita:dark
 export NVIM_REMOTE=~/.cache/nvim/server.pipe
 export EDITOR="nvim --server $NVIM_REMOTE"
 
+# https://nixos.org/manual/nixos/stable/#sec-x11
+systemctl --user import-environment DISPLAY XDG_SESSION_ID           # import required env variables from the current shell
+systemctl --user start nixos-fake-graphical-session.target           # start all graphical user services
+dbus-daemon --session --address="unix:path=/run/user/$(id -u)/bus" & # start the user dbus daemon
+
 # xcompmgr &
 # picom -b &
 # xrandr_dpi
@@ -22,20 +27,11 @@ numlockx
 xset r rate 250 50
 sxhkd &
 
-if test -n "$DBUS_SESSION_BUS_ADDRESS"; then
-	eval "$(dbus-launch --exit-with-session --sh-syntax)"
-fi
-systemctl --user import-environment DISPLAY XDG_SESSION_ID
-if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-	dbus-update-activation-environment DISPLAY
-fi
-
 if [ "$(hostname)" = pc ]; then
 	xset s 3600 3600
 	# xset dpms3600 3600 3600
-	# nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
+	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
 	# XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-	# systemctl --user start imwheel.service &
 	# deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
 	# deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
