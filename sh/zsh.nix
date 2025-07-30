@@ -15,6 +15,12 @@
   programs.zsh.history.size = 10000;
   programs.zsh.history.extended = true;
   programs.zsh.plugins = [
+    {
+      name = "zsh-autocomplete";
+      src = pkgs.zsh-autocomplete;
+      file = "share/zsh-autocomplete/zsh-autocomplete.zsh";
+    }
+
     #https://github.com/agkozak/zhooks
     # {
     #   name = "vi-mode";
