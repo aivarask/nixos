@@ -49,7 +49,13 @@
     {
       programs.bash.enable = true;
       programs.bash.profileExtra = ''# HM programs.bash.profileExtra ''; # $HOME/.bash_profile
-      programs.bash.initExtra = ''# HM programs.bash.initExtra ''; # $HOME/.bashrc
+      programs.bash.initExtra = ''
+        # HM programs.bash.initExtra 
+        source $HOME/.bashrc_
+      ''; # $HOME/.bashrc
+      home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/bashrc_";
+      home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/alias";
+
       programs.zsh.enable = true;
       programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra ''; # $HOME/.zprofile
       programs.zsh.envExtra = ''# HM programs.zsh.envExtra ''; # $HOME/.zshenv

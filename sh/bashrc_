@@ -10,3 +10,4 @@
 
 # bind '"\e[24~":"pwd\n"'
 # bind '"^[[15~" "exec zsh\n"' # <F5>
+source /root/.alias
