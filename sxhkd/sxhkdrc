@@ -29,7 +29,7 @@ super + {q,w,e,r}
 super + {W,E,R,T,Y}
  {\
  ,firefox --private-window\
- ,chromium --incognito\
+ ,chrome --incognito\
  ,firefox\
  ,telegram-desktop\
  ,brave 'https://youtube.com'\
