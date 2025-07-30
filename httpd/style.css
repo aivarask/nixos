@@ -16,11 +16,17 @@ body {
 }
 
 #lang {
-	position: absolute;
+	/* position: absolute; */
+text-align: right;
+	margin:0 auto;
 	right: 10px;
 	top: 5px;
 }
 
+nav {
+max-width: 1080px;
+margin: auto;
+}
 #menu {
 	display: flex;
 	justify-content: space-evenly;

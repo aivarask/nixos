@@ -1,7 +1,13 @@
 <?php
 $COMPANY = 'gettransfer';
 $server_name = $_SERVER['SERVER_NAME'];
-$document_root = $_SERVER['DOCUMENT_ROOT']
+$document_root = $_SERVER['DOCUMENT_ROOT'];
+if ($_SERVER['QUERY_STRING'] == '') {
+	$query = '';
+} else {
+	$query = '?' . $_SERVER['QUERY_STRING'];
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -17,38 +23,38 @@ $document_root = $_SERVER['DOCUMENT_ROOT']
 		p {
 			white-space: pre-line;
 		}
+
+		pre {
+			background-color: white;
+		}
 	</style>
 </head>
 
 <body>
-	<pre>
-			<?php
-			# var_dump($_SERVER);
-			# var_dump($_SESSION);
-			?>
-		</pre>
 	<nav>
 		<?php include('lang.php'); ?>
 		<div id="menu">
-
-			<a href="/"><img src="/img/logo_white.svg" /></a>
-			<a href="/about">About</a>
-			<a href="/services">Services</a>
-			<a href="/contact">Contact</a>
+			<a href="/<?= $query ?>"><img src="/img/logo_white.svg" /></a>
+			<a href="/about<?= $query ?>">About</a>
+			<a href="/services<?= $query ?>">Services</a>
+			<a href="/contact<?= $query ?>">Contact</a>
 		</div>
-		<!-- <?php include('branch.php'); ?> -->
 	</nav>
+	<pre hidden>
+			<?php
+			var_dump($_SERVER);
+			?>
+		</pre>
 
 	<?php
-	$about = file("{$document_root}/content/about_{$lang}.txt");
-	$about_title = array_slice($about, 0, 2);
-	$about_content = array_slice($about, 2, count($about) - 2);
+	$page = $_SERVER['REDIRECT_URL'] ?? '/about';
+	$content = file("{$document_root}/content{$page}_{$lang}.txt");
+	$title = array_slice($content, 0, 2);
+	$text = array_slice($content, 2, count($content) - 2);
 	?>
 	<section>
-		<h1><?= implode('', $about_title); ?></h1>
-		<p> <?= implode('', $about_content); ?> </p>
-		<!-- <p> <?php $services = file("{$document_root}/content/services_{$lang}.txt") ?> <?= implode('', $services) ?> </p> -->
-		<!-- <p> <?php $contact = file("{$document_root}/content/contact_{$lang}.txt") ?> <?= implode('', $contact) ?> </p> -->
+		<h1><?= implode('', $title); ?></h1>
+		<p> <?= implode('', $text); ?> </p>
 	</section>
 </body>
 

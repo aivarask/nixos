@@ -7,7 +7,7 @@ PASS=TcpLQPhXB3MBPAbZvtRn
 USER=gettransf
 FTPURL="ftp://$USER:$PASS@$HOST"
 LCD=/etc/nixos/httpd
-RCD=/domains/demo.gettransfer.lt/public_html
+RCD=/domains/gettransfer.lt/public_html
 
 DELETE="--delete"
 

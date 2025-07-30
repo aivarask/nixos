@@ -10,7 +10,11 @@ DirectoryIndex index.phtml index.php index.html
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
 
-RewriteRule ^(lt|en|ru)/(.*)$  $2?language=$1 [L,QSA]
-RewriteRule ^(.*)$  $1?language=lt [L,QSA]
+
+# RewriteRule ^(lt|en|ru)/(.*)$  $2?lang=$1 [L,QSA]
+# RewriteRule ^(.*)$  $1?lang=lt [L,QSA]
 </IfModule>
