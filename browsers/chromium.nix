@@ -13,7 +13,8 @@
   # ];
   home.sessionPath = [ "/etc/nixos/browsers/bin" ];
   # programs.chromium.package = (pkgs.chromium.override { enableWideVine = true; });
-  programs.chromium.enable = lib.mkIf (osConfig.networking.hostName == "dell") true;
+  # programs.chromium.enable = lib.mkIf (osConfig.networking.hostName == "dell") true;
+  programs.chromium.enable = true;
   programs.chromium.commandLineArgs = [ ];
   programs.chromium.extensions = [
     {
