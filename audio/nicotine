@@ -22,11 +22,11 @@ private_chatrooms = False
 command_aliases = {}
 
 [transfers]
-incompletedir = ~/Music/_incomplete
-downloaddir = ~/Music/_downloads
-uploaddir = ~/Music/.received
+incompletedir = /var/lib/mpd/music/_incomplete
+downloaddir = /var/lib/mpd/music/_downloads
+uploaddir = /var/lib/mpd/music/.received
 usernamesubfolders = False
-shared = [('~/Music/_downloads')]
+shared = [('/var/lib/mpd/music')]
 buddyshared = []
 uploadbandwidth = 50
 uselimit = False
