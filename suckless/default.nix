@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   nixpkgs.overlays = [
     (
@@ -21,10 +26,15 @@
             cp ${patchesFile} patches.h
             cp ${configFile} config.h
           '';
-          prePatch = ''
-            ${old.prePatch}
-            sed -i '/XEXTLIB/s/^#//g' config.mk
-          '';
+          extraLibs = [ pkgs.xorg.libXext ];
+          # prePatch = ''
+          #   ${old.prePatch}
+          #   sed -i '/XEXTLIB/s/^#//g' config.mk
+          # '';
+          preBuild = lib.strings.concatStrings [
+            old.preBuild
+            ''''
+          ];
         });
         st = prev.st.overrideAttrs (old: rec {
           src = st-flexipatch;
@@ -65,7 +75,7 @@
     tabbed
     emojipick
     wmname
-    surf
+    # surf
     svkbd
     nsxiv
   ];
