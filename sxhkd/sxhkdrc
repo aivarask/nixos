@@ -39,12 +39,13 @@ super + {a,s}
  wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
  # pavucontrol
 
-super + {z,x,c,v}
+super + {z,x,c,v,n}
  {\
  ,brightnessctl set 10%-\
  ,brightnessctl set 10%+\
  ,alacritty --working-directory=/nix/store\
  ,alacritty --working-directory=/nix/store\
+ ,nicotine-plus\
  }
 
 super + {A,S}
