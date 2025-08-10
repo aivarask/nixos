@@ -59,15 +59,11 @@
   };
   powerManagement.powertop.enable = true;
 
-  environment.systemPackages = [ pkgs.glxinfo ];
-  specialisation.nvidia.configuration = {
-    services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.graphics.enable = true;
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    hardware.nvidia.modesetting.enable = true;
-    hardware.nvidia.prime.sync.enable = false;
-    hardware.nvidia.prime.nvidiaBusId = "PCI:1:0:0"; # lspci
-    hardware.nvidia.prime.intelBusId = "PCI:0:2:0"; # lspci
-  };
+  environment.systemPackages = [
+    pkgs.glxinfo
+    pkgs.gpu-viewer
+    pkgs.vulkan-tools
+  ];
+  # services.xserver.videoDrivers = [ "modesetting" ];
 
 }
