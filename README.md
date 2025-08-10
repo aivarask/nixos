@@ -14,3 +14,12 @@ r--	4	100	only permission to read
 r-x	5	101	permission to read and execute
 rw-	6	110	permission to read and write
 rwx	7	111	permission to do all three, i.e. read, write and execute
+
+# nix pkgs override
+
+(bitwig-studio.override {
+  bitwig-studio-unwrapped = bitwig-studio5-unwrapped.override {
+    vulkan-loader = pkgs-24-11.vulkan-loader;
+  };
+})
+

@@ -138,7 +138,7 @@
               services.mpris-proxy.enable = true;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
-                inputs.nix-index-database.hmModules.nix-index
+                inputs.nix-index-database.homeModules.nix-index
                 ./git
                 ./awesome
                 ./audio/hm.nix
