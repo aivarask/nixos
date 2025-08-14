@@ -1,4 +1,1 @@
-#!/usr/bin/env zsh
-
-alias \\l='lazygit'
-alias \\s='systemctl-tui'
+alias woo="echo wooza"

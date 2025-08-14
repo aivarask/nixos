@@ -31,8 +31,6 @@ typeset -TU NIX_PROFILES np ' '
 typeset -TU GTK_PATH gtk_path ':'
 typeset -TU XCURSOR_PATH xcursor_path ':'
 
-# source $HOME/.alias
-# source $SELF/sh/zsh.alias
 source $SELF/sh/zsh.completion
 source $SELF/sh/zsh.hooks
 source $SELF/sh/zshrc.dev
@@ -47,3 +45,5 @@ nix-clean() {
 	done
 	nix-collect-garbage -d
 }
+
+source /etc/nixos/sh/zsh.alias
