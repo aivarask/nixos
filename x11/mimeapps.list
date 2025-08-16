@@ -9,7 +9,6 @@ application/octet-stream=alacritty.desktop
 application/x-shellscript=alacritty.desktop
 application/x-desktop=alacritty-nvim.desktop
 application/json=alacritty-nvim.desktop
-; inode/directory=lf.desktop
 
 text/*=alacritty-nvim.desktop
 text/x-chdr=alacritty-nvim.desktop

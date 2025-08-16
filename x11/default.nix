@@ -33,6 +33,9 @@
 
       home.packages = lib.mkMerge [
         [
+          #   xdg-utils
+          pkgs.nautilus
+          # pkgs.kdePackages.dolphin
           pkgs.lxappearance
           pkgs.vanilla-dmz
           pkgs.xcursor-pro
@@ -58,6 +61,10 @@
       # xdg.configFile."user-dirs.dirs".source =
       #   config.lib.file.mkOutOfStoreSymlink "$SELF/x11/user-dirs.dirs";
       xdg.userDirs.enable = true;
+      xdg.portal.enable = true;
+      xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      xdg.portal.config.common.default = "gtk";
+      xdg.mime.enable = true;
 
       gtk.gtk3.bookmarks = [
         "file://${config.xdg.userDirs.documents}"
@@ -65,33 +72,6 @@
         "file://${config.services.syncthing.settings.folders."sync".path}"
         # "file://${config.varden.flakeDir}"
       ];
-
-      # home.pointerCursor.x11.enable = true;
-      # home.pointerCursor.name = "${cursor-name}";
-      # home.pointerCursor.size = 64;
-      # home.pointerCursor.package = package;
-
-      # qt.enable = false;
-      # qt.platformTheme.name = "qtct";
-      # qt.style.name = "kvantum";
-
-      # xdg.configFile."Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
-      # xdg.configFile."Kvantum/Gruvbox-Dark-Brown".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/Gruvbox-Dark-Brown";
-      # xdg.configFile."Kvantum/kvantum.kvconfig".text = "[General]\ntheme=Gruvbox-Dark-Brown";
-
-      # environment.systemPackages = with pkgs; [
-      #   xdg-utils
-      #   # kdePackages.dolphin # gtk2
-      # ];
-      # xdg.portal.enable = true;
-      # xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-      # xdg.portal.config.common.default = "kde";
-      # xdg.mime.enable = true;
-      # https://discourse.nixos.org/t/creating-symlinks-in-nixos/50280/3
-      # xdg.terminal-exec.enable = true;
-      # xdg.terminal-exec.settings.default = [ "kitty.desktop" ];
-      # environment.variables.XDG_TERMINAL = "${pkgs.kitty}/bin/kitty";
-      # environment.variables.XDG_SYSTEM_MONITOR = "${pkgs.resources}/bin/resources";
     };
   default =
     {

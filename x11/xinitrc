@@ -4,6 +4,7 @@ export XCURSOR_THEME=XCursor-Pro-Light
 export XCURSOR_SIZE=64
 xrdb ~/.Xresources
 
+# export GTK_USE_PORTAL=1
 # export GDK_SCALE="2"
 # export GTK2_RC_FILES=/etc/nixos/x11/gtk2/gtkrc
 # export QT_QPA_PLATFORMTHEME=gtk2
