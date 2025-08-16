@@ -9,3 +9,9 @@ preexec() {
 	print -Pn "\e]83;title \"$1\"\a"
 	print -Pn "\e]0;$PWD $1 $HOST\a"
 }
+
+ls_after_cd() {
+	eza -l --group-directories-first
+}
+
+add-zsh-hook chpwd ls_after_cd
