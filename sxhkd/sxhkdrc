@@ -36,7 +36,7 @@ super + {W,E,R,T,Y,L}
  }
 
 super + {a,s}
- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%{-,+}
+ wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
  # pavucontrol
 
 super + {z,x,c,v,n}
