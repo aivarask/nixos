@@ -1,3 +1,10 @@
+local buf_lsp_clients = function()
+	local lsps = ''
+	for index, value in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+		lsps = value.config.name .. '/' .. lsps
+	end
+	return lsps
+end
 require('lualine').setup({
 	extensions = { 'quickfix', 'nvim-tree', 'fzf', 'toggleterm', 'man', 'trouble' },
 	options = {
@@ -35,13 +42,7 @@ require('lualine').setup({
 			'vim.g.app'
 		},
 		lualine_x = {
-			function()
-				local lsps = ''
-				for index, value in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-					lsps = value.config.name .. '/' .. lsps
-				end
-				return lsps
-			end
+			buf_lsp_clients
 		},
 		lualine_y = {},
 		lualine_z = {}

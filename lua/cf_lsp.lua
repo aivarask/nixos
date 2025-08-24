@@ -33,11 +33,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 						silent = true,
 						focus = false,
 						relative = 'editor',
-						-- anchor_bias = 'above'
+						-- anchor_bias = 'below', -- relative to cursor
 						max_width = math.ceil(vim.o.columns / 2),
 						max_height = vim.o.lines,
 						offset_x = vim.o.columns,
-						-- offset_y = vim.api.nvim_win_get_height(0) - 30,
+						offset_y = vim.fn.line('w$') - 5,
 					})
 				end
 			})
