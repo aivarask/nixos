@@ -11,7 +11,7 @@ preexec() {
 }
 
 ls_after_cd() {
-	eza -l --color=tty --group-directories-first
+	eza -l --group-directories-first
 }
 
 add-zsh-hook chpwd ls_after_cd
