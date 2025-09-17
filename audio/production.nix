@@ -22,6 +22,8 @@
     "/doc/share"
   ];
   environment.systemPackages = with pkgs; [
+    bc
+    calc
     # MIDI monitoring
     lilypond
     midivisualizer

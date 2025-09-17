@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+a_flag=''
+b_flag=''
+files=''
+verbose=true
+
+print_usage() {
+	printf "Usage: ..."
+}
+
+while getopts 'abf:v' flag; do
+	case "${flag}" in
+	a) a_flag='true' ;;
+	b) b_flag='true' ;;
+	f) files="${OPTARG}" ;;
+	v) verbose=true ;;
+	*)
+		print_usage
+		exit 1
+		;;
+	esac
+done
+
+aseqdump -p "PhotonX25" |
+	while IFS=" ," read -r src e1 e2 ch l1 d1 l2 d2 rest; do
+		if [ "$verbose" = true ]; then
+			printf '%s\n' "$e1 $e2 $d1 $d2"
+		fi
+		case "$e1 $e2 $d1" in
+		"Control change 70")
+			vol_max=127
+			vol="$(echo "scale=0; ($d2 * 100) / $vol_max" | bc)"
+			[[ $verbose = true ]] && printf '%s\n' "$vol"
+			wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ "$vol"%
+			;;
+		"Control change 80") xdotool key super+p ;;
+		"Control change 81") wmctrl -r yoshimi -b toggle,fullscreen ;;
+		"Control change 82") wmctrl -r yoshimi -b toggle,fullscreen ;;
+		# "Control change 82") xdotool type hello ;;
+		# "Note on 48") xdotool key ctrl+j ;;
+		esac
+	done
