@@ -29,6 +29,12 @@
   # about:debugging#/runtime/this-firefox
   ExtensionSettings = {
     # https://mozilla.github.io/policy-templates/#extensionsettings
+    "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
+      installation_mode = "force_installed";
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/greasemonkey/latest.xpi";
+      default_area = "navbar";
+      private_browsing = true;
+    };
     "queryamoid@kaply.com" = {
       # https://github.com/mkaply/queryamoid
       installation_mode = "force_installed";

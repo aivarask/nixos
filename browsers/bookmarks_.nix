@@ -8,7 +8,15 @@
     }
     {
       name = "";
-      url = "https://soundcloud.com/";
+      url = "https://pigu.lt/lt/";
+    }
+    {
+      name = "";
+      url = "https://www.temu.com";
+    }
+    {
+      name = "";
+      url = "https://soundcloud.com/you/likes";
     }
     {
       name = "";
