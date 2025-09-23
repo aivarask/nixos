@@ -7,7 +7,7 @@
         ytdl-sub
       ];
     };
-  hm =
+  home-manager =
     { pkgs, config, ... }:
     {
       xdg.configFile."yt-dlp".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/yt-dlp";
