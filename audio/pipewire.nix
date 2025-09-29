@@ -10,7 +10,6 @@
     pwvucontrol
     coppwr
     qpwgraph
-    sonusmix
     wireplumber
   ];
   security.rtkit.enable = true;

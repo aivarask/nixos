@@ -14,6 +14,7 @@
     ./boot.nix
     ./network.nix
     ./storage.nix
+    ../lsp
 
     # inputs.disko.nixosModules.disko
     # ./disko-config.nix

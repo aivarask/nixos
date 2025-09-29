@@ -24,9 +24,6 @@
         python-dotenv
         httpie
 
-        # -S ext:mp3
-        # --alias
-        yt-dlp
       ]
     ))
   ];

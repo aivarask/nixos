@@ -1,1 +1,2 @@
 alias woo="echo wooza"
+alias oras="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in

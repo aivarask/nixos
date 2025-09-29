@@ -26,6 +26,10 @@ export LUA_PATH
 typeset -TU CPATH cpath ':'
 cpath+=('/run/current-system/sw/include/' '/root/include/')
 
+typeset -TU VST3_PATH vst3path ':'
+vst3path+=('/etc/nixos/audio/vst3')
+export vst3path
+
 # etc..
 typeset -TU NIX_PROFILES np ' '
 typeset -TU GTK_PATH gtk_path ':'

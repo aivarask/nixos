@@ -18,7 +18,7 @@
       libxkbcommon
       # udevil
 
-      telegram-desktop # QT_SCALE_FACTOR = "1.75";
+      # telegram-desktop # QT_SCALE_FACTOR = "1.75";
       file
       # blender
       figma-linux
@@ -30,7 +30,7 @@
       ticker
       tickrs
       cointop
-      poedit
+      # poedit
       gettext
       intelephense
       obs-cli

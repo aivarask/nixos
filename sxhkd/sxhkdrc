@@ -1,23 +1,32 @@
 super + ctrl + Return
  tabbed -c alacritty --embed
 
+# Program launcher
+# Super_L; @Super_L
+#   rofi -show drun
+
+# Reload sxhkd, dwm-status
+super+ Escape
+	pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded $(date +"%T")";\
+	systemctl --user restart dwm-status.service && notify-send "dwm-status reloaded"
+
 super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
  {\
  ,alacritty -T man-fzf -e man-fzf\
  ,hmon\
  ,alacritty -e ncmpcpp\
  ,alacritty -e pulsemixer\
- ,kill -SIGUSR1 $(pidof sxhkd) && systemctl --user restart dwm-status.service && dunstify $(date +"%T")\
+ ,lmms --allowroot\
  ,pwvucontrol\
  ,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
  ,(cd /var/p && mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog ./*) \
- ,wezterm\
- ,alacritty -e bash\
- ,alacritty -e zsh\
- ,alacritty -e lnav_\
+ ,wezterm\ # wezterm launch
+ ,_\
+ ,_\
+ ,_\
  }
 
-super + {q,w,e,r}
+super+ {q,w,e,r}
  {\
  ,tdrop alacritty\
  ,firefox\
@@ -30,9 +39,9 @@ super + {W,E,R,T,Y,L}
  {\
  ,firefox --private-window\
  ,chrome --incognito\
- ,firefox\
- ,telegram-desktop\
- ,brave 'https://youtube.com'\
+ ,_\
+ ,_\
+ ,_\
  }
 
 super + {a,s}
@@ -48,10 +57,9 @@ super+ {_,ctrl}+ v : {1,2}
 
 super + {z,x,c,_,n}
  {\
- ,brightnessctl set 10%-\
- ,brightnessctl set 10%+\
+ ,brightnessctl set 10%{-,+}\
  ,alacritty --working-directory=/nix/store\
- ,alacritty --working-directory=/nix/store\
+ ,_\
  ,nicotine-plus\
  }
 
@@ -73,7 +81,7 @@ super + r; {1,2,n,p,F1}
 super + o; {1,2,3,4,5,6,7,8,9,0}
  {\
  ,alacritty -e sh
- ,notify-send "echo $SHELL"\
+ ,notify-send "$SHELL"\
  ,notify-send "echo two"\
  ,inkscape '/etc/nixos/a/img/logo.svg'
  }
@@ -93,6 +101,9 @@ XF86MonBrightness{Down,Up}
 # ,firefox \
 # ,scrot \
 # }
+
+# inspect keys
+# xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 
 # Each line of the configuration file is interpreted as so:
 #

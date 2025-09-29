@@ -112,6 +112,7 @@
         ./wallpaper
         (import ./sh/env.nix).system
         (import ./x11).default
+        (import ./yt-dlp).system
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = rec {
@@ -173,6 +174,7 @@
                 (import ./sh/env.nix).hm
                 (import ./x11).hm
                 (import ./x11/notify.nix).hm
+                (import ./yt-dlp).home-manager
               ];
             };
           };

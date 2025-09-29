@@ -13,7 +13,7 @@ in
     };
   };
   systemd.services.music = {
-    enable = false;
+    enable = true;
     documentation = [ "https://github.com/vercel/serve" ];
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
@@ -22,8 +22,8 @@ in
       Restart = "always";
       User = "root";
       Group = "wheel";
-      WorkingDirectory = "/var/music";
-      ExecStart = "${pkgs.nodePackages.serve}/bin/serve -p 3001";
+      WorkingDirectory = "/var/lib/mpd/music";
+      ExecStart = "${pkgs.nodePackages.serve}/bin/serve -l tcp://192.168.1.195:3001";
     };
   };
 }

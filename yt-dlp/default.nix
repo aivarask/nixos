@@ -2,7 +2,7 @@
   system =
     { pkgs, ... }:
     {
-      environment.sytemPackages = with pkgs; [
+      environment.systemPackages = with pkgs; [
         yt-dlp
         ytdl-sub
       ];

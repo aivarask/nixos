@@ -21,7 +21,10 @@
           name = "";
           url = "https://github.com/virchau13/dots";
         }
-
+        {
+          name = "";
+          url = "https://github.com/yt-dlp/yt-dlp";
+        }
       ];
     }
 
