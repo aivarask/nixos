@@ -4,6 +4,10 @@
   bookmarks = [
     {
       name = "";
+      url = "https://open.spotify.com";
+    }
+    {
+      name = "";
       url = "https://deepwiki.com";
     }
     {
