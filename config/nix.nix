@@ -20,7 +20,6 @@ in
     nixos-generators
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
-  environment.shellAliases.nf = "nixos-rebuild switch --fast";
   environment.shellAliases.nfu = "nix flake update";
   # export NIXPKGS_ALLOW_INSECURE=1
 
@@ -33,8 +32,8 @@ in
   nix.optimise.automatic = true;
   # nix.package = pkgs.nixVersions.latest; # stable
   nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 1d";
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 1w";
   nix.channel.enable = false;
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;

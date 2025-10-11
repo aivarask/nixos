@@ -4,7 +4,7 @@
     tremc
   ];
   services.transmission = {
-    enable = true;
+    enable = false; # fails
     openPeerPorts = true;
     settings = {
       watch-dir = "/var/lib/transmission/watchdir";

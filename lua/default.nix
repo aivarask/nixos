@@ -23,12 +23,12 @@ let
   );
 in
 {
-  environment.etc."awesome".source = pkgs.awesome;
+  # environment.etc."awesome".source = pkgs.awesome; # fails
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [
     # neovim-remote
-    awesome
+    # awesome # fails
     stylua
     lua-language-server
     myLua

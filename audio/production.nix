@@ -26,7 +26,7 @@
     calc
     # MIDI monitoring
     lilypond
-    midivisualizer
+    # midivisualizer # fails
     vkeybd
 
     # nix-locate vst3
@@ -42,7 +42,7 @@
     yoshimi
     guitarix
     # muse # fails
-    infamousPlugins
+    # infamousPlugins # build fails
     mamba
 
     # MIDI
@@ -54,7 +54,7 @@
     reaper
     # zrythm
     # ardour
-    lmms # gtk2
+    # lmms # gtk2 # fails
     qtractor
 
     # Sampler
@@ -65,8 +65,8 @@
     # tunefish
     helm
     vital
-    surge
-    surge-XT
+    # surge
+    # surge-XT # fails
     decent-sampler
     odin2
 

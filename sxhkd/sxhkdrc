@@ -1,120 +1,90 @@
-super + ctrl + Return
- tabbed -c alacritty --embed
+XF86AudioMute
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+XF86Audio{Lower,Raise}Volume
+	wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
+XF86Audio{Play,Prev,Next}
+	mpc {toggle,prev,next}
+XF86MonBrightness{Down,Up}
+	brightnessctl set 10%{-,+}
+
+super+ ctrl+ Return
+	tabbed -c alacritty --embed
+
+super+ Escape
+	pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded $(date +"%T")"; \ 
+	systemctl --user restart dwm-status.service && notify-send "dwm-status reloaded"
+
+super+ {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+	{\
+	,alacritty -T man-fzf -e man-fzf \
+	,_ \
+	,alacritty -e ncmpcpp \
+	,alacritty -e pulsemixer \
+	,pavucontrol \ 
+	,pwvucontrol \ 
+	,lmms --allowroot \
+	,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)" \
+	,(cd /var/p && mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog ./*) \
+	 }
+
+super+ \
+{\
+,q,w,e,r\
+,W,E\
+,a,s\
+,z,x,n\
+}
+	{\
+	,tdrop alacritty #qwer \
+	,firefox \
+	,chrome \
+	,alacritty --working-directory=/etc/nixos -e nvim --listen $NVIM_REMOTE \
+	\
+	,firefox --private-window #WE \
+	,chrome --incognito \ 
+	\
+	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- #as \
+	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ \
+	,brightnessctl set 10%- #zxn \ 
+	,brightnessctl set 10%+ \ 
+	,nicotine-plus \
+	}
+
+super+ r; {1,2,n,p,F1}
+	{\
+	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
+	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
+	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
+	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
+	}
+
+# TEST
+super+ {_,ctrl}+ v : {1,2}
+	notify-send {_,ctrl} {1,2} 
+
+# xid="$(tabbed -c -d -s -r 2 st -w x)"; cd /etc/nixos; st -w "$xid" nvim & st -w "$xid" vim \
+# ssh 192.168.1.195 -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}'
+#
+# super+ { _,ctrl}+ v : {1,2}
+#  {_,_} wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
+# {_,ssh 192.168.1.180 -t } wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
+
+
+# DISPLAY=:0 xdotool getactivewindow key "Super+F1"
+# https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
+# ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
 
 # Program launcher
 # Super_L; @Super_L
 #   rofi -show drun
 
-# Reload sxhkd, dwm-status
-super+ Escape
-	pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded $(date +"%T")";\
-	systemctl --user restart dwm-status.service && notify-send "dwm-status reloaded"
-
-super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
- {\
- ,alacritty -T man-fzf -e man-fzf\
- ,hmon\
- ,alacritty -e ncmpcpp\
- ,alacritty -e pulsemixer\
- ,lmms --allowroot\
- ,pwvucontrol\
- ,notify-send "$(vimcat /root/.config/sxhkd/sxhkdrc)"\
- ,(cd /var/p && mpv --input-ipc-server=/tmp/mpvsocket --log-file=/tmp/mpvlog ./*) \
- ,wezterm\ # wezterm launch
- ,_\
- ,_\
- ,_\
- }
-
-super+ {q,w,e,r}
- {\
- ,tdrop alacritty\
- ,firefox\
- ,chrome\
- ,alacritty --working-directory=/etc/nixos -e nvim --listen $NVIM_REMOTE \
- }
-# ,xid="$(tabbed -c -d -s -r 2 st -w x)"; cd /etc/nixos; st -w "$xid" nvim & st -w "$xid" vim \
-
-super + {W,E,R,T,Y,L}
- {\
- ,firefox --private-window\
- ,chrome --incognito\
- ,_\
- ,_\
- ,_\
- }
-
-super + {a,s}
- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
- # pavucontrol
-
-# super+ { _,ctrl}+ v : {1,2}
-#  {_,_} wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
-# {_,ssh 192.168.1.180 -t } wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
-
-super+ {_,ctrl}+ v : {1,2}
-	notify-send {_,ctrl} {1,2} 
-
-super + {z,x,c,_,n}
- {\
- ,brightnessctl set 10%{-,+}\
- ,alacritty --working-directory=/nix/store\
- ,_\
- ,nicotine-plus\
- }
-
-super + {A,S}
- ssh 192.168.1.195 -t 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}'
- # wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2%{-,+}
-
-# DISPLAY=:0 xdotool getactivewindow key "Super+F1"
-# https://www.reddit.com/r/archlinux/comments/slf7f4/xdotool_key_wont_work_with_sxhkd/
-# ,ssh pcw -t 'DISPLAY=:0 xdotool getactivewindow key Super+F1'
-super + r; {1,2,n,p,F1}
- {\
- ,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
- ,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
- ,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
- ,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
- }
-
-super + o; {1,2,3,4,5,6,7,8,9,0}
- {\
- ,alacritty -e sh
- ,notify-send "$SHELL"\
- ,notify-send "echo two"\
- ,inkscape '/etc/nixos/a/img/logo.svg'
- }
-
-XF86AudioMute
- wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-XF86Audio{Lower,Raise}Volume
- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%{-,+}
-XF86Audio{Play,Prev,Next}
- mpc {toggle,prev,next}
-XF86MonBrightness{Down,Up}
- brightnessctl set 10%{-,+}
-
-# Break Pause Print Scroll_Lock XF86Calculator XF86HomePage XF86Mail XF86Search
-# {XF86HomePage,XF86Mail,XF86Calculator,Print}
-# {firefox 'https://youtube.com/' \
-# ,firefox \
-# ,scrot \
-# }
-
-# inspect keys
-# xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 
 # Each line of the configuration file is interpreted as so:
-#
 #   •   If it is empty or starts with #, it is ignored.
-#
 #   •   If it starts with a space, it is read as a command.
-#
 #   •   Otherwise, it is read as a hotkey.
 #
 #   General syntax:
-#
 #       HOTKEY
 #           [;]COMMAND
 #
@@ -126,6 +96,7 @@ XF86MonBrightness{Down,Up}
 #   mod1, mod2, mod3, mod4, mod5 and any.
 #
 #   The keysym names are given by the output of xev -event keyboard.
+# 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 #
 #   Hotkeys and commands can be spread across multiple lines by ending each partial line with a
 #   backslash character.
