@@ -106,6 +106,17 @@
         ./systemd/video.nix
         ./steam
 
+        (
+          # spotify
+          { pkgs, ... }:
+          {
+            environment.systemPackages = with pkgs; [
+              ncspot
+              spotify
+              spotify-qt
+            ];
+          }
+        )
         (import ./users/aiva.nix).system
         ./touchegg
         ./virt/virtualbox.nix

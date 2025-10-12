@@ -4,11 +4,17 @@ export XCURSOR_THEME=XCursor-Pro-Light
 export XCURSOR_SIZE=64
 xrdb ~/.Xresources
 
+# https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
+# export QT_QPA_PLATFORMTHEME=gtk2
+# export QT_STYLE_OVERRIDE=kvantum
+export QT_AUTO_SCREEN_SET_FACTOR=0
+export QT_SCALE_FACTOR=2
+export QT_FONT_DPI=96
+
 # export GTK_USE_PORTAL=1
 # export GDK_SCALE="2"
 # export GTK2_RC_FILES=/etc/nixos/x11/gtk2/gtkrc
-# export QT_QPA_PLATFORMTHEME=gtk2
-# export QT_STYLE_OVERRIDE=kvantum
+
 export GDK_DPI_SCALE="0.75"
 export GTK_THEME=Adwaita:dark
 export NVIM_REMOTE=~/.cache/nvim/server.pipe

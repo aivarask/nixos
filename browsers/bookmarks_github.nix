@@ -7,6 +7,10 @@
       bookmarks = [
         {
           name = "";
+          url = "https://google.github.io/styleguide";
+        }
+        {
+          name = "";
           url = "https://github.com/junegunn/fzf";
         }
         {
