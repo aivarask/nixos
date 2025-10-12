@@ -13,7 +13,7 @@ in
     };
   };
   systemd.services.music = {
-    enable = true;
+    enable = false;
     documentation = [ "https://github.com/vercel/serve" ];
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
