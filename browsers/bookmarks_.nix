@@ -2,6 +2,8 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
+    { url = "https://claude.com/"; }
+    { url = "https://chatgpt.com/"; }
     {
       name = "";
       url = "https://open.spotify.com";
