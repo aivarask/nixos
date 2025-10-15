@@ -32,6 +32,7 @@ super+ \
 ,q,w,e,r\
 ,W,E\
 ,a,s\
+,A,S\
 ,z,x,n\
 }
 	{\
@@ -45,20 +46,32 @@ super+ \
 	\
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- #as \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ \
+	,_ #AS \
+	,alacritty -e ncspot \
 	,brightnessctl set 10%- #zxn \ 
 	,brightnessctl set 10%+ \ 
 	,nicotine-plus \
 	}
 
-super+ r; {1,2,n,p,F1}
-	{\
-	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
-	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
-	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
-	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1'\
-	}
+super+ grave
+	notify-send 'woo'
 
-# TEST
+super+ question
+	notify-send 'quesion'
+
+super+ F1
+	notify-send 'F1'
+
+# super+ F1; {1,2,n,p,F1}
+# 	{\
+# 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; exec $SHELL'\
+# 	,alacritty -e ssh -t pcw 'cd /etc/nixos ; $SHELL -c lazygit'\
+# 	,tdrop alacritty -e ssh pcw -t 'ncmpcpp'\
+# 	,ssh pcw -t 'DISPLAY=:0 xdotool key Super+F1' \
+# 	,notify-send 'hotkey matched' \
+# 	}
+
+# # TEST
 super+ {_,ctrl}+ v : {1,2}
 	notify-send {_,ctrl} {1,2} 
 
