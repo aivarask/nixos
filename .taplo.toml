@@ -1,4 +1,4 @@
-include = ["*.toml", "alacritty_hints.toml"]
+include = ["*.toml", "alacritty_hints.toml", "spotifyd.conf"]
 
 [formatting]
 align_entries = true

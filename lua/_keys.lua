@@ -7,3 +7,4 @@ vim.keymap.set({ 'n' }, '<leader>1', function()
 end, { desc = 'live_grep <cword>' })
 
 vim.keymap.set({ 'n', 'v', 'i' }, "<F5>", "<cmd>term find_ yoshimi<cr>")
+vim.keymap.set({ 'n', 'v', 'i' }, "<C-Tab>", "<cmd>bnext<cr>")

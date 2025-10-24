@@ -142,6 +142,29 @@
               spotify
               spotify-qt
             ];
+            services.spotifyd.enable = true;
+
+            systemd.tmpfiles.settings."10-spotifyd" = {
+              "/etc/spotifyd.conf" = {
+                "L+" = {
+                  user = "root";
+                  group = "root";
+                  mode = "0777";
+                  type = "L+";
+                  argument = "/etc/nixos/spotifyd.conf";
+                };
+              };
+              # "/var/lib/mpd/music" = lib.mkIf false {
+              #   # https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
+              #   "L+" = {
+              #     user = services.mpd.user;
+              #     group = services.mpd.group;
+              #     mode = "0777";
+              #     type = "L+";
+              #     argument = "${config.hm.xdg.userDirs.music}";
+              #   };
+              # };
+            };
           }
         )
         (import ./users/aiva.nix).system

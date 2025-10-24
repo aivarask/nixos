@@ -1,33 +1,37 @@
 {
   name = "github";
-  toolbar = true;
+  toolbar = false;
   bookmarks = [
     {
-      name = "g";
+      name = "github";
       bookmarks = [
         {
+          url = "https://github.com/MusicPlayerDaemon/MPD";
           name = "";
+        }
+        {
           url = "https://google.github.io/styleguide";
+          name = "";
         }
         {
-          name = "";
           url = "https://github.com/junegunn/fzf";
+          name = "";
         }
         {
-          name = "";
           url = "https://github.com/gokcehan/lf";
+          name = "";
         }
         {
-          name = "";
           url = "https://github.com/doronbehar/pistol";
+          name = "";
         }
         {
-          name = "";
           url = "https://github.com/virchau13/dots";
+          name = "";
         }
         {
-          name = "";
           url = "https://github.com/yt-dlp/yt-dlp";
+          name = "";
         }
       ];
     }

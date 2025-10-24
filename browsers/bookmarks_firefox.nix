@@ -1,6 +1,6 @@
 {
   name = "about";
-  toolbar = true;
+  toolbar = false;
   bookmarks = [
     {
       name = "ff";

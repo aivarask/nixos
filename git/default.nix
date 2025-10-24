@@ -17,7 +17,7 @@
   # programs.git.package = pkgs.gitFull;
   programs.git.lfs.enable = true;
   programs.git.maintenance.enable = true;
-  programs.git.extraConfig = {
+  programs.git.settings = {
     include.path = [
       "/etc/nixos/git/config_global"
       "/etc/nixos/git/config_user"

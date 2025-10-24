@@ -2,8 +2,18 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
-    { url = "https://claude.com/"; }
-    { url = "https://chatgpt.com/"; }
+    {
+      url = "";
+      name = "https://grok.com";
+    }
+    {
+      url = "https://claude.com/";
+      name = "";
+    }
+    {
+      url = "https://chatgpt.com/";
+      name = "";
+    }
     {
       name = "";
       url = "https://open.spotify.com";
