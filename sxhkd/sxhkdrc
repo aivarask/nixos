@@ -34,6 +34,7 @@ super+ \
 ,a,s\
 ,A,S\
 ,z,x,n\
+,Z,X,N,M\
 }
 	{\
 	,tdrop alacritty #qwer \
@@ -51,6 +52,10 @@ super+ \
 	,brightnessctl set 10%- #zxn \ 
 	,brightnessctl set 10%+ \ 
 	,nicotine-plus \
+	,_ #ZXNM \
+	,_ \
+	,_ \
+	,alacritty -e manix-fzf \
 	}
 
 super+ grave
@@ -61,6 +66,10 @@ super+ question
 
 super+ F1
 	notify-send 'F1'
+
+super + backslash + g
+	alacritty -e manix-fzf
+	
 
 # super+ F1; {1,2,n,p,F1}
 # 	{\
