@@ -2,9 +2,18 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
+    #
     {
-      url = "";
-      name = "https://grok.com";
+      url = "https://tytel.org/helm/";
+      name = "";
+    }
+    {
+      url = "https://github.com/mtytel/helm";
+      name = "";
+    }
+    {
+      url = "https://grok.com";
+      name = "";
     }
     {
       url = "https://claude.com/";

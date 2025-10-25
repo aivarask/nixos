@@ -140,12 +140,23 @@
             environment.systemPackages = with pkgs; [
               ncspot
               spotify
+              spotifyd
               spotify-qt
+
             ];
             services.spotifyd.enable = true;
+            services.spotifyd.settings = {
+              global = {
+                device_type = "computer";
+                use_mpris = false;
+                # bitrate = 320;
+                dbus_type = "system";
+              };
+            };
+            # services.playerctld.enable = true;
 
             systemd.tmpfiles.settings."10-spotifyd" = {
-              "/etc/spotifyd.conf" = {
+              "/root/.config/spotifyd/spotifyd.conf" = {
                 "L+" = {
                   user = "root";
                   group = "root";

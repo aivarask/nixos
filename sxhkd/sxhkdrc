@@ -48,7 +48,7 @@ super+ \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- #as \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ \
 	,_ #AS \
-	,alacritty -e ncspot \
+	,spotify \
 	,brightnessctl set 10%- #zxn \ 
 	,brightnessctl set 10%+ \ 
 	,nicotine-plus \
@@ -67,8 +67,13 @@ super+ question
 super+ F1
 	notify-send 'F1'
 
-super + backslash + g
-	alacritty -e manix-fzf
+super + backslash; {s,g,h,t}
+	{\
+	,alacritty -e ncspot \
+	,alacritty -e manix-fzf \
+	,helm \
+	,alacritty -e nix-tree \
+	}
 	
 
 # super+ F1; {1,2,n,p,F1}

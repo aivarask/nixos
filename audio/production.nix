@@ -22,6 +22,11 @@
     "/doc/share"
   ];
   environment.systemPackages = with pkgs; [
+    # synth
+    zyn-fusion
+    zynaddsubfx-ntk
+    vaporizer2
+
     bc
     calc
     # MIDI monitoring

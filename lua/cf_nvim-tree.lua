@@ -14,6 +14,11 @@ require('nvim-tree').setup({
 			git_placement = 'after',
 		},
 	},
+	sort = {
+		sorter = "name",
+		folders_first = false,
+		files_first = false,
+	},
 	sync_root_with_cwd = true,
 	root_dirs = { '/etc/nixos', '/root/tabbed-flexipatch' },
 	update_focused_file = {
