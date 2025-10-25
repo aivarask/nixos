@@ -69,7 +69,7 @@ super+ F1
 
 super + backslash; {s,g,h,t}
 	{\
-	,alacritty -e ncspot \
+	,alacritty -e systemctl-tui \
 	,alacritty -e manix-fzf \
 	,helm \
 	,alacritty -e nix-tree \

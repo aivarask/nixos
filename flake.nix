@@ -144,9 +144,13 @@
               spotify-qt
 
             ];
+
+            # https://docs.spotifyd.rs
+            # https://github.com/Spotifyd/spotifyd/issues
             services.spotifyd.enable = true;
             services.spotifyd.settings = {
               global = {
+                backend = "pipe";
                 device_type = "computer";
                 use_mpris = false;
                 # bitrate = 320;
