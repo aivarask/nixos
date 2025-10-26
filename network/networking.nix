@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    ffuf
     ookla-speedtest
     curlFull
     httpie

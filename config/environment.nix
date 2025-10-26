@@ -19,6 +19,7 @@
       # udevil
 
       # telegram-desktop # QT_SCALE_FACTOR = "1.75";
+      glib
       file
       # blender
       figma-linux
@@ -36,19 +37,8 @@
       obs-cli
       android-tools
 
-      # https://nixos.wiki/wiki/MTP
-      gdu
-      duf
-      jmtpfs
-      mtpfs
-      go-mtpfs
-
-      glib # gio trash
-      ffuf
       hyperfine
       parallel
-      inotify-tools
-      fswatch
 
       # terminal
       tdrop

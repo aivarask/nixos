@@ -20,8 +20,6 @@
       home.file.".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/Xresources";
       # xresources.extraConfig = ''#include ".Xresources_"'';
       # xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/x11/gtk3";
-      # xdg.dataFile."applications/alacritty.desktop".source =
-      #   config.lib.file.mkOutOfStoreSymlink "/etc/nixos/xdg/alacritty.desktop";
 
       dconf.enable = false;
       dconf.settings = {

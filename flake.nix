@@ -104,13 +104,38 @@
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
         ./steam
-
-        (import ./llm.nix).system
-
-        (import ./users/aiva.nix).system
         ./touchegg
         ./virt/virtualbox.nix
         ./wallpaper
+        (
+          { pkgs, ... }:
+          {
+            environment.systemPackages = with pkgs; [
+              gdu
+              duf
+
+              # MTP (Media transfer protocol)
+              # https://nixos.wiki/wiki/MTP
+              # https://wiki.archlinux.org/title/Media_Transfer_Protocol
+              # lsusb
+              # gio mount "mtp://[usb:001,006]/"
+              mtpfs
+              simple-mtpfs
+              go-mtpfs
+              jmtpfs
+              android-file-transfer
+
+              inotify-tools
+              fswatch
+
+              parted
+              gpart
+              gparted
+            ];
+          }
+        )
+        (import ./llm.nix).system
+        (import ./users/aiva.nix).system
         (import ./spotify.nix).system
         (import ./sh/env.nix).system
         (import ./x11).default
@@ -142,6 +167,7 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.homeModules.nix-index
+
                 ./git
                 ./awesome
                 ./audio/hm.nix
@@ -168,7 +194,7 @@
                 ./sh/zsh.nix
                 ./sql/sql_.nix
                 ./sxhkd
-                ./term/alacritty_.nix
+                (import ./term/alacritty.nix).home-manager
                 ./term/wezterm_.nix
                 ./tmux
                 ./touchegg/hm_.nix

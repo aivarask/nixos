@@ -33,7 +33,7 @@ super+ \
 ,W,E\
 ,a,s\
 ,A,S\
-,z,x,n\
+,z,x\
 ,Z,X,N,M\
 }
 	{\
@@ -48,33 +48,42 @@ super+ \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- #as \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ \
 	,_ #AS \
-	,spotify \
+	,spotify # ncspot \
 	,brightnessctl set 10%- #zxn \ 
 	,brightnessctl set 10%+ \ 
-	,nicotine-plus \
 	,_ #ZXNM \
 	,_ \
 	,_ \
-	,alacritty -e manix-fzf \
+	,_ \
 	}
 
+super+ n; {t,s,m}
+	{\
+	,alacritty -o 'font.size=6' -e nix-tree \
+	,alacritty -o 'font.size=6' --hold -e echo foo # nps \
+	,alacritty -o 'font.size=6' -e manix-fzf \
+	}
+
+super+ backslash: {\
+,@t,p\
+,s,g,h\
+}
+	{\
+	,alacritty -o 'font.size=6' -e nix-tree \
+	,alacritty -e systemctl-tui \
+	,alacritty -e manix-fzf \
+	,alacritty -o 'font.size=6' -e htop \
+	}
+# ,alacritty -o 'font.size=6' \
+	
 super+ grave
-	notify-send 'woo'
+	notify-send 'super grave'
 
 super+ question
-	notify-send 'quesion'
+	notify-send 'super quesion'
 
 super+ F1
 	notify-send 'F1'
-
-super + backslash; {s,g,h,t}
-	{\
-	,alacritty -e systemctl-tui \
-	,alacritty -e manix-fzf \
-	,helm \
-	,alacritty -e nix-tree \
-	}
-	
 
 # super+ F1; {1,2,n,p,F1}
 # 	{\
