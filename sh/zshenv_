@@ -1,6 +1,8 @@
 # LUA_PATH
 typeset -TU LUA_PATH luapath ';'
 luapath+=('/etc/nixos/term/?.lua')
+luapath+=('/etc/nixos/term/wezterm-types/?/init.lua')
+luapath+=('/etc/nixos/term/wezterm-types/?.lua')
 luapath+=('/etc/nixos/lua/?.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?/init.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?.lua')

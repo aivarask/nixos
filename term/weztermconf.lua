@@ -1,11 +1,12 @@
-local wezterm = require('wezterm')
-local config = wezterm.config_builder()
+local wezterm = require('wezterm') ---@type Wezterm
+local config = wezterm.config_builder() ---@type Config
 config.automatically_reload_config = true
 
 -- wezterm connect unix
 config.default_gui_startup_args = { 'connect', 'unix' }
 config.font = wezterm.font({ family = 'monospace', weight = 'Regular' })
 config.font_size = 12.0
+config.font_size = 10
 -- config.dpi = 288
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
@@ -24,7 +25,9 @@ config.color_schemes = {
 		cursor_fg = '#1D2021',
 		selection_bg = '#D4BE98',
 		selection_fg = '#3C3836',
+		---@diagnostic disable-next-line: assign-type-mismatch
 		ansi = { '#1d2021', '#ea6962', '#a9b665', '#d8a657', '#7daea3', '#d3869b', '#89b482', '#d4be98' },
+		---@diagnostic disable-next-line: assign-type-mismatch
 		brights = { '#eddeb5', '#ea6962', '#a9b665', '#d8a657', '#7daea3', '#d3869b', '#89b482', '#d4be98' },
 	},
 }
@@ -41,6 +44,10 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+
+
+
+
 
 -- https://wezterm.org/config/key-tables.html
 config.keys = {
