@@ -3,6 +3,7 @@
   lib,
   config,
   osConfig,
+inputs,
   ...
 }:
 let
@@ -49,6 +50,7 @@ in
   );
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.neovim.enable = true;
+	programs.neovim.package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
   programs.neovim.extraLuaPackages =
     ps: with ps; [
       plenary-nvim

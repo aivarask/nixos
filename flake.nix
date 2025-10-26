@@ -129,7 +129,6 @@
               fswatch
 
               parted
-              gpart
               gparted
             ];
           }
@@ -149,6 +148,7 @@
             verbose = true;
             extraSpecialArgs = {
               SELF = "/etc/nixos";
+              inherit inputs;
             };
             sharedModules = [ { home.stateVersion = "23.05"; } ];
             users.aiva = users.root // {

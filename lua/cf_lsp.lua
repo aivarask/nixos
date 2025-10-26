@@ -1,9 +1,3 @@
-vim.o.pumheight = 16
-
-vim.cmd [[set completeopt+=menuone,noselect,popup]]
--- vim.o.completeopt = "menu,menuone,nosort,preview"
--- vim.o.completeopt = "fuzzy,menu,menuone,noselect,preview"
-
 vim.lsp.config('*', {
 	root_markers = { '.git' },
 	capabilities = {
@@ -26,7 +20,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		if client:supports_method('textDocument/hover') then
 			vim.api.nvim_create_autocmd('CursorHold', {
-				group = vim.api.nvim_create_augroup('lsp:hover', { clear = false }),
+				group = vim.api.nvim_create_augroup('lsp:hover', { clear = true }),
 				buffer = args.buf,
 				callback = function(ev)
 					vim.lsp.buf.hover({

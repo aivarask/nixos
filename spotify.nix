@@ -7,7 +7,7 @@
         spotify
         spotifyd
         spotify-qt
-
+        spotdl
       ];
 
       # https://docs.spotifyd.rs

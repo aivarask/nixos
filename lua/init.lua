@@ -18,6 +18,7 @@ require 'gettransfer'
 require 'nixpect'
 vim.keymap.set({ 'n' }, '<leader>\'', require 'nixpect'.test)
 require 'cf_diagnostic'
+require 'cf_completion'
 require 'cf_lsp'
 require 'cf_neotest'
 require 'cf_nvim-tree'
