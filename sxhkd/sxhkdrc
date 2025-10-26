@@ -57,10 +57,17 @@ super+ \
 	,_ \
 	}
 
+super+ slash; {c,s,a}
+	{\
+	,alacritty --working-directory="$XDG_CONFIG_HOME" -e 'fzf-find' \
+	,alacritty --working-directory='/run/current-system' -e 'fzf-find' \
+	,alacritty --working-directory='/run/current-system' --hold -e 'cd /run/current-system && fzf-find' \
+	}
+
 super+ n; {t,s,m}
 	{\
 	,alacritty -o 'font.size=6' -e nix-tree \
-	,alacritty -o 'font.size=6' --hold -e echo foo # nps \
+	,wezterm -e nps # nps \
 	,alacritty -o 'font.size=6' -e manix-fzf \
 	}
 

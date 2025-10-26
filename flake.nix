@@ -195,7 +195,7 @@
                 ./sql/sql_.nix
                 ./sxhkd
                 (import ./term/alacritty.nix).home-manager
-                ./term/wezterm_.nix
+                (import ./term/wezterm.nix).home-manager
                 ./tmux
                 ./touchegg/hm_.nix
                 (import ./users/aiva.nix).hm

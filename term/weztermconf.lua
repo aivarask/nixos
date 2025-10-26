@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- wezterm connect unix
 config.default_gui_startup_args = { 'connect', 'unix' }
 config.font = wezterm.font({ family = 'monospace', weight = 'Regular' })
-config.font_size = 24.0
+config.font_size = 12.0
 -- config.dpi = 288
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true

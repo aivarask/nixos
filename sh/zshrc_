@@ -17,6 +17,7 @@ path+=(${0:a:h}/bin)
 
 # LUA_PATH
 typeset -TU LUA_PATH luapath ';'
+luapath+=('/etc/nixos/term/?.lua')
 luapath+=('/etc/nixos/lua/?.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?/init.lua')
 luapath+=('/etc/luajit/share/lua/5.1/?.lua')
