@@ -39,7 +39,7 @@ super+ \
 	{\
 	,tdrop alacritty #qwer \
 	,firefox \
-	,chrome \
+	,wezterm \
 	,alacritty --working-directory=/etc/nixos -e nvim --listen $NVIM_REMOTE \
 	\
 	,firefox --private-window #WE \

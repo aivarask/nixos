@@ -1,5 +1,6 @@
 local wezterm = require('wezterm')
 local config = wezterm.config_builder()
+config.automatically_reload_config = true
 
 -- wezterm connect unix
 config.default_gui_startup_args = { 'connect', 'unix' }
@@ -30,7 +31,7 @@ config.color_schemes = {
 config.use_fancy_tab_bar = true
 config.window_frame = {
 	font = wezterm.font { family = 'Roboto', weight = 'Bold' },
-	font_size = 18.0,
+	font_size = 15,
 	active_titlebar_bg = '#333333',
 	inactive_titlebar_bg = '#333333',
 }

@@ -15,14 +15,6 @@ typeset -TU PATH path ':'
 # path+=( /etc/nixos/*(N-/) )
 path+=(${0:a:h}/bin)
 
-# LUA_PATH
-typeset -TU LUA_PATH luapath ';'
-luapath+=('/etc/nixos/term/?.lua')
-luapath+=('/etc/nixos/lua/?.lua')
-luapath+=('/etc/luajit/share/lua/5.1/?/init.lua')
-luapath+=('/etc/luajit/share/lua/5.1/?.lua')
-export LUA_PATH
-
 # CPATH
 typeset -TU CPATH cpath ':'
 cpath+=('/run/current-system/sw/include/' '/root/include/')

@@ -53,8 +53,14 @@
       home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/alias";
 
       programs.zsh.enable = true;
-      programs.zsh.profileExtra = ''# HM programs.zsh.profileExtra ''; # $HOME/.zprofile
-      programs.zsh.envExtra = ''# HM programs.zsh.envExtra ''; # $HOME/.zshenv
+      programs.zsh.profileExtra = ''
+        # HM programs.zsh.profileExtra 
+        source $HOME/.zprofile_
+      ''; # $HOME/.zprofile
+      programs.zsh.envExtra = ''
+        # HM programs.zsh.envExtra 
+        source $HOME/.zshenv_
+      ''; # $HOME/.zshenv
       # programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
       # programs.zsh.initContent = lib.mkOrder 550 ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
       programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
@@ -62,6 +68,8 @@
             # HM programs.zsh.initContent
         		source $HOME/.zshrc_
       '';
+      home.file.".zprofile_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zprofile_";
+      home.file.".zshenv_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshenv_";
       home.file.".zshrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshrc_";
     };
 }
