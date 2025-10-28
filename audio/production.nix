@@ -22,6 +22,7 @@
     "/doc/share"
   ];
   environment.systemPackages = with pkgs; [
+    roomeqwizard
     # synth
     zyn-fusion
     zynaddsubfx-ntk

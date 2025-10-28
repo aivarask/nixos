@@ -40,7 +40,7 @@ let
     "devtools.debugger.remote-enabled" = true;
     "browser.aboutConfig.showWarning" = false;
     "accessibility.warn_on_browsewithcaret" = false; # F7
-    "accessibility.typeaheadfind" = true;
+    "accessibility.typeaheadfind" = false;
     "accessibility.typeaheadfind.manual" = false;
     "toolkit.tabbox.switchByScrolling" = true;
     "browser.tabs.insertAfterCurrent" = true;
