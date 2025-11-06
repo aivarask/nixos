@@ -2,7 +2,10 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
-    #
+    {
+      url = "https://www.linkomanija.net";
+      name = "";
+    }
     {
       url = "https://tytel.org/helm/";
       name = "";

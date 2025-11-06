@@ -71,7 +71,7 @@ super+ n; {t,s,m}
 	,alacritty -o 'font.size=6' -e manix-fzf \
 	}
 
-super+ backslash: {\
+super+ backslash; {\
 ,@t,p\
 ,s,g,h\
 }
@@ -79,6 +79,7 @@ super+ backslash: {\
 	,alacritty -o 'font.size=6' -e nix-tree \
 	,alacritty -e systemctl-tui \
 	,alacritty -e manix-fzf \
+	,_ \
 	,alacritty -o 'font.size=6' -e htop \
 	}
 # ,alacritty -o 'font.size=6' \
@@ -88,9 +89,6 @@ super+ grave
 
 super+ question
 	notify-send 'super quesion'
-
-super+ F1
-	notify-send 'F1'
 
 # super+ F1; {1,2,n,p,F1}
 # 	{\

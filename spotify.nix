@@ -8,6 +8,7 @@
         spotifyd
         spotify-qt
         spotdl
+        audacity
       ];
 
       # https://docs.spotifyd.rs

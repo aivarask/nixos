@@ -1,8 +1,13 @@
-#!/bin/sh
+# vim: ft=sh
+
+# XNOTIFY_FIFO="$HOME/.cache/xnotify$DISPLAY.fifo"
+# export XNOTIFY_FIFO
+# rm -f $XNOTIFY_FIFO
+# mkfifo $XNOTIFY_FIFO
+# xnotify 0<>$XNOTIFY_FIFO
 
 export XCURSOR_THEME=XCursor-Pro-Light
 export XCURSOR_SIZE=64
-xrdb ~/.Xresources
 
 # https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
 # export QT_QPA_PLATFORMTHEME=gtk2
@@ -25,35 +30,36 @@ systemctl --user import-environment DISPLAY XDG_SESSION_ID           # import re
 systemctl --user start nixos-fake-graphical-session.target           # start all graphical user services
 dbus-daemon --session --address="unix:path=/run/user/$(id -u)/bus" & # start the user dbus daemon
 
-# xcompmgr &
-# picom -b &
-# xrandr_dpi
-xrdb ~/.Xresources
-#
-devilspie2 -a
-numlockx
+xrdb $HOME/.Xresources
+# numlockx on
 xset r rate 250 50
 sxhkd &
 
+# xcompmgr &
+# picom -b &
+# xrandr_dpi
+# devilspie2 -a
+#
+
 if [ "$(hostname)" = pc ]; then
-	xset s 3600 3600
-	# xset dpms3600 3600 3600
+	# xset s 3600 3600 # xset dpms3600 3600 3600
 	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
 	# XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
 	# deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
 	# deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
-	systemctl --user restart redshift.service &
+	systemctl --user start redshift.service &
 fi
 
-systemctl --user restart dunst.service &
-systemctl --user restart wallpaper.service &
-systemctl --user restart unclutter-xfixes.service &
-systemctl --user restart dwm-status.service &
+# systemctl --user start wallpaper.service &
+# systemctl --user start unclutter-xfixes.service &
+# systemctl --user start dunst.service &
+# systemctl --user start dwm-status.service &
 
 session=${1:-dwm}
 case $session in
 dwm)
+	# exec dwmloopsimple
 	exec dwm
 	;;
 *)

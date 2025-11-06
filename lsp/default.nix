@@ -38,8 +38,6 @@ lib.mkMerge [
       markdownlint-cli2
       # toml
       taplo
-      taplo-cli
-      taplo-lsp
       # yaml
       yaml-language-server
       yq-go

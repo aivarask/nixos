@@ -3,7 +3,7 @@
   lib,
   config,
   osConfig,
-inputs,
+  inputs,
   ...
 }:
 let
@@ -50,7 +50,8 @@ in
   );
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.neovim.enable = true;
-	programs.neovim.package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  programs.neovim.package =
+    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
   programs.neovim.extraLuaPackages =
     ps: with ps; [
       plenary-nvim
@@ -69,7 +70,7 @@ in
       compat53
       # lua-psl
     ];
-  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.hostPlatform.extensions.sharedLibrary}";
+  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
     lib.mkMerge [
       common

@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=pipewire
     alsa-utils
+    # pulseaudio
     pavucontrol
     pulsemixer
     pwvucontrol

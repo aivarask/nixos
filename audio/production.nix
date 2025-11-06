@@ -24,7 +24,7 @@
   environment.systemPackages = with pkgs; [
     roomeqwizard
     # synth
-    zyn-fusion
+    zynaddsubfx
     zynaddsubfx-ntk
     vaporizer2
 
@@ -40,7 +40,6 @@
 
     mixxx # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
 
-    # ardour # long build fails
     libbs2b
     ladspaPlugins
     lsof
@@ -55,26 +54,25 @@
     # rosegarden
 
     # DAW
-    bitwig-studio
-    renoise
-    reaper
+    ardour
+    # lmms # fails
+    # bitwig-studio
+    # renoise
+    # reaper
     # zrythm
-    # ardour
-    # lmms # gtk2 # fails
-    qtractor
+    # qtractor
 
     # Sampler
-    drumkv1
+    # drumkv1
 
     # VST plugins
-    zam-plugins
+    # zam-plugins
     # tunefish
-    helm
-    vital
-    # surge
+    # helm
+    # vital
+    surge
     # surge-XT # fails
-    decent-sampler
-    odin2
-
+    # decent-sampler
+    # odin2
   ];
 }

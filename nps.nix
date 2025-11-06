@@ -10,7 +10,7 @@ in
 {
   imports = [ ];
   nixpkgs.overlays = with inputs; [
-    (final: prev: { aiv.nps = inputs.nps.packages.${prev.system}.default; })
+    (final: prev: { aiv.nps = inputs.nps.packages.${prev.stdenv.hostPlatform.system}.default; })
   ];
   environment.systemPackages = [
     pkgs.aiv.nps # https://github.com/OleMussmann/nps

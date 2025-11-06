@@ -93,6 +93,7 @@
           xdotool
           xsel
           xclip
+          xnotify
           sxiv
           numlockx
           xautomation
@@ -144,7 +145,6 @@
       services.xserver.autoRepeatInterval = 50;
       services.xserver.enableCtrlAltBackspace = true;
       services.xserver.enableTCP = true;
-      # services.xserver.upscaleDefaultCursor = true;
       services.xserver.xkb.model = "pc105";
       services.xserver.xkb.layout = "us,lt";
       services.xserver.xkb.options = "grp:menu_toggle"; # localectl list-x11-keymap-options
@@ -152,11 +152,11 @@
       services.xserver.xkb.variant = ""; # localectl list-x11-keymap-variants
       services.xserver.dpi = lib.mkDefault null;
       # services.xserver.tty = 7;
-      services.xserver.displayManager.startx.enable = true;
       services.displayManager.autoLogin.enable = false;
       services.displayManager.autoLogin.user = "aiva";
-
+      services.xserver.displayManager.startx.enable = true;
       services.xserver.displayManager.startx.generateScript = false;
 
+      # services.xserver.upscaleDefaultCursor = true;
     };
 }

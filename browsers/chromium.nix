@@ -6,7 +6,7 @@
   ...
 }:
 {
-  # home.packages = with browser-previews.packages.${pkgs.system}; [
+  # home.packages = with browser-previews.packages.${pakgs.stdenv.hostPlatform.system}; [
   #   google-chrome # Stable Release
   #   google-chrome-beta # Beta Release
   #   google-chrome-dev # Dev Release

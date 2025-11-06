@@ -6,7 +6,6 @@
     packages = with pkgs; [
       # twitter-color-emoji
       # twemoji-color-font
-      noto-fonts-emoji
       noto-fonts-color-emoji
       nerd-fonts.dejavu-sans-mono
     ];

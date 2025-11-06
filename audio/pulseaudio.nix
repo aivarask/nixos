@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.pulsemixer ];
+  environment.systemPackages = with pkgs; [
+    pulseaudioFull
+    pulsemixer
+  ];
   services.pulseaudio = {
     # https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#pulseaudiomodules
     package = pkgs.pulseaudioFull;

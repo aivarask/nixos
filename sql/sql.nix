@@ -12,7 +12,7 @@
     sqlfluff # 7k
 
     sqls # 0.8k
-    postgres-lsp # 3.1k
+    postgres-language-server # 3.1k
   ];
   networking.firewall.allowedTCPPorts = [
     3306 # mysql

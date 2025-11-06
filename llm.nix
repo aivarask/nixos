@@ -14,11 +14,11 @@
         python3Packages.huggingface-hub
         # python3Packages.transformers
         # python3Packages.trlib
-        cudatoolkit
+        # cudatoolkit
         # python3Packages.llama-index-cli
         # python3Packages.llama-index-llms-ollama
       ];
-      services.ollama.enable = true;
+      services.ollama.enable = false;
       services.ollama.package = pkgs.ollama-cuda;
       services.ollama.environmentVariables.OLLAMA_LLM_LIBRARY = "cuda";
       services.ollama.environmentVariables.LD_LIBRARY_PATH = "run/opengl-driver/lib";

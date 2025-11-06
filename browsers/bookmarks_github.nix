@@ -33,6 +33,10 @@
           url = "https://github.com/yt-dlp/yt-dlp";
           name = "";
         }
+        {
+          url = "https://github.com/yt-dlp/yt-dlp";
+          name = "";
+        }
       ];
     }
 

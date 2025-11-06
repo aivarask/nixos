@@ -12,7 +12,7 @@
     rec {
       environment.systemPackages = [
         pkgs.mpd
-        pkgs.mpc-cli
+        pkgs.mpc
       ];
       networking.firewall.allowedTCPPorts = [ 6600 ];
       services.mpd.enable = true;
