@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PluginStats>
+  <Plugin type="VST3" id="27B63CC33070416EB55E773970D3F5D4" lru="1762461477" use-count="2"/>
+  <Plugin type="LV2" id="urn:distrho:vitalium" lru="1762106394" use-count="2"/>
+  <Plugin type="LV2" id="https://community.ardour.org/node/7596" lru="1762106303" use-count="4"/>
+</PluginStats>

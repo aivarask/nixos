@@ -74,5 +74,6 @@
     # surge-XT # fails
     # decent-sampler
     # odin2
+    drumgizmo
   ];
 }

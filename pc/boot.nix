@@ -60,7 +60,7 @@
     # libva-utils
   ];
   services.xserver.videoDrivers = [
-    "nvidia"
-    # "modesetting"
+    # "nvidia"
+    "modesetting"
   ];
 }

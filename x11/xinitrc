@@ -26,12 +26,12 @@ export NVIM_REMOTE=~/.cache/nvim/server.pipe
 export EDITOR="nvim --server $NVIM_REMOTE"
 
 # https://nixos.org/manual/nixos/stable/#sec-x11
-systemctl --user import-environment DISPLAY XDG_SESSION_ID           # import required env variables from the current shell
-systemctl --user start nixos-fake-graphical-session.target           # start all graphical user services
-dbus-daemon --session --address="unix:path=/run/user/$(id -u)/bus" & # start the user dbus daemon
+systemctl --user import-environment DISPLAY XDG_SESSION_ID
+systemctl --user start nixos-fake-graphical-session.target
+dbus-daemon --session --address="unix:path=/run/user/$(id -u)/bus" &
 
 xrdb $HOME/.Xresources
-# numlockx on
+numlockx on
 xset r rate 250 50
 sxhkd &
 
@@ -39,22 +39,18 @@ sxhkd &
 # picom -b &
 # xrandr_dpi
 # devilspie2 -a
-#
 
 if [ "$(hostname)" = pc ]; then
-	# xset s 3600 3600 # xset dpms3600 3600 3600
+	xset s 3600 3600 # xset dpms3600 3600 3600
 	nvidia-settings -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=40' --load-config-only
-	# XDG_SESSION_TYPE=x11 remote-touchpad -bind :9000 -secret pc &
-	# deskflow-client -f --debug INFO --name pc --enable-crypto --sync-language dell:24800 &
 elif [ "$(hostname)" = dell ]; then
-	# deskflow-server -f --debug INFO --name dell --enable-crypto --address :24800 -c /etc/nixos/deskflow-dell/deskflow-server.conf --tls-cert /etc/nixos/deskflow-dell/tls/deskflow.pem &
 	systemctl --user start redshift.service &
 fi
 
-# systemctl --user start wallpaper.service &
-# systemctl --user start unclutter-xfixes.service &
-# systemctl --user start dunst.service &
-# systemctl --user start dwm-status.service &
+systemctl --user start wallpaper.service &
+systemctl --user start unclutter-xfixes.service &
+systemctl --user start dunst.service &
+systemctl --user start dwm-status.service &
 
 session=${1:-dwm}
 case $session in
