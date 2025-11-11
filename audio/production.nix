@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }:
 {
@@ -11,69 +12,118 @@
     inputs.musnix.nixosModules.musnix
   ];
   musnix.enable = true;
-  services.udev.packages = [
-    pkgs.mixxx
-    pkgs.bitwig-studio
-    pkgs.vital
+  services.udev.packages = with pkgs; [
+    ardour
+    # bitwig-studio
+    mixxx
+    vital
   ];
 
   environment.pathsToLink = [
     "/share/mixxx"
     "/doc/share"
   ];
-  environment.systemPackages = with pkgs; [
-    roomeqwizard
-    # synth
-    zynaddsubfx
-    zynaddsubfx-ntk
-    vaporizer2
+  environment.systemPackages = lib.mkMerge [
+    (lib.mkIf true (
+      with pkgs;
+      [
+        ardour
+        hydrogen
 
-    bc
-    calc
-    # MIDI monitoring
-    lilypond
-    # midivisualizer # fails
-    vkeybd
+        # distrho-ports.override
+        # {
+        #   plugins = [
+        #     "vitalium"
+        #     "swankyamp"
+        #     "dexed"
+        #   ];
+        # }
+        distrho-ports
+        # ladspaPlugins
+        lsp-plugins
+        x42-plugins
 
-    # nix-locate vst3
-    ysfx
+        # drum
+        x42-avldrums
+        drumgizmo
+        geonkick
 
-    mixxx # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
+        # synth
+        cardinal
+        odin2
+        surge
 
-    libbs2b
-    ladspaPlugins
-    lsof
-    distrho-ports
-    yoshimi
-    guitarix
-    # muse # fails
-    # infamousPlugins # build fails
-    mamba
+        # https://linuxsynths.com/
+        # https://x42-plugins.com/x42
+        # https://kx.studio/Repositories:Plugins#adlplug
+        # mod-arpeggiator-lv2
+        # qmidiarp
+        # adlplug
+        # AMB-plugins
+        # artyFX
+        # bchoppr
+        # bjumblr
+        # bsequencer
+        # bshapr
+        # bslizr
+        # calf
 
-    # MIDI
-    # rosegarden
+      ]
+    ))
+    (lib.mkIf false (
+      with pkgs;
+      [
+        roomeqwizard
+        # synth
+        zynaddsubfx
+        zynaddsubfx-ntk
+        vaporizer2
 
-    # DAW
-    ardour
-    # lmms # fails
-    # bitwig-studio
-    # renoise
-    # reaper
-    # zrythm
-    # qtractor
+        bc
+        calc
+        # MIDI monitoring
+        lilypond
+        # midivisualizer # fails
+        vkeybd
 
-    # Sampler
-    # drumkv1
+        # nix-locate vst3
+        ysfx
 
-    # VST plugins
-    # zam-plugins
-    # tunefish
-    # helm
-    # vital
-    surge
-    # surge-XT # fails
-    # decent-sampler
-    # odin2
-    drumgizmo
+        mixxx # https://github.com/mixxxdj/mixxx/wiki/troubleshooting
+
+        libbs2b
+        lsof
+        distrho-ports
+        yoshimi
+        guitarix
+        # muse # fails
+        # infamousPlugins # build fails
+        mamba
+
+        # MIDI
+        # rosegarden
+
+        # DAW
+        ardour
+        # lmms # fails
+        # renoise
+        # reaper
+        # zrythm
+        # qtractor
+
+        # Sampler
+        # drumkv1
+
+        # VST plugins
+        # zam-plugins
+        # tunefish
+        # helm
+        # vital
+        surge
+        # surge-XT # fails
+        # decent-sampler
+        # odin2
+      ]
+    ))
   ];
 }

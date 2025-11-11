@@ -19,7 +19,7 @@
  * Awesomebar takes precedence over fancybar.
  * https://dwm.suckless.org/patches/awesomebar/
  */
-#define BAR_AWESOMEBAR_PATCH 1
+#define BAR_AWESOMEBAR_PATCH 0
 
 /* This patch depends on statuscmd patch and adds integration with a (patched)
  * dwmblocks instance to give a clickable status bar. One must not necessarily
@@ -79,10 +79,13 @@
  *   - The text of the menu items is for display only. Name them however you want.
  * https://dwm.suckless.org/patches/layoutmenu/
  */
-#define BAR_LAYOUTMENU_PATCH 1
+#define BAR_LAYOUTMENU_PATCH 0
 
 /* Show layout symbol in bar */
 #define BAR_LTSYMBOL_PATCH 1
+
+/* Adds a colour schme for the layout symbol */
+#define BAR_LTSYMBOL_SCHEME_PATCH 0
 
 /* Adds powerline arrows for the status.
  * This uses statuscolors logic for choosing colors for the powerline. As these markers
@@ -156,7 +159,7 @@
  * This patch is incompatible with the extrabar patch.
  * https://dwm.suckless.org/patches/status2d/
  */
-#define BAR_STATUS2D_PATCH 1
+#define BAR_STATUS2D_PATCH 0
 
 /* Supplementary patch should you want to disable alpha for the status2d section */
 #define BAR_STATUS2D_NO_ALPHA_PATCH 0
@@ -241,13 +244,13 @@
  * Set the tagindicatortype variable in config.h to INDICATOR_TOP_BAR to enable this.
  * https://dwm.suckless.org/patches/activetagindicatorbar/
  */
-#define BAR_ACTIVETAGINDICATORBAR_PATCH N / A
+#define BAR_ACTIVETAGINDICATORBAR_PATCH N/A
 
 /* Alternative patch to the activetagindicatorbar patch, adds the bar below the tag
  * icon rather than above.
  * Set the tagindicatortype variable in config.h to INDICATOR_BOTTOM_BAR to enable this.
  */
-#define BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH N / A
+#define BAR_ACTIVETAGINDICATORBAR_ALT1_PATCH N/A
 
 /* The alpha patch adds transparency for the status bar.
  * You need to uncomment the corresponding line in config.mk to use the -lXrender library
@@ -290,6 +293,12 @@
  */
 #define BAR_BORDER_PATCH 0
 
+/* Optional addon for the border patch. This makes it so that the bar border is drawn using
+ * the background colour of the bar as opposed to the border colour. This allows for the
+ * border to have the same transparency as the background thus giving a more uniform look.
+ */
+#define BAR_BORDER_COLBG_PATCH 0
+
 /* This patch centers the WM_NAME of the currently selected window on the status bar.
  * This is compatible with the wintitle, bartabgroups, flexwintitle and awesomebar bar
  * modules.
@@ -302,7 +311,7 @@
  * Set the tagindicatortype variable in config.h to INDICATOR_CLIENT_DOTS to enable this.
  * https://dwm.suckless.org/patches/clientindicators/
  */
-#define BAR_CLIENTINDICATOR_PATCH N / A
+#define BAR_CLIENTINDICATOR_PATCH N/A
 
 /* Updates the position of dmenu to match that of the bar. I.e. if topbar is 0 then dmenu
  * will appear at the bottom and if 1 then dmenu will appear at the top.
@@ -331,7 +340,7 @@
  * https://github.com/bakkeby/dwm-flexipatch/issues/50 (_IS_FLOATING patch)
  * https://dwm.suckless.org/patches/ewmhtags/
  */
-#define BAR_EWMHTAGS_PATCH 1
+#define BAR_EWMHTAGS_PATCH 0
 
 /* Allows the bar height to be explicitly set rather than being derived from font.
  * https://dwm.suckless.org/patches/bar_height/
@@ -459,7 +468,16 @@
  * This patch interferes with the center transient windows patches.
  * https://dwm.suckless.org/patches/alwayscenter/
  */
-#define ALWAYSCENTER_PATCH 1
+#define ALWAYSCENTER_PATCH 0
+
+/* Allows for floating windows to be toggled to be always on top (aot).
+ *
+ * Disclaimer: Some flickering may be expected with this patch when floating and aot
+ * windows overlap.
+ *
+ * https://dwm.suckless.org/patches/alwaysontop/
+ */
+#define ALWAYSONTOP_PATCH 0
 
 /* This patch allows windows to be resized with its aspect ratio remaining constant.
  * https://dwm.suckless.org/patches/aspectresize/
@@ -503,6 +521,19 @@
  * https://dwm.suckless.org/patches/autoresize/
  */
 #define AUTORESIZE_PATCH 0
+
+/* This patch allows for the mouse cursor to automatically hide when the user uses the keyboard.
+ *
+ * You need to uncomment the corresponding lines in config.mk to use additional libraries
+ * when including this patch.
+ *
+ * This patch depends on the following libraries:
+ *    - libxfixes
+ *    - libxi
+ *
+ * https://github.com/bakkeby/patches/wiki/banish
+ */
+#define BANISH_PATCH 0
 
 /* This patch adds proper support for Right-To-Left languages. (such as Farsi, Arabic or Hebrew).
  *
@@ -727,6 +758,18 @@
  */
 #define FULLSCREEN_PATCH 0
 
+/* Adds a rule identifying clients as a "game" such that if the client is in fullscreen and it
+ * loses focus (e.g. by moving to another tag) then it will automatically be minimized (set to
+ * IconicState and unmapped).
+ *
+ * When the client receives focus again (e.g. by going back to its tag) then it will
+ * automatically be unminimized (set to NormalState and mapped). This should address many of the
+ * black screen or window is tiny issues after having moved to another tag and back again.
+ *
+ * https://github.com/bakkeby/patches/wiki/steam
+ */
+#define GAMES_PATCH 0
+
 /* This patch provides a keybinding to rotate all clients in the currently selected
  * area (master or stack) without affecting the other area.
  * https://dwm.suckless.org/patches/inplacerotate/
@@ -893,7 +936,7 @@
  * https://github.com/szatanjl/dwm/commit/1529909466206016f2101457bbf37c67195714c8
  * https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
  */
-#define NO_TRANSPARENT_BORDERS_PATCH 1
+#define NO_TRANSPARENT_BORDERS_PATCH 0
 
 /* Port of InstantWM's on_empty_keys functionality allowing keybindings that apply only when
  * a tag is empty. An example use case is being able to launch applications with first hand
@@ -998,7 +1041,7 @@
  * Additionally dwm can quit cleanly by using kill -TERM dwmpid.
  * https://dwm.suckless.org/patches/restartsig/
  */
-#define RESTARTSIG_PATCH 1
+#define RESTARTSIG_PATCH 0
 
 /* Adds rio-like drawing to resize the selected client.
  * This depends on an external tool slop being installed.
@@ -1058,7 +1101,7 @@
  *
  * The above is not persisted across reboots, however.
  */
-#define SEAMLESS_RESTART_PATCH 1
+#define SEAMLESS_RESTART_PATCH 0
 
 /* As opposed to the original patch this only adds a rule option allowing fake fullscreen
  * to be enabled for applications when they start. This is intended to be used in combination
@@ -1070,7 +1113,7 @@
 /* Allows restarting dwm without the dependency of an external script.
  * https://dwm.suckless.org/patches/selfrestart/
  */
-#define SELFRESTART_PATCH 1
+#define SELFRESTART_PATCH 0
 
 /* Floating windows being sent to another monitor will be centered.
  * https://dwm.suckless.org/patches/sendmoncenter/
@@ -1183,7 +1226,7 @@
  *
  * https://github.com/bakkeby/patches/wiki/steam
  */
-#define STEAM_PATCH 1
+#define STEAM_PATCH 0
 
 /* Adds toggleable keyboard shortcut to make a client 'sticky', i.e. visible on all tags.
  * https://dwm.suckless.org/patches/sticky/
@@ -1314,7 +1357,7 @@
 /* This patch allows you to toggle fullscreen on and off using a single shortcut key.
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-togglefullscreen-6.2.diff
  */
-#define TOGGLEFULLSCREEN_PATCH 1
+#define TOGGLEFULLSCREEN_PATCH 0
 
 /* This patch allows for the bar position (top or bottom) to be toggled during runtime.
  * https://dwm.suckless.org/patches/toggletopbar/
@@ -1376,7 +1419,7 @@
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-vanitygaps-6.2.diff
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-cfacts-vanitygaps-6.2.diff
  */
-#define VANITYGAPS_PATCH 1
+#define VANITYGAPS_PATCH 0
 
 /* This patch adds outer gaps for the monocle layout.
  * Most gaps patches tries to avoid gaps on the monocle layout, as it is often used as a
@@ -1431,7 +1474,13 @@
  * the float border color, awesomebar, urgentborder and titlecolor patches.
  * https://dwm.suckless.org/patches/xrdb/
  */
-#define XRDB_PATCH 1
+#define XRDB_PATCH 0
+
+/* This patch allows for integer, float and string settings to be loaded from Xresources.
+ * Xresources takes precedence over xrdb.
+ * https://dwm.suckless.org/patches/xresources/
+ */
+#define XRESOURCES_PATCH 0
 
 /* Simple patch that allows floating windows to be zoomed into the master stack position.
  * https://www.reddit.com/r/suckless/comments/ie5fe3/zoomfloating_my_own_simple_original_patch/

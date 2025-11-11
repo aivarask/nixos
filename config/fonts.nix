@@ -2,12 +2,15 @@
 {
   environment.systemPackages = with pkgs; [ fontpreview ];
   fonts = {
-    enableDefaultPackages = false;
+    enableDefaultPackages = true;
     packages = with pkgs; [
       # twitter-color-emoji
       # twemoji-color-font
       noto-fonts-color-emoji
       nerd-fonts.dejavu-sans-mono
+      lato
+      nerd-fonts.fira-mono
+      nerd-fonts.fira-code
     ];
     fontconfig = {
       defaultFonts = {

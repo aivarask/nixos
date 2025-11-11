@@ -6,7 +6,7 @@
     <Option name="ui-font-family" value="Sans"/>
     <Option name="color-file" value="xcolors"/>
     <Option name="flat-buttons" value="1"/>
-    <Option name="boxy-buttons" value="0"/>
+    <Option name="boxy-buttons" value="1"/>
     <Option name="blink-rec-arm" value="0"/>
     <Option name="blink-alert-indicators" value="1"/>
     <Option name="waveform-gradient-depth" value="0"/>
@@ -17,7 +17,7 @@
     <Option name="allow-to-resize-engine-dialog" value="1"/>
     <Option name="color-regions-using-track-color" value="0"/>
     <Option name="use-route-color-widely" value="1"/>
-    <Option name="vertical-region-gap" value="0"/>
+    <Option name="vertical-region-gap" value="2"/>
     <Option name="editor-stereo-only-meters" value="1"/>
     <Option name="show-waveform-clipping" value="1"/>
     <Option name="lock-gui-after-seconds" value="0"/>
@@ -38,7 +38,7 @@
     <Option name="default-narrow_ms" value="0"/>
     <Option name="name-new-markers" value="0"/>
     <Option name="rubberbanding-snaps-to-grid" value="0"/>
-    <Option name="font-scale" value="180224"/>
+    <Option name="font-scale" value="256000"/>
     <Option name="show-waveforms" value="1"/>
     <Option name="show-waveforms-while-recording" value="1"/>
     <Option name="waveform-scale" value="Logarithmic"/>
@@ -46,17 +46,17 @@
     <Option name="update-editor-during-summary-drag" value="1"/>
     <Option name="never-display-periodic-midi" value="1"/>
     <Option name="sound-midi-notes" value="1"/>
-    <Option name="select-last-drawn-note-only" value="1"/>
+    <Option name="select-last-drawn-note-only" value="0"/>
     <Option name="show-plugin-scan-window" value="1"/>
     <Option name="show-manager-if-plugins-are-missing" value="1"/>
     <Option name="show-zoom-tools" value="1"/>
     <Option name="use-mouse-position-as-zoom-focus-on-scroll" value="1"/>
-    <Option name="use-time-rulers-to-zoom-with-vertical-drag" value="0"/>
+    <Option name="use-time-rulers-to-zoom-with-vertical-drag" value="1"/>
     <Option name="preview-video-frame-on-drag" value="1"/>
-    <Option name="use-double-click-to-zoom-to-selection" value="0"/>
+    <Option name="use-double-click-to-zoom-to-selection" value="1"/>
     <Option name="widget-prelight" value="1"/>
     <Option name="use-tooltips" value="1"/>
-    <Option name="mixer-element-visibility" value="Input,PhaseInvert,RecMon,SoloIsoLock,Output,Comments"/>
+    <Option name="mixer-element-visibility" value="PhaseInvert,TriggerGrid,TriggerMaster"/>
     <Option name="allow-non-quarter-pulse" value="0"/>
     <Option name="show-region-gain" value="0"/>
     <Option name="show-region-xrun-markers" value="1"/>
@@ -79,15 +79,15 @@
     <Option name="input-meter-scopes" value="1"/>
     <Option name="meter-peak" value="0"/>
     <Option name="meter-style-led" value="1"/>
-    <Option name="show-editor-meter" value="1"/>
-    <Option name="show-toolbar-recpunch" value="1"/>
+    <Option name="show-editor-meter" value="0"/>
+    <Option name="show-toolbar-recpunch" value="0"/>
     <Option name="show-toolbar-monitoring" value="0"/>
     <Option name="show-toolbar-selclock" value="0"/>
     <Option name="show-toolbar-latency" value="0"/>
-    <Option name="show-toolbar-cuectrl" value="1"/>
+    <Option name="show-toolbar-cuectrl" value="0"/>
     <Option name="show-toolbar-monitor-info" value="0"/>
-    <Option name="show-mini-timeline" value="1"/>
-    <Option name="show-secondary-clock" value="1"/>
+    <Option name="show-mini-timeline" value="0"/>
+    <Option name="show-secondary-clock" value="0"/>
     <Option name="waveform-clip-level" value="-0.093396699999999999"/>
     <Option name="no-new-session-dialog" value="1"/>
     <Option name="buggy-gradients" value="0"/>
@@ -99,12 +99,12 @@
     <Option name="save-export-mixer-screenshot" value="0"/>
     <Option name="open-gui-after-adding-plugin" value="1"/>
     <Option name="plugin-gui-behavior" value="PluginGUIHide"/>
-    <Option name="show-inline-display-by-default" value="1"/>
+    <Option name="show-inline-display-by-default" value="0"/>
     <Option name="max-plugin-chart" value="10"/>
     <Option name="max-plugin-recent" value="10"/>
-    <Option name="prefer-inline-over-gui" value="1"/>
+    <Option name="prefer-inline-over-gui" value="0"/>
     <Option name="max-inline-controls" value="32"/>
-    <Option name="action-table-columns" value="3"/>
+    <Option name="action-table-columns" value="0"/>
     <Option name="hide-splash-screen" value="1"/>
     <Option name="check-announcements," value="1"/>
     <Option name="use-wm-visibility" value="1"/>
@@ -128,7 +128,7 @@
     <Option name="rulers-follow-grid" value="0"/>
     <Option name="grid-follows-internal" value="0"/>
     <Option name="show-region-name" value="1"/>
-    <Option name="time-axis-name-ellipsize-mode" value="0"/>
+    <Option name="time-axis-name-ellipsize-mode" value="-1"/>
     <Option name="one-plugin-window-only" value="1"/>
     <Option name="default-lower-midi-note" value="60"/>
     <Option name="default-upper-midi-note" value="71"/>
@@ -141,7 +141,7 @@
     <Option name="update-action-scripts" value="1"/>
     <Option name="use-cocoa-invalidation" value="1"/>
     <Option name="show-on-cue-page" value="1"/>
-    <Option name="insert-at-position" value="3"/>
+    <Option name="insert-at-position" value="1"/>
     <Option name="note-name-display" value="Always"/>
     <Option name="scroll-velocity-editing" value="1"/>
     <Option name="no-strobe" value="0"/>

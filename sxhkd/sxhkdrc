@@ -47,7 +47,7 @@ super+ \
 	\
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- #as \
 	,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ \
-	,_ #AS \
+	,ardour8 -T main -N one  #AS \
 	,spotify # ncspot \
 	,brightnessctl set 10%- #zxn \ 
 	,brightnessctl set 10%+ \ 
