@@ -38,7 +38,7 @@
     <Option name="default-narrow_ms" value="0"/>
     <Option name="name-new-markers" value="0"/>
     <Option name="rubberbanding-snaps-to-grid" value="0"/>
-    <Option name="font-scale" value="256000"/>
+    <Option name="font-scale" value="100000"/>
     <Option name="show-waveforms" value="1"/>
     <Option name="show-waveforms-while-recording" value="1"/>
     <Option name="waveform-scale" value="Logarithmic"/>

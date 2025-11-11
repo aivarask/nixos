@@ -103,6 +103,7 @@
         ./systemd/music.nix
         ./systemd/remote-touchpad.nix
         ./systemd/video.nix
+        (import ./sway).system
         ./steam
         ./touchegg
         ./virt/virtualbox.nix
@@ -199,10 +200,12 @@
                 ./tmux
                 ./touchegg/hm_.nix
                 (import ./users/aiva.nix).hm
+                (import ./sway).hm
                 (import ./sh/env.nix).hm
                 (import ./x11).hm
                 (import ./x11/notify.nix).hm
                 (import ./yt-dlp).home-manager
+                (import ./spotify.nix).hm
               ];
             };
           };

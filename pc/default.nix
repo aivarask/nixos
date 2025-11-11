@@ -20,7 +20,6 @@
     # ./disko-config.nix
     # { _module.args.disks = [ "/dev/sda" ]; }
 
-    (import ../sway).system
   ];
   system.stateVersion = "25.05";
   nixpkgs.hostPlatform = "x86_64-linux";

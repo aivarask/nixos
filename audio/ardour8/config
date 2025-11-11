@@ -219,7 +219,7 @@
     </UI>
     <AudioMIDISetup>
       <EngineStates>
-        <State backend="JACK/Pipewire" driver="" device="FastTrack Pro" input-device="" output-device="" sample-rate="48000" buffer-size="1024" n-periods="2" input-latency="0" output-latency="0" lm-input="" lm-output="" active="1" use-buffered-io="0" midi-option="" lru="1762882793">
+        <State backend="JACK/Pipewire" driver="" device="FastTrack Pro" input-device="" output-device="" sample-rate="48000" buffer-size="1024" n-periods="2" input-latency="0" output-latency="0" lm-input="" lm-output="" active="1" use-buffered-io="0" midi-option="" lru="1762897854">
           <MIDIDevices/>
         </State>
       </EngineStates>

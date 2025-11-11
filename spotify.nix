@@ -1,4 +1,10 @@
 {
+  hm =
+    { config, ... }:
+    {
+      xdg.configFile."spotify-flags.conf".source =
+        config.lib.file.mkOutOfStoreSymlink "/etc/nixos/spotify-flags.conf";
+    };
   system =
     { pkgs, ... }:
     {
