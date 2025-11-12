@@ -3,6 +3,8 @@
     { config, ... }:
     {
       xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway/config";
+      xdg.configFile."gtk-3.0/settings.ini".source =
+        config.lib.file.mkOutOfStoreSymlink "/etc/nixos/gtk-3.0_settings.ini";
     };
   system =
     {
@@ -17,6 +19,7 @@
         slurp # screenshot functionality
         wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
         mako # notification system developed by swaywm maintainer
+        swaynotificationcenter
       ];
 
       # Enable the gnome-keyring secrets vault.

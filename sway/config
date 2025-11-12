@@ -8,12 +8,12 @@ set $term foot
 set $menu wmenu-run
 
 seat seat0 xcursor_theme XCursor-Pro-Light 24
-# font pango:DejaVu Sans Mono 12
+# font pango:DejaVu Sans Mono 8
 font monospace 8
 
 ## Output configuration # swaymsg -t get_outputs
 output * bg /etc/nixos/wallpaper/bluemoon/bluemoon.jpg fill
-output * scale 3
+output * scale 2.5
 output 'Dell Inc. DELL P2715Q V48W26BSA82L' resolution 3840x2160 position 2160,0 adaptive_sync on
 # output HDMI-A-1 resolution 1920x1080 position 1920,0
 # output HDMI-A-1 resolution 3840x2160 position 2160,0
@@ -148,18 +148,16 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 # Utilities:
-    # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked $mod+z exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked $mod+x exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
     bindsym Print exec grim
-# Status Bar:
-# Read `man 5 sway-bar` for more information about this section.
+# Status Bar: sway-bar
 bar {
     position top
     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
@@ -170,16 +168,31 @@ bar {
     }
 }
 
-set $mode_launcher [a]rdour8 [f]irefox [s]potify nix-[t]ree
-bindsym $mod+o mode "$mode_launcher"
+set $mode_launcher [1]/etc/nixos [a]rdour8 [f]irefox [S]potify nix-[t]ree [s]ystemctl-tui [n]cmpcpp [M]an-fzf [m]anix-fzf [p]ulsemixer
+bindsym $mod+grave mode "$mode_launcher"
 mode "$mode_launcher" {
-    bindsym f exec firefox
-    bindsym s exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+		bindsym 1 exec $term -D /etc/nixos/ nvim
+    bindsym Shift+s exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
     bindsym a exec ardour8 -T main -N one
+    bindsym f exec firefox
+    bindsym Shift+m exec $term man-fzf
+    bindsym m exec $term manix-fzf
+    bindsym n exec $term ncmpcpp
+    bindsym p exec $term pulsemixer
+    bindsym s exec $term systemctl-tui
     bindsym t exec $term nix-tree
+    bindsym c exec chrome
 
-    bindsym Escape mode "default"
+		bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+# Notification Daemon
+exec swaync
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+exec = gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"   # for GTK3 apps
+exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 apps
+
+# env = QT_QPA_PLATFORMTHEME,qt6ct   # for Qt apps
 
 include /etc/sway/config.d/*

@@ -3,7 +3,7 @@
 chromium \
 	--no-sandbox \
 	--no-default-browser-check \
-	--force-device-scale-factor=2 \
+	--force-device-scale-factor=0.75 \
 	--test-type \
 	--enable-zero-copy \
 	--ignore-gpu-blocklist \
@@ -11,6 +11,7 @@ chromium \
 	--remote-debugging-port=9222 \
 	--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,UseMultiPlaneFormatForHardwareVideo \
 	--enable-unsafe-webgpu \
+	--enable-force-dark \
 	"$@"
 
 # AcceleratedVideoEncoder
