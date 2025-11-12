@@ -60,7 +60,7 @@
   powerManagement.powertop.enable = true;
 
   environment.systemPackages = [
-    pkgs.glxinfo
+    pkgs.mesa-demos
     pkgs.gpu-viewer
     pkgs.vulkan-tools
   ];
