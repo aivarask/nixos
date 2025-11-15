@@ -1,0 +1,37 @@
+# vim: ft=swayconfig
+# Layout:
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+space fullscreen 
+bindsym $mod+Shift+space floating toggle 
+bindsym $mod+ctrl+space focus mode_toggle 
+# bindsym $mod+p focus parent 
+
+set $yt 'https://youtube.com'
+set $url ''
+
+bindsym {
+	$mod+Escape reload
+	$mod+Shift+c kill
+	$mod+c exec chrome --new-window $url
+	# $mod+p exec chrome --new-window --incognito 
+	# $mod+p exec xargs bash -c 'nohup firefox --private-window $@ &' null  < /etc/nixos/sway/p.txt 
+	$mod+p exec chrome --incognito $(cat /etc/nixos/sway/p.txt)
+	$mod+f1 exec $term -D /etc/nixos/ nvim
+	$mod+f3 exec chrome --incognito --new-window $url
+	$mod+f2 exec chrome --new-window $url
+
+  $mod+w exec firefox -new-window
+  $mod+ctrl+w exec firefox $(cat /etc/nixos/sway/sway.txt)
+  $mod+shift+w exec firefox --private-window $url
+
+	$mod+f11 reload
+	# $mod+f12 exec swaynag -t warning -m 'Exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+	$mod+f12 exit
+}
+
+
+exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"

@@ -2,7 +2,7 @@
 {
   services.dunst = {
     # https://smarttech101.com/how-to-configure-dunst-notifications-in-linux-with-images
-    enable = true;
+    enable = false;
     settings = {
       global = {
         width = 800;

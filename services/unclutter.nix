@@ -3,7 +3,7 @@
   # services.xbanish.enable = true;
   services.unclutter-xfixes = {
     # package = pkgs.unclutter-xfixes;
-    enable = true;
+    enable = false;
     threshold = 1;
     timeout = 1;
     extraOptions = [

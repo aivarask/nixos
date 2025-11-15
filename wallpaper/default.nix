@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   systemd.user.services."wallpaper" = {
+    enable = false;
     serviceConfig = {
       Type = "oneshot";
       User = "root";

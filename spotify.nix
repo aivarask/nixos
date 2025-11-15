@@ -26,7 +26,7 @@
           device_type = "computer";
           use_mpris = false;
           # bitrate = 320;
-          dbus_type = "system";
+          dbus_type = "session";
         };
       };
       # services.playerctld.enable = true;

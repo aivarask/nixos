@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   services.dwm-status = {
-    enable = true;
+    enable = false;
     # https://github.com/Gerschtli/dwm-status
     settings =
       builtins.fromTOML ''

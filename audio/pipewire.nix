@@ -22,7 +22,7 @@
   services.pipewire.wireplumber.enable = true;
   services.pipewire.systemWide = true;
   # systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
-  users.users."root".linger = true;
+  users.users."root".linger = false;
   users.users."root".extraGroups = [ "audio" ];
 
   services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {

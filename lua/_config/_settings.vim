@@ -52,11 +52,6 @@ let g:auto_save_events = ['CursorHold']
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
-let g:switch_custom_definitions =
-			\ [
-			\   ['foldenable', 'nofoldenable'],
-			\   ['horizontal', 'vertical']
-			\ ]
 let g:vim_markdown_no_default_key_mappings = 1
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 

@@ -55,6 +55,13 @@ function! Syn()
 	endfor
 endfunction
 
+let g:switch_custom_definitions =
+			\ [
+			\   ['foldenable', 'nofoldenable'],
+			\   ['horizontal', 'vertical'],
+			\   ['enabled', 'disabled'],
+			\   ['foo', 'bar', 'baz']
+			\ ]
 let g:switch_mapping = ''
 nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
 nmap gs <Plug>(SwitchInLine)

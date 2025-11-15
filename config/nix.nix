@@ -49,12 +49,12 @@ in
     # "http://binarycache.dell.local"
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
-    # "https://hyprland.cachix.org"
+    "https://hyprland.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
     "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
   ];
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   nix.settings.flake-registry = "";

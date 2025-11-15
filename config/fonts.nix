@@ -6,11 +6,17 @@
     packages = with pkgs; [
       # twitter-color-emoji
       # twemoji-color-font
+      noto-fonts
       noto-fonts-color-emoji
       nerd-fonts.dejavu-sans-mono
       lato
       nerd-fonts.fira-mono
       nerd-fonts.fira-code
+      powerline-fonts
+
+      font-awesome
+      noto-fonts-monochrome-emoji
+
     ];
     fontconfig = {
       defaultFonts = {

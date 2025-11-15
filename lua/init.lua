@@ -25,6 +25,16 @@ require 'cf_nvim-tree'
 require 'cf_telescope'
 require 'cf_toggleterm'
 
+vim.api.nvim_create_autocmd('BufWritePost', {
+	group = vim.api.nvim_create_augroup('sway', { clear = true }),
+	pattern = { 'sway/*' },
+	callback = function()
+		if vim.bo.filetype == 'swayconfig' then
+			os.execute('swaymsg reload')
+		end
+	end
+})
+
 -- vnew | put =luaeval('vim.inspect(vim)')
 -- vim.api.nvim_create_user_command('Lua', View, { nargs = '+', complete = 'command' })
 function View(v)

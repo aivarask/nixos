@@ -1,0 +1,30 @@
+# vim: ft=swayconfig
+
+### sway-input
+
+input type:keyboard {
+	repeat_delay 250
+	repeat_rate 50
+}
+
+input "Logitech K270" {
+		xkb_numlock enabled
+		xkb_layout "us,lt"
+		xkb_variant ","
+		xkb_options "grp:menu_toggle"
+		xkb_model "pc104"
+}
+
+input type:touchpad {
+		dwt enabled
+		tap enabled
+		natural_scroll enabled
+		middle_emulation enabled
+}
+
+input type:pointer {
+	left_handed disabled
+	accel_profile adaptive # disable mouse acceleration (disabled by default; to set it manually, use "adaptive" instead of "flat")
+	pointer_accel -0.9 # (between -1 and 1)
+}
+
