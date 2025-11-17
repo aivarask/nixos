@@ -7,8 +7,4 @@
       		color=true
       							'';
   };
-  programs.screen = {
-    enable = true;
-    screenrc = '''';
-  };
 }

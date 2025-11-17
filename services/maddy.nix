@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+
   services.maddy = {
     enable = true;
     primaryDomain = "localhost";

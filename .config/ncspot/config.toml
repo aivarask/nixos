@@ -1,3 +1,3 @@
 # https://github.com/hrkfdn/ncspot/blob/main/doc/users.md#configuration
 
-backend = "pulseaudio"
+backend = "alsa"

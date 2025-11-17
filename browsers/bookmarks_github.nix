@@ -22,10 +22,6 @@
           name = "";
         }
         {
-          url = "https://github.com/doronbehar/pistol";
-          name = "";
-        }
-        {
           url = "https://github.com/virchau13/dots";
           name = "";
         }

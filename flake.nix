@@ -76,7 +76,7 @@
         ./go
         ./httpd
         ./lib
-        ./lnav
+
         ./LS_COLORS.nix
         ./lua
         # ./network/dns_basic.nix
@@ -100,6 +100,7 @@
             '';
 
             environment.systemPackages = with pkgs; [
+              git
               systemctl-tui
               sysz
               gdu
@@ -151,24 +152,12 @@
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.homeModules.nix-index
 
-                ./pr_
-                ./git
-                ./audio/hm.nix
-                ./audio/nicotine.nix
+                ./.programs.nix
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
-                # ./kitty
                 ./lua/default_hm.nix
-                ./programs/direnv_.nix
                 ./programs/default_.nix
-                ./programs/gh_.nix
-                ./programs/nixindex_.nix
-                ./sh/bat.nix
-                ./sh/fzf.nix
-                ./sh/pistol.nix
-                ./sh/starship.nix
                 ./sh/zsh.nix
-                ./sql/sql_.nix
                 (import ./sway).hm
                 (import ./sh/env.nix).hm
                 (import ./spotify.nix).hm

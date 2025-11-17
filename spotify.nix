@@ -2,17 +2,11 @@
   hm =
     { config, ... }:
     {
-      # $XDG_CONFIG_HOME/ncspot/config.toml
-      # xdg.configFile."ncspot/config.toml".source =
-      #   config.lib.file.mkOutOfStoreSymlink "/etc/nixos/ncspot_config.toml";
-      xdg.configFile."spotify-flags.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "/etc/nixos/spotify-flags.conf";
     };
   system =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        ncspot
         spotify
       ];
 
