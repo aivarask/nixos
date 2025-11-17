@@ -10,8 +10,8 @@ export YDIFF_OPTIONS='-w40'
 
 # FPATH
 setopt extended_glob
-fpath=(/etc/nixos/sh $fpath)
-autoload -Uz $fpath[1]/**/*(.:t)
+# fpath=(/etc/nixos $fpath)
+# autoload -Uz $fpath[1]/**/*(.:t)
 
 # PATH
 typeset -TU PATH path ':'

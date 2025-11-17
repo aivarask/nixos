@@ -1,8 +1,4 @@
 {
-  hm =
-    { config, ... }:
-    {
-    };
   system =
     {
       config,

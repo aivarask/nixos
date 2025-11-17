@@ -13,22 +13,17 @@ bindsym $mod+ctrl+space focus mode_toggle
 set $yt 'https://youtube.com'
 set $url ''
 
-bindsym {
-	$mod+Escape reload
-	$mod+Shift+c kill
-	$mod+c exec chrome --new-window $url
-	# $mod+p exec chrome --new-window --incognito 
-	# $mod+p exec xargs bash -c 'nohup firefox --private-window $@ &' null  < /etc/nixos/sway/p.txt 
-	$mod+p exec chrome --incognito $(cat /etc/nixos/sway/p.txt)
-	$mod+f1 exec $term -D /etc/nixos/ nvim
-	$mod+f3 exec chrome --incognito --new-window $url
-	$mod+f2 exec chrome --new-window $url
+bindsym	$mod+Escape reload
+bindsym	$mod+Shift+c kill
+# bindsym	$mod+p exec chrome --new-window --incognito 
+# bindsym	$mod+p exec chrome --incognito $(cat /etc/nixos/sway/p.txt)
+# bindsym $mod+ctrl+w exec firefox $(cat /etc/nixos/sway/sway.txt)
+# bindsym	 $mod+shift+w exec firefox --private-window $url
 
-  $mod+w exec firefox -new-window
-  $mod+ctrl+w exec firefox $(cat /etc/nixos/sway/sway.txt)
-  $mod+shift+w exec firefox --private-window $url
-
-}
+bindsym $mod+w exec firefox -new-window
+bindsym $mod+c exec chromium --new-window $url
 
 
-exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"
+
+bindsym	 $mod+f1 exec $term -D /etc/nixos/ nvim
+# exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"
