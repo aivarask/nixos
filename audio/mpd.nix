@@ -63,19 +63,19 @@
       };
       # https://search.nixos.org/options?channel=unstable&show=systemd.tmpfiles.rules&from=0&size=50&sort=relevance&type=packages&query=systemd.tmpfiles
 
-      system.userActivationScripts.linktoplaylist = {
-        text = ''
-          su="${pkgs.su}/bin/su"
-                    				su aiva --shell ${pkgs.runtimeShell} --command "mkdir /home/aiva/foo"
-                              # if [[ ! -h "/var/lib/mpd/playlists/audio" ]]; then
-                              # notify-send 'create symlink'
-                              # ln -s "/var/lib/mpd/playlists/audio" "/etc/nixos/audio/" 
-                              # else
-                              # unlink "/var/lib/mpd/playlists/audio"
-                              # notify-send 'unlink'
-                              # fi
-        '';
-
-      };
+      # system.userActivationScripts.linktoplaylist = {
+      #   text = ''
+      #     su="${pkgs.su}/bin/su"
+      #               				su aiva --shell ${pkgs.runtimeShell} --command "mkdir /home/aiva/foo"
+      #                         # if [[ ! -h "/var/lib/mpd/playlists/audio" ]]; then
+      #                         # notify-send 'create symlink'
+      #                         # ln -s "/var/lib/mpd/playlists/audio" "/etc/nixos/audio/"
+      #                         # else
+      #                         # unlink "/var/lib/mpd/playlists/audio"
+      #                         # notify-send 'unlink'
+      #                         # fi
+      #   '';
+      #
+      # };
     };
 }

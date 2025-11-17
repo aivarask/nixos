@@ -2,6 +2,8 @@
   hm =
     { config, ... }:
     {
+      xdg.configFile."foot/foot.ini".source =
+        config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway/foot.ini";
       xdg.configFile."sway".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway";
       xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway/waybar";
       xdg.configFile."gtk-3.0/settings.ini".source =
@@ -24,8 +26,11 @@
       programs.hyprland.enable = true;
       programs.hyprland.withUWSM = true;
       environment.systemPackages = with pkgs; [
+        uwsm
         sway
+        i3
         wev
+        wlr-which-key
         grim # screenshot functionality
         slurp # screenshot functionality
         wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -58,7 +63,6 @@
       ];
       environment.etc."themes/catppuccin".source = pkgs.catppuccin;
 
-      services.power-profiles-daemon.enable = true;
       services.gnome.gnome-keyring.enable = true;
       programs.sway.enable = true;
       programs.sway.wrapperFeatures.gtk = true;

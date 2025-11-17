@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-dmenu_path | dmenu -l 20 | xargs which | xargs xdg-open

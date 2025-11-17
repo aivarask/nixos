@@ -1,0 +1,9 @@
+# vim: ft=swayconfig
+
+# sway-output 
+# swaymsg -t get_outputs
+output 'Dell Inc. DELL P2715Q V48W26BSA82L' {
+	mode 3840x2160@60Hz
+	scale 2.0
+	adaptive_sync on
+}

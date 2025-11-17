@@ -23,12 +23,10 @@ let
   );
 in
 {
-  # environment.etc."awesome".source = pkgs.awesome; # fails
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [
     # neovim-remote
-    # awesome # fails
     stylua
     lua-language-server
     myLua
@@ -46,12 +44,6 @@ in
           with inputs;
           prev.vimPlugins
           // {
-            sxhkd-vim = buildVimPlugin {
-              name = "sxhkd-vim";
-              src = inputs.sxhkd-vim;
-              doCheck = false;
-              meta.home = inputs.sxhkd-vim.url;
-            };
             websocket-nvim = buildVimPlugin {
               name = "websocket-nvim";
               src = websocket-nvim;

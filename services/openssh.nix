@@ -5,7 +5,7 @@
 
   programs.ssh = {
     # ciphers = [ ];
-    forwardX11 = true;
+    # forwardX11 = true;
     # compression = true; # home-manager
   };
   services.openssh = {

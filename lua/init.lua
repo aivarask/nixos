@@ -27,10 +27,15 @@ require 'cf_toggleterm'
 
 vim.api.nvim_create_autocmd('BufWritePost', {
 	group = vim.api.nvim_create_augroup('sway', { clear = true }),
-	pattern = { 'sway/*' },
+	pattern = {
+		'*/waybar/*.*',
+		'sway/*',
+	},
 	callback = function()
 		if vim.bo.filetype == 'swayconfig' then
 			os.execute('swaymsg reload')
+		elseif vim.bo.filetype == 'jsonc' then
+			os.execute('pkill -USR2 waybar')
 		end
 	end
 })

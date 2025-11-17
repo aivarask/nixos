@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-query="$(echo "" | dmenu -p "nps " <&-)"
-[ -n "${query}" ] && alacritty --hold -e nps "$query"

@@ -41,8 +41,6 @@
   inputs.sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
   inputs.sxiv-tabbed.flake = false;
   #
-  inputs.sxhkd-vim.url = "github:kovetskiy/sxhkd-vim";
-  inputs.sxhkd-vim.flake = false;
   inputs.vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
   inputs.vim-log-highlighting.flake = false;
   inputs.vim-interestingwords.url = "github:lfv89/vim-interestingwords";
@@ -88,30 +86,22 @@
         ./nps.nix
         ./programs
         ./python
-        ./services
-        ./services/deskflow.nix
-        ./services/dwm-status.nix
-        ./services/kmscon.nix
-        ./services/maddy.nix
-        ./services/nginx.nix
+        # ./services/maddy.nix
+        # ./services/nginx.nix
         ./services/openssh.nix
-        ./services/redshift.nix
-        ./services/transmission.nix
-        ./services/unclutter.nix
+        # ./services/transmission.nix
         ./sql/sql.nix
-        ./suckless
-        ./systemd/music.nix
-        ./systemd/remote-touchpad.nix
-        ./systemd/video.nix
         (import ./sway).system
-        ./steam
-        ./touchegg
-        ./virt/virtualbox.nix
-        ./wallpaper
         (
           { pkgs, ... }:
           {
+            systemd.sleep.extraConfig = ''
+              HibernateDelaySec=1h
+            '';
+
             environment.systemPackages = with pkgs; [
+              systemctl-tui
+              sysz
               gdu
               duf
 
@@ -134,15 +124,11 @@
             ];
           }
         )
-        (import ./llm.nix).system
-        (import ./users/aiva.nix).system
         (import ./spotify.nix).system
         (import ./sh/env.nix).system
-        (import ./x11).default
-        (import ./yt-dlp).system
         inputs.home-manager.nixosModules.home-manager
         {
-          home-manager = rec {
+          home-manager = {
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
@@ -152,10 +138,6 @@
               inherit inputs;
             };
             sharedModules = [ { home.stateVersion = "23.05"; } ];
-            users.aiva = users.root // {
-              home.username = "aiva";
-              home.homeDirectory = "/home/aiva";
-            };
 
             users.root = {
               home.username = "root";
@@ -165,48 +147,37 @@
               programs.man.generateCaches = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               services.mpris-proxy.enable = true;
-              imports = [
-                inputs.nix-colors.homeManagerModules.default
-                inputs.nix-index-database.homeModules.nix-index
+									imports = [
+										inputs.nix-colors.homeManagerModules.default
+										inputs.nix-index-database.homeModules.nix-index
 
-                ./git
-                ./awesome
-                ./audio/hm.nix
-                ./audio/nicotine.nix
-                ./browsers/chromium.nix
-                ./browsers/firefox.nix
-                ./htop
-                ./kitty
-                ./lf
-                ./lua/default_hm.nix
-                ./mpv
-                ./ncmpcpp
-                ./picom/hm_.nix
-                ./programs/direnv_.nix
-                ./programs/default_.nix
-                ./programs/gh_.nix
-                ./programs/nixindex_.nix
-                ./rofi
-                ./services/dunst_.nix
-                ./sh/bat.nix
-                ./sh/fzf.nix
-                ./sh/pistol.nix
-                ./sh/starship.nix
-                ./sh/zsh.nix
-                ./sql/sql_.nix
-                ./sxhkd
-                (import ./term/alacritty.nix).home-manager
-                (import ./term/wezterm.nix).home-manager
-                ./tmux
-                ./touchegg/hm_.nix
-                (import ./users/aiva.nix).hm
-                (import ./sway).hm
-                (import ./sh/env.nix).hm
-                (import ./x11).hm
-                (import ./x11/notify.nix).hm
-                (import ./yt-dlp).home-manager
-                (import ./spotify.nix).hm
-              ];
+								./pr_
+										./git
+										./audio/hm.nix
+										./audio/nicotine.nix
+										./browsers/chromium.nix
+										./browsers/firefox.nix
+										./htop
+										# ./kitty
+										./lf
+										./lua/default_hm.nix
+										./mpv
+										./ncmpcpp
+										./programs/direnv_.nix
+										./programs/default_.nix
+										./programs/gh_.nix
+										./programs/nixindex_.nix
+										# ./services/dunst_.nix
+										./sh/bat.nix
+										./sh/fzf.nix
+										./sh/pistol.nix
+										./sh/starship.nix
+										./sh/zsh.nix
+										./sql/sql_.nix
+										(import ./sway).hm
+										(import ./sh/env.nix).hm
+										(import ./spotify.nix).hm
+									];
             };
           };
         }

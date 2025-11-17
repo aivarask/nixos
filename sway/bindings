@@ -28,9 +28,6 @@ bindsym {
   $mod+ctrl+w exec firefox $(cat /etc/nixos/sway/sway.txt)
   $mod+shift+w exec firefox --private-window $url
 
-	$mod+f11 reload
-	# $mod+f12 exec swaynag -t warning -m 'Exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
-	$mod+f12 exit
 }
 
 

@@ -66,7 +66,7 @@ return {
 			},
 			diagnostics = { -- luals.github.io/wiki/diagnostics
 				disable = { 'lowercase-global', 'unused-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
-				globals = { "mp", "awesome", "client", "root", "screen" }
+				globals = { "mp", "client", "root", "screen" }
 			},
 			format = {
 				enable = true

@@ -9,6 +9,6 @@
     icons = "auto";
     enableZshIntegration = false;
   };
-  programs.nushell.enable = true;
-  programs.zathura.enable = true;
+  # programs.nushell.enable = true;
+  # programs.zathura.enable = true;
 }

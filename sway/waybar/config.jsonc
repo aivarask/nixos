@@ -1,37 +1,28 @@
 // -*- mode: jsonc -*-
 // https://github.com/Alexays/Waybar/wiki/Configuration
 {
-	// "layer": "top", // Waybar at top layer
-	// "position": "right", // Waybar position (top|bottom|left|right)
+	"layer": "bottom",
+	"position": "bottom", // Waybar position (top|bottom|left|right)
 	"height": 24, // Waybar height (to be removed for auto height)
-	// "width": 1280, // Waybar width
+	"width": 1280,
 	"spacing": 0, // Gaps between modules (4px)
+	"reload_style_on_change": true,
+	"include": [
+		"~/.config/waybar/modules.jsonc",
+		"~/.config/waybar/audio.jsonc"
+		// "~/.config/waybar/power.jsonc",
+	],
 	// Choose the order of the modules
 	"modules-left": [
 		"sway/workspaces",
-		"sway/mode",
-		"sway/scratchpad"
+		"sway/mode"
 	],
-	// "modules-center": [
-	// "sway/window"
-	// ],
+	"modules-center": [
+		"sway/scratchpad"
+		// "sway/window"
+	],
 	"modules-right": [
-		"mpd",
-		// "idle_inhibitor",
-		"pulseaudio",
-		"network",
-		// "power-profiles-daemon",
-		"cpu",
-		"memory",
-		"temperature",
-		// "backlight",
-		"keyboard-state",
-		"sway/language",
-		// "battery",
-		// "battery#bat2",
-		"clock",
-		// "tray",
-		"custom/power"
+		"sway/language"
 	],
 	// Modules configuration
 	"sway/workspaces": {
@@ -44,19 +35,9 @@
 			"2": "",
 			"3": "",
 			"4": "",
-			"5": "",
 			"urgent": "",
 			"focused": "",
 			"default": ""
-		}
-	},
-	"keyboard-state": {
-		"numlock": true,
-		"capslock": true,
-		"format": "{name} {icon}",
-		"format-icons": {
-			"locked": "",
-			"unlocked": ""
 		}
 	},
 	"sway/mode": {
@@ -71,174 +52,5 @@
 		],
 		"tooltip": true,
 		"tooltip-format": "{app}: {title}"
-	},
-	"mpd": {
-		"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} {filename} {volume}% ",
-		"format-disconnected": "Disconnected ",
-		"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
-		"unknown-tag": "N/A",
-		"interval": 5,
-		"consume-icons": {
-			"on": " "
-		},
-		"random-icons": {
-			"on": ""
-		},
-		"repeat-icons": {
-			"on": " "
-		},
-		"single-icons": {
-			"on": "1 "
-		},
-		"state-icons": {
-			"paused": "",
-			"playing": ""
-		},
-		"tooltip-format": "MPD (connected)",
-		"tooltip-format-disconnected": "MPD (disconnected)",
-		"on-click": "foot ncmpcpp"
-	},
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
-	"tray": {
-		// "icon-size": 21,
-		"spacing": 10
-		// "icons": {
-		//   "blueman": "bluetooth",
-		//   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-		// }
-	},
-	"clock": {
-		// "timezone": "America/New_York",
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": "{:%Y-%m-%d}"
-	},
-	"cpu": {
-		"format": "{usage}% ",
-		"tooltip": true
-	},
-	"memory": {
-		"format": "{}% "
-	},
-	"temperature": {
-		// "thermal-zone": 2,
-		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-		"critical-threshold": 80,
-		// "format-critical": "{temperatureC}°C {icon}",
-		"format": "{temperatureC}°C {icon}",
-		"format-icons": [
-			"",
-			"",
-			""
-		]
-	},
-	"backlight": {
-		// "device": "acpi_video1",
-		"format": "{percent}% {icon}",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
-	"battery": {
-		"states": {
-			"good": 80,
-			"warning": 30,
-			"critical": 15
-		},
-		"format": "{capacity}% {icon}",
-		"format-full": "{capacity}% {icon}",
-		"format-charging": "{capacity}% ",
-		"format-plugged": "{capacity}% ",
-		"format-alt": "{time} {icon}",
-		// "format-good": "", // An empty format will hide the module
-		// "format-full": "",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
-	"battery#bat2": {
-		"bat": "BAT2"
-	},
-	"power-profiles-daemon": {
-		"format": "{icon}",
-		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-		"tooltip": true,
-		"format-icons": {
-			"default": "",
-			"performance": "",
-			"balanced": "",
-			"power-saver": ""
-		}
-	},
-	"network": {
-		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "{essid} ({signalStrength}%) ",
-		"format-ethernet": "{ipaddr}/{cidr} ",
-		"tooltip-format": "{ifname} via {gwaddr} ",
-		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
-		"on-click-right": "xdg-open https://192.168.1.1"
-	},
-	"pulseaudio": {
-		"scroll-step": 5,
-		"format": "{volume}% {icon} {format_source}",
-		"format-bluetooth": "{volume}% {icon} {format_source}",
-		"format-bluetooth-muted": " {icon} {format_source}",
-		"format-muted": " {format_source}",
-		"format-source": "{volume}% ",
-		"format-source-muted": "",
-		"format-icons": {
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"portable": "",
-			"car": "",
-			"default": [
-				"",
-				"",
-				""
-			]
-		},
-		"on-click": "pavucontrol"
-	},
-	"custom/media": {
-		"format": "{icon} {text}",
-		"return-type": "json",
-		"max-length": 40,
-		"format-icons": {
-			"spotify": "",
-			"default": ""
-		},
-		"escape": true,
-		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-		// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-	},
-	"custom/power": {
-		"format": " ⏻ ",
-		"tooltip": true,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml",
-		"menu-actions": {
-			"shutdown": "shutdown"
-		}
 	}
 }

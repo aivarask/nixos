@@ -1,4 +1,5 @@
 # vim: ft=swayconfig
+
 set $white #ffffff
 set $bg #282828
 set $red #cc241d
@@ -20,4 +21,15 @@ gaps outer 4px
 smart_gaps on
 hide_edge_borders smart_no_gaps
 font pango:monospace 8
+seat seat0 xcursor_theme "XCursor-Pro-Light" 24
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark-Compact" 
+	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+	gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+}
 output * bg /etc/nixos/wallpaper/bluemoon/bluemoon.jpg fill
+
+# sway-bar
+bar {
+	swaybar_command waybar
+}

@@ -8,7 +8,7 @@
         litellm
         claude-code
         lmstudio
-        open-webui
+        # open-webui
         n8n
 
         python3Packages.huggingface-hub

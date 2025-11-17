@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-find /run/current-system/ -iname $1 -print0 -follow 2>/dev/null | xargs -0 ls | xargs -I {} notify-send "{}"
-alacritty -e 'lf' &
-disown alacritty

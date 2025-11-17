@@ -1,0 +1,4 @@
+# vim: ft=swayconfig
+
+exec swaync
+bindsym $mod+Shift+n exec swaync-client -t -sw

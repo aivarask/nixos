@@ -1,0 +1,11 @@
+{
+	"custom/power": {
+		"format": " ⏻ ",
+		"tooltip": true,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown"
+		}
+	}
+}

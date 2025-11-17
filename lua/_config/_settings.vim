@@ -79,19 +79,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 
 "noremap <C-S-,> :left<CR>
 
-nnoremap ?a :edit /etc/nixos/term/alacritty.extra.toml<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
-nnoremap ?l :edit ~/.config/lf/lfrc<CR>
-nnoremap ?s :edit ~/.config/vim/_config/_settings.vim<CR>
-nnoremap ?k :edit ~/.config/vim/_keys.lua<CR>
-nnoremap ?i :edit ~/.config/vim/init.lua<CR>
-nnoremap ?o :call system('xdg-open ' .. expand("%") .. ' &')<CR>
-nnoremap ?p :edit ~/.config/picom.conf<CR>
-nnoremap ?m :edit ~/.config/mimeapps.list<CR>
-nnoremap ?S :edit ~/.config/sxhkd/sxhkdrc<CR>
-nnoremap ?x :edit ~/.xinitrc<CR>
-nnoremap ?t :edit /etc/nixos/lua/_config/telescope.lua<CR>
-nnoremap ?T :edit /etc/nixos/lua/cf_toggleterm.lua<CR>
 nnoremap ?z :edit ~/.zshrc_<CR>
 
 if !has('gui_running')
