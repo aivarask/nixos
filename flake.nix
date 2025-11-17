@@ -147,37 +147,32 @@
               programs.man.generateCaches = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               services.mpris-proxy.enable = true;
-									imports = [
-										inputs.nix-colors.homeManagerModules.default
-										inputs.nix-index-database.homeModules.nix-index
+              imports = [
+                inputs.nix-colors.homeManagerModules.default
+                inputs.nix-index-database.homeModules.nix-index
 
-								./pr_
-										./git
-										./audio/hm.nix
-										./audio/nicotine.nix
-										./browsers/chromium.nix
-										./browsers/firefox.nix
-										./htop
-										# ./kitty
-										./lf
-										./lua/default_hm.nix
-										./mpv
-										./ncmpcpp
-										./programs/direnv_.nix
-										./programs/default_.nix
-										./programs/gh_.nix
-										./programs/nixindex_.nix
-										# ./services/dunst_.nix
-										./sh/bat.nix
-										./sh/fzf.nix
-										./sh/pistol.nix
-										./sh/starship.nix
-										./sh/zsh.nix
-										./sql/sql_.nix
-										(import ./sway).hm
-										(import ./sh/env.nix).hm
-										(import ./spotify.nix).hm
-									];
+                ./pr_
+                ./git
+                ./audio/hm.nix
+                ./audio/nicotine.nix
+                ./browsers/chromium.nix
+                ./browsers/firefox.nix
+                # ./kitty
+                ./lua/default_hm.nix
+                ./programs/direnv_.nix
+                ./programs/default_.nix
+                ./programs/gh_.nix
+                ./programs/nixindex_.nix
+                ./sh/bat.nix
+                ./sh/fzf.nix
+                ./sh/pistol.nix
+                ./sh/starship.nix
+                ./sh/zsh.nix
+                ./sql/sql_.nix
+                (import ./sway).hm
+                (import ./sh/env.nix).hm
+                (import ./spotify.nix).hm
+              ];
             };
           };
         }
