@@ -125,8 +125,7 @@
             ];
           }
         )
-        (import ./spotify.nix).system
-        (import ./sh/env.nix).system
+        (import ./env.nix).system
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -156,11 +155,8 @@
                 ./browsers/chromium.nix
                 ./browsers/firefox.nix
                 ./lua/default_hm.nix
-                ./programs/default_.nix
-                ./sh/zsh.nix
                 (import ./sway).hm
-                (import ./sh/env.nix).hm
-                (import ./spotify.nix).hm
+                (import ./env.nix).hm
               ];
             };
           };

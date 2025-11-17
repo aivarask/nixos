@@ -49,8 +49,8 @@
         # HM programs.bash.initExtra 
         source $HOME/.bashrc_
       ''; # $HOME/.bashrc
-      home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/bashrc_";
-      home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/alias";
+      home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.bashrc_";
+      home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
 
       programs.zsh.enable = true;
       programs.zsh.profileExtra = ''
@@ -68,8 +68,8 @@
             # HM programs.zsh.initContent
         		source $HOME/.zshrc_
       '';
-      home.file.".zprofile_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zprofile_";
-      home.file.".zshenv_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshenv_";
-      home.file.".zshrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sh/zshrc_";
+      home.file.".zprofile_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zprofile_";
+      home.file.".zshenv_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zshenv_";
+      home.file.".zshrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zshrc_";
     };
 }

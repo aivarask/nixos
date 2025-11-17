@@ -31,9 +31,8 @@ typeset -TU NIX_PROFILES np ' '
 typeset -TU GTK_PATH gtk_path ':'
 typeset -TU XCURSOR_PATH xcursor_path ':'
 
-source $SELF/sh/zsh.completion
-source $SELF/sh/zsh.hooks
-source $SELF/sh/zshrc.dev
+source $SELF/.zsh_completion
+source $SELF/.zsh_hooks
 
 nix-clean() {
 	nix-env --delete-generations old

@@ -35,6 +35,45 @@
         };
       }
     )
+    (
+      { pkgs, ... }:
+      {
+        # https://github.com/rothgar/mastering-zsh
+        home.packages = with pkgs; [
+          bash-language-server
+          shellcheck
+          shfmt
+          dotenv-linter
+          shellharden
+        ];
+        programs.zsh.autocd = true;
+        programs.zsh.syntaxHighlighting.enable = true;
+        programs.zsh.autosuggestion.enable = false;
+        # programs.zsh.dotDir = ".config/zsh";
+        programs.zsh.history.size = 10000;
+        programs.zsh.history.extended = true;
+        programs.zsh.plugins = [
+          {
+            name = "zsh-autocomplete";
+            src = pkgs.zsh-autocomplete;
+            file = "share/zsh-autocomplete/zsh-autocomplete.zsh";
+          }
+
+          #https://github.com/agkozak/zhooks
+          # {
+          #   name = "vi-mode";
+          #   src = pkgs.zsh-vi-mode; # https://github.com/jeffreytse/zsh-vi-mode
+          #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+          # }
+          # {
+          #   name = "system-clipboard";
+          #   src = pkgs.zsh-system-clipboard; # https://github.com/kutsan/zsh-system-clipboard
+          #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
+          # }
+        ];
+
+      }
+    )
   ];
 
   home.packages = with pkgs; [
@@ -45,13 +84,14 @@
     gtk4
     gtk-doc
     vimpager
-    ncspot
     # bitwarden-cli
     # bitwarden
     # bitwarden-desktop
     nicotine-plus
+    spotify
+    ncspot
   ];
-  # home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.ripgreprc";
+  home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.ripgreprc";
   programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
@@ -141,4 +181,37 @@
     #   cat ${config.home.homeDirectory}/.config/nicotine/config_def > ${config.home.homeDirectory}/.config/nicotine/config
     # '';
   };
+
+  programs.eza.enable = true;
+  programs.eza.icons = "auto";
+  programs.eza.enableZshIntegration = false;
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+  programs.direnv.config = {
+    load_dotenv = true;
+  };
+  programs.direnv.enableBashIntegration = true;
+  programs.direnv.enableZshIntegration = true;
+
+  programs.gh.enable = true;
+  programs.gh.extensions = with pkgs; [
+    gh-eco
+    # gh-poi
+    # gh-dash
+    # gh-actions-cache
+    gh-markdown-preview
+  ];
+  programs.gh.settings = {
+    git_protocol = "ssh";
+    prompt = "enabled";
+    aliases = {
+      co = "pr checkout";
+      pv = "pr view";
+    };
+  };
+  programs.nix-index-database.comma.enable = true;
+  programs.nix-index.enable = true;
+  programs.nix-index.enableZshIntegration = true;
+  programs.nix-index.enableBashIntegration = true;
 }
