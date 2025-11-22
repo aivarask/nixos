@@ -4,6 +4,9 @@
   SELF,
   ...
 }:
+let
+  CONFIG = "${SELF}/.config";
+in
 
 {
   imports = [
@@ -98,7 +101,7 @@
   programs.fzf.enableZshIntegration = true;
   # home.file.".mixxx".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.mixxx";
   xdg.configFile."ardour8".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/ardour8";
-  xdg.configFile."bat".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/bat";
+  xdg.configFile."bat".source = config.lib.file.mkOutOfStoreSymlink "${CONFIG}/bat";
   programs.bat.enable = true;
   programs.bat.extraPackages = with pkgs.bat-extras; [
     batgrep
@@ -128,21 +131,11 @@
   xdg.configFile."git/ignore".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/git/ignore";
 
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-    enableNushellIntegration = true;
-    settings = {
-      add_newline = false;
-      package.disabled = true;
-      golang.disabled = true;
-      lua.disabled = true;
-      nodejs.disabled = true;
-      php.disabled = true;
-      rust.disabled = true;
-    };
-  };
+  programs.starship.enable = true;
+  xdg.configFile."starship.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/starship.toml";
+  programs.starship.enableBashIntegration = true;
+  programs.starship.enableZshIntegration = true;
 
   xdg.configFile."mpv".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/mpv";
   programs.mpv.enable = true;

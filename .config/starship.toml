@@ -1,0 +1,19 @@
+add_newline = true
+
+[golang]
+disabled = true
+
+[lua]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[php]
+disabled = true
+
+[rust]
+disabled = true
