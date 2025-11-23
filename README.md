@@ -1,5 +1,6 @@
 # links
 https://github.com/sxyazi/yazi
+https://unmovedcentre.com/posts/remote-install-nixos-config/
 
 # tools
 

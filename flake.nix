@@ -75,26 +75,23 @@
         ./config/nix.nix
         ./go
         ./httpd
-        ./lib
+        ./lib.nix
 
-        ./LS_COLORS.nix
         ./lua
         # ./network/dns_basic.nix
         ./network/networking.nix
         ./network/wireless.nix
-        ./node
         ./nps.nix
         ./programs
-        ./python
-        # ./services/maddy.nix
-        # ./services/nginx.nix
-        ./services/openssh.nix
-        # ./services/transmission.nix
-        ./sql/sql.nix
+        ./lang/nodejs.nix
+        ./lang/python
+        ./lang/sql.nix
+        ./services.nix
         (import ./.config/sway).system
         (
           { pkgs, ... }:
           {
+            nixpkgs.overlays = with inputs; [ (_: _: { inherit LS_COLORS; }) ];
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h
             '';
