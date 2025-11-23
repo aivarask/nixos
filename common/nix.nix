@@ -51,9 +51,9 @@ in
   ];
   nix.settings.trusted-public-keys = [
     "192.168.1.190:YPjH31SlPEvdpSkTlctSTo63hqWdgF7C0/gVmBL43FE="
+    "192.168.1.180:AqyrULqqayXjY/9Du8yMSz3tK4jmloQhQkVumXvOyxg="
   ];
   nix.settings.extra-substituters = lib.mkForce [
-    # "http://binarycache.dell.local"
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
     "https://hyprland.cachix.org"
