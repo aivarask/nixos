@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  services.httpd.enable = true;
+  services.httpd.enable = false;
   services.httpd.enablePHP = true;
   services.httpd.logPerVirtualHost = false;
   services.httpd.logFormat = "common";

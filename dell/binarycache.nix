@@ -1,5 +1,8 @@
 { config, ... }:
 {
+  nix.settings.substituters = [
+    "http://192.168.1.190"
+  ];
   services.nix-serve = {
     enable = true;
     secretKeyFile = "/var/cache-priv-key.pem";

@@ -22,7 +22,6 @@ bindkey '^[[1;5C' autosuggest-accept # C-Right
 bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
-bindkey -s "^[[24~" "systemctl restart kmsconvt@tty1.service\n" # <F12>
 
 cmd_preview () { pistol $BUFFER }
 zle -N cmd_preview cmd_preview
