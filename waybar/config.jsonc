@@ -1,5 +1,4 @@
 // -*- mode: jsonc -*-
-// https://github.com/Alexays/Waybar/wiki/Configuration
 {
 	"layer": "bottom",
 	"spacing": 0,
