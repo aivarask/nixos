@@ -64,7 +64,7 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        (import ./.config/sway).system
+        (import ./sway).system
         (import ./audio/mpd.nix).system
         ./audio/pipewire.nix
         ./audio/production.nix

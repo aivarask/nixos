@@ -116,10 +116,12 @@ in
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
-  xdg.configFile."sway".source = symlink "${xdgconf}/sway";
-  xdg.configFile."waybar".source = symlink "${xdgconf}/waybar";
+  xdg.configFile."sway".source = symlink "${SELF}/sway";
+  # xdg.configFile."sway".source = symlink "${xdgconf}/sway";
+  xdg.configFile."waybar".source = symlink "${SELF}/waybar";
+  # xdg.configFile."waybar".source = symlink "${xdgconf}/waybar";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
-  xdg.configFile."gtk-3.0".source = symlink "/etc/nixos/./config/gtk-3.0";
+  xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";
   xdg.configFile."gtk-4.0".source = symlink "${xdgconf}/gtk-4.0";
   xdg.configFile."htop".source = symlink "${xdgconf}/htop";
   xdg.configFile."lf".source = symlink "${xdgconf}/lf";
