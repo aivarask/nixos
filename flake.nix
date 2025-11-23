@@ -64,30 +64,25 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
+        (import ./.config/sway).system
         (import ./audio/mpd.nix).system
         ./audio/pipewire.nix
         ./audio/production.nix
-        ./config
-        ./config/documentation.nix
-        ./config/environment.nix
-        ./config/fonts.nix
-        ./config/i18n.nix
-        ./config/nix.nix
-        ./go
+        ./common/config.nix
+        ./common/nix.nix
+        ./common/nps.nix
+        ./common/services.nix
+        (import ./env.nix).system
         ./httpd
+        ./lang/go.nix
+        ./lang/nodejs.nix
+        ./lang/python
+        ./lang/sql.nix
         ./lib.nix
-
         ./lua
         # ./network/dns_basic.nix
         ./network/networking.nix
         ./network/wireless.nix
-        ./nps.nix
-        ./programs
-        ./lang/nodejs.nix
-        ./lang/python
-        ./lang/sql.nix
-        ./services.nix
-        (import ./.config/sway).system
         (
           { pkgs, ... }:
           {
@@ -122,7 +117,6 @@
             ];
           }
         )
-        (import ./env.nix).system
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -392,7 +386,6 @@
         minimal_iso = inputs.nixos-generators.nixosGenerate {
           inherit system;
           modules = [
-            ./minimal.nix
           ];
           format = "install-iso";
 
