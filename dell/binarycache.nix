@@ -48,7 +48,7 @@
     enable = true;
     recommendedProxySettings = true;
     virtualHosts = {
-      "binarycache.dell.local" = {
+      "192.168.1.180" = {
         locations."/".proxyPass =
           "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
       };
