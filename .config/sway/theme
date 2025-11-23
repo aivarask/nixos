@@ -27,7 +27,7 @@ exec_always {
 	gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 	gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 }
-output * bg /etc/nixos/wallpaper/bluemoon/bluemoon.jpg fill
+output * bg /etc/nixos/wallpaper/other/somatoast.png fill
 
 # sway-bar
 bar {
