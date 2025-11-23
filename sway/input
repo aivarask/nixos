@@ -23,7 +23,7 @@ input type:touchpad {
 
 input type:pointer {
 	left_handed disabled
-	accel_profile adaptive # disable mouse acceleration (disabled by default; to set it manually, use "adaptive" instead of "flat")
-	pointer_accel -0.9 # (between -1 and 1)
+	accel_profile adaptive 
+	pointer_accel -0.9
 }
 
