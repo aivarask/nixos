@@ -57,7 +57,7 @@
       turbo = "auto";
     };
   };
-  powerManagement.powertop.enable = true;
+  # powerManagement.powertop.enable = true;
 
   environment.systemPackages = [
     pkgs.mesa-demos
