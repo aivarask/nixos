@@ -11,7 +11,6 @@ bindsym $mod+ctrl+space focus mode_toggle
 # bindsym $mod+p focus parent 
 
 set $yt 'https://youtube.com'
-set $url ''
 
 bindsym	$mod+Escape reload
 bindsym	$mod+Shift+c kill
@@ -22,6 +21,7 @@ bindsym	$mod+Shift+c kill
 
 bindsym $mod+w exec firefox -new-window
 bindsym $mod+c exec chromium --new-window $url
+bindsym $mod+ctrl+c exec chromium --incognito --new-window $url
 
 
 
