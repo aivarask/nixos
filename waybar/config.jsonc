@@ -2,10 +2,7 @@
 // https://github.com/Alexays/Waybar/wiki/Configuration
 {
 	"layer": "bottom",
-	// "position" "bottom",
-	// "height": 24,
-	// "width": 1280,
-	"spacing": 20,
+	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
 		"~/.config/waybar/modules.jsonc",
@@ -20,7 +17,9 @@
 		// "sway/window"
 	],
 	"modules-right": [
+		"network",
 		"backlight",
+		"battery",
 		"sway/language",
 		"clock"
 	],
@@ -31,10 +30,10 @@
 		"warp-on-scroll": false,
 		"format": "{name}: {icon}",
 		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
 			"urgent": "",
 			"focused": "",
 			"default": ""
