@@ -11,22 +11,21 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-intel-disable
+    ./../../common/boot.nix
+    ./../../lsp
     ./binarycache.nix
     ./bluetooth.nix
-    ../common/boot.nix
     ./boot.nix
     ./samba.nix
     ./network.nix
     ./storage.nix
     # ./virt.nix
-    ../lsp
   ];
 
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.switcherooControl.enable = true;
-  # services.xserver.dpi = (96 * 3);
 
   # https://discourse.nixos.org/t/what-is-the-best-option-for-power-management/63406/6
   # https://wiki.nixos.org/wiki/Laptop
@@ -47,14 +46,10 @@
   };
   services.auto-cpufreq.enable = false;
   services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
+    battery.governor = "powersave";
+    battery.turbo = "never";
+    charger.governor = "performance";
+    charger.turbo = "auto";
   };
   # powerManagement.powertop.enable = true;
 

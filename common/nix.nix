@@ -45,6 +45,13 @@ in
   nix.settings.max-jobs = 8;
   nix.settings.cores = 4;
   nix.settings.auto-optimise-store = true;
+  nix.settings.substituters = lib.mkForce [
+    "http://192.168.1.190"
+    "http://192.168.1.180"
+  ];
+  nix.settings.trusted-public-keys = [
+    "192.168.1.190:YPjH31SlPEvdpSkTlctSTo63hqWdgF7C0/gVmBL43FE="
+  ];
   nix.settings.extra-substituters = lib.mkForce [
     # "http://binarycache.dell.local"
     "https://nix-community.cachix.org"
@@ -53,7 +60,6 @@ in
   ];
   nix.settings.extra-trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
   ];

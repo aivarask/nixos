@@ -10,17 +10,15 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ../common/boot.nix
+    ./../../common/boot.nix
+    ./../../lsp
     ./binarycache.nix
     ./boot.nix
     ./network.nix
     ./storage.nix
-    ../lsp
-
     # inputs.disko.nixosModules.disko
     # ./disko-config.nix
     # { _module.args.disks = [ "/dev/sda" ]; }
-
   ];
   system.stateVersion = "25.05";
   nixpkgs.hostPlatform = "x86_64-linux";
