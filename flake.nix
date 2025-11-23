@@ -91,7 +91,7 @@
         ./services/openssh.nix
         # ./services/transmission.nix
         ./sql/sql.nix
-        (import ./sway).system
+        (import ./.config/sway).system
         (
           { pkgs, ... }:
           {

@@ -15,7 +15,7 @@
   services.udev.packages = with pkgs; [
     ardour
     mixxx
-    vital
+    # vital
     audacity
   ];
 

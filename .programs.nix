@@ -5,11 +5,56 @@
   ...
 }:
 let
-  CONFIG = "${SELF}/.config";
+  config = "${SELF}/.config";
+  home = SELF;
 in
 
 {
   imports = [
+    (
+      {
+        pkgs,
+        config,
+        SELF,
+        ...
+      }:
+      {
+        home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/tmux.conf";
+        programs.tmux.enable = true;
+        programs.tmux.keyMode = "vi";
+        programs.tmux.terminal = "screen-256color"; # xterm-256color tmux-direct
+        programs.tmux.shell = "/${pkgs.zsh}/bin/zsh";
+        programs.tmux.extraConfig = '''';
+        programs.tmux.plugins = with pkgs; [
+          {
+            plugin = pkgs.tmuxPlugins.tmux-fzf;
+            extraConfig = '''';
+          }
+          {
+            plugin = pkgs.tmuxPlugins.tmux-floax;
+            extraConfig = '''';
+          }
+          {
+            plugin = pkgs.tmuxPlugins.cpu;
+            extraConfig = '''';
+          }
+          {
+            plugin = pkgs.tmuxPlugins.continuum;
+            extraConfig = ''
+              set -g @continuum-restore 'on'
+              set -g @continuum-save-interval '60' # minutes
+            '';
+          }
+          # {
+          #   plugin = tmuxPlugins.resurrect;
+          #   extraConfig = ''
+          #     set -g @resurrect-strategy-nvim 'session'
+          #   '';
+          # }
+        ];
+      }
+
+    )
     (
       { pkgs, ... }:
       {
@@ -32,8 +77,8 @@ in
         programs.git.maintenance.enable = true;
         programs.git.settings = {
           include.path = [
-            "/etc/nixos/.config/git/config_global"
-            "/etc/nixos/.copfig/git/config_user"
+            "${config}/git/config_global"
+            "${config}/git/config_user"
           ];
         };
       }
@@ -94,14 +139,14 @@ in
     spotify
     ncspot
   ];
-  home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.ripgreprc";
+  home.file.".ripgreprc".source = config.lib.file.mkOutOfStoreSymlink "${home}/.ripgreprc";
   programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableZshIntegration = true;
   # home.file.".mixxx".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.mixxx";
-  xdg.configFile."ardour8".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/ardour8";
-  xdg.configFile."bat".source = config.lib.file.mkOutOfStoreSymlink "${CONFIG}/bat";
+  xdg.configFile."ardour8".source = config.lib.file.mkOutOfStoreSymlink "${config}/ardour8";
+  xdg.configFile."bat".source = config.lib.file.mkOutOfStoreSymlink "${config}/bat";
   programs.bat.enable = true;
   programs.bat.extraPackages = with pkgs.bat-extras; [
     batgrep
@@ -111,25 +156,24 @@ in
     batdiff
     prettybat
   ];
-  xdg.configFile."sqlite3".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/sqlite3";
+  xdg.configFile."sqlite3".source = config.lib.file.mkOutOfStoreSymlink "${config}/sqlite3";
   xdg.configFile."spotify-flags.conf".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/spotify-flags.conf";
-  xdg.configFile."ncspot".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/ncspot";
-  xdg.configFile."sway".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway";
-  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/sway/waybar";
-  xdg.configFile."foot".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/foot";
+    config.lib.file.mkOutOfStoreSymlink "${config}/spotify-flags.conf";
+  xdg.configFile."ncspot".source = config.lib.file.mkOutOfStoreSymlink "${config}/ncspot";
+  xdg.configFile."sway".source = config.lib.file.mkOutOfStoreSymlink "${config}/sway";
+  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "${config}/waybar";
+  xdg.configFile."foot".source = config.lib.file.mkOutOfStoreSymlink "${config}/foot";
   xdg.configFile."gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/./config/gtk-3.0";
-  xdg.configFile."gtk-4.0".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/gtk-4.0";
-  xdg.configFile."htop".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/htop";
-  xdg.configFile."lf".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/lf";
-  xdg.configFile."lnav".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/lnav";
-  xdg.configFile."lazygit".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/lazygit";
+  xdg.configFile."gtk-4.0".source = config.lib.file.mkOutOfStoreSymlink "${config}/gtk-4.0";
+  xdg.configFile."htop".source = config.lib.file.mkOutOfStoreSymlink "${config}/htop";
+  xdg.configFile."lf".source = config.lib.file.mkOutOfStoreSymlink "${config}/lf";
+  xdg.configFile."lnav".source = config.lib.file.mkOutOfStoreSymlink "${config}/lnav";
+  xdg.configFile."lazygit".source = config.lib.file.mkOutOfStoreSymlink "${config}/lazygit";
   xdg.configFile."git/config_global".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/git/config_global";
+    config.lib.file.mkOutOfStoreSymlink "${config}/git/config_global";
   xdg.configFile."git/config_user".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/git/config_user";
-  xdg.configFile."git/ignore".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/git/ignore";
+    config.lib.file.mkOutOfStoreSymlink "${config}/git/config_user";
+  xdg.configFile."git/ignore".source = config.lib.file.mkOutOfStoreSymlink "${config}/git/ignore";
 
   programs.starship.enable = true;
   xdg.configFile."starship.toml".source =
@@ -137,7 +181,7 @@ in
   programs.starship.enableBashIntegration = true;
   programs.starship.enableZshIntegration = true;
 
-  xdg.configFile."mpv".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/mpv";
+  xdg.configFile."mpv".source = config.lib.file.mkOutOfStoreSymlink "${config}/mpv";
   programs.mpv.enable = true;
   programs.mpv.package = (
     pkgs.mpv-unwrapped.wrapper {
@@ -154,19 +198,19 @@ in
   xdg.configFile."ncmpcpp/config" = {
     enable = true;
     force = true;
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/ncmpcpp/config";
+    source = config.lib.file.mkOutOfStoreSymlink "${config}/ncmpcpp/config";
   };
   xdg.configFile."ncmpcpp/bindings" = {
     enable = true;
     force = true;
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/ncmpcpp/bindings";
+    source = config.lib.file.mkOutOfStoreSymlink "${config}/ncmpcpp/bindings";
   };
 
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
-  xdg.configFile."pistol".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/pistol";
+  xdg.configFile."pistol".source = config.lib.file.mkOutOfStoreSymlink "${config}/pistol";
 
   xdg.configFile."nicotine" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/nicotine";
+    source = config.lib.file.mkOutOfStoreSymlink "${config}/nicotine";
     enable = true;
     force = true;
     recursive = true;
@@ -207,4 +251,37 @@ in
   programs.nix-index.enable = true;
   programs.nix-index.enableZshIntegration = true;
   programs.nix-index.enableBashIntegration = true;
+  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/tmux.conf";
+  programs.tmux.enable = true;
+  programs.tmux.keyMode = "vi";
+  programs.tmux.terminal = "screen-256color"; # xterm-256color tmux-direct
+  programs.tmux.shell = "/${pkgs.zsh}/bin/zsh";
+  programs.tmux.extraConfig = '''';
+  programs.tmux.plugins = with pkgs; [
+    {
+      plugin = pkgs.tmuxPlugins.tmux-fzf;
+      extraConfig = '''';
+    }
+    {
+      plugin = pkgs.tmuxPlugins.tmux-floax;
+      extraConfig = '''';
+    }
+    {
+      plugin = pkgs.tmuxPlugins.cpu;
+      extraConfig = '''';
+    }
+    {
+      plugin = pkgs.tmuxPlugins.continuum;
+      extraConfig = ''
+        set -g @continuum-restore 'on'
+        set -g @continuum-save-interval '60' # minutes
+      '';
+    }
+    # {
+    #   plugin = tmuxPlugins.resurrect;
+    #   extraConfig = ''
+    #     set -g @resurrect-strategy-nvim 'session'
+    #   '';
+    # }
+  ];
 }
