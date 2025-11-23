@@ -11,6 +11,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ../common/boot.nix
+    ./binarycache.nix
     ./boot.nix
     ./network.nix
     ./storage.nix
