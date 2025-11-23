@@ -52,6 +52,7 @@ in
     "https://hyprland.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "binarycache.dell.local:qsxxQz/7dy2UdmrbBLAsx8JDjExnQkCDmi2lF2m2OiE="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -59,4 +60,9 @@ in
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   nix.settings.flake-registry = "";
   nix.settings.nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
+  # required, otherwise remote buildMachines above aren't used
+  nix.distributedBuilds = true;
+  # optional, useful when the builder has a faster internet connection than yours
+  nix.settings.builders-use-substitutes = true;
+
 }
