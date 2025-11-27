@@ -20,6 +20,7 @@ in
     nix-tree
     nixos-generators
     hello-go
+    redshift
 
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
