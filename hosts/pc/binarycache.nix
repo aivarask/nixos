@@ -2,8 +2,8 @@
 let
   ip =
     {
-      pc = "http://192.168.1.180:5000";
-      dell = "http://192.168.1.190:5000";
+      pc = "http://192.168.1.180";
+      dell = "http://192.168.1.190";
     }
     .${config.networking.hostName};
 in

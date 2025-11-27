@@ -47,7 +47,7 @@
       watch-dir-enabled = true;
     };
   };
-  services.nginx.defaultHTTPListenPort = 8080;
+  services.nginx.defaultHTTPListenPort = 80;
   services.nginx = {
     # enable = false;
     # recommendedProxySettings = true;
