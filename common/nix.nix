@@ -50,12 +50,12 @@ in
   nix.settings.auto-optimise-store = true;
   nix.settings.substituters = lib.mkForce [
     {
-      pc = "http://192.168.1.180:5000";
-      dell = "http://192.168.1.190:5000";
+      pc = "http://192.168.1.180";
+      dell = "http://192.168.1.190";
     }
     .${config.networking.hostName}
-    "https://cache.nixos.org/"
     "https://nix-community.cachix.org"
+    "https://cache.nixos.org/"
     "https://hyprland.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
