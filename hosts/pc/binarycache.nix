@@ -1,4 +1,12 @@
 { config, ... }:
+let
+  ip =
+    {
+      pc = "http://192.168.1.180:5000";
+      dell = "http://192.168.1.190:5000";
+    }
+    .${config.networking.hostName};
+in
 {
   # /etc/nix/machines
   nix.buildMachines = [
@@ -28,7 +36,7 @@
     enable = true;
     recommendedProxySettings = true;
     virtualHosts = {
-      "192.168.1.190" = {
+      "${ip}" = {
         locations."/".proxyPass =
           "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
       };

@@ -107,38 +107,6 @@
         "type": "github"
       }
     },
-    "dmenu-flexipatch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760686319,
-        "narHash": "sha256-dB7htl1BVQd7FCJ/KmkP0lgDW7xdiE6QDFZ39wM/W98=",
-        "owner": "bakkeby",
-        "repo": "dmenu-flexipatch",
-        "rev": "53be0a76d3b83eddfb0c08476e6b2ade35d9261d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bakkeby",
-        "repo": "dmenu-flexipatch",
-        "type": "github"
-      }
-    },
-    "dwm-flexipatch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1761894685,
-        "narHash": "sha256-csMXMCBuVGwO+1TG/MXm3yHyDNNjfpgAmbhT7a0mcrc=",
-        "owner": "bakkeby",
-        "repo": "dwm-flexipatch",
-        "rev": "a74df8bbcedd9f91841653844c71424d3ab4a0dc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bakkeby",
-        "repo": "dwm-flexipatch",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "locked": {
         "lastModified": 1696426674,
@@ -693,8 +661,6 @@
         "dev-templates": "dev-templates",
         "disko": "disko",
         "disko-templates": "disko-templates",
-        "dmenu-flexipatch": "dmenu-flexipatch",
-        "dwm-flexipatch": "dwm-flexipatch",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
         "musnix": "musnix",
@@ -713,11 +679,9 @@
         "persistent-breakpoints": "persistent-breakpoints",
         "rust-overlay": "rust-overlay",
         "smart-semicolon": "smart-semicolon",
-        "st-flexipatch": "st-flexipatch",
         "strudel-nvim": "strudel-nvim",
         "sxiv-tabbed": "sxiv-tabbed",
         "systems": "systems_3",
-        "tabbed-flexipatch": "tabbed-flexipatch",
         "templates": "templates",
         "tree-sitter-language-injection": "tree-sitter-language-injection",
         "vim-interestingwords": "vim-interestingwords",
@@ -756,22 +720,6 @@
       "original": {
         "owner": "iagotito",
         "repo": "smart-semicolon.nvim",
-        "type": "github"
-      }
-    },
-    "st-flexipatch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1761643095,
-        "narHash": "sha256-kLWuxgCKEGZJ0z78SGhfoP7QXO1Z+gASAysfRVYLGgw=",
-        "owner": "bakkeby",
-        "repo": "st-flexipatch",
-        "rev": "37bc089f1d9f3c53ded68d442dac3108b3366426",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bakkeby",
-        "repo": "st-flexipatch",
         "type": "github"
       }
     },
@@ -845,22 +793,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "x86_64-linux",
-        "type": "github"
-      }
-    },
-    "tabbed-flexipatch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737673038,
-        "narHash": "sha256-Imh+kMOEWhtuET0MWrT6HJ+rPLWvbiz4cQPxGDYN3cQ=",
-        "owner": "bakkeby",
-        "repo": "tabbed-flexipatch",
-        "rev": "77d8b71540791d5593c841cdb7160d4feb23a8fe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bakkeby",
-        "repo": "tabbed-flexipatch",
         "type": "github"
       }
     },

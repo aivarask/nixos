@@ -7,6 +7,7 @@
 }:
 let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+
 in
 {
   environment.systemPackages = with pkgs; [
@@ -18,6 +19,8 @@ in
     fh
     nix-tree
     nixos-generators
+    hello-go
+
   ];
   environment.shellAliases.nrs = "nixos-rebuild switch";
   environment.shellAliases.nfu = "nix flake update";
@@ -46,19 +49,18 @@ in
   nix.settings.cores = 4;
   nix.settings.auto-optimise-store = true;
   nix.settings.substituters = lib.mkForce [
-    "http://192.168.1.190"
-    "http://192.168.1.180"
+    {
+      pc = "http://192.168.1.180:5000";
+      dell = "http://192.168.1.190:5000";
+    }
+    .${config.networking.hostName}
+    "https://cache.nixos.org/"
+    "https://nix-community.cachix.org"
+    "https://hyprland.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
     "192.168.1.190:YPjH31SlPEvdpSkTlctSTo63hqWdgF7C0/gVmBL43FE="
     "192.168.1.180:AqyrULqqayXjY/9Du8yMSz3tK4jmloQhQkVumXvOyxg="
-  ];
-  nix.settings.extra-substituters = lib.mkForce [
-    "https://nix-community.cachix.org"
-    "https://cache.nixos.org/"
-    "https://hyprland.cachix.org"
-  ];
-  nix.settings.extra-trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -66,9 +68,7 @@ in
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   nix.settings.flake-registry = "";
   nix.settings.nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
-  # required, otherwise remote buildMachines above aren't used
-  nix.distributedBuilds = true;
-  # optional, useful when the builder has a faster internet connection than yours
-  nix.settings.builders-use-substitutes = true;
+  nix.distributedBuilds = true; # required, otherwise remote buildMachines above aren't used
+  nix.settings.builders-use-substitutes = true; # optional, useful when the builder has a faster internet connection than yours
 
 }
