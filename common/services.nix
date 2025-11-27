@@ -5,7 +5,7 @@
   ];
   # https://www.xmodulo.com/how-to-speed-up-x11-forwarding-in-ssh.html
   # https://mynixos.com/nixpkgs/option/services.openssh.settings.Ciphers
-
+  services.logind.settings.Login.HandlePowerKey = "ignore";
   programs.ssh = {
     # ciphers = [ ];
     # forwardX11 = true;

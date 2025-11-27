@@ -6,10 +6,8 @@
 }:
 let
   xdgconf = "${SELF}/.config";
-  home = SELF;
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
-
 {
   imports = [
     (
@@ -96,7 +94,7 @@ in
     spotify
     ncspot
   ];
-  home.file.".ripgreprc".source = symlink "${home}/.ripgreprc";
+  home.file.".ripgreprc".source = symlink "${config.home.homeDirectory}/.ripgreprc";
   programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;

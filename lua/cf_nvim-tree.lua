@@ -20,7 +20,7 @@ require('nvim-tree').setup({
 		files_first = false,
 	},
 	sync_root_with_cwd = true,
-	root_dirs = { '/etc/nixos', '/root/tabbed-flexipatch' },
+	root_dirs = { '/etc/nixos' },
 	update_focused_file = {
 		enable = false,
 		update_root = {

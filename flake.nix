@@ -30,14 +30,6 @@
   inputs.LS_COLORS.url = "github:trapd00r/LS_COLORS";
   inputs.LS_COLORS.flake = false;
   #
-  inputs.dmenu-flexipatch.url = "github:bakkeby/dmenu-flexipatch";
-  inputs.dmenu-flexipatch.flake = false;
-  inputs.dwm-flexipatch.url = "github:bakkeby/dwm-flexipatch";
-  inputs.dwm-flexipatch.flake = false;
-  inputs.st-flexipatch.url = "github:bakkeby/st-flexipatch";
-  inputs.st-flexipatch.flake = false;
-  inputs.tabbed-flexipatch.url = "github:bakkeby/tabbed-flexipatch";
-  inputs.tabbed-flexipatch.flake = false;
   inputs.sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
   inputs.sxiv-tabbed.flake = false;
   #
@@ -146,7 +138,7 @@
                 (import ./env.nix).hm
                 ./.programs.nix
                 # ./browsers/chromium.nix
-                # ./browsers/firefox.nix
+                ./browsers/fire.nix
                 ./lua/default_hm.nix
                 # Chrome
                 (
@@ -193,185 +185,7 @@
                   }
                 )
                 # Firefox
-                (
-                  {
-                    pkgs,
-                    lib,
-                    ...
-                  }:
-                  {
 
-                    programs.firefox = {
-                      enable = true;
-
-                      languagePacks = [
-                        "en-US"
-                        "lt"
-                      ];
-
-                      policies = {
-                        # Updates & Background Services
-                        AppAutoUpdate = false;
-                        BackgroundAppUpdate = false;
-
-                        # Feature Disabling
-                        DisableBuiltinPDFViewer = true;
-                        DisableFirefoxStudies = true;
-                        DisableFirefoxAccounts = true;
-                        DisableFirefoxScreenshots = true;
-                        DisableForgetButton = true;
-                        DisableMasterPasswordCreation = true;
-                        DisableProfileImport = true;
-                        DisableProfileRefresh = true;
-                        DisableSetDesktopBackground = true;
-                        DisablePocket = true;
-                        DisableTelemetry = true;
-                        DisableFormHistory = true;
-                        DisablePasswordReveal = true;
-
-                        # Access Restrictions
-                        BlockAboutConfig = false;
-                        BlockAboutProfiles = true;
-                        BlockAboutSupport = false;
-
-                        # UI and Behavior
-                        DisplayMenuBar = "never";
-                        DontCheckDefaultBrowser = true;
-                        HardwareAcceleration = true;
-                        OfferToSaveLogins = false;
-                        DefaultDownloadDirectory = "${home.homeDirectory}/Downloads";
-
-                        # Extensions
-                        ExtensionSettings =
-                          let
-                            moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
-                          in
-                          {
-                            "*".installation_mode = "blocked";
-
-                            "uBlock0@raymondhill.net" = {
-                              install_url = moz "ublock-origin";
-                              installation_mode = "force_installed";
-                              updates_disabled = true;
-                            };
-
-                            "{f3b4b962-34b4-4935-9eee-45b0bce58279}" = {
-                              install_url = moz "animated-purple-moon-lake";
-                              installation_mode = "force_installed";
-                              updates_disabled = true;
-                            };
-
-                            "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
-                              install_url = moz "noscript";
-                              installation_mode = "force_installed";
-                              updates_disabled = true;
-                            };
-
-                            "3rdparty".Extensions = {
-                              "uBlock0@raymondhill.net".adminSettings = {
-                                userSettings = rec {
-                                  uiTheme = "dark";
-                                  uiAccentCustom = true;
-                                  uiAccentCustom0 = "#8300ff";
-                                  cloudStorageEnabled = lib.mkForce false;
-
-                                  importedLists = [
-                                    "https:#filters.adtidy.org/extension/ublock/filters/3.txt"
-                                    "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
-                                  ];
-
-                                  externalLists = lib.concatStringsSep "\n" importedLists;
-                                };
-
-                                selectedFilterLists = [
-                                  "CZE-0"
-                                  "adguard-generic"
-                                  "adguard-annoyance"
-                                  "adguard-social"
-                                  "adguard-spyware-url"
-                                  "easylist"
-                                  "easyprivacy"
-                                  "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
-                                  "plowe-0"
-                                  "ublock-abuse"
-                                  "ublock-badware"
-                                  "ublock-filters"
-                                  "ublock-privacy"
-                                  "ublock-quick-fixes"
-                                  "ublock-unbreak"
-                                  "urlhaus-1"
-                                ];
-                              };
-                            };
-                          };
-                      };
-
-                      profiles.default.search = {
-                        force = true;
-                        default = "ddg";
-                        privateDefault = "ddg";
-
-                        engines = {
-                          "Nix Packages" = {
-                            urls = [
-                              {
-                                template = "https://search.nixos.org/packages";
-                                params = [
-                                  {
-                                    name = "channel";
-                                    value = "unstable";
-                                  }
-                                  {
-                                    name = "query";
-                                    value = "{searchTerms}";
-                                  }
-                                ];
-                              }
-                            ];
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@np" ];
-                          };
-
-                          "Nix Options" = {
-                            urls = [
-                              {
-                                template = "https://search.nixos.org/options";
-                                params = [
-                                  {
-                                    name = "channel";
-                                    value = "unstable";
-                                  }
-                                  {
-                                    name = "query";
-                                    value = "{searchTerms}";
-                                  }
-                                ];
-                              }
-                            ];
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@no" ];
-                          };
-
-                          "NixOS Wiki" = {
-                            urls = [
-                              {
-                                template = "https://wiki.nixos.org/w/index.php";
-                                params = [
-                                  {
-                                    name = "search";
-                                    value = "{searchTerms}";
-                                  }
-                                ];
-                              }
-                            ];
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@nw" ];
-                          };
-                        };
-                      };
-                    };
-                  }
-                )
               ];
             };
           };
