@@ -2,6 +2,7 @@
   name = "stars";
   toolbar = true;
   bookmarks = [
+
     {
       url = "https://www.linkomanija.net";
       name = "";
