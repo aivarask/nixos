@@ -2,16 +2,19 @@
 
 # sway-input
 input type:keyboard {
-	xkb_numlock enabled
 	repeat_delay 250
 	repeat_rate 50
+	xkb_numlock enabled
 }
 
+
 input "Logitech K270" {
-		xkb_layout "us,lt"
-		xkb_variant ","
-		xkb_options "grp:menu_toggle"
-		xkb_model "pc104"
+	xkb_layout "us,lt"
+	xkb_options "grp:alt_space_toggle"
+	# xkb_variant "us,"
+	# xkb_options "grp:menu_toggle"
+	# xkb_model "pc105"
+
 }
 
 input type:touchpad {

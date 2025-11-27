@@ -1,6 +1,6 @@
 vim.diagnostic.config({
 	severity_sort = true,
-	virtual_text = true,
+	virtual_text = false,
 	virtual_lines = true,
 	-- float = true,
 	loclist = {
@@ -21,13 +21,12 @@ vim.diagnostic.handlers.loclist = {
 }
 
 
-if false then
+if true then
 	vim.api.nvim_create_user_command('DiagnosticQf', function(args)
 		if args.args == 'ERROR' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 		elseif args.args == 'WARN' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
-		elseif args.args == 'HINT' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.HINT })
 		elseif args.args == 'INFO' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })

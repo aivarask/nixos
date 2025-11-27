@@ -4,8 +4,9 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
+		"~/.config/waybar/audio.jsonc",
 		"~/.config/waybar/modules.jsonc",
-		"~/.config/waybar/audio.jsonc"
+		"~/.config/waybar/network.jsonc",
 	],
 	"modules-left": [
 		"sway/workspaces",
@@ -16,6 +17,7 @@
 		// "sway/window"
 	],
 	"modules-right": [
+		"pulseaudio",
 		"network",
 		"backlight",
 		"battery",

@@ -714,6 +714,7 @@
         "rust-overlay": "rust-overlay",
         "smart-semicolon": "smart-semicolon",
         "st-flexipatch": "st-flexipatch",
+        "strudel-nvim": "strudel-nvim",
         "sxiv-tabbed": "sxiv-tabbed",
         "systems": "systems_3",
         "tabbed-flexipatch": "tabbed-flexipatch",
@@ -772,6 +773,18 @@
         "owner": "bakkeby",
         "repo": "st-flexipatch",
         "type": "github"
+      }
+    },
+    "strudel-nvim": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-dMcZMI4lBOr4H/uaAlmVBCZ8zsVDnHIyDQeE1MxZTS8=",
+        "type": "file",
+        "url": "https://github.com/gruvw/strudel.nvim"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/gruvw/strudel.nvim"
       }
     },
     "sxiv-tabbed": {

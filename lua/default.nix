@@ -50,6 +50,11 @@ in
               meta.homepage = "github.com/samsze0/websocket.nvim";
               doCheck = false;
             };
+            # strudel-nvim = buildVimPlugin {
+            #   name = "strudel-nvim";
+            #   src = strudel-nvim;
+            #   doCheck = false;
+            # };
             nvim-oxi = buildVimPlugin {
               name = "nvim-oxi";
               src = nvim-oxi;

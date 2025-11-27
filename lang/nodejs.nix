@@ -27,6 +27,7 @@
       stylelint-lsp
     ]
     ++ (with pkgs.nodePackages; [
+      puppeteer-cli
       pnpm # ~/.pnpm-global
       serve
       pm2

@@ -27,6 +27,10 @@
     (lib.mkIf true (
       with pkgs;
       [
+        # https://wiki.archlinux.org/title/Convert_FLAC_to_MP3
+        flac2all
+
+        #
         ardour
         hydrogen
         distrho-ports
