@@ -19,6 +19,7 @@ in
     fh
     nix-tree
     nixos-generators
+    nom
     hello-go
     redshift
 

@@ -51,8 +51,6 @@
   inputs.websocket-nvim.flake = false;
   inputs.nvim-oxi.url = "github:noib3/nvim-oxi";
   inputs.nvim-oxi.flake = false;
-  inputs.strudel-nvim.url = "https://github.com/gruvw/strudel.nvim";
-  inputs.strudel-nvim.flake = false;
   # https://github.com/mlua-rs/mlua
   outputs =
     { nixpkgs, ... }@inputs:

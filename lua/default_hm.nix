@@ -9,7 +9,7 @@
 let
   common = with pkgs.vimPlugins; [
     ack-vim
-    vim-auto-save
+    # vim-auto-save
     bclose-vim
     fzf-vim
     gruvbox-material
@@ -84,7 +84,7 @@ in
         lazygit-nvim
         # neogit
         gitsigns-nvim
-        lualine-nvim
+        # lualine-nvim
         nvim-tree-lua
         iron-nvim
         toggleterm-nvim

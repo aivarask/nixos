@@ -8,7 +8,7 @@
     sqlite-web
     # harlequin
 
-    sqlint
+    # sqlint
     sqlfluff # 7k
 
     sqls # 0.8k
