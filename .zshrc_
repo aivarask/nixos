@@ -1,9 +1,6 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
 
-alias sway="sway > $HOME/sway.log 2>&1"
-alias sway_="sway > /var/log/sway.log 2>&1"
-
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
 export YDIFF_OPTIONS='-w40'

@@ -4,14 +4,14 @@
   <Plugin type="VST3" id="56535456697461766974616C69756D00" lru="1762630455" use-count="1"/>
   <Plugin type="VST3" id="27B63CC33070416EB55E773970D3F5D4" lru="1762634360" use-count="3"/>
   <Plugin type="LV2" id="urn:juced:DrumSynth" lru="1762859367" use-count="2"/>
-  <Plugin type="LV2" id="urn:distrho:vitalium" lru="1762851198" use-count="4"/>
+  <Plugin type="LV2" id="urn:distrho:vitalium" lru="1764280478" use-count="5"/>
   <Plugin type="LV2" id="urn:ardour:a-reverb" lru="1762848321" use-count="1"/>
   <Plugin type="LV2" id="urn:ardour:a-fluidsynth" lru="1762848417" use-count="1"/>
   <Plugin type="LV2" id="https://thewavewarden.com/odin2" lru="1762848203" use-count="1"/>
   <Plugin type="LV2" id="https://obxd.wordpress.com" lru="1762863907" use-count="5"/>
   <Plugin type="LV2" id="https://github.com/asb2m10/dexed" lru="1762863759" use-count="1"/>
   <Plugin type="LV2" id="https://distrho.kx.studio/plugins/cardinal#synth" lru="1762863152" use-count="1"/>
-  <Plugin type="LV2" id="https://community.ardour.org/node/7596" lru="1762634607" use-count="1"/>
+  <Plugin type="LV2" id="https://community.ardour.org/node/7596" lru="1764280445" use-count="2"/>
   <Plugin type="LV2" id="http://tumbetoene.tuxfamily.org" lru="1762632440" use-count="2"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/slap_delay_stereo" lru="1762849145" use-count="1"/>
   <Plugin type="LV2" id="http://lsp-plug.in/plugins/lv2/multisampler_x24_do" lru="1762851136" use-count="1"/>

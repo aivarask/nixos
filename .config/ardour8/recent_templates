@@ -1,3 +1,4 @@
+/etc/nixos/.config/ardour8/templates/main
 /etc/nixos/audio/ardour8/templates/main
 /root/.config/ardour8/templates/main/main.template
 /etc/nixos/audio/ardour8/templates/ardour1

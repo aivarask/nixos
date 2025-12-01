@@ -23,7 +23,6 @@
           "/etc/nixos/bin"
         ];
       };
-      environment.shellAliases.x = "startx";
       environment.shellAliases.wol_pc = "wol b4:2e:99:61:09:cf";
       environment.profiles = [ "/etc/nixos" ];
       environment.shellInit = ''# OS environment.shellInit ''; # /etc/profile
