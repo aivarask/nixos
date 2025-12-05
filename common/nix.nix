@@ -21,13 +21,10 @@ in
     nixos-generators
     nom
     hello-go
-    redshift
 
   ];
-  environment.shellAliases.nrs = "nixos-rebuild switch";
-  environment.shellAliases.nfu = "nix flake update";
-  # export NIXPKGS_ALLOW_INSECURE=1
 
+  # export NIXPKGS_ALLOW_INSECURE=1
   # nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;

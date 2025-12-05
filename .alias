@@ -1,0 +1,7 @@
+# vim: ft=bash
+
+alias oras="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in
+alias woo="echo woo"
+alias nrs="nixos-rebuild switch"
+alias nfu="nix flake update"
+alias nrs_='nrs --option substituters "https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'

@@ -9,9 +9,7 @@ runtime! lua/_*{.lua,.vim}
 vim.loader.enable()
 uv = vim.uv
 vim.keymap.set({ 'n', 'i', 'v' }, '<F1>', require('help').select)
-vim.keymap.set({ 'n' }, 'grd', vim.lsp.buf.definition, {
-	-- desc = 'vim.lsp.buf.definition'
-})
+vim.keymap.set({ 'n' }, 'grd', vim.lsp.buf.definition, { desc = 'vim.lsp.buf.definition' })
 vim.cmd [[
 "runtime! */_*{.lua,.vim}
 ]]

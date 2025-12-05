@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
 
+setopt extended_glob
+
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
 export YDIFF_OPTIONS='-w40'
 
 # FPATH
-setopt extended_glob
 # fpath=(/etc/nixos $fpath)
 # autoload -Uz $fpath[1]/**/*(.:t)
 
@@ -42,4 +43,4 @@ nix-clean() {
 	nix-collect-garbage -d
 }
 
-# source /etc/nixos/sh/zsh.alias
+. ~/.alias

@@ -1,5 +1,5 @@
 vim.keymap.set({ 'n' }, '<leader>b', function()
-	require('telescope.builtin').grep_string()
+	require('telescope.builtin').grep_string({ grep_open_files = false })
 end, { desc = 'grep_string' })
 
 vim.keymap.set({ 'n' }, '<leader>1', function()

@@ -20,6 +20,7 @@ bindsym	$mod+Shift+c kill
 # bindsym	 $mod+shift+w exec firefox --private-window $url
 
 bindsym $mod+w exec firefox -new-window
+bindsym $mod+shift+w exec firefox -new-window --private-window
 bindsym $mod+c exec chromium --new-window $url
 bindsym $mod+ctrl+c exec chromium --incognito --new-window $url
 

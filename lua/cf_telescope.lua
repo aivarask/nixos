@@ -46,6 +46,8 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('manix')
 require("telescope").load_extension "frecency"
 
+require('telescope').load_extension('open')
+
 local builtin = require('telescope.builtin')
 
 vim.keymap.set({ 'n' }, '<leader>K', function() builtin.keymaps({ only_buf = true }) end,

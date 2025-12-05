@@ -85,6 +85,8 @@ in
     lf
     gtk3
     gtk4
+    nautilus
+    kitty
     gtk-doc
     vimpager
     # bitwarden-cli
@@ -94,7 +96,7 @@ in
     spotify
     ncspot
   ];
-  home.file.".ripgreprc".source = symlink "${config.home.homeDirectory}/.ripgreprc";
+  home.file.".ripgreprc".source = symlink "${SELF}/.ripgreprc";
   programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
@@ -112,13 +114,13 @@ in
     prettybat
   ];
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
+  xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
-  # xdg.configFile."sway".source = symlink "${xdgconf}/sway";
   xdg.configFile."waybar".source = symlink "${SELF}/waybar";
-  # xdg.configFile."waybar".source = symlink "${xdgconf}/waybar";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
+  xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";
   xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";
   xdg.configFile."gtk-4.0".source = symlink "${xdgconf}/gtk-4.0";
   xdg.configFile."htop".source = symlink "${xdgconf}/htop";
@@ -148,6 +150,8 @@ in
     }
   );
   programs.ncmpcpp.enable = true;
+
+  # xdg.configFile."ncmpcpp" = symlink "${xdgconf}/ncmpcpp";
   xdg.configFile."ncmpcpp/config" = {
     enable = true;
     force = true;

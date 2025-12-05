@@ -11,7 +11,7 @@
     <Option name="blink-alert-indicators" value="1"/>
     <Option name="waveform-gradient-depth" value="0"/>
     <Option name="timeline-item-gradient-depth" value="0.5"/>
-    <Option name="all-floating-windows-are-dialogs" value="0"/>
+    <Option name="all-floating-windows-are-dialogs" value="1"/>
     <Option name="floating-monitor-section" value="0"/>
     <Option name="transients-follow-front" value="1"/>
     <Option name="allow-to-resize-engine-dialog" value="1"/>
@@ -31,7 +31,7 @@
     <Option name="keyboard-layout-name" value="ansi"/>
     <Option name="default-bindings" value="ardour"/>
     <Option name="vkeybd-layout" value="None"/>
-    <Option name="only-copy-imported-files" value="1"/>
+    <Option name="only-copy-imported-files" value="0"/>
     <Option name="autoplay-files" value="0"/>
     <Option name="autoplay-clips" value="1"/>
     <Option name="highlight-auditioned-clips" value="1"/>
@@ -56,7 +56,7 @@
     <Option name="use-double-click-to-zoom-to-selection" value="1"/>
     <Option name="widget-prelight" value="1"/>
     <Option name="use-tooltips" value="1"/>
-    <Option name="mixer-element-visibility" value="PhaseInvert,TriggerGrid,TriggerMaster"/>
+    <Option name="mixer-element-visibility" value="Input,PhaseInvert,SoloIsoLock,TriggerGrid,TriggerMaster"/>
     <Option name="allow-non-quarter-pulse" value="0"/>
     <Option name="show-region-gain" value="0"/>
     <Option name="show-region-xrun-markers" value="1"/>
@@ -99,7 +99,7 @@
     <Option name="save-export-mixer-screenshot" value="0"/>
     <Option name="open-gui-after-adding-plugin" value="1"/>
     <Option name="plugin-gui-behavior" value="PluginGUIHide"/>
-    <Option name="show-inline-display-by-default" value="0"/>
+    <Option name="show-inline-display-by-default" value="1"/>
     <Option name="max-plugin-chart" value="10"/>
     <Option name="max-plugin-recent" value="10"/>
     <Option name="prefer-inline-over-gui" value="0"/>

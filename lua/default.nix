@@ -19,6 +19,7 @@ let
       plenary-nvim
       luafilesystem
       # nlua # nvim as lua interpreter
+      busted
     ]
   );
 in

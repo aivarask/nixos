@@ -8,6 +8,9 @@
 {
   # https://wiki.nixos.org/wiki/Audio_production
   # https://github.com/musnix/musnix
+  # https://plugins4free.com/instruments/
+  # https://linuxmusic.rocks/
+  # https://linuxmusicians.com/viewtopic.php?t=26947
   imports = [
     inputs.musnix.nixosModules.musnix
   ];
@@ -29,6 +32,8 @@
       [
         # https://wiki.archlinux.org/title/Convert_FLAC_to_MP3
         flac2all
+        discord
+        calf
 
         #
         ardour
@@ -36,6 +41,7 @@
         distrho-ports
         lsp-plugins
         x42-plugins
+        mda_lv2
 
         # drum
         x42-avldrums

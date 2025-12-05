@@ -39,14 +39,13 @@
           hyperfine
           parallel
           procps
-          guake
           ueberzugpp
           glow
           tree
           silver-searcher
           fd
           trash-cli
-          neofetch
+          fastfetch
           translate-shell
           remarshal # json2yaml...
           w3m

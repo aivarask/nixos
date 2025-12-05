@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+DIR_TO_WATCH="${1:-./lua}"
+
+inotifywait -m -r "$DIR_TO_WATCH" -e modify |
+	while read -r directory events filename; do
+		printf "\nModified: %s\n" $filename
+		busted ./lua
+	done

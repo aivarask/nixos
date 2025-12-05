@@ -1,1 +1,1 @@
-source "$SELF"/.zsh_alias
+. ~/.alias

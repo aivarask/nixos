@@ -1,0 +1,21 @@
+Pattern	Description
+.	Matches any character (except a newline).
+%a	Matches any letter (alphabetical character).
+%c	Matches any control character.
+%d	Matches any digit (0-9).
+%l	Matches any lowercase letter (a-z).
+%u	Matches any uppercase letter (A-Z).
+%s	Matches any space character (including spaces, tabs, etc.).
+%p	Matches any punctuation character.
+%w	Matches any alphanumeric character (letters and digits).
+%x	Matches any hexadecimal digit (0-9 and a-f).
+*	Matches 0 or more occurrences of the preceding element.
++	Matches 1 or more occurrences of the preceding element.
+-	Matches 0 or more occurrences, but as few as possible (non-greedy).
+?	Matches 0 or 1 occurrence of the preceding element.
+^	Matches the start of a string.
+$	Matches the end of a string.
+[...]	Matches any single character in the brackets.
+%< and %>	Matches the < and > characters.
+%-	Matches the - character.
+%%	Matches the % character (escape sequence).
