@@ -1,5 +1,6 @@
 # vim: ft=bash
-
+export BW_SESSION="cHLrqQeOTy4Z9JYaFBOjviAXbJSDXQ2uZeqgE55CdvYF+LRzIqbhLnmji2Mg6OevppjpXLIOMdTMvMBGUrwisw=="
+alias bw_="bitwarden --no-sandbox --session cHLrqQeOTy4Z9JYaFBOjviAXbJSDXQ2uZeqgE55CdvYF+LRzIqbhLnmji2Mg6OevppjpXLIOMdTMvMBGUrwisw=="
 alias lg="lazygit"
 alias \\l="lazygit"
 alias oras="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in

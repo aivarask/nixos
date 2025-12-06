@@ -60,6 +60,7 @@ let g:switch_custom_definitions =
 			\   ['foldenable', 'nofoldenable'],
 			\   ['horizontal', 'vertical'],
 			\   ['enabled', 'disabled'],
+			\   ['firefox', 'chromium', 'chromium-browser'],
 			\   ['foo', 'bar', 'baz']
 			\ ]
 let g:switch_mapping = ''

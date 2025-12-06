@@ -56,6 +56,10 @@
           "*".default_area = "navbar";
           "*".updates_disabled = true;
           "*".private_browsing = true;
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+            install_url = moz "bitwarden-password-manager";
+            installation_mode = "force_installed";
+          };
           # https://ublockorigin.com/
           "uBlock0@raymondhill.net" = {
             install_url = moz "ublock-origin";

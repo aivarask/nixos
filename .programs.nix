@@ -85,13 +85,13 @@ in
     lf
     gtk3
     gtk4
+    xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
     nautilus
     kitty
     gtk-doc
     vimpager
-    # bitwarden-cli
-    bitwarden
-    # bitwarden-desktop
+    bitwarden-cli
+    bitwarden-desktop
     nicotine-plus
     spotify
     ncspot
@@ -113,7 +113,9 @@ in
     batdiff
     prettybat
   ];
+  xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
+  xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
   xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
