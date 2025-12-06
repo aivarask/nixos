@@ -33,7 +33,7 @@ require("strudel").setup({
 	-- Path to a custom CSS file to style the Strudel web editor (base64-encoded and injected at launch)
 	-- This allows you to override or extend the default Strudel UI appearance
 	-- (optional, default: nil)
-	custom_css_file = "/path/to/your/custom.css",
+	custom_css_file = nil,
 	-- Headless mode: set to `true` to run the browser without launching a window
 	-- (optional, default: false)
 	headless = false,
@@ -42,5 +42,5 @@ require("strudel").setup({
 	browser_data_dir = "~/.cache/strudel-nvim/",
 	-- Path to a (chromium-based) browser executable of choice
 	-- (optional, default: nil)
-	browser_exec_path = "chromium",
+	browser_exec_path = "chromium-browser --nosandbox",
 })

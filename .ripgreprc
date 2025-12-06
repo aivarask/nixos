@@ -2,13 +2,12 @@
 -g=!.git/*
 -g=!.trash/*
 -g=!.local/*
--g=!.BitwigStudio/*
 -g=!.cache/*
 -g=!**/{vendor}/**
 -g=!.{cargo}/*
 -g=!.{npm,pnpm}/*
 -g=!.{mixxx}/*
--g=!*/{BraveSoftware,chromium,google-chrome-beta,google-chrome-unstable}/*
+-g=!*/{BraveSoftware,chromium}/*
 -g=!.{mozilla,surf}/*
 -g=!.{viminfo,bash_history,zsh_history,zcompdump,sqlite_history}
 
