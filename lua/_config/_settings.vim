@@ -34,8 +34,8 @@ set conceallevel=2
 set clipboard=unnamedplus
 
 set tabstop=2
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 "set paste
 set shiftwidth=2
 
@@ -84,6 +84,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 
 "noremap <C-S-,> :left<CR>
 
+nnoremap ?a :edit ~/.alias<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?z :edit ~/.zshrc_<CR>
 

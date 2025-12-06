@@ -90,7 +90,7 @@ in
     gtk-doc
     vimpager
     # bitwarden-cli
-    # bitwarden
+    bitwarden
     # bitwarden-desktop
     nicotine-plus
     spotify

@@ -7,5 +7,7 @@ end)
 describe('match', function()
 	local url = "http://www.example-all.com/woo-foo.html#abc;"
 	local pattern = "http[s]?://[%w%-%/%.%#]+"
-	print('match: ', string.match(url, pattern))
+	local result = string.match(url, pattern)
+	print('match: ', result)
+	assert.are.equal(result, url)
 end)

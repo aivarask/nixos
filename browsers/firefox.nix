@@ -1,117 +1,143 @@
-{ pkgs, ... }:
-let
-  bookmarks = {
-    force = true;
-    settings = [
-      (import ./bookmarks_firefox.nix)
-      (import ./bookmarks_github.nix)
-      (import ./bookmarks_google.nix)
-      (import ./bookmarks_nixos.nix)
-      (import ./bookmarks_.nix)
-    ];
-  };
-  search = {
-    force = true;
-    default = "ddg";
-    privateDefault = "ddg";
-    order = [
-      "ddg"
-      "google"
-      "bing"
-    ];
-    engines = import ./engines.nix;
-  };
-  # https://www.reddit.com/r/FirefoxCSS/wiki/index/tutorials/
-  # https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html
-  # https://github.com/doc-han/xtensio
-  userChrome = ''
-    * {
-      box-shadow: none !important;
-      border: 0px solid !important;
-      }
-  '';
-  userContent = ''
-    * {
-      scrollbar-width:none !important;
-    }
-  '';
-  settings = {
-    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-    "devtools.debugger.remote-enabled" = true;
-    "browser.aboutConfig.showWarning" = false;
-    "accessibility.warn_on_browsewithcaret" = false; # F7
-    "accessibility.typeaheadfind" = false;
-    "accessibility.typeaheadfind.manual" = false;
-    "toolkit.tabbox.switchByScrolling" = true;
-    "browser.tabs.insertAfterCurrent" = true;
-    # Enable DRM
-    "media.eme.enabled" = true;
-    # "media.gmp-widevinecdm.visible" = true;
-    # "media.gmp-widevinecdm.enabled" = true;
-
-    "browser.uidensity" = 1;
-    "browser.compactmode.show" = true;
-    # Disable location bar making speculative connections
-    "browser.urlbar.speculativeConnect.enabled" = false;
-    # Disable location bar contextual suggestions
-    "browser.urlbar.quicksuggest.enabled" = false;
-    "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-    "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-    # Disable live search suggestions
-    "browser.search.suggest.enabled" = false;
-    "browser.urlbar.suggest.searches" = false;
-    # Disable urlbar trending search suggestions
-    "browser.urlbar.trending.featureGate" = false;
-    # Disable urlbar suggestions
-    "browser.urlbar.addons.featureGate" = false;
-    "browser.urlbar.mdn.featureGate" = false;
-
-    "browser.urlbar.suggest.topsites" = false;
-    "browser.urlbar.suggest.history" = false;
-    "browser.urlbar.suggest.bookmark" = true;
-    "browser.urlbar.suggest.openpage" = false;
-    "browser.urlbar.suggest.engines" = false;
-
-    "browser.urlbar.suggest.addons" = false;
-    "browser.urlbar.suggest.quickactions" = false;
-    "browser.urlbar.suggest.recentsearches" = false;
-    "browser.urlbar.maxRichResults" = 10;
-
-  };
-in
-
 {
-  home.sessionVariables.MOZ_USE_XINPUT2 = "1";
-  home.sessionVariables.MOZ_X11_EGL = "1";
-  # home.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
-  home.packages = [ pkgs.geckodriver ];
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
-    policies = import ./policies.nix;
-    profiles.arkenfox = {
-      inherit
-        bookmarks
-        search
-        # userChrome
-        # userContent
-        settings
-        ;
-      id = 1;
-      name = "arkenfox";
-      isDefault = true;
+
+    languagePacks = [
+      "en-US"
+      "lt"
+    ];
+
+    policies = {
+      # Updates & Background Services
+      AppAutoUpdate = false;
+      BackgroundAppUpdate = false;
+
+      # Feature Disabling
+      DisableBuiltinPDFViewer = true;
+      DisableFirefoxStudies = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxScreenshots = true;
+      DisableForgetButton = true;
+      DisableMasterPasswordCreation = true;
+      DisableProfileImport = true;
+      DisableProfileRefresh = true;
+      DisableSetDesktopBackground = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DisableFormHistory = true;
+      DisablePasswordReveal = true;
+
+      # Access Restrictions
+      BlockAboutConfig = false;
+      BlockAboutProfiles = true;
+      BlockAboutSupport = false;
+
+      # UI and Behavior
+      DisplayMenuBar = "never";
+      DontCheckDefaultBrowser = true;
+      HardwareAcceleration = true;
+      OfferToSaveLogins = false;
+      DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+
+      # https://mozilla.github.io/policy-templates/#extensionsettings
+      ExtensionSettings =
+        let
+          moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
+        in
+        {
+          "*".installation_mode = "blocked";
+          "*".default_area = "navbar";
+          "*".updates_disabled = true;
+          "*".private_browsing = true;
+          # https://ublockorigin.com/
+          "uBlock0@raymondhill.net" = {
+            install_url = moz "ublock-origin";
+            installation_mode = "force_installed";
+          };
+          "{f3b4b962-34b4-4935-9eee-45b0bce58279}" = {
+            install_url = moz "animated-purple-moon-lake";
+            installation_mode = "force_installed";
+          };
+          # https://noscript.net/
+          "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
+            install_url = moz "noscript";
+            installation_mode = "force_installed";
+          };
+          # https://wiki.greasespot.net/
+          "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
+            install_url = moz "greasemonkey";
+            installation_mode = "force_installed";
+          };
+          "queryamoid@kaply.com" = {
+            # https://github.com/mkaply/queryamoid
+            installation_mode = "force_installed";
+            install_url = "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
+            default_area = "menupanel";
+          };
+          "{830f38bd-efc5-45dc-a5a6-064d9a638806}" = {
+            # https://addons.mozilla.org/en-US/firefox/addon/dark-mode-by-albert-inc/
+            installation_mode = "force_installed";
+            install_url = moz "dark-mode-by-albert-inc";
+          };
+          "firefox@ghostery.com" = {
+            # https://addons.mozilla.org/en-US/firefox/addon/ghostery/
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox@ghostery.com/latest.xpi";
+            installation_mode = "blocked";
+            default_area = "menupanel";
+          };
+
+          "3rdparty".Extensions = {
+            "uBlock0@raymondhill.net".adminSettings = {
+              userSettings = rec {
+                uiTheme = "dark";
+                uiAccentCustom = true;
+                uiAccentCustom0 = "#8300ff";
+                cloudStorageEnabled = lib.mkForce false;
+
+                importedLists = [
+                  "https:#filters.adtidy.org/extension/ublock/filters/3.txt"
+                  "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
+                ];
+
+                externalLists = lib.concatStringsSep "\n" importedLists;
+              };
+
+              selectedFilterLists = [
+                "CZE-0"
+                "adguard-generic"
+                "adguard-annoyance"
+                "adguard-social"
+                "adguard-spyware-url"
+                "easylist"
+                "easyprivacy"
+                "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
+                "plowe-0"
+                "ublock-abuse"
+                "ublock-badware"
+                "ublock-filters"
+                "ublock-privacy"
+                "ublock-quick-fixes"
+                "ublock-unbreak"
+                "urlhaus-1"
+              ];
+            };
+          };
+        };
     };
-    profiles.root = {
-      inherit
-        bookmarks
-        search
-        # userChrome
-        # userContent
-        settings
-        ;
-      id = 0;
-      name = "root";
-      isDefault = false;
+
+    profiles.default.search = {
+      force = true;
+      default = "ddg";
+      privateDefault = "ddg";
+      engines = import ./engines.nix;
+
     };
   };
 }

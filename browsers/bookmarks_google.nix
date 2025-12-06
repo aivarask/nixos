@@ -22,5 +22,9 @@
       name = "";
       url = "https://translate.google.com/";
     }
+    {
+      name = "";
+      url = "https://drive.google.com/";
+    }
   ];
 }

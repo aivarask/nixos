@@ -28,7 +28,7 @@
     # homepageLocation = "https://www.startpage.com/";
     commandLineArgs = [
       "--no-sandbox"
-      "--enable-features=AcceleratedVideoEncoder"
+      "--enable-features=AcceleratrdVideoEncoder"
       "--ignore-gpu-blocklist"
       "--enable-zero-copy"
     ];

@@ -49,12 +49,6 @@
           name = "nix-community/nixd";
           url = "https://github.com/nix-community/nixd";
         }
-      ];
-    }
-    {
-      name = "n";
-      bookmarks = [
-
         {
           name = "nix.dev/";
           url = "https://nix.dev/";

@@ -21,17 +21,6 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
-function mystringsplit(inputstr, sep)
-	if sep == nil then
-		sep = "%s"
-	end
-	local t = {}
-	for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
-		table.insert(t, str)
-	end
-	return t
-end
-
 local function http()
 	pickers.new({
 		results_title = "Results",
@@ -58,11 +47,6 @@ local function http()
 			actions.select_default:replace(function()
 				actions.close(prompt_bufnr)
 				local selected_entry = action_state.get_selected_entry()
-				-- vim.api.nvim_put({ selection[1] }, "", false, true)
-				-- vim.notify(selection[1])
-				local mysplit = mystringsplit(selected_entry[1])
-				local res = string.gmatch(selected_entry[1], '')
-				print(vim.inspect(res))
 			end)
 			return true
 		end,

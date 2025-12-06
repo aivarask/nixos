@@ -135,9 +135,21 @@
                 inputs.nix-index-database.homeModules.nix-index
                 (import ./env.nix).hm
                 ./.programs.nix
-                ./browsers/chrom.nix
-                ./browsers/fir.nix
+                ./browsers/chrome.nix
+                ./browsers/firefox.nix
                 ./lua/default_hm.nix
+                (
+                  { pkgs, ... }:
+                  {
+                    services.gammastep.enable = true;
+                    services.gammastep.latitude = 54.0;
+                    services.gammastep.longitude = 25.0;
+                    services.gammastep.temperature = {
+                      day = 6500; # 5500
+                      night = 4500; # 3700
+                    };
+                  }
+                )
 
               ];
             };
