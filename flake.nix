@@ -135,7 +135,7 @@
                 inputs.nix-index-database.homeModules.nix-index
                 (import ./env.nix).hm
                 ./.programs.nix
-                ./browsers/chrome.nix
+                ./browsers/chromium-browser.nix
                 ./browsers/firefox.nix
                 ./lua/default_hm.nix
                 (

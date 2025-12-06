@@ -70,10 +70,10 @@
             installation_mode = "force_installed";
           };
           # https://noscript.net/
-          "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
-            install_url = moz "noscript";
-            installation_mode = "force_installed";
-          };
+          # "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
+          #   install_url = moz "noscript";
+          #   installation_mode = "force_installed";
+          # };
           # https://wiki.greasespot.net/
           "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
             install_url = moz "greasemonkey";
