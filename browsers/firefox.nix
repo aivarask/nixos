@@ -64,6 +64,7 @@
           "uBlock0@raymondhill.net" = {
             install_url = moz "ublock-origin";
             installation_mode = "force_installed";
+            private_browsing = true;
           };
           "{f3b4b962-34b4-4935-9eee-45b0bce58279}" = {
             install_url = moz "animated-purple-moon-lake";
