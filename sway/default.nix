@@ -32,6 +32,7 @@
         swaynotificationcenter
         gammastep
         waybar
+        wttrbar
         lxappearance
         xkeyboard-config
         xorg.xkbcomp
