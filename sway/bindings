@@ -20,7 +20,7 @@ bindsym	$mod+Shift+c kill
 # bindsym	 $mod+shift+w exec firefox --private-window $url
 
 bindsym $mod+w exec firefox -new-window
-bindsym $mod+shift+w exec firefox -new-window --private-window
+bindsym $mod+shift+w exec firefox -new-window --private-window 'xhamster.com'
 bindsym $mod+c exec chromium-browser --new-window $url
 bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window $url
 

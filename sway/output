@@ -7,3 +7,10 @@ output 'Dell Inc. DELL P2715Q V48W26BSA82L' {
 	scale 2.0
 	adaptive_sync on
 }
+
+output 'Sony SONY TV  *00 0x01010101' {
+	# mode 4096x2160@60Hz
+	mode 3840x2160@60Hz
+	scale 2.0
+	adaptive_sync on
+}

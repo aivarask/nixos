@@ -87,6 +87,7 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 nnoremap ?a :edit ~/.alias<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?z :edit ~/.zshrc_<CR>
+nnoremap ?b :edit ~/.config/sway/bindings<CR>
 
 if !has('gui_running')
 	set t_Co=256

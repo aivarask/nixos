@@ -2,10 +2,17 @@
   pkgs,
   lib,
   config,
+  SELF,
   ...
 }:
+let
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+
+in
 {
 
+  home.file.".mozilla/firefox/default/chrome".source = symlink "${SELF}/browsers/chrome";
+  home.file.".mozilla/firefox/default/user.js".source = symlink "${SELF}/browsers/user.js";
   programs.firefox = {
     enable = true;
 
@@ -14,7 +21,29 @@
       "lt"
     ];
 
+    # https://mozilla.github.io/policy-templates/
     policies = {
+      # https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
+      Preferences = {
+        "general.autoScroll" = true;
+      };
+      Permissions.Autoplay.Default = "allow-audio-video";
+      # Permission = {
+      #   "Autoplay" = {
+      #     # "Allow" = [ "https://example.org" ];
+      #     # "Block" = [ "https://example.edu" ];
+      #     "Default" = "allow-audio-video";
+      #     # "Locked" = false;
+      #   };
+      # };
+      PopupBlocking = {
+        "Allow" = [
+          "http://example.org/"
+          "http://example.edu/"
+        ];
+        "Default" = true;
+        "Locked" = false;
+      };
       # Updates & Background Services
       AppAutoUpdate = false;
       BackgroundAppUpdate = false;
@@ -45,6 +74,10 @@
       HardwareAcceleration = true;
       OfferToSaveLogins = false;
       DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+      SearchEngines = {
+        Default = "DuckDuckGo";
+        PreventInstalls = true;
+      };
 
       # https://mozilla.github.io/policy-templates/#extensionsettings
       ExtensionSettings =
@@ -79,6 +112,8 @@
           "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
             install_url = moz "greasemonkey";
             installation_mode = "force_installed";
+            private_browsing = true;
+            default_area = "navbar";
           };
           "queryamoid@kaply.com" = {
             # https://github.com/mkaply/queryamoid
@@ -90,6 +125,8 @@
             # https://addons.mozilla.org/en-US/firefox/addon/dark-mode-by-albert-inc/
             installation_mode = "force_installed";
             install_url = moz "dark-mode-by-albert-inc";
+            private_browsing = true;
+            default_area = "navbar";
           };
           "firefox@ghostery.com" = {
             # https://addons.mozilla.org/en-US/firefox/addon/ghostery/

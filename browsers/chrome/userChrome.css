@@ -1,0 +1,9 @@
+panelview,
+.panel-arrowcontent {
+	background: #15141a !important;
+	color: #afafab !important;
+}
+
+/* about:restartRequired */
+/* https://www.reddit.com/r/FirefoxCSS/wiki/index/tutorials/ */
+/* https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html */

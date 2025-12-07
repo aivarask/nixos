@@ -61,7 +61,8 @@ let g:switch_custom_definitions =
 			\   ['horizontal', 'vertical'],
 			\   ['enabled', 'disabled'],
 			\   ['firefox', 'chromium-browser'],
-			\   ['foo', 'bar', 'baz']
+			\   ['foo', 'bar', 'baz'],
+			\   ['red', 'green', 'blue']
 			\ ]
 let g:switch_mapping = ''
 nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
