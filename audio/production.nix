@@ -18,8 +18,6 @@
   services.udev.packages = with pkgs; [
     ardour
     mixxx
-    # vital
-    audacity
   ];
 
   environment.pathsToLink = [

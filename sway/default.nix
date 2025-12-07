@@ -17,6 +17,11 @@
         eww
         uwsm
         sway
+        sway-easyfocus
+        sway-launcher-desktop
+        # sway-overfocus
+        sway-new-workspace
+        sway-scratch
         i3
         wev
         wlr-which-key

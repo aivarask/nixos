@@ -10,7 +10,7 @@
     pulsemixer
     pwvucontrol
     coppwr
-    qpwgraph
+    # qpwgraph
     wireplumber
   ];
   security.rtkit.enable = true;

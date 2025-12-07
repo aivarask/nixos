@@ -23,11 +23,10 @@
           glib
           file
           # blender
-          figma-linux
+          # krita
+          # figma-linux
           inkscape-with-extensions
           # libreoffice-qt
-          # gimp-with-plugins # bimp plugin fails
-          krita
           ticker
           tickrs
           cointop

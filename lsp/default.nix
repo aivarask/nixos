@@ -15,10 +15,6 @@ lib.mkMerge [
       # libcpr
       # nlohmann_json
 
-      # haskell
-      ghc
-      ghcid
-      ghciwatch
       # html
       stylelint
       htmx-lsp
