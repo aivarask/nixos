@@ -9,4 +9,5 @@ alias nfu="nix flake update"
 alias nrs="nixos-rebuild switch"
 alias nrs_='nrs --option substituters "https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'
 alias s="uwsm start sway-uwsm.desktop"
+alias st="speedtest"
 alias \\s="systemctl-tui -s all"
