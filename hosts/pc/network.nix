@@ -15,7 +15,7 @@
     };
   };
 
-  networking.wireless.enable = false;
+  networking.wireless.enable = true;
   networking.wireless.driver = "wext"; # "TP-Link TL-WN881 ND"
   systemd.network.networks."20-wlp6s0" = {
     name = "wlp6s0";

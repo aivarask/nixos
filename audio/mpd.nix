@@ -3,6 +3,8 @@
   system =
     # https://wiki.nixos.org/wiki/MPD
     # https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/master/doc/mpdconf.example
+    # https://github.com/MusicPlayerDaemon/MPD
+
     {
       pkgs,
       config,

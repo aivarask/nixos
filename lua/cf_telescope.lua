@@ -4,7 +4,7 @@ lfs.mkdir(data .. '/databases')
 
 require('telescope').setup({
 	defaults = {
-		layout_strategy = 'horizontal',
+		layout_strategy = 'flex',
 		layout_config = { vertical = { width = 0.9 }, horizontal = { width = 0.9 } },
 		vimgrep_arguments = {
 			'rg',

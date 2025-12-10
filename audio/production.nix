@@ -7,12 +7,11 @@
 }:
 {
   # https://wiki.nixos.org/wiki/Audio_production
-  # https://github.com/musnix/musnix
   # https://plugins4free.com/instruments/
   # https://linuxmusic.rocks/
   # https://linuxmusicians.com/viewtopic.php?t=26947
   imports = [
-    inputs.musnix.nixosModules.musnix
+    inputs.musnix.nixosModules.musnix # https://github.com/musnix/musnix
   ];
   musnix.enable = true;
   services.udev.packages = with pkgs; [

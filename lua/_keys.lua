@@ -8,3 +8,4 @@ end, { desc = 'live_grep <cword>' })
 
 vim.keymap.set({ 'n', 'v', 'i' }, "<F5>", "<cmd>term find_ yoshimi<cr>")
 vim.keymap.set({ 'n', 'v', 'i' }, "<C-Tab>", "<cmd>bnext<cr>")
+vim.keymap.set({ 'v', 'i' }, "<C-R>", "<cmd>Telescope registers<cr>")

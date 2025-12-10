@@ -19,6 +19,8 @@
         sway
         sway-easyfocus
         sway-launcher-desktop
+        sway-contrib.inactive-windows-transparency
+        sway-contrib.grimshot
         # sway-overfocus
         sway-new-workspace
         sway-scratch

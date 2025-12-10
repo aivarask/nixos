@@ -1,3 +1,7 @@
+# dir='/root/Screenshot'
+# [ ! -e $dir ] && echo 'dir exists' || mkdir -p $dir
+# export $XDG_SCREENSHOTS_DIR='aaa'
+
 # LUA_PATH
 typeset -TU LUA_PATH luapath ';'
 luapath+=('/etc/nixos/lua/?.lua')

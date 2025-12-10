@@ -6,16 +6,15 @@
   inputs.nps.url = "github:OleMussmann/nps";
   inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
   inputs.templates.url = "github:NixOS/templates";
-  inputs.dev-templates.url = "https://flakehub.com/f/the-nix-way/dev-templates/0.1.283.tar.gz";
   inputs.disko-templates.url = "github:nix-community/disko-templates";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # https://github.com/nixos/nixos-hardware
   inputs.nixos-generators.url = "github:nix-community/nixos-generators";
   inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.url = "github:nix-community/home-manager"; # https://github.com/nix-community/home-manager
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixgl.url = "github:nix-community/nixGL";
+  inputs.nixgl.url = "github:nix-community/nixGL"; # https://github.com/nix-community/nixGL
   inputs.nix-colors.url = "github:misterio77/nix-colors";
   inputs.nix-index-database.url = "github:nix-community/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,11 +26,6 @@
   inputs.browser-previews.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
   inputs.rust-overlay.url = "github:oxalica/rust-overlay";
-  inputs.LS_COLORS.url = "github:trapd00r/LS_COLORS";
-  inputs.LS_COLORS.flake = false;
-  #
-  inputs.sxiv-tabbed.url = "github:bakkeby/sxiv-flexipatch";
-  inputs.sxiv-tabbed.flake = false;
   #
   inputs.vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
   inputs.vim-log-highlighting.flake = false;
@@ -78,7 +72,6 @@
         (
           { pkgs, ... }:
           {
-            nixpkgs.overlays = with inputs; [ (_: _: { inherit LS_COLORS; }) ];
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h
             '';
@@ -104,6 +97,7 @@
               inotify-tools
               fswatch
 
+              udiskie
               parted
               gparted
             ];

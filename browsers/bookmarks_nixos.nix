@@ -5,14 +5,7 @@
     {
       name = "nixos";
       bookmarks = [
-        {
-          name = "nix-community/manix";
-          url = "https://github.com/nix-community/manix";
-        }
-        {
-          name = "nixos/nixos-hardware";
-          url = "https://github.com/nixos/nixos-hardware";
-        }
+
         {
           name = "nix-community/nixos-anywhere";
           url = "https://github.com/nix-community/nixos-anywhere";
@@ -23,20 +16,9 @@
         }
         {
           name = "nix-community/disko-templates";
-          url = "https://github.com/nix-community/disko-templates";
+          url = "";
         }
-        {
-          name = "nix-community/nix-on-droid";
-          url = "https://github.com/nix-community/nix-on-droid";
-        }
-        {
-          name = "nix-community/home-manager";
-          url = "https://github.com/nix-community/home-manager";
-        }
-        {
-          name = "nix-community/neovim-nightly-overlay";
-          url = "https://github.com/nix-community/neovim-nightly-overlay";
-        }
+
         {
           name = "nix-community/browser-previews";
           url = "https://github.com/nix-community/browser-previews";
@@ -44,6 +26,7 @@
         {
           name = "nix-community/nixos-generators";
           url = "https://github.com/nix-community/nixos-generators";
+
         }
         {
           name = "nix-community/nixd";

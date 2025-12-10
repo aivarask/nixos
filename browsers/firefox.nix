@@ -151,23 +151,35 @@ in
                 externalLists = lib.concatStringsSep "\n" importedLists;
               };
 
+              userFilters = "||accounts.google.com/gsi/iframe";
               selectedFilterLists = [
-                "CZE-0"
-                "adguard-generic"
-                "adguard-annoyance"
-                "adguard-social"
-                "adguard-spyware-url"
-                "easylist"
-                "easyprivacy"
-                "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
-                "plowe-0"
-                "ublock-abuse"
-                "ublock-badware"
+                "user-filters"
                 "ublock-filters"
+                "ublock-badware"
                 "ublock-privacy"
                 "ublock-quick-fixes"
                 "ublock-unbreak"
+                "easylist"
+                "easyprivacy"
                 "urlhaus-1"
+                "plowe-0"
+                "fanboy-cookiemonster"
+                "ublock-cookies-easylist"
+                "adguard-cookies"
+                "ublock-cookies-adguard"
+                "fanboy-social"
+                "adguard-social"
+                "fanboy-thirdparty_social"
+                "easylist-chat"
+                "easylist-newsletters"
+                "easylist-notifications"
+                "easylist-annoyances"
+                "adguard-mobile-app-banners"
+                "adguard-other-annoyances"
+                "adguard-popup-overlays"
+                "adguard-widgets"
+                "ublock-annoyances"
+                "LTU-0"
               ];
             };
           };

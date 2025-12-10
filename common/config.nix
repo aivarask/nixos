@@ -14,6 +14,8 @@
           mtools
           kmon
           brightnessctl
+          ddcutil
+          ddcui
           usbutils
           lm_sensors
           pciutils
@@ -145,7 +147,7 @@
     groff
     cht-sh
     tldr
-    manix
+    manix # https://github.com/nix-community/manix
   ];
   documentation = {
     enable = true;

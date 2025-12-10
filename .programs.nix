@@ -80,9 +80,9 @@ in
   ];
 
   home.packages = with pkgs; [
-    lnav # lnav_='lnav -I /etc/nixos/prog_/ /var/log/Xorg.0.log $XDG_STATE_HOME/nvim/*.log'\
+    lnav
     htop
-    lf
+    lf # https://github.com/gokcehan/lf
     gtk3
     gtk4
     xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
@@ -114,6 +114,8 @@ in
     prettybat
   ];
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
+  xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
+  xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
   xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";

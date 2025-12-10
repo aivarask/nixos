@@ -58,7 +58,7 @@
       ''; # $HOME/.zprofile
       programs.zsh.envExtra = ''
         # HM programs.zsh.envExtra 
-        source $HOME/.zshenv_
+        . $HOME/.zshenv_
       ''; # $HOME/.zshenv
       # programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
       # programs.zsh.initContent = lib.mkOrder 550 ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc

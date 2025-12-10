@@ -53,7 +53,10 @@ colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_events = ['CursorHold']
+let g:auto_save_events = [ 
+			\ "TextChanged"]			
+" "InsertLeave"
+
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:interestingWordsDefaultMappings=0
@@ -118,7 +121,8 @@ if has('nvim')
 	nnoremap <leader>h :Telescope help_tags<CR>
 	nnoremap <leader>H :Telescope command_history<CR>
 	nnoremap <leader>k :Telescope keymaps<CR>
-	nnoremap <leader>r :Telescope reloader<CR>
+	nnoremap <leader>R :Telescope reloader<CR>
+	nnoremap <leader>r :Telescope registers<CR>
 	nnoremap <leader>M :Telescope manix<CR>
 	nmap <leader>N :Neotest
 	nnoremap <leader>n :Neotest summary toggle<CR>
@@ -142,10 +146,7 @@ endif
 	inoremap <M-K> <Esc>:m .-2<CR>==gi
 	vnoremap <M-J> :m '>+1<CR>gv=gv
 	vnoremap <M-K> :m '<-2<CR>gv=gv
-	imap <M-h> <C-O>h
-	imap <M-j> <C-O>j
-	imap <M-k> <C-O>k
-	imap <M-l> <C-O>l
+
 
 
 
