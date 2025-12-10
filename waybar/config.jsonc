@@ -6,7 +6,7 @@
 	"include": [
 		"~/.config/waybar/audio.jsonc",
 		"~/.config/waybar/modules.jsonc",
-		"~/.config/waybar/network.jsonc",
+		"~/.config/waybar/network.jsonc"
 	],
 	"modules-left": [
 		"sway/workspaces",
@@ -17,6 +17,7 @@
 		// "sway/window"
 	],
 	"modules-right": [
+		"custom/weather",
 		"pulseaudio",
 		"network",
 		"backlight",

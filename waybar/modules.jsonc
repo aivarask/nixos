@@ -92,5 +92,12 @@
 	},
 	"battery#bat2": {
 		"bat": "BAT2"
+	},
+	"custom/weather": {
+		"format": "{}° ",
+		"tooltip": true,
+		"interval": 3600,
+		"exec": "wttrbar --location Sirvintos",
+		"return-type": "json"
 	}
 }

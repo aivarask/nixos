@@ -14,18 +14,26 @@
 		--top-menu-height: 0px !important;
 	}
 
-	.top-menu-container {
+	.top-menu-container,
+	.controls,
+	#commentBox:nth-child(1) {
 		display: none !important;
 		visibility: hidden !important;
 	}
 
-	.main-wrap {
+	body>div.main-wrap {
 		margin: 0 0 !important;
 	}
 
 	.width-wrap {
 		max-width: 100vw !important;
 	}
+
+	.video-page .player-container {
+		margin-right: 0px !important;
+	}
+
+
 
 
 	@media screen and (min-width: 1536px) {
