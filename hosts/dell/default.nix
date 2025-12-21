@@ -60,4 +60,46 @@
   ];
   # services.xserver.videoDrivers = [ "modesetting" ];
 
+  networking.firewall = {
+    trustedInterfaces = [ "p2p-wl+" ];
+
+    allowedTCPPorts = [
+      7236
+      7250
+    ]; # wifi direct port ?
+    allowedUDPPorts = [
+      7236
+      5353
+    ];
+  };
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      # pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-wlr
+    ];
+
+    xdgOpenUsePortal = true;
+    config = {
+      common = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.Screencast" = [ "hyprland" ];
+      };
+    };
+    # config = {
+    #   # common = {
+    #   #   # "org.freedesktop.impl.portal.Screenshot" = "hyprland";
+    #   #   "org.freedesktop.impl.portal.Screencast" = "hyprland";
+    #   #   "org.freedesktop.portal.Screencast" = "hyprland";
+    #   #   default = [ "hyprland" ];
+    #   # };
+    #   # hyprland.default = [
+    #   #   "hyprland"
+    #   #   "gtk"
+    #   # ];
+    # };
+  };
 }
