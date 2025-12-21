@@ -69,22 +69,6 @@
 			""
 		]
 	},
-	"custom/brightness": {
-		"format": "{icon} {percentage}%",
-		"format-icons": [
-			"\uDB80\uDCDE",
-			"\uDB80\uDCDF",
-			"\uDB80\uDCE0"
-		],
-		"return-type": "json",
-		"exec": "ddcutil getvcp 10 --brief | awk '{print $4}' | xargs -I{} echo '{\"percentage\":\"{}\"}'",
-		"on-scroll-up": "ddcutil setvcp 10 + 5",
-		"on-scroll-down": "ddcutil setvcp 10 - 5",
-		"on-click": "ddcutil setvcp 10 10",
-		"on-click-right": "ddcutil setvcp 10 100",
-		"tooltip": false,
-		"exec-on-event": true
-	},
 	"battery": {
 		"states": {
 			"good": 80,

@@ -16,12 +16,33 @@
 		"sway/scratchpad"
 		// "sway/window"
 	],
+	"custom/foo": {
+		// https://github.com/Alexays/Waybar/wiki/Module:-Custom
+		"exec": "brightness_monitor",
+		"format": "{text}%",
+		"return-type": "json",
+		// "exec-on-event": true,
+		"restart-interval": 2,
+		"tooltip": false,
+		"on-scroll-up": "ddcutil setvcp 10 + 5",
+		"on-scroll-down": "ddcutil setvcp 10 - 5",
+		"on-click": "ddcutil setvcp 10 20",
+		"on-click-right": "ddcutil setvcp 10 90"
+	},
+	"systemd-failed-units": {
+		"hide-on-ok": false, // Do not hide if there is zero failed units.
+		"format": "✗ {nr_failed}",
+		"format-ok": "✓",
+		"system": true, // Monitor failed systemwide units.
+		"user": true // Ignore failed user units.
+	},
 	"modules-right": [
+		"systemd-failed-units",
+		"custom/foo",
 		"custom/weather",
 		"pulseaudio",
 		"network",
 		"backlight",
-		"custom/brightness",
 		"battery",
 		"sway/language",
 		"clock"

@@ -6,7 +6,7 @@ bindsym $mod+e layout toggle split
 # bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+space fullscreen 
-bindsym $mod+Shift+space floating toggle 
+bindsym $mod+shift+space floating toggle 
 bindsym $mod+ctrl+space focus mode_toggle 
 # bindsym $mod+p focus parent 
 
@@ -14,11 +14,11 @@ set $yt 'https://youtube.com'
 set $url 'xhamster.com'
 
 bindsym	$mod+Escape reload
-bindsym	$mod+Shift+c kill
 
 bindsym $mod+w exec firefox -new-window
 bindsym $mod+shift+w exec firefox -new-window --private-window 
 bindsym $mod+c exec chromium-browser --new-window 
+bindsym	$mod+shift+c kill
 bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window 
 
 # exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"
