@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+ddcutil getvcp 10 --brief |
+	awk '{print $4}' |
+	xargs -I{} echo '{"text":"{}"}' |
+	jq --unbuffered --compact-output
