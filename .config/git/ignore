@@ -4,7 +4,7 @@
 *.lock
 *lock.yaml
 error.log
-config.old
+*/config.old
 
 # nix
 !flake.lock

@@ -21,27 +21,14 @@
       services.mpd.startWhenNeeded = true;
       services.mpd.user = "pipewire";
       services.mpd.group = "audio";
-      # services.mpd.network.listenAddress = "any";
-      # services.mpd.network.port = 6600;
       # /run/mpd/mpd.conf
       services.mpd.extraConfig = ''
-        bind_to_address    "/var/lib/mpd/socket"
-        auto_update "yes"
-        audio_output {
-        type "pipewire"
-        name "PipeWire Output"
-        }
-        playlist_plugin {
-        name "m3u"
-        enabled "true"
-        }
         include_optional "/etc/nixos/audio/mpd.conf"
-
       '';
-      systemd.services.mpd.environment = {
-        # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-        XDG_RUNTIME_DIR = "/run/user/${toString config.users.users."pipewire".uid}";
-      };
+      # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+      systemd.services.mpd.environment.XDG_RUNTIME_DIR = "/run/user/${
+        toString config.users.users."pipewire".uid
+      }";
       systemd.tmpfiles.settings."10-mpd" = {
         "/var/lib/mpd/playlists/link" = lib.mkIf true {
           "L+" = {
@@ -50,6 +37,15 @@
             mode = "0777";
             type = "L+";
             argument = "/etc/nixos/audio/playlists";
+          };
+        };
+        "/var/lib/mpd/music/_root" = lib.mkIf true {
+          "L+" = {
+            user = services.mpd.user;
+            group = services.mpd.group;
+            mode = "0777";
+            type = "L+";
+            argument = "/root/Music";
           };
         };
         # "/var/lib/mpd/music" = lib.mkIf false {
