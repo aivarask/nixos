@@ -9,6 +9,8 @@
   services.samba.enable = true;
   services.samba.package = pkgs.samba4Full;
   services.samba.openFirewall = true;
+  services.samba.nmbd.enable = false;
+  services.samba.winbindd.enable = false;
   services.samba.smbd.extraArgs = [ "--configfile=/etc/nixos/smb.conf" ];
   services.avahi = {
     publish.enable = true;
