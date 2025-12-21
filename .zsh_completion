@@ -13,12 +13,11 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 
-
 # cat -v	#	showkey
 bindkey '^N' menu-complete
 bindkey '^P' reverse-menu-complete
 bindkey '^ ' forward-word            # C-Space
-bindkey '^[[1;5C' autosuggest-accept # C-Right
+# bindkey '^[[1;5C' autosuggest-accept # C-Right
 bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>

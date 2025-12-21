@@ -1,5 +1,5 @@
 # vim: ft=swayconfig
-# Layout:
+
 bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+e layout toggle split
@@ -11,24 +11,16 @@ bindsym $mod+ctrl+space focus mode_toggle
 # bindsym $mod+p focus parent 
 
 set $yt 'https://youtube.com'
+set $url 'xhamster.com'
 
 bindsym	$mod+Escape reload
 bindsym	$mod+Shift+c kill
-# bindsym	$mod+p exec chrome --new-window --incognito 
-# bindsym	$mod+p exec chrome --incognito $(cat /etc/nixos/sway/p.txt)
-# bindsym $mod+ctrl+w exec firefox $(cat /etc/nixos/sway/sway.txt)
-# bindsym	 $mod+shift+w exec firefox --private-window $url
 
 bindsym $mod+w exec firefox -new-window
-bindsym $mod+shift+w exec firefox -new-window --private-window 'xhamster.com'
-bindsym $mod+c exec chromium-browser --new-window $url
-bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window $url
+bindsym $mod+shift+w exec firefox -new-window --private-window 
+bindsym $mod+c exec chromium-browser --new-window 
+bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window 
 
-
-
-bindsym	 $mod+f1 exec $term -D /etc/nixos/ nvim
 # exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"
-
+bindsym	$mod+f1 exec $term -D /etc/nixos/ nvim
 bindsym $mod+f2 exec ardour8 -T main one
-
-

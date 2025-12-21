@@ -16,6 +16,8 @@
 
 	.top-menu-container,
 	.controls,
+	.xplayer-background-top,
+	.xplayer-background-bottom,
 	#commentBox:nth-child(1) {
 		display: none !important;
 		visibility: hidden !important;

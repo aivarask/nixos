@@ -57,9 +57,9 @@ in
         programs.zsh.history.extended = true;
         programs.zsh.plugins = [
           {
-            name = "zsh-autocomplete";
+            name = "zsh-autocomplete"; # https://github.com/marlonrichert/zsh-autocomplete
             src = pkgs.zsh-autocomplete;
-            file = "share/zsh-autocomplete/zsh-autocomplete.zsh";
+            file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
           }
 
           #https://github.com/agkozak/zhooks

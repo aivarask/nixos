@@ -21,6 +21,7 @@
 		"pulseaudio",
 		"network",
 		"backlight",
+		"custom/brightness",
 		"battery",
 		"sway/language",
 		"clock"
