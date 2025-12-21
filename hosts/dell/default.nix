@@ -16,7 +16,6 @@
     ./binarycache.nix
     ./bluetooth.nix
     ./boot.nix
-    ./samba.nix
     ./network.nix
     ./storage.nix
     # ./virt.nix
