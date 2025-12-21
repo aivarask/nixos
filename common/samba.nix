@@ -21,6 +21,8 @@
     enable = true;
     openFirewall = true;
   };
+  services.samba-wsdd.enable = true;
+  services.samba-wsdd.openFirewall = true;
 
   security.wrappers."mount.cifs" = {
     program = "mount.cifs";
