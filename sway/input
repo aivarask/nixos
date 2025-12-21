@@ -6,6 +6,7 @@ input type:keyboard {
 	repeat_rate 50
 	xkb_numlock enabled
 	xkb_layout "us,lt"
+	xkb_variant "euro"
 	# xkb_options "grp:alt_space_toggle"
 	xkb_options "grp:menu_toggle"
 }

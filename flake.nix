@@ -58,6 +58,7 @@
         ./common/nix.nix
         ./common/nps.nix
         ./common/services.nix
+        ./common/samba.nix
         (import ./env.nix).system
         ./httpd
         ./lang/go.nix
@@ -69,24 +70,6 @@
         # ./network/dns_basic.nix
         ./network/networking.nix
         ./network/wireless.nix
-        (
-          { pkgs, lib, ... }:
-          {
-
-            services.samba.enable = true;
-            services.samba.package = pkgs.samba4Full;
-            services.samba.openFirewall = true;
-            services.samba.smbd.extraArgs = [ "--configfile=/etc/nixos/smb.conf" ];
-            # services.samba.settings.global."invalid_users" = [ "root" ];
-            # environment.etc = lib.mkAfter {
-            #   "samba/smb.conf" = {
-            #     source = "/etc/nixos/smb.conf";
-            #     mode = "0444";
-            #   };
-            #   # "default/useradd".text = "GROUP=100 ...";
-            # };
-          }
-        )
         (
           { pkgs, ... }:
           {
@@ -101,6 +84,11 @@
               gdu
               duf
 
+              incus
+              buildah
+              podman
+              skopeo
+              podman-tui
               # MTP (Media transfer protocol)
               # https://nixos.wiki/wiki/MTP
               # https://wiki.archlinux.org/title/Media_Transfer_Protocol
@@ -111,12 +99,6 @@
               go-mtpfs
               jmtpfs
               android-file-transfer
-
-              # 1 check connection to samba router
-              # 2
-              cifs-utils
-              samba
-              smbclient-ng
 
               inotify-tools
               fswatch
