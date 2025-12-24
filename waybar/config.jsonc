@@ -30,7 +30,7 @@
 		"on-click-right": "ddcutil setvcp 10 90"
 	},
 	"systemd-failed-units": {
-		"hide-on-ok": false, // Do not hide if there is zero failed units.
+		"hide-on-ok": true,
 		"format": "✗ {nr_failed}",
 		"format-ok": "✓",
 		"system": true, // Monitor failed systemwide units.
