@@ -49,10 +49,23 @@ in
           dotenv-linter
           shellharden
         ];
+        programs.zsh.enable = true;
+
+        programs.zsh.envExtra = ''
+          # >>> programs.zsh.envExtra 
+          source $ZDOTDIR/.zshenv_
+        '';
+        programs.zsh.initContent = ''
+                    # >>> programs.zsh.initContent
+          					zmodload zsh/zprof
+
+                    				source $ZDOTDIR/.zshrc_'';
+        xdg.configFile."zsh/.zshenv_".source = symlink "${xdgconf}/zsh/.zshenv_";
+        xdg.configFile."zsh/.zshrc_".source = symlink "${xdgconf}/zsh/.zshrc_";
         programs.zsh.autocd = true;
         programs.zsh.syntaxHighlighting.enable = true;
         programs.zsh.autosuggestion.enable = false;
-        # programs.zsh.dotDir = ".config/zsh";
+        programs.zsh.dotDir = "${config.xdg.configHome}/zsh";
         programs.zsh.history.size = 10000;
         programs.zsh.history.extended = true;
         programs.zsh.plugins = [
@@ -96,7 +109,8 @@ in
     spotify
     ncspot
   ];
-  home.file.".ripgreprc".source = symlink "${SELF}/.ripgreprc";
+  xdg.configFile."ripgreprc".source = symlink "${xdgconf}/ripgreprc";
+  xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;

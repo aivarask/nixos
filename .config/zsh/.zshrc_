@@ -1,13 +1,20 @@
 #!/usr/bin/env zsh
+# shellcheck shell=zsh
 
-autoload -Uz edit-command-line; zle -N edit-command-line; bindkey '\ev' edit-command-line
+
+source $HOME/.alias
+
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '\ev' edit-command-line
 autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
 (( ${+aliases[run-help]} )) && unalias run-help
 alias help=run-help
 
 # https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reassign-keys
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
+# add-zsh-hook chpwd chpwd_recent_dirs
 bindkey '^I' menu-select
 bindkey '^[[Z' menu-select
 bindkey -M menuselect '^I' menu-complete # Tab
@@ -16,13 +23,14 @@ bindkey -M menuselect  '^[[D' .backward-char  '^[OD' .backward-char
 bindkey -M menuselect  '^[[C'  .forward-char  '^[OC'  .forward-char
 bindkey -M menuselect '^M' .accept-line
 
+zstyle ':autocomplete:*' append-semicolon no
 # zstyle ':completion:*:make:*:targets' call-command true
 # zstyle ':completion:*:*:make:*' tag-order 'targets'
-zstyle ':completion:*' rehash true
-zstyle ':completion:*' menu select
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+# zstyle ':completion:*' rehash true
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' verbose yes
+# zstyle ':completion:*' use-cache on
+# zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 
 # cat -v	#	showkey
 bindkey '^N' menu-complete
@@ -32,6 +40,9 @@ bindkey '^ ' forward-word            # C-Space
 bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
+
+
+source /etc/nixos/.config/zsh/zfunc
 
 cmd_preview () { pistol $BUFFER }
 zle -N cmd_preview cmd_preview
@@ -43,4 +54,4 @@ cmd_xclip ()  {
 zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
-
+zprof

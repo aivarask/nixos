@@ -35,7 +35,7 @@ in
   # nix.package = pkgs.nixVersions.latest; # stable
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
-  nix.gc.options = "--delete-older-than 1w";
+  nix.gc.options = "--delete-older-than 7d";
   nix.channel.enable = false;
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;

@@ -66,7 +66,6 @@
           libwebp
           # debug
           # lldb
-          fontpreview
         ]
       );
     }
@@ -102,6 +101,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3 root@pc"
     ];
   };
+  nixpkgs.config.joypixels.acceptLicense = true;
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
@@ -115,6 +115,9 @@
       nerd-fonts.fira-code
       powerline-fonts
 
+      terminus_font
+      terminus_font_ttf
+      joypixels
       font-awesome
       noto-fonts-monochrome-emoji
 

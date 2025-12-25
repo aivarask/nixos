@@ -24,7 +24,7 @@
         ];
       };
       environment.shellAliases.wol_pc = "wol b4:2e:99:61:09:cf";
-      environment.profiles = [ "/etc/nixos" ];
+      environment.profiles = [ ];
       environment.shellInit = ''# OS environment.shellInit ''; # /etc/profile
       environment.extraInit = ''# OS environment.extraInit ''; # /etc/set-environment
       programs.bash.shellInit = ''# OS programs.bash.shellInit ''; # /etc/bashrc
@@ -51,24 +51,5 @@
       home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.bashrc_";
       home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
 
-      programs.zsh.enable = true;
-      programs.zsh.profileExtra = ''
-        # HM programs.zsh.profileExtra 
-        source $HOME/.zprofile_
-      ''; # $HOME/.zprofile
-      programs.zsh.envExtra = ''
-        # HM programs.zsh.envExtra 
-        . $HOME/.zshenv_
-      ''; # $HOME/.zshenv
-      # programs.zsh.initExtraBeforeCompInit = ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
-      # programs.zsh.initContent = lib.mkOrder 550 ''# HM programs.zsh.initExtraBeforeCompinit ''; # $HOME/.zshrc
-      programs.zsh.completionInit = ''# HM programs.zsh.completionInit '';
-      programs.zsh.initContent = ''
-            # HM programs.zsh.initContent
-        		source $HOME/.zshrc_
-      '';
-      home.file.".zprofile_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zprofile_";
-      home.file.".zshenv_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zshenv_";
-      home.file.".zshrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.zshrc_";
     };
 }
