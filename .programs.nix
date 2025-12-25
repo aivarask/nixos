@@ -49,19 +49,15 @@ in
           dotenv-linter
           shellharden
         ];
-        programs.zsh.enable = true;
-
-        programs.zsh.envExtra = ''
-          # >>> programs.zsh.envExtra 
-          source $ZDOTDIR/.zshenv_
-        '';
-        programs.zsh.initContent = ''
-                    # >>> programs.zsh.initContent
-          					zmodload zsh/zprof
-
-                    				source $ZDOTDIR/.zshrc_'';
         xdg.configFile."zsh/.zshenv_".source = symlink "${xdgconf}/zsh/.zshenv_";
         xdg.configFile."zsh/.zshrc_".source = symlink "${xdgconf}/zsh/.zshrc_";
+        programs.zsh.envExtra = builtins.concatStringsSep "\n" [
+          "source $ZDOTDIR/.zshenv_"
+        ];
+        programs.zsh.initContent = builtins.concatStringsSep "\n" [
+          "source $ZDOTDIR/.zshrc_"
+        ];
+        programs.zsh.enable = true;
         programs.zsh.autocd = true;
         programs.zsh.syntaxHighlighting.enable = true;
         programs.zsh.autosuggestion.enable = false;
@@ -70,22 +66,25 @@ in
         programs.zsh.history.extended = true;
         programs.zsh.plugins = [
           {
+            name = "zsh-zhooks"; # https://github.com/agkozak/zhooks
+            src = pkgs.zsh-zhooks;
+            file = "share/zsh/zhooks/zhooks.plugin.zsh";
+          }
+          {
             name = "zsh-autocomplete"; # https://github.com/marlonrichert/zsh-autocomplete
             src = pkgs.zsh-autocomplete;
             file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
           }
-
-          #https://github.com/agkozak/zhooks
-          # {
-          #   name = "vi-mode";
-          #   src = pkgs.zsh-vi-mode; # https://github.com/jeffreytse/zsh-vi-mode
-          #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-          # }
-          # {
-          #   name = "system-clipboard";
-          #   src = pkgs.zsh-system-clipboard; # https://github.com/kutsan/zsh-system-clipboard
-          #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
-          # }
+          {
+            name = "vi-mode";
+            src = pkgs.zsh-vi-mode; # https://github.com/jeffreytse/zsh-vi-mode
+            file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+          }
+          {
+            name = "system-clipboard";
+            src = pkgs.zsh-system-clipboard; # https://github.com/kutsan/zsh-system-clipboard
+            file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh";
+          }
         ];
 
       }
@@ -167,9 +166,8 @@ in
       ];
     }
   );
-  programs.ncmpcpp.enable = true;
 
-  # xdg.configFile."ncmpcpp" = symlink "${xdgconf}/ncmpcpp";
+  programs.ncmpcpp.enable = true;
   xdg.configFile."ncmpcpp/config" = {
     enable = true;
     force = true;
@@ -190,7 +188,6 @@ in
     force = true;
     recursive = true;
     # onChange = ''
-    #   cat ${config.home.homeDirectory}/.config/nicotine/config_def > ${config.home.homeDirectory}/.config/nicotine/config
     # '';
   };
 
@@ -200,9 +197,7 @@ in
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.direnv.config = {
-    load_dotenv = true;
-  };
+  programs.direnv.config.load_dotenv = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
 

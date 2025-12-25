@@ -22,9 +22,7 @@
       services.mpd.user = "pipewire";
       services.mpd.group = "audio";
       # /run/mpd/mpd.conf
-      services.mpd.extraConfig = ''
-        include_optional "/etc/nixos/audio/mpd.conf"
-      '';
+      services.mpd.settings.include_optional = "/etc/nixos/audio/mpd.conf";
       # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
       systemd.services.mpd.environment.XDG_RUNTIME_DIR = "/run/user/${
         toString config.users.users."pipewire".uid
@@ -46,34 +44,9 @@
             mode = "0777";
             type = "L+";
             argument = "/root/Music";
+            #     argument = "${config.hm.xdg.userDirs.music}";
           };
         };
-        # "/var/lib/mpd/music" = lib.mkIf false {
-        #   # https://www.freedesktop.org/software/systemd/man/latest/tmpfiles.d.html
-        #   "L+" = {
-        #     user = services.mpd.user;
-        #     group = services.mpd.group;
-        #     mode = "0777";
-        #     type = "L+";
-        #     argument = "${config.hm.xdg.userDirs.music}";
-        #   };
-        # };
       };
-      # https://search.nixos.org/options?channel=unstable&show=systemd.tmpfiles.rules&from=0&size=50&sort=relevance&type=packages&query=systemd.tmpfiles
-
-      # system.userActivationScripts.linktoplaylist = {
-      #   text = ''
-      #     su="${pkgs.su}/bin/su"
-      #               				su aiva --shell ${pkgs.runtimeShell} --command "mkdir /home/aiva/foo"
-      #                         # if [[ ! -h "/var/lib/mpd/playlists/audio" ]]; then
-      #                         # notify-send 'create symlink'
-      #                         # ln -s "/var/lib/mpd/playlists/audio" "/etc/nixos/audio/"
-      #                         # else
-      #                         # unlink "/var/lib/mpd/playlists/audio"
-      #                         # notify-send 'unlink'
-      #                         # fi
-      #   '';
-      #
-      # };
     };
 }

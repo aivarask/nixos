@@ -1,9 +1,7 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
 
-
 source $HOME/.alias
-
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -41,6 +39,7 @@ bindkey '^[[3;5~' kill-word          # C-Del
 bindkey "^[OP" "run-help"            # <F1>
 bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 
+bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
 
 source /etc/nixos/.config/zsh/zfunc
 
@@ -54,4 +53,3 @@ cmd_xclip ()  {
 zle -N cmd_xclip cmd_xclip
 bindkey -v '' cmd_xclip
 
-zprof

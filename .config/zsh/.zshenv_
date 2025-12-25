@@ -2,7 +2,7 @@
 # shellcheck shell=zsh
 
 setopt extended_glob
-
+export ZSH_SYSTEM_CLIPBOARD_METHOD=wlp
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
 export YDIFF_OPTIONS='-w40'
