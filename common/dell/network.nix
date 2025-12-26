@@ -1,6 +1,6 @@
 { ... }:
 {
-  networking.extraHosts = {
+  networking.hosts = {
     "192.168.1.195" = [ "pcw" ];
     "192.168.1.190" = [ "pc" ];
   };

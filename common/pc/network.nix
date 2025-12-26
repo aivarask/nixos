@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  networking.extraHosts = {
+  networking.hosts = {
     "192.168.1.180" = [ "dell" ];
   };
   networking.hostName = "pc";
