@@ -11,11 +11,11 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia # https://github.com/NixOS/nixos-hardware/tree/master/dell/xps/15-7590
     # https://wiki.nixos.org/wiki/Linux_kernel#Configuration
-    ./../boot.nix
     ./../xdg.nix
     ./../../lsp
     ./binarycache.nix
     ./bluetooth.nix
+    ./../boot.nix
     ./boot.nix
     ./network.nix
     ./storage.nix
@@ -67,16 +67,8 @@
   powerManagement.powertop.enable = false;
 
   # hardware.nvidia.prime.allowExternalGpu = true;
-  hardware.nvidia.prime.reverseSync.enable = true;
+  # hardware.nvidia.prime.reverseSync.enable = true;
 
-  networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
-  networking.firewall.allowedTCPPorts = [
-    7236
-    7250
-  ]; # wifi direct port ?
-  networking.firewall.allowedUDPPorts = [
-    7236
-    5353
-  ];
+  hardware.nvidia.modesetting.enable = true;
 
 }

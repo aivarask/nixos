@@ -13,4 +13,13 @@
     networkConfig.DHCP = "ipv4";
     networkConfig.IPv6AcceptRA = true;
   };
+  networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
+  networking.firewall.allowedTCPPorts = [
+    7236
+    7250
+  ]; # wifi direct port ?
+  networking.firewall.allowedUDPPorts = [
+    7236
+    5353
+  ];
 }
