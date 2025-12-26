@@ -1,5 +1,9 @@
 { ... }:
 {
+  networking.extraHosts = {
+    "192.168.1.195" = [ "pcw" ];
+    "192.168.1.190" = [ "pc" ];
+  };
   networking.hostName = "dell";
   networking.hostId = "8425e349";
   systemd.network.networks."10-hw" = {

@@ -190,11 +190,11 @@
       };
 
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./hosts/dell ];
+        modules = commonModules ++ [ ./common/dell ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./hosts/pc ];
+        modules = commonModules ++ [ ./common/pc ];
         specialArgs = { inherit inputs; };
       };
     });

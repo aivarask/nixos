@@ -10,7 +10,7 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./../../common/boot.nix
+    ./../boot.nix
     ./../../lsp
     ./binarycache.nix
     ./boot.nix

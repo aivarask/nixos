@@ -54,7 +54,7 @@
         fluent-icon-theme
       ];
 
-      services.xserver.exportConfiguration = true;
+      # services.xserver.exportConfiguration = true;
       # services.gnome.gnome-keyring.enable = true;
       security.pam.services.login.enableGnomeKeyring = true;
       programs.sway.enable = true;
