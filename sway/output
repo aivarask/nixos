@@ -2,6 +2,10 @@
 
 # sway-output 
 # swaymsg -t get_outputs
+output 'Unknown Unknown Unknown' {
+	mode 3840x2160@60Hz
+	scale 2.0
+}
 
 output 'Sharp Corporation 0x14B9 Unknown' {
 	mode 3840x2160@60Hz
