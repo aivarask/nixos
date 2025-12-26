@@ -70,5 +70,8 @@
   # hardware.nvidia.prime.reverseSync.enable = true;
 
   hardware.nvidia.modesetting.enable = true;
-
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  boot.kernelParams = [
+    "module_blacklist=i915"
+  ];
 }
