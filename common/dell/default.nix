@@ -66,12 +66,8 @@
   };
   powerManagement.powertop.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    fwupd
-    mesa-demos
-    gpu-viewer
-    vulkan-tools
-  ];
+  # hardware.nvidia.prime.allowExternalGpu = true;
+  hardware.nvidia.prime.reverseSync.enable = true;
 
   networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
   networking.firewall.allowedTCPPorts = [
