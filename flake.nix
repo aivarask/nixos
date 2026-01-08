@@ -165,6 +165,7 @@
       # packages./*<SYSTEM>.*/"<PACKAGE>" = /* ... */;
     })
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
+      formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       packages."${system}" = {
         minimal_iso = inputs.nixos-generators.nixosGenerate {
           inherit system;
