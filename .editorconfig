@@ -22,6 +22,13 @@ root = true
 # trim_trailing_whitespace = true
 # insert_final_newline = true
 
+[*.nix]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+indent_style = space
+
 # https://github.com/editorconfig/editorconfig
 # https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#ideas-for-domain-specific-properties
 
