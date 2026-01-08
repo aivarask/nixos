@@ -2,8 +2,8 @@
   pkgs,
   config,
   lib,
-  symlink,
-  xdgconf,
+  SELF,
+  homeManager,
   ...
 }:
 {
@@ -15,12 +15,16 @@
     dotenv-linter
     shellharden
   ];
-  xdg.configFile."zsh/.zshenv_".source = symlink "${xdgconf}/zsh/.zshenv_";
-  xdg.configFile."zsh/.zshrc_".source = symlink "${xdgconf}/zsh/.zshrc_";
+
+  xdg.configFile."zsh/.zshenv_".source =
+    config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/zsh/.zshenv_";
+  xdg.configFile."zsh/.zshrc_".source =
+    config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/zsh/.zshrc_";
   programs.zsh.envExtra = builtins.concatStringsSep "\n" [
     "source $ZDOTDIR/.zshenv_"
   ];
   programs.zsh.initContent = builtins.concatStringsSep "\n" [
+    "source $HOME/.alias"
     "source $ZDOTDIR/.zshrc_"
   ];
   programs.zsh.enable = true;
@@ -32,7 +36,7 @@
   programs.zsh.history.extended = true;
   programs.zsh.history.share = true;
   xdg.configFile."zsh-system-clipboard/method".source =
-    symlink "${xdgconf}/zsh-system-clipboard/method";
+    config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/zsh-system-clipboard/method";
   programs.zsh.plugins = [
     # {
     #   name = "zsh-system-clipboard";
