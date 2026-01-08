@@ -106,10 +106,10 @@ in
   xdg.configFile."mpv".source = symlink "${xdgconf}/mpv";
   programs.mpv.enable = true;
   programs.mpv.package = (
-    pkgs.mpv-unwrapped.wrapper {
-      mpv = pkgs.mpv-unwrapped.override {
-        waylandSupport = true;
-      };
+    pkgs.mpv.override {
+      # mpv = pkgs.mpv.override {
+      #   waylandSupport = true;
+      # };
       scripts = with pkgs.mpvScripts; [
         pkgs.mpvScripts.uosc # https://github.com/tomasklaen/uosc
         pkgs.mpvScripts.reload # https://github.com/4e6/mpv-reload

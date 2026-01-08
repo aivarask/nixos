@@ -39,8 +39,6 @@
   inputs.smart-semicolon.flake = false;
   inputs.one-small-step-for-vimkind.url = "github:jbyuki/one-small-step-for-vimkind";
   inputs.one-small-step-for-vimkind.flake = false;
-  inputs.tree-sitter-language-injection.url = "github:DariusCorvus/tree-sitter-language-injection.nvim";
-  inputs.tree-sitter-language-injection.flake = false;
   inputs.websocket-nvim.url = "github:samsze0/websocket.nvim";
   inputs.websocket-nvim.flake = false;
   inputs.nvim-oxi.url = "github:noib3/nvim-oxi";
@@ -94,9 +92,9 @@
               # https://wiki.archlinux.org/title/Media_Transfer_Protocol
               # lsusb
               # gio mount "mtp://[usb:001,006]/"
-              mtpfs
-              simple-mtpfs
-              go-mtpfs
+              # mtpfs
+              # simple-mtpfs
+              # go-mtpfs
               jmtpfs
               android-file-transfer
 
