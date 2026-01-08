@@ -114,6 +114,7 @@ if has('nvim')
 	nnoremap <silent> <leader><leader>m :messages<CR>
 
 	nnoremap <leader>A :Telescope autocommands<CR>
+	nnoremap <leader>` :Telescope buffers<CR>
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>d :Telescope diagnostics<CR>
 	nnoremap <leader>f :Telescope find_files<CR>
