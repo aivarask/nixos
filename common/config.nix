@@ -62,7 +62,7 @@
           libnotify
           psmisc
           watchman
-          tree-sitter
+          # tree-sitter
           unrar
           unzip
           jq

@@ -11,7 +11,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     nixd
     nil
     nurl
