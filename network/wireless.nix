@@ -4,8 +4,7 @@
     pkgs.wpa_supplicant_gui
   ];
   networking.wireless.enable = lib.mkDefault true;
-  # networking.wireless.userControlled.group = "wheel";
-  # networking.wireless.userControlled.enable = true;
+  networking.wireless.userControlled.enable = true;
   networking.wireless.networks.hw = {
     # priority = 10;
     pskRaw = "4ac51a255791c6ec52af3fd3f09cf6d9412f9305156d2d38f81798aec41eeb8f";
@@ -18,5 +17,8 @@
       "IEEE8021X"
       "WPA-PSK-SHA256"
     ];
+  };
+  networking.wireless.networks."aivarask" = {
+    pskRaw = "79bafe618e78aa0113e5d8c1000bd6d68705f96f011aeb066d355900cafb4ec3";
   };
 }
