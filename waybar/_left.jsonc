@@ -1,0 +1,48 @@
+{
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode"
+	],
+	"sway/workspaces": {
+		// waybar-sway-workspaces
+		"format": "{index} {name} {icon} {windows}", // value name icon index output windows
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"default": "",
+			"urgent": "",
+			"focused": "",
+			"persistent": "!",
+		},
+		// "disable-scroll": false,
+		// "reverse-scroll": false,
+		// "disable-click": false,
+		"smooth-scrolling-threshold": 4.0,
+		"disable-scroll-wraparound": true,
+		"enable-bar-scroll": true,
+		// "disable-markup": false,
+		// "current-only": false,
+		// "persistent-workspaces": {
+		// 	"4": [],
+		// 	"dell": [
+		// 		"eDP-1"
+		// 	],
+		// },
+		// "on-update": "",
+		"disable-auto-back-and-forth": true,
+		// "alphabetical_sort": false,
+		"warp-on-scroll": false,
+		"window-rewrite": {
+			"class<firefox>": "",
+			"title<.* - Mozilla Firefox>": "woo $1"
+		},
+		"window-rewrite-default": "{name}",
+		"format-window-separator": " ",
+		"expand": true,
+	},
+	"sway/mode": {
+		// waybar-sway-mode
+		"format": "<span>{}</span>"
+	},
+}

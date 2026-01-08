@@ -4,20 +4,17 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
+		"~/.config/waybar/_left.jsonc",
 		"~/.config/waybar/audio.jsonc",
 		"~/.config/waybar/modules.jsonc",
 		"~/.config/waybar/network.jsonc"
-	],
-	"modules-left": [
-		"sway/workspaces",
-		"sway/mode"
 	],
 	"modules-center": [
 		"sway/scratchpad"
 		// "sway/window"
 	],
 	"custom/foo": {
-		// https://github.com/Alexays/Waybar/wiki/Module:-Custom
+		// waybar-custom https://github.com/Alexays/Waybar/wiki/Module:-Custom
 		"exec": "brightness_monitor",
 		"format": "{text}%",
 		"return-type": "json",
@@ -30,11 +27,14 @@
 		"on-click-right": "ddcutil setvcp 10 90"
 	},
 	"systemd-failed-units": {
+		// waybar-systemd-failed-units
+		// !systemctl --failed
 		"hide-on-ok": true,
-		"format": "✗ {nr_failed}",
+		"format": "✗ {nr_failed}:{nr_failed_user}",
 		"format-ok": "✓",
 		"system": true, // Monitor failed systemwide units.
-		"user": true // Ignore failed user units.
+		"user": true, // Ignore failed user units.
+		"on-click": ""
 	},
 	"modules-right": [
 		"systemd-failed-units",
@@ -48,25 +48,8 @@
 		"clock"
 	],
 	// Modules configuration
-	"sway/workspaces": {
-		"disable-scroll": false,
-		"all-outputs": true,
-		"warp-on-scroll": false,
-		"format": "{name}: {icon}",
-		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"4": "",
-			"urgent": "",
-			"focused": "",
-			"default": ""
-		}
-	},
-	"sway/mode": {
-		"format": "<span>{}</span>"
-	},
 	"sway/scratchpad": {
+		// 
 		"format": "{icon} {count}",
 		"show-empty": false,
 		"format-icons": [
