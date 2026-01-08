@@ -81,14 +81,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 
-vim.lsp.inlay_hint.enable(false)
 vim.lsp.enable({
 	'bashls',
 	'clangd',
 	'gopls',
 	'htmx-lsp',
 	'jsonls',
-	'luals',
+	'lua_ls',
 	'marksman',
 	'nixd',
 	'phpls',
@@ -105,3 +104,9 @@ vim.lsp.enable({
 	'vscode-html',
 	'yamlls',
 }, true)
+
+-- vim.lsp.start({
+-- 	name = 'luals',
+-- 	-- cmd = { 'name-of-language-server-executable' },
+-- 	root_dir = vim.fs.root(0, { 'lua/init.lua' }),
+-- })
