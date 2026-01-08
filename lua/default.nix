@@ -94,13 +94,6 @@ in
                 homepage = "https://github.com/iagotito/smart-semicolon.nvim";
               };
             };
-            tree-sitter-language-injection = buildVimPlugin {
-              name = "tree-sitter-language-injection";
-              src = tree-sitter-language-injection;
-              meta = {
-                homepage = "https://github.com/DariusCorvus/tree-sitter-language-injection.nvim";
-              };
-            };
           };
       }
     )

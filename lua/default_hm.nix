@@ -102,7 +102,6 @@ in
         neotest-playwright
         persistent-breakpoints
         smart-semicolon
-        tree-sitter-language-injection
         websocket-nvim
         nvim-oxi
       ])
@@ -154,7 +153,7 @@ in
         ]
       ))
       # treesitter
-      (lib.mkIf true (
+      (lib.mkIf false (
         with pkgs.vimPlugins;
         [
           nvim-treesitter.withAllGrammars
