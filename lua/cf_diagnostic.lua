@@ -1,13 +1,15 @@
+vim.lsp.inlay_hint.enable(false)
 vim.diagnostic.config({
-	severity_sort = true,
-	virtual_text = false,
-	virtual_lines = true,
-	-- float = true,
+	underline = { severity = { min = 1, max = 4 } },
+	virtual_text = { severity = { min = 1, max = 4 } },
+	virtual_lines = { severity = { min = vim.diagnostic.severity.ERROR } },
 	loclist = {
 		open = false,
 		severity = { min = vim.diagnostic.severity.ERROR },
-	}
+	},
+	update_in_insert = true,
 })
+
 
 vim.diagnostic.handlers.loclist = {
 	show = function(_, _, _, opts)
@@ -21,7 +23,7 @@ vim.diagnostic.handlers.loclist = {
 }
 
 
-if true then
+if false then
 	vim.api.nvim_create_user_command('DiagnosticQf', function(args)
 		if args.args == 'ERROR' then
 			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
