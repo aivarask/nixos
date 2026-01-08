@@ -17,8 +17,9 @@ output 'Dell Inc. DELL P2715Q V48W26BSA82L' {
 }
 
 output 'Sony SONY TV  *00 0x01010101' {
+	# Bravia 55XE9005
 	mode 3840x2160@60Hz
-	scale 2.0
+	scale 3.0
 }
 
 output 'Samsung Electric Company SAMSUNG Unknown' {
