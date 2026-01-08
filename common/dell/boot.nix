@@ -9,6 +9,7 @@
   boot.kernelModules = [
     "kvm-intel"
     "vhost_vsock"
+    "i2c-dev"
   ];
   boot.kernelParams = [
     "boot.shell_on_fail"
