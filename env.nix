@@ -33,6 +33,7 @@
       programs.zsh.enable = true;
       # /etc/zshenv /etc/zshrc /etc/zinputrc
       programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
+      programs.dconf.enable = true;
     };
   hm =
     {
@@ -45,7 +46,7 @@
       programs.bash.enable = true;
       programs.bash.profileExtra = ''# HM programs.bash.profileExtra ''; # $HOME/.bash_profile
       programs.bash.initExtra = ''
-        # HM programs.bash.initExtra 
+        # HM programs.bash.initExtra
         source $HOME/.bashrc_
       ''; # $HOME/.bashrc
       home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.bashrc_";
