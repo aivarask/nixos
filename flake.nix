@@ -135,6 +135,7 @@
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.homeModules.nix-index
                 (import ./env.nix).hm
+                ./.espanso.nix
                 ./.programs.nix
                 ./browsers/chromium-browser.nix
                 ./browsers/firefox.nix
