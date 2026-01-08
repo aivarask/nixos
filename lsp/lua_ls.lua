@@ -51,8 +51,14 @@ end
 
 return {
 	cmd = { 'lua-language-server' },
-	root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml' },
+	root_markers = { { '.luarc.json', '.luarc.jsonc', '.stylua.toml' }, '.git' },
 	-- root_dir = vim.fs.root(0, { 'flake.lock' }),
+	root_dir = function(bufnr, on_dir)
+		if not vim.fn.bufname(bufnr):match('%.txt$') then
+			on_dir(vim.fn.getcwd())
+		end
+	end,
+
 	filetypes = { 'lua' },
 	settings = {
 		Lua = {
@@ -65,7 +71,7 @@ return {
 				postfix = '@',
 			},
 			diagnostics = { -- luals.github.io/wiki/diagnostics
-				disable = { 'lowercase-global', 'unused-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
+				disable = { 'lowercase-global', 'unudirsed-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
 				globals = { "mp", "client", "root", "screen" }
 			},
 			format = {
