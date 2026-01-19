@@ -11,11 +11,11 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia # https://github.com/NixOS/nixos-hardware/tree/master/dell/xps/15-7590
     # https://wiki.nixos.org/wiki/Linux_kernel#Configuration
-    ./../xdg.nix
     ./../../lsp
+    ./../boot.nix
+    ./../xdg.nix
     ./binarycache.nix
     ./bluetooth.nix
-    ./../boot.nix
     ./boot.nix
     ./network.nix
     ./storage.nix
