@@ -48,16 +48,18 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        (import ./sway).system
         (import ./audio/mpd.nix).system
+        (import ./env.nix).system
+        (import ./sway).system
         ./audio/pipewire.nix
         ./audio/production.nix
         ./common/config.nix
+        ./common/network/networking.nix
+        ./common/network/wireless.nix
         ./common/nix.nix
         ./common/nps.nix
-        ./common/services.nix
         ./common/samba.nix
-        (import ./env.nix).system
+        ./common/services.nix
         ./httpd
         ./lang/go.nix
         ./lang/nodejs.nix
@@ -65,9 +67,6 @@
         ./lang/sql.nix
         ./lib.nix
         ./lua
-        # ./network/dns_basic.nix
-        ./network/networking.nix
-        ./network/wireless.nix
         (
           { pkgs, ... }:
           {

@@ -47,9 +47,8 @@
       programs.bash.profileExtra = ''# HM programs.bash.profileExtra ''; # $HOME/.bash_profile
       programs.bash.initExtra = ''
         # HM programs.bash.initExtra
-        source $HOME/.bashrc_
+        source $HOME/.alias
       ''; # $HOME/.bashrc
-      home.file.".bashrc_".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.bashrc_";
       home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
 
     };
