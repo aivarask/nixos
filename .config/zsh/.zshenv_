@@ -4,6 +4,11 @@
 setopt extended_glob
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
 export NIX_PACKAGE_SEARCH_EXPERIMENTAL=true
+export NIX_PACKAGE_SEARCH_MULTILINE=true
+export NIX_PACKAGE_SEARCH_COLOR_MODE="auto"
+export NIX_PACKAGE_SEARCH_EXACT_COLOR="red"
+export NIX_PACKAGE_SEARCH_DIRECT_COLOR="green"
+export NIX_PACKAGE_SEARCH_INDIRECT_COLOR="blue"
 export YDIFF_OPTIONS='-w40'
 
 fpath=(/etc/nixos/.config/zsh $fpath)
