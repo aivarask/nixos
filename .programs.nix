@@ -76,6 +76,7 @@ in
     batdiff
     prettybat
   ];
+  xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
   xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
