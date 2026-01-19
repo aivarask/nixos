@@ -25,4 +25,5 @@ bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window
 # exec swaymsg "workspace 1; exec $term tail -f /var/log/sway.log"
 bindsym	$mod+f1 exec $term -D /etc/nixos/ nvim
 bindsym $mod+f2 exec $term ncmpcpp
-bindsym $mod+f3 exec ardour8 -T main one
+bindsym $mod+f3 exec $term pulsemixer
+# bindsym $mod+f3 exec ardour8 -T main one

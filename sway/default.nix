@@ -29,6 +29,7 @@
         # sway-overfocus
         sway-new-workspace
         sway-scratch
+        wdisplays
         i3
         wev
         wlr-which-key
