@@ -1,5 +1,6 @@
 -g=!*.svg
 -g=!.git/*
+-g=!lib/*
 -g=!.trash/*
 -g=!.local/*
 -g=!.cache/*

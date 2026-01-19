@@ -65,6 +65,7 @@ in
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableZshIntegration = true;
   # home.file.".mixxx".source = symlink "/etc/nixos/.mixxx";
+  home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."bat".source = symlink "${xdgconf}/bat";
   programs.bat.enable = true;

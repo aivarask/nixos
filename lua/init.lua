@@ -2,7 +2,7 @@ vim.cmd [[
 "source $XDG_CONFIG_HOME/nvim/nvimrc.vim
 let &runtimepath.=',/etc/nixos'
 let &runtimepath.=',/etc/nixos/httpd'
-let &runtimepath.=',/etc/nixos/strudel.nvim'
+let &runtimepath.=',/etc/nixos/lib/strudel.nvim'
 runtime! lua/_config/**/*{.lua,.vim}
 runtime! lua/_*{.lua,.vim}
 ]]

@@ -49,11 +49,11 @@
     let
       commonModules = [
         (import ./audio/mpd.nix).system
-        (import ./env.nix).system
         (import ./sway).system
         ./audio/pipewire.nix
         ./audio/production.nix
         ./common/config.nix
+        ./common/environment.nix
         ./common/network/networking.nix
         ./common/network/wireless.nix
         ./common/nix.nix
@@ -131,7 +131,6 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.homeModules.nix-index
-                (import ./env.nix).hm
                 ./.espanso.nix
                 ./.programs.nix
                 ./browsers/chromium-browser.nix
