@@ -28,7 +28,7 @@
           pciutils
           libxkbcommon
           # udevil
-          # telegram-desktop # QT_SCALE_FACTOR = "1.75";
+          telegram-desktop # QT_SCALE_FACTOR = "1.75";
           glib
           file
           inkscape-with-extensions

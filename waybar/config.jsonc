@@ -4,21 +4,24 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
-		"~/.config/waybar/_left.jsonc",
 		"~/.config/waybar/audio.jsonc",
-		"~/.config/waybar/modules.jsonc",
-		"~/.config/waybar/network.jsonc"
+		"~/.config/waybar/_left.jsonc",
+		"~/.config/waybar/_center.jsonc",
 	],
-	"modules-center": [
-		"sway/scratchpad"
-		// "sway/window"
+	"modules-right": [
+		"pulseaudio",
+		"custom/brightness",
+		"backlight",
+		"network",
+		"battery",
+		"sway/language",
+		"clock"
 	],
-	"custom/foo": {
+	"custom/brightness": {
 		// waybar-custom https://github.com/Alexays/Waybar/wiki/Module:-Custom
 		"exec": "brightness_monitor",
-		"format": "{text}%",
+		"format": "😎 {text}",
 		"return-type": "json",
-		// "exec-on-event": true,
 		"restart-interval": 2,
 		"tooltip": false,
 		"on-scroll-up": "ddcutil setvcp 10 + 5",
@@ -26,37 +29,57 @@
 		"on-click": "ddcutil setvcp 10 20",
 		"on-click-right": "ddcutil setvcp 10 90"
 	},
-	"systemd-failed-units": {
-		// waybar-systemd-failed-units
-		// !systemctl --failed
-		"hide-on-ok": true,
-		"format": "✗ {nr_failed}:{nr_failed_user}",
-		"format-ok": "✓",
-		"system": true, // Monitor failed systemwide units.
-		"user": true, // Ignore failed user units.
-		"on-click": ""
+	"backlight": {
+		"format": "😎 {percent}",
+		"smooth-scrolling-threshold": 3.0,
+		"scroll-step": 5.0,
+		"min-brightness": 5.0,
 	},
-	"modules-right": [
-		"systemd-failed-units",
-		"custom/foo",
-		"custom/weather",
-		"pulseaudio",
-		"network",
-		"backlight",
-		"battery",
-		"sway/language",
-		"clock"
-	],
-	// Modules configuration
-	"sway/scratchpad": {
-		// 
-		"format": "{icon} {count}",
-		"show-empty": false,
+	"network": {
+		"format-wifi": "{essid} {signalStrength} ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"format-alt": "{ipaddr}/{cidr} {ifname}",
+		"tooltip-format": "{gwaddr} {ifname}",
+		"format-linked": "{ifname} (No IP)",
+		"format-disconnected": "Disconnected ⚠",
+		"on-click-right": "xdg-open https://192.168.1.1"
+	},
+	"battery": {
+		"states": {
+			"critical": 15,
+			"warning": 30,
+			"good": 80,
+		},
+		"format": "{icon}  {capacity}",
+		"format-alt": "{icon}  {time}",
+		"format-time": "{H}h{M}m",
+		"format-full": "{icon}  {capacity}",
+		"format-charging": " {capacity}",
+		"format-plugged": " {capacity}",
 		"format-icons": [
-			"",
-			""
-		],
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"sway/language": {
+		"format": "{flag}"
+	},
+	"clock": {
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format": "{:%T}",
+		"format-alt": "{:%Y-%m-%d}",
+		"interval": 1
+	},
+	"custom/power": {
+		"format": " ⏻ ",
 		"tooltip": true,
-		"tooltip-format": "{app}: {title}"
-	}
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown"
+		}
+	},
 }

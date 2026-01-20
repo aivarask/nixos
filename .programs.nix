@@ -9,8 +9,10 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
+  services.playerctld.enable = true;
   services.mpris-proxy.enable = true;
   services.udiskie.enable = true;
+
   imports = [
     (
       { pkgs, ... }:

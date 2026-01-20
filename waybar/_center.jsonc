@@ -1,0 +1,56 @@
+{
+	"modules-center": [
+		// "sway/window",
+		"systemd-failed-units",
+		"sway/scratchpad",
+		"tray",
+		"custom/weather",
+		"temperature",
+		"mpris",
+	],
+	"mpris": {
+		"format": "DEFAULT: {player_icon} {dynamic}",
+		"format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
+		"player-icons": {
+			"default": "▶",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": "⏸"
+		},
+		// "ignored-players": ["firefox"]
+	},
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
+	"custom/weather": {
+		"format": "{}° ",
+		"return-type": "json",
+		"exec": "wttrbar --location Sirvintos",
+		"tooltip": true,
+		"interval": 3600,
+	},
+	"tray": {
+		"spacing": 10,
+		"icons": {
+			"blueman": "bluetooth",
+			"TelegramDesktop": "/run/current-system/sw/share/icons/Papirus/16x16/apps/telegram.svg",
+		},
+	},
+	"temperature": {
+		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+		"critical-threshold": 80,
+		"format": "{temperatureC}°C {icon}",
+	},
+	"systemd-failed-units": {
+		"hide-on-ok": true,
+		"format": "✗ {nr_failed}:{nr_failed_user}",
+		"format-ok": "✓",
+		"system": true,
+		"user": true,
+		"on-click": ""
+	},
+}
