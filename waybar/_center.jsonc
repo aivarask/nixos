@@ -3,35 +3,15 @@
 		// "sway/window",
 		// "systemd-failed-units",
 		// "sway/scratchpad",
-		"mpris",
-		"tray",
-		// "custom/weather",
-		"temperature",
+		// "mpris",
+		// "tray",
+		// "temperature",
 	],
-	"mpris": {
-		"format": "{player_icon} {dynamic}",
-		"format-paused": "{status_icon} {dynamic}",
-		"player-icons": {
-			"default": "▶",
-			"mpv": "🎵"
-		},
-		"status-icons": {
-			"paused": "⏸"
-		},
-		// "ignored-players": ["firefox"]
-	},
 	"sway/scratchpad": {
 		"format": "{icon} {count}",
 		"show-empty": false,
 		"tooltip": true,
 		"tooltip-format": "{app}: {title}"
-	},
-	"custom/weather": {
-		"format": "{}° ",
-		"return-type": "json",
-		"exec": "wttrbar --location Sirvintos",
-		"tooltip": true,
-		"interval": 3600,
 	},
 	"tray": {
 		"spacing": 10,

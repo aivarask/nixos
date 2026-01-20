@@ -4,7 +4,9 @@ set icons
 set ifs "\n"
 set info "size"
 set period 2
-set previewer pistol
+set previewer previewer
+set cleaner cleaner
+# set previewer pistol
 set ratios "1:2"
 set scrolloff 8
 set shell "zsh"

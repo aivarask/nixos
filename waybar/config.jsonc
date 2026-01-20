@@ -5,10 +5,12 @@
 	"reload_style_on_change": true,
 	"include": [
 		"~/.config/waybar/audio.jsonc",
-		"~/.config/waybar/_left.jsonc",
-		"~/.config/waybar/_center.jsonc",
+		"~/.config/waybar/_left.jsonc"
+		// "~/.config/waybar/_center.jsonc",
 	],
 	"modules-right": [
+		"mpris",
+		// "custom/weather",
 		"pulseaudio",
 		"custom/brightness",
 		"backlight",
@@ -17,6 +19,24 @@
 		"sway/language",
 		"clock"
 	],
+	"mpris": {
+		"format": "{player_icon} {dynamic}",
+		"format-paused": "{status_icon} {dynamic}",
+		"player-icons": {
+			"default": "▶",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": "⏸"
+		},
+	},
+	"custom/weather": {
+		"format": "{}° ",
+		"return-type": "json",
+		"exec": "wttrbar --location Sirvintos",
+		"tooltip": true,
+		"interval": 3600,
+	},
 	"custom/brightness": {
 		// waybar-custom https://github.com/Alexays/Waybar/wiki/Module:-Custom
 		"exec": "brightness_monitor",

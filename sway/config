@@ -4,14 +4,15 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
+set $term kitty
+# set $term foot
 # workspace_auto_back_and_forth yes
 
 include ./appearance
-include ./input
-include ./output
 include ./bindings
 include ./bindings_sys
+include ./input
+include ./output
 exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
 

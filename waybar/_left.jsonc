@@ -5,7 +5,7 @@
 	],
 	"sway/workspaces": {
 		// waybar-sway-workspaces
-		"format": "{index} {name} {icon} {windows}", // value name icon index output windows
+		"format": "{name} {icon} {windows}", // value name icon index output windows
 		"format-icons": {
 			"1": "",
 			"2": "",
@@ -16,9 +16,9 @@
 			"persistent": "!",
 		},
 		// "disable-scroll": false,
-		// "reverse-scroll": false,
+		"reverse-scroll": true,
 		// "disable-click": false,
-		"smooth-scrolling-threshold": 4.0,
+		"smooth-scrolling-threshold": 3.0,
 		"disable-scroll-wraparound": true,
 		"enable-bar-scroll": true,
 		// "disable-markup": false,
