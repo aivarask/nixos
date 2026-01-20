@@ -1,5 +1,24 @@
 {
+	"custom/icon1": {
+		"format": "{}  ",
+		"tooltip": false,
+		"on-click": "spotify",
+		"on-click-right": "kitty -e ncmpcpp"
+	},
+	"custom/icon2": {
+		"format": "{} 󰉋 ",
+		"tooltip": false,
+		"on-click": "nautilus",
+		"on-click-right": "kitty -e ranger"
+	},
+	"custom/icon3": {
+		"format": "{} 󰨇 ",
+		"tooltip": false,
+		"on-click": "gnome-system-monitor",
+		"on-click-right": "kitty -e bashtop"
+	},
 	"modules-center": [
+		"custom/music"
 		// "sway/window",
 		// "systemd-failed-units",
 		// "sway/scratchpad",

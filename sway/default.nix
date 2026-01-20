@@ -37,7 +37,6 @@
     i3
     wev
     wlr-which-key
-    flameshot
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -57,6 +56,7 @@
     jasper-gtk-theme
     fluent-gtk-theme
     fluent-icon-theme
+    papirus-icon-theme
   ];
 
 }

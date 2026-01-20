@@ -68,8 +68,8 @@ map Q <nop>
 nmap - :cd ..<CR>
 
 nnoremap <silent> <Plug>(Save) :silent write<cr>
-
 " inoremap <Space> <C-G>u<Space>
+
 map <silent> ]b :bn<CR>
 map <silent> [b :bp<CR>
 map [c :cprevious<CR>

@@ -5,8 +5,8 @@
 	"reload_style_on_change": true,
 	"include": [
 		"~/.config/waybar/audio.jsonc",
-		"~/.config/waybar/_left.jsonc"
-		// "~/.config/waybar/_center.jsonc",
+		"~/.config/waybar/_left.jsonc",
+		"~/.config/waybar/_center.jsonc",
 	],
 	"modules-right": [
 		"mpris",
