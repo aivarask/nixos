@@ -49,7 +49,14 @@ button:hover {
 }
 
 #custom-music {
-	background-image: url('/run/current-system/sw/share/icons/P');
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#custom-editor {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;

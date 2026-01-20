@@ -1,15 +1,21 @@
 {
-	"custom/icon1": {
-		"format": "{}  ",
+	"custom/music": {
+		"format": "{}        ",
 		"tooltip": false,
 		"on-click": "spotify",
 		"on-click-right": "kitty -e ncmpcpp"
 	},
-	"custom/icon2": {
+	"custom/editor": {
+		"format": "{}        ",
+		"tooltip": false,
+		"on-click": "kitty --directory /etc/nixos -e nvim",
+		"on-click-right": "kitty -d /etc/nixos"
+	},
+	"custom/files": {
 		"format": "{} 󰉋 ",
 		"tooltip": false,
 		"on-click": "nautilus",
-		"on-click-right": "kitty -e ranger"
+		"on-click-right": "kitty -e lf"
 	},
 	"custom/icon3": {
 		"format": "{} 󰨇 ",
@@ -18,7 +24,8 @@
 		"on-click-right": "kitty -e bashtop"
 	},
 	"modules-center": [
-		"custom/music"
+		"custom/music",
+		"custom/editor"
 		// "sway/window",
 		// "systemd-failed-units",
 		// "sway/scratchpad",
