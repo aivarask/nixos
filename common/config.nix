@@ -106,46 +106,45 @@
     ];
   };
   nixpkgs.config.joypixels.acceptLicense = true;
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      # twitter-color-emoji
-      # twemoji-color-font
-      noto-fonts
-      noto-fonts-color-emoji
-      nerd-fonts.dejavu-sans-mono
-      lato
-      nerd-fonts.fira-mono
-      nerd-fonts.fira-code
-      powerline-fonts
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    papirus-icon-theme
+    # twitter-color-emoji
+    # twemoji-color-font
+    noto-fonts
+    noto-fonts-color-emoji
+    nerd-fonts.dejavu-sans-mono
+    lato
+    nerd-fonts.fira-mono
+    nerd-fonts.fira-code
+    powerline-fonts
 
-      terminus_font
-      terminus_font_ttf
-      joypixels
-      font-awesome
-      noto-fonts-monochrome-emoji
+    terminus_font
+    terminus_font_ttf
+    joypixels
+    font-awesome
+    noto-fonts-monochrome-emoji
 
-    ];
-    fontconfig = {
-      defaultFonts = {
-        emoji = [
-          # "Twitter Color Emoji"
-          "Noto Color Emoji"
-          "DejaVuSansM Nerd Font"
-        ];
-        monospace = [
-          "DejaVuSansM Nerd Font Mono"
-          "Noto Color Emoji"
-        ];
-        sansSerif = [
-          "DejaVu Sans"
-          "Noto Color Emoji"
-        ];
-        serif = [
-          "DejaVu Sans"
-          "Noto Color Emoji"
-        ];
-      };
+  ];
+  fonts.fontconfig = {
+    defaultFonts = {
+      emoji = [
+        # "Twitter Color Emoji"
+        "Noto Color Emoji"
+        "DejaVuSansM Nerd Font"
+      ];
+      monospace = [
+        "DejaVuSansM Nerd Font Mono"
+        "Noto Color Emoji"
+      ];
+      sansSerif = [
+        "DejaVu Sans"
+        "Noto Color Emoji"
+      ];
+      serif = [
+        "DejaVu Sans"
+        "Noto Color Emoji"
+      ];
     };
   };
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";

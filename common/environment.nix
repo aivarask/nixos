@@ -32,4 +32,10 @@
   # /etc/zshenv /etc/zshrc /etc/zinputrc
   programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
   programs.dconf.enable = true;
+  # dconf.enable = true;
+  # dconf.settings = {
+  #   "org/gnome/desktop/interface" = {
+  #     gtk-theme = "";
+  #   };
+  # };
 }

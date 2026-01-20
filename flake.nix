@@ -70,9 +70,12 @@
         (
           { pkgs, ... }:
           {
+
+            services.playerctld.enable = true;
+            # services.mpris-proxy.enable = true;
+            # services.udiskie.enable = true;
             services.espanso.enable = true;
             services.espanso.package = pkgs.espanso-wayland;
-            # services.espanso.package-wayland = pkgs.espanso-wayland;
 
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h
@@ -141,6 +144,7 @@
                 (
                   { pkgs, ... }:
                   {
+
                     services.gammastep.enable = true;
                     services.gammastep.latitude = 54.0;
                     services.gammastep.longitude = 25.0;

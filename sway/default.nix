@@ -14,8 +14,8 @@
   programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
   programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
   # programs.uwsm.waylandCompositors.hyprland.prettyName = "Hyprland";
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
+  # programs.hyprland.enable = true;
+  # programs.hyprland.withUWSM = true;
   environment.systemPackages = with pkgs; [
     bemoji
     ifwifi
@@ -37,6 +37,7 @@
     i3
     wev
     wlr-which-key
+    flameshot
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -46,14 +47,13 @@
     waybar
     wttrbar
     lxappearance
+    dconf-editor
     xkeyboard-config
     xorg.xkbcomp
     xcursor-pro
     mojave-gtk-theme
     oranchelo-icon-theme
-    papirus-icon-theme
     gnome-themes-extra
-    orchis-theme
     jasper-gtk-theme
     fluent-gtk-theme
     fluent-icon-theme

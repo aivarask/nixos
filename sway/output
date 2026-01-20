@@ -2,26 +2,23 @@
 
 # sway-output 
 # swaymsg -t get_outputs
-
-output 'Sharp Corporation 0x14B9 Unknown' {
+set $laptop 'Sharp Corporation 0x14B9 Unknown'
+output $laptop {
 	scale 2.5
 }
 
-set $d27 'Dell Inc. DELL P2715Q V48W26BSA82L'
-output $d27 {
-	mode 3840x2160@60Hz
+set $monitor 'Dell Inc. DELL P2715Q V48W26BSA82L'
+output $monitor {
 	scale 2.5
+	# mode 3840x2160@60Hz
 }
-
 workspace 1 output 'eDP-1'
 workspace 2 output 'eDP-1'
 workspace 3 output 'eDP-1'
 
-set $bravia 'Sony SONY TV  *00 0x01010101'
+set $bravia 'Sony SONY TV  *00 0x01010101' # Bravia 55XE9005
 output $bravia {
-	# Bravia 55XE9005
-	# https://pro-bravia.sony.net/
-	# https://www.displayspecifications.com/en/model/edc0a4c
+	# https://pro-bravia.sony.net/ https://www.displayspecifications.com/en/model/edc0a4c
 	scale 1.5
 }
 workspace 4 output $bravia

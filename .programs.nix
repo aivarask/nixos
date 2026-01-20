@@ -9,9 +9,6 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  services.playerctld.enable = true;
-  services.mpris-proxy.enable = true;
-  services.udiskie.enable = true;
 
   imports = [
     (
@@ -62,6 +59,7 @@ in
     spotify
     ncspot
   ];
+  xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";
   xdg.configFile."ripgreprc".source = symlink "${xdgconf}/ripgreprc";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   programs.ripgrep.enable = true;

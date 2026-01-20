@@ -1,16 +1,16 @@
 {
 	"modules-center": [
 		// "sway/window",
-		"systemd-failed-units",
-		"sway/scratchpad",
-		"tray",
-		"custom/weather",
-		"temperature",
+		// "systemd-failed-units",
+		// "sway/scratchpad",
 		"mpris",
+		"tray",
+		// "custom/weather",
+		"temperature",
 	],
 	"mpris": {
-		"format": "DEFAULT: {player_icon} {dynamic}",
-		"format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
+		"format": "{player_icon} {dynamic}",
+		"format-paused": "{status_icon} {dynamic}",
 		"player-icons": {
 			"default": "▶",
 			"mpv": "🎵"
