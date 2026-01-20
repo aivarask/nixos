@@ -12,9 +12,9 @@
 		"on-click-right": "kitty -d /etc/nixos"
 	},
 	"custom/files": {
-		"format": "{} 󰉋 ",
+		"format": "{}     ",
 		"tooltip": false,
-		"on-click": "nautilus",
+		"on-click": "thunar",
 		"on-click-right": "kitty -e lf"
 	},
 	"custom/icon3": {

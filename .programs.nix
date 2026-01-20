@@ -51,6 +51,7 @@ in
     xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
     nautilus
     thunar
+    tumbler
     kitty
     gtk-doc
     vimpager
