@@ -89,6 +89,14 @@ in
           "*".default_area = "navbar";
           "*".updates_disabled = true;
           "*".private_browsing = true;
+          "markdown-viewer@outofindex.com" = {
+            install_url = moz "markdown-viewer-chrome";
+            installation_mode = "force_installed";
+          };
+          "{943b8007-a895-44af-a672-4f4ea548c95f}" = {
+            install_url = moz "markdown-viewer-webext";
+            installation_mode = "force_installed";
+          };
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
             install_url = moz "bitwarden-password-manager";
             installation_mode = "force_installed";

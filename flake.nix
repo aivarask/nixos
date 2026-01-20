@@ -70,6 +70,10 @@
         (
           { pkgs, ... }:
           {
+            services.espanso.enable = true;
+            services.espanso.package = pkgs.espanso-wayland;
+            # services.espanso.package-wayland = pkgs.espanso-wayland;
+
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h
             '';
@@ -80,6 +84,7 @@
               sysz
               gdu
               duf
+              dust
 
               incus
               buildah
@@ -126,12 +131,9 @@
               manual.json.enable = true;
               programs.man.generateCaches = true;
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-              services.mpris-proxy.enable = true;
-              services.udiskie.enable = true;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.nix-index-database.homeModules.nix-index
-                ./.espanso.nix
                 ./.programs.nix
                 ./browsers/chromium-browser.nix
                 ./browsers/firefox.nix

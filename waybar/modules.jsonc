@@ -11,22 +11,6 @@
 		"format-alt": "{:%Y-%m-%d}",
 		"interval": 1
 	},
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
-	"keyboard-state": {
-		"numlock": true,
-		"capslock": true,
-		"format": "{name} {icon}",
-		"format-icons": {
-			"locked": "",
-			"unlocked": ""
-		}
-	},
 	"tray": {
 		// "icon-size": 20,
 		"spacing": 10
@@ -34,13 +18,6 @@
 		//   "blueman": "bluetooth",
 		//   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
 		// }
-	},
-	"cpu": {
-		"format": "{usage}% ",
-		"tooltip": true
-	},
-	"memory": {
-		"format": "{}% "
 	},
 	"temperature": {
 		// "thermal-zone": 2,

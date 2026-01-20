@@ -14,6 +14,7 @@
     shfmt
     dotenv-linter
     shellharden
+    zoxide
   ];
 
   xdg.configFile."zsh/.zshenv_".source =

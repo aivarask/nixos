@@ -31,9 +31,6 @@
           # telegram-desktop # QT_SCALE_FACTOR = "1.75";
           glib
           file
-          # blender
-          # krita
-          # figma-linux
           inkscape-with-extensions
           # libreoffice-qt
           ticker
@@ -66,7 +63,7 @@
           unrar
           unzip
           jq
-          ffmpeg
+          ffmpeg-full
           highlight
           hicolor-icon-theme
           imagemagick
@@ -151,7 +148,6 @@
       };
     };
   };
-  # documentation
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
   environment.variables.MANROFFOPT = "-P -c";
   environment.systemPackages = with pkgs; [
@@ -160,27 +156,21 @@
     groff
     cht-sh
     tldr
-    manix # https://github.com/nix-community/manix
+    manix
   ];
   documentation = {
     enable = true;
     dev.enable = true;
     doc.enable = true;
     info.enable = true;
-    nixos = {
-      enable = true;
-      # includeAllModules = true;
-    };
+    nixos.enable = true;
+    # nixos.includeAllModules = true;
     man = {
       enable = true;
       generateCaches = true;
-      man-db = {
-        enable = true;
-      };
-      mandoc = {
-        enable = false;
-        settings.manpath = [ "/run/current-system/sw/share/man" ];
-      };
+      man-db.enable = true;
+      mandoc.enable = false;
+      mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
     };
   };
 }

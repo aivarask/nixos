@@ -9,6 +9,8 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
+  services.mpris-proxy.enable = true;
+  services.udiskie.enable = true;
   imports = [
     (
       { pkgs, ... }:
