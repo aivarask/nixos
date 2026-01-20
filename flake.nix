@@ -48,8 +48,7 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
-        (import ./audio/mpd.nix).system
-        (import ./sway).system
+        ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
         ./common/config.nix
@@ -67,6 +66,7 @@
         ./lang/sql.nix
         ./lib.nix
         ./lua
+        ./sway
         (
           { pkgs, ... }:
           {
