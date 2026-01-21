@@ -10,14 +10,6 @@
           name = "nix-community/nixos-anywhere";
           url = "https://github.com/nix-community/nixos-anywhere";
         }
-        {
-          name = "nix-community/disko";
-          url = "https://github.com/nix-community/disko";
-        }
-        {
-          name = "nix-community/disko-templates";
-          url = "";
-        }
 
         {
           name = "nix-community/browser-previews";

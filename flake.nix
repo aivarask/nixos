@@ -6,7 +6,6 @@
   inputs.nps.url = "github:OleMussmann/nps";
   inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
   inputs.templates.url = "github:NixOS/templates";
-  inputs.disko-templates.url = "github:nix-community/disko-templates";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # https://github.com/nixos/nixos-hardware
