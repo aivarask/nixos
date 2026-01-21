@@ -7,11 +7,6 @@
       bookmarks = [
 
         {
-          name = "nix-community/nixos-anywhere";
-          url = "https://github.com/nix-community/nixos-anywhere";
-        }
-
-        {
           name = "nix-community/browser-previews";
           url = "https://github.com/nix-community/browser-previews";
         }

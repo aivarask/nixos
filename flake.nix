@@ -82,6 +82,9 @@
             '';
 
             environment.systemPackages = with pkgs; [
+              nixos-anywhere # https://github.com/nix-community/nixos-anywhere
+              disko
+
               git
               systemctl-tui
               sysz
