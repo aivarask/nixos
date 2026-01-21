@@ -48,6 +48,7 @@
     { nixpkgs, ... }@inputs:
     let
       commonModules = [
+        inputs.disko.nixosModules.disko
         ./audio/mpd.nix
         ./audio/pipewire.nix
         ./audio/production.nix
@@ -144,7 +145,6 @@
                 (
                   { pkgs, ... }:
                   {
-
                     services.gammastep.enable = true;
                     services.gammastep.latitude = 54.0;
                     services.gammastep.longitude = 25.0;
@@ -154,7 +154,6 @@
                     };
                   }
                 )
-
               ];
             };
           };
@@ -162,7 +161,6 @@
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
-
       # checks./*<SYSTEM>.*/"<CHECK>" = /* ... */;
       # devShells./*<SYSTEM>.*/"<DEV_SHELL>" = /* ... */;
       # packages./*<SYSTEM>.*/"<PACKAGE>" = /* ... */;
@@ -175,17 +173,6 @@
           modules = [
           ];
           format = "install-iso";
-
-          # optional arguments:
-          # explicit nixpkgs and lib:
-          # pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          # lib = nixpkgs.legacyPackages.x86_64-linux.lib;
-          # additional arguments to pass to modules:
-          # specialArgs = { myExtraArg = "foobar"; };
-
-          # you can also define your own custom formats
-          # customFormats = { "myFormat" = <myFormatModule>; ... };
-          # format = "myFormat";
         };
         # vbox = inputs.nixos-generators.nixosGenerate {
         #   system = "x86_64-linux";

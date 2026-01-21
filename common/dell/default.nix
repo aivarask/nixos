@@ -17,11 +17,8 @@
     ./binarycache.nix
     ./bluetooth.nix
     ./boot.nix
-    ./disko-config.nix
+    ./disko-gpt-bios.nix
     ./network.nix
-    # ./storage.nix
-    # (
-    #   { ... }:
     #   {
     #     programs.virt-manager.enable = true;
     #     users.users.nixosvmtest.isSystemUser = true;
@@ -36,7 +33,6 @@
     #       };
     #     };
     #   }
-    # )
   ];
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

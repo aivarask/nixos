@@ -1,11 +1,8 @@
-{ pkgs, inputs, ... }:
 {
-  imports = [ inputs.disko.nixosModules.disko ];
-
   disko.devices = {
     disk = {
       main = {
-        # device = "nvme0n1"; # ATTENTION
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
@@ -13,16 +10,7 @@
             boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
-            };
-            ESP = {
-              size = "1G";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
-              };
+              attributes = [ 0 ]; # partition attribute
             };
             root = {
               size = "100%";
