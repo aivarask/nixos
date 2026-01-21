@@ -110,9 +110,6 @@ if has('nvim')
 	" set foldminlines=3
 	set lisp
 
-	nnoremap <leader><leader>n :Notifications<CR>
-	nnoremap <silent> <leader><leader>m :messages<CR>
-
 	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>` :Telescope buffers<CR>
 	nnoremap <leader>c :Telescope commands<CR>

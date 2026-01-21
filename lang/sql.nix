@@ -3,7 +3,7 @@
   # sql
   environment.shellAliases."sqlite" = "sqlite3";
   environment.systemPackages = with pkgs; [
-    sqlite-interactive
+    # sqlite-interactive
     sqlite-analyzer
     sqlite-web
     # harlequin

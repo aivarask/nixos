@@ -10,7 +10,7 @@
             boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
-              attributes = [ 0 ]; # partition attribute
+              # attributes = [ 0 ]; # partition attribute
             };
             root = {
               size = "100%";
