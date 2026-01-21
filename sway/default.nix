@@ -17,6 +17,8 @@
   # programs.hyprland.enable = true;
   # programs.hyprland.withUWSM = true;
   environment.systemPackages = with pkgs; [
+    gnome-network-displays
+    miraclecast
     gnome-system-monitor
     bemoji
     ifwifi
