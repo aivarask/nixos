@@ -8,10 +8,10 @@
     # xdg-desktop-portal-hyprland
   ];
   xdg.portal.xdgOpenUsePortal = true;
-  # xdg.portal.config = {
-  #   common = {
-  #     default = [ "gtk" ];
-  #     "org.freedesktop.impl.portal.Screencast" = [ "hyprland" ];
-  #   };
-  # };
+  xdg.portal.config = {
+    common = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.Screencast" = [ "gtk" ];
+    };
+  };
 }

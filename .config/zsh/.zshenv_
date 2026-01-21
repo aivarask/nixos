@@ -10,6 +10,7 @@ export NIX_PACKAGE_SEARCH_EXACT_COLOR="red"
 export NIX_PACKAGE_SEARCH_DIRECT_COLOR="green"
 export NIX_PACKAGE_SEARCH_INDIRECT_COLOR="blue"
 export YDIFF_OPTIONS='-w40'
+export NIXPKGS_ALLOW_BROKEN=1
 
 fpath=(/etc/nixos/.config/zsh $fpath)
 # autoload -Uz $fpath[1]/**/*(.:t)

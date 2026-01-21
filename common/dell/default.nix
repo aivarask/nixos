@@ -66,13 +66,4 @@
   };
   powerManagement.powertop.enable = false;
 
-  # hardware.nvidia.prime.allowExternalGpu = true;
-  # hardware.nvidia.prime.reverseSync.enable = true;
-
-  # hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  boot.kernelParams = [
-    # "module_blacklist=i915"
-    "nvidia-drm.fbdev=1"
-  ];
 }

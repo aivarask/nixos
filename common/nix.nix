@@ -25,7 +25,7 @@ in
   ];
 
   # export NIXPKGS_ALLOW_INSECURE=1
-  # nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
   nixpkgs.config.android_sdk.accept_license = true;

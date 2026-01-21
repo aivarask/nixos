@@ -16,7 +16,7 @@
     openFirewall = true;
     settings = {
       # Ciphers = [ ];
-      X11Forwarding = true;
+      # X11Forwarding = true;
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "yes";
