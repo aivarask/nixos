@@ -17,8 +17,9 @@
     ./binarycache.nix
     ./bluetooth.nix
     ./boot.nix
+    ./disko-config.nix
     ./network.nix
-    ./storage.nix
+    # ./storage.nix
     # (
     #   { ... }:
     #   {
