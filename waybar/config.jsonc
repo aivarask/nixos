@@ -24,11 +24,9 @@
 		"format-paused": "{status_icon} {dynamic}",
 		"player-icons": {
 			"default": "▶",
+			"spotify": "S",
 			"mpv": "🎵"
-		},
-		"status-icons": {
-			"paused": "⏸"
-		},
+		}
 	},
 	"custom/weather": {
 		"format": "{}° ",
@@ -56,18 +54,18 @@
 		"min-brightness": 5.0,
 	},
 	"network": {
-		"format-wifi": "{essid} {signalStrength} ",
+		"format-wifi": " {essid} {signalStrength}",
 		"format-ethernet": "{ipaddr}/{cidr} ",
 		"format-alt": "{ipaddr}/{cidr} {ifname}",
 		"tooltip-format": "{gwaddr} {ifname}",
 		"format-linked": "{ifname} (No IP)",
-		"format-disconnected": "Disconnected ⚠",
+		"format-disconnected": "No internet",
 		"on-click-right": "xdg-open https://192.168.1.1"
 	},
 	"battery": {
 		"states": {
-			"critical": 15,
-			"warning": 30,
+			"critical": 20,
+			"warning": 40,
 			"good": 80,
 		},
 		"format": "{icon}  {capacity}",

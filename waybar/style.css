@@ -69,13 +69,14 @@ button:hover {
 	background-size: contain;
 }
 
-#custom-weather {
-	background-color: #ffffff;
-	color: #000000;
-	padding-left: 15px;
+#custom-monitor {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/devices/cpu.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
-#systemd-failed-units {
+#custom-weather {
 	background-color: #ffffff;
 	color: #000000;
 	padding-left: 15px;
@@ -85,15 +86,19 @@ button:hover {
 	background-color: #a37800;
 }
 
+/* https://github-wiki-see.page/m/Alexays/Waybar/wiki/Styling */
 #workspaces button {
+
 	padding: 0 5px;
 	background-color: transparent;
 	color: #ffffff;
+
+	/* &:hover { */
+	/* 	background: rgba(0, 0, 0, 0.2); */
+	/* } */
+
 }
 
-#workspaces button:hover {
-	background: rgba(0, 0, 0, 0.2);
-}
 
 #workspaces button.focused,
 #workspaces button.active {

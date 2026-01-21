@@ -17,15 +17,17 @@
 		"on-click": "thunar",
 		"on-click-right": "kitty -e lf"
 	},
-	"custom/icon3": {
-		"format": "{} 󰨇 ",
+	"custom/monitor": {
+		"format": "{}",
 		"tooltip": false,
 		"on-click": "gnome-system-monitor",
-		"on-click-right": "kitty -e bashtop"
+		"on-click-right": "kitty -e htop"
 	},
 	"modules-center": [
 		"custom/music",
-		"custom/editor"
+		"custom/editor",
+		"custom/files",
+		"custom/monitor"
 		// "sway/window",
 		// "systemd-failed-units",
 		// "sway/scratchpad",
