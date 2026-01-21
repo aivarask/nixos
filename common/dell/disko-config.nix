@@ -1,8 +1,11 @@
+{ pkgs, inputs, ... }:
 {
+  imports = [ inputs.disko.nixosModules.disko ];
+
   disko.devices = {
     disk = {
       main = {
-        device = "nvme0n1"; # ATTENTION
+        # device = "nvme0n1"; # ATTENTION
         type = "disk";
         content = {
           type = "gpt";

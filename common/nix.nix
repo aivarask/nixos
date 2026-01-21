@@ -49,11 +49,11 @@ in
   nix.settings.cores = 4;
   nix.settings.auto-optimise-store = true;
   nix.settings.substituters = lib.mkForce [
-    {
-      pc = "http://192.168.1.180";
-      dell = "http://192.168.1.190";
-    }
-    .${config.networking.hostName}
+    # {
+    #   pc = "http://192.168.1.180";
+    #   dell = "http://192.168.1.190";
+    # }
+    # .${config.networking.hostName}
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
     "https://hyprland.cachix.org"
