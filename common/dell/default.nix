@@ -38,12 +38,10 @@
     #   }
     # )
   ];
-
   system.stateVersion = "23.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.switcherooControl.enable = true;
-
   services.thermald.enable = false;
   services.tlp.enable = false;
   services.tlp.settings = {
