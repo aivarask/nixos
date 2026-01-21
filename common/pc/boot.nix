@@ -49,7 +49,8 @@
   # };
 
   boot.blacklistedKernelModules = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
   # boot.initrd.kernelModules = [ "nvidia" ];
   boot.initrd.availableKernelModules = [

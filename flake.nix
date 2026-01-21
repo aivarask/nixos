@@ -83,6 +83,7 @@
 
             environment.systemPackages = with pkgs; [
               nixos-anywhere # https://github.com/nix-community/nixos-anywhere
+              # https://github.com/nix-community/nixos-anywhere/blob/main/docs/reference.md
               disko
 
               git
