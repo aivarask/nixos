@@ -80,8 +80,6 @@
             '';
 
             environment.systemPackages = with pkgs; [
-              nixos-anywhere # https://github.com/nix-community/nixos-anywhere
-              # https://github.com/nix-community/nixos-anywhere/blob/main/docs/reference.md
               disko
               qemu
 
@@ -169,24 +167,20 @@
     })
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
+      nixpkgs.hostPlatform = system;
       packages."${system}" = {
-        common_iso = inputs.nixos-generators.nixosGenerate {
-          inherit system;
-          modules = commonModules;
-          format = "install-iso";
-          specialArgs = { inherit inputs; };
-        };
-        dell_iso = inputs.nixos-generators.nixosGenerate {
-          inherit system;
-          modules = commonModules ++ [ ./common/dell ];
-          format = "install-iso";
-          specialArgs = { inherit inputs; };
-        };
       };
-      # https://nixos.wiki/wiki/Creating_a_NixOS_live_CD
-      # wireless https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
 
-      nixosConfigurations.exampleIso = nixpkgs.lib.nixosSystem ./flake_iso.nix ;
+      nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./common/iso.nix
+        ];
+      };
+      nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
+        modules = commonModules ++ [ ./common/dell ];
+        specialArgs = { inherit inputs; };
+      };
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./common/dell ];
         specialArgs = { inherit inputs; };

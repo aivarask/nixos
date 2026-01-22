@@ -5,6 +5,7 @@
       environment.systemPackages = (
         with pkgs;
         [
+          pv
           fwupd
           mesa-demos
           gpu-viewer
