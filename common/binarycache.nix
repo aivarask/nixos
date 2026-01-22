@@ -25,21 +25,14 @@ in
     #   mandatoryFeatures = [ ];
     # }
   ];
-  services.nix-serve = {
-    enable = true;
-    secretKeyFile = "/var/cache-priv-key.pem";
-  };
+  services.nix-serve.enable = true;
+  services.nix-serve.secretKeyFile = "/var/cache-priv-key.pem";
   networking.firewall.allowedTCPPorts = [
     80
   ];
-  services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    virtualHosts = {
-      "${ip}" = {
-        locations."/".proxyPass =
-          "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
-      };
-    };
-  };
+  services.nginx.enable = true;
+  services.nginx.recommendedProxySettings = true;
+  services.nginx.virtualHosts."192.168.1.180".locations."/".proxyPass =
+    "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+
 }

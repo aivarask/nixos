@@ -12,13 +12,13 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./../../lsp
     ./../boot.nix
+    ./../binarycache.nix
     ./../network/networking.nix
     ./../network/wireless.nix
     ./binarycache.nix
     ./boot.nix
     ./network.nix
     ./storage.nix
-    # { _module.args.disks = [ "/dev/sda" ]; }
   ];
   system.stateVersion = "25.05";
   nixpkgs.hostPlatform = "x86_64-linux";

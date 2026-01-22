@@ -17,7 +17,6 @@
     ./binarycache.nix
     ./bluetooth.nix
     ./boot.nix
-    ./disko-gpt-bios.nix
     # ./network.nix
   ];
   system.stateVersion = "26.05";
