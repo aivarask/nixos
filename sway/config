@@ -10,17 +10,10 @@ set $term kitty
 
 include ./appearance
 include ./bindings
-include ./bindings_sys
 include ./input
 include ./output
 exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
-
-bindsym Print exec grim
-bindsym $mod+p exec grimshot save active
-bindsym $mod+Shift+p exec grimshot save area
-bindsym $mod+Mod1+p  exec grimshot save output
-bindsym $mod+Ctrl+p  exec grimshot save window
 
 # exec /run/current-system/sw/bin/inactive-windows-transparency.py --opacity 0.95
 exec systemctl --user start gammastep
@@ -28,8 +21,5 @@ xwayland disable
 # exec swayidle -w timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 # timeout 300 'swaylock -f -c 000000' \
 # before-sleep 'swaylock -f -c 000000'
-
-bindsym $mod+minus scratchpad show
-bindsym $mod+Shift+minus move scratchpad
 
 include /etc/sway/config.d/*
