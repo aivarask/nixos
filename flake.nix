@@ -203,8 +203,8 @@
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
                 ./minimal.nix
-                inputs.disko.nixosModules.disko
-                ./disk-nvme.nix
+                # inputs.disko.nixosModules.disko
+                # ./disk-nvme.nix
               ];
               # disko requires
               boot.loader.systemd-boot.enable = true;
