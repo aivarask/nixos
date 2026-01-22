@@ -228,6 +228,19 @@
               # nixpkgs.hostPlatform = system;
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+              fileSystems."/" = {
+                device = "/dev/disk/by-partlabel/disk-main-root";
+                fsType = "ext4";
+              };
+
+              fileSystems."/boot" = {
+                device = "/dev/disk/by-partlabel/disk-main-root";
+                fsType = "vfat";
+                options = [
+                  "fmask=0022"
+                  "dmask=0022"
+                ];
+              };
             }
           )
         ];
