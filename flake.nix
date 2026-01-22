@@ -169,13 +169,13 @@
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       packages."${system}" = {
-        dell_iso = inputs.nixos-generators.nixosGenerate {
+        common_iso = inputs.nixos-generators.nixosGenerate {
           inherit system;
           modules = commonModules;
           format = "install-iso";
           specialArgs = { inherit inputs; };
         };
-        dell_full_iso = inputs.nixos-generators.nixosGenerate {
+        dell_iso = inputs.nixos-generators.nixosGenerate {
           inherit system;
           modules = commonModules ++ [ ./common/dell ];
           format = "install-iso";

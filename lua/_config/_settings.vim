@@ -70,8 +70,10 @@ nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 " inoremap <Space> <C-G>u<Space>
 
-map <silent> ]b :bn<CR>
-map <silent> [b :bp<CR>
+map <silent> ]b :bnext<CR>
+map <silent> [b :bprevious<CR>
+nnoremap <leader><tab> :bnext<cr>
+nnoremap <leader><space> :b#<cr>
 map [c :cprevious<CR>
 map ]c :cnext<CR>
 map ]C :call Ctoggle()<CR>
@@ -84,9 +86,7 @@ nmap <C-k> [%
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
-
 "noremap <C-S-,> :left<CR>
-
 nnoremap ?a :edit ~/.alias<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?z :edit $ZDOTDIR/.zshrc_<CR>
@@ -111,6 +111,7 @@ if has('nvim')
 	set lisp
 
 	nnoremap <leader>A :Telescope autocommands<CR>
+	nnoremap <leader>b :b<Space>
 	nnoremap <leader>` :Telescope buffers<CR>
 	nnoremap <leader>c :Telescope commands<CR>
 	nnoremap <leader>d :Telescope diagnostics<CR>
