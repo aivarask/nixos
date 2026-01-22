@@ -192,7 +192,12 @@
         specialArgs = { inherit inputs; };
         modules = [
           (
-            { modulesPath, lib, ... }:
+            {
+              modulesPath,
+              lib,
+              config,
+              ...
+            }:
             {
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
@@ -219,8 +224,9 @@
               boot.initrd.kernelModules = [ "wl" ];
               boot.kernelModules = [ "kvm-intel" ];
               system.stateVersion = "26.05";
-              # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-              nixpkgs.hostPlatform = system;
+              nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+              # nixpkgs.hostPlatform = system;
+              hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
             }
           )
