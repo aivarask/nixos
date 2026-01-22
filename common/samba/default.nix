@@ -11,7 +11,7 @@
   services.samba.openFirewall = true;
   services.samba.nmbd.enable = false;
   services.samba.winbindd.enable = false;
-  services.samba.smbd.extraArgs = [ "--configfile=/etc/nixos/common/smb.conf" ];
+  services.samba.smbd.extraArgs = [ "--configfile=/etc/nixos/common/samba/smb.conf" ];
   services.avahi = {
     publish.enable = true;
     publish.userServices = true;

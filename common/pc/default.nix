@@ -15,7 +15,6 @@
     ./../binarycache.nix
     ./../network/networking.nix
     ./../network/wireless.nix
-    ./binarycache.nix
     ./boot.nix
     ./network.nix
     ./storage.nix

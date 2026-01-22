@@ -14,7 +14,6 @@
     ./../../lsp
     ./../boot.nix
     ./../xdg.nix
-    ./binarycache.nix
     ./bluetooth.nix
     ./boot.nix
     # ./network.nix

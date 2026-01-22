@@ -46,6 +46,7 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
+
       commonModules = [
         inputs.disko.nixosModules.disko
         ./audio/mpd.nix
@@ -55,7 +56,7 @@
         ./common/environment.nix
         ./common/nix.nix
         ./common/nps.nix
-        ./common/samba.nix
+        ./common/samba
         ./common/services.nix
         ./httpd
         ./lang/go.nix
