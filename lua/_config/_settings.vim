@@ -79,6 +79,8 @@ nmap ]] :bnext<cr>
 nmap [[ :bprevious<cr>
 map <silent> ]b :bnext<CR>
 map <silent> [b :bprevious<CR>
+map <silent> ]w :wincmd l<CR>
+map <silent> [w :wincmd h<CR>
 nnoremap <leader><tab> :bnext<cr>
 nnoremap <leader><space> :b#<cr>
 map [c :cprevious<CR>

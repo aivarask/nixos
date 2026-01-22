@@ -27,4 +27,5 @@ bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window
 bindsym	$mod+f1 exec $term --directory=/etc/nixos/ nvim
 bindsym $mod+f2 exec $term ncmpcpp
 bindsym $mod+f3 exec $term pulsemixer
+bindsym $mod+f4 exec $term exec emulate_iso
 # bindsym $mod+f3 exec ardour8 -T main one

@@ -1,4 +1,5 @@
 {
+  # https://github.com/nix-community/disko/blob/master/example/gpt-bios-compat.nix
   disko.devices = {
     disk = {
       main = {

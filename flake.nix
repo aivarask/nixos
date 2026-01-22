@@ -219,6 +219,8 @@
                 neovim
                 disko
                 htop
+                pistol
+                lf
               ];
               # customization
               programs.bash.interactiveShellInit = ''
@@ -233,7 +235,7 @@
               networking.wireless.iwd.settings = {
                 # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
                 # General.EnableNetworkConfiguration = true;
-                IPv4.SendHostname=true;
+                IPv4.SendHostname = true;
                 # IPv4 = {
                 #   Address = "192.168.1.100";
                 #   Netmask = "255.255.255.0";
@@ -251,8 +253,22 @@
               # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
               systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
               users.users.root.openssh.authorizedKeys.keys = [
-                # "ssh-ed25519 AaAeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee username@host"
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3"
               ];
+
+              # systemd.tmpfiles.rules = [
+              #   "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./common/dell/disko-gpt-bios.nix}"
+              # ];
+              systemd.tmpfiles.settings = {
+                "disko-config" = {
+                  "/home/nixos/disko-config.nix" = {
+                    f = {
+                      argument = builtins.readFile ./common/dell/disko-gpt-bios.nix;
+                    };
+                  };
+                };
+              };
               # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
               # networking = lib.mkIf false {
               #   usePredictableInterfaceNames = false;
