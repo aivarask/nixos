@@ -187,7 +187,18 @@
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        modules = [ ];
+        modules = [
+          (
+            { modulesPath, ... }:
+            {
+              imports = [
+                (modulesPath + "/installer/scan/not-detected.nix")
+                (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
+                ./iso-minimal.nix
+              ];
+            }
+          )
+        ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {

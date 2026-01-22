@@ -16,7 +16,6 @@
     ./../xdg.nix
     ./bluetooth.nix
     ./boot.nix
-    # ./network.nix
   ];
   system.stateVersion = "26.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
