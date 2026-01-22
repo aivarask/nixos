@@ -175,6 +175,12 @@
           format = "install-iso";
           specialArgs = { inherit inputs; };
         };
+        dell_full_iso = inputs.nixos-generators.nixosGenerate {
+          inherit system;
+          modules = commonModules ++ [ ./common/dell ];
+          format = "install-iso";
+          specialArgs = { inherit inputs; };
+        };
         # vbox = inputs.nixos-generators.nixosGenerate {
         #   system = "x86_64-linux";
         #   format = "virtualbox";
