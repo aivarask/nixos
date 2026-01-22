@@ -181,25 +181,50 @@
                 # https://github.com/NixOS/nixpkgs/tree/master/nixos/modules/installer/cd-dvd
                 (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
               ];
+              isoImage.squashfsCompression = "gzip -Xcompression-level 1"; # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
             }
           )
           ./minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
           (
-            { modulesPath, ... }:
+            { modulesPath, lib, ... }:
             {
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
                 ./minimal.nix
+                inputs.disko.nixosModules.disko
+                ./disk-nvme.nix
               ];
+              # disko requires
+              # boot.loader.systemd-boot.enable = true;
+              #boot.loader.efi.canTouchEfiVariables = true;
+              boot.loader.grub.enable = true;
+              boot.loader.grub.efiSupport = true;
+              boot.loader.grub.efiInstallAsRemovable = true;
+              # dell hardware
+              boot.initrd.availableKernelModules = [
+                "nvme"
+                "xhci_pci"
+                "ahci"
+                "usbhid"
+                "usb_storage"
+                "sd_mod"
+              ];
+              boot.initrd.kernelModules = [ "wl" ];
+              boot.kernelModules = [ "kvm-intel" ];
+              system.stateVersion = "26.05";
+              # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+              nixpkgs.hostPlatform = system;
+
             }
           )
         ];
-        specialArgs = { inherit inputs; };
       };
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./common/dell ];

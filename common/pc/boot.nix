@@ -60,6 +60,7 @@
     "usbhid"
     "usb_storage"
     "sd_mod"
+    "rtsx_pci_sdmmc"
   ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   hardware.nvidia.open = true;

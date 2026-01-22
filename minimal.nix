@@ -56,6 +56,7 @@
     # Scan.DisablePeriodicScan=true;
   };
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
+  # https://nixos.wiki/wiki/SSH_public_key_authentication
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
@@ -70,8 +71,6 @@
   # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
 
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
-  # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
