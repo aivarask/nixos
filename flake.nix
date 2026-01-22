@@ -168,17 +168,24 @@
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       nixpkgs.hostPlatform = system;
-      packages."${system}" = {
-      };
+      packages."${system}" = { };
 
-      nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./common/iso.nix
+          (
+            { modulesPath, ... }:
+            {
+              imports = [
+                (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+              ];
+            }
+          )
+          ./iso-minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./common/dell ];
+        modules = [ ];
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {

@@ -45,10 +45,10 @@ lazygit = T:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
 vim.keymap.set({ 'n', 't' }, '\\\\l', function() lazygit:toggle(nil, 'float') end, { desc = 'lazygit' })
 
 lf = T:new({ cmd = 'lf', hidden = true, direction = 'float' })
-vim.keymap.set({ 'n', 't' }, '\\\\L.', function() lf:toggle(nil, 'float') end, { desc = 'lf .' })
+vim.keymap.set({ 'n', 't' }, '\\\\.', function() lf:toggle(nil, 'float') end, { desc = 'lf .' })
 
 lf_buf = T:new({ cmd = 'lf ' .. vim.fn.expand('%'), hidden = true, direction = 'float' })
-vim.keymap.set({ 'n', 't' }, '\\\\L%',
+vim.keymap.set({ 'n', 't' }, '\\\\%',
 	function() return T:new({ cmd = 'lf ' .. vim.fn.expand('%'), direction = 'float' }):open() end, { desc = 'lf %' })
 
 man_fzf = T:new({ cmd = 'man_fzf', hidden = true, direction = 'float' })

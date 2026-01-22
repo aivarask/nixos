@@ -19,8 +19,6 @@
 {
   # https://github.com/NixOS/nixpkgs/tree/master/nixos/modules/installer/cd-dvd
   imports = [
-    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
-    (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
     # (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
   ];
   environment.systemPackages = with pkgs; [
@@ -69,20 +67,13 @@
   ]
   ++ (args.extraPublicKeys or [ ]);
 
+  environment.etc."disko-config.nix".source = ./common/disko-config.nix;
+
   # systemd.tmpfiles.rules = [
   #   "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./common/dell/disko-gpt-bios.nix}"
   # ];
-  environment.etc."disko-config.nix".source = ./common/disko-config.nix;
+  # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
 
-  # systemd.tmpfiles.settings = {
-  #   "disko-config" = {
-  #     "/tmp/disk-config.nix" = {
-  #       f = {
-  #         argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
-  #       };
-  #     };
-  #   };
-  # };
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # networking = lib.mkIf false {
   #   usePredictableInterfaceNames = false;
@@ -96,11 +87,6 @@
   #   nameservers = [ "8.8.8.8" ];
   # };
   # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
-  # squashfsCompression 	Time 	Size
-  # lz4 	100s 	59%
-  # gzip -Xcompression-level 1 	105s 	52%
-  # gzip 	210s 	49%
-  # xz -Xdict-size 100% (default) 	450s 	43%
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
@@ -108,7 +94,6 @@
   nixpkgs.config.permittedInsecurePackages = [
     "broadcom-sta-6.30.223.271-59-6.18.3"
   ];
-
   boot.initrd.kernelModules = [ "wl" ];
   boot.kernelModules = [
     "kvm-intel"
