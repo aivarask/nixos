@@ -17,10 +17,6 @@
   ...
 }@args:
 {
-  # https://github.com/NixOS/nixpkgs/tree/master/nixos/modules/installer/cd-dvd
-  imports = [
-    # (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
-  ];
   environment.systemPackages = with pkgs; [
     systemctl-tui
     fzf
