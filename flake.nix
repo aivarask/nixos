@@ -224,9 +224,30 @@
               programs.bash.interactiveShellInit = ''
                 shopt -s autocd
                 # shopt -s autocd
+                set -o noclobber
+                shopt -s checkwinsize
               '';
               # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
-              networking.networkmanager.wifi.backend = "wpa_supplicant";
+              # iwd https://nixos.wiki/wiki/Iwd
+              networking.networkmanager.wifi.backend = "iwd";
+              networking.wireless.iwd.settings = {
+                # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
+                # General.EnableNetworkConfiguration = true;
+                IPv4.SendHostname=true;
+                # IPv4 = {
+                #   Address = "192.168.1.100";
+                #   Netmask = "255.255.255.0";
+                #   Gateway = "192.168.1.1";
+                #   Broadcast = "192.168.1.255";
+                #   DNS = "192.168.1.1";
+                # };
+                # Network.NameResolvingService = "resolvconf"; # Values: resolvconf, **systemd**, none
+                Network.EnableIPv6 = false;
+                # IPv6.Enabled = false;
+                Settings.AutoConnect = true;
+
+                # Scan.DisablePeriodicScan=true;
+              };
               # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
               systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
               users.users.root.openssh.authorizedKeys.keys = [

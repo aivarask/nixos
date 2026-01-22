@@ -2,6 +2,8 @@ augroup nixos.edit
 	autocmd!
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
+	autocmd BufLeave,FocusLost * silent! wall
+
 augroup END
 
 if has('nvim')

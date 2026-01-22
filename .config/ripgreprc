@@ -1,6 +1,7 @@
 -g=!*.svg
 -g=!.git/*
 -g=!lib/*
+-g=!browsers/firefox-csshacks/*
 -g=!.trash/*
 -g=!.local/*
 -g=!.cache/*

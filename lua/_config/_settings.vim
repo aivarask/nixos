@@ -70,6 +70,11 @@ nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 " inoremap <Space> <C-G>u<Space>
 
+nmap <silent> <Tab>l :bnext<cr>
+nmap <silent> <Tab><Tab> :bnext<cr>
+nmap <silent> <Tab><S-Tab> :bprevious<cr>
+nmap <silent> <S-Tab><S-Tab> :bprevious<cr>
+nmap <silent> <Tab>h :bprevious<cr>
 nmap ]] :bnext<cr>
 nmap [[ :bprevious<cr>
 map <silent> ]b :bnext<CR>
