@@ -12,6 +12,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     ./../../lsp
     ./../boot.nix
+    ./../network/networking.nix
+    ./../network/wireless.nix
     ./binarycache.nix
     ./boot.nix
     ./network.nix

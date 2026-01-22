@@ -53,8 +53,6 @@
         ./audio/production.nix
         ./common/config.nix
         ./common/environment.nix
-        ./common/network/networking.nix
-        ./common/network/wireless.nix
         ./common/nix.nix
         ./common/nps.nix
         ./common/samba.nix
@@ -171,11 +169,11 @@
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       packages."${system}" = {
-        minimal_iso = inputs.nixos-generators.nixosGenerate {
+        dell_iso = inputs.nixos-generators.nixosGenerate {
           inherit system;
-          modules = [
-          ];
+          modules = commonModules;
           format = "install-iso";
+          specialArgs = { inherit inputs; };
         };
         # vbox = inputs.nixos-generators.nixosGenerate {
         #   system = "x86_64-linux";

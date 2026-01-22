@@ -18,9 +18,9 @@
     ./bluetooth.nix
     ./boot.nix
     ./disko-gpt-bios.nix
-    ./network.nix
+    # ./network.nix
   ];
-  system.stateVersion = "23.05";
+  system.stateVersion = "26.05";
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   services.switcherooControl.enable = true;
