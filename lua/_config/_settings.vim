@@ -70,6 +70,8 @@ nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 " inoremap <Space> <C-G>u<Space>
 
+nmap ]] :bnext<cr>
+nmap [[ :bprevious<cr>
 map <silent> ]b :bnext<CR>
 map <silent> [b :bprevious<CR>
 nnoremap <leader><tab> :bnext<cr>

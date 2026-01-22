@@ -14,6 +14,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.kernelModules = [
     "kvm-intel"
+    "wl"
     "vhost_vsock"
     "i2c-dev"
   ];
@@ -23,6 +24,7 @@
     # "module_blacklist=i915"
     # "nvidia-drm.fbdev=1"
   ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.extraModprobeConfig = builtins.concatStringsSep "\n" [
     "options dell-smm-hwmon ignore_dmi=1"
   ];
@@ -35,5 +37,6 @@
     "rtsx_pci_sdmmc"
     "usb_storage"
   ];
+  boot.initrd.kernelModules = [ "wl" ];
 
 }

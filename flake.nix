@@ -83,6 +83,7 @@
               nixos-anywhere # https://github.com/nix-community/nixos-anywhere
               # https://github.com/nix-community/nixos-anywhere/blob/main/docs/reference.md
               disko
+              qemu
 
               git
               systemctl-tui
@@ -181,12 +182,93 @@
           format = "install-iso";
           specialArgs = { inherit inputs; };
         };
-        # vbox = inputs.nixos-generators.nixosGenerate {
-        #   system = "x86_64-linux";
-        #   format = "virtualbox";
-        # };
       };
+      # https://nixos.wiki/wiki/Creating_a_NixOS_live_CD
+      # wireless https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
 
+      nixosConfigurations.exampleIso = nixpkgs.lib.nixosSystem {
+        # build nix build .\#nixosConfigurations.exampleIso.config.system.build.isoImage
+        # test https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Testing_the_image
+        # emulate qemu-system-x86_64 -enable-kvm -m 256 -cdrom result/iso/nixos-*.iso
+        #     https://wiki.nixos.org/wiki/QEMU
+        # build nix build .\#nixosConfigurations.exampleIso.config.system.build.isoImage &&
+        # partition
+        # UEFI(GPT) https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning-UEFI
+        # format https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning-formatting
+        # install https://nixos.org/manual/nixos/stable/#sec-installation-manual-installing
+        inherit system;
+        modules = [
+          (
+            {
+              pkgs,
+              modulesPath,
+              config,
+              lib,
+              ...
+            }:
+            {
+              # https://github.com/NixOS/nixpkgs/tree/master/nixos/modules/installer/cd-dvd
+              imports = [
+                (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+                (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+                # (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
+              ];
+              environment.systemPackages = with pkgs; [
+                systemctl-tui
+                fzf
+                neovim
+                disko
+                htop
+              ];
+              # customization
+              programs.bash.interactiveShellInit = ''
+                shopt -s autocd
+                # shopt -s autocd
+              '';
+              # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
+              networking.networkmanager.wifi.backend = "wpa_supplicant";
+              # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
+              systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+              users.users.root.openssh.authorizedKeys.keys = [
+                # "ssh-ed25519 AaAeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee username@host"
+              ];
+              # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
+              # networking = lib.mkIf false {
+              #   usePredictableInterfaceNames = false;
+              #   interfaces.eth0.ipv4.addresses = [
+              #     {
+              #       address = "192.168.1.100";
+              #       prefixLength = 24;
+              #     }
+              #   ];
+              #   defaultGateway = "192.168.1.1";
+              #   nameservers = [ "8.8.8.8" ];
+              # };
+              # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
+              # squashfsCompression 	Time 	Size
+              # lz4 	100s 	59%
+              # gzip -Xcompression-level 1 	105s 	52%
+              # gzip 	210s 	49%
+              # xz -Xdict-size 100% (default) 	450s 	43%
+              isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+
+              # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config.permittedInsecurePackages = [
+                "broadcom-sta-6.30.223.271-59-6.18.3"
+              ];
+
+              boot.initrd.kernelModules = [ "wl" ];
+              boot.kernelModules = [
+                "kvm-intel"
+                "wl"
+              ];
+              boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+
+            }
+          )
+        ];
+      };
       nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [ ./common/dell ];
         specialArgs = { inherit inputs; };
