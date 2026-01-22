@@ -183,7 +183,7 @@
               ];
             }
           )
-          ./iso-minimal.nix
+          ./minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
@@ -194,7 +194,7 @@
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
-                ./iso-minimal.nix
+                ./minimal.nix
               ];
             }
           )
