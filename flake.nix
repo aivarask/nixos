@@ -200,6 +200,7 @@
               ...
             }:
             {
+              networking.hostName = "minimal";
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
@@ -207,13 +208,13 @@
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
               ];
-              # disko requires
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;
               # boot.loader.grub.enable = true;
               # boot.loader.grub.efiSupport = true;
               # boot.loader.grub.efiInstallAsRemovable = true;
-              # dell hardware
+
+              # hardware
               boot.initrd.availableKernelModules = [
                 "nvme"
                 "xhci_pci"
@@ -228,20 +229,19 @@
               # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
               nixpkgs.hostPlatform = system;
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-              fileSystems."/" = {
-                device = "/dev/disk/by-uuid/b6917d6b-6bcf-4b53-9d86-447f9e52cc51";
-                fsType = "ext4";
-              };
-
               fileSystems."/boot" = {
-                device = "/dev/disk/by-uuid/02EF-079B";
+                device = "/dev/disk/by-partlabel/disk-main-boot";
                 fsType = "vfat";
                 options = [
                   "fmask=0077"
                   "dmask=0077"
                 ];
               };
+              fileSystems."/" = {
+                device = "/dev/disk/by-partlabel/disk-main-root";
+                fsType = "ext4";
+              };
+
             }
           )
         ];

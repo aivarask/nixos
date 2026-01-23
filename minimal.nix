@@ -36,7 +36,9 @@
   '';
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
+  networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  # networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {
     # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
     # General.EnableNetworkConfiguration = true;
