@@ -56,10 +56,12 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3"
   ]
   ++ (args.extraPublicKeys or [ ]);
+
   environment.etc."disko-config.nix".source = ./disk-nvme.nix;
-  # systemd.tmpfiles.rules = [
-  #   "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./common/dell/disko-gpt-bios.nix}"
-  # ];
+  systemd.tmpfiles.rules = [
+    "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./disk-nvme.nix}"
+    "C+ /home/nixos/nixos - - - 10d ${./.}"
+  ];
   # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
