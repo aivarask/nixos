@@ -38,6 +38,7 @@
     shopt -s checkwinsize
     echo 'hi me!'
     alias iwconnect="iwctl station wlan0 connect hw"
+    alias disko_prepare="disko -m destroy,format,mount"
 
   '';
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
