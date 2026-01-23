@@ -225,21 +225,21 @@
               boot.initrd.kernelModules = [ "wl" ];
               boot.kernelModules = [ "kvm-intel" ];
               system.stateVersion = "26.05";
-              nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-              # nixpkgs.hostPlatform = system;
+              # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+              nixpkgs.hostPlatform = system;
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
               fileSystems."/" = {
-                device = "/dev/disk/by-partlabel/disk-main-root";
+                device = "/dev/disk/by-uuid/b6917d6b-6bcf-4b53-9d86-447f9e52cc51";
                 fsType = "ext4";
               };
 
               fileSystems."/boot" = {
-                device = "/dev/disk/by-partlabel/disk-main-boot";
+                device = "/dev/disk/by-uuid/02EF-079B";
                 fsType = "vfat";
                 options = [
-                  "fmask=0022"
-                  "dmask=0022"
+                  "fmask=0077"
+                  "dmask=0077"
                 ];
               };
             }
