@@ -182,6 +182,7 @@
                 (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
               ];
               isoImage.squashfsCompression = "gzip -Xcompression-level 1"; # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
+              nixpkgs.hostPlatform = system;
             }
           )
           ./minimal.nix
