@@ -226,8 +226,7 @@
               boot.initrd.kernelModules = [ "wl" ];
               boot.kernelModules = [ "kvm-intel" ];
               system.stateVersion = "26.05";
-              # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-              nixpkgs.hostPlatform = system;
+              nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
               fileSystems."/boot" = {
                 device = "/dev/disk/by-partlabel/disk-main-boot";
