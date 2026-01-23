@@ -3,3 +3,16 @@
 [user]
   email = "kalesnykas.aivaras@gmail.com"
   name = "Aivaras Kalesnykas"
+
+[init]
+  defaultBranch = main
+
+[url "https://github.com"]
+	insteadOf = "gh:"
+	insteadOf = "github:"
+
+[pull]
+  rebase = true
+
+[color]
+  ui = false

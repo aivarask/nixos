@@ -4,6 +4,7 @@
 # test https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Testing_the_image
 # emulate qemu-system-x86_64 -enable-kvm -m 256 -cdrom result/iso/nixos-*.iso
 #     https://wiki.nixos.org/wiki/QEMU
+#     https://wiki.gentoo.org/wiki/QEMU/Bridge_with_Wifi_Routing
 # build nix build .\#nixosConfigurations.exampleIso.config.system.build.isoImage &&
 # partition
 # UEFI(GPT) https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning-UEFI
@@ -14,6 +15,7 @@
   modulesPath,
   config,
   lib,
+  self,
   ...
 }@args:
 {
@@ -25,6 +27,8 @@
     htop
     pistol
     lf
+    git
+    lazygit
   ];
   # customization
   programs.bash.interactiveShellInit = ''
@@ -32,7 +36,9 @@
     # shopt -s autocd
     set -o noclobber
     shopt -s checkwinsize
-    echo 'woo'
+    echo 'hi me!'
+    alias iwconnect="iwctl station wlan0 connect hw"
+
   '';
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
@@ -59,8 +65,9 @@
 
   environment.etc."disko-config.nix".source = ./disk-nvme.nix;
   systemd.tmpfiles.rules = [
-    # "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./disk-nvme.nix}"
-    "C+ /home/nixos - - - - ${./.}"
+    #   # "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./disk-nvme.nix}"
+    #   "C+ /home/nixos/nixos_self - - - - ${self}"
+    # "C+ /home/nixos/nixos - - - - ${./.}"
   ];
   # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
@@ -77,10 +84,20 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   programs.git.enable = true;
+  # environment.etc."gitconfig".source = ./.config/git/config_global;
   # programs.git.package = pkgs.gitFull;
-  programs.git.lfs.enable = true;
+  # programs.git.lfs.enable = true;
   programs.git.config = [
     {
+      user = {
+        email = "kalesnykas.aivaras@gmail.com";
+        name = "Aivaras Kalesnykas";
+      };
+      credential = {
+        # helper = "manager";
+        "https://github.com".username = "aivarask";
+        credentialStore = "cache";
+      };
       init = {
         defaultBranch = "main";
       };

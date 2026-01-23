@@ -44,7 +44,7 @@
   inputs.nvim-oxi.flake = false;
   # https://github.com/mlua-rs/mlua
   outputs =
-    { nixpkgs, ... }@inputs:
+    { nixpkgs, self, ... }@inputs:
     let
 
       commonModules = [
@@ -173,6 +173,7 @@
 
       nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs self; };
         modules = [
           (
             { modulesPath, ... }:
@@ -183,6 +184,19 @@
               ];
               isoImage.squashfsCompression = "gzip -Xcompression-level 1"; # compression https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Building_faster
               nixpkgs.hostPlatform = system;
+              systemd.user.services.startup = {
+                description = "...";
+                # serviceConfig.PassEnvironment = "DISPLAY";
+                script = ''
+                  git clone 'https://github.com/aivarask/nixos.git' /home/nixos/nixos
+
+                  echo 'zoo' > /home/nixos/startup_script
+                '';
+                wantedBy = [
+                  "multi-user.target"
+                  "network-online.target"
+                ]; # starts after login
+              };
             }
           )
           ./minimal.nix
@@ -190,7 +204,7 @@
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self; };
         modules = [
           (
             {
