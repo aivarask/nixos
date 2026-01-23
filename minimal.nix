@@ -41,18 +41,9 @@
     # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
     # General.EnableNetworkConfiguration = true;
     IPv4.SendHostname = true;
-    # IPv4 = {
-    #   Address = "192.168.1.100";
-    #   Netmask = "255.255.255.0";
-    #   Gateway = "192.168.1.1";
-    #   Broadcast = "192.168.1.255";
-    #   DNS = "192.168.1.1";
-    # };
     Network.NameResolvingService = "resolvconf"; # Values: resolvconf, **systemd**, none
     Network.EnableIPv6 = false;
-    # IPv6.Enabled = false;
     Settings.AutoConnect = true;
-
     # Scan.DisablePeriodicScan=true;
   };
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
@@ -63,15 +54,12 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3"
   ]
   ++ (args.extraPublicKeys or [ ]);
-
   environment.etc."disko-config.nix".source = ./disk-nvme.nix;
   # systemd.tmpfiles.rules = [
   #   "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./common/dell/disko-gpt-bios.nix}"
   # ];
   # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
-
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
-
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -83,6 +71,5 @@
     "wl"
   ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
-
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
 }
