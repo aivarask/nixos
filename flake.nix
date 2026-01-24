@@ -161,7 +161,7 @@
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs self; };
-        modules = [
+        modules = commonModules ++ [
           (
             {
               modulesPath,
