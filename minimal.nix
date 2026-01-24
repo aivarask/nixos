@@ -55,6 +55,7 @@
   };
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
   # https://nixos.wiki/wiki/SSH_public_key_authentication
+  services.openssh.enable = true;
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
