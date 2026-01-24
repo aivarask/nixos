@@ -157,7 +157,7 @@
   ];
   documentation = {
     enable = true;
-    dev.enable = true;
+    dev.enable = false;
     doc.enable = true;
     info.enable = true;
     nixos.enable = true;

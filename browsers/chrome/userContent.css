@@ -38,7 +38,7 @@
 
 }
 
-@-moz-document url(https://xhamster.com/), domain(xhamster.com) {
+@-moz-document url(https://example.com/), domain(example.com) {
 
 	:root {
 		--top-menu-height: 0px !important;

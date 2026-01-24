@@ -38,8 +38,6 @@ require('nvim-web-devicons').setup({
 
 require('fidget').setup({})
 require('notify').setup({
-	-- render = 'wrapped-compact',
-	-- timeout = 1000,
 	top_down = false,
 })
 vim.notify = require('notify')

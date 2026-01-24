@@ -1,6 +1,6 @@
 vim.cmd [[
 let &runtimepath.=',/etc/nixos'
-source ./shared.vim
+runtime! lua/*{.vim}
 ]]
 vim.loader.enable()
 uv = vim.uv

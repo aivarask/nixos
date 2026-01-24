@@ -11,6 +11,12 @@ floating_modifier $mod normal
 bindsym $mod+f11 reload
 bindsym	$mod+f12 exit
 
+mode "killer" {
+	bindsym $mod+z kill; mode default
+	bindsym Escape mode "default"
+}
+bindsym $mod+z mode "killer" 
+
 bindsym $mod+grave exec $term
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
@@ -86,7 +92,7 @@ bindsym $mod+ctrl+space focus mode_toggle
 # bindsym $mod+p focus parent 
 
 set $yt 'https://youtube.com'
-set $url 'xhamster.com'
+set $url 'https://example.com'
 
 bindsym	$mod+Escape reload
 
