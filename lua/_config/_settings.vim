@@ -3,9 +3,6 @@ filetype plugin indent on
 set termguicolors
 set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set completeopt=menu,menuone,noselect
-"set wildmenu
-"set wildmode=noselect
-
 set cursorline 
 set mouse=a
 set mousefocus
@@ -14,30 +11,29 @@ set ignorecase
 set lazyredraw
 set modeline
 set noshowmode
-set signcolumn=yes number relativenumber
-set splitright splitbelow
+set signcolumn=yes number relativenumber 
+set splitkeep splitbelow
 set showtabline=2 statusline+=%F
 set nowrap
-set breakindent
-set breakindentopt=sbr
 " set showbreak=↪>\
-
 set noswapfile
+set autowriteall
 set background=dark
 set undofile
-set autowriteall
-set updatetime=250
+set updatetime=500
 set timeoutlen=600
 set bufhidden=unload
-"set commentstring=#\ %s
 set conceallevel=2
 set clipboard=unnamedplus
-
 set tabstop=2
+set breakindent
+set breakindentopt=sbr
 "set autoindent
 "set smartindent
-"set paste
 set shiftwidth=2
+"set paste
+"set cpoptions+=ILq
+"set cursorbind
 
 autocmd CmdlineChanged [:\/\?] call wildtrigger()
 set wildmode=noselect:lastused,full
@@ -53,8 +49,7 @@ colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_events = [ 
-			\ "TextChanged"]			
+let g:auto_save_events = ["TextChanged"]			
 " "InsertLeave"
 
 let g:bclose_no_plugin_maps=1

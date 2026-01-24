@@ -25,7 +25,6 @@ let
     vim-log-highlighting
     vim-interestingwords
     # alternatives exist
-    vim-surround
   ];
 in
 {

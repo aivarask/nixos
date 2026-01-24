@@ -30,7 +30,7 @@ end
 
 require('nvim-web-devicons').setup({
 	override = {
-		['nix'] = { icon = '', color = '#ffffff', cterm_color = '110', name = 'Nix' },
+		['nix'] = { icon = '', color = '#ff0000', cterm_color = '110', name = 'Nix' },
 	},
 })
 

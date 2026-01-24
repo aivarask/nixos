@@ -1,3 +1,7 @@
+if not pcall(require, 'lualine') then
+	return
+end
+
 local buf_lsp_clients = function()
 	local lsps = ''
 	for index, value in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do

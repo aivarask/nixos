@@ -1,3 +1,6 @@
+if not pcall(require, 'strudel') then
+	return
+end
 require("strudel").setup({
 	-- Strudel web user interface related options
 	ui = {

@@ -63,11 +63,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		if (not client:supports_method('textDocument/willSaveWaitUntil') or true)
 				or client:supports_method('textDocument/formatting')
 		then
-			vim.api.nvim_create_autocmd('BufWritePre', {
+			vim.api.nvim_create_autocmd({
+				'InsertLeave',
+				-- 'TextChanged',
+				'CompleteDone',
+				'BufWritePre'
+			}, {
 				group = vim.api.nvim_create_augroup('lsp:format', { clear = false }),
 				buffer = args.buf,
 				callback = function()
 					local verbose = false
+
 					if verbose then os.execute('notify-send ' .. os.time()) end
 					local ft = vim.fn.getbufvar(args.buf, '&filetype')
 					if ft == 'json' or ft == 'jsonc' then

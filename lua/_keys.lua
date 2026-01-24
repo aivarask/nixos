@@ -6,7 +6,6 @@ vim.keymap.set({ 'n' }, '<leader>1', function()
 	require "telescope.builtin".live_grep { default_text = vim.fn.expand("<cword>") }
 end, { desc = 'live_grep <cword>' })
 
-vim.keymap.set({ 'n', 'v', 'i' }, "<F5>", "<cmd>term find_ yoshimi<cr>")
 vim.keymap.set({ 'n', 'v', 'i' }, "<C-Tab>", "<cmd>bnext<cr>")
 vim.keymap.set({ 'v', 'i' }, "<C-R>", "<cmd>Telescope registers<cr>")
 vim.keymap.set({ 'n', 'x' }, "]]", "<cmd>:bnext<cr>")

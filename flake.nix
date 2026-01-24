@@ -1,11 +1,12 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  flake-parts.url = "github:hercules-ci/flake-parts";
+  inputs.flake-parts.url = "github:hercules-ci/flake-parts";
   inputs.systems.url = "github:nix-systems/x86_64-linux";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.flake-utils.inputs.systems.follows = "systems";
   inputs.nps.url = "github:OleMussmann/nps";
   inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.templates.url = "github:NixOS/templates";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
