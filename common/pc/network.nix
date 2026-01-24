@@ -3,7 +3,6 @@
   networking.hosts = {
     "192.168.1.180" = [ "dell" ];
   };
-  networking.hostName = "pc";
   networking.hostId = "007f0200";
   networking.enableIPv6 = false;
 

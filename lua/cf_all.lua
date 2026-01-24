@@ -23,6 +23,8 @@ require('auto-session').setup({
 	log_level = vim.log.levels.ERROR,
 })
 
+require('flatten').setup {}
+
 require('colorizer').setup({})
 if vim.uv.os_getenv('WAYLAND_DISPLAY') then
 	require('image').setup({ backend = 'kitty' }) -- https://raw.githubusercontent.com/3rd/image.nvim/refs/heads/master/README.md

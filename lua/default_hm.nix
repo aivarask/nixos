@@ -22,9 +22,6 @@ let
     vim-lastplace
     direnv-vim
     tabular
-    vim-log-highlighting
-    vim-interestingwords
-    # alternatives exist
   ];
 in
 {
@@ -73,13 +70,10 @@ in
     lib.mkMerge [
       common
       (with pkgs.vimPlugins; [
-        # nvimOnly
-        # vim-sensible
         nvim-nio
         auto-session
-
         which-key-nvim
-        indent-blankline-nvim
+        indent-blankline-nvim # ibl
         lazygit-nvim
         lualine-nvim
         nvim-tree-lua
@@ -88,16 +82,12 @@ in
       ])
       (with pkgs.vimPlugins; [
         # new
-        nui-nvim
         nvim-notify
         fidget-nvim
         luvit-meta
         # overlays
-        one-small-step-for-vimkind
         nvim-lsp-file-operations
         smart-semicolon
-        websocket-nvim
-        nvim-oxi
       ])
       # misc
       (lib.mkIf true (
@@ -111,37 +101,6 @@ in
           image-nvim
           telescope-nvim
           telescope-fzf-native-nvim
-          telescope-symbols-nvim
-        ]
-      ))
-      # test
-      (lib.mkIf true (
-        with pkgs.vimPlugins;
-        [
-          # vim-test
-          pkgs.vimPlugins.neotest
-          # neotest-bash
-          # neotest-go
-          # neotest-jest
-          # neotest-phpunit
-          # neotest-pest
-          # neotest-plenary
-          neotest-python
-          # neotest-rust
-          # neotest-vitest
-        ]
-      ))
-      # treesitter
-      (lib.mkIf false (
-        with pkgs.vimPlugins;
-        [
-          nvim-treesitter.withAllGrammars
-          nvim-treesitter-endwise
-          nvim-treesitter-context
-          nvim-ts-autotag
-          nvim-ts-context-commentstring
-          nvim-treesitter-textobjects
-          nvim-treesitter-textsubjects
         ]
       ))
 

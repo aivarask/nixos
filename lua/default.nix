@@ -27,7 +27,6 @@ in
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [
-    # neovim-remote
     stylua
     lua-language-server
     myLua
@@ -45,48 +44,6 @@ in
           with inputs;
           prev.vimPlugins
           // {
-            websocket-nvim = buildVimPlugin {
-              name = "websocket-nvim";
-              src = websocket-nvim;
-              meta.homepage = "github.com/samsze0/websocket.nvim";
-              doCheck = false;
-            };
-            nvim-oxi = buildVimPlugin {
-              name = "nvim-oxi";
-              src = nvim-oxi;
-              meta.home = "https://github.com/noib3/nvim-oxi";
-            };
-            one-small-step-for-vimkind = buildVimPlugin {
-              name = "one-small-step-for-vimkind";
-              src = one-small-step-for-vimkind;
-              meta.homepage = "https://github.com/jbyuki/one-small-step-for-vimkind";
-            };
-            vim-log-highlighting = buildVimPlugin {
-              name = "vim-log-highlighting";
-              src = vim-log-highlighting;
-              meta.homepage = "https://github.com/MTDL9/vim-log-highlighting";
-            };
-            vim-interestingwords = buildVimPlugin {
-              name = "vim-interestingwords";
-              src = vim-interestingwords;
-              meta.homepage = "https://github.com/lfv89/vim-interestingwords";
-            };
-            neotest-playwright = buildVimPlugin {
-              name = "neotest-playwright";
-              src = neotest-playwright;
-              meta = {
-                homepage = "https://github.com/thenbe/neotest-playwright";
-              };
-              doCheck = false;
-            };
-            persistent-breakpoints = buildVimPlugin {
-              name = "persistent-breakpoints";
-              src = persistent-breakpoints;
-              meta = {
-                homepage = "https://github.com/Weissle/persistent-breakpoints.nvim";
-              };
-              doCheck = false;
-            };
             smart-semicolon = buildVimPlugin {
               name = "smart-semicolon";
               src = smart-semicolon;

@@ -26,25 +26,9 @@
   inputs.browser-previews.url = "github:nix-community/browser-previews";
   inputs.browser-previews.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
-  inputs.rust-overlay.url = "github:oxalica/rust-overlay";
   #
-  inputs.vim-log-highlighting.url = "github:MTDL9/vim-log-highlighting";
-  inputs.vim-log-highlighting.flake = false;
-  inputs.vim-interestingwords.url = "github:lfv89/vim-interestingwords";
-  inputs.vim-interestingwords.flake = false;
-  inputs.neotest-playwright.url = "github:thenbe/neotest-playwright";
-  inputs.neotest-playwright.flake = false;
-  inputs.persistent-breakpoints.url = "github:Weissle/persistent-breakpoints.nvim";
-  inputs.persistent-breakpoints.flake = false;
   inputs.smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
   inputs.smart-semicolon.flake = false;
-  inputs.one-small-step-for-vimkind.url = "github:jbyuki/one-small-step-for-vimkind";
-  inputs.one-small-step-for-vimkind.flake = false;
-  inputs.websocket-nvim.url = "github:samsze0/websocket.nvim";
-  inputs.websocket-nvim.flake = false;
-  inputs.nvim-oxi.url = "github:noib3/nvim-oxi";
-  inputs.nvim-oxi.flake = false;
-  # https://github.com/mlua-rs/mlua
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
@@ -57,15 +41,8 @@
         ./common/config.nix
         ./common/environment.nix
         ./common/nix.nix
-        ./common/nps.nix
-        ./common/samba
         ./common/services.nix
         ./httpd
-        ./lang/go.nix
-        ./lang/nodejs.nix
-        ./lang/python
-        ./lang/sql.nix
-        ./lib.nix
         ./lua
         ./sway
         (

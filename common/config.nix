@@ -97,8 +97,6 @@
   users.users."root" = {
     shell = pkgs.zsh;
     extraGroups = [
-      "http"
-      "samba"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
