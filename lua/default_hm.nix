@@ -74,18 +74,17 @@ in
       common
       (with pkgs.vimPlugins; [
         # nvimOnly
-        vim-sensible
+        # vim-sensible
         nvim-nio
         auto-session
+
         which-key-nvim
-        # nvim-surround
         indent-blankline-nvim
         lazygit-nvim
         # neogit
-        gitsigns-nvim
         lualine-nvim
         nvim-tree-lua
-        iron-nvim
+        # iron-nvim
         toggleterm-nvim
         sqlite-lua
       ])
@@ -126,12 +125,6 @@ in
       (lib.mkIf false (
         with pkgs.vimPlugins;
         [
-          nvim-dap
-          nvim-dap-virtual-text
-          telescope-dap-nvim
-          nvim-dap-ui
-          # nvim-dap-go
-          # nvim-dap-python
         ]
       ))
       # test

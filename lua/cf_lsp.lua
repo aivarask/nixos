@@ -1,5 +1,5 @@
 vim.o.pumheight = 16
-vim.o.complete = '.,w,o'
+vim.o.complete = 'o,w,.'
 vim.o.autocomplete = true
 vim.o.completeopt = "fuzzy,menu,menuone,noselect,popup"
 -- vim.o.wildmode = "noselect,list:lastused"
@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.api.nvim_create_autocmd({
 				'InsertLeave',
 				-- 'TextChanged',
-				'CompleteDone',
+				-- 'CompleteDone',
 				'BufWritePre'
 			}, {
 				group = vim.api.nvim_create_augroup('lsp:format', { clear = false }),
