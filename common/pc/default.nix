@@ -14,10 +14,11 @@
     ./../boot.nix
     ./../binarycache.nix
     ./../network/networking.nix
-    ./../network/wireless.nix
+    # ./../network/wireless.nix
     ./boot.nix
-    ./network.nix
+    # ./network.nix
     ./storage.nix
+    ./../../minimal.nix
   ];
   system.stateVersion = "25.05";
   nixpkgs.hostPlatform = "x86_64-linux";

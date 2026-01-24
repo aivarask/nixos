@@ -33,11 +33,9 @@
   # customization
   programs.bash.interactiveShellInit = ''
     shopt -s autocd
-    # shopt -s autocd
     set -o noclobber
     shopt -s checkwinsize
-    echo 'hi me!'
-    alias iwconnect="iwctl station wlan0 connect hw"
+    alias iwconnect="iwctl station wlan0 connect zte"
     alias disko_prepare="disko -m destroy,format,mount"
 
   '';
