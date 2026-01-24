@@ -1,6 +1,5 @@
 let &runtimepath.=',/etc/nixos'
-runtime! lua/_config/**/*.vim
-runtime! lua/_*.vim
+runtime! lua/*{.vim}
 call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/
 set bufhidden=unload

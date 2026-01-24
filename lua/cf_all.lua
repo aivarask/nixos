@@ -16,6 +16,7 @@ require('which-key').setup({
 	},
 })
 
+require('ibl').setup()
 
 require('auto-session').setup({
 	allowed_dirs = { '/etc/nixos' },

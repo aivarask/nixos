@@ -38,9 +38,6 @@ for _, name in ipairs({
 	'gitsigns.nvim',
 	-- 'which%-key.nvim',
 	-- 'lsp%-file%-operations',
-	-- 'nvim%-dap',
-	-- 'nvim%-dap%-ui',
-	-- 'lualine.nvim',
 }) do
 	for _, v in ipairs(vim.api.nvim_list_runtime_paths()) do
 		if string.find(v, name) then
@@ -89,8 +86,8 @@ return {
 			},
 			workspace = {
 				checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
-				library = library,
-				-- library = vim.api.nvim_list_runtime_paths(),
+				-- library = library,
+				library = vim.api.nvim_list_runtime_paths(),
 				preloadFileSize = 600,
 				ignoreDir = { 'node_modules', 'vendor' },
 				-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty

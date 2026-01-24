@@ -81,10 +81,8 @@ in
         which-key-nvim
         indent-blankline-nvim
         lazygit-nvim
-        # neogit
         lualine-nvim
         nvim-tree-lua
-        # iron-nvim
         toggleterm-nvim
         sqlite-lua
       ])
@@ -97,8 +95,6 @@ in
         # overlays
         one-small-step-for-vimkind
         nvim-lsp-file-operations
-        neotest-playwright
-        persistent-breakpoints
         smart-semicolon
         websocket-nvim
         nvim-oxi
@@ -116,15 +112,6 @@ in
           telescope-nvim
           telescope-fzf-native-nvim
           telescope-symbols-nvim
-          telescope-manix
-          telescope-smart-history-nvim
-          telescope-frecency-nvim
-        ]
-      ))
-      # debug
-      (lib.mkIf false (
-        with pkgs.vimPlugins;
-        [
         ]
       ))
       # test

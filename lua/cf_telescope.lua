@@ -39,16 +39,4 @@ require('telescope').setup({
 	},
 })
 require("telescope").load_extension("notify")
-require('telescope').load_extension('smart_history')
 require('telescope').load_extension('fzf')
--- require('telescope').load_extension('fzy_native')
--- require('telescope').load_extension('lazygit')
-require('telescope').load_extension('manix')
-require("telescope").load_extension "frecency"
-
-require('telescope').load_extension('open')
-
-local builtin = require('telescope.builtin')
-
-vim.keymap.set({ 'n' }, '<leader>K', function() builtin.keymaps({ only_buf = true }) end,
-	{ desc = 'Telescope buf keymaps' })
