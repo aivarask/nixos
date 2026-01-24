@@ -16,7 +16,6 @@ require('which-key').setup({
 	},
 })
 
--- require('nvim-surround').setup({})
 
 require('auto-session').setup({
 	allowed_dirs = { '/etc/nixos' },
@@ -24,8 +23,8 @@ require('auto-session').setup({
 })
 
 require('colorizer').setup({})
-if vim.uv.os_getenv('DISPLAY') then
-	require('image').setup({ backend = 'ueberzug' })
+if vim.uv.os_getenv('WAYLAND_DISPLAY') then
+	require('image').setup({ backend = 'kitty' }) -- https://raw.githubusercontent.com/3rd/image.nvim/refs/heads/master/README.md
 end
 
 require('nvim-web-devicons').setup({

@@ -12,7 +12,8 @@ set lazyredraw
 set modeline
 set noshowmode
 set signcolumn=yes number relativenumber 
-set splitkeep splitbelow
+set splitkeep=topline
+set splitbelow
 set showtabline=2 statusline+=%F
 set nowrap
 " set showbreak=↪>\
@@ -35,7 +36,10 @@ set shiftwidth=2
 "set cpoptions+=ILq
 "set cursorbind
 
-autocmd CmdlineChanged [:\/\?] call wildtrigger()
+augroup cmdline
+	autocmd!
+	autocmd CmdlineChanged [:\/\?] call wildtrigger()
+augroup END
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
@@ -50,7 +54,6 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["TextChanged"]			
-" "InsertLeave"
 
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
@@ -101,6 +104,16 @@ if !has('gui_running')
 	set guioptions-=e
 endif
 
+augroup minimal
+	autocmd!
+	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
+	autocmd VimResized * wincmd =
+	autocmd BufLeave,FocusLost * silent! wall
+augroup END
+
+if has('nvim')
+  autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
+endif
 if has('nvim')
 	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 	set nofoldenable
