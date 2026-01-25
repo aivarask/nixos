@@ -161,10 +161,11 @@
     doc.enable = true;
     info.enable = true;
     nixos.enable = true;
+
     # nixos.includeAllModules = true;
     man = {
       enable = true;
-      generateCaches = true;
+      generateCaches = false;
       man-db.enable = true;
       mandoc.enable = false;
       mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];

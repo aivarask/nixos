@@ -19,6 +19,7 @@
 
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
+    flameshot
     wayvnc
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base

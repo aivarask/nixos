@@ -1,0 +1,10 @@
+# vim: ft=swayconfig
+mode "launch" {
+	bindsym escape mode "default"
+}
+
+mode "quit" {
+	bindsym q kill; mode default
+	bindsym ctrl+w kill
+	bindsym Escape mode "default"
+}

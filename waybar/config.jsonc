@@ -1,5 +1,6 @@
 // -*- mode: jsonc -*-
 {
+	"ipc": true,
 	"layer": "bottom",
 	"spacing": 0,
 	"reload_style_on_change": true,

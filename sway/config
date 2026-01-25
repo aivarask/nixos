@@ -8,12 +8,12 @@ set $term kitty
 # set $term foot
 # workspace_auto_back_and_forth yes
 
+exec swaync
 include ./appearance
+include ./bind_modes
 include ./bindings
 include ./input
 include ./output
-exec swaync
-bindsym $mod+Shift+n exec swaync-client -t -sw
 
 # exec /run/current-system/sw/bin/inactive-windows-transparency.py --opacity 0.95
 exec systemctl --user start gammastep

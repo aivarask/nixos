@@ -1,25 +1,27 @@
 # vim: ft=swayconfig
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
+# Drag $mod+button1
+# Resize button2+$mod
 # Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
+# Change normal to nverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
 # $mod+f12 exec swaynag -t warning -m 'Exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
 
+# bindsym $mod+
+bindsym  ctrl+shift+w exec $term
+bindsym $mod+shift+n exec swaync-client -t -sw
+
 bindsym $mod+f11 reload
 bindsym	$mod+f12 exit
 
-mode "killer" {
-	bindsym $mod+z kill; mode default
-	bindsym Escape mode "default"
-}
-bindsym $mod+z mode "killer" 
+bindsym $mod+5 mode "launch" 
+
+bindsym $mod+shift+q kill
+bindsym $mod+q mode "quit" 
 
 bindsym $mod+grave exec $term
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 
 # focus
@@ -81,11 +83,11 @@ bindsym $mod+Ctrl+p  exec grimshot save window
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
 
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+e layout toggle split
+# bindsym $mod+b splith
+# bindsym $mod+v splitv
+# bindsym $mod+e layout toggle split
 # bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
+# bindsym $mod+t layout tabbed
 bindsym $mod+space fullscreen 
 bindsym $mod+shift+space floating toggle 
 bindsym $mod+ctrl+space focus mode_toggle 

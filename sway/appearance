@@ -32,7 +32,11 @@ output * bg /etc/nixos/wallpaper/other/somatoast.png fill
 
 # sway-bar
 bar {
-	swaybar_command waybar
+	swaybar_command 'waybar -c /etc/nixos/sway/config.jsonc'
+	position bottom
+	mode hide
+	hidden_state show
+	modifier Mod4
 }
 
 # sway-output swaymsg -t get_outputs

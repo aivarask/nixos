@@ -3,6 +3,7 @@ map Q <nop>
 nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 " inoremap <Space> <C-G>u<Space>
+nmap <M-q> :Bclose<cr>
 
 nmap <silent> <Tab>l :bnext<cr>
 nmap <silent> <Tab><Tab> :bnext<cr>

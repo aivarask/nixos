@@ -29,16 +29,9 @@
     lf
     git
     lazygit
+    nps
   ];
-  # customization
-  programs.bash.interactiveShellInit = ''
-    shopt -s autocd
-    set -o noclobber
-    shopt -s checkwinsize
-    alias iwconnect="iwctl station wlan0 connect zte"
-    alias disko_prepare="disko -m destroy,format,mount"
 
-  '';
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
   networking.networkmanager.enable = true;
@@ -111,4 +104,18 @@
       };
     }
   ];
+
+  programs.bash.interactiveShellInit = ''
+    alias iwconnect="iwctl station wlan0 connect zte"
+    alias disko_prepare="disko -m destroy,format,mount"
+
+    # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
+    # /etc/nixos/bashrc.local
+  '';
+  environment.etc."bashrc.local".source = "/etc/nixos/bashrc.local";
+
+  programs.nix-index.enable = true;
+  programs.nix-index.enableZshIntegration = true;
+  programs.nix-index.enableBashIntegration = true;
+  # programs.nix-index-database.comma.enable = true;
 }

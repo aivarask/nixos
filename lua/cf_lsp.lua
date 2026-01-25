@@ -17,6 +17,12 @@ vim.lsp.config('*', {
 	}
 })
 
+vim.lsp.config.bashls = {
+	cmd = { 'bash-language-server', 'start' },
+	filetypes = { 'bash', 'sh' }
+}
+-- vim.lsp.enable 'bashls'
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp:attach', {}),
@@ -96,7 +102,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 vim.lsp.enable({
-	'bashls',
 	'clangd',
 	'gopls',
 	'htmx-lsp',

@@ -91,8 +91,8 @@ in
   xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
-  xdg.configFile."sway".source = symlink "${SELF}/sway";
-  xdg.configFile."waybar".source = symlink "${SELF}/waybar";
+  home.file.".sway".source = symlink "${SELF}/sway";
+  xdg.configFile."waybar".source = symlink "${SELF}/sway";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
   xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";
   xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";
@@ -174,8 +174,4 @@ in
       pv = "pr view";
     };
   };
-  programs.nix-index-database.comma.enable = true;
-  programs.nix-index.enable = true;
-  programs.nix-index.enableZshIntegration = true;
-  programs.nix-index.enableBashIntegration = true;
 }
