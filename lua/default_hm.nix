@@ -73,7 +73,6 @@ in
         nvim-nio
         auto-session
         which-key-nvim
-        indent-blankline-nvim # ibl
         lazygit-nvim
         lualine-nvim
         nvim-tree-lua

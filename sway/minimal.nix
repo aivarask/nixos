@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environmentsystemPackages = with pkgs; [
+  programs.uwsm.enable = true;
+  programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
+  programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
+  environment.systemPackages = with pkgs; [
     sway
     swaybg
     swayidle
@@ -9,7 +12,6 @@
     foot
     grim
     slurp
-    wl-copy
     wl-clipboard
     mako
     kanshi
@@ -19,7 +21,7 @@
     pipewire
     wireplumber
     pavucontrol
-    polkit-gnome
+    # polkit-gnome
 
   ];
   environment.variables = {

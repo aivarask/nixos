@@ -91,6 +91,7 @@ in
   xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
+  xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
   # home.file.".sway".source = symlink "${SELF}/sway";
   xdg.configFile."waybar".source = symlink "${SELF}/waybar";
