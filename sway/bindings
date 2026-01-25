@@ -1,5 +1,17 @@
 # vim: ft=swayconfig
 
+# https://orioninsist.org/blog/ultimate-sway-config-2025/
+# sway-bar
+bar {
+	swaybar_command waybar
+	# swaybar_command waybar -c /etc/nixos/waybar/config.jsonc
+	# swaybar_command waybar -c /etc/nixos/waybar
+	# swaybar_command 'waybar -c /etc/nixos/sway/config.jsonc'
+	position top
+	mode hide
+	hidden_state show
+	modifier Mod4
+}
 # Drag $mod+button1
 # Resize button2+$mod
 # Despite the name, also works for non-floating windows.
@@ -8,6 +20,7 @@
 floating_modifier $mod normal
 # $mod+f12 exec swaynag -t warning -m 'Exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
 
+bindsym	$mod+Escape reload
 # bindsym $mod+
 bindsym  ctrl+shift+w exec $term
 bindsym $mod+shift+n exec swaync-client -t -sw
@@ -16,9 +29,10 @@ bindsym $mod+f11 reload
 bindsym	$mod+f12 exit
 
 bindsym $mod+5 mode "launch" 
+bindsym $mod+r mode "resize"
+bindsym $mod+q mode "quit" 
 
 bindsym $mod+shift+q kill
-bindsym $mod+q mode "quit" 
 
 bindsym $mod+grave exec $term
 bindsym $mod+Return exec $term
@@ -42,6 +56,7 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
 # workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -52,19 +67,6 @@ bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
 
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
 
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-
@@ -96,7 +98,6 @@ bindsym $mod+ctrl+space focus mode_toggle
 set $yt 'https://youtube.com'
 set $url 'https://example.com'
 
-bindsym	$mod+Escape reload
 
 bindsym XF86AudioPlay exec mpc toggle
 bindsym $mod+w exec firefox -new-window

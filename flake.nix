@@ -44,7 +44,7 @@
         ./common/services.nix
         ./httpd
         ./lua
-        ./sway
+        ./sway/minimal.nix
         (
           { pkgs, ... }:
           {
