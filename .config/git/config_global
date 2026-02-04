@@ -1,4 +1,6 @@
 # vim: ft=gitconfig
+[core]
+	sshCommand = ssh -i ~/.ssh/id_ed25519
 
 [user]
   email = "kalesnykas.aivaras@gmail.com"
@@ -7,7 +9,8 @@
 [init]
   defaultBranch = main
 
-[url "https://github.com"]
+[url "git@github.com:"]                                               
+	insteadOf = "https://github.com/"
 	insteadOf = "gh:"
 	insteadOf = "github:"
 

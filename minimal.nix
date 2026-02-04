@@ -89,15 +89,19 @@
   # programs.git.lfs.enable = true;
   programs.git.config = [
     {
+      core = {
+        sshCommand = "ssh -i ~/.ssh/id_ed25519";
+      };
       user = {
         email = "kalesnykas.aivaras@gmail.com";
         name = "Aivaras Kalesnykas";
       };
-      credential = {
-        # helper = "manager";
-        "https://github.com".username = "aivarask";
-        credentialStore = "cache";
-      };
+      # credential = {
+      # helper = "manager";
+      # "https://github.com".username = "kalesnykas.aivaras@gmail.com";
+      # "https://github.com".username = "aivarask";
+      # credentialStore = "cache";
+      # };
       init = {
         defaultBranch = "main";
       };
