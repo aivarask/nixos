@@ -4,8 +4,6 @@
   inputs.systems.url = "github:nix-systems/x86_64-linux";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.flake-utils.inputs.systems.follows = "systems";
-  inputs.nps.url = "github:OleMussmann/nps";
-  inputs.nps.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.templates.url = "github:NixOS/templates";
   inputs.disko.url = "github:nix-community/disko/latest";
@@ -34,10 +32,11 @@
     let
 
       commonModules = [
+
         inputs.disko.nixosModules.disko
         ./audio/mpd.nix
         ./audio/pipewire.nix
-        ./audio/production.nix
+        # ./audio/production.nix
         ./common/config.nix
         ./common/environment.nix
         ./common/nix.nix
@@ -117,7 +116,6 @@
               colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
-                inputs.nix-index-database.homeModules.nix-index
                 ./.programs.nix
                 ./browsers/chromium-browser.nix
                 ./browsers/firefox.nix
@@ -220,7 +218,10 @@
         specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./common/pc ];
+        modules = commonModules ++ [
+          ./common/pc
+          ./autologin.nix
+        ];
         specialArgs = { inherit inputs; };
       };
     });
