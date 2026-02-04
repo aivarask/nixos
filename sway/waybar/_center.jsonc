@@ -17,23 +17,31 @@
 		"on-click": "thunar",
 		"on-click-right": "kitty -e lf"
 	},
+	"custom/firefox": {
+		"format": "{}       ",
+		"tooltip": false,
+		"on-click": "firefox",
+		"on-click-right": "firefox --new-private-window",
+	},
+	"custom/nix-tree": {
+		"format": "{}   ",
+		"tooltip": false,
+		"on-click": "kitty -e nix-tree",
+	},
 	"custom/monitor": {
-		"format": "{}",
+		"format": "{}     ",
 		"tooltip": false,
 		"on-click": "gnome-system-monitor",
 		"on-click-right": "kitty -e htop"
 	},
 	"modules-center": [
+		"custom/firefox",
 		"custom/music",
 		"custom/editor",
 		"custom/files",
-		"custom/monitor"
-		// "sway/window",
-		// "systemd-failed-units",
-		// "sway/scratchpad",
-		// "mpris",
-		// "tray",
-		// "temperature",
+		"custom/nix-tree",
+		"custom/monitor",
+		"systemd-failed-units"
 	],
 	"sway/scratchpad": {
 		"format": "{icon} {count}",
@@ -46,6 +54,7 @@
 		"icons": {
 			"blueman": "bluetooth",
 			"TelegramDesktop": "/run/current-system/sw/share/icons/Papirus/16x16/apps/telegram.svg",
+			"firefox": "/run/current-system/sw/share/icons/Papirus/16x16/apps/firefox.svg",
 		},
 	},
 	"temperature": {
@@ -59,6 +68,6 @@
 		"format-ok": "✓",
 		"system": true,
 		"user": true,
-		"on-click": ""
+		"on-click": "kitty -e "
 	},
 }

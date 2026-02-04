@@ -94,7 +94,7 @@ in
   xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
   # home.file.".sway".source = symlink "${SELF}/sway";
-  xdg.configFile."waybar".source = symlink "${SELF}/waybar";
+  xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
   xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";
   xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";

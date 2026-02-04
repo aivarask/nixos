@@ -983,7 +983,7 @@
      style="fill:#000000;text-orientation:auto">
     <group
        width="1081"
-       height="797"
+       height="820"
        x="0"
        y="0"
        maximized="0"
@@ -1102,8 +1102,8 @@
   <group
      id="theme"
      defaultPreferDarkTheme="0"
-     defaultIconTheme="Adwaita"
-     defaultGtkTheme="Adwaita"
+     defaultIconTheme="Papirus"
+     defaultGtkTheme="Orchis-Dark-Compact"
      narrowSpinButton="1"
      preferDarkTheme="1"
      darkTheme="1"

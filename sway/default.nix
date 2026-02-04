@@ -14,6 +14,9 @@
         programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
         environment.systemPackages = with pkgs; [
           sway
+          swayr
+          wofi
+          rofi
           swaybg
           swayidle
           swaylock
@@ -106,12 +109,8 @@
     xkeyboard-config
     xorg.xkbcomp
     xcursor-pro
-    mojave-gtk-theme
     oranchelo-icon-theme
     gnome-themes-extra
-    jasper-gtk-theme
-    fluent-gtk-theme
-    fluent-icon-theme
     papirus-icon-theme
   ];
 

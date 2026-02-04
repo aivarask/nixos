@@ -70,10 +70,20 @@ button:hover {
 }
 
 #custom-monitor {
+	/* width: 64px; */
 	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/devices/cpu.svg');
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#custom-firefox {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
+	background-position: center;
+	background-repeat: no-repeat;
 	background-size: contain;
+	/* height: 100%; */
+	/* scale: 2; */
 }
 
 #custom-weather {

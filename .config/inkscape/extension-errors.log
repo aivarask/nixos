@@ -1,12 +1,7 @@
-Extension "GIMP XCF" failed to load because a dependency was not met. Dependency:
+Extension "Export to PDF via Scribus" failed to load because a dependency was not met. Dependency:
 	type: executable
 	location: path
-	string: gimp
-
-Extension "Formula (typst)" failed to load because a dependency was not met. Dependency:
-	type: executable
-	location: path
-	string: typst
+	string: scribus
 
 Extension "Formula (pdflatex)" failed to load because a dependency was not met. Dependency:
 	type: executable
@@ -18,10 +13,15 @@ Extension "Optimized PNG" failed to load because a dependency was not met. Depen
 	location: path
 	string: optipng
 
-Extension "Export to PDF via Scribus" failed to load because a dependency was not met. Dependency:
+Extension "GIMP XCF" failed to load because a dependency was not met. Dependency:
 	type: executable
 	location: path
-	string: scribus
+	string: gimp
+
+Extension "Formula (typst)" failed to load because a dependency was not met. Dependency:
+	type: executable
+	location: path
+	string: typst
 
 Extension "XFIG Input" failed to load because a dependency was not met. Dependency:
 	type: executable
