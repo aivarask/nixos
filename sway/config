@@ -23,12 +23,12 @@ include ./bindings
 xwayland disable
 # damage tracking incremental
 focus_follows_mouse yes
-default_border pixel
-default_floating_border pixel
+# default_border pixel
+# default_floating_border pixel
 # unfocused_floating_opacity 0.95
 # output * render_direct_scanout on
-output * adaptive_sync on
-output * max_render_time 6
+# output * adaptive_sync on
+# output * max_render_time 6
 
 # ------------------------------------------------------------
 # Monitors
