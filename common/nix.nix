@@ -18,7 +18,6 @@ in
     deadnix
     fh
     nix-tree
-    nixos-generators
     nom
     hello-go
 

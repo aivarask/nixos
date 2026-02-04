@@ -5,15 +5,11 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.flake-utils.inputs.systems.follows = "systems";
 
-  inputs.templates.url = "github:NixOS/templates";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # https://github.com/nixos/nixos-hardware
-  inputs.nixos-generators.url = "github:nix-community/nixos-generators";
-  inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager"; # https://github.com/nix-community/home-manager
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixgl.url = "github:nix-community/nixGL"; # https://github.com/nix-community/nixGL
   inputs.nix-colors.url = "github:misterio77/nix-colors";
   inputs.nix-index-database.url = "github:nix-community/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,8 +17,6 @@
   inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.browser-previews.url = "github:nix-community/browser-previews";
-  inputs.browser-previews.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
   #
   inputs.smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
@@ -173,6 +167,8 @@
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
                 ./minimal.nix
+                ./autologin.nix
+                ./search.nix
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
               ];
@@ -212,10 +208,6 @@
             }
           )
         ];
-      };
-      nixosConfigurations.dell = nixpkgs.lib.nixosSystem {
-        modules = commonModules ++ [ ./common/dell ];
-        specialArgs = { inherit inputs; };
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [

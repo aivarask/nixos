@@ -27,6 +27,7 @@ in
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.systemPackages = with pkgs; [
+    vscode-json-languageserver
     stylua
     lua-language-server
     myLua

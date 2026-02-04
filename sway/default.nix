@@ -34,6 +34,7 @@
           wireplumber
           pavucontrol
           # polkit-gnome
+          wttrbar
 
         ];
         environment.variables = {
@@ -51,7 +52,7 @@
   ];
 
   # services.xserver.exportConfiguration = true;
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
   programs.sway.enable = true;
   programs.sway.wrapperFeatures.gtk = true;

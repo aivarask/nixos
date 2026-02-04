@@ -23,6 +23,12 @@
 		"on-click": "firefox",
 		"on-click-right": "firefox --new-private-window",
 	},
+	"custom/messenger": {
+		"format": "{}       ",
+		"tooltip": false,
+		"on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
+		"on-click-right": "firefox https://www.facebook.com/",
+	},
 	"custom/nix-tree": {
 		"format": "{}   ",
 		"tooltip": false,
@@ -36,6 +42,7 @@
 	},
 	"modules-center": [
 		"custom/firefox",
+		"custom/messenger",
 		"custom/music",
 		"custom/editor",
 		"custom/files",
@@ -68,6 +75,6 @@
 		"format-ok": "✓",
 		"system": true,
 		"user": true,
-		"on-click": "kitty -e "
+		"on-click": "kitty --hold -e systemctl --user --failed"
 	},
 }

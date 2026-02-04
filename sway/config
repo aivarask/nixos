@@ -23,19 +23,21 @@ include ./bindings
 xwayland disable
 # damage tracking incremental
 focus_follows_mouse yes
+default_border none
 # default_border pixel
-# default_floating_border pixel
+default_floating_border pixel
 # unfocused_floating_opacity 0.95
 # output * render_direct_scanout on
-# output * adaptive_sync on
-# output * max_render_time 6
+output * adaptive_sync on
+output * max_render_time 6
 
 # ------------------------------------------------------------
 # Monitors
 # ------------------------------------------------------------
 output DP-1     resolution 3840x2160 position 0,0 scale 2.5
 output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
-# output eDP-1     resolution 1920x1080 position 1920,0 scale 1
+output eDP-1    resolution 3840x2160 position 0,0 scale 2
+output DP-3     resolution 1920x1080 position 1920,0 scale 1
 output * scale_filter nearest
 
 

@@ -6,13 +6,58 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
-		"~/.config/waybar/audio.jsonc",
 		"~/.config/waybar/_left.jsonc",
-		"~/.config/waybar/_center.jsonc",
+		"~/.config/waybar/_center.jsonc"
 	],
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode"
+	],
+	"sway/workspaces": {
+		// waybar-sway-workspaces
+		"format": "{name} {icon} {windows}", // value name icon index output windows
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"default": "",
+			"urgent": "",
+			"focused": "",
+			"persistent": "!",
+		},
+		// "disable-scroll": false,
+		"reverse-scroll": true,
+		// "disable-click": false,
+		"smooth-scrolling-threshold": 3.0,
+		"disable-scroll-wraparound": true,
+		"enable-bar-scroll": true,
+		// "disable-markup": false,
+		// "current-only": false,
+		// "persistent-workspaces": {
+		// 	"4": [],
+		// 	"dell": [
+		// 		"eDP-1"
+		// 	],
+		// },
+		// "on-update": "",
+		"disable-auto-back-and-forth": true,
+		// "alphabetical_sort": false,
+		"warp-on-scroll": false,
+		"window-rewrite": {
+			"class<firefox>": "",
+			"title<.* - Mozilla Firefox>": "woo $1"
+		},
+		"window-rewrite-default": "{name}",
+		"format-window-separator": " ",
+		"expand": true,
+	},
+	"sway/mode": {
+		// waybar-sway-mode
+		"format": "<span>{}</span>"
+	},
 	"modules-right": [
 		"mpris",
-		// "custom/weather",
+		"custom/wttrbar",
 		"pulseaudio",
 		"custom/brightness",
 		"backlight",
@@ -26,11 +71,39 @@
 		"format-paused": "{status_icon} {dynamic}",
 		"player-icons": {
 			"default": "▶",
-			"spotify": "S",
-			"mpv": "🎵"
+			"spotify": "Spotify",
+			"mpv": "mpv",
+			"mpd": "mpd",
+			"firefox": "firefox"
 		}
 	},
-	"custom/weather": {
+	"pulseaudio": {
+		"scroll-step": 5,
+		"smooth-scrolling-threshold": 0.3,
+		"reverse-scrolling": true,
+		"format": "{icon}   {volume} {format_source}",
+		"format-bluetooth": "{icon}  {volume}  {format_source}",
+		"format-bluetooth-muted": "{icon} - {format_source}",
+		"format-muted": "- {format_source}",
+		"format-source": " {volume}",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pactl set-sink-mute \\@DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol"
+	},
+	"custom/wttrbar": {
 		"format": "{}° ",
 		"return-type": "json",
 		"exec": "wttrbar --location Sirvintos",
@@ -66,6 +139,7 @@
 		"on-click-right": "xdg-open https://192.168.1.1"
 	},
 	"battery": {
+// waybar-battery
 		"states": {
 			"critical": 20,
 			"warning": 40,
@@ -98,7 +172,7 @@
 		"format": " ⏻ ",
 		"tooltip": true,
 		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-file": "$HOME/.config/waybar/power.xml",
 		"menu-actions": {
 			"shutdown": "shutdown"
 		}
