@@ -1,7 +1,8 @@
 // -*- mode: jsonc -*-
 {
 	"ipc": true,
-	"layer": "bottom",
+	"layer": "top",
+	"position": "top",
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"include": [
@@ -55,7 +56,8 @@
 		"min-brightness": 5.0,
 	},
 	"network": {
-		"format-wifi": " {essid} {signalStrength}",
+		// waybar-network
+		"format-wifi": " {essid} {signaldBm} dBm",
 		"format-ethernet": "{ipaddr}/{cidr} ",
 		"format-alt": "{ipaddr}/{cidr} {ifname}",
 		"tooltip-format": "{gwaddr} {ifname}",

@@ -13,20 +13,24 @@
   imports = [
     inputs.musnix.nixosModules.musnix # https://github.com/musnix/musnix
   ];
-  musnix.enable = true;
+  # musnix.enable = true;
+  musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
   services.udev.packages = with pkgs; [
     ardour
     mixxx
   ];
 
   environment.pathsToLink = [
-    "/share/mixxx"
-    "/doc/share"
+    # "/share/mixxx"
+    # "/doc/share"
   ];
   environment.systemPackages = lib.mkMerge [
     (lib.mkIf true (
       with pkgs;
       [
+        # acoustics
+        roomeqwizard
+
         lingot # guitar tuner
         # https://wiki.archlinux.org/title/Convert_FLAC_to_MP3
         flac2all

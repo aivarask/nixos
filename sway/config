@@ -1,25 +1,133 @@
+# ------------------------------------------------------------
+# Docs
+# ------------------------------------------------------------
 # https://github.com/swaywm/sway/wiki
+
+# ------------------------------------------------------------
+# Environment
+# ------------------------------------------------------------
 set $mod Mod4
+set $term kitty
+set $menu wofi --show drun
 set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
-# set $term foot
-# workspace_auto_back_and_forth yes
-
-exec swaync
 include ./bind_modes
 include ./bindings
-include ./input
-include ./output
-include ./appearance
 
-# exec /run/current-system/sw/bin/inactive-windows-transparency.py --opacity 0.95
-exec systemctl --user start gammastep
+# ------------------------------------------------------------
+# Performance Tweaks
+# ------------------------------------------------------------
 xwayland disable
-# exec swayidle -w timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
-# timeout 300 'swaylock -f -c 000000' \
-# before-sleep 'swaylock -f -c 000000'
+# damage tracking incremental
+focus_follows_mouse yes
+default_border pixel
+default_floating_border pixel
+# unfocused_floating_opacity 0.95
+# output * render_direct_scanout on
+output * adaptive_sync on
+output * max_render_time 6
 
+# ------------------------------------------------------------
+# Monitors
+# ------------------------------------------------------------
+output DP-1     resolution 3840x2160 position 0,0 scale 2.5
+output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
+# output eDP-1     resolution 1920x1080 position 1920,0 scale 1
+output * scale_filter nearest
+
+
+# ------------------------------------------------------------
+# Inputs sway-input
+# ------------------------------------------------------------
+input type:keyboard {
+	repeat_delay 250
+	repeat_rate 50
+	xkb_numlock enabled
+	xkb_layout "us,lt"
+	xkb_variant "euro"
+	xkb_options "grp:alt_space_toggle"
+	# xkb_options "grp:menu_toggle"
+  # xkb_options "caps:escape"
+}
+input "Logitech K270" {
+	# xkb_variant "us,"
+	# xkb_model "pc105"
+}
+# swaymsg -t get_inputs --raw | jq '.[] | select(.type=="touchpad")'
+input type:touchpad {
+		dwt enabled
+		tap enabled
+		natural_scroll enabled
+		middle_emulation enabled 
+		drag_lock enabled
+}
+input type:pointer {
+	left_handed disabled
+	accel_profile adaptive 
+	pointer_accel -0.9
+}
+
+# ------------------------------------------------------------
+# Autostart
+# ------------------------------------------------------------
+exec systemctl --user start gammastep
+exec_always mako
+exec_always kanshi
+exec_always wl-paste --type text --watch cliphist store
+exec_always wl-paste --type image --watch cliphist store
+
+# ------------------------------------------------------------
+# Idle / Lock
+# ------------------------------------------------------------
+exec_always swayidle -w \
+    timeout 1200 'systemctl suspend'
+
+# ------------------------------------------------------------
+# Scratchpads
+# ------------------------------------------------------------
+for_window [title="scratchpad-term"] move to scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
+# ------------------------------------------------------------
+# Notifications
+# ------------------------------------------------------------
+exec_always mako
+
+# ------------------------------------------------------------
+# Appearance
+# ------------------------------------------------------------
+set $white #ffffff
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+gaps inner 4px
+gaps outer 4px
+smart_gaps on
+hide_edge_borders smart_no_gaps
+font monospace 10
+# font pango:monospace 8
+seat seat0 xcursor_theme "XCursor-Pro-Light" 24
+exec_always {
+  # gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark-Compact" 
+	# gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+	# gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+}
+
+# ------------------------------------------------------------
+# Other
+# ------------------------------------------------------------
 include /etc/sway/config.d/*

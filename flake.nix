@@ -219,8 +219,9 @@
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
-          ./common/pc
+          ./common/pc.nix
           ./autologin.nix
+          ./search.nix
         ];
         specialArgs = { inherit inputs; };
       };

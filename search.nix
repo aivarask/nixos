@@ -6,11 +6,11 @@
 
   # https://wiki.nixos.org/wiki/Searching_packages
 
-  environment.systemPackages = with pkgs; [
-    nps
+  environment.systemPackages = [
+    pkgs.nps
   ];
-  environment.variables.NIX_PACKAGE_SEARCH_EXPERIMENTAL = true;
-  environment.variables.NIX_PACKAGE_SEARCH_MULTILINE = true;
+  environment.variables.NIX_PACKAGE_SEARCH_EXPERIMENTAL = "true";
+  environment.variables.NIX_PACKAGE_SEARCH_MULTILINE = "true";
   environment.variables.NIX_PACKAGE_SEARCH_COLOR_MODE = "auto";
   environment.variables.NIX_PACKAGE_SEARCH_EXACT_COLOR = "red";
   environment.variables.NIX_PACKAGE_SEARCH_DIRECT_COLOR = "green";

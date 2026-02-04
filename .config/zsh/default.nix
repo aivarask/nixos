@@ -49,12 +49,12 @@
       src = pkgs.zsh-zhooks;
       file = "share/zsh/zhooks/zhooks.plugin.zsh";
     }
-    {
-      name = "zsh-autocomplete"; # https://github.com/marlonrichert/zsh-autocomplete
-      src = pkgs.zsh-autocomplete;
-      file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-      completions = [ "share/zsh/site-functions" ];
-    }
+    # {
+    #   name = "zsh-autocomplete"; # https://github.com/marlonrichert/zsh-autocomplete
+    #   src = pkgs.zsh-autocomplete;
+    #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
+    #   completions = [ "share/zsh/site-functions" ];
+    # }
     {
       name = "vi-mode";
       src = pkgs.zsh-vi-mode; # https://github.com/jeffreytse/zsh-vi-mode

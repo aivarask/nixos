@@ -59,6 +59,8 @@ let g:switch_custom_definitions =
 			\ [
 			\   ['foldenable', 'nofoldenable'],
 			\   ['horizontal', 'vertical'],
+			\   ['top', 'bottom'],
+			\   ['hide', 'show'],
 			\   ['enabled', 'disabled'],
 			\   ['firefox', 'chromium-browser'],
 			\   ['foo', 'bar', 'baz'],

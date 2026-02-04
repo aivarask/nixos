@@ -13,15 +13,15 @@ alias help=run-help
 # https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reassign-keys
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 # add-zsh-hook chpwd chpwd_recent_dirs
-bindkey '^I' menu-select
-bindkey '^[[Z' menu-select
-bindkey -M menuselect '^I' menu-complete # Tab
-bindkey -M menuselect '^[[Z' reverse-menu-complete # S-Tab
-bindkey -M menuselect  '^[[D' .backward-char  '^[OD' .backward-char
-bindkey -M menuselect  '^[[C'  .forward-char  '^[OC'  .forward-char
-bindkey -M menuselect '^M' .accept-line
+# bindkey '^I' menu-select
+# bindkey '^[[Z' menu-select
+# bindkey -M menuselect '^I' menu-complete # Tab
+# bindkey -M menuselect '^[[Z' reverse-menu-complete # S-Tab
+# bindkey -M menuselect  '^[[D' .backward-char  '^[OD' .backward-char
+# bindkey -M menuselect  '^[[C'  .forward-char  '^[OC'  .forward-char
+# bindkey -M menuselect '^M' .accept-line
 
-zstyle ':autocomplete:*' append-semicolon no
+# zstyle ':autocomplete:*' append-semicolon no
 # zstyle ':completion:*:make:*:targets' call-command true
 # zstyle ':completion:*:*:make:*' tag-order 'targets'
 # zstyle ':completion:*' rehash true

@@ -7,10 +7,10 @@ bar {
 	# swaybar_command waybar -c /etc/nixos/waybar/config.jsonc
 	# swaybar_command waybar -c /etc/nixos/waybar
 	# swaybar_command 'waybar -c /etc/nixos/sway/config.jsonc'
-	position top
-	mode hide
-	hidden_state show
-	modifier Mod4
+	# position bottom
+	# mode dock
+	# hidden_state 
+	# modifier Mod4
 }
 # Drag $mod+button1
 # Resize button2+$mod
@@ -82,8 +82,6 @@ bindsym $mod+p exec grimshot save active
 bindsym $mod+Shift+p exec grimshot save area
 bindsym $mod+Mod1+p  exec grimshot save output
 bindsym $mod+Ctrl+p  exec grimshot save window
-bindsym $mod+minus scratchpad show
-bindsym $mod+Shift+minus move scratchpad
 
 # bindsym $mod+b splith
 # bindsym $mod+v splitv

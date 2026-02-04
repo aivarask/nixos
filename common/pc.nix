@@ -1,23 +1,59 @@
+# B450 AORUS M
 {
-  pkgs,
   config,
+  lib,
+  modulesPath,
+  pkgs,
   inputs,
   ...
 }:
 {
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/NIXBOOT";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
+  swapDevices = [ ];
   imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     # inputs.nixos-hardware.nixosModules.common-hidpi
+    ./../lsp
+    ./../network.nix
+    ./boot.nix
+    ./binarycache.nix
+    ./../minimal.nix
   ];
+  networking.hostName = "pc";
+  system.stateVersion = "25.05";
+  nixpkgs.hostPlatform = "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.fancontrol.enable = false;
+  hardware.fancontrol.config = '''';
+
+  # https://nouveau.freedesktop.org/CodeNames.html
+  # https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
+  # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+  # https://discourse.nixos.org/t/nvidia-sync-nvidia-smi/33960
+  # https://discourse.nixos.org/t/nvidia-open-breaks-hardware-acceleration/58770
+  # https://discourse.nixos.org/search?q=RTX+2060+drivers
+
   boot.kernelModules = [
     "kvm-amd"
     "vhost_vsock"
     "i2c-dev"
     "ddcci-backlight"
-
   ];
   boot.kernelParams = [
     "boot.shell_on_fail"
@@ -36,17 +72,6 @@
     ''
       SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
     '';
-
-  # boot.kernel.sysctl = {
-  #   "net.ipv4.ip_forward" = 1;
-  #   "net.ipv6.conf.all.disable_ipv6" = 1;
-  #   "net.ipv6.conf.default.disable_ipv6" = 1;
-  #   "net.bridge.bridge-nf-call-iptables" = 1; # controls whether packets traversing a Linux bridge will be passed through iptables' FORWARD chain. When set to 1 (enabled), it allows iptables rules to affect bridged (as opposed to just routed) traffic.
-  #   "net.ipv4.conf.all.forwarding" = 1;
-  #   "hardware.graphics.enable32Bitnet.ipv6.conf.all.forwarding" = 1;
-  #   "net.ipv4.conf.all.proxy_arp" = 1;
-  #   "net.ipv4.conf.ens2.proxy_arp" = 1;
-  # };
 
   boot.blacklistedKernelModules = [ ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -69,5 +94,4 @@
   # hardware.nvidia.powerManagement.enable = true;
   # hardware.nvidia.powerManagement.finegrained = true;
   hardware.nvidia.nvidiaSettings = true;
-
 }

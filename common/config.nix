@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     {
@@ -155,12 +160,14 @@
     tldr
     manix
   ];
+  # environment.etc.nixos-docs.source = "${config.system.build.manual.manualHTML}/share/doc/nixos/";
   documentation = {
     enable = true;
     dev.enable = false;
     doc.enable = true;
     info.enable = true;
     nixos.enable = true;
+    nixos.includeAllModules = true;
 
     # nixos.includeAllModules = true;
     man = {

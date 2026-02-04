@@ -5,6 +5,7 @@
 *lock.yaml
 error.log
 */config.old
+*.qcow2
 
 # nix
 !flake.lock
