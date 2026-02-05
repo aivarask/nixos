@@ -74,7 +74,6 @@
 
   boot.blacklistedKernelModules = [ ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
   # boot.initrd.kernelModules = [ "nvidia" ];
   boot.initrd.availableKernelModules = [
@@ -86,11 +85,4 @@
     "sd_mod"
     "rtsx_pci_sdmmc"
   ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = true;
-  hardware.graphics.enable = true;
-  hardware.nvidia.modesetting.enable = true;
-  # hardware.nvidia.powerManagement.enable = true;
-  # hardware.nvidia.powerManagement.finegrained = true;
-  hardware.nvidia.nvidiaSettings = true;
 }
