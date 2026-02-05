@@ -5,6 +5,8 @@ setopt extended_glob
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
 export YDIFF_OPTIONS='-w40'
 export NIXPKGS_ALLOW_BROKEN=1
+export GTK_THEME=Adwaita:dark
+export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 fpath=(/etc/nixos/.config/zsh $fpath)
 # autoload -Uz $fpath[1]/**/*(.:t)

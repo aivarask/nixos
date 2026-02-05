@@ -106,6 +106,7 @@
     waybar
     lxappearance
     gnome-tweaks
+    gnome-calculator
     dconf-editor
     xkeyboard-config
     xorg.xkbcomp
