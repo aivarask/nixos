@@ -58,6 +58,8 @@ endfunction
 let g:switch_custom_definitions =
 			\ [
 			\   ['foldenable', 'nofoldenable'],
+			\   ['true', 'false'],
+			\   ['yes', 'no'],
 			\   ['horizontal', 'vertical'],
 			\   ['top', 'bottom'],
 			\   ['hide', 'show'],

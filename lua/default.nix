@@ -26,8 +26,31 @@ in
 {
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
+    environment.pathsToLink = [ "/include" ];
+    environment.extraOutputsToInstall = [ "dev" ];
   environment.systemPackages = with pkgs; [
     vscode-json-languageserver
+    vscode-css-languageserver
+    vscode-langservers-extracted
+      glibc
+      # glibcInfo
+      clang
+      clang-tools
+      bear
+      cmake
+
+      ludtwig
+      gnumake
+      checkmake
+      taplo
+      yaml-language-server
+
+    nixfmt
+    nixd
+    nurl
+    deadnix
+    stylelint
+    stylelint-lsp
     stylua
     lua-language-server
     myLua

@@ -29,7 +29,6 @@
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     # inputs.nixos-hardware.nixosModules.common-hidpi
-    ./../lsp
     ./../network.nix
     ./boot.nix
     ./binarycache.nix

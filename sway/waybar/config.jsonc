@@ -5,56 +5,21 @@
 	"position": "top",
 	"spacing": 0,
 	"reload_style_on_change": true,
-	"include": [
-		"~/.config/waybar/_left.jsonc",
-		"~/.config/waybar/_center.jsonc"
-	],
+	"include": [],
 	"modules-left": [
 		"sway/workspaces",
 		"sway/mode"
 	],
-	"sway/workspaces": {
-		// waybar-sway-workspaces
-		"format": "{name} {icon} {windows}", // value name icon index output windows
-		"format-icons": {
-			"1": "",
-			"2": "",
-			"3": "",
-			"default": "",
-			"urgent": "",
-			"focused": "",
-			"persistent": "!",
-		},
-		// "disable-scroll": false,
-		"reverse-scroll": true,
-		// "disable-click": false,
-		"smooth-scrolling-threshold": 3.0,
-		"disable-scroll-wraparound": true,
-		"enable-bar-scroll": true,
-		// "disable-markup": false,
-		// "current-only": false,
-		// "persistent-workspaces": {
-		// 	"4": [],
-		// 	"dell": [
-		// 		"eDP-1"
-		// 	],
-		// },
-		// "on-update": "",
-		"disable-auto-back-and-forth": true,
-		// "alphabetical_sort": false,
-		"warp-on-scroll": false,
-		"window-rewrite": {
-			"class<firefox>": "",
-			"title<.* - Mozilla Firefox>": "woo $1"
-		},
-		"window-rewrite-default": "{name}",
-		"format-window-separator": " ",
-		"expand": true,
-	},
-	"sway/mode": {
-		// waybar-sway-mode
-		"format": "<span>{}</span>"
-	},
+	"modules-center": [
+		"custom/firefox",
+		"custom/messenger",
+		"custom/music",
+		"custom/editor",
+		"custom/files",
+		"custom/nix-tree",
+		"custom/monitor",
+		"systemd-failed-units"
+	],
 	"modules-right": [
 		"mpris",
 		"custom/wttrbar",
@@ -66,7 +31,26 @@
 		"sway/language",
 		"clock"
 	],
+	"sway/workspaces": {
+		// waybar-sway-workspaces
+		"format": "{name} {icon} {windows}", // value name icon index output windows
+		"reverse-scroll": true,
+		"smooth-scrolling-threshold": 3.0,
+		"disable-scroll-wraparound": true,
+		"enable-bar-scroll": true,
+		"disable-auto-back-and-forth": true,
+		"warp-on-scroll": false,
+		"window-rewrite": {},
+		"window-rewrite-default": "{}",
+		"format-window-separator": " ",
+		"expand": true
+	},
+	"sway/mode": {
+		// waybar-sway-mode
+		"format": "<span>{}</span>"
+	},
 	"mpris": {
+		// waybar-mpris
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
 		"player-icons": {
@@ -78,6 +62,7 @@
 		}
 	},
 	"pulseaudio": {
+		// waybar-pulseaudio
 		"scroll-step": 5,
 		"smooth-scrolling-threshold": 0.3,
 		"reverse-scrolling": true,
@@ -108,7 +93,7 @@
 		"return-type": "json",
 		"exec": "wttrbar --location Sirvintos",
 		"tooltip": true,
-		"interval": 3600,
+		"interval": 3600
 	},
 	"custom/brightness": {
 		// waybar-custom https://github.com/Alexays/Waybar/wiki/Module:-Custom
@@ -126,7 +111,7 @@
 		"format": "😎 {percent}",
 		"smooth-scrolling-threshold": 3.0,
 		"scroll-step": 5.0,
-		"min-brightness": 5.0,
+		"min-brightness": 5.0
 	},
 	"network": {
 		// waybar-network
@@ -139,11 +124,11 @@
 		"on-click-right": "xdg-open https://192.168.1.1"
 	},
 	"battery": {
-// waybar-battery
+		// waybar-battery
 		"states": {
 			"critical": 20,
 			"warning": 40,
-			"good": 80,
+			"good": 80
 		},
 		"format": "{icon}  {capacity}",
 		"format-alt": "{icon}  {time}",
@@ -177,4 +162,59 @@
 			"shutdown": "shutdown"
 		}
 	},
+	"custom/music": {
+		"format": "{}        ",
+		"tooltip": false,
+		"on-click": "spotify",
+		"on-click-right": "kitty -e ncmpcpp"
+	},
+	"custom/editor": {
+		"format": "{}        ",
+		"tooltip": false,
+		"on-click": "kitty --directory /etc/nixos -e nvim",
+		"on-click-right": "kitty -d /etc/nixos"
+	},
+	"custom/files": {
+		"format": "{}     ",
+		"tooltip": false,
+		"on-click": "thunar",
+		"on-click-right": "kitty -e lf"
+	},
+	"custom/firefox": {
+		"format": "{}       ",
+		"tooltip": false,
+		"on-click": "firefox",
+		"on-click-right": "firefox --new-private-window"
+	},
+	"custom/messenger": {
+		"format": "{}       ",
+		"tooltip": false,
+		"on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
+		"on-click-right": "firefox https://www.facebook.com/"
+	},
+	"custom/nix-tree": {
+		"format": "{}   ",
+		"tooltip": false,
+		"on-click": "kitty -e nix-tree"
+	},
+	"custom/monitor": {
+		"format": "{}     ",
+		"tooltip": false,
+		"on-click": "gnome-system-monitor",
+		"on-click-right": "kitty -e htop"
+	},
+	"sway/scratchpad": {
+		"format": "{icon} {count}",
+		"show-empty": false,
+		"tooltip": true,
+		"tooltip-format": "{app}: {title}"
+	},
+	"systemd-failed-units": {
+		"hide-on-ok": true,
+		"format": "{nr_failed}:{nr_failed_user}",
+		"format-ok": "✓",
+		"system": true,
+		"user": true,
+		"on-click": "kitty --hold -e systemctl --user --failed"
+	}
 }

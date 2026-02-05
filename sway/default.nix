@@ -15,7 +15,6 @@
         environment.systemPackages = with pkgs; [
           sway
           swayr
-          wofi
           rofi
           swaybg
           swayidle

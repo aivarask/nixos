@@ -4,8 +4,13 @@ end
 
 local buf_lsp_clients = function()
 	local lsps = ''
-	for index, value in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-		lsps = value.config.name .. '/' .. lsps
+	for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+	lsps = client.config.name ..  '/' .. lsps
+if client:supports_method('textDocument/formatting') then
+lsps = 'format' .. lsps
+else
+lsps = 'no' .. lsps
+end
 	end
 	return lsps
 end
@@ -20,12 +25,6 @@ require('lualine').setup({
 				'Outline',
 				'neotest-summary',
 				'neotest-output-panel',
-				'dapui_scopes',
-				'dapui_breakpoints',
-				'dapui_stacks',
-				'dapui_watches',
-				'dap-repl',
-				'dapui_console',
 			},
 			winbar = {
 				'',
