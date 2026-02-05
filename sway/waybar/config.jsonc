@@ -53,12 +53,13 @@
 		// waybar-mpris
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
+		"max-length": 50,
 		"player-icons": {
 			"default": "▶",
 			"spotify": "Spotify",
 			"mpv": "mpv",
 			"mpd": "mpd",
-			"firefox": "firefox"
+			"firefox": "f"
 		}
 	},
 	"pulseaudio": {
@@ -108,6 +109,7 @@
 		"on-click-right": "ddcutil setvcp 10 90"
 	},
 	"backlight": {
+		// waybar-backlight
 		"format": "😎 {percent}",
 		"smooth-scrolling-threshold": 3.0,
 		"scroll-step": 5.0,
@@ -125,17 +127,12 @@
 	},
 	"battery": {
 		// waybar-battery
-		"states": {
-			"critical": 20,
-			"warning": 40,
-			"good": 80
-		},
-		"format": "{icon}  {capacity}",
-		"format-alt": "{icon}  {time}",
+		"format": "{icon} {capacity}",
+		"format-alt": "{icon} {time}",
 		"format-time": "{H}h{M}m",
-		"format-full": "{icon}  {capacity}",
-		"format-charging": " {capacity}",
-		"format-plugged": " {capacity}",
+		"format-full": "{icon} {capacity}",
+		"format-charging": "{icon} {capacity}",
+		"format-plugged": "{icon} {capacity}",
 		"format-icons": [
 			"",
 			"",

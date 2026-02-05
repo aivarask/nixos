@@ -52,7 +52,7 @@
 
   # services.xserver.exportConfiguration = true;
   # services.gnome.gnome-keyring.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
+  # security.pam.services.login.enableGnomeKeyring = true;
   programs.sway.enable = true;
   programs.sway.wrapperFeatures.gtk = true;
   programs.uwsm.enable = true;
@@ -105,6 +105,7 @@
     gammastep
     waybar
     lxappearance
+    gnome-tweaks
     dconf-editor
     xkeyboard-config
     xorg.xkbcomp

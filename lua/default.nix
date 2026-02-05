@@ -26,24 +26,24 @@ in
 {
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
-    environment.pathsToLink = [ "/include" ];
-    environment.extraOutputsToInstall = [ "dev" ];
+  environment.pathsToLink = [ "/include" ];
+  environment.extraOutputsToInstall = [ "dev" ];
   environment.systemPackages = with pkgs; [
     vscode-json-languageserver
     vscode-css-languageserver
     vscode-langservers-extracted
-      glibc
-      # glibcInfo
-      clang
-      clang-tools
-      bear
-      cmake
+    glibc
+    # glibcInfo
+    clang
+    clang-tools
+    bear
+    cmake
 
-      ludtwig
-      gnumake
-      checkmake
-      taplo
-      yaml-language-server
+    ludtwig
+    gnumake
+    checkmake
+    taplo
+    yaml-language-server
 
     nixfmt
     nixd

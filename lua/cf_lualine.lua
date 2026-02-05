@@ -5,12 +5,11 @@ end
 local buf_lsp_clients = function()
 	local lsps = ''
 	for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-	lsps = client.config.name ..  '/' .. lsps
-if client:supports_method('textDocument/formatting') then
-lsps = 'format' .. lsps
-else
-lsps = 'no' .. lsps
-end
+		lsps = client.config.name .. lsps
+		if client:supports_method('textDocument/formatting') then
+			lsps = lsps .. '[F]'
+		end
+		lsps = lsps .. '/'
 	end
 	return lsps
 end

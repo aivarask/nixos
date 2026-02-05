@@ -1,6 +1,6 @@
 * {
 	font-family: FontAwesome, sans-serif;
-		font-size: 18px;
+	font-size: 18px;
 }
 
 window#waybar {
@@ -33,9 +33,14 @@ window#waybar.chromium {
 	border: none;
 }
 
+window#waybar.firefox {
+	background-color: #3F3F3F;
+	border: none;
+}
+
 button {
 	/* Use box-shadow instead of border so the text isn't offset */
-	box-shadow: inset 0 -3px transparent;
+	box-shadow: inset 0 -4px transparent;
 	/* Avoid rounded borders under each button name */
 	border: none;
 	border-radius: 0;
@@ -44,7 +49,7 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
 	background: inherit;
-	box-shadow: inset 0 -3px #ffffff;
+	box-shadow: inset 0 -4px #ffffff;
 }
 
 #custom-music {
@@ -90,9 +95,7 @@ button:hover {
 	background-size: contain;
 }
 
-#custom-weather {
-	background-color: #ffffff;
-	color: #000000;
+#custom-wttrbar {
 	padding-left: 15px;
 }
 
@@ -107,7 +110,7 @@ button:hover {
 
 }
 
-	#workspaces button.focused,
+#workspaces button.focused,
 #workspaces button.active {
 	background-color: #64727D;
 	box-shadow: inset 0 -3px #ffffff;
@@ -128,7 +131,7 @@ button:hover {
 
 #window,
 #workspaces {
-		margin: 0 4px;
+	margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -141,18 +144,18 @@ button:hover {
 	margin-right: 0;
 }
 
-		#battery {
-	background-color: #ffffff;
-	color: #000000;
-	 
-	&.charging {
-}
+#battery {
+	/* background-color: #ffffff; */
+	/* color: #000000; */
+
+	/* &.charging {} */
+
 }
 
 #battery.charging,
 #battery.plugged {
-	color: #ffffff;
-	background-color: #26A65B;
+	/* color: #ffffff; */
+	/* background-color: #26A65B; */
 }
 
 @keyframes blink {
@@ -180,11 +183,7 @@ label:focus {
 }
 
 #language {
-	background: #00b093;
-	color: #740864;
 	padding: 0 5px;
 	margin: 0 5px;
 	min-width: 16px;
 }
-
-
