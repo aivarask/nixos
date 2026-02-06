@@ -24,9 +24,7 @@
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-
       commonModules = [
-
         inputs.disko.nixosModules.disko
         ./audio/mpd.nix
         ./audio/pipewire.nix
@@ -34,7 +32,7 @@
         ./common/config.nix
         ./common/environment.nix
         ./common/nix.nix
-        ./common/services.nix
+        ./services.nix
         ./httpd
         ./lua
         ./sway
@@ -45,8 +43,6 @@
             services.playerctld.enable = true;
             # services.mpris-proxy.enable = true;
             # services.udiskie.enable = true;
-            services.espanso.enable = true;
-            services.espanso.package = pkgs.espanso-wayland;
 
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h

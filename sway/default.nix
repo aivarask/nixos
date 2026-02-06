@@ -26,7 +26,6 @@
           wl-clipboard
           mako
           kanshi
-          gammastep
           playerctl
           xdg-desktop-portal-wlr
           pipewire
@@ -102,7 +101,6 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
     swaynotificationcenter
-    gammastep
     waybar
     lxappearance
     gnome-tweaks

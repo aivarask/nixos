@@ -60,12 +60,12 @@ input type:touchpad {
 		dwt enabled
 		tap enabled
 		natural_scroll enabled
-		middle_emulation enabled 
+		middle_emulation enabled
 		drag_lock enabled
 }
 input type:pointer {
 	left_handed disabled
-	accel_profile adaptive 
+	accel_profile adaptive
 	pointer_accel -0.9
 }
 
@@ -90,11 +90,6 @@ exec_always swayidle -w \
 for_window [title="scratchpad-term"] move to scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
-
-# ------------------------------------------------------------
-# Notifications
-# ------------------------------------------------------------
-exec_always mako
 
 # ------------------------------------------------------------
 # Bindings
@@ -161,17 +156,17 @@ bindsym $mod+Ctrl+p  exec grimshot save window
 # bindsym $mod+e layout toggle split
 # bindsym $mod+s layout stacking
 # bindsym $mod+t layout tabbed
-bindsym $mod+space fullscreen 
-bindsym $mod+shift+space floating toggle 
-bindsym $mod+ctrl+space focus mode_toggle 
-# bindsym $mod+p focus parent 
+bindsym $mod+space fullscreen
+bindsym $mod+shift+space floating toggle
+bindsym $mod+ctrl+space focus mode_toggle
+# bindsym $mod+p focus parent
 set $yt 'https://youtube.com'
 set $url 'https://example.com'
 bindsym $mod+w exec firefox -new-window
-bindsym $mod+shift+w exec firefox -new-window --private-window 
-bindsym $mod+c exec chromium-browser --new-window 
+bindsym $mod+shift+w exec firefox -new-window --private-window
+bindsym $mod+c exec chromium-browser --new-window
 bindsym	$mod+shift+c kill
-bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window 
+bindsym $mod+ctrl+c exec chromium-browser --incognito --new-window
 bindsym	$mod+f1 exec $term --directory=/etc/nixos/ nvim
 bindsym $mod+f2 exec $term ncmpcpp
 bindsym $mod+f3 exec $term pulsemixer
@@ -179,12 +174,12 @@ bindsym $mod+f4 exec $term exec emulate_iso
 bindsym $mod+XF86AudioPlay exec spotify
 # bindsym $mod+f3 exec ardour8 -T main one
 
-bindsym $mod+5 mode "launch" 
+bindsym $mod+5 mode "launch"
 mode "launch" {
 	bindsym escape mode "default"
 }
 
-bindsym $mod+q mode "quit" 
+bindsym $mod+q mode "quit"
 mode "quit" {
 	bindsym q kill; mode default
 	bindsym ctrl+w kill
@@ -231,7 +226,7 @@ font monospace 10
 # font pango:monospace 8
 seat seat0 xcursor_theme "XCursor-Pro-Light" 24
 exec_always {
-  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark" 
+  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 	# gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 	gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 }
