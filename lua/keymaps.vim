@@ -1,6 +1,6 @@
+let no_vim_maps = 1
 map q <nop>
 map Q <nop>
-nmap - :cd ..<CR>
 nnoremap <silent> <Plug>(Save) :silent write<cr>
 " inoremap <Space> <C-G>u<Space>
 nmap <M-q> :Bclose<cr>
@@ -11,8 +11,8 @@ nmap <silent> <Tab><Tab> :bnext<cr>
 nmap <silent> <Tab><S-Tab> :bprevious<cr>
 nmap <silent> <S-Tab><S-Tab> :bprevious<cr>
 nmap <silent> <Tab>h :bprevious<cr>
-nmap ]] :bnext<cr>
-nmap [[ :bprevious<cr>
+nnoremap ]] :bnext<cr>
+nnoremap [[ :bprevious<cr>
 map <silent> ]b :bnext<CR>
 map <silent> [b :bprevious<CR>
 map <silent> ]w :wincmd l<CR>
@@ -35,7 +35,9 @@ nnoremap <silent> <leader>l :LazyGit<CR>
 nnoremap ?a :edit ~/.alias<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?z :edit $ZDOTDIR/.zshrc_<CR>
-nnoremap ?b :edit ~/.config/sway/bindings<CR>
+nnoremap ?s :edit ~/.config/sway/config<CR>
+nnoremap ?k :edit ~/.config/nvim/keymaps.vim<CR>
+nnoremap ?p :edit ~/.config/pistol/pistol.conf<CR>
 
 nnoremap <M-J> :m .+1<CR>==
 nnoremap <M-K> :m .-2<CR>==

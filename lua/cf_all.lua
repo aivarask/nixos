@@ -29,6 +29,24 @@ if vim.uv.os_getenv('WAYLAND_DISPLAY') then
 	require('image').setup({ backend = 'kitty' }) -- https://raw.githubusercontent.com/3rd/image.nvim/refs/heads/master/README.md
 end
 
+require('mini.icons').setup(
+	{
+  -- Icon style: 'glyph' or 'ascii'
+  style = 'glyph',
+
+  -- Customize per category. See `:h MiniIcons.config` for details.
+  default   = {},
+  directory = {},
+  extension = {},
+  file      = {},
+  filetype  = {},
+  lsp       = {},
+  os        = {},
+
+  -- Control which extensions will be considered during "file" resolution
+  use_file_extension = function(ext, file) return true end,
+}
+)
 require('nvim-web-devicons').setup({
 	override = {
 		['nix'] = { icon = '', color = '#ff0000', cterm_color = '110', name = 'Nix' },

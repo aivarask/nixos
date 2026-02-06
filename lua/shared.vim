@@ -23,7 +23,7 @@ filetype plugin indent on
 set termguicolors
 set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set completeopt=menu,menuone,noselect
-set cursorline 
+set cursorline
 set mouse=a
 set mousefocus
 set hidden
@@ -31,7 +31,7 @@ set ignorecase
 set lazyredraw
 set modeline
 set noshowmode
-set signcolumn=yes number relativenumber 
+set signcolumn=yes number relativenumber
 set splitkeep=topline
 set splitbelow
 set showtabline=2 statusline+=%F
@@ -46,15 +46,24 @@ set timeoutlen=600
 set bufhidden=unload
 set conceallevel=2
 set clipboard=unnamedplus
-set tabstop=2
-set breakindent
-set breakindentopt=sbr
+
+"set breakindent
+"set breakindentopt=sbr
 "set autoindent
 "set smartindent
-set shiftwidth=2
+"set shiftwidth=2
+"set tabstop=4
+"set softtabstop=2
 "set paste
 "set cpoptions+=ILq
 "set cursorbind
+
+if has('nvim')
+
+
+
+
+endif
 
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
@@ -65,7 +74,7 @@ colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:auto_save = 1
 let g:auto_save_silent = 1
-let g:auto_save_events = ["TextChanged"]			
+let g:auto_save_events = ["TextChanged"]
 let g:bclose_no_plugin_maps=1
 let g:lf_map_keys = 0
 let g:vim_markdown_no_default_key_mappings = 1

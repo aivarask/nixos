@@ -30,6 +30,8 @@
     git
     lazygit
     nps
+    coreutils-full
+    gzip
   ];
 
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management

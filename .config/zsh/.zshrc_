@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
 
-# source $HOME/.alias
-
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '\ev' edit-command-line

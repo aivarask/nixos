@@ -15,6 +15,7 @@ alias emulate_iso="qemu-system-x86_64 -enable-kvm -m 1G -cdrom $SELF/result/iso/
 alias lg="lazygit"
 alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
 alias nfu="nix flake update"
+alias nt="nix-tree"
 alias nr='nrs --option substituters "https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'
 alias nr_pc='nrs --option substituters "http://192.168.1.195 https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'
 alias nrs="nixos-rebuild switch"

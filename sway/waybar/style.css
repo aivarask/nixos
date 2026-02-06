@@ -52,6 +52,20 @@ button:hover {
 	box-shadow: inset 0 -4px #ffffff;
 }
 
+#custom-gnome-tweaks {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#custom-gnome-calculator {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
 #custom-music {
 	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
 	background-position: center;

@@ -97,6 +97,7 @@ in
           flatten-nvim
           nvim-colorizer-lua
           nvim-web-devicons
+          mini-icons
           image-nvim
           telescope-nvim
           telescope-fzf-native-nvim
