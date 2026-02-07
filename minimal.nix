@@ -60,8 +60,7 @@
   services.openssh.enable = true;
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
   users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"
   ]
   ++ (args.extraPublicKeys or [ ]);
 
