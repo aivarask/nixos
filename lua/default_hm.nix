@@ -7,7 +7,8 @@
   ...
 }:
 let
-  common = with pkgs.vimPlugins; [
+  COMMON = with pkgs.vimPlugins; [
+    pkgs.vimPlugins.gruvbox-material
     ack-vim
     vim-auto-save
     bclose-vim
@@ -30,7 +31,7 @@ in
   programs.vim.extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (
     lib.mkMerge [
-      common
+      COMMON
       (with pkgs.vimPlugins; [
         vim-airline
         vim-which-key
@@ -68,8 +69,11 @@ in
   home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
     lib.mkMerge [
-      common
+      COMMON
       (with pkgs.vimPlugins; [
+        (nvim-treesitter.withPlugins (ps: [
+          ps.nix
+        ]))
         nvim-nio
         auto-session
         which-key-nvim

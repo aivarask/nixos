@@ -109,47 +109,56 @@
     ];
   };
   nixpkgs.config.joypixels.acceptLicense = true;
-  fonts.enableDefaultPackages = true;
+  fonts.enableDefaultPackages = false;
+  fonts.fontconfig.antialias = false;
+  fonts.fontconfig.hinting.enable = false;
   fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    nerd-fonts.meslo-lg
     papirus-icon-theme
-    # twitter-color-emoji
-    # twemoji-color-font
-    noto-fonts
-    noto-fonts-color-emoji
-    nerd-fonts.dejavu-sans-mono
-    lato
-    nerd-fonts.fira-mono
-    nerd-fonts.fira-code
-    powerline-fonts
-
-    terminus_font
-    terminus_font_ttf
-    joypixels
-    font-awesome
-    noto-fonts-monochrome-emoji
+    # ttf
+    # liberation_ttf
+    # terminus_font_ttf
+    #
+    # terminus_font
+    # lato
+    #
+    # nerd-fonts.symbols-only
+    # nerd-fonts.dejavu-sans-mono
+    # nerd-fonts.fira-mono
+    # nerd-fonts.fira-code
+    # powerline-fonts
+    #
+    # joypixels
+    # font-awesome
+    #
+    # noto-fonts
+    # noto-fonts-color-emoji
+    # noto-fonts-monochrome-emoji
 
   ];
-  fonts.fontconfig = {
-    defaultFonts = {
-      emoji = [
-        # "Twitter Color Emoji"
-        "Noto Color Emoji"
-        "DejaVuSansM Nerd Font"
-      ];
-      monospace = [
-        "DejaVuSansM Nerd Font Mono"
-        "Noto Color Emoji"
-      ];
-      sansSerif = [
-        "DejaVu Sans"
-        "Noto Color Emoji"
-      ];
-      serif = [
-        "DejaVu Sans"
-        "Noto Color Emoji"
-      ];
-    };
-  };
+  # https://github.com/kamlendras/waybar-macos-sequoia/blob/main/config
+  fonts.fontconfig.defaultFonts.serif = [
+    "DejaVu Serif"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.sansSerif = [
+    "DejaVu Sans"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.monospace = [
+    "Hack Nerd Font Mono"
+    "Liberation Mono"
+    # "DejaVuSansM Nerd Font Mono"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.emoji = [
+    "Hack Nerd Font Mono"
+    "Liberation Mono"
+    # "Twitter Color Emoji"
+    # "Noto Color Emoji"
+    # "DejaVuSansM Nerd Font"
+  ];
   environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
   environment.variables.MANROFFOPT = "-P -c";
   environment.systemPackages = with pkgs; [

@@ -8,7 +8,7 @@ charset = utf-8
 end_of_line = lf
 indent_size = 4
 indent_style = space
-max_line_length = 42
+max_line_length = 80
 trim_trailing_whitespace = true
 
 [*.nix]

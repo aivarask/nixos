@@ -1,10 +1,9 @@
 // -*- mode: jsonc -*-
 {
+    "ipc": true,
     "layer": "top",
     "position": "top",
-    "height": 24,
     "spacing": 5,
-    "ipc": true,
     "reload_style_on_change": false,
     "include": [],
     "modules-left": [
@@ -22,7 +21,6 @@
         "systemd-failed-units",
     ],
     "modules-center": [
-                             "sway/window"
     ],
     "modules-right": [
         "mpris",
@@ -33,7 +31,6 @@
         "network",
         "battery",
         "sway/language",
-        "cpu",
         "clock"
     ],
     "sway/workspaces": {
@@ -151,6 +148,12 @@
     "sway/language": {
         "format": "{flag}"
     },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%T}",
+        "format-alt": "{:%Y-%m-%d}",
+        "interval": 1
+    },
     "custom/power": {
         "format": " ⏻ ",
         "tooltip": true,
@@ -224,13 +227,5 @@
         "system": true,
         "user": true,
         "on-click": "kitty --hold -e systemctl --user --failed"
-    },
-
- "cpu": {
-      "format": "  {usage}%   "
-    },
-    "clock": {
-      "format": "{:%A %B %d %H:%M %p}",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
+    }
 }

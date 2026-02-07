@@ -40,10 +40,6 @@
           { pkgs, ... }:
           {
 
-            services.playerctld.enable = true;
-            # services.mpris-proxy.enable = true;
-            # services.udiskie.enable = true;
-
             systemd.sleep.extraConfig = ''
               HibernateDelaySec=1h
             '';

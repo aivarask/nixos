@@ -39,7 +39,7 @@ set nowrap
 " set showbreak=↪>\
 set noswapfile
 set autowriteall
-set background=dark
+"set background=dark
 set undofile
 set updatetime=500
 set timeoutlen=600
@@ -68,15 +68,12 @@ endif
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
-let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_events = ["TextChanged"]
-let g:bclose_no_plugin_maps=1
-let g:lf_map_keys = 0
-let g:vim_markdown_no_default_key_mappings = 1
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 

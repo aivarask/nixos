@@ -1,203 +1,151 @@
+/* https: //github.com/kamlendras/waybar-macos-sequoia/tree/main */
+
 * {
-	font-family: FontAwesome, sans-serif;
-	font-size: 18px;
+    font-size: 16px;
+    min-height: 0;
+    border-radius: 1rem;
+    padding: 0.1rem;
 }
 
 window#waybar {
-	background-color: rgba(43, 48, 59, 0.5);
-	/* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-	color: #ffffff;
-	transition-property: background-color;
-	transition-duration: .5s;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0);
 }
 
-window#waybar.hidden {
-	opacity: 0.2;
+tooltip {
+    background: #000000;
 }
 
-/*
-window#waybar.empty {
-	background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-	background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-	background-color: #000000;
-	border: none;
-}
-
-window#waybar.firefox {
-	background-color: #3F3F3F;
-	border: none;
-}
-
-button {
-	/* Use box-shadow instead of border so the text isn't offset */
-	box-shadow: inset 0 -4px transparent;
-	/* Avoid rounded borders under each button name */
-	border: none;
-	border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-	background: inherit;
-	box-shadow: inset 0 -4px #ffffff;
-}
-
-#custom-gnome-tweaks {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-gnome-calculator {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-music {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-editor {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-files {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/places/folder-adwaita.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-monitor {
-	/* width: 64px; */
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/devices/cpu.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-#custom-firefox {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-messenger {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/FacebookMessenger-facebook.com.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#custom-wttrbar {
-	padding-left: 15px;
+tooltip label {
+    color: white;
 }
 
 #workspaces button {
-	padding: 0 4px;
-	background-color: transparent;
-	color: #ffffff;
-
-	/* &:hover { */
-	/* 	background: rgba(0, 0, 0, 0.2); */
-	/* } */
-
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-bottom: 3px solid transparent;
 }
 
-#workspaces button.focused,
-#workspaces button.active {
-	background-color: #64727D;
-	box-shadow: inset 0 -3px #ffffff;
+#workspaces button.focused {
+    background: #64727d;
+    border-bottom: 3px solid white;
 }
 
-#workspaces button.urgent {
-	background-color: #eb4d4b;
+#mode,
+#clock,
+#battery {
+    padding: 0 10px;
+}
+
+#mode {
+    background: #64727d;
+    border-bottom: 3px solid white;
 }
 
 #clock,
 #battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
 #backlight,
 #network,
-#pulseaudio {
-	padding: 0 10px;
-	color: #ffffff;
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    margin: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #000000;
 }
 
-#window,
-#workspaces {
-	margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
-	margin-left: 0;
+    margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right>widget:last-child>#workspaces {
-	margin-right: 0;
+    margin-right: 0;
 }
 
-#battery {
-	/* background-color: #ffffff; */
-	/* color: #000000; */
+#clock {
+    font-size: 14px;
+}
 
-	/* &.charging {} */
-
+#battery icon {
+    color: red;
 }
 
 #battery.charging,
 #battery.plugged {
-	/* color: #ffffff; */
-	/* background-color: #26A65B; */
+    color: #ffffff;
+    background-color: #26a65b;
 }
 
 @keyframes blink {
-	to {
-		background-color: #ffffff;
-		color: #000000;
-	}
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.warning:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 #battery.critical:not(.charging) {
-	background-color: #f53c3c;
-	color: #ffffff;
-	animation-name: blink;
-	animation-duration: 0.5s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
-
-
 
 label:focus {
-	background-color: #000000;
+    background-color: #000000;
 }
 
-#language {
-	padding: 0 5px;
-	margin: 0 5px;
-	min-width: 16px;
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#custom-os_button {
+    font-size: 32px;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#custom-os_button:hover {
+    background: white;
+    color: black;
 }

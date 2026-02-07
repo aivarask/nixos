@@ -1,3 +1,4 @@
+let g:bclose_no_plugin_maps=1
 let no_vim_maps = 1
 map q <nop>
 map Q <nop>
@@ -32,12 +33,17 @@ nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 nnoremap <silent> <leader>l :LazyGit<CR>
 "noremap <C-S-,> :left<CR>
+nnoremap ?? :Telescope find_files<CR>
 nnoremap ?a :edit ~/.alias<CR>
+nnoremap ?e :edit /etc/nixos/.editorconfig<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
 nnoremap ?z :edit $ZDOTDIR/.zshrc_<CR>
 nnoremap ?s :edit ~/.config/sway/config<CR>
 nnoremap ?k :edit ~/.config/nvim/keymaps.vim<CR>
+nnoremap ?v :edit ~/.config/nvim/shared.vim<CR>
 nnoremap ?p :edit ~/.config/pistol/pistol.conf<CR>
+nnoremap ?w :tabe /root/.config/waybar/config.jsonc<CR> :vertical split ~/.config/waybar//style.css
+"~/.config/waybar/style.css  <CR>
 
 nnoremap <M-J> :m .+1<CR>==
 nnoremap <M-K> :m .-2<CR>==

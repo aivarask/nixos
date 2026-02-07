@@ -1,46 +1,29 @@
 { pkgs, lib, ... }:
 {
-
   services.espanso.enable = true;
   services.espanso.package = pkgs.espanso-wayland;
+  services.playerctld.enable = true;
 
-  imports = [
-
-  ];
-  # https://www.xmodulo.com/how-to-speed-up-x11-forwarding-in-ssh.html
-  # https://mynixos.com/nixpkgs/option/services.openssh.settings.Ciphers
   services.logind.settings.Login.HandlePowerKey = "ignore";
-  programs.ssh = {
-    # ciphers = [ ];
-    # forwardX11 = true;
-    # compression = true; # home-manager
-  };
-  services.openssh = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      # Ciphers = [ ];
-      # X11Forwarding = true;
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "yes";
-      KeepAlive = "yes";
-    };
-  };
-  services.maddy = {
-    enable = true;
-    primaryDomain = "localhost";
-    ensureAccounts = [
-      "test@localhost"
-    ];
-    ensureCredentials = {
-      "test@localhost".passwordFile = "${pkgs.writeText "postmaster" "l"}";
-    };
-  };
-  environment.systemPackages = with pkgs; [
-    bitmagnet
-    magnetico
-    tremc
+
+  services.openssh.enable = true;
+  services.openssh.openFirewall = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.KbdInteractiveAuthentication = false;
+  services.openssh.settings.PermitRootLogin = "yes";
+  services.openssh.settings.KeepAlive = "yes";
+services.maddy.ensureCredentials."test@localhost".passwordFile = "${pkgs.writeText "postmaster" "l"}";
+
+  services.maddy.enable = true;
+  services.maddy.primaryDomain = "localhost";
+  services.maddy.ensureAccounts = [
+    "test@localhost"
+  ];
+
+  environment.systemPackages = [
+    pkgs.bitmagnet
+    pkgs.magnetico
+    pkgs.tremc
   ];
   services.transmission = {
     enable = true;
