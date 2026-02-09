@@ -28,12 +28,20 @@
     pistol
     lf
     git
+    gh
     lazygit
     nps
     coreutils-full
     gzip
   ];
 
+  programs.tmux.enable = true;
+  programs.tmux.extraConfig = ''
+
+  '';
+  environment.etc."lfrc".text = ''
+    set nohidden
+  '';
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
   networking.networkmanager.enable = true;
@@ -55,11 +63,16 @@
     Settings.AutoConnect = true;
     # Scan.DisablePeriodicScan=true;
   };
+  time.timeZone = "Europe/Vilnius";
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH
   # https://nixos.wiki/wiki/SSH_public_key_authentication
   services.openssh.enable = true;
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
-  users.users.root.openssh.authorizedKeys.keys = [
+
+  users.defaultUserShell = pkgs.zsh;
+  users.users."root".shell = pkgs.zsh;
+  users.users."root".extraGroups = [ ];
+  users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIrYp7DZHd8mJjmtXwrrjQW5e207eCU/KTROwxl2jdnf"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"
   ]

@@ -97,21 +97,10 @@
   security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
   security.sudo.wheelNeedsPassword = false;
   security.pam.services.nginx.setEnvironment = false;
-  time.timeZone = "Europe/Vilnius";
-  users.defaultUserShell = pkgs.zsh;
-  users.users."root" = {
-    shell = pkgs.zsh;
-    extraGroups = [
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEs8Ir7meX21p/xxIfwz/Z9vYDF0VCE29t4pML7iF/X"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINCfPZBHEBgGHptxSr6E4DvnztZQ8+MXvui0Bz9LJJM3"
-    ];
-  };
   nixpkgs.config.joypixels.acceptLicense = true;
   fonts.enableDefaultPackages = false;
-  fonts.fontconfig.antialias = false;
-  fonts.fontconfig.hinting.enable = false;
+  fonts.fontconfig.antialias = true;
+  fonts.fontconfig.hinting.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.hack
     nerd-fonts.meslo-lg
@@ -170,6 +159,7 @@
     manix
   ];
   # environment.etc.nixos-docs.source = "${config.system.build.manual.manualHTML}/share/doc/nixos/";
+
   documentation = {
     enable = true;
     dev.enable = false;

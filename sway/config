@@ -27,6 +27,7 @@ default_floating_border pixel
 # output * render_direct_scanout on
 output * adaptive_sync on
 output * max_render_time 6
+output * subpixel bgr
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
