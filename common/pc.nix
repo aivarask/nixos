@@ -24,6 +24,7 @@
   swapDevices = [ ];
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    # "https://github.com/NixOS/nixos-hardware/tree/master/common/gpu/nvidia"
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync

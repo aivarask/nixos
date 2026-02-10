@@ -33,6 +33,13 @@
     nps
     coreutils-full
     gzip
+    man-pages
+    man-pages-posix
+    groff
+    cht-sh
+    tldr
+    manix
+    glib
   ];
 
   programs.tmux.enable = true;
@@ -69,6 +76,7 @@
   services.openssh.enable = true;
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
+  console.useXkbConfig = true;
   users.defaultUserShell = pkgs.zsh;
   users.users."root".shell = pkgs.zsh;
   users.users."root".extraGroups = [ ];
@@ -140,4 +148,68 @@
   '';
   environment.etc."bashrc.local".source = "/etc/nixos/bashrc.local";
 
+  fonts.enableDefaultPackages = false;
+  fonts.fontconfig.antialias = true;
+  fonts.fontconfig.hinting.enable = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    nerd-fonts.meslo-lg
+    papirus-icon-theme
+    # liberation_ttf
+    # terminus_font_ttf
+    # lato
+    # nerd-fonts.symbols-only
+    # nerd-fonts.dejavu-sans-mono
+    # nerd-fonts.fira-mono
+    # nerd-fonts.fira-code
+    # powerline-fonts
+    # joypixels
+    # font-awesome
+    # noto-fonts
+    # noto-fonts-color-emoji
+    # noto-fonts-monochrome-emoji
+  ];
+  # https://github.com/kamlendras/waybar-macos-sequoia/blob/main/config
+  fonts.fontconfig.defaultFonts.serif = [
+    "DejaVu Serif"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.sansSerif = [
+    "DejaVu Sans"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.monospace = [
+    "Hack Nerd Font Mono"
+    "Liberation Mono"
+    # "DejaVuSansM Nerd Font Mono"
+    # "Noto Color Emoji"
+  ];
+  fonts.fontconfig.defaultFonts.emoji = [
+    "Hack Nerd Font Mono"
+    "Liberation Mono"
+    # "Twitter Color Emoji"
+    # "Noto Color Emoji"
+    # "DejaVuSansM Nerd Font"
+  ];
+  environment.variables.MANPAGER = "less -R --use-color -Dd+r -Du+b";
+  environment.variables.MANROFFOPT = "-P -c";
+  # environment.etc.nixos-docs.source = "${config.system.build.manual.manualHTML}/share/doc/nixos/";
+
+  documentation = {
+    enable = true;
+    dev.enable = false;
+    doc.enable = true;
+    info.enable = true;
+    nixos.enable = true;
+    nixos.includeAllModules = true;
+
+    # nixos.includeAllModules = true;
+    man = {
+      enable = true;
+      generateCaches = true;
+      man-db.enable = true;
+      mandoc.enable = false;
+      mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
+    };
+  };
 }

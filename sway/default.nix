@@ -5,110 +5,86 @@
   ...
 }:
 {
-  imports = [
-    (
-      { pkgs, ... }:
-      {
-        programs.uwsm.enable = true;
-        programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
-        programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
-        environment.systemPackages = with pkgs; [
-          sway
-          swayr
-          rofi
-          swaybg
-          swayidle
-          swaylock
-          waybar
-          foot
-          grim
-          slurp
-          wl-clipboard
-          mako
-          kanshi
-          playerctl
-          xdg-desktop-portal-wlr
-          pipewire
-          wireplumber
-          pavucontrol
-          # polkit-gnome
-          wttrbar
-
-        ];
-        environment.variables = {
-          WLR_DRM_NO_MODIFIERS = 1;
-          WLR_RENDERER = "vulkan";
-          XDG_CURRENT_DESKTOP = "sway";
-          MOZ_ENABLE_WAYLAND = 1;
-          QT_QPA_PLATFORM = "wayland";
-          CLUTTER_BACKEND = "wayland";
-          SDL_VIDEODRIVER = "wayland";
-
-        };
-      }
-    )
-  ];
-
+  imports = [ ];
+  environment.variables.WLR_DRM_NO_MODIFIERS = 1;
+  environment.variables.WLR_RENDERER = "vulkan";
+  environment.variables.XDG_CURRENT_DESKTOP = "sway";
+  environment.variables.MOZ_ENABLE_WAYLAND = 1;
+  environment.variables.QT_QPA_PLATFORM = "wayland";
+  environment.variables.CLUTTER_BACKEND = "wayland";
+  environment.variables.SDL_VIDEODRIVER = "wayland";
   programs.sway.enable = true;
   programs.sway.wrapperFeatures.gtk = true;
   programs.uwsm.enable = true;
   programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
   programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
-  # programs.uwsm.waylandCompositors.hyprland.prettyName = "Hyprland";
-  # programs.hyprland.enable = true;
-  # programs.hyprland.withUWSM = true;
-
+  programs.dconf.enable = true;
+  programs.dconf.settings."org/gnome/desktop/interface"."gtk-theme" = "";
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
+    # polkit-gnome
+    # sway-overfocus
+    bemoji
+    catt
+    dconf-editor
+    eww
     flameshot
-    wayvnc
-    gst_all_1.gstreamer
+    foot
+    gammastep
+    glib-networking
+    gnome-calculator
+    gnome-network-displays
+    gnome-system-monitor
+    gnome-themes-extra
+    gnome-tweaks
+    grim
+    gst_all_1.gst-libav
+    gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-libav
     gst_all_1.gst-vaapi
-    glib-networking
-    gnome-network-displays
-    miraclecast
-    gnome-system-monitor
-    bemoji
+    gst_all_1.gstreamer
+    i3
     ifwifi
-    catt
-    scrcpy
-    qtscrcpy
+    kanshi
     localsend
-    eww
-    uwsm
+    lxappearance
+    mako
+    miraclecast
+    oranchelo-icon-theme
+    papirus-icon-theme
+    pavucontrol
+    pipewire
+    playerctl
+    qtscrcpy
+    rofi
+    scrcpy
+    slurp
     sway
+    sway-contrib.grimshot
+    sway-contrib.inactive-windows-transparency
     sway-easyfocus
     sway-launcher-desktop
-    sway-contrib.inactive-windows-transparency
-    sway-contrib.grimshot
-    # sway-overfocus
     sway-new-workspace
     sway-scratch
-    wdisplays
-    i3
-    wev
-    wlr-which-key
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system developed by swaywm maintainer
+    swaybg
+    swayidle
+    swaylock
     swaynotificationcenter
+    swayr
+    uwsm
     waybar
-    lxappearance
-    gnome-tweaks
-    gnome-calculator
-    dconf-editor
+    wayvnc
+    wdisplays
+    wev
+    wireplumber
+    wl-clipboard
+    wlr-which-key
+    wttrbar
+    xcursor-pro
+    xdg-desktop-portal-wlr
     xkeyboard-config
     xorg.xkbcomp
-    xcursor-pro
-    oranchelo-icon-theme
-    gnome-themes-extra
-    papirus-icon-theme
   ];
-
 }

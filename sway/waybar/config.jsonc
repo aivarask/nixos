@@ -22,7 +22,7 @@
         "systemd-failed-units",
     ],
     "modules-center": [
-                             "sway/window"
+         "sway/window"
     ],
     "modules-right": [
         "mpris",

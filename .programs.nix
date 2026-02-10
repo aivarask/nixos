@@ -61,6 +61,7 @@ in
     spotify
     ncspot
   ];
+  xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";
   xdg.configFile."ripgreprc".source = symlink "${xdgconf}/ripgreprc";

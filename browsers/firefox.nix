@@ -107,10 +107,10 @@ in
             installation_mode = "force_installed";
             private_browsing = true;
           };
-          "{f3b4b962-34b4-4935-9eee-45b0bce58279}" = {
-            install_url = moz "animated-purple-moon-lake";
-            installation_mode = "force_installed";
-          };
+          # "{f3b4b962-34b4-4935-9eee-45b0bce58279}" = {
+          #   install_url = moz "animated-purple-moon-lake";
+          #   installation_mode = "force_installed";
+          # };
           # https://noscript.net/
           # "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
           #   install_url = moz "noscript";

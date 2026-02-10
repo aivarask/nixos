@@ -18,16 +18,13 @@ set $right l
 # Performance Tweaks
 # ------------------------------------------------------------
 xwayland disable
-# damage tracking incremental
-focus_follows_mouse yes
+focus_follows_mouse no
 default_border none
 # default_border pixel
 default_floating_border pixel
-# unfocused_floating_opacity 0.95
-# output * render_direct_scanout on
+# render_direct_scanout on
 output * adaptive_sync on
 output * max_render_time 6
-output * subpixel bgr
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
@@ -77,7 +74,7 @@ input type:pointer {
 # ------------------------------------------------------------
 # Autostart
 # ------------------------------------------------------------
-exec systemctl --user start gammastep
+exec_always gammastep
 exec_always mako
 exec_always kanshi
 exec_always wl-paste --type text --watch cliphist store
