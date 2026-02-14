@@ -19,7 +19,7 @@
   programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
   programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
   programs.dconf.enable = true;
-  programs.dconf.settings."org/gnome/desktop/interface"."gtk-theme" = "";
+
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
     # polkit-gnome
