@@ -17,24 +17,25 @@ set $right l
 # ------------------------------------------------------------
 # Performance Tweaks
 # ------------------------------------------------------------
-xwayland disable
+# xwayland disable
 focus_follows_mouse no
 default_border none
 # default_border pixel
 default_floating_border pixel
 # render_direct_scanout on
-output * adaptive_sync on
-output * max_render_time 6
+# output * adaptive_sync on
+# output * max_render_time 6
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
 # ------------------------------------------------------------
 output DP-1     resolution 3840x2160 position 0,0 scale 2.5
 output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
+# output HDMI-A-1 disable
 
 output eDP-1    resolution 3840x2160 position 0,0 scale 2
 output DP-3     resolution 1920x1080 position 1920,0 scale 1
-output * scale_filter nearest
+# output * scale_filter nearest
 
 workspace 5 output DP-3
 bindsym $mod+5 workspace number 5
@@ -83,6 +84,7 @@ exec_always wl-paste --type image --watch cliphist store
 # ------------------------------------------------------------
 # Idle / Lock
 # ------------------------------------------------------------
+for_window [app_id="firefox"] inhibit_idle fullscreen`
 exec_always swayidle -w \
     timeout 1200 'systemctl suspend'
 

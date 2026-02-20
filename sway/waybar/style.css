@@ -3,13 +3,11 @@
 * {
     font-size: 16px;
     min-height: 0;
-    border-radius: 1rem;
     padding: 0.1rem;
 }
 
 window#waybar {
-    background: rgba(255, 255, 255, 0.5);
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 tooltip {
@@ -21,15 +19,15 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background: transparent;
+
+    padding: 0 4px;
+    margin: 0 4px;
+    background: red;
     color: white;
-    border-bottom: 3px solid transparent;
 }
 
 #workspaces button.focused {
-    background: #64727d;
-    border-bottom: 3px solid white;
+    background: green;
 }
 
 #mode,
@@ -39,7 +37,7 @@ tooltip label {
 }
 
 #mode {
-    background: #64727d;
+    background: black;
     border-bottom: 3px solid white;
 }
 
@@ -60,8 +58,7 @@ tooltip label {
 #scratchpad,
 #mpd {
     margin: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 0 4px;
     color: #000000;
 }
 
@@ -83,20 +80,20 @@ tooltip label {
 
 #battery.charging,
 #battery.plugged {
-    color: #ffffff;
-    background-color: #26a65b;
+    color: white;
+    background-color: green;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: white;
+        color: black;
     }
 }
 
 #battery.warning:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: orange;
+    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -105,8 +102,8 @@ tooltip label {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: red;
+    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -115,20 +112,20 @@ tooltip label {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: black;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: red;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: red;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    /* background-color: white; */
+    color: white;
 }
 
 #tray>.passive {
@@ -137,15 +134,5 @@ label:focus {
 
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#custom-os_button {
-    font-size: 32px;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-#custom-os_button:hover {
-    background: white;
-    color: black;
+    background-color: red;
 }

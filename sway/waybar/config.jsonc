@@ -8,7 +8,7 @@
     "reload_style_on_change": false,
     "include": [],
     "modules-left": [
-     "sway/mode",
+        "sway/mode",
         "sway/workspaces",
         "custom/firefox",
         "custom/messenger",
@@ -22,7 +22,7 @@
         "systemd-failed-units",
     ],
     "modules-center": [
-         "sway/window"
+        "sway/window"
     ],
     "modules-right": [
         "mpris",
@@ -34,11 +34,14 @@
         "battery",
         "sway/language",
         "cpu",
-        "clock"
+        "clock",
+        "idle_inhibitor"
     ],
     "sway/workspaces": {
         // waybar-sway-workspaces
-        "format": "{name} {icon} {windows}", // value name icon index output windows
+        "all-outputs": true,
+        "current-only": false,
+        "format": "{name} {icon} {windows} {output}", // value name icon index output windows
         "reverse-scroll": true,
         "smooth-scrolling-threshold": 3.0,
         "disable-scroll-wraparound": true,
@@ -225,12 +228,19 @@
         "user": true,
         "on-click": "kitty --hold -e systemctl --user --failed"
     },
-
- "cpu": {
-      "format": "  {usage}%   "
+    "cpu": {
+        "format": "  {usage}%   "
     },
     "clock": {
-      "format": "{:%A %B %d %H:%M %p}",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%A %B %d %H:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "timeout": 30.5
+    }
 }
