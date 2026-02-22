@@ -5,9 +5,10 @@
     "height": 24,
     "spacing": 5,
     "ipc": true,
-    "reload_style_on_change": false,
+    "reload_style_on_change": true,
     "include": [],
     "modules-left": [
+        "tray",
         "sway/mode",
         "sway/workspaces",
         "custom/firefox",
@@ -19,7 +20,7 @@
         "custom/monitor",
         "custom/gnome-tweaks",
         "custom/gnome-calculator",
-        "systemd-failed-units",
+        "systemd-failed-units"
     ],
     "modules-center": [
         "sway/window"
@@ -242,5 +243,15 @@
             "deactivated": ""
         },
         "timeout": 30.5
+    },
+    "tray": {
+        "show-passive-items": true,
+        "icon-size": 20,
+        "spacing": 10,
+        "icons": {
+            "blueman": "bluetooth",
+            "telegram": "/root/telegram_logo.jpg"
+            // "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        }
     }
 }

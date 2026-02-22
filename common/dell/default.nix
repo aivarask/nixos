@@ -13,7 +13,6 @@
     # https://wiki.nixos.org/wiki/Linux_kernel#Configuration
     ./../boot.nix
     ./../xdg.nix
-    ./bluetooth.nix
     ./boot.nix
   ];
   system.stateVersion = "26.05";

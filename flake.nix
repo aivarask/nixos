@@ -149,6 +149,7 @@
                 ./minimal.nix
                 ./autologin.nix
                 ./search.nix
+                ./bluetooth.nix
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
               ];

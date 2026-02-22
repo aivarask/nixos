@@ -11,7 +11,7 @@ window#waybar {
 }
 
 tooltip {
-    background: #000000;
+    background: black;
 }
 
 tooltip label {
@@ -19,7 +19,6 @@ tooltip label {
 }
 
 #workspaces button {
-
     padding: 0 4px;
     margin: 0 4px;
     background: red;
@@ -30,37 +29,7 @@ tooltip label {
     background: green;
 }
 
-#mode,
-#clock,
-#battery {
-    padding: 0 10px;
-}
 
-#mode {
-    background: black;
-    border-bottom: 3px solid white;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    margin: 2px;
-    padding: 0 4px;
-    color: #000000;
-}
 
 .modules-left>widget:first-child>#workspaces {
     margin-left: 0;
@@ -71,7 +40,7 @@ tooltip label {
 }
 
 #clock {
-    font-size: 14px;
+    font-size: 11px;
 }
 
 #battery icon {
@@ -80,8 +49,7 @@ tooltip label {
 
 #battery.charging,
 #battery.plugged {
-    color: white;
-    background-color: green;
+    color: green;
 }
 
 @keyframes blink {
@@ -92,8 +60,7 @@ tooltip label {
 }
 
 #battery.warning:not(.charging) {
-    background-color: orange;
-    color: white;
+    color: orange;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -102,8 +69,7 @@ tooltip label {
 }
 
 #battery.critical:not(.charging) {
-    background-color: red;
-    color: white;
+    color: red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -116,17 +82,17 @@ label:focus {
 }
 
 #network.disconnected {
-    background-color: red;
+    color: red;
 }
 
 #temperature.critical {
-    background-color: red;
+    color: red;
 }
 
 #idle_inhibitor.activated {
-    /* background-color: white; */
     color: white;
 }
+
 
 #tray>.passive {
     -gtk-icon-effect: dim;
@@ -134,5 +100,5 @@ label:focus {
 
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: red;
+    color: red;
 }

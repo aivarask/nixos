@@ -19,10 +19,7 @@ set $right l
 # ------------------------------------------------------------
 # Performance Tweaks
 # ------------------------------------------------------------
-# floating_maximum_size 300x300
-# floating {
-#     opacity 0.8
-# }
+xwayland disable
 for_window [app_id="thunar"] floating enable
 for_window [floating] opacity 0.7
 default_border pixel
@@ -32,14 +29,14 @@ output * allow_tearing yes
 output * max_render_time off
 
 # output * render_direct_scanout on
-# output * adaptive_sync on
+output * adaptive_sync on
 # output * max_render_time 6
 # damage tracking incremental
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
 # ------------------------------------------------------------
-output * bg #000000 solid_color
+# output * bg #000000 solid_color
 output DP-1     resolution 3840x2160 position 0,0 scale 2.5
 output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
 # output HDMI-A-1 disable
@@ -91,7 +88,7 @@ exec_always wl-paste --type image --watch cliphist store
 # ------------------------------------------------------------
 # Idle / Lock
 # ------------------------------------------------------------
-for_window [app_id="firefox"] inhibit_idle fullscreen`
+for_window [app_id="firefox"] inhibit_idle fullscreen
 exec_always swayidle -w \
     timeout 1200 'systemctl suspend'
 
