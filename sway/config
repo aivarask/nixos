@@ -2,6 +2,8 @@
 # Docs
 # ------------------------------------------------------------
 # https://github.com/swaywm/sway/wiki
+# https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway
+# https://orioninsist.org/blog/sway-wayland-performance-intel-igpu-dual-fhd/
 
 # ------------------------------------------------------------
 # Environment
@@ -17,18 +19,27 @@ set $right l
 # ------------------------------------------------------------
 # Performance Tweaks
 # ------------------------------------------------------------
-# xwayland disable
-focus_follows_mouse no
-default_border none
-# default_border pixel
+# floating_maximum_size 300x300
+# floating {
+#     opacity 0.8
+# }
+for_window [app_id="thunar"] floating enable
+for_window [floating] opacity 0.7
+default_border pixel
 default_floating_border pixel
-# render_direct_scanout on
+focus_follows_mouse yes
+output * allow_tearing yes
+output * max_render_time off
+
+# output * render_direct_scanout on
 # output * adaptive_sync on
 # output * max_render_time 6
+# damage tracking incremental
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
 # ------------------------------------------------------------
+output * bg #000000 solid_color
 output DP-1     resolution 3840x2160 position 0,0 scale 2.5
 output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
 # output HDMI-A-1 disable
@@ -53,10 +64,6 @@ input type:keyboard {
 	xkb_options "grp:alt_space_toggle"
 	# xkb_options "grp:menu_toggle"
   # xkb_options "caps:escape"
-}
-input "Logitech K270" {
-	# xkb_variant "us,"
-	# xkb_model "pc105"
 }
 # swaymsg -t get_inputs --raw | jq '.[] | select(.type=="touchpad")'
 input type:touchpad {

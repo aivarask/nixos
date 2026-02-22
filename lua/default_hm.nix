@@ -17,7 +17,6 @@ let
     switch-vim
     vim-abolish
     vim-cool
-    vim-cursorword
     vim-devicons
     vim-highlightedyank
     vim-lastplace
