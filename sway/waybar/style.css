@@ -2,8 +2,8 @@
 
 * {
     font-size: 16px;
+    padding: 2px;
     min-height: 0;
-    padding: 0.1rem;
 }
 
 window#waybar {
@@ -21,7 +21,7 @@ tooltip label {
 #workspaces button {
     padding: 0 4px;
     margin: 0 4px;
-    background: red;
+    background: gray;
     color: white;
 }
 
@@ -40,7 +40,7 @@ tooltip label {
 }
 
 #clock {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #battery icon {
@@ -101,4 +101,65 @@ label:focus {
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
     color: red;
+}
+
+#custom-gnome-tweaks {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-gnome-calculator {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-music {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-editor {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-files {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/places/folder-adwaita.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-monitor {
+    /* width: 64px; */
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/devices/cpu.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#custom-firefox {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-messenger {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/FacebookMessenger-facebook.com.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-wttrbar {
+    padding-left: 16px;
 }

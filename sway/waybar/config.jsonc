@@ -3,7 +3,7 @@
     "layer": "top",
     "position": "top",
     "height": 24,
-    "spacing": 5,
+    "spacing": 4,
     "ipc": true,
     "reload_style_on_change": true,
     "include": [],
@@ -42,7 +42,7 @@
         // waybar-sway-workspaces
         "all-outputs": true,
         "current-only": false,
-        "format": "{name} {icon} {windows} {output}", // value name icon index output windows
+        "format": "{name} {windows} {output}", // value name icon index output windows
         "reverse-scroll": true,
         "smooth-scrolling-threshold": 3.0,
         "disable-scroll-wraparound": true,
@@ -246,12 +246,12 @@
     },
     "tray": {
         "show-passive-items": true,
-        "icon-size": 20,
-        "spacing": 10,
+        "icon-size": 24,
+        "spacing": 8,
         "icons": {
-            "blueman": "bluetooth",
             "telegram": "/root/telegram_logo.jpg"
-            // "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+            // "blueman": "bluetooth",
+            // ".blueman-manager-wrapped": "/root/telegram_logo.jpg",
         }
     }
 }

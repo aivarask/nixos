@@ -21,17 +21,14 @@ set $right l
 # ------------------------------------------------------------
 xwayland disable
 for_window [app_id="thunar"] floating enable
-for_window [floating] opacity 0.7
+for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [floating] opacity 0.9
 default_border pixel
 default_floating_border pixel
 focus_follows_mouse yes
 output * allow_tearing yes
 output * max_render_time off
-
-# output * render_direct_scanout on
 output * adaptive_sync on
-# output * max_render_time 6
-# damage tracking incremental
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
@@ -84,6 +81,11 @@ exec_always mako
 exec_always kanshi
 exec_always wl-paste --type text --watch cliphist store
 exec_always wl-paste --type image --watch cliphist store
+exec_always {
+    # gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+	# gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+    # gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+}
 
 # ------------------------------------------------------------
 # Idle / Lock
@@ -233,11 +235,6 @@ hide_edge_borders smart_no_gaps
 font monospace 10
 # font pango:monospace 8
 seat seat0 xcursor_theme "XCursor-Pro-Light" 24
-exec_always {
-  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-	# gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-	gsettings set org.gnome.desktop.interface icon-theme "Papirus"
-}
 
 # ------------------------------------------------------------
 # Other

@@ -148,7 +148,7 @@
   '';
   environment.etc."bashrc.local".source = "/etc/nixos/bashrc.local";
 
-  fonts.enableDefaultPackages = false;
+  fonts.enableDefaultPackages = true;
   fonts.fontconfig.antialias = true;
   fonts.fontconfig.hinting.enable = true;
   fonts.packages = with pkgs; [
