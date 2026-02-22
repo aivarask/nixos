@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  services.espanso.enable = true;
+  services.espanso.enable = false;
   services.espanso.package = pkgs.espanso-wayland;
   services.playerctld.enable = true;
 
@@ -12,7 +12,8 @@
   services.openssh.settings.KbdInteractiveAuthentication = false;
   services.openssh.settings.PermitRootLogin = "yes";
   services.openssh.settings.KeepAlive = "yes";
-services.maddy.ensureCredentials."test@localhost".passwordFile = "${pkgs.writeText "postmaster" "l"}";
+  services.maddy.ensureCredentials."test@localhost".passwordFile =
+    "${pkgs.writeText "postmaster" "l"}";
 
   services.maddy.enable = true;
   services.maddy.primaryDomain = "localhost";
