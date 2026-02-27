@@ -8,7 +8,11 @@
     "reload_style_on_change": true,
     "include": [],
     "modules-left": [
+        "idle_inhibitor",
         "tray",
+        "cpu",
+        "battery",
+        //
         "sway/mode",
         "sway/workspaces",
         "custom/firefox",
@@ -16,10 +20,10 @@
         "custom/music",
         "custom/editor",
         "custom/files",
-        "custom/nix-tree",
         "custom/monitor",
         "custom/gnome-tweaks",
         "custom/gnome-calculator",
+        "custom/tree",
         "systemd-failed-units"
     ],
     "modules-center": [
@@ -32,12 +36,40 @@
         "custom/brightness",
         "backlight",
         "network",
-        "battery",
         "sway/language",
-        "cpu",
         "clock",
-        "idle_inhibitor"
     ],
+    "tray": {
+        // waybar-tray
+        "show-passive-items": true,
+        "icon-size": 24,
+        "spacing": 8,
+        "icons": {
+            "telegram": "/root/telegram_logo.jpg"
+        }
+    },
+    "cpu": {
+        // waybar-cpu
+        "format": " {usage}",
+        "on-click": "gnome-system-monitor",
+        "on-click-right": "kitty -e htop"
+    },
+    "battery": {
+        // waybar-battery
+        "format": "{icon} {capacity}",
+        "format-alt": "{icon} {time}",
+        "format-time": "{H}h{M}m",
+        "format-full": "{icon} {capacity}",
+        "format-charging": "{icon} {capacity}",
+        "format-plugged": "{icon} {capacity}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
     "sway/workspaces": {
         // waybar-sway-workspaces
         "all-outputs": true,
@@ -56,8 +88,7 @@
     },
     "sway/mode": {
         // waybar-sway-mode
-        // "format": "<span>{}</span>"
-        "format": " {}",
+        "format": "{}",
         "max-length": 50
     },
     "mpris": {
@@ -75,10 +106,12 @@
     },
     "pulseaudio": {
         // waybar-pulseaudio
+        "on-click": "pactl set-sink-mute \\@DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
         "scroll-step": 5,
         "smooth-scrolling-threshold": 0.3,
         "reverse-scrolling": true,
-        "format": "{icon}   {volume} {format_source}",
+        "format": "{icon}  {volume} {format_source}",
         "format-bluetooth": "{icon}  {volume}  {format_source}",
         "format-bluetooth-muted": "{icon} - {format_source}",
         "format-muted": "- {format_source}",
@@ -96,9 +129,7 @@
                 "",
                 ""
             ]
-        },
-        "on-click": "pactl set-sink-mute \\@DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol"
+        }
     },
     "custom/wttrbar": {
         "format": "{}° ",
@@ -136,22 +167,6 @@
         "format-disconnected": "No internet",
         "on-click-right": "xdg-open https://192.168.1.1"
     },
-    "battery": {
-        // waybar-battery
-        "format": "{icon} {capacity}",
-        "format-alt": "{icon} {time}",
-        "format-time": "{H}h{M}m",
-        "format-full": "{icon} {capacity}",
-        "format-charging": "{icon} {capacity}",
-        "format-plugged": "{icon} {capacity}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
     "sway/language": {
         "format": "{flag}"
     },
@@ -167,12 +182,12 @@
     "custom/gnome-tweaks": {
         "format": "{}        ",
         "tooltip": false,
-        "on-click": "gnome-tweaks",
+        "on-click": "gnome-tweaks"
     },
     "custom/gnome-calculator": {
         "format": "{}        ",
         "tooltip": false,
-        "on-click": "gnome-calculator",
+        "on-click": "gnome-calculator"
     },
     "custom/music": {
         "format": "{}        ",
@@ -204,16 +219,11 @@
         "on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
         "on-click-right": "firefox https://www.facebook.com/"
     },
-    "custom/nix-tree": {
+    "custom/tree": {
         "format": "{}   ",
         "tooltip": false,
-        "on-click": "kitty -e nix-tree"
-    },
-    "custom/monitor": {
-        "format": "{}     ",
-        "tooltip": false,
-        "on-click": "gnome-system-monitor",
-        "on-click-right": "kitty -e htop"
+        "on-click": "kitty -e nix-tree",
+        "on-click-right": "kitty --hold -e swaymsg -t get_tree"
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -229,29 +239,16 @@
         "user": true,
         "on-click": "kitty --hold -e systemctl --user --failed"
     },
-    "cpu": {
-        "format": "  {usage}%   "
-    },
     "clock": {
         "format": "{:%A %B %d %H:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "{icon} ",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         },
         "timeout": 30.5
-    },
-    "tray": {
-        "show-passive-items": true,
-        "icon-size": 24,
-        "spacing": 8,
-        "icons": {
-            "telegram": "/root/telegram_logo.jpg"
-            // "blueman": "bluetooth",
-            // ".blueman-manager-wrapped": "/root/telegram_logo.jpg",
-        }
     }
 }

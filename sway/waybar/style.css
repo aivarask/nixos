@@ -2,7 +2,7 @@
 
 * {
     font-size: 16px;
-    padding: 2px;
+    padding: 0px;
     min-height: 0;
 }
 
@@ -29,7 +29,9 @@ tooltip label {
     background: green;
 }
 
-
+#workspaces button:hover {
+    background: green;
+}
 
 .modules-left>widget:first-child>#workspaces {
     margin-left: 0;
@@ -117,6 +119,13 @@ label:focus {
     background-size: contain;
 }
 
+#custom-tree {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/x.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 #custom-music {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
     background-position: center;
@@ -138,14 +147,6 @@ label:focus {
     background-size: contain;
 }
 
-#custom-monitor {
-    /* width: 64px; */
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/devices/cpu.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 #custom-firefox {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
     background-position: center;
@@ -158,8 +159,4 @@ label:focus {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-#custom-wttrbar {
-    padding-left: 16px;
 }
