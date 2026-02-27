@@ -1,5 +1,5 @@
+-- let &runtimepath.=',/etc/nixos'
 vim.cmd [[
-let &runtimepath.=',/etc/nixos'
 runtime! lua/*{.vim}
 ]]
 vim.loader.enable()
