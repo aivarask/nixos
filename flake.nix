@@ -55,7 +55,7 @@
               duf
               dust
 
-              incus
+              # incus
               buildah
               podman
               skopeo

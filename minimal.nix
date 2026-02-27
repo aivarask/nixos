@@ -98,6 +98,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "broadcom-sta-6.30.223.271-59-6.18.3"
+    "broadcom-sta-6.30.223.271-59-6.19.3"
   ];
   boot.initrd.kernelModules = [ "wl" ];
   boot.kernelModules = [
@@ -206,7 +207,7 @@
     # nixos.includeAllModules = true;
     man = {
       enable = true;
-      generateCaches = true;
+      # cache.enable = true;
       man-db.enable = true;
       mandoc.enable = false;
       mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];

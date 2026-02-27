@@ -85,6 +85,6 @@
     xcursor-pro
     xdg-desktop-portal-wlr
     xkeyboard-config
-    xorg.xkbcomp
+    xkbcomp
   ];
 }

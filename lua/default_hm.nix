@@ -27,7 +27,7 @@ in
 {
   xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.vim.enable = true;
-  programs.vim.extraConfig = ''source $XDG_CONFIG_HOME/vim/vimrc'';
+  programs.vim.extraConfig = "source $XDG_CONFIG_HOME/vim/vimrc";
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (
     lib.mkMerge [
       COMMON
@@ -43,7 +43,7 @@ in
       ])
     ]
   );
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
+  # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.neovim.enable = true;
   programs.neovim.package =
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
