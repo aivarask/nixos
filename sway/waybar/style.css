@@ -6,6 +6,12 @@
     min-height: 0;
 }
 
+.bartop {}
+
+.barbot {
+    background-color: transparent;
+}
+
 window#waybar {
     color: white;
 }

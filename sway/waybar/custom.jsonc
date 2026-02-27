@@ -1,0 +1,117 @@
+// -*- mode: jsonc -*-
+{
+    "cpu": {
+        // waybar-cpu
+        "format": " {usage}",
+        "on-click": "gnome-system-monitor",
+        "on-click-right": "kitty -e htop"
+    },
+    "systemd-failed-units": {
+        "hide-on-ok": true,
+        "format": "{nr_failed}:{nr_failed_user}",
+        "format-ok": "✓",
+        "system": true,
+        "user": true,
+        "on-click": "kitty --hold -e systemctl --user --failed",
+        "on-click": "kitty --hold -e systemctl --user --failed"
+    },
+    "pulseaudio": {
+        // waybar-pulseaudio
+        "on-click": "pactl set-sink-mute \\@DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "scroll-step": 5,
+        "smooth-scrolling-threshold": 0.3,
+        "reverse-scrolling": true,
+        "format": "{icon}  {volume} {format_source}",
+        "format-bluetooth": "{icon}  {volume}  {format_source}",
+        "format-bluetooth-muted": "{icon} - {format_source}",
+        "format-muted": "- {format_source}",
+        "format-source": " {volume}",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "mpris": {
+        // waybar-mpris
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} {dynamic}",
+        "max-length": 50,
+        "player-icons": {
+            "default": "▶",
+            "spotify": "",
+            "firefox": "",
+            "chromium-browser": "",
+            "mpd": "mpd",
+            "mpv": "mpv",
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "reverse-scroll": true,
+        "smooth-scrolling-threshold": 3.0,
+        "on-scroll-left": "playerctl position 15+",
+        "on-scroll-right": "playerctl position 15-",
+        "on-scroll-up": "playerctl volume 0.05-",
+        "on-scroll-down": "playerctl volume 0.05+",
+        "ignored-players": [
+            "chromium-browser"
+        ]
+    },
+    "custom/firefox": {
+        "format": "{}       ",
+        "tooltip": false,
+        "on-click": "firefox",
+        "on-click-right": "firefox --new-private-window"
+    },
+    "custom/gnome-tweaks": {
+        "format": "{}        ",
+        "tooltip": false,
+        "on-click": "gnome-tweaks"
+    },
+    "custom/gnome-calculator": {
+        "format": "{}        ",
+        "tooltip": false,
+        "on-click": "gnome-calculator"
+    },
+    "custom/music": {
+        "format": "{}        ",
+        "tooltip": false,
+        "on-click": "spotify",
+        "on-click-right": "kitty -e ncmpcpp"
+    },
+    "custom/editor": {
+        "format": "{}        ",
+        "tooltip": false,
+        "on-click": "kitty --directory /etc/nixos -e nvim",
+        "on-click-right": "kitty -d /etc/nixos"
+    },
+    "custom/files": {
+        "format": "{}     ",
+        "tooltip": false,
+        "on-click": "thunar",
+        "on-click-right": "kitty -e lf"
+    },
+    "custom/messenger": {
+        "format": "{}       ",
+        "tooltip": false,
+        "on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
+        "on-click-right": "firefox https://www.facebook.com/"
+    },
+    "custom/tree": {
+        "format": "{}   ",
+        "tooltip": false,
+        "on-click": "kitty -e nix-tree",
+        "on-click-right": "kitty --hold -e swaymsg -t get_tree"
+    },
+}
