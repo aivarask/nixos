@@ -31,7 +31,7 @@
         # ./audio/production.nix
         ./common/config.nix
         ./common/environment.nix
-        ./common/nix.nix
+        ./nix.nix
         ./services.nix
         ./httpd
         ./lua

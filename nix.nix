@@ -27,10 +27,10 @@ in
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   nix.extraOptions = ''
-        use-xdg-base-directories = true
-        warn-dirty = false
-        download-buffer-size = ${toString (67108864 * 4)}
-    		download-attempts = 2
+    use-xdg-base-directories = true
+    warn-dirty = false
+    download-buffer-size = ${toString (67108864 * 4)}
+    download-attempts = 2
   '';
   nix.settings.max-jobs = 8;
   nix.settings.cores = 4;
