@@ -13,10 +13,10 @@
         "include": [
             "./custom.jsonc"
         ],
-        "modules-left": [
-            "cpu",
-            "systemd-failed-units"
-        ],
+        // "modules-left": [
+            // "cpu",
+            // "systemd-failed-units"
+        // ],
         "modules-center": [
             "custom/firefox",
             "custom/messenger",
@@ -45,8 +45,7 @@
             "./custom.jsonc"
         ],
         "modules-left": [
-            "tray",
-            //
+            // "tray",
             "sway/mode",
             "sway/workspaces",
         ],
@@ -54,7 +53,7 @@
             "sway/window"
         ],
         "modules-right": [
-            "idle_inhibitor",
+            // "idle_inhibitor",
             "pulseaudio",
             "custom/brightness",
             "battery",
