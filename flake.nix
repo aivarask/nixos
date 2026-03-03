@@ -25,20 +25,6 @@
     { nixpkgs, self, ... }@inputs:
     let
       commonModules = [
-        inputs.disko.nixosModules.disko
-        ./audio/mpd.nix
-        ./audio/pipewire.nix
-        # ./audio/production.nix
-        ./disks.nix
-        ./environment.nix
-        ./packages.nix
-        ./nix.nix
-        ./services.nix
-        ./httpd
-        ./lua
-        ./sway
-        (
-        )
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -69,6 +55,18 @@
             };
           };
         }
+        inputs.disko.nixosModules.disko
+        ./audio/mpd.nix
+        ./audio/pipewire.nix
+        # ./audio/production.nix
+        ./disks.nix
+        ./environment.nix
+        ./packages.nix
+        ./nix.nix
+        ./services.nix
+        ./httpd
+        ./lua
+        ./sway
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
