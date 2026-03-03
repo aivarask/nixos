@@ -34,8 +34,9 @@ output * adaptive_sync on
 # Monitors swaymsg -t get_outputs
 # ------------------------------------------------------------
 # output * bg #000000 solid_color
-output DP-1     resolution 3840x2160 position 0,0 scale 2.5
-output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
+output DP-1     resolution 3840x2160 position 1920,0 scale 2.5
+# output HDMI-A-1 resolution 1920x1080 position 1536,0 scale 1
+output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
 # output HDMI-A-1 disable
 
 output eDP-1    resolution 3840x2160 position 0,0 scale 2
