@@ -42,6 +42,10 @@
     glib
   ];
 
+            systemd.sleep.extraConfig = ''
+              HibernateDelaySec=1h
+            '';
+
   programs.tmux.enable = true;
   programs.tmux.extraConfig = ''
 
@@ -215,4 +219,20 @@
       mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
     };
   };
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [
+    "C.UTF-8/UTF-8"
+    "en_US.UTF-8/UTF-8"
+  ];
+  location.provider = lib.mkDefault "manual";
+  location.latitude = 54.0;
+  location.longitude = 25.0;
+
+  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "kalesnykas.aivaras@gmail.com";
+  security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+  security.sudo.wheelNeedsPassword = false;
+  security.pam.services.nginx.setEnvironment = false;
+  nixpkgs.config.joypixels.acceptLicense = true;
 }
