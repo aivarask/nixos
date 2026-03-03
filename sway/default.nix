@@ -57,10 +57,18 @@
     pavucontrol
     pipewire
     playerctl
+    python3
     qtscrcpy
     rofi
     scrcpy
     slurp
+
+    # internet speed
+    ookla-speedtest
+    speedtest-cli
+    iperf3
+    traceroute
+
     sway
     sway-contrib.grimshot
     sway-contrib.inactive-windows-transparency

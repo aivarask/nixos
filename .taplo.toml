@@ -1,6 +1,9 @@
+#:schema https://www.schemastore.org/taplo.json
+# https://taplo.tamasfe.dev/configuration/formatter-options.html
+
 include = [
-	"*.toml",
-	# "*.conf"
+    "*.toml",
+    # "*.conf"
 ]
 
 [formatting]

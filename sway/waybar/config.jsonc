@@ -14,8 +14,8 @@
             "./custom.jsonc"
         ],
         // "modules-left": [
-            // "cpu",
-            // "systemd-failed-units"
+        // "cpu",
+        // "systemd-failed-units"
         // ],
         "modules-center": [
             "custom/firefox",
@@ -27,11 +27,12 @@
             "custom/gnome-tweaks",
             "custom/gnome-calculator",
             "custom/tree",
+            "custom/bandwidth"
         ],
         "modules-right": [
             "pulseaudio",
-            "mpris",
-        ],
+            "mpris"
+        ]
     },
     {
         "name": "bartop",
@@ -47,7 +48,7 @@
         "modules-left": [
             // "tray",
             "sway/mode",
-            "sway/workspaces",
+            "sway/workspaces"
         ],
         "modules-center": [
             "sway/window"
@@ -104,7 +105,7 @@
                 "class<firefox>": "",
                 "class<chromium-browser>": "",
                 "class<kitty>": "",
-                "class<spotify>": "",
+                "class<spotify>": ""
                 // "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
             },
             "format-window-separator": " ",

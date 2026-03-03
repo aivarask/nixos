@@ -193,6 +193,9 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
           ./common/pc.nix
+          ./binarycache.nix
+          ./boot.nix
+          ./network.nix
           ./autologin.nix
           ./search.nix
         ];

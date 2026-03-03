@@ -127,7 +127,7 @@ in
     }
   );
 
-  # programs.ncmpcpp.enable = true;
+  programs.ncmpcpp.enable = true;
   xdg.configFile."ncmpcpp/config" = {
     enable = true;
     force = true;

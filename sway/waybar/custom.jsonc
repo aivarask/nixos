@@ -1,5 +1,8 @@
 // -*- mode: jsonc -*-
 {
+    "custom/bandwidth": {
+        "exec": "$HOME/.config/waybar/bandwidth.py"
+    },
     "cpu": {
         // waybar-cpu
         "format": " {usage}",
@@ -13,7 +16,7 @@
         "system": true,
         "user": true,
         "on-click": "kitty --hold -e systemctl --user --failed",
-        "on-click": "kitty --hold -e systemctl --user --failed"
+        "on-click-right": "kitty --hold -e systemctl --failed"
     },
     "pulseaudio": {
         // waybar-pulseaudio
@@ -53,7 +56,7 @@
             "firefox": "",
             "chromium-browser": "",
             "mpd": "mpd",
-            "mpv": "mpv",
+            "mpv": "mpv"
         },
         "status-icons": {
             "paused": "⏸"
@@ -113,5 +116,5 @@
         "tooltip": false,
         "on-click": "kitty -e nix-tree",
         "on-click-right": "kitty --hold -e swaymsg -t get_tree"
-    },
+    }
 }

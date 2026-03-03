@@ -30,9 +30,6 @@
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
     # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     # inputs.nixos-hardware.nixosModules.common-hidpi
-    ./../network.nix
-    ./boot.nix
-    ./binarycache.nix
     ./../minimal.nix
   ];
   networking.hostName = "pc";
@@ -40,7 +37,7 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.fancontrol.enable = false;
-  hardware.fancontrol.config = '''';
+  hardware.fancontrol.config = "";
 
   # https://nouveau.freedesktop.org/CodeNames.html
   # https://github.com/korvahannu/arch-nvidia-drivers-installation-guide

@@ -1,22 +1,54 @@
-add_newline = true
+#:schema https://raw.githubusercontent.com/starship/starship/refs/heads/master/.github/config-schema.json
 
-[golang]
-disabled = true
+add_newline = false
 
-[lua]
-disabled = true
+format = """
+$directory\
+$character\
+"""
 
-[nodejs]
-disabled = true
+right_format = """
+${env_var.GTK_THEME}
+$cmd_duration\
+$status
+$shell\
+$shlvl\
+$username\
+$hostname\
+$username\
+$localip\
+"""
 
-[python]
-disabled = true
+[directory] # https://starship.rs/config/#directory
+format = "[$path]($style)[$read_only]($read_only_style) "
 
-[package]
-disabled = true
+[env_var.GTK_THEME]
+default = 'gtk_theme'
+format  = "[$symbol$env_value]($style) "
 
-[php]
-disabled = true
+[cmd_duration] # https://starship.rs/config/#command-duration
 
-[rust]
-disabled = true
+[status] # https://starship.rs/config/#status
+
+[shell] # https://starship.rs/config/#shell
+disabled = false
+
+[shlvl] # https://starship.rs/config/#shlvl
+
+[username] # https://starship.rs/config/#username
+format = "[$user]($style)"
+
+[hostname] # https://starship.rs/config/#hostname
+format   = "[$ssh_symbol@$hostname]($style) "
+ssh_only = false
+
+[localip]
+ssh_only = false
+format   = '@[$localipv4](bold red) '
+disabled = false
+
+[memory_usage]
+disabled  = false
+threshold = -1
+symbol    = ' '
+style     = 'bold dimmed green'

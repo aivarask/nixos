@@ -97,15 +97,17 @@
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.18.3"
-    "broadcom-sta-6.30.223.271-59-6.19.3"
+    "broadcom-sta-6.30.223.271-59-6.19.5"
+
   ];
   boot.initrd.kernelModules = [ "wl" ];
   boot.kernelModules = [
     "kvm-intel"
     "wl"
   ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.broadcom_sta # nixpkgs.config.permittedInsecurePackages
+  ];
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   programs.git.enable = true;
   # environment.etc."gitconfig".source = ./.config/git/config_global;
