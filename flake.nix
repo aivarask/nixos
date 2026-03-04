@@ -36,7 +36,7 @@
               SELF = "/etc/nixos";
               inherit inputs;
             };
-            sharedModules = [ { home.stateVersion = "23.05"; } ];
+            sharedModules = [ { home.stateVersion = "26.05"; } ];
 
             users.root = {
               home.username = "root";
@@ -107,6 +107,7 @@
                 ./bluetooth.nix
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
+                ./mix.nix
               ];
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;

@@ -107,8 +107,12 @@ bindsym $mod+Shift+minus move scratchpad
 # ------------------------------------------------------------
 bar {
 # sway-bar
-	swaybar_command waybar
+	swaybar_command waybar -b top
 }
+# exec_always waybar_peek.py
+
+bindsym $mod+b exec "pkill -USR1 waybar"
+
 floating_modifier $mod normal
 bindsym	$mod+Escape reload
 bindsym ctrl+shift+w exec $term

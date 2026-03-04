@@ -1,29 +1,24 @@
 // -*- mode: jsonc -*-
 [
     {
+        "id": "bot",
         "name": "barbot",
         "position": "bottom",
         "spacing": 24,
         "layer": "top",
         "exclusive": false,
-        // "ipc": true,
-        // "mode": "hide",
-        // "start_hidden": true,
-        // "modifier": "Mod4",
+        "passthrough": true,
+        "start_hidden": true,
         "include": [
             "./custom.jsonc"
         ],
-        // "modules-left": [
-        // "cpu",
-        // "systemd-failed-units"
-        // ],
         "modules-center": [
             "custom/firefox",
             "custom/messenger",
             "custom/music",
             "custom/editor",
             "custom/files",
-            "custom/monitor",
+            // "custom/monitor",
             "custom/gnome-tweaks",
             "custom/gnome-calculator",
             "custom/tree",
@@ -35,6 +30,7 @@
         ]
     },
     {
+        "id": "top",
         "name": "bartop",
         "layer": "top",
         "position": "top",

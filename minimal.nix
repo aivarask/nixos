@@ -109,6 +109,7 @@
   boot.kernelModules = [
     "kvm-intel"
     "wl"
+    "i2c-dev"
   ];
   boot.extraModulePackages = [
     config.boot.kernelPackages.broadcom_sta # nixpkgs.config.permittedInsecurePackages

@@ -228,9 +228,9 @@ enable = True
 enabled = ['core_commands']
 
 [statistics]
-started_downloads = 93
-completed_downloads = 93
-downloaded_size = 2089025138
+started_downloads = 617
+completed_downloads = 617
+downloaded_size = 13358682027
 started_uploads = 0
 completed_uploads = 0
 uploaded_size = 0
