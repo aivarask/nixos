@@ -192,7 +192,7 @@ in
         };
     };
 
-    profiles.default.search = {
+    profiles."default".search = {
       force = true;
       default = "ddg";
       privateDefault = "ddg";

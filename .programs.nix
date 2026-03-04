@@ -11,9 +11,9 @@ in
 {
 
   imports = [
-    ./.config/zsh/default.nix
     ./.config/chromium/default.nix
     ./.config/firefox/default.nix
+    ./.config/zsh/default.nix
     (
       { pkgs, ... }:
       {
@@ -63,8 +63,17 @@ in
     spotify
     ncspot
   ];
-  xdg.configFile."mozilla/firefox/default/chrome".source = symlink "${xdgconf}/firefox/chrome";
-  xdg.configFile."mozilla/firefox/default/user.js".source = symlink "${xdgconf}/firefox/user.js";
+  xdg.configFile."mozilla/firefox/default/chrome" = {
+    source = symlink "${xdgconf}/firefox/chrome";
+    enable = true;
+    force = true;
+    recursive = true;
+  };
+  xdg.configFile."mozilla/firefox/default/user.js" = {
+    source = symlink "${xdgconf}/firefox/user.js";
+    enable = true;
+    force = true;
+  };
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";
