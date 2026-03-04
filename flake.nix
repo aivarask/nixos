@@ -48,8 +48,6 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 ./.programs.nix
-                ./browsers/chromium-browser.nix
-                ./browsers/firefox.nix
                 ./lua/default_hm.nix
               ];
             };

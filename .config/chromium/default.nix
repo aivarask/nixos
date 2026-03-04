@@ -1,27 +1,6 @@
 { pkgs, ... }:
 {
   home.sessionVariables.NIXOS_OZONE_WL = "1";
-  # home.packages = with pkgs; [
-  #   (chromium.override {
-  #     # extensions = [ ];
-  #     enableWideVine = true;
-  #     commandLineArgs = [
-  #       "--enable-features=AcceleratedVideoEncoder"
-  #       "--ignore-gpu-blocklist"
-  #       "--enable-zero-copy"
-  #     ];
-  #     extraOpts = {
-  #       "BrowserSignin" = 0;
-  #       "SyncDisabled" = true;
-  #       "PasswordManagerEnabled" = false;
-  #       "SpellcheckEnabled" = true;
-  #       "SpellcheckLanguage" = [
-  #         "lt"
-  #         "en-US"
-  #       ];
-  #     };
-  #   })
-  # ];
 
   programs.chromium = {
     enable = true;
