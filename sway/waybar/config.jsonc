@@ -3,13 +3,13 @@
     {
         "name": "bottom_bar",
         "position": "bottom",
-        "height": 48,
+        "height": 34,
         "spacing": 8,
         "layer": "top",
         "exclusive": false,
         // "passthrough": true,
         "start_hidden": false,
-        "ipc": true,
+        // "ipc": true,
         "include": [
             "./custom.jsonc"
         ],
@@ -35,8 +35,8 @@
         "name": "top_bar",
         "layer": "top",
         "position": "top",
-        "height": 24,
-        "spacing": 24,
+        "height": 34,
+        "spacing": 18,
         "ipc": true,
         "reload_style_on_change": true,
         "include": [
@@ -54,13 +54,14 @@
         "modules-right": [
             // "idle_inhibitor",
             "pulseaudio",
-            "custom/brightness",
+            // "custom/brightness",
             "battery",
             "backlight",
             "network",
             "sway/language",
             "custom/wttrbar",
-            "clock"
+            "clock",
+            "custom/power"
         ],
         "tray": {
             // waybar-tray
@@ -114,25 +115,6 @@
             "format": "{}",
             "max-length": 50
         },
-        "custom/wttrbar": {
-            "format": "{}° ",
-            "return-type": "json",
-            "exec": "wttrbar --location Sirvintos",
-            "tooltip": true,
-            "interval": 3600
-        },
-        "custom/brightness": {
-            // waybar-custom https://github.com/Alexays/Waybar/wiki/Module:-Custom
-            "exec": "brightness_monitor",
-            "format": "🔅 {text}",
-            "return-type": "json",
-            "restart-interval": 2,
-            "tooltip": false,
-            "on-scroll-up": "ddcutil setvcp 10 + 5",
-            "on-scroll-down": "ddcutil setvcp 10 - 5",
-            "on-click": "ddcutil setvcp 10 20",
-            "on-click-right": "ddcutil setvcp 10 90"
-        },
         "backlight": {
             // waybar-backlight
             "format": "🔅{percent}",
@@ -154,15 +136,6 @@
         },
         "sway/language": {
             "format": "{flag}"
-        },
-        "custom/power": {
-            "format": " ⏻ ",
-            "tooltip": true,
-            "menu": "on-click",
-            "menu-file": "$HOME/.config/waybar/power.xml",
-            "menu-actions": {
-                "shutdown": "shutdown"
-            }
         },
         "sway/scratchpad": {
             "format": "{icon} {count}",

@@ -51,6 +51,34 @@
         "on-click": "kitty -e nix-tree",
         "on-click-right": "kitty --hold -e swaymsg -t get_tree"
     },
+    "custom/brightness": {
+        // waybar-custom
+        "exec": "brightness_monitor",
+        "format": "🔅 {text}",
+        "return-type": "json",
+        "restart-interval": 2,
+        "tooltip": false,
+        "on-scroll-up": "ddcutil setvcp 10 + 5",
+        "on-scroll-down": "ddcutil setvcp 10 - 5",
+        "on-click": "ddcutil setvcp 10 20",
+        "on-click-right": "ddcutil setvcp 10 90"
+    },
+    "custom/wttrbar": {
+        "format": "{}° ",
+        "return-type": "json",
+        "exec": "wttrbar --location Sirvintos",
+        "tooltip": true,
+        "interval": 3600
+    },
+    "custom/power": {
+        "format": " ⏻ ",
+        "tooltip": true,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power.xml",
+        "menu-actions": {
+            "shutdown": "shutdown"
+        }
+    },
     "wlr/taskbar": {
         // waybar-wlr-taskbar
         "format": "{icon}",

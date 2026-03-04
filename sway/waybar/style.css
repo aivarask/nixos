@@ -1,5 +1,17 @@
 /* https: //github.com/kamlendras/waybar-macos-sequoia/tree/main */
 
+window#waybar.bottom_bar {
+    background: transparent;
+}
+
+#workspaces button.focused {
+    background: gray;
+}
+
+#workspaces button:hover {
+    background: darkslategrey;
+}
+
 #clock {
     font-size: 12px;
 }
