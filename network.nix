@@ -27,11 +27,6 @@
   ];
   # netstat -antup
   # nestat --all --numeric --tcp --udp --program
-  networking.nameservers = [
-    "8.8.8.8"
-    "1.1.1.1"
-    "192.168.0.1"
-  ];
   programs.bandwhich.enable = true;
   programs.iftop.enable = true;
   programs.sharing.enable = true;

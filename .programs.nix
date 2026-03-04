@@ -40,6 +40,7 @@ in
       }
     )
     ./.config/zsh/default.nix
+./.config/firefox/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -61,6 +62,10 @@ in
     spotify
     ncspot
   ];
+  xdg.configFile."mozilla/firefox/default/chrome".source =
+    symlink "${xdgconf}/firefox/default/chrome";
+  xdg.configFile."mozilla/firefox/default/user.js".source =
+    symlink "${xdgconf}/firefox/default/user.js";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";

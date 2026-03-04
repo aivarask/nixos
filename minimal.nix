@@ -63,6 +63,7 @@
   networking.nameservers = [
     "8.8.8.8"
     "1.1.1.1"
+    "192.168.0.1"
   ];
   # networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {
