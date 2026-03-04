@@ -1,5 +1,11 @@
 // -*- mode: jsonc -*-
 {
+    "custom/drawer": {
+        "on-click": "nwg-menu",
+        "on-click-right": "nwg-drawer",
+        "format": "{}⚡     ",
+        "tooltip": false
+    },
     "custom/run_editor": {
         "on-click": "kitty --directory /etc/nixos -e nvim",
         "on-click-right": "kitty -d /etc/nixos",
@@ -41,7 +47,7 @@
         "tooltip": false
     },
     "custom/run_emoji": {
-        "format": "{}🚀",
+        "format": "{}😎",
         "tooltip": false,
         "on-click": "bemoji"
     },
@@ -156,5 +162,5 @@
         "ignored-players": [
             "chromium-browser"
         ]
-    },
+    }
 }

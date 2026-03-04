@@ -20,11 +20,11 @@ set $right l
 # Performance Tweaks
 # ------------------------------------------------------------
 xwayland disable
+for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [app_id="thunar"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
-for_window [floating] opacity 0.9
-default_border pixel
-default_floating_border pixel
+for_window [app_id="org.gnome.tweaks"] floating enable
+# for_window [floating] opacity 0.9
 focus_follows_mouse yes
 output * allow_tearing yes
 output * max_render_time off
@@ -82,7 +82,7 @@ exec mako
 exec kanshi
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
-
+exec_always nwg-dock -d -o
 # ------------------------------------------------------------
 # Idle / Lock
 # ------------------------------------------------------------
@@ -94,8 +94,8 @@ exec swayidle -w \
 # Scratchpads
 # ------------------------------------------------------------
 for_window [title="scratchpad-term"] move to scratchpad
-bindsym $mod+minus scratchpad show
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Escape scratchpad show
+bindsym $mod+Shift+Escape move scratchpad
 
 # ------------------------------------------------------------
 # Bindings
@@ -106,8 +106,9 @@ bar {
 }
 bindsym $mod+b exec "pkill -USR1 waybar"
 
+default_orientation vertical
 floating_modifier $mod normal
-bindsym	$mod+Escape reload
+bindsym	$mod+f5 reload
 bindsym ctrl+shift+w exec $term
 bindsym $mod+shift+n exec swaync-client -t -sw
 bindsym $mod+f11 reload
@@ -229,6 +230,8 @@ client.urgent           $red $red $white $red $red
 gaps inner 4px
 gaps outer 2px
 smart_gaps on
+default_border pixel
+default_floating_border pixel
 hide_edge_borders smart_no_gaps
 font monospace 10
 # font pango:monospace 8
@@ -239,7 +242,7 @@ corner_radius 4
 blur enable
 blur_passes 2
 blur_radius 4
-shadows enable
+shadows disable
 shadow_blur_radius 4
 default_dim_inactive 0.25
 

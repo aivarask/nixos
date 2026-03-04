@@ -90,10 +90,22 @@
     wireplumber
     wl-clipboard
     wlr-which-key
+    wlr-randr
     wttrbar
     xcursor-pro
     xdg-desktop-portal-wlr
     xkeyboard-config
     xkbcomp
+    setxkbmap
+    # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
+    nwg-panel
+    nwg-dock
+    nwg-icon-picker
+    nwg-menu
+    nwg-drawer
+    nwg-clipman
+    nwg-dock
+    nwg-displays
+
   ];
 }
