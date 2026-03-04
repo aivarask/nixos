@@ -1,167 +1,53 @@
 /* https: //github.com/kamlendras/waybar-macos-sequoia/tree/main */
 
-* {
-    font-size: 16px;
-    padding: 0px;
-    min-height: 0;
-}
-
-.bartop {}
-
-.barbot {
-    background-color: transparent;
-}
-
-window#waybar {
-    color: white;
-}
-
-tooltip {
-    background: black;
-}
-
-tooltip label {
-    color: white;
-}
-
-#workspaces button {
-    padding: 0 8px;
-    margin: 0 8px;
-    background: gray;
-    color: white;
-}
-
-#workspaces button.focused {
-    background: green;
-}
-
-#workspaces button:hover {
-    background: green;
-}
-
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
-}
-
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
-}
-
 #clock {
     font-size: 12px;
 }
 
-#battery icon {
-    color: red;
-}
-
-#battery.charging,
-#battery.plugged {
-    color: green;
-}
-
-@keyframes blink {
-    to {
-        background-color: white;
-        color: black;
-    }
-}
-
-#battery.warning:not(.charging) {
-    color: orange;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.critical:not(.charging) {
-    color: red;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: black;
-}
-
-#network.disconnected {
-    color: red;
-}
-
-#temperature.critical {
-    color: red;
-}
-
-#idle_inhibitor.activated {
-    color: white;
-}
-
-
-#tray>.passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-    -gtk-icon-effect: highlight;
-    color: red;
-}
-
-#custom-gnome-tweaks {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-gnome-calculator {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-tree {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/x.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-music {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-editor {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-files {
+#custom-run_files {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/places/folder-adwaita.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-#custom-firefox {
+#custom-run_music {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-run_messenger {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/FacebookMessenger-facebook.com.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-run_firefox {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-#custom-messenger {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/FacebookMessenger-facebook.com.svg');
+#custom-run_calculator {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-run_gnome_tweaks {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-run_editor {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

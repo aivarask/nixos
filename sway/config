@@ -77,22 +77,17 @@ input type:pointer {
 # ------------------------------------------------------------
 # Autostart
 # ------------------------------------------------------------
-exec_always gammastep
-exec_always mako
-exec_always kanshi
-exec_always wl-paste --type text --watch cliphist store
-exec_always wl-paste --type image --watch cliphist store
-exec_always {
-    # gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-	# gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-    # gsettings set org.gnome.desktop.interface icon-theme "Papirus"
-}
+exec gammastep
+exec mako
+exec kanshi
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 # ------------------------------------------------------------
 # Idle / Lock
 # ------------------------------------------------------------
 for_window [app_id="firefox"] inhibit_idle fullscreen
-exec_always swayidle -w \
+exec swayidle -w \
     timeout 1200 'systemctl suspend'
 
 # ------------------------------------------------------------
@@ -107,10 +102,8 @@ bindsym $mod+Shift+minus move scratchpad
 # ------------------------------------------------------------
 bar {
 # sway-bar
-	swaybar_command waybar -b top
+	swaybar_command waybar
 }
-# exec_always waybar_peek.py
-
 bindsym $mod+b exec "pkill -USR1 waybar"
 
 floating_modifier $mod normal
@@ -234,14 +227,24 @@ client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
 gaps inner 4px
-gaps outer 4px
+gaps outer 2px
 smart_gaps on
 hide_edge_borders smart_no_gaps
 font monospace 10
 # font pango:monospace 8
 seat seat0 xcursor_theme "XCursor-Pro-Light" 24
 
+# SwayFX effects
+corner_radius 4
+blur enable
+blur_passes 2
+blur_radius 4
+shadows enable
+shadow_blur_radius 4
+default_dim_inactive 0.25
+
 # ------------------------------------------------------------
 # Other
 # ------------------------------------------------------------
 include /etc/sway/config.d/*
+

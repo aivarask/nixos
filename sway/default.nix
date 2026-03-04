@@ -14,9 +14,10 @@
   environment.variables.CLUTTER_BACKEND = "wayland";
   environment.variables.SDL_VIDEODRIVER = "wayland";
   programs.sway.enable = true;
+  programs.sway.package = pkgs.swayfx;
   programs.sway.wrapperFeatures.gtk = true;
   programs.uwsm.enable = true;
-  programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.sway}/bin/sway";
+  programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.swayfx}/bin/sway";
   programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
   programs.dconf.enable = true;
 
@@ -69,7 +70,7 @@
     iperf3
     traceroute
 
-    sway
+    # sway
     sway-contrib.grimshot
     sway-contrib.inactive-windows-transparency
     sway-easyfocus

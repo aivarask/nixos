@@ -1,28 +1,30 @@
 // -*- mode: jsonc -*-
 [
     {
-        "id": "bot",
-        "name": "barbot",
+        "name": "bottom_bar",
         "position": "bottom",
-        "spacing": 24,
+        "height": 48,
+        "spacing": 8,
         "layer": "top",
         "exclusive": false,
-        "passthrough": true,
-        "start_hidden": true,
+        // "passthrough": true,
+        "start_hidden": false,
+        "ipc": true,
         "include": [
             "./custom.jsonc"
         ],
+        "modules-left": [],
         "modules-center": [
-            "custom/firefox",
-            "custom/messenger",
-            "custom/music",
-            "custom/editor",
-            "custom/files",
-            // "custom/monitor",
-            "custom/gnome-tweaks",
-            "custom/gnome-calculator",
-            "custom/tree",
-            "custom/bandwidth"
+            "custom/run_editor",
+            "custom/run_files",
+            "custom/run_gnome_tweaks",
+            "custom/run_calculator",
+            "custom/run_files",
+            "custom/run_messenger",
+            "custom/run_firefox",
+            "custom/run_music",
+            "custom/run_emoji",
+            "custom/run_tree",
         ],
         "modules-right": [
             "pulseaudio",
@@ -30,8 +32,7 @@
         ]
     },
     {
-        "id": "top",
-        "name": "bartop",
+        "name": "top_bar",
         "layer": "top",
         "position": "top",
         "height": 24,
@@ -44,7 +45,8 @@
         "modules-left": [
             // "tray",
             "sway/mode",
-            "sway/workspaces"
+            "sway/workspaces",
+            "wlr/taskbar"
         ],
         "modules-center": [
             "sway/window"

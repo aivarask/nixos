@@ -1,7 +1,65 @@
 // -*- mode: jsonc -*-
 {
-    "custom/bandwidth": {
-        "exec": "$HOME/.config/waybar/bandwidth.py"
+    "custom/run_editor": {
+        "on-click": "kitty --directory /etc/nixos -e nvim",
+        "on-click-right": "kitty -d /etc/nixos",
+        "format": "{}        ",
+        "tooltip": false
+    },
+    "custom/run_gnome_tweaks": {
+        "on-click": "gnome-tweaks",
+        "format": "{}        ",
+        "tooltip": false
+    },
+    "custom/run_calculator": {
+        "on-click": "gnome-calculator",
+        "format": "{}        ",
+        "tooltip": false
+    },
+    "custom/run_files": {
+        "on-click": "thunar",
+        "on-click-right": "kitty -e lf",
+        "format": "{}     ",
+        "tooltip": false
+    },
+    "custom/run_firefox": {
+        "on-click": "firefox",
+        "on-click-right": "firefox --new-private-window",
+        "format": "{}       ",
+        "tooltip": false
+    },
+    "custom/run_messenger": {
+        "on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
+        "on-click-right": "firefox https://www.facebook.com/",
+        "format": "{}       ",
+        "tooltip": false
+    },
+    "custom/run_music": {
+        "on-click": "spotify",
+        "on-click-right": "kitty -e ncmpcpp",
+        "format": "{}        ",
+        "tooltip": false
+    },
+    "custom/run_emoji": {
+        "format": "{}🚀",
+        "tooltip": false,
+        "on-click": "bemoji"
+    },
+    "custom/run_tree": {
+        "format": "{}🪾",
+        "tooltip": false,
+        "on-click": "kitty -e nix-tree",
+        "on-click-right": "kitty --hold -e swaymsg -t get_tree"
+    },
+    "wlr/taskbar": {
+        // waybar-wlr-taskbar
+        "format": "{icon}",
+        "icon-size": 24,
+        "spacing": 4,
+        "on-click-middle": "close",
+        "tooltip-format": "{title}",
+        "ignore-list": [],
+        "on-click": "activate"
     },
     "cpu": {
         // waybar-cpu
@@ -71,50 +129,4 @@
             "chromium-browser"
         ]
     },
-    "custom/firefox": {
-        "format": "{}       ",
-        "tooltip": false,
-        "on-click": "firefox",
-        "on-click-right": "firefox --new-private-window"
-    },
-    "custom/gnome-tweaks": {
-        "format": "{}        ",
-        "tooltip": false,
-        "on-click": "gnome-tweaks"
-    },
-    "custom/gnome-calculator": {
-        "format": "{}        ",
-        "tooltip": false,
-        "on-click": "gnome-calculator"
-    },
-    "custom/music": {
-        "format": "{}        ",
-        "tooltip": false,
-        "on-click": "spotify",
-        "on-click-right": "kitty -e ncmpcpp"
-    },
-    "custom/editor": {
-        "format": "{}        ",
-        "tooltip": false,
-        "on-click": "kitty --directory /etc/nixos -e nvim",
-        "on-click-right": "kitty -d /etc/nixos"
-    },
-    "custom/files": {
-        "format": "{}     ",
-        "tooltip": false,
-        "on-click": "thunar",
-        "on-click-right": "kitty -e lf"
-    },
-    "custom/messenger": {
-        "format": "{}       ",
-        "tooltip": false,
-        "on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
-        "on-click-right": "firefox https://www.facebook.com/"
-    },
-    "custom/tree": {
-        "format": "{}   ",
-        "tooltip": false,
-        "on-click": "kitty -e nix-tree",
-        "on-click-right": "kitty --hold -e swaymsg -t get_tree"
-    }
 }
