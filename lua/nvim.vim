@@ -1,6 +1,6 @@
 
 if has('nvim')
-	autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
+	"autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
 	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 	set nofoldenable
 	" set foldmethod=expr
@@ -27,7 +27,7 @@ if has('nvim')
 	nnoremap <leader>M :Telescope manix<CR>
 	nnoremap <leader>t :Telescope resume<CR>
 	nnoremap <leader>T :Telescope<CR>
-	      
+
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>
 	nnoremap <M-k> :wincmd k<CR>

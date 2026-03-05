@@ -7,10 +7,33 @@
 }:
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
+  xdgconf = "${SELF}/.config";
 
 in
 {
+  home.file.".mozilla/firefox/default/chrome" = {
+    source = symlink "${xdgconf}/firefox/chrome";
+    enable = true;
+    force = true;
+    recursive = true;
+  };
+  home.file.".mozilla/firefox/default/user.js" = {
+    source = symlink "${xdgconf}/firefox/user.js";
+    enable = true;
+    force = true;
+  };
 
+  # xdg.configFile."mozilla/firefox/default/chrome" = {
+  #   source = symlink "${xdgconf}/firefox/chrome";
+  #   enable = true;
+  #   force = true;
+  #   recursive = true;
+  # };
+  # xdg.configFile."mozilla/firefox/default/user.js" = {
+  #   source = symlink "${xdgconf}/firefox/user.js";
+  #   enable = true;
+  #   force = true;
+  # };
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   home.file.".mozilla/native-messaging-hosts".enable = false;
   programs.firefox = {
@@ -193,8 +216,8 @@ in
           };
         };
     };
-    profiles.default = {
-      id = 0;
+    profiles.root123 = {
+      id = 123;
       isDefault = true;
       search = {
         force = true;

@@ -62,10 +62,8 @@
         "menu-file": "/root/.config/waybar/edit.xml",
         "menu-actions": {
             "nixos": "kitty --directory /etc/nixos -e nvim",
-            "find_files": "kitty --directory /etc/nixos -- nvim -c ':lua require(\"telescope.builtin\").find_files()'",
+            "find_files": "kitty --directory=/etc/nixos -- nvim +Files",
             "find_files_home": "kitty nvim -c ':lua require(\"telescope.builtin\").find_files()'",
-            "test": "kitty --directory '\/etc\/nixos' -e nvim -- -c ':lua require(\"telescope.builtin\").find_files()'",
-            // "bc": "kitty --directory '\/etc\/nixos' nvim -c ':lua require(\"telescope.builtin\").find_files()'",
         }
     },
     "custom/run_files": {
