@@ -26,6 +26,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     # "https://github.com/NixOS/nixos-hardware/tree/master/common/gpu/nvidia"
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+    # inputs.nixos-hardware.nixosModules.common-hidpi
   ];
   networking.hostName = "pc";
   system.stateVersion = "25.05";
