@@ -100,8 +100,9 @@ exec swayidle -w \
 # Scratchpads
 # ------------------------------------------------------------
 for_window [title="scratchpad-term"] move to scratchpad
-bindsym $mod+Escape scratchpad show
-bindsym $mod+Shift+Escape move scratchpad
+bindsym ctrl+escape scratchpad show
+bindsym ctrl+shift+escape move scratchpad
+bindsym	$mod+Escape reload
 
 # ------------------------------------------------------------
 # Bindings
@@ -115,7 +116,6 @@ bindsym $mod+b exec "pkill -USR1 waybar"
 default_orientation auto
 floating_modifier $mod normal
 bindsym	$mod+f5 reload
-bindsym ctrl+shift+w exec $term
 bindsym $mod+shift+n exec swaync-client -t -sw
 bindsym $mod+f11 reload
 bindsym	$mod+f12 exit

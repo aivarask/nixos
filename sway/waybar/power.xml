@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <object class="GtkMenu" id="menu">
-    <child>
-		<object class="GtkMenuItem" id="suspend">
-            <property name="label">  suspend</property>
-        </object>
-	</child>
+    <child> <object class="GtkMenuItem" id="suspend"> <property name="label">  suspend</property> </object> </child>
     <child> <object class="GtkSeparatorMenuItem"/> </child>
-    <child>
-		<object class="GtkMenuItem" id="reboot">
-            <property name="label">  reboot</property>
-		</object>
-    </child>
+    <child> <object class="GtkMenuItem" id="reboot"> <property name="label">  reboot</property> </object> </child>
     <child> <object class="GtkSeparatorMenuItem"/> </child>
-    <child>
-        <object class="GtkMenuItem" id="poweroff">
-            <property name="label">  poweroff</property>
-        </object>
-    </child>
+    <child> <object class="GtkMenuItem" id="poweroff"> <property name="label">  poweroff</property> </object> </child>
   </object>
 </interface>

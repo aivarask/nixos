@@ -2,7 +2,7 @@ augroup minimal
 	autocmd!
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
-		autocmd BufLeave,FocusLost * silent! wal
+    autocmd BufLeave,FocusLost * silent! wal
 augroup END
 
 augroup cmdline
@@ -47,6 +47,7 @@ set bufhidden=unload
 set conceallevel=2
 set clipboard=unnamedplus
 set scrolloff=4
+set cmdheight=2
 
 "set breakindent
 "set breakindentopt=sbr

@@ -3,6 +3,6 @@
 while
     swaymsg -t subscribe '["window"]' > /dev/null
 do
-clear
-swaymsg -t get_tree
+    clear
+    swaymsg -t get_tree
 done

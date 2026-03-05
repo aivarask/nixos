@@ -27,7 +27,19 @@
             "nix_tree": "kitty -e nix-tree",
             "sway_tree": "kitty --hold -e swaymsg -t get_tree",
             "sway_treeview": "kitty --hold -e /root/.config/sway/sway_treeview"
-        },
+        }
+    },
+    "custom/tools": {
+        "format": "🛠️ {}",
+        "menu": "on-click",
+        "tooltip": false,
+        "menu-file": "$HOME/.config/waybar/tools.xml",
+        "menu-actions": {
+            "calculator": "gnome-calculator",
+            "settings": "gnome-tweaks",
+            "performance": "gnome-system-monitor",
+            "displays": "nwg-displays"
+        }
     },
     "custom/run_firefox": {
         "format": "{}       ",
@@ -43,23 +55,18 @@
             "private": "firefox --private-window"
         }
     },
-    "custom/tools": {
-        "format": "🛠️ {}",
-        "menu": "on-click",
-        "tooltip": false,
-        "menu-file": "$HOME/.config/waybar/tools.xml",
-        "menu-actions": {
-            "calculator": "gnome-calculator",
-            "settings": "gnome-tweaks",
-            "performance": "gnome-system-monitor",
-            "displays":"nwg-displays"
-        }
-    },
     "custom/run_editor": {
-        "on-click": "kitty --directory /etc/nixos -e nvim",
-        "on-click-right": "kitty -d /etc/nixos",
         "format": "{}        ",
-        "tooltip": false
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "/root/.config/waybar/edit.xml",
+        "menu-actions": {
+            "nixos": "kitty --directory /etc/nixos -e nvim",
+            "find_files": "kitty --directory /etc/nixos -- nvim -c ':lua require(\"telescope.builtin\").find_files()'",
+            "find_files_home": "kitty nvim -c ':lua require(\"telescope.builtin\").find_files()'",
+            "test": "kitty --directory '\/etc\/nixos' -e nvim -- -c ':lua require(\"telescope.builtin\").find_files()'",
+            // "bc": "kitty --directory '\/etc\/nixos' nvim -c ':lua require(\"telescope.builtin\").find_files()'",
+        }
     },
     "custom/run_files": {
         "on-click": "thunar",
