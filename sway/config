@@ -27,12 +27,10 @@ for_window [app_id="org.gnome.tweaks"] floating enable
 for_window [app_id="nwg-displays"] floating enable
 for_window [app_id="org.gnome.SystemMonitor"] floating enable
 for_window [title="sway_treeview"] floating enable
-
-# for_window [floating] opacity 0.9
 focus_follows_mouse yes
 output * allow_tearing yes
 output * max_render_time off
-output * adaptive_sync on
+# output * adaptive_sync on
 
 # ------------------------------------------------------------
 # Monitors swaymsg -t get_outputs
@@ -113,8 +111,26 @@ bar {
 }
 bindsym $mod+b exec "pkill -USR1 waybar"
 
-default_orientation auto
-floating_modifier $mod normal
+# floating https://i3wm.org/docs/userguide.html#_floating
+# for_window [floating] opacity 0.5
+# swaymsg move position center; swaymsg resize set 80ppt 80ppt
+bindsym $mod+shift+space floating toggle
+floating_modifier $mod inverse
+tiling_drag Mod4
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+
+floating_modifier $mod inverse
+# floating_modifier button7 inverse
+bindsym --whole-window button2 floating toggle
+# bindsym --whole-window button3 floating toggle
+# bindsym --whole-window $mod+button3 floating toggle
+bindsym --whole-window button1+button5 resize shrink height 20x
+
+bindsym --whole-window --release $mod+button2 kill
+bindsym button9 move left
+bindsym button8 move right
+
 bindsym	$mod+f5 reload
 bindsym $mod+shift+n exec swaync-client -t -sw
 bindsym $mod+f11 reload
@@ -123,6 +139,8 @@ bindsym $mod+shift+q kill
 bindsym $mod+grave exec $term
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
+
+default_orientation auto
 # focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -173,7 +191,6 @@ bindsym $mod+Ctrl+p  exec grimshot save window
 # bindsym $mod+s layout stacking
 # bindsym $mod+t layout tabbed
 bindsym $mod+space fullscreen
-bindsym $mod+shift+space floating toggle
 bindsym $mod+ctrl+space focus mode_toggle
 # bindsym $mod+p focus parent
 set $yt 'https://youtube.com'
@@ -202,9 +219,21 @@ mode "quit" {
 	bindsym Escape mode "default"
 }
 
+bindsym f9 seat - cursor press button3
+bindsym --release f9 seat - cursor release button3
+bindsym button3 seat - cursor press button4
+bindsym --release button3 seat - cursor release button4
+
+bindsym --whole-window button3 exec wtype -M ctrl w -m ctrl
+
 bindsym $mod+r mode "resize"
+bindsym button1+button3 mode "resize"
 set $resize_px 20px
+bindsym --whole-window $mod+button4 resize grow height $resize_px
+bindsym --whole-window $mod+button5 resize shrink height $resize_px
 mode "resize" {
+    bindsym --whole-window button4 resize grow height $resize_px
+    bindsym --whole-window button5 resize shrink height $resize_px
     bindsym $left resize shrink width $resize_px
     bindsym $down resize grow height $resize_px
     bindsym $up resize shrink height $resize_px

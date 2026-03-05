@@ -55,15 +55,26 @@ function! Syn()
 	endfor
 endfunction
 
+
 let g:switch_custom_definitions =
 			\ [
+            \   { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+            \   { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+            \   { '\v^(\s*[*+-] )?\[ \]': '\1[x]',
+            \     '\v^(\s*[*+-] )?\[x\]': '\1[-]',
+            \     '\v^(\s*[*+-] )?\[-\]': '\1[ ]',
+            \   },
+            \   { '\v^(\s*\d+\. )?\[ \]': '\1[x]',
+            \     '\v^(\s*\d+\. )?\[x\]': '\1[-]',
+            \     '\v^(\s*\d+\. )?\[-\]': '\1[ ]',
+            \   },
+            "\   ['yes', 'no'],
 			\   ['foldenable', 'nofoldenable'],
 			\   ['true', 'false'],
-			\   ['yes', 'no'],
 			\   ['horizontal', 'vertical'],
 			\   ['top', 'bottom'],
 			\   ['hide', 'show'],
-			\   ['enabled', 'disabled'],
+			\   ['enable', 'disable'],
 			\   ['firefox', 'chromium-browser'],
 			\   ['foo', 'bar', 'baz'],
 			\   ['red', 'green', 'blue']

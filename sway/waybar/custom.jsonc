@@ -66,17 +66,27 @@
             "find_files_home": "kitty nvim -c ':lua require(\"telescope.builtin\").find_files()'",
         }
     },
-    "custom/run_files": {
-        "on-click": "thunar",
-        "on-click-right": "kitty -e lf",
+    "custom/file_manager": {
         "format": "{}     ",
-        "tooltip": false
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "/root/.config/waybar/files.xml",
+        "menu-actions": {
+            "thunar": "thunar",
+            "lf_home": "kitty lf",
+        }
     },
     "custom/run_music": {
         "on-click": "spotify",
-        "on-click-right": "kitty -e ncmpcpp",
         "format": "{}        ",
-        "tooltip": false
+        "tooltip": false,
+        "menu": "on-click-right",
+        "menu-file": "/root/.config/waybar/music.xml",
+        "menu-actions": {
+            "ncmpcpp": "kitty ncmpcpp",
+            "ncspot": "kitty ncspot",
+            "nicotine+": "nicotine-plus",
+        }
     },
     "custom/brightness": {
         // waybar-custom

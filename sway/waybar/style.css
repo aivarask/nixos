@@ -16,45 +16,30 @@ window#waybar.bottom_bar {
     font-size: 12px;
 }
 
-#custom-run_files {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/places/folder-adwaita.svg');
+#custom-file_manager {
+    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/system-file-manager.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: auto 70%;
 }
 
 #custom-run_music {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    /* background-size: contain; */
+    background-size: auto 70%;
 }
 
-#custom-run_messenger {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/FacebookMessenger-facebook.com.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
 
 #custom-run_firefox {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: auto 70%;
 }
 
-#custom-run_calculator {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/calc.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-#custom-run_gnome_tweaks {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/org.gnome.tweaks.svg');
-    background-position: center;
-    background-repeat: no-repeat;
+#custom-run_firefox:hover {
     background-size: contain;
 }
 
@@ -62,5 +47,6 @@ window#waybar.bottom_bar {
     background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: auto 70%;
+    /* background-size: contain; */
 }

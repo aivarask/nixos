@@ -87,6 +87,8 @@
     wayvnc
     wdisplays
     wev
+    wtype
+    evtest
     wireplumber
     wl-clipboard
     wlr-which-key

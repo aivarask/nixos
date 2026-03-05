@@ -20,11 +20,7 @@
             "custom/run_firefox",
             "custom/tools",
             "custom/run_editor",
-            "custom/run_files",
-            "custom/run_gnome_tweaks",
-            "custom/run_calculator",
-            "custom/run_files",
-            "custom/run_messenger",
+            "custom/file_manager",
             "custom/run_music",
         ],
         "modules-right": [
@@ -44,7 +40,7 @@
             "./custom.jsonc"
         ],
         "modules-left": [
-            // "tray",
+            "tray",
             "sway/mode",
             "sway/workspaces",
             "wlr/taskbar"
@@ -67,11 +63,9 @@
         "tray": {
             // waybar-tray
             "show-passive-items": true,
-            "icon-size": 24,
+            "icon-size": 16,
             "spacing": 8,
-            "icons": {
-                "telegram": "/root/telegram_logo.jpg"
-            }
+            // "icons": {}
         },
         "battery": {
             // waybar-battery
@@ -94,8 +88,10 @@
             "all-outputs": true,
             "current-only": false,
             "format": "{name} {output} {windows}", // value name icon index output windows
+            "format-window-separator": " ",
+            "expand": true,
             "reverse-scroll": true,
-            "smooth-scrolling-threshold": 3.0,
+            "smooth-scrolling-threshold": 4.0,
             "disable-scroll-wraparound": true,
             "enable-bar-scroll": true,
             "disable-auto-back-and-forth": true,
@@ -108,8 +104,6 @@
                 "class<spotify>": ""
                 // "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
             },
-            "format-window-separator": " ",
-            "expand": true
         },
         "sway/mode": {
             // waybar-sway-mode
