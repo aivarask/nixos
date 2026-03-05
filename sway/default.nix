@@ -106,6 +106,7 @@
     nwg-clipman
     nwg-dock
     nwg-displays
+    yt-dlp
 
   ];
 }

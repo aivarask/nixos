@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="GtkMenu" id="menu">
+
+        <child> <object class="GtkMenuItem" id="r_swaywm"> <property name="label">r/swaywm</property> </object> </child>
+        <child> <object class="GtkMenuItem" id="facebook"> <property name="label">facebook.com</property> </object> </child>
+        <child> <object class="GtkMenuItem" id="messenger"> <property name="label">messenger.com</property> </object> </child>
+        <child> <object class="GtkMenuItem" id="youtube"> <property name="label">youtube.com</property> </object> </child>
+        <child> <object class="GtkMenuItem" id="private"> <property name="label">--private-window</property> </object> </child>
+    </object>
+</interface>

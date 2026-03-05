@@ -1,24 +1,63 @@
 // -*- mode: jsonc -*-
 {
     "custom/drawer": {
-        "on-click": "nwg-menu",
-        "on-click-right": "nwg-drawer",
-        "format": "{}⚡     ",
-        "tooltip": false
+        "format": " {}",
+        "on-click": "nwg-drawer",
+        "on-click-right": "nwg-menu",
+        "tooltip": false,
+        "tooltip-format": "nwg-drawer"
+    },
+    "custom/symbol": {
+        "format": "✨ {}",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/symbol.xml",
+        "menu-actions": {
+            "icon": "nwg-icon-picker",
+            "emoji": "bemoji",
+            "glyph": "firefox --new-window glyphsearch.com/?copy=unicode"
+        }
+    },
+    "custom/run_tree": {
+        "format": "🪾 {}",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/tree.xml",
+        "menu-actions": {
+            "nix_tree": "kitty -e nix-tree",
+            "sway_tree": "kitty --hold -e swaymsg -t get_tree",
+            "sway_treeview": "kitty --hold -e /root/.config/sway/sway_treeview"
+        },
+    },
+    "custom/run_firefox": {
+        "format": "{}       ",
+        "tooltip": false,
+        "on-click": "firefox",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/firefox.xml",
+        "menu-actions": {
+            "r_swaywm": "firefox --new-window reddit.com/r/swaywm",
+            "youtube": "firefox --new-window youtube.com",
+            "messenger": "firefox --new-window messenger.com/t/kalesnykas.aivaras",
+            "facebook": "firefox facebook.com",
+            "private": "firefox --private-window"
+        }
+    },
+    "custom/tools": {
+        "format": "🛠️ {}",
+        "menu": "on-click",
+        "tooltip": false,
+        "menu-file": "$HOME/.config/waybar/tools.xml",
+        "menu-actions": {
+            "calculator": "gnome-calculator",
+            "settings": "gnome-tweaks",
+            "performance": "gnome-system-monitor",
+            "displays":"nwg-displays"
+        }
     },
     "custom/run_editor": {
         "on-click": "kitty --directory /etc/nixos -e nvim",
         "on-click-right": "kitty -d /etc/nixos",
-        "format": "{}        ",
-        "tooltip": false
-    },
-    "custom/run_gnome_tweaks": {
-        "on-click": "gnome-tweaks",
-        "format": "{}        ",
-        "tooltip": false
-    },
-    "custom/run_calculator": {
-        "on-click": "gnome-calculator",
         "format": "{}        ",
         "tooltip": false
     },
@@ -28,34 +67,11 @@
         "format": "{}     ",
         "tooltip": false
     },
-    "custom/run_firefox": {
-        "on-click": "firefox",
-        "on-click-right": "firefox --new-private-window",
-        "format": "{}       ",
-        "tooltip": false
-    },
-    "custom/run_messenger": {
-        "on-click": "firefox https://www.messenger.com/e2ee/t/9295318300565974/",
-        "on-click-right": "firefox https://www.facebook.com/",
-        "format": "{}       ",
-        "tooltip": false
-    },
     "custom/run_music": {
         "on-click": "spotify",
         "on-click-right": "kitty -e ncmpcpp",
         "format": "{}        ",
         "tooltip": false
-    },
-    "custom/run_emoji": {
-        "format": "{}😎",
-        "tooltip": false,
-        "on-click": "bemoji"
-    },
-    "custom/run_tree": {
-        "format": "{}🪾",
-        "tooltip": false,
-        "on-click": "kitty -e nix-tree",
-        "on-click-right": "kitty --hold -e swaymsg -t get_tree"
     },
     "custom/brightness": {
         // waybar-custom
@@ -78,11 +94,14 @@
     },
     "custom/power": {
         "format": " ⏻ ",
-        "tooltip": true,
+        "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power.xml",
         "menu-actions": {
-            "shutdown": "shutdown"
+            "suspend": "systemctl suspend",
+            // "hibernate": "systemctl hibernate",
+            "reboot": "systemctl reboot",
+            "poweroff": "systemctl poweroff"
         }
     },
     "wlr/taskbar": {
@@ -112,30 +131,16 @@
     },
     "pulseaudio": {
         // waybar-pulseaudio
+        "format": "  {volume} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}",
+        "format-source-muted": " ",
         "on-click": "pactl set-sink-mute \\@DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol",
+        "on-click-right": "pactl set-source-mute 64 toggle",
+        "on-click-middle": "pavucontrol",
         "scroll-step": 5,
         "smooth-scrolling-threshold": 0.3,
-        "reverse-scrolling": true,
-        "format": "{icon}  {volume} {format_source}",
-        "format-bluetooth": "{icon}  {volume}  {format_source}",
-        "format-bluetooth-muted": "{icon} - {format_source}",
-        "format-muted": "- {format_source}",
-        "format-source": " {volume}",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        }
+        "reverse-scrolling": true
     },
     "mpris": {
         // waybar-mpris

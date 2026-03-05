@@ -56,12 +56,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 buffer = args.buf,
                 callback = function()
                     local ft = vim.fn.getbufvar(args.buf, '&filetype')
-                    vim.lsp.buf.format({
-                        bufnr = args.buf,
-                        id = client.id,
-                        -- timeout_ms = 1000,
-                        -- async = true
-                    })
+                    if not ft == 'xml' then
+                        vim.lsp.buf.format({
+                            bufnr = args.buf,
+                            id = client.id,
+                            -- timeout_ms = 1000,
+                            -- async = true
+                        })
+                    end
                 end,
             })
         end

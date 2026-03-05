@@ -13,19 +13,19 @@
         "include": [
             "./custom.jsonc"
         ],
-        "modules-left": [],
-        "modules-center": [
-                           "custom/drawer",
+        "modules-left": [
+            "custom/drawer",
+            "custom/symbol",
+            "custom/run_tree",
+            "custom/run_firefox",
+            "custom/tools",
             "custom/run_editor",
             "custom/run_files",
             "custom/run_gnome_tweaks",
             "custom/run_calculator",
             "custom/run_files",
             "custom/run_messenger",
-            "custom/run_firefox",
             "custom/run_music",
-            "custom/run_emoji",
-            "custom/run_tree"
         ],
         "modules-right": [
             "pulseaudio",
@@ -126,16 +126,15 @@
         },
         "network": {
             // waybar-network
-            // "format-wifi": " {essid} {signaldBm} dBm",
-            "format-wifi": "  {signalStrength} {essid}",
-            "format-ethernet": "{ipaddr}/{cidr} ",
-            "format-alt": "{ipaddr}/{cidr} {ifname}",
-            "tooltip-format": "{gwaddr} {ifname}",
-            "format-linked": "{ifname} (No IP)",
-            "format-disconnected": "No internet",
+            "format-ethernet": "🌐",
+            "tooltip-format-ethernet": "{ipaddr} {ifname} \n right-click disconnect",
+            "format-wifi": "  {signalStrength} {essid}{frequency}",
+            "tooltip-format-wifi": "{ipaddr} {ifname} \n click reconnect \n right-click disconnect",
+            "format-disconnected": " ",
+            "tooltip-format-disconnected": "click to connect",
             "on-click": "iwctl station wlan0 connect zte",
             "on-click-right": "iwctl station wlan0 disconnect",
-            "on-click-middle": "xdg-open https://192.168.0.1"
+            "on-click-middle": "xdg-open http://192.168.0.1"
         },
         "sway/language": {
             "format": "{flag}",

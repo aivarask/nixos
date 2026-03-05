@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+while
+    swaymsg -t subscribe '["window"]' > /dev/null
+do
+clear
+swaymsg -t get_tree
+done
