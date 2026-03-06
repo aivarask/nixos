@@ -102,6 +102,7 @@
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
+                ./boot.nix
                 ./minimal.nix
                 ./autologin.nix
                 ./search.nix
@@ -110,23 +111,6 @@
                 # ./disk-nvme.nix
                 ./mix.nix
               ];
-              boot.loader.systemd-boot.enable = true;
-              boot.loader.efi.canTouchEfiVariables = true;
-              # boot.loader.grub.enable = true;
-              # boot.loader.grub.efiSupport = true;
-              # boot.loader.grub.efiInstallAsRemovable = true;
-
-              # hardware
-              boot.initrd.availableKernelModules = [
-                "nvme"
-                "xhci_pci"
-                "ahci"
-                "usbhid"
-                "usb_storage"
-                "sd_mod"
-              ];
-              boot.initrd.kernelModules = [ "wl" ];
-              boot.kernelModules = [ "kvm-intel" ];
               system.stateVersion = "26.05";
               nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -149,9 +133,9 @@
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
+          ./boot.nix
           ./minimal.nix
           ./binarycache.nix
-          ./boot.nix
           ./network.nix
           ./autologin.nix
           ./search.nix

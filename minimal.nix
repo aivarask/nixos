@@ -61,9 +61,9 @@
   # netstat -antup
   # nestat --all --numeric --tcp --udp --program
   networking.nameservers = [
-    "8.8.8.8"
-    "1.1.1.1"
     "192.168.0.1"
+    # "8.8.8.8"
+    # "1.1.1.1"
   ];
   # networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {
@@ -101,19 +101,6 @@
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.19.5"
-
-  ];
-  boot.initrd.kernelModules = [ "wl" ];
-  boot.kernelModules = [
-    "kvm-intel"
-    "wl"
-    "i2c-dev"
-  ];
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.broadcom_sta # nixpkgs.config.permittedInsecurePackages
-  ];
   nix.settings.experimental-features = "nix-command flakes pipe-operators";
   programs.git.enable = true;
   # environment.etc."gitconfig".source = ./.config/git/config_global;

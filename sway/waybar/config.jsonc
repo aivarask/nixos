@@ -96,7 +96,7 @@
             "enable-bar-scroll": true,
             "disable-auto-back-and-forth": true,
             "warp-on-scroll": false,
-            "window-rewrite-default": "{name}",
+            "window-rewrite-default": "",
             "window-rewrite": {
                 "class<firefox>": "",
                 "class<chromium-browser>": "",
