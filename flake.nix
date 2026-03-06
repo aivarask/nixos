@@ -32,9 +32,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
-            extraSpecialArgs = {
+            extraSpecialArgs = rec {
               SELF = "/etc/nixos";
               inherit inputs;
+              xdgconf = "${SELF}/.config";
             };
             sharedModules = [ { home.stateVersion = "26.05"; } ];
 

@@ -1,0 +1,60 @@
+# vim: ft=swayconfig
+
+# floating https://i3wm.org/docs/userguide.html#_floating
+# for_window [floating] opacity 0.5
+# swaymsg move position center; swaymsg resize set 80ppt 80ppt
+
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+floating_modifier $mod inverse
+
+bindsym $mod+shift+space floating toggle
+tiling_drag $mod
+bindsym --whole-window button3 floating toggle
+# bindsym --whole-window $mod+button5 resize shrink height 20x
+
+bindsym  $mod+m mode "move"
+mode "move" {
+    bindsym Left  exec sway-move-to left
+    bindsym Right exec sway-move-to right
+    bindsym Down  exec sway-move-to bottom
+    bindsym Up    exec sway-move-to top
+
+    # these reflect the position on the keyboard:
+    # w e r
+    # s d f
+    # x c v
+    bindsym w     exec sway-move-to top-left
+    bindsym e     exec sway-move-to mid-top
+    bindsym r     exec sway-move-to top-right
+    bindsym s     exec sway-move-to mid-left
+    bindsym d     exec sway-move-to centre
+    bindsym f     exec sway-move-to mid-right
+    bindsym x     exec sway-move-to bottom-left
+    bindsym c     exec sway-move-to mid-bottom
+    bindsym v     exec sway-move-to bottom-right
+
+    bindsym q mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+set $resize_px 20px
+bindsym --whole-window $mod+button4 resize grow height $resize_px
+bindsym --whole-window $mod+button5 resize shrink height $resize_px
+mode "resize" {
+    bindsym --whole-window button4 resize grow height $resize_px
+    bindsym --whole-window button5 resize shrink height $resize_px
+    bindsym $left resize shrink width $resize_px
+    bindsym $down resize grow height $resize_px
+    bindsym $up resize shrink height $resize_px
+    bindsym $right resize grow width $resize_px
+    bindsym Left resize shrink width $resize_px
+    bindsym Down resize grow height $resize_px
+    bindsym Up resize shrink height $resize_px
+    bindsym Right resize grow width $resize_px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
