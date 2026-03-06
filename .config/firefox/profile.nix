@@ -24,8 +24,8 @@ in
   programs.firefox.profiles."${username}" = {
     id = 0;
     isDefault = true;
-    name = username;
-    path = username;
+    name = "${username}";
+    path = "${username}";
     search = {
       force = true;
       default = "ddg";

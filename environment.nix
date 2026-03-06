@@ -23,12 +23,12 @@
   };
   environment.shellAliases.wol_pc = "wol b4:2e:99:61:09:cf";
   environment.profiles = [ ];
-  environment.shellInit = ''# OS environment.shellInit ''; # /etc/profile
-  environment.extraInit = ''# OS environment.extraInit ''; # /etc/set-environment
-  programs.bash.shellInit = ''# OS programs.bash.shellInit ''; # /etc/bashrc
-  programs.bash.interactiveShellInit = ''# OS programs.bash.interactiveShellInit '';
-  environment.interactiveShellInit = ''# OS environment.interactiveShellInit '';
+  environment.shellInit = "# OS environment.shellInit "; # /etc/profile
+  environment.extraInit = "# OS environment.extraInit "; # /etc/set-environment
+  programs.bash.shellInit = "# OS programs.bash.shellInit "; # /etc/bashrc
+  programs.bash.interactiveShellInit = "# OS programs.bash.interactiveShellInit ";
+  environment.interactiveShellInit = "# OS environment.interactiveShellInit ";
   programs.zsh.enable = true;
   # /etc/zshenv /etc/zshrc /etc/zinputrc
-  programs.zsh.shellInit = ''# OS programs.zsh.shellInit '';
+  programs.zsh.shellInit = "# OS programs.zsh.shellInit ";
 }

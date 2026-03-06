@@ -33,8 +33,8 @@
             useUserPackages = true;
             verbose = true;
             extraSpecialArgs = rec {
-              SELF = "/etc/nixos";
               inherit inputs;
+              SELF = "/etc/nixos";
               xdgconf = "${SELF}/.config";
             };
             sharedModules = [ { home.stateVersion = "26.05"; } ];
