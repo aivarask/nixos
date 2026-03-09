@@ -37,6 +37,13 @@ in
     spotify
     ncspot
   ];
+  home.file.".local/bin" = {
+    source = symlink "${xdgconf}/bin";
+    recursive = true;
+    enable = true;
+    force = true;
+
+  };
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";

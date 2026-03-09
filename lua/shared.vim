@@ -46,7 +46,7 @@ set timeoutlen=600
 set bufhidden=unload
 set conceallevel=2
 set clipboard=unnamedplus
-set scrolloff=4
+set scrolloff=8
 set cmdheight=2
 
 "set breakindent

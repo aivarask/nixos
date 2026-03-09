@@ -63,6 +63,7 @@
     rofi
     scrcpy
     slurp
+    kdotool
 
     # internet speed
     ookla-speedtest

@@ -4,3 +4,4 @@ keyboard_layout: { layout:us }
 toggle_key: ALT # doubleclick
 search_trigger: ".search"
 search_shortcut: ALT+Space
+show_notifications: false

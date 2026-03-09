@@ -1,13 +1,13 @@
 matches:
-  - trigger: ":gmail:"
-    replace: "kalesnykas.aivaras@gmail.com"
-  - trigger: :euro
-    replace: €
-  - trigger: :div
-    replace: <div>$|$</div>
-  - trigger: ":now"
-    replace: "It's {{currentdate}} {{currenttime}}"
+    - trigger: ":gmail:"
+      replace: "kalesnykas.aivaras@gmail.com"
+    - trigger: :euro
+      replace: €
+    - trigger: :div
+      replace: <div>$|$</div>
+    - trigger: ":now"
+      replace: "It's {{currentdate}} {{currenttime}}"
 
 global_vars:
-  - { name: "currentdate", type: "date", params: { format = "%d/%m/%Y" } }
-  - { name: "currenttime", type: "date", params: { format: "%R" } }
+    - { name: "currentdate", type: "date", params: { format = "%d/%m/%Y" } }
+    - { name: "currenttime", type: "date", params: { format: "%R" } }

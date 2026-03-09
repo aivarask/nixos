@@ -114,7 +114,7 @@
               ];
               system.stateVersion = "26.05";
               nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
-              hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
               fileSystems."/" = {
                 device = "/dev/disk/by-partlabel/disk-main-root";
                 fsType = "ext4";
@@ -127,6 +127,8 @@
                   "dmask=0077"
                 ];
               };
+              hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+              
 
             }
           )

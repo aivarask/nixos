@@ -51,7 +51,9 @@ in
               "@nix-builtins"
             ];
             urls = [
-              { template = "https://nix-builtins-search.extranix.com/?query={searchTerms}&release=nix-v2.24"; }
+              {
+                template = "https://nix-builtins-search.extranix.com/?query={searchTerms}&release=nix-v2.24";
+              }
             ];
           };
           "@hm home-manager-options.extranix.com" = {
@@ -61,7 +63,7 @@ in
             ];
             urls = [
               {
-                template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=release-24.11";
+                template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
               }
             ];
           };
@@ -102,32 +104,15 @@ in
             definedAliases = [ "@nur" ];
             urls = [ { template = "${ddg}site:nur.nix-community.org+{searchTerms}"; } ];
           };
-          # Reddit
           "@reddit" = {
             definedAliases = [ "@r" ];
             urls = [ { template = "${reddit}/search/?q={searchTerms}"; } ];
-          };
-          "@reddit zsh" = {
-            definedAliases = [ "@rzsh" ];
-            urls = [ { template = "${reddit}/r/zsh/search/?q={searchTerms}"; } ];
-          };
-          "@reddit vim" = {
-            definedAliases = [ "@rvim" ];
-            urls = [ { template = "${reddit}/r/vim/search/?q={searchTerms}"; } ];
-          };
-          "@reddit neovim" = {
-            definedAliases = [ "@rneovim" ];
-            urls = [ { template = "${reddit}/r/neovim/search/?q={searchTerms}"; } ];
-          };
-          "@reddit nixos" = {
-            definedAliases = [ "@rnixos" ];
-            urls = [ { template = "${reddit}/r/NixOS/search/?q={searchTerms}"; } ];
           };
           "@np search.nixos.org/packages" = {
             definedAliases = [ "@np" ];
             urls = [
               {
-                template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+                template = "https://search.nixos.org/packages?channel=unstable&type=packages&query={searchTerms}";
               }
             ];
           };
@@ -157,17 +142,9 @@ in
             definedAliases = [ "@gc" ];
             urls = [ { template = "${github}/search?type=code&q={searchTerms}"; } ];
           };
-          "@gi github issues" = {
-            definedAliases = [ "@gi" ];
-            urls = [ { template = "${github}/search?type=issues&q={searchTerms}"; } ];
-          };
           "@gr github repositories" = {
             definedAliases = [ "@gr" ];
             urls = [ { template = "${github}/search?type=repositories&q={searchTerms}"; } ];
-          };
-          "@gu github users" = {
-            definedAliases = [ "@gu" ];
-            urls = [ { template = "${github}/search?type=users&q={searchTerms}"; } ];
           };
           "@ex explainshell.com" = {
             definedAliases = [ "@ex" ];
