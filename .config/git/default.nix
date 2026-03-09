@@ -11,7 +11,6 @@ in
   home.packages = with pkgs; [
     git
     git-lfs
-    gh
     git-crypt
     pre-commit
     delta
@@ -35,20 +34,4 @@ in
   xdg.configFile."git/config_user".source = symlink "${xdgconf}/git/config_user";
   xdg.configFile."git/ignore".source = symlink "${xdgconf}/git/ignore";
 
-  programs.gh.enable = true;
-  programs.gh.extensions = with pkgs; [
-    gh-eco
-    # gh-poi
-    # gh-dash
-    # gh-actions-cache
-    gh-markdown-preview
-  ];
-  programs.gh.settings = {
-    git_protocol = "ssh";
-    prompt = "enabled";
-    aliases = {
-      co = "pr checkout";
-      pv = "pr view";
-    };
-  };
 }

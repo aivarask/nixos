@@ -28,7 +28,6 @@
     pistol
     lf
     git
-    gh
     lazygit
     nps
     coreutils-full
