@@ -1,5 +1,3 @@
-# vim: ft=swayconfig
-
 set $white #ffffff
 set $bg #282828
 set $red #cc241d

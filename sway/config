@@ -1,11 +1,8 @@
-# ------------------------------------------------------------
-# Docs
-# ------------------------------------------------------------
 # https://github.com/swaywm/sway/wiki
 # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway
+# https://i3wm.org/docs/userguide.html
 # https://orioninsist.org/blog/sway-wayland-performance-intel-igpu-dual-fhd/
 
-#
 set $mod Mod4
 set $alt Mod1
 set $term kitty
@@ -14,6 +11,9 @@ set $left h
 set $down j
 set $up k
 set $right l
+set $mouseleft button1
+set $mousemiddle button2
+set $mouseright button3
 set $scrollup button4
 set $scrolldown button5
 set $scrollright button6
@@ -23,7 +23,6 @@ default_orientation auto
 xwayland disable
 focus_follows_mouse yes
 
-#
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [app_id="thunar"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
@@ -36,5 +35,5 @@ for_window [title="scratchpad-term"] move to scratchpad
 
 
 include /etc/sway/config.d/*
-include $HOME/.config/sway/_*
+include $HOME/.config/sway/config.d/*
 

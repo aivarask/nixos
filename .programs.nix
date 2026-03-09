@@ -38,6 +38,7 @@ in
     ncspot
   ];
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
+  xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";

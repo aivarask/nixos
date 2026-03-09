@@ -24,6 +24,8 @@
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
+      SELF = "/etc/nixos";
+      xdgconf = "${SELF}/.config";
       commonModules = [
         inputs.home-manager.nixosModules.home-manager
         {
@@ -32,10 +34,10 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
-            extraSpecialArgs = rec {
+            extraSpecialArgs = {
               inherit inputs;
-              SELF = "/etc/nixos";
-              xdgconf = "${SELF}/.config";
+              inherit SELF;
+              inherit xdgconf;
             };
             sharedModules = [ { home.stateVersion = "26.05"; } ];
 
@@ -55,9 +57,8 @@
           };
         }
         inputs.disko.nixosModules.disko
-        ./audio/mpd.nix
-        ./audio/pipewire.nix
-        # ./audio/production.nix
+        ./.config/mpd/default.nix
+        ./.config/pipewire/default.nix
         ./disks.nix
         ./environment.nix
         ./packages.nix

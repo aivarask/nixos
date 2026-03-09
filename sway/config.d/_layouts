@@ -1,4 +1,21 @@
-# vim: ft=swayconfig
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
+
+bindsym $mod+shift+$left move left
+bindsym $mod+shift+$down move down
+bindsym $mod+shift+$up move up
+bindsym $mod+shift+$right move right
+bindsym $mod+shift+Left move left
+bindsym $mod+shift+Down move down
+bindsym $mod+shift+Up move up
+bindsym $mod+shift+Right move right
+
 
 # floating https://i3wm.org/docs/userguide.html#_floating
 # for_window [floating] opacity 0.5
@@ -7,10 +24,9 @@
 floating_minimum_size 75 x 50
 floating_maximum_size -1 x -1
 floating_modifier $mod inverse
-
-bindsym $mod+shift+space floating toggle
 tiling_drag $mod
 
+bindsym $mod+shift+space floating toggle
 bindsym  $mod+m mode "move"
 mode "move" {
     bindsym Left  exec sway-move-to left
@@ -18,10 +34,6 @@ mode "move" {
     bindsym Down  exec sway-move-to bottom
     bindsym Up    exec sway-move-to top
 
-    # these reflect the position on the keyboard:
-    # w e r
-    # s d f
-    # x c v
     bindsym w     exec sway-move-to top-left
     bindsym e     exec sway-move-to mid-top
     bindsym r     exec sway-move-to top-right

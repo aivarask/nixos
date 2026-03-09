@@ -1,0 +1,19 @@
+bindsym $mod+w exec firefox -new-window
+bindsym $mod+shift+w exec firefox -new-window --private-window
+bindsym $mod+c exec chromium-browser --new-window
+bindsym	$mod+escape reload
+bindsym ctrl+escape scratchpad show
+bindsym ctrl+shift+escape move scratchpad
+bindsym $mod+grave exec $term
+bindsym $mod+return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+b exec "pkill -USR1 waybar"
+bindsym $mod+q kill
+bindsym $mod+shift+c kill
+
+mode "quit" {
+	bindsym q kill; mode default
+	bindsym ctrl+w kill
+	bindsym escape mode "default"
+}
+
