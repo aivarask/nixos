@@ -3,12 +3,6 @@
   environment.systemPackages = with pkgs; [
     pv
     fwupd
-    mesa-demos
-    gpu-viewer
-    vulkan-tools
-    libva-utils # vainfo
-    intel-gpu-tools # intel_gpu_top
-    nvtopPackages.nvidia # nvtop
     shot-scraper
     tuir
     ddgr
