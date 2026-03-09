@@ -9,10 +9,6 @@ export GTK_THEME=Adwaita:dark
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 export PAPIRUS=/run/current-system/sw/share/icons/Papirus/
 
-fpath=(/etc/nixos/.config/zsh $fpath)
-# autoload -Uz $fpath[1]/**/*(.:t)
-autoload -Uz zfunc
-
 typeset -TU PATH path ':'
 path+=(${0:a:h}/bin)
 # path+=( /etc/nixos/*(N-/) )

@@ -1,17 +1,17 @@
 # https://wiki.nixos.org/wiki/PipeWire
 # https://nixos.org/manual/nixos/unstable/options#opt-services.pipewire.enable
+# https://docs.pipewire.org/page_config.html
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=pipewire
     alsa-utils
-    # pulseaudio
     pavucontrol
     pulsemixer
     pwvucontrol
     coppwr
-    # qpwgraph
     wireplumber
+    # qpwgraph
+    # pulseaudio
   ];
   security.rtkit.enable = true;
   services.pipewire.enable = true;

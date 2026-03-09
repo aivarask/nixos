@@ -81,7 +81,7 @@
 
       nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self; };
+        specialArgs = { inherit inputs self xdgconf; };
         modules = [
           ./iso.nix
           ./minimal.nix
@@ -89,7 +89,7 @@
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self; };
+        specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           (
             {

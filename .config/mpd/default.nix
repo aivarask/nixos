@@ -35,7 +35,7 @@ rec {
         group = services.mpd.group;
         mode = "0777";
         type = "L+";
-        argument = playlistDir;
+        argument = "${playlistDir}/chill.m3u";
       };
     };
     "/var/lib/mpd/music/Music" = lib.mkIf true {

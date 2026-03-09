@@ -38,8 +38,6 @@ in
   programs.zsh.history.size = 10000;
   programs.zsh.history.extended = true;
   programs.zsh.history.share = true;
-  xdg.configFile."zsh-system-clipboard/method".source =
-    config.lib.file.mkOutOfStoreSymlink "${SELF}/.config/zsh-system-clipboard/method";
   programs.zsh.plugins = [
     {
       name = "vi-mode";
@@ -51,17 +49,6 @@ in
       src = pkgs.zsh-zhooks;
       file = "share/zsh/zhooks/zhooks.plugin.zsh";
     }
-    # {
-    #   name = "zsh-system-clipboard";
-    #   src = pkgs.zsh-system-clipboard; # https://github.com/kutsan/zsh-system-clipboard
-    #   file = "share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh"; # ~/.config/zsh/plugins/zsh-system-clipboard/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
-    # }
-    # {
-    #   name = "zsh-autocomplete"; # https://github.com/marlonrichert/zsh-autocomplete
-    #   src = pkgs.zsh-autocomplete;
-    #   file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-    #   completions = [ "share/zsh/site-functions" ];
-    # }
   ];
 
 }
