@@ -4,12 +4,18 @@ output * max_render_time off
 # output * adaptive_sync on
 # output * scale_filter nearest
 
+set $4k 3840x2160
+
 output DP-1     resolution 3840x2160 position 1920,0 scale 2
 output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
+output HDMI-A-1 resolution 3840x2160 position 0,0 scale 1
 # output HDMI-A-1 disable
 
-output eDP-1    resolution 3840x2160 position 0,0 scale 2
-output DP-3     resolution 1920x1080 position 1920,0 scale 1
+# output eDP-1    resolution 3840x2160 position 0,0 scale 2
+# output DP-3     resolution 1920x1080 position 1920,0 scale 1
+
+output eDP-1    resolution 3840x2160 position 1920,0 scale 2
+output DP-3     resolution 1920x1080 position 0,0 scale 1
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
