@@ -20,7 +20,7 @@
   ##################
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
+  hardware.nvidia.dynamicBoost.enable = true;
   hardware.nvidia = {
     open = true;
 

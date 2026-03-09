@@ -111,6 +111,7 @@
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
                 ./mix.nix
+                ./graphics_.nix
                 ./graphics2.nix
               ];
               system.stateVersion = "26.05";
