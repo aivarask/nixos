@@ -144,8 +144,9 @@
           ./autologin.nix
           ./search.nix
           ./pc.nix
+          ./graphics_.nix
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self xdgconf; };
       };
     });
 }
