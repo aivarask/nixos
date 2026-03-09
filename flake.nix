@@ -111,8 +111,8 @@
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
                 ./mix.nix
-                ./graphics_.nix
-                ./graphics2.nix
+                ./graphics_tools.nix
+                ./graphics_dell.nix
               ];
               system.stateVersion = "26.05";
               nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
@@ -144,7 +144,7 @@
           ./autologin.nix
           ./search.nix
           ./pc.nix
-          ./graphics_.nix
+          ./graphics_tools.nix
         ];
         specialArgs = { inherit inputs self xdgconf; };
       };
