@@ -10,8 +10,6 @@ floating_modifier $mod inverse
 
 bindsym $mod+shift+space floating toggle
 tiling_drag $mod
-bindsym --whole-window button3 floating toggle
-# bindsym --whole-window $mod+button5 resize shrink height 20x
 
 bindsym  $mod+m mode "move"
 mode "move" {

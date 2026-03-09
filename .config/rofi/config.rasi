@@ -1,0 +1,9 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+}
+
+@theme "gruvbox-dark"
+
+/* Insert theme modifications after this */
+// https://davatorium.github.io/rofi/current/rofi.1/

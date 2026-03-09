@@ -35,6 +35,7 @@
         "tooltip": false,
         "menu-file": "$HOME/.config/waybar/tools.xml",
         "menu-actions": {
+            "bitwarden": "bitwarden --no-sandbox",
             "calculator": "gnome-calculator",
             "settings": "gnome-tweaks",
             "performance": "gnome-system-monitor",

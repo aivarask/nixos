@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-  services.espanso.enable = false;
+  services.espanso.enable = true;
   services.espanso.package = pkgs.espanso-wayland;
   services.playerctld.enable = true;
 
