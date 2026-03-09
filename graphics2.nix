@@ -1,11 +1,6 @@
+# https://discourse.nixos.org/t/suspend-issue-on-prime-nvidia-intel/74005
 { pkgs, lib, ... }:
 {
-  # This *should* be unnecessary, but some DE/WM modules
-  # forget to set it, and that makes people think they need
-  # `hardware.graphics.enable`.
-  #
-  # So just to be safe, since you'll blame the rest of the config
-  # for failure otherwise...
   services.graphical-desktop.enable = lib.mkDefault true;
 
   ######################

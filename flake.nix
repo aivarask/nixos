@@ -111,7 +111,7 @@
                 # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
                 ./mix.nix
-                ./graphics.nix
+                ./graphics2.nix
               ];
               system.stateVersion = "26.05";
               nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
@@ -129,7 +129,6 @@
                 ];
               };
               hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
 
             }
           )
