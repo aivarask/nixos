@@ -53,7 +53,6 @@
     unrar
     unzip
     jq
-    ffmpeg-full
     highlight
     hicolor-icon-theme
     imagemagick

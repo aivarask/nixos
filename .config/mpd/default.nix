@@ -29,13 +29,22 @@ rec {
     toString config.users.users."pipewire".uid
   }";
   systemd.tmpfiles.settings."10-mpd" = {
-    "/var/lib/mpd/playlists/link" = lib.mkIf true {
+    "/var/lib/mpd/playlists/chill.m3u" = lib.mkIf true {
       "L+" = {
         user = services.mpd.user;
         group = services.mpd.group;
         mode = "0777";
         type = "L+";
         argument = "${playlistDir}/chill.m3u";
+      };
+    };
+    "/var/lib/mpd/playlists/lt.m3u" = lib.mkIf true {
+      "L+" = {
+        user = services.mpd.user;
+        group = services.mpd.group;
+        mode = "0777";
+        type = "L+";
+        argument = "${playlistDir}/lt.m3u";
       };
     };
     "/var/lib/mpd/music/Music" = lib.mkIf true {
