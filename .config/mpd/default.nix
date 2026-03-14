@@ -47,13 +47,14 @@ rec {
         argument = "${playlistDir}/lt.m3u";
       };
     };
-    "/var/lib/mpd/music/Music" = lib.mkIf true {
+    "/var/lib/mpd/music/root" = lib.mkIf true {
       "L+" = {
         user = services.mpd.user;
         group = services.mpd.group;
         mode = "0777";
         type = "L+";
         argument = "${config.hm.xdg.userDirs.music}";
+
       };
     };
   };

@@ -12,6 +12,7 @@ in
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
+  home.file."Pictures/img".source = symlink "${SELF}/img";
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
   imports = [
