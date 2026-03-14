@@ -1,5 +1,8 @@
 { pkgs, ... }:
+
 {
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
   environment.systemPackages = with pkgs; [
     pciutils
     mesa-demos

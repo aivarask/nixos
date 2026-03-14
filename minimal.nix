@@ -94,6 +94,8 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"
   ]
   ++ (args.extraPublicKeys or [ ]);
+  users.users."aiva".enable = true;
+  users.users."aiva".isNormalUser = true;
 
   environment.etc."disko-config.nix".source = ./disk-nvme.nix;
   systemd.tmpfiles.rules = [

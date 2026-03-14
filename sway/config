@@ -19,7 +19,6 @@ set $scrolldown button5
 set $scrollright button6
 set $scrollleft button7
 
-default_orientation auto
 xwayland disable
 focus_follows_mouse yes
 

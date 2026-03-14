@@ -5,6 +5,7 @@
   ...
 }:
 {
+  boot.supportedFilesystems.nfs = true;
   boot.supportedFilesystems.zfs = lib.mkForce false;
   boot.tmp.cleanOnBoot = true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;

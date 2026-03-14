@@ -5,12 +5,15 @@ smart_gaps on
 default_border pixel
 default_floating_border pixel
 # hide_edge_borders smart_no_gaps
+default_orientation auto
+workspace_layout tabbed
 
 bindsym $mod+u focus parent
 bindsym $mod+s focus child
+bindsym $mod+tab focus next
 bindsym $mod+b splith
 bindsym $mod+v splitv
-bindsym $mod+d layout toggle all
+bindsym $mod+d layout toggle tabbed splitv splith
 # bindsym $mod+s layout stacking
 # bindsym $mod+t layout tabbed
 bindsym $mod+space fullscreen

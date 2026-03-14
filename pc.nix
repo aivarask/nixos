@@ -32,6 +32,21 @@
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = "";
 
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /export         192.168.0.226(rw,fsid=0,no_subtree_check)
+    /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)
+  '';
+
+  programs.steam = {
+    enable = true; # Master switch, already covered in installation
+    # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    # dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
+    # Other general flags if available can be set here.
+  };
+  programs.steam.extraCompatPackages = with pkgs; [
+    proton-ge-bin
+  ];
   services.udev.extraRules =
     let
       bash = "${pkgs.bash}/bin/bash";
