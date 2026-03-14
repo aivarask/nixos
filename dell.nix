@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   fileSystems."/" = {
     device = "/dev/disk/by-partlabel/disk-main-root";
     fsType = "ext4";
@@ -20,8 +19,8 @@
   };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  services.rpcbind.enable = true;
 
-  services.rpcbind.enable = true; # needed for NFS
   systemd.mounts = [
     {
       type = "nfs";
@@ -32,7 +31,6 @@
       where = "/mnt/music";
     }
   ];
-
   systemd.automounts = [
     {
       wantedBy = [ "multi-user.target" ];

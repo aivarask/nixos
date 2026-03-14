@@ -99,6 +99,9 @@
             }:
             {
               networking.hostName = "minimal";
+              system.stateVersion = "26.05";
+              nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
+
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
@@ -113,8 +116,6 @@
                 ./graphics_tools.nix
                 ./dell.nix
               ];
-              system.stateVersion = "26.05";
-              nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
 
             }
           )
