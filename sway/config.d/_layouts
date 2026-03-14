@@ -1,32 +1,34 @@
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-bindsym $mod+left focus left
-bindsym $mod+down focus down
-bindsym $mod+up focus up
-bindsym $mod+right focus right
-
-bindsym $mod+shift+$left move left
-bindsym $mod+shift+$down move down
-bindsym $mod+shift+$up move up
-bindsym $mod+shift+$right move right
-bindsym $mod+shift+Left move left
-bindsym $mod+shift+Down move down
-bindsym $mod+shift+Up move up
-bindsym $mod+shift+Right move right
-
-
 # floating https://i3wm.org/docs/userguide.html#_floating
+gaps inner 4px
+gaps outer 0px
+smart_gaps on
+default_border pixel
+default_floating_border pixel
+# hide_edge_borders smart_no_gaps
+
+bindsym $mod+u focus parent
+bindsym $mod+s focus child
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+d layout toggle all
+# bindsym $mod+s layout stacking
+# bindsym $mod+t layout tabbed
+bindsym $mod+space fullscreen
+bindsym $mod+minus exec "pkill -USR1 waybar"
+bindsym $mod+shift+space floating toggle
+bindsym $mod+ctrl+space focus mode_toggle
+bindsym $mod+p focus parent
+bindsym $mod+g sticky toggle
+
 # for_window [floating] opacity 0.5
 # swaymsg move position center; swaymsg resize set 80ppt 80ppt
 
-floating_minimum_size 75 x 50
+floating_minimum_size 100 x 75
 floating_maximum_size -1 x -1
 floating_modifier $mod inverse
 tiling_drag $mod
 
-bindsym $mod+shift+space floating toggle
+
 bindsym  $mod+m mode "move"
 mode "move" {
     bindsym Left  exec sway-move-to left

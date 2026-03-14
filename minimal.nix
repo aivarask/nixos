@@ -57,6 +57,8 @@
   networking.networkmanager.wifi.backend = "iwd";
   # netstat -antup
   # nestat --all --numeric --tcp --udp --program
+  networking.enableIPv6 = false;
+  boot.kernelParams = [ "ipv6.disable=1" ];
   networking.nameservers = [
     "8.8.8.8"
     "192.168.0.1"
@@ -66,6 +68,11 @@
   networking.wireless.iwd.settings = {
     # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
     # General.EnableNetworkConfiguration = true;
+    # General.RoamThreshold = "-70"; # -70
+    # General.RoamThreshold5G = "-76";
+    # General.CriticalRoamThreshold = "-80";
+    # General.CriticalRoamThreshold5G = "-82";
+    # General.RoamRetryInterval = 60;
     IPv4.SendHostname = true;
     Network.NameResolvingService = "resolvconf"; # Values: resolvconf, **systemd**, none
     Network.EnableIPv6 = false;

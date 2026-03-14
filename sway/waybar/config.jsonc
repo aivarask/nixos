@@ -41,9 +41,9 @@
         ],
         "modules-left": [
             "tray",
-            "sway/mode",
             "sway/workspaces",
-            "wlr/taskbar"
+            "wlr/taskbar",
+            "sway/mode",
         ],
         "modules-center": [
             "sway/window"
@@ -122,13 +122,13 @@
             // waybar-network
             "format-ethernet": "🌐",
             "tooltip-format-ethernet": "{ipaddr} {ifname} \n right-click disconnect",
-            "format-wifi": "  {signalStrength} {essid}{frequency}",
+            "format-wifi": "  {essid} {frequency}{signaldBm}",
             "tooltip-format-wifi": "{ipaddr} {ifname} \n click reconnect \n right-click disconnect",
             "format-disconnected": " ",
             "tooltip-format-disconnected": "click to connect",
             "on-click": "iwctl station wlan0 connect zte",
-            "on-click-right": "iwctl station wlan0 disconnect",
-            "on-click-middle": "xdg-open http://192.168.0.1"
+            "on-click-middle": "iwctl station wlan0 disconnect",
+            "on-click-right": "xdg-open http://192.168.0.1"
         },
         "sway/language": {
             "format": "{flag}",

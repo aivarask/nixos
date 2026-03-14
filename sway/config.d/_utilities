@@ -4,6 +4,7 @@ bindsym $mod+f3 exec $term pulsemixer
 bindsym $mod+f11 reload
 bindsym	$mod+f12 exit
 
+# for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 bindsym Print exec flameshot
 bindsym --locked XF86AudioPlay exec mpc toggle
 bindsym --locked XF86AudioNext exec playerctl next

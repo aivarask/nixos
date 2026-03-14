@@ -6,8 +6,7 @@ bindsym ctrl+escape scratchpad show
 bindsym ctrl+shift+escape move scratchpad
 bindsym $mod+grave exec $term
 bindsym $mod+return exec $term
-bindsym $mod+d exec $menu
-bindsym $mod+b exec "pkill -USR1 waybar"
+bindsym $mod+Menu exec $menu
 bindsym $mod+q kill
 bindsym $mod+shift+c kill
 

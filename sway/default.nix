@@ -99,6 +99,7 @@
     xdg-desktop-portal-wlr
     xkeyboard-config
     xkbcomp
+    xmodmap
     setxkbmap
     # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
     nwg-panel

@@ -1,9 +1,0 @@
-# bindsym $mod+b splith
-# bindsym $mod+v splitv
-# bindsym $mod+e layout toggle split
-# bindsym $mod+s layout stacking
-# bindsym $mod+t layout tabbed
-bindsym $mod+space fullscreen
-# bindsym $mod+ctrl+space focus mode_toggle
-# bindsym $mod+p focus parent
-bindsym $mod+g sticky toggle
