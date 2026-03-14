@@ -64,11 +64,11 @@
   ];
   services.udev.extraRules =
     let
-      bash = "${pkgs.bash}/bin/bash";
+      shell = "${pkgs.zsh}/bin/zsh";
       ddcciDev = "DP-1";
       ddcciNode = "/sys/bus/i2c/devices/i2c-1/new_device";
     in
     ''
-      SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
+      SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${shell} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
     '';
 }
