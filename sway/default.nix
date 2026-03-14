@@ -77,7 +77,7 @@
     sway-easyfocus
     sway-launcher-desktop
     sway-new-workspace
-    sway-scratc
+    sway-scratch
     swaybg
     swayidle
     swaylock
