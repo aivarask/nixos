@@ -31,6 +31,15 @@
       # what = "192.168.0.185:/music";
       where = "/mnt/music";
     }
+    {
+      type = "nfs";
+      mountConfig = {
+        Options = "noatime";
+      };
+      what = "pc:/videos";
+      # what = "192.168.0.185:/music";
+      where = "/root/Videos/pc";
+    }
   ];
   systemd.automounts = [
     {
@@ -39,6 +48,13 @@
         TimeoutIdleSec = "600";
       };
       where = "/mnt/music";
+    }
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = {
+        TimeoutIdleSec = "600";
+      };
+      where = "/root/Videos/pc";
     }
   ];
 }

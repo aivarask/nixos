@@ -32,12 +32,11 @@
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = "";
 
-  hardware.nvidia.open = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
     /export         minimal(rw,fsid=0,no_subtree_check)
     /export/music   minimal(rw,nohide,insecure,no_subtree_check)
+    /root/Video     minimal(rw,nohide,insecure,no_subtree_check)
   '';
   # /export         192.168.0.226(rw,fsid=0,no_subtree_check)
   # /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)

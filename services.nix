@@ -25,6 +25,7 @@
     pkgs.bitmagnet
     pkgs.magnetico
     pkgs.tremc
+    pkgs.fragments
   ];
   services.transmission = {
     enable = true;
