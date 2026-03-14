@@ -121,9 +121,9 @@
         "network": {
             // waybar-network
             "format-ethernet": "🌐",
-            "tooltip-format-ethernet": "{ipaddr} {ifname} \n right-click disconnect",
-            "format-wifi": "  {essid} {frequency}{signaldBm}",
-            "tooltip-format-wifi": "{ipaddr} {ifname} \n click reconnect \n right-click disconnect",
+            "tooltip-format-ethernet": "{ipaddr} {ifname}",
+            "format-wifi": "  {essid} {signalStrength} {signaldBm}",
+            "tooltip-format-wifi": "{ipaddr} {ifname} \n left reconnect \n middle disconnect \n right 192.168.0.1",
             "format-disconnected": " ",
             "tooltip-format-disconnected": "click to connect",
             "on-click": "iwctl station wlan0 connect zte",
