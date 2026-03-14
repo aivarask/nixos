@@ -61,12 +61,9 @@
     20048
   ];
 
-  programs.steam = {
-    enable = true; # Master switch, already covered in installation
-    # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    # dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server hosting
-    # Other general flags if available can be set here.
-  };
+  programs.steam.enable = true;
+  # programs.steam.remotePlay.openFirewall = true;
+  # programs.steam.dedicatedServer.openFirewall = true;
   programs.steam.extraCompatPackages = with pkgs; [
     proton-ge-bin
   ];

@@ -126,10 +126,10 @@ in
             definedAliases = [ "@nm" ];
             urls = [ { template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}"; } ];
           };
-          "@nos nixos.org/manual/nixos" = {
-            definedAliases = [ "@nos" ];
-            urls = [ { template = "https://nixos.org/manual/nixo/unstable/?search={searchTerms}"; } ];
-          };
+          # "@nos nixos.org/manual/nixos" = {
+          #   definedAliases = [ "@nos" ];
+          #   urls = [ { template = "https://nixos.org/manual/nixos/unstable/?search={searchTerms}"; } ];
+          # };
           "@nw wiki.nixos.org" = {
             definedAliases = [ "@nw" ];
             urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
