@@ -4,7 +4,7 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.nvidia.open = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   environment.systemPackages = with pkgs; [
     pciutils
     mesa-demos
