@@ -2,25 +2,44 @@
 # shellcheck shell=zsh
 
 
-# autoload -Uz edit-command-line
-# zle -N edit-command-line
-# bindkey '\ev' edit-command-line
-
-# autoload -Uz run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
-# (( ${+aliases[run-help]} )) && unalias run-help
-# alias help=run-help
-
-# cat -v	#	showkey
-# bindkey '^N' menu-complete
-# bindkey '^P' reverse-menu-complete
-# bindkey '^[[3;5~' kill-word          # C-Del
-# bindkey "^[OP" "run-help"            # <F1>
-# bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
 
 
-# cmd_preview () { pistol $BUFFER }
-# zle -N cmd_preview cmd_preview
-# bindkey -v '^]' cmd_preview
+
+(( ${+aliases[run-help]} )) && unalias run-help
+autoload run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
+alias help=run-help
+bindkey "^[OP" "run-help"            # <F1>
+bindkey -s "^[[15~" "exec zsh\n" 		 # <F5>
+autoload -Uz history-beginning-search-menu
+zle -N history-beginning-search-menu
+bindkey '^X^X' history-beginning-search-menu
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+
+cmd_preview () { echo $BUFFER }
+zle -N cmd_preview cmd_preview
+bindkey -v '^]' cmd_preview
+
+
+
+_quote_word() {
+    # Get words array
+    local words=(${(z)LBUFFER})
+    local last_word="${words[-1]}"
+
+    if [[ -n "$last_word" ]]; then
+        # Remove last word from LBUFFER
+        LBUFFER="${LBUFFER%$last_word}"
+        # Add it back quoted
+        LBUFFER+="\"${last_word}\""
+    fi
+}
+zle -N _quote_word
+bindkey '^[q' _quote_word  # Alt+Q
+
 
 nix-clean() {
 	nix-env --delete-generations old

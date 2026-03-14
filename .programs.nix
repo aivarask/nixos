@@ -24,7 +24,6 @@ in
     lf # https://github.com/gokcehan/lf
     gtk3
     gtk4
-    xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
     nautilus
     thunar
     tumbler

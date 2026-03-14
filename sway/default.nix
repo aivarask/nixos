@@ -77,7 +77,7 @@
     sway-easyfocus
     sway-launcher-desktop
     sway-new-workspace
-    sway-scratch
+    sway-scratc
     swaybg
     swayidle
     swaylock
@@ -96,6 +96,10 @@
     wlr-randr
     wttrbar
     xcursor-pro
+    xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
+    xdg-terminal-exec
+    xdg-user-dirs
+    xdg-user-dirs-gtk
     xdg-desktop-portal-wlr
     xkeyboard-config
     xkbcomp

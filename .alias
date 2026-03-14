@@ -16,13 +16,13 @@ alias lg="lazygit"
 alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
 alias nfu="nix flake update"
 alias nt="nix-tree"
-alias nr='nrs --option substituters "https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'
+alias nr='nrs --option substituters "https://cache.nixos.org https://nix-community.cachix.org"'
 alias nr_pc='nrs --option substituters "http://192.168.1.195 https://nix-community.cachix.org https://cache.nixos.org https://hyprland.cachix.org"'
 alias nrs="nixos-rebuild switch"
 alias oras="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in
 alias re="systemctl restart"
 alias s="uwsm start sway-uwsm.desktop"
 alias st="speedtest"
-alias sway_outputs="swaymsg -t get_outputs"
-alias t_woo="echo woo"
 alias wttr_srv_="wttrbar --location Sirvintos"
+
+alias yt-dlp="yt-dlp --cookies-from-browser firefox"
