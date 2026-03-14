@@ -12,7 +12,6 @@
     duf
     dust
 
-    # MTP (Media transfer protocol)
     # https://nixos.wiki/wiki/MTP
     # https://wiki.archlinux.org/title/Media_Transfer_Protocol
     # lsusb
@@ -22,6 +21,7 @@
     # go-mtpfs
     jmtpfs
     android-file-transfer
+    nfs-utils
 
     inotify-tools
     fswatch
