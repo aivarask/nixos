@@ -60,9 +60,9 @@
   networking.enableIPv6 = false;
   boot.kernelParams = [ "ipv6.disable=1" ];
   networking.nameservers = [
-    # "8.8.8.8"
     "192.168.0.1"
-    # "1.1.1.1"
+    "1.1.1.1"
+    "8.8.8.8"
   ];
   # networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {

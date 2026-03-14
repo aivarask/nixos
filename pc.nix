@@ -32,13 +32,6 @@
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = "";
 
-  # rpcinfo -p
-  # networking.hosts = {
-  #   "192.168.0." = [
-  #     "mail.example.com"
-  #     "imap.example.com"
-  #   ];
-  # };
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
     /export         192.168.0.226(rw,fsid=0,no_subtree_check)
