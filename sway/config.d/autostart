@@ -1,3 +1,5 @@
+exec nicotine --hidden
+exec flameshot
 exec gammastep
 exec mako
 exec kanshi

@@ -9,6 +9,9 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
+  xdg.userDirs.enable = true;
+  xdg.userDirs.createDirectories = true;
+  xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
 
   imports = [
     ./.config/chromium/default.nix

@@ -21,9 +21,9 @@ away = False
 private_chatrooms = False
 
 [transfers]
-incompletedir = /var/lib/mpd/music/_incomplete
-downloaddir = /var/lib/mpd/music/_downloads
-uploaddir = /var/lib/mpd/music/.received
+incompletedir = ${HOME}/Music/_incomplete
+downloaddir = ${HOME}/Music/_downloads
+uploaddir = ${Home}/Music/.received
 usernamesubfolders = False
 shared = [('var_lib_mpd_music', '/var/lib/mpd/music')]
 buddyshared = []
@@ -177,7 +177,7 @@ searchfont =
 listfont = 
 browserfont = 
 transfersfont = 
-last_tab_id = uploads
+last_tab_id = downloads
 modes_visible = {'search': True, 'downloads': True, 'uploads': True, 'userbrowse': True, 'userinfo': True, 'private': True, 'userlist': True, 'chatrooms': True, 'interests': True}
 modes_order = ['search', 'downloads', 'uploads', 'userbrowse', 'userinfo', 'private', 'userlist', 'chatrooms', 'interests']
 buddylistinchatrooms = tab
@@ -228,9 +228,9 @@ enable = True
 enabled = ['core_commands']
 
 [statistics]
-started_downloads = 617
-completed_downloads = 617
-downloaded_size = 13358682027
+started_downloads = 629
+completed_downloads = 629
+downloaded_size = 13414510091
 started_uploads = 0
 completed_uploads = 0
 uploaded_size = 0

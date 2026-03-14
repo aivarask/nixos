@@ -2,10 +2,10 @@
 server = ('server.slsknet.org', 2242)
 login = aivarask
 passw = laikinas123
-interface =
+interface = 
 ctcpmsgs = False
 autosearch = []
-autoreply =
+autoreply = 
 portrange = (2234, 2234)
 upnp = True
 upnp_interval = 4
@@ -21,9 +21,9 @@ away = False
 private_chatrooms = False
 
 [transfers]
-incompletedir = ${XDG_MUSIC_DIR}/_incomplete
-downloaddir = ${XDG_MUSIC_DIR}/_downloads
-uploaddir = ${XDG_MUSIC_DIR}/.received
+incompletedir = ${HOME}/Music/_incomplete
+downloaddir = ${HOME}/Music/_downloads
+uploaddir = ${Home}/Music/.received
 usernamesubfolders = False
 shared = [('var_lib_mpd_music', '/var/lib/mpd/music')]
 buddyshared = []
@@ -35,8 +35,8 @@ downloadlimitalt = 100
 preferfriends = False
 useupslots = False
 uploadslots = 2
-afterfinish =
-afterfolder =
+afterfinish = 
+afterfolder = 
 fifoqueue = False
 usecustomban = False
 limitby = True
@@ -70,7 +70,7 @@ reveal_trusted_shares = False
 
 [userinfo]
 descr = ''
-pic =
+pic = 
 
 [userbrowse]
 expand_folders = True
@@ -144,10 +144,10 @@ filterlength = []
 [ui]
 dark_mode = True
 header_bar = True
-icontheme =
+icontheme = 
 chatme = #908e8b
-chatremote =
-chatlocal =
+chatremote = 
+chatlocal = 
 chathilite = #5288ce
 urlcolor = #5288ce
 useronline = #16bb5c
@@ -155,12 +155,12 @@ useraway = #c9ae13
 useroffline = #e04f5e
 usernamehotspots = True
 usernamestyle = bold
-textbg =
-search =
-inputcolor =
+textbg = 
+search = 
+inputcolor = 
 spellcheck = True
 exitdialog = 2
-tab_default =
+tab_default = 
 tab_hilite = #497ec2
 tab_changed = #497ec2
 tab_select_previous = True
@@ -170,20 +170,20 @@ tabprivate = Top
 tabinfo = Top
 tabbrowse = Top
 tabsearch = Top
-globalfont =
-chatfont =
+globalfont = 
+chatfont = 
 tabclosers = True
-searchfont =
-listfont =
-browserfont =
-transfersfont =
-last_tab_id = uploads
+searchfont = 
+listfont = 
+browserfont = 
+transfersfont = 
+last_tab_id = downloads
 modes_visible = {'search': True, 'downloads': True, 'uploads': True, 'userbrowse': True, 'userinfo': True, 'private': True, 'userlist': True, 'chatrooms': True, 'interests': True}
 modes_order = ['search', 'downloads', 'uploads', 'userbrowse', 'userinfo', 'private', 'userlist', 'chatrooms', 'interests']
 buddylistinchatrooms = tab
 trayicon = True
 startup_hidden = False
-filemanager =
+filemanager = 
 speechenabled = False
 speechprivate = User %(user)s told you: %(message)s
 speechrooms = In room %(room)s, user %(user)s said: %(message)s
@@ -194,10 +194,10 @@ xposition = -1
 yposition = -1
 maximized = True
 reverse_file_paths = True
-language =
+language = 
 chatcommand = #908E8B
-textviewfont =
-file_size_unit =
+textviewfont = 
+file_size_unit = 
 
 [urls]
 protocols = {}
@@ -207,10 +207,10 @@ likes = []
 dislikes = []
 
 [players]
-npothercommand =
+npothercommand = 
 npplayer = mpris
 npformatlist = []
-npformat =
+npformat = 
 
 [notifications]
 notification_window_title = True
@@ -228,9 +228,9 @@ enable = True
 enabled = ['core_commands']
 
 [statistics]
-started_downloads = 617
-completed_downloads = 617
-downloaded_size = 13358682027
+started_downloads = 629
+completed_downloads = 629
+downloaded_size = 13414510091
 started_uploads = 0
 completed_uploads = 0
 uploaded_size = 0
