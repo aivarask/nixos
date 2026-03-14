@@ -9,12 +9,6 @@
     gdu
     duf
     dust
-
-    # lsusb
-    # gio mount "mtp://[usb:001,006]/"
-    # mtpfs
-    # simple-mtpfs
-    # go-mtpfs
     jmtpfs
     android-file-transfer
     nfs-utils
@@ -23,5 +17,11 @@
     mtools
     parted
     gparted
+
+    # lsusb
+    # gio mount "mtp://[usb:001,006]/"
+    # mtpfs
+    # simple-mtpfs
+    # go-mtpfs
   ];
 }

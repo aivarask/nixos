@@ -34,9 +34,11 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /export         192.168.0.226(rw,fsid=0,no_subtree_check)
-    /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)
+    /export         minimal(rw,fsid=0,no_subtree_check)
+    /export/music   minimal(rw,nohide,insecure,no_subtree_check)
   '';
+  # /export         192.168.0.226(rw,fsid=0,no_subtree_check)
+  # /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)
   networking.firewall.allowedTCPPorts = [
     111
     2049

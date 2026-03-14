@@ -105,16 +105,17 @@
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
-                ./boot.nix
-                ./minimal.nix
-                ./autologin.nix
-                ./search.nix
-                ./bluetooth.nix
-                # inputs.disko.nixosModules.disko
                 # ./disk-nvme.nix
-                ./mix.nix
-                ./graphics_tools.nix
+                # inputs.disko.nixosModules.disko
+                ./autologin.nix
+                ./bluetooth.nix
+                ./boot.nix
                 ./dell.nix
+                ./graphics_tools.nix
+                ./minimal.nix
+                ./mix.nix
+                ./network.nix
+                ./search.nix
               ];
 
             }
@@ -123,14 +124,14 @@
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
-          ./boot.nix
-          ./minimal.nix
-          ./binarycache.nix
-          ./network.nix
           ./autologin.nix
-          ./search.nix
-          ./pc.nix
+          ./binarycache.nix
+          ./boot.nix
           ./graphics_tools.nix
+          ./minimal.nix
+          ./network.nix
+          ./pc.nix
+          ./search.nix
         ];
         specialArgs = { inherit inputs self xdgconf; };
       };

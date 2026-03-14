@@ -12,13 +12,13 @@ in
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
+  xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
   imports = [
     ./.config/chromium/default.nix
     ./.config/firefox/default.nix
     ./.config/zsh/default.nix
     ./.config/git/default.nix
-
   ];
 
   home.packages = with pkgs; [

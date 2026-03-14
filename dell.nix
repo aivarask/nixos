@@ -27,7 +27,8 @@
       mountConfig = {
         Options = "noatime";
       };
-      what = "192.168.0.185:/music";
+      what = "pc:/music";
+      # what = "192.168.0.185:/music";
       where = "/mnt/music";
     }
   ];
