@@ -12,11 +12,6 @@
     duf
     dust
 
-    # incus
-    buildah
-    podman
-    skopeo
-    podman-tui
     # MTP (Media transfer protocol)
     # https://nixos.wiki/wiki/MTP
     # https://wiki.archlinux.org/title/Media_Transfer_Protocol
@@ -31,7 +26,7 @@
     inotify-tools
     fswatch
 
-    udiskie
+    mtools
     parted
     gparted
   ];

@@ -19,6 +19,7 @@
   ...
 }@args:
 {
+  hardware.i2c.enable = true;
   environment.systemPackages = with pkgs; [
     systemctl-tui
     fzf
@@ -39,11 +40,8 @@
     tldr
     manix
     glib
+    fwupd
   ];
-
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
 
   programs.tmux.enable = true;
   programs.tmux.extraConfig = ''
@@ -60,8 +58,8 @@
   # netstat -antup
   # nestat --all --numeric --tcp --udp --program
   networking.nameservers = [
+    "8.8.8.8"
     "192.168.0.1"
-    # "8.8.8.8"
     # "1.1.1.1"
   ];
   # networking.wireless.iwd.enable = true;
@@ -202,7 +200,7 @@
     man = {
       enable = true;
       # cache.enable = true;
-      man-db.enable = true;
+      man-db.enable = false;
       mandoc.enable = false;
       mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
     };

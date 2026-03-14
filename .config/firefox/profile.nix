@@ -122,9 +122,13 @@ in
               { template = "https://search.nixos.org/options?channel=unstable&type=options&query={searchTerms}"; }
             ];
           };
-          "@nm nixos.org/manual" = {
+          "@nm nixos.org/manual/nix" = {
             definedAliases = [ "@nm" ];
             urls = [ { template = "https://nixos.org/manual/nix/unstable/?search={searchTerms}"; } ];
+          };
+          "@nos nixos.org/manual/nixos" = {
+            definedAliases = [ "@nos" ];
+            urls = [ { template = "https://nixos.org/manual/nixo/unstable/?search={searchTerms}"; } ];
           };
           "@nw wiki.nixos.org" = {
             definedAliases = [ "@nw" ];

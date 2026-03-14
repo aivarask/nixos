@@ -7,7 +7,6 @@
 
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # https://github.com/nixos/nixos-hardware
   inputs.home-manager.url = "github:nix-community/home-manager"; # https://github.com/nix-community/home-manager
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nix-colors.url = "github:misterio77/nix-colors";
@@ -112,7 +111,6 @@
                 # ./disk-nvme.nix
                 ./mix.nix
                 ./graphics_tools.nix
-                ./graphics_dell.nix
               ];
               system.stateVersion = "26.05";
               nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";

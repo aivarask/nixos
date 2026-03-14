@@ -21,14 +21,13 @@
 # cmd_preview () { pistol $BUFFER }
 # zle -N cmd_preview cmd_preview
 # bindkey -v '^]' cmd_preview
-#
-# nix-clean() {
-# 	nix-env --delete-generations old
-# 	nix-store --gc
-# 	nix-channel --update
-# 	nix-env -u --always
-# 	for link in /nix/var/nix/gcroots/auto/*; do
-# 		rm $(readlink "$link")
-# 	done
-# 	nix-collect-garbage -d
-# }
+
+nix-clean() {
+	nix-env --delete-generations old
+	nix-store --gc
+	nix-env -u --always
+	for link in /nix/var/nix/gcroots/auto/*; do
+		rm $(readlink "$link")
+	done
+	nix-collect-garbage -d
+}

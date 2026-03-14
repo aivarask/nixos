@@ -11,6 +11,7 @@ export PAPIRUS=/run/current-system/sw/share/icons/Papirus/
 
 typeset -TU PATH path ':'
 path+=(${0:a:h}/bin)
+path+=($XDG_CONFIG_HOME/sway/bin)
 # path+=( /etc/nixos/*(N-/) )
 
 typeset -TU CPATH cpath ':'

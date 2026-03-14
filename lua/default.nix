@@ -27,7 +27,7 @@ in
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.pathsToLink = [ "/include" ];
-  environment.extraOutputsToInstall = [ "dev" ];
+  # environment.extraOutputsToInstall = [ "dev" ];
   environment.systemPackages = with pkgs; [
     vscode-json-languageserver
     vscode-css-languageserver
@@ -40,6 +40,7 @@ in
     cmake
 
     ludtwig
+    intelephense
     gnumake
     checkmake
     taplo

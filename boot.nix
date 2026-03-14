@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   boot.supportedFilesystems.zfs = lib.mkForce false;
   boot.tmp.cleanOnBoot = true;
@@ -15,8 +20,8 @@
     "boot.shell_on_fail"
     "loglevel=3"
   ];
-  boot.initrd.kernelModules = [ "wl" ];
   boot.kernelModules = [
+    "vhost_vsock"
     "kvm-intel"
     "kvm-amd"
     "wl"
@@ -27,10 +32,7 @@
     config.boot.kernelPackages.broadcom_sta
     config.boot.kernelPackages.ddcci-driver
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.18.15"
-    "broadcom-sta-6.30.223.271-59-6.19.5"
-  ];
+  boot.initrd.kernelModules = [ "wl" ];
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
@@ -39,5 +41,10 @@
     "usb_storage"
     "sd_mod"
     "rtsx_pci_sdmmc"
+  ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-59-6.18.15"
+    "broadcom-sta-6.30.223.271-59-6.18.16"
+    "broadcom-sta-6.30.223.271-59-6.19.5"
   ];
 }

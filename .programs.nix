@@ -37,6 +37,9 @@ in
     spotify
     ncspot
   ];
+  services.udiskie.enable = true;
+  # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
+  xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
