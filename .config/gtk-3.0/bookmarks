@@ -1,11 +1,8 @@
 file:///etc/nixos
 file:///var/lib/mpd
 file:///var/lib/transmission
-file:///root/Documents
 file:///root/Downloads
 file:///root/Music
 file:///root/Pictures
 file:///root/Public
-file:///root/Screenshots
-file:///root/Templates
 file:///root/Videos

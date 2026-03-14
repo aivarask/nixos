@@ -2,6 +2,3 @@
 # shopt -s checkwinsize
 # shopt -s autocd
 # shopt -s cdspell
-#
-# # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
-# echo 'hi from bashrc.local'
