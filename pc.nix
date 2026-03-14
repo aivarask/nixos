@@ -32,11 +32,34 @@
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = "";
 
+  # rpcinfo -p
+  # networking.hosts = {
+  #   "192.168.0." = [
+  #     "mail.example.com"
+  #     "imap.example.com"
+  #   ];
+  # };
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
     /export         192.168.0.226(rw,fsid=0,no_subtree_check)
     /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)
   '';
+  networking.firewall.allowedTCPPorts = [
+    111
+    2049
+    4000
+    4001
+    4002
+    20048
+  ];
+  networking.firewall.allowedUDPPorts = [
+    111
+    2049
+    4000
+    4001
+    4002
+    20048
+  ];
 
   programs.steam = {
     enable = true; # Master switch, already covered in installation

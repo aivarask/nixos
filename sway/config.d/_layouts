@@ -6,16 +6,14 @@ default_border pixel
 default_floating_border pixel
 # hide_edge_borders smart_no_gaps
 default_orientation auto
-workspace_layout tabbed
+workspace_layout stacking
 
 bindsym $mod+u focus parent
 bindsym $mod+s focus child
 bindsym $mod+tab focus next
 bindsym $mod+b splith
 bindsym $mod+v splitv
-bindsym $mod+d layout toggle tabbed splitv splith
-# bindsym $mod+s layout stacking
-# bindsym $mod+t layout tabbed
+bindsym $mod+d layout toggle stacking splitv splith
 bindsym $mod+space fullscreen
 bindsym $mod+minus exec "pkill -USR1 waybar"
 bindsym $mod+shift+space floating toggle
