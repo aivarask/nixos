@@ -32,6 +32,8 @@
   hardware.fancontrol.enable = false;
   hardware.fancontrol.config = "";
 
+  hardware.nvidia.open = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
     /export         minimal(rw,fsid=0,no_subtree_check)
@@ -56,12 +58,12 @@
     20048
   ];
 
-  programs.steam.enable = true;
+  # programs.steam.enable = true;
   # programs.steam.remotePlay.openFirewall = true;
   # programs.steam.dedicatedServer.openFirewall = true;
-  programs.steam.extraCompatPackages = with pkgs; [
-    proton-ge-bin
-  ];
+  # programs.steam.extraCompatPackages = with pkgs; [
+  #   proton-ge-bin
+  # ];
   services.udev.extraRules =
     let
       shell = "${pkgs.zsh}/bin/zsh";

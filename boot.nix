@@ -17,6 +17,7 @@
     "fs.inotify.max_queued_events" = 100001;
   };
 
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "boot.shell_on_fail"
     "loglevel=3"

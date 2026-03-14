@@ -11,6 +11,7 @@
 let
   confDir = "${xdgconf}/mpd";
   playlistDir = "${confDir}/playlists";
+  musicDirectory = "${config.users.users."root".home}/Music";
 in
 rec {
   environment.systemPackages = [
@@ -19,9 +20,10 @@ rec {
   ];
   networking.firewall.allowedTCPPorts = [ 6600 ];
   services.mpd.enable = true;
-  services.mpd.startWhenNeeded = true;
+  # services.mpd.startWhenNeeded = true;
   services.mpd.user = "pipewire";
   services.mpd.group = "audio";
+  services.mpd.settings.music_directory = musicDirectory;
   # /run/mpd/mpd.conf
   services.mpd.settings.include_optional = "${confDir}/mpd.conf";
   # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609

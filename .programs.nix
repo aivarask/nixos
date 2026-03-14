@@ -39,6 +39,8 @@ in
     nicotine-plus
     spotify
     ncspot
+    celluloid
+    dav1d
   ];
   services.udiskie.enable = true;
   # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
@@ -99,9 +101,8 @@ in
   programs.mpv.enable = true;
   programs.mpv.package = (
     pkgs.mpv.override {
-      # mpv = pkgs.mpv.override {
-      #   waylandSupport = true;
-      # };
+      # vapoursynthSupport = true;
+      youtubeSupport = true;
       scripts = with pkgs.mpvScripts; [
         pkgs.mpvScripts.uosc # https://github.com/tomasklaen/uosc
         pkgs.mpvScripts.reload # https://github.com/4e6/mpv-reload

@@ -24,5 +24,6 @@ alias re="systemctl restart"
 alias s="uwsm start sway-uwsm.desktop"
 alias st="speedtest"
 alias wttr_srv_="wttrbar --location Sirvintos"
+alias celluloid="celluloid --mpv-vo=gpu-next --mpv-gpu-api=vulkan --mpv-hwdec=vulkan --mpv-gpu-context=waylandvk"
 
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"

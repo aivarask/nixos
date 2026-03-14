@@ -128,7 +128,8 @@
             "tooltip-format-disconnected": "click to connect",
             "on-click": "iwctl station wlan0 connect zte",
             "on-click-middle": "iwctl station wlan0 disconnect",
-            "on-click-right": "xdg-open http://192.168.0.1"
+            "on-click-right": "iwctl station wlan0 disconnect",
+            // "on-click-right": "xdg-open http://192.168.0.1"
         },
         "sway/language": {
             "format": "{flag}",
