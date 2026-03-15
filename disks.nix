@@ -18,7 +18,6 @@
     parted
     gparted
 
-    # lsusb
     # gio mount "mtp://[usb:001,006]/"
     # mtpfs
     # simple-mtpfs

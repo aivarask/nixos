@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 {
+  services.udisks2.enable = true;
+  services.udisks2.settings = { };
+  services.udisks2.mountOnMedia = true;
+  programs.gnome-disks.enable = true;
   services.espanso.enable = true;
   services.espanso.package = pkgs.espanso-wayland;
   services.playerctld.enable = true;
@@ -21,21 +25,6 @@
     "test@localhost"
   ];
 
-  environment.systemPackages = [
-    pkgs.bitmagnet
-    pkgs.magnetico
-    pkgs.tremc
-    pkgs.fragments
-  ];
-  services.transmission = {
-    enable = true;
-    package = pkgs.transmission_4;
-    openPeerPorts = true;
-    settings = {
-      watch-dir = "/var/lib/transmission/watchdir";
-      watch-dir-enabled = true;
-    };
-  };
   services.nginx.defaultHTTPListenPort = 80;
   services.nginx = {
     # enable = false;
@@ -65,4 +54,5 @@
     RestrictNamespaces = lib.mkForce false;
     SystemCallFilter = lib.mkForce "";
   };
+
 }

@@ -17,6 +17,7 @@ alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
 alias nfu="nix flake update"
 alias nt="nix-tree"
 alias nr='nrs --option substituters "https://cache.nixos.org https://nix-community.cachix.org"'
+alias nrs_="nixos-rebuild switch"
 alias nrs="nixos-rebuild switch"
 alias nrs="nixos-rebuild switch --no-reexec"
 alias oras="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in

@@ -42,8 +42,26 @@ in
     ncspot
     celluloid
     dav1d
+    udiskie
   ];
   services.udiskie.enable = true;
+  services.udiskie.settings = {
+    # workaround for
+    # https://github.com/nix-community/home-manager/issues/632
+    program_options = {
+      # replace with your favorite file manager
+      file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
+    };
+    device_config = {
+      id_uuid = "/dev/disks/by-uuid/1234-5678";
+      options = [
+        "noexec"
+        "nodev"
+      ];
+      ignore = false;
+      automount = true;
+    };
+  };
   # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
