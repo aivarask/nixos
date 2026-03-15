@@ -107,11 +107,11 @@
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
                 # inputs.disko.nixosModules.disko
-                ./module/autologin.nix
-                ./bluetooth.nix
+                ./modules/autologin.nix
+                ./modules/graphics.nix
+                ./modules/bluetooth.nix
                 ./boot.nix
                 ./dell.nix
-                ./graphics_tools.nix
                 ./minimal.nix
                 ./mix.nix
                 ./network.nix
@@ -124,9 +124,9 @@
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
-          ./module/autologin.nix
+          ./modules/autologin.nix
+          ./modules/graphics.nix
           ./boot.nix
-          ./graphics_tools.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
