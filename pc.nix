@@ -58,7 +58,6 @@
 
   # fileSystems."/root/Downloads".label = "Downloads";
   # fileSystems."/var/lib/transmission/watchdir/root_downloads".label = "root_downloads";
-
   fileSystems."/var/lib/transmission/watchdir" = {
     depends = [
       "/root/Downloads"

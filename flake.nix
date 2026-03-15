@@ -88,36 +88,18 @@
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        # inherit system;
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          (
-            {
-              modulesPath,
-              lib,
-              config,
-              ...
-            }:
-            {
-
-              imports = [
-                (modulesPath + "/installer/scan/not-detected.nix")
-                (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
-                # inputs.disko.nixosModules.disko
-                ./modules/autologin.nix
-                ./modules/graphics.nix
-                ./modules/bluetooth.nix
-                ./modules/search.nix
-                ./boot.nix
-                ./dell.nix
-                ./dnsmasq.nix
-                ./minimal.nix
-                ./network.nix
-                ./mix.nix
-              ];
-
-            }
-          )
+          ./modules/autologin.nix
+          ./modules/graphics.nix
+          ./modules/bluetooth.nix
+          ./modules/search.nix
+          ./boot.nix
+          ./dnsmasq.nix
+          ./minimal.nix
+          ./network.nix
+          ./mix.nix
+          ./dell.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
@@ -129,8 +111,8 @@
           ./dnsmasq.nix
           ./minimal.nix
           ./network.nix
-          ./pc.nix
           ./mix.nix
+          ./pc.nix
         ];
         specialArgs = { inherit inputs self xdgconf; };
       };
