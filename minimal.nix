@@ -59,17 +59,7 @@
   # nestat --all --numeric --tcp --udp --program
   networking.enableIPv6 = false;
   boot.kernelParams = [ "ipv6.disable=1" ];
-  services.dnsmasq.enable = true;
-  services.dnsmasq.resolveLocalQueries = false;
-  services.dnsmasq.settings.servers = [
-    "/linkomanija.net/1.1.1.1"
-    "192.168.0.1"
-  ];
-  networking.nameservers = [
-    "192.168.0.1"
-    "1.1.1.1"
-    "8.8.8.8"
-  ];
+
   # networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {
     # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst

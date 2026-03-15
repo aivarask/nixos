@@ -14,6 +14,7 @@
     settings = {
       # watch-dir = "${config.hm.xdg.userDirs.download}";
       watch-dir-enabled = true;
+      watch_dir_force_generic = true;
     };
   };
   # http://localhost:7878

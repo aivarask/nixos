@@ -11,6 +11,7 @@ alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
 alias nfu="nix flake update"
 alias nrs_="nixos-rebuild switch"
 alias nrs="nixos-rebuild switch --no-reexec"
+alias nrs_offline="nrs --option substitute false"
 alias nr='nrs --option substituters "https://cache.nixos.org https://nix-community.cachix.org"'
 alias sway_start="uwsm start sway-uwsm.desktop"
 alias st="speedtest"

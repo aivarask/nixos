@@ -113,6 +113,7 @@
                 ./modules/search.nix
                 ./boot.nix
                 ./dell.nix
+                ./dnsmasq.nix
                 ./minimal.nix
                 ./network.nix
                 ./mix.nix
@@ -128,10 +129,11 @@
           ./modules/graphics.nix
           ./modules/search.nix
           ./boot.nix
+          ./dnsmasq.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
-                ./mix.nix
+          ./mix.nix
         ];
         specialArgs = { inherit inputs self xdgconf; };
       };
