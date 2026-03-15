@@ -3,17 +3,22 @@
   pkgs,
   SELF,
   xdgconf,
+  inputs,
   ...
 }:
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
+  manual.json.enable = true;
+  programs.man.generateCaches = true;
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
-  xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
   home.file."Pictures/img".source = symlink "${SELF}/img";
+  xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
   imports = [

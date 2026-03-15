@@ -12,7 +12,6 @@
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
-
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
@@ -21,7 +20,6 @@
       "dmask=0022"
     ];
   };
-  swapDevices = [ ];
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -56,8 +54,6 @@
     20048
   ];
 
-  # fileSystems."/root/Downloads".label = "Downloads";
-  # fileSystems."/var/lib/transmission/watchdir/root_downloads".label = "root_downloads";
   fileSystems."/var/lib/transmission/watchdir" = {
     depends = [
       "/root/Downloads"

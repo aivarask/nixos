@@ -20,13 +20,12 @@
 }@args:
 {
   networking.hostName = lib.mkDefault "minimal";
-  system.stateVersion = lib.mkDefaul "26.05";
+  system.stateVersion = lib.mkDefault "26.05";
   nixpkgs.hostPlatform = "x86_64-linux";
 
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
-    # inputs.disko.nixosModules.disko
   ];
   environment.systemPackages = with pkgs; [
     systemctl-tui

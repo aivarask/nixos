@@ -33,20 +33,12 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
-            extraSpecialArgs = {
-              inherit inputs;
-              inherit SELF;
-              inherit xdgconf;
-            };
+            extraSpecialArgs = { inherit inputs SELF xdgconf; };
             sharedModules = [ { home.stateVersion = "26.05"; } ];
-
             users.root = {
               home.username = "root";
               home.homeDirectory = "/root";
               home.enableNixpkgsReleaseCheck = false;
-              manual.json.enable = true;
-              programs.man.generateCaches = true;
-              colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 ./.programs.nix
@@ -58,14 +50,14 @@
         inputs.disko.nixosModules.disko
         ./.config/mpd/default.nix
         ./.config/pipewire/default.nix
-        ./modules/torrents.nix
         ./disks.nix
         ./environment.nix
-        ./packages.nix
-        ./nix.nix
-        ./services.nix
         ./httpd
         ./lua
+        ./modules/torrents.nix
+        ./nix.nix
+        ./packages.nix
+        ./services.nix
         ./sway
       ];
     in
@@ -78,7 +70,6 @@
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       nixpkgs.hostPlatform = system;
       packages."${system}" = { };
-
       nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs self xdgconf; };
@@ -103,6 +94,7 @@
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/autologin.nix
           ./modules/graphics.nix
@@ -114,7 +106,6 @@
           ./mix.nix
           ./pc.nix
         ];
-        specialArgs = { inherit inputs self xdgconf; };
       };
     });
 }
