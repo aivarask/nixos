@@ -19,7 +19,10 @@
   ...
 }@args:
 {
-  hardware.i2c.enable = true;
+  networking.hostName = lib.mkDefault "minimal";
+  system.stateVersion = lib.mkDefaul "26.05";
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   environment.systemPackages = with pkgs; [
     systemctl-tui
     fzf

@@ -88,7 +88,7 @@
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        inherit system;
+        # inherit system;
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           (
@@ -99,9 +99,6 @@
               ...
             }:
             {
-              networking.hostName = "minimal";
-              system.stateVersion = "26.05";
-              nixpkgs.hostPlatform = system;
 
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")

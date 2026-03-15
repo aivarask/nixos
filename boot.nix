@@ -26,11 +26,6 @@
     "vhost_vsock"
     "kvm-intel"
     "kvm-amd"
-    "i2c-dev"
-    "ddcci-backlight"
-  ];
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.ddcci-driver
   ];
   boot.initrd.availableKernelModules = [
     "nvme"

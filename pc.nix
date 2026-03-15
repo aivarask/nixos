@@ -59,10 +59,10 @@
   # fileSystems."/root/Downloads".label = "Downloads";
   # fileSystems."/var/lib/transmission/watchdir/root_downloads".label = "root_downloads";
 
-  fileSystems."/var/lib/transmission/watchdir/root_downloads" = {
+  fileSystems."/var/lib/transmission/watchdir" = {
     depends = [
       "/root/Downloads"
-      "/var/lib/transmission/watchdir"
+      "/var/lib/transmission"
     ];
     device = "/root/Downloads";
     fsType = "none";
@@ -72,13 +72,4 @@
     ];
   };
 
-  services.udev.extraRules =
-    let
-      shell = "${pkgs.zsh}/bin/zsh";
-      ddcciDev = "DP-1";
-      ddcciNode = "/sys/bus/i2c/devices/i2c-1/new_device";
-    in
-    ''
-      SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${shell} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
-    '';
 }
