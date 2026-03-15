@@ -100,8 +100,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"
   ]
   ++ (args.extraPublicKeys or [ ]);
-  users.users."aiva".enable = true;
-  users.users."aiva".isNormalUser = true;
 
   environment.etc."disko-main.nix".source = ./modules/disko-main.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
