@@ -38,7 +38,6 @@
             users.root = {
               home.username = "root";
               home.homeDirectory = "/root";
-              home.enableNixpkgsReleaseCheck = false;
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 ./.programs.nix

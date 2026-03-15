@@ -13,6 +13,7 @@ in
   manual.json.enable = true;
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  home.enableNixpkgsReleaseCheck = false;
 
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
