@@ -8,6 +8,7 @@
   environment.variables.EDITOR = "vim";
   environment.variables.VISUAL = "nvim";
   environment.pathsToLink = [
+    "share/man"
   ];
   environment.profiles = [ ];
   environment.sessionVariables = {
@@ -15,9 +16,7 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
-    # XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [
-      # "${XDG_BIN_HOME}"
       "/etc/nixos/bin"
     ];
   };

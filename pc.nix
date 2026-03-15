@@ -38,8 +38,6 @@
     /export/music   minimal(rw,nohide,insecure,no_subtree_check)
     /root/Video     minimal(rw,nohide,insecure,no_subtree_check)
   '';
-  # /export         192.168.0.226(rw,fsid=0,no_subtree_check)
-  # /export/music   192.168.1.226(rw,nohide,insecure,no_subtree_check)
   networking.firewall.allowedTCPPorts = [
     111
     2049
@@ -57,12 +55,6 @@
     20048
   ];
 
-  # programs.steam.enable = true;
-  # programs.steam.remotePlay.openFirewall = true;
-  # programs.steam.dedicatedServer.openFirewall = true;
-  # programs.steam.extraCompatPackages = with pkgs; [
-  #   proton-ge-bin
-  # ];
   services.udev.extraRules =
     let
       shell = "${pkgs.zsh}/bin/zsh";

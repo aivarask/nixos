@@ -58,6 +58,7 @@
         inputs.disko.nixosModules.disko
         ./.config/mpd/default.nix
         ./.config/pipewire/default.nix
+        ./modules/torrents.nix
         ./disks.nix
         ./environment.nix
         ./packages.nix

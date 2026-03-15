@@ -5,6 +5,7 @@
     pkgs.magnetico
     pkgs.tremc
     pkgs.fragments
+    pkgs.radarr
   ];
   services.transmission = {
     enable = true;
@@ -13,6 +14,15 @@
     settings = {
       watch-dir = "${config.hm.xdg.userDirs.download}";
       watch-dir-enabled = true;
+    };
+  };
+  # http://localhost:7878
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      server = { };
+
     };
   };
 }
