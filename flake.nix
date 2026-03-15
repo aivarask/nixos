@@ -83,7 +83,7 @@
         inherit system;
         specialArgs = { inherit inputs self xdgconf; };
         modules = [
-          ./iso.nix
+          ./modules/iso.nix
           ./minimal.nix
         ];
       };
@@ -106,7 +106,6 @@
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
                 (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
-                # ./disk-nvme.nix
                 # inputs.disko.nixosModules.disko
                 ./autologin.nix
                 ./bluetooth.nix
@@ -126,7 +125,6 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         modules = commonModules ++ [
           ./autologin.nix
-          ./binarycache.nix
           ./boot.nix
           ./graphics_tools.nix
           ./minimal.nix

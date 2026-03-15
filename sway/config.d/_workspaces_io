@@ -1,7 +1,7 @@
 output * bg #000000 solid_color
 output * allow_tearing yes
-output * max_render_time off
-# output * adaptive_sync on
+output * max_render_time 6
+output * adaptive_sync on
 # output * scale_filter nearest
 
 set $4k 3840x2160

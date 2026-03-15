@@ -34,7 +34,9 @@
         };
       flake = {
         nixosConfigurations.isoTest = nixpkgs.lib.nixosSystem {
-          modules = [ ./iso.nix ];
+          modules = [
+            # ./iso.nix
+          ];
         };
         # The usual flake attributes can be defined here, including system-
         # agnostic ones like nixosModule and system-enumerating ones, although

@@ -69,7 +69,7 @@
 
     # UI and Behavior
     DontCheckDefaultBrowser = true;
-    HardwareAcceleration = true;
+    HardwareAcceleration = false;
     OfferToSaveLogins = false;
     DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
     SearchEngines = {

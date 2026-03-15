@@ -103,13 +103,7 @@
   users.users."aiva".enable = true;
   users.users."aiva".isNormalUser = true;
 
-  environment.etc."disko-config.nix".source = ./disk-nvme.nix;
-  systemd.tmpfiles.rules = [
-    #   # "f /home/nixos/disko-config.nix - - - - ${builtins.readFile ./disk-nvme.nix}"
-    #   "C+ /home/nixos/nixos_self - - - - ${self}"
-    # "C+ /home/nixos/nixos - - - - ${./.}"
-  ];
-  # systemd.tmpfiles.settings."disko-config"."/tmp/disk-config.nix".f.argument = builtins.readFile ./common/disko/gpt-bios-compat.nix;
+  environment.etc."disko-main.nix".source = ./modules/disko-main.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
