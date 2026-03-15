@@ -38,6 +38,7 @@
     /export/music   minimal(rw,nohide,insecure,no_subtree_check)
     /root/Video     minimal(rw,nohide,insecure,no_subtree_check)
   '';
+  # /root/Downloads * (rw,nohide,insecure,no_subtree_check)
   networking.firewall.allowedTCPPorts = [
     111
     2049
@@ -54,6 +55,22 @@
     4002
     20048
   ];
+
+  # fileSystems."/root/Downloads".label = "Downloads";
+  # fileSystems."/var/lib/transmission/watchdir/root_downloads".label = "root_downloads";
+
+  fileSystems."/var/lib/transmission/watchdir/root_downloads" = {
+    depends = [
+      "/root/Downloads"
+      "/var/lib/transmission/watchdir"
+    ];
+    device = "/root/Downloads";
+    fsType = "none";
+    options = [
+      "bind"
+      # "ro"
+    ];
+  };
 
   services.udev.extraRules =
     let

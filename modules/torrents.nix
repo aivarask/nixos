@@ -12,16 +12,15 @@
     package = pkgs.transmission_4;
     openPeerPorts = true;
     settings = {
-      watch-dir = "${config.hm.xdg.userDirs.download}";
+      # watch-dir = "${config.hm.xdg.userDirs.download}";
       watch-dir-enabled = true;
     };
   };
   # http://localhost:7878
   services.radarr = {
-    enable = true;
+    enable = false;
     openFirewall = true;
     settings = {
-      server = { };
 
     };
   };
