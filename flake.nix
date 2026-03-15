@@ -101,7 +101,7 @@
             {
               networking.hostName = "minimal";
               system.stateVersion = "26.05";
-              nixpkgs.hostPlatform = system; # lib.mkDefault "x86_64-linux";
+              nixpkgs.hostPlatform = system;
 
               imports = [
                 (modulesPath + "/installer/scan/not-detected.nix")
@@ -110,12 +110,12 @@
                 ./modules/autologin.nix
                 ./modules/graphics.nix
                 ./modules/bluetooth.nix
+                ./modules/search.nix
                 ./boot.nix
                 ./dell.nix
                 ./minimal.nix
-                ./mix.nix
                 ./network.nix
-                ./search.nix
+                ./mix.nix
               ];
 
             }
@@ -126,11 +126,12 @@
         modules = commonModules ++ [
           ./modules/autologin.nix
           ./modules/graphics.nix
+          ./modules/search.nix
           ./boot.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
-          ./search.nix
+                ./mix.nix
         ];
         specialArgs = { inherit inputs self xdgconf; };
       };
