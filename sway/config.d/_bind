@@ -7,6 +7,7 @@ bindsym ctrl+shift+escape move scratchpad
 bindsym $mod+grave exec $term
 bindsym $mod+return exec $term
 bindsym $mod+Menu exec $menu
+bindsym $mod+ctrl+Menu exec nwg-drawer
 bindsym $mod+q kill
 bindsym $mod+shift+c kill
 

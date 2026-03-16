@@ -1,5 +1,6 @@
 vim.o.pumheight = 16
-vim.o.complete = 'o,w,.'
+vim.o.pumblend = 30
+vim.o.complete = '.,w,o'
 vim.o.autocomplete = true
 vim.o.completeopt = "fuzzy,menu,menuone,noselect,popup"
 -- vim.o.wildmode = "noselect,list:lastused"
@@ -36,5 +37,4 @@ vim.lsp.enable {
     'vscode_html',
     'vscode_json',
     'yaml_ls',
-
 }

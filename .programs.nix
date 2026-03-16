@@ -18,16 +18,17 @@ in
 
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
+  xdg.userDirs.music = "${config.home.homeDirectory}/Music";
+  xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
   xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
   home.file."Pictures/img".source = symlink "${SELF}/img";
-  xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
-  xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
   imports = [
     ./.config/chromium/default.nix
     ./.config/firefox/default.nix
     ./.config/zsh/default.nix
     ./.config/git/default.nix
+    ./.config/mpv/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -51,32 +52,13 @@ in
     dav1d
     udiskie
   ];
-  services.udiskie.enable = true;
-  # services.udiskie.settings = {
-  #   # https://github.com/nix-community/home-manager/issues/632
-  #   program_options = {
-  #     file_manager = "thunar";
-  #   };
-  #   device_config = {
-  #     id_uuid = "/dev/disks/by-uuid/1234-5678";
-  #     options = [
-  #       "noexec"
-  #       "nodev"
-  #     ];
-  #     ignore = false;
-  #     automount = true;
-  #   };
-  # };
-  xdg.configFile."udiskie/config.yml".source = symlink "${xdgconf}/udiskie/config.yml";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
-  xdg.configFile."ripgreprc".source = symlink "${xdgconf}/ripgreprc";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
-  programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableZshIntegration = true;
@@ -93,6 +75,7 @@ in
     batdiff
     prettybat
   ];
+  xdg.configFile."ripgrep".source = symlink "${xdgconf}/ripgrep";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
@@ -115,23 +98,10 @@ in
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
   xdg.configFile."lazygit".source = symlink "${xdgconf}/lazygit";
 
-  programs.starship.enable = true;
   xdg.configFile."starship.toml".source = symlink "${xdgconf}/starship.toml";
+  programs.starship.enable = true;
   programs.starship.enableBashIntegration = true;
   programs.starship.enableZshIntegration = true;
-
-  xdg.configFile."mpv".source = symlink "${xdgconf}/mpv";
-  programs.mpv.enable = true;
-  programs.mpv.package = (
-    pkgs.mpv.override {
-      # vapoursynthSupport = true;
-      youtubeSupport = true;
-      scripts = with pkgs.mpvScripts; [
-        pkgs.mpvScripts.uosc # https://github.com/tomasklaen/uosc
-        pkgs.mpvScripts.reload # https://github.com/4e6/mpv-reload
-      ];
-    }
-  );
 
   programs.ncmpcpp.enable = true;
   xdg.configFile."ncmpcpp/config" = {
@@ -148,8 +118,8 @@ in
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
 
-  xdg.configFile."nicotine/config" = {
-    source = symlink "${xdgconf}/nicotine/config";
+  xdg.configFile."nicotine" = {
+    source = symlink "${xdgconf}/nicotine";
     enable = true;
     force = true;
     recursive = true;
@@ -167,16 +137,6 @@ in
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
 
-  services.espanso.enable = true;
-  xdg.configFile."espanso/config/default.yml".source = lib.mkForce (
-    symlink "${xdgconf}/espanso/config/default.yml"
-  );
-  xdg.configFile."espanso/match/default.yml".source = lib.mkForce (
-    symlink "${xdgconf}/espanso/match/default.yml"
-  );
-  xdg.configFile."espanso/match/packages".source = lib.mkForce (
-    symlink "${xdgconf}/espanso/match/packages"
-  );
-  services.espanso.waylandSupport = true;
-  services.espanso.x11Support = false;
+  # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
+  # services.udiskie.enable = true;
 }

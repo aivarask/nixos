@@ -1,5 +1,7 @@
 
 if has('nvim')
+    let g:loaded_python3_provider = 0
+    let g:loaded_perl_provider = 0
 	"autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
 	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 	set nofoldenable

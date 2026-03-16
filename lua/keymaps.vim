@@ -26,8 +26,7 @@ map ]C :call Ctoggle()<CR>
 map [C :call Ctoggle()<CR>
 map ]t :tabnext<CR>
 map [t :tabprevious<CR>
-map ]T :tabclose<CR>
-map [T :tabclose<CR>
+nnoremap ZT :tabclose<CR>
 nmap <C-k> [%
 nnoremap <silent> <leader>q :Bclose<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>

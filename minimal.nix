@@ -29,6 +29,7 @@
   ];
   environment.systemPackages = with pkgs; [
     systemctl-tui
+    ripgrep
     fzf
     neovim
     disko
