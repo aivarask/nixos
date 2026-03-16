@@ -52,24 +52,22 @@ in
     udiskie
   ];
   services.udiskie.enable = true;
-  services.udiskie.settings = {
-    # workaround for
-    # https://github.com/nix-community/home-manager/issues/632
-    program_options = {
-      # replace with your favorite file manager
-      file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
-    };
-    device_config = {
-      id_uuid = "/dev/disks/by-uuid/1234-5678";
-      options = [
-        "noexec"
-        "nodev"
-      ];
-      ignore = false;
-      automount = true;
-    };
-  };
-  # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
+  # services.udiskie.settings = {
+  #   # https://github.com/nix-community/home-manager/issues/632
+  #   program_options = {
+  #     file_manager = "thunar";
+  #   };
+  #   device_config = {
+  #     id_uuid = "/dev/disks/by-uuid/1234-5678";
+  #     options = [
+  #       "noexec"
+  #       "nodev"
+  #     ];
+  #     ignore = false;
+  #     automount = true;
+  #   };
+  # };
+  xdg.configFile."udiskie/config.yml".source = symlink "${xdgconf}/udiskie/config.yml";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
