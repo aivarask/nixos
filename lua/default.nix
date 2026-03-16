@@ -29,6 +29,7 @@ in
   environment.pathsToLink = [ "/include" ];
   # environment.extraOutputsToInstall = [ "dev" ];
   environment.systemPackages = with pkgs; [
+    tree-sitter
     vscode-json-languageserver
     vscode-css-languageserver
     vscode-langservers-extracted

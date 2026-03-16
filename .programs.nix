@@ -42,7 +42,7 @@ in
     gtk-doc
     vimpager
     bitwarden-cli
-    bitwarden-desktop
+    # bitwarden-desktop
     nicotine-plus
     spotify
     ncspot

@@ -21,7 +21,9 @@ endif
 syntax on
 filetype plugin indent on
 set termguicolors
-"set title titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
+set title
+set titlestring=\ %{expand('%:p')}\
+"set titlestring=\ %{bufnr('%')}\ %{expand('%')}\ %{hostname()}
 set completeopt=menu,menuone,noselect
 set cursorline
 set mouse=a

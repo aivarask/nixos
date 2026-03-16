@@ -109,3 +109,22 @@ fun! SwitchLine(cnt)
     endwhile
     call setpos('.', start)
 endfun
+
+function! MimeType(filename) abort
+  if !executable('file')
+    throw 'No ''file'' in ' . $PATH
+  endif
+
+  let l:output = systemlist('file --mime-type ' . shellescape(a:filename))
+  if v:shell_error !=# 0 || len(l:output) ==# 0
+    throw 'Command error: ''file --mime-type'': ' . join(l:output, "\n")
+  endif
+
+  let l:file_output = l:output[0]
+  let l:mimetype = substitute(l:file_output, '\v^.*\:\s*(.*)\s*$', '\1', '')
+  if l:mimetype ==# '' || stridx(l:mimetype, '/') ==# -1
+    return 'The MIME type could not be detected'
+  endif
+
+  return l:mimetype
+endfunction

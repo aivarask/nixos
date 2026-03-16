@@ -44,8 +44,30 @@ require('nvim-web-devicons').setup({
     override = {
         ['nix'] = { icon = '', color = '#ff0000', cterm_color = '110', name = 'Nix' },
     },
-    icon = {
-    }
+    override_by_filename = {
+        [".gitignore"] = {
+            icon = "",
+            color = "#f1502f",
+            name = "Gitignore"
+        },
+        ["vimrc"] = {
+            icon = "",
+            color = "#f1502f",
+            name = "Gitignore"
+        },
+        -- ["vimrc"] = function()
+        --     icon, name = require 'nvim-web-devicons'.get_icon('.vimrc', 'vim',
+        --         nil)
+        --     return { icon = icon, name = name }
+        -- end
+    },
+    override_by_extension = {
+        ["log"] = {
+            icon = "",
+            color = "#81e043",
+            name = "Log"
+        }
+    },
 })
 
 require('fidget').setup({})

@@ -1,10 +1,6 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
 
-
-
-
-
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
 alias help=run-help
@@ -22,7 +18,6 @@ bindkey '^X^E' edit-command-line
 cmd_preview () { echo $BUFFER }
 zle -N cmd_preview cmd_preview
 bindkey -v '^]' cmd_preview
-
 
 
 _quote_word() {
@@ -48,5 +43,6 @@ nix-clean() {
 	for link in /nix/var/nix/gcroots/auto/*; do
 		rm $(readlink "$link")
 	done
+    nix-store --verify --check-contents --repair
 	nix-collect-garbage -d
 }
