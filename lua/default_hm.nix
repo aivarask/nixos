@@ -81,6 +81,7 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
+        fzf-lua
         (nvim-treesitter.withPlugins (ps: [
           ps.nix
         ]))

@@ -33,7 +33,6 @@ in
   home.packages = with pkgs; [
     lnav
     htop
-    lf # https://github.com/gokcehan/lf
     gtk3
     gtk4
     nautilus

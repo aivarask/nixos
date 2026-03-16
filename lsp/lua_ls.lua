@@ -31,7 +31,7 @@ for _, name in ipairs({
     'nvim%-tree',
     'toggleterm.nvim',
     'nvim%-web%-devicons'
-    -- 'telescope.nvim',
+    , 'telescope.nvim',
     -- 'plenary.nvim',
 }) do
     for _, v in ipairs(vim.api.nvim_list_runtime_paths()) do
