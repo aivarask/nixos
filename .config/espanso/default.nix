@@ -3,6 +3,7 @@
   xdgconf,
   config,
   lib,
+  osConfig,
   ...
 }:
 {
@@ -12,7 +13,7 @@
   ];
   services.espanso.enable = false;
   xdg.configFile."espanso" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/espanso";
+    source = osConfig.symlink "${xdgconf}/espanso";
     enable = true;
     force = true;
     recursive = true;

@@ -1,12 +1,13 @@
 {
   pkgs,
-  lib,
+  config,
   xdgconf,
-  symlink,
+  osConfig,
   ...
 }:
+
 {
-  xdg.configFile."mpv".source = symlink "${xdgconf}/mpv";
+  xdg.configFile."mpv".source = osConfig.symlink "${xdgconf}/mpv";
   programs.mpv.enable = true;
   programs.mpv.package = (
     pkgs.mpv.override {

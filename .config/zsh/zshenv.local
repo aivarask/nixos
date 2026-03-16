@@ -2,7 +2,8 @@
 # shellcheck shell=zsh
 
 setopt extended_glob
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
+
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 export YDIFF_OPTIONS='-w40'
 export NIXPKGS_ALLOW_BROKEN=1
 export GTK_THEME=Adwaita:dark

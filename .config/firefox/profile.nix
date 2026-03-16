@@ -2,11 +2,12 @@
   pkgs,
   config,
   xdgconf,
+  osConfig,
   ...
 }:
 let
   username = config.home.username;
-  symlink = config.lib.file.mkOutOfStoreSymlink;
+  symlink = osConfig.symlink;
 in
 {
   xdg.configFile."mozilla/firefox/${username}/chrome/userContent.css" = {

@@ -24,12 +24,10 @@
     ueberzugpp
     glow
     tree
-    fd
     trash-cli
     fastfetch
     translate-shell
     remarshal # json2yaml...
-    w3m
     chafa
     libnotify
     psmisc

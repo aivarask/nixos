@@ -2,11 +2,9 @@
   pkgs,
   config,
   xdgconf,
+  osConfig,
   ...
 }:
-let
-  symlink = config.lib.file.mkOutOfStoreSymlink;
-in
 {
   home.packages = with pkgs; [
     git
@@ -30,8 +28,8 @@ in
       "${xdgconf}/git/config_user"
     ];
   };
-  xdg.configFile."git/config_global".source = symlink "${xdgconf}/git/config_global";
-  xdg.configFile."git/config_user".source = symlink "${xdgconf}/git/config_user";
-  xdg.configFile."git/ignore".source = symlink "${xdgconf}/git/ignore";
+  xdg.configFile."git/config_global".source = osConfig.symlink "${xdgconf}/git/config_global";
+  xdg.configFile."git/config_user".source = osConfig.symlink "${xdgconf}/git/config_user";
+  xdg.configFile."git/ignore".source = osConfig.symlink "${xdgconf}/git/ignore";
 
 }

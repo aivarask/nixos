@@ -1,61 +1,66 @@
 vim.lsp.inlay_hint.enable(false)
+local severity = {
+    min = vim.diagnostic.severity.WARN,
+    max = vim.diagnostic
+        .severity.ERROR
+}
 vim.diagnostic.config({
-	underline = { severity = { min = 1, max = 4 } },
-	virtual_text = { severity = { min = 1, max = 4 } },
-	virtual_lines = { severity = { min = vim.diagnostic.severity.ERROR } },
-	loclist = {
-		open = false,
-		severity = { min = vim.diagnostic.severity.ERROR },
-	},
-	update_in_insert = true,
+    underline = { severity = severity },
+    virtual_text = { severity = severity },
+    -- virtual_lines = { severity = severity },
+    virtual_lines = false,
+
+    signs = true,
+    float = {
+        -- scope = 'buffer',
+        -- pos = { 10, 10 },
+        -- severity = severity
+    },
+    status = { severity = severity },
+    update_in_insert = true,
+    severity_sort = true,
+
+    jump = {
+        severity = severity,
+        wrap = true
+    },
+    loclist = {
+        open = false,
+        severity = severity,
+    },
 })
 
 
-vim.diagnostic.handlers.loclist = {
-	show = function(_, _, _, opts)
-		---@diagnostic disable-next-line: undefined-field
-		opts.loclist.open = opts.loclist.open or false
-		local winid = vim.api.nvim_get_current_win()
-		---@diagnostic disable-next-line: undefined-field
-		vim.diagnostic.setloclist(opts.loclist)
-		vim.api.nvim_set_current_win(winid)
-	end
-}
 
+vim.api.nvim_create_autocmd('CursorHold',
+    {
+        group = vim.api.nvim_create_augroup('diagnostic', { clear = true }),
+        callback = function()
+            vim.diagnostic.open_float({
+                scope = 'buffer',
+                close_events = { 'CursorMoved' },
+                severity = severity,
+                foo = '',
+                pos = { 30, 30 },
+                focusable = false
+
+
+            })
+        end,
+    })
 
 if false then
-	vim.api.nvim_create_user_command('DiagnosticQf', function(args)
-		if args.args == 'ERROR' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
-		elseif args.args == 'WARN' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.HINT })
-		elseif args.args == 'INFO' then
-			vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.INFO })
-		else
-			vim.diagnostic.setqflist({})
-		end
-	end, {
-		desc = 'Adds lsp diagnostic to the Quickfix list',
-		complete = function() return { 'ERROR', 'WARN', 'HINT', 'INFO' } end,
-		nargs = '?',
-	})
+    vim.diagnostic.handlers.loclist = {
+        show = function(_, _, _, opts)
+            ---@diagnostic disable-next-line: undefined-field
+            opts.loclist.open = opts.loclist.open or false
+            local winid = vim.api.nvim_get_current_win()
+            ---@diagnostic disable-next-line: undefined-field
+            vim.diagnostic.setloclist(opts.loclist)
+            vim.api.nvim_set_current_win(winid)
+        end,
+        hide = function(namespace, bufnr)
 
-	vim.api.nvim_create_user_command('DiagnosticLoc', function(args)
-		if args.args == 'ERROR' then
-			vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.ERROR })
-		elseif args.args == 'WARN' then
-			vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.WARN })
-		elseif args.args == 'HINT' then
-			vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.HINT })
-		elseif args.args == 'INFO' then
-			vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.INFO })
-		else
-			vim.diagnostic.setloclist({})
-		end
-	end, {
-		desc = 'Adds lsp diagnostic to the Quickfix list',
-		complete = function() return { 'ERROR', 'WARN', 'HINT', 'INFO' } end,
-		nargs = '?',
-	})
+        end
+    }
 end

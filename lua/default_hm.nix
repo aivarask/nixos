@@ -25,7 +25,7 @@ let
   ];
 in
 {
-  xdg.configFile."vim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
+  xdg.configFile."vim".source = osConfig.symlink "/etc/nixos/lua";
   programs.vim.enable = true;
   programs.vim.extraConfig = "source $XDG_CONFIG_HOME/vim/vimrc";
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (
@@ -43,19 +43,19 @@ in
       ])
     ]
   );
- # xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/lua";
   programs.neovim.enable = true;
   programs.neovim.initLua =
-  let
-    nvimEarlyInit = lib.mkOrder 500 ''
-      vim.opt.rtp:prepend('/etc/nixos')
-      require('nixos')
+    let
+      nvimEarlyInit = lib.mkOrder 500 ''
+        vim.opt.rtp:prepend('/etc/nixos')
+        require('nixos')
       '';
-    # nvimLateInit = lib.mkAfter "vim.opt.signcolumn = 'auto:1-3'";
-  in 
-  lib.mkMerge [ nvimEarlyInit 
-  # nvimLateInit 
-];
+      # nvimLateInit = lib.mkAfter "vim.opt.signcolumn = 'auto:1-3'";
+    in
+    lib.mkMerge [
+      nvimEarlyInit
+      # nvimLateInit
+    ];
   programs.neovim.package =
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
   programs.neovim.extraLuaPackages =

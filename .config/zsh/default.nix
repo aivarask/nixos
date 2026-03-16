@@ -1,15 +1,13 @@
 {
   pkgs,
   config,
+  osConfig,
   lib,
   SELF,
   homeManager,
   xdgconf,
   ...
 }:
-let
-  symlink = config.lib.file.mkOutOfStoreSymlink;
-in
 {
   # https://github.com/rothgar/mastering-zsh
   home.packages = with pkgs; [
@@ -21,8 +19,8 @@ in
     zoxide
   ];
 
-  xdg.configFile."zsh/zshenv.local".source = symlink "${xdgconf}/zsh/zshenv.local";
-  xdg.configFile."zsh/zshrc.local".source = symlink "${xdgconf}/zsh/zshrc.local";
+  xdg.configFile."zsh/zshenv.local".source = osConfig.symlink "${xdgconf}/zsh/zshenv.local";
+  xdg.configFile."zsh/zshrc.local".source = osConfig.symlink "${xdgconf}/zsh/zshrc.local";
   programs.zsh.envExtra = builtins.concatStringsSep "\n" [
     "source $ZDOTDIR/zshenv.local"
   ];

@@ -29,12 +29,18 @@
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
+            startAsUserService = true;
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             verbose = true;
             extraSpecialArgs = { inherit inputs SELF xdgconf; };
-            sharedModules = [ { home.stateVersion = "26.05"; } ];
+            sharedModules = [
+              {
+                home.stateVersion = "26.05";
+                home.enableNixpkgsReleaseCheck = false;
+              }
+            ];
             users.root = {
               home.username = "root";
               home.homeDirectory = "/root";
@@ -46,7 +52,7 @@
             };
           };
         }
-        inputs.disko.nixosModules.disko
+        # inputs.disko.nixosModules.disko
         ./.config/mpd/default.nix
         ./.config/pipewire/default.nix
         ./disks.nix

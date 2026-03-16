@@ -36,7 +36,7 @@ nnoremap ?? :Telescope find_files<CR>
 nnoremap ?a :edit ~/.alias<CR>
 nnoremap ?e :edit /etc/nixos/.editorconfig<CR>
 nnoremap ?f :edit /etc/nixos/flake.nix<CR>
-nnoremap ?z :edit $ZDOTDIR/.zshrc_<CR>
+nnoremap ?z :edit $ZDOTDIR/zshrc.local<CR>
 nnoremap ?s :edit ~/.config/sway/config<CR>
 nnoremap ?k :edit ~/.config/nvim/keymaps.vim<CR>
 nnoremap ?v :edit ~/.config/nvim/shared.vim<CR>

@@ -14,7 +14,6 @@ in
   manual.json.enable = true;
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-  home.enableNixpkgsReleaseCheck = false;
 
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
@@ -50,7 +49,6 @@ in
     ncspot
     celluloid
     dav1d
-    udiskie
   ];
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
@@ -137,6 +135,4 @@ in
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
 
-  # xdg.configFile."udiskie".source = symlink "${xdgconf}/udiskie";
-  # services.udiskie.enable = true;
 }
