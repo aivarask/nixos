@@ -8,7 +8,7 @@
 }:
 {
   home.file.".mozilla/native-messaging-hosts".enable = false;
-  imports = [ ./profile.nix ];
+  # imports = [ ./profile.nix ];
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox.languagePacks = [
@@ -32,7 +32,7 @@
     PopupBlocking = {
       "Allow" = [
         "http://example.org/"
-        "http://example.edu/"
+        # "http://example.edu/"
       ];
       "Default" = true;
       "Locked" = false;

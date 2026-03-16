@@ -1,18 +1,15 @@
-/* main.width-wrap { */
-/* 	max-width: 1000px; */
-/* } */
-
-@-moz-document url("https://example.com/") {
-    * {
-        color: green;
-    }
-
-    div#foo {
-        color: red;
-    }
+@-moz-document url(http://example.com){
+* {
+    /* color: green; */
+    color: red;
+    /* opacity: 0.05 !important; */
 }
 
-/* div.xixxii4:nth-child(2) */
+div#foo {
+    color: red;
+}
+}
+
 @-moz-document url(https://instagram.com/), domain(instagram.com) {
 
 
@@ -38,7 +35,9 @@
 
 }
 
-@-moz-document url(https://xhamster.com/), domain(xhamster.com) {
+
+@document url(https://xhamster.com/),
+domain(xhamster.com) {
 
     :root {
         --top-menu-height: 0px !important;

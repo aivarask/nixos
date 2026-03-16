@@ -54,7 +54,7 @@
     mako
     miraclecast
     oranchelo-icon-theme
-    papirus-icon-theme
+    # papirus-icon-theme
     pavucontrol
     pipewire
     playerctl

@@ -22,8 +22,13 @@ in
   xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
+  xdg.configFile."chrome/userContent.css".source =
+    symlink "${xdgconf}/firefox/chrome/userContent.css";
+  xdg.configFile."chrome/userContent.css".recursive = true;
+  xdg.configFile."chrome/userContent.css".force = true;
   imports = [
     ./.config/chromium/default.nix
+    ./.config/firefox/profile.nix
     ./.config/firefox/default.nix
     ./.config/zsh/default.nix
     ./.config/git/default.nix
@@ -150,8 +155,8 @@ in
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
 
-  xdg.configFile."nicotine" = {
-    source = symlink "${xdgconf}/nicotine";
+  xdg.configFile."nicotine/config" = {
+    source = symlink "${xdgconf}/nicotine/config";
     enable = true;
     force = true;
     recursive = true;

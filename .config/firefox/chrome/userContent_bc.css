@@ -1,0 +1,22 @@
+@-moz-document url(linkomanija.net){
+:root {
+    --color: red;
+
+}
+
+body {
+    color: var(--color) !important;
+}
+
+#content a {
+    color: gray;
+}
+
+#container {
+    border-top-color: #aaccef;
+    border-right-color: #aaccef;
+    border-bottom-color: #aaccef;
+    border-left-color: #aaccef;
+
+}
+}

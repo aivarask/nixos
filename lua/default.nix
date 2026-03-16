@@ -32,7 +32,7 @@ in
     tree-sitter
     vscode-json-languageserver
     vscode-css-languageserver
-    vscode-langservers-extracted
+    # vscode-langservers-extracted
     glibc
     # glibcInfo
     clang
