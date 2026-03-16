@@ -100,7 +100,7 @@
     xdg-terminal-exec
     xdg-user-dirs
     xdg-user-dirs-gtk
-    xdg-desktop-portal-wlr
+    # xdg-desktop-portal-wlr
     xkeyboard-config
     xkbcomp
     xmodmap

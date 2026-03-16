@@ -4,6 +4,7 @@
   SELF,
   xdgconf,
   inputs,
+  lib,
   ...
 }:
 let
@@ -22,13 +23,8 @@ in
   xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
 
-  xdg.configFile."chrome/userContent.css".source =
-    symlink "${xdgconf}/firefox/chrome/userContent.css";
-  xdg.configFile."chrome/userContent.css".recursive = true;
-  xdg.configFile."chrome/userContent.css".force = true;
   imports = [
     ./.config/chromium/default.nix
-    ./.config/firefox/profile.nix
     ./.config/firefox/default.nix
     ./.config/zsh/default.nix
     ./.config/git/default.nix
@@ -80,7 +76,6 @@ in
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
-  xdg.configFile."espanso".source = symlink "${xdgconf}/espanso";
   xdg.configFile."ripgreprc".source = symlink "${xdgconf}/ripgreprc";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   programs.ripgrep.enable = true;
@@ -142,14 +137,14 @@ in
 
   programs.ncmpcpp.enable = true;
   xdg.configFile."ncmpcpp/config" = {
+    source = symlink "${xdgconf}/ncmpcpp/config";
     enable = true;
     force = true;
-    source = symlink "${xdgconf}/ncmpcpp/config";
   };
   xdg.configFile."ncmpcpp/bindings" = {
+    source = symlink "${xdgconf}/ncmpcpp/bindings";
     enable = true;
     force = true;
-    source = symlink "${xdgconf}/ncmpcpp/bindings";
   };
 
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
@@ -174,4 +169,16 @@ in
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
 
+  services.espanso.enable = true;
+  xdg.configFile."espanso/config/default.yml".source = lib.mkForce (
+    symlink "${xdgconf}/espanso/config/default.yml"
+  );
+  xdg.configFile."espanso/match/default.yml".source = lib.mkForce (
+    symlink "${xdgconf}/espanso/match/default.yml"
+  );
+  xdg.configFile."espanso/match/packages".source = lib.mkForce (
+    symlink "${xdgconf}/espanso/match/packages"
+  );
+  services.espanso.waylandSupport = true;
+  services.espanso.x11Support = false;
 }

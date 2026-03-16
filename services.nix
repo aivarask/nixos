@@ -4,8 +4,6 @@
   services.udisks2.settings = { };
   services.udisks2.mountOnMedia = true;
   programs.gnome-disks.enable = true;
-  services.espanso.enable = true;
-  services.espanso.package = pkgs.espanso-wayland;
   services.playerctld.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "ignore";

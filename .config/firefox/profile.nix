@@ -9,17 +9,17 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  # xdg.configFile."mozilla/firefox/${username}/chrome/userContent.css" = {
-  #   source = symlink "${xdgconf}/firefox/chrome/userContent.css";
-  #   enable = true;
-  #   force = true;
-  #   recursive = true;
-  # };
-  # xdg.configFile."mozilla/firefox/${username}/user.js" = {
-  #   source = symlink "${xdgconf}/firefox/user.js";
-  #   enable = true;
-  #   force = true;
-  # };
+  xdg.configFile."mozilla/firefox/${username}/chrome/userContent.css" = {
+    source = symlink "${xdgconf}/firefox/chrome/userContent.css";
+    enable = true;
+    force = true;
+    recursive = true;
+  };
+  xdg.configFile."mozilla/firefox/${username}/user.js" = {
+    source = symlink "${xdgconf}/firefox/user.js";
+    enable = true;
+    force = true;
+  };
 
   programs.firefox.profiles."${username}" = {
     id = 1;
