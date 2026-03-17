@@ -30,6 +30,7 @@ in
     ./.config/git/default.nix
     ./.config/mpv/default.nix
     ./.config/ncmpcpp/default.nix
+    ./.config/fzf/default.nix
     ./.config/ripgrep/default.nix
   ];
 

@@ -19,22 +19,12 @@ indent_style = space
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*/cf_toggleterm.lua]
+max_line_length = 120
+
 
 [*.{diff,md}]
 trim_trailing_whitespace = false
-
-# [*]
-# indent_style = space
-# indent_size = tab
-# tab_width = 2
-#
-# [*.nix]
-# indent_style = space
-# indent_size = tab
-# tab_width = 2
-# max_line_length = 100
-# trim_trailing_whitespace = true
-# insert_final_newline = true
 
 # https://github.com/editorconfig/editorconfig
 # https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#ideas-for-domain-specific-properties

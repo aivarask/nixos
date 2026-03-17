@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 FZF_DEFAULT_COMMAND='fd . -tf'
+FZF_FLAGS='--height=50% --layout=reverse'
 fzf \
-	--height=50% --layout=reverse --preview 'pistol {}' \
+	--height=80% --layout=reverse --preview 'pistol {}' \
 	--bind 'ctrl-d:reload(fd . -td),ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")'
