@@ -46,24 +46,21 @@ require('telescope').setup({
             path = data .. '/databases/telescope_history.sqlite3',
             limit = 100,
         },
-        -- vimgrep_arguments = {
-        -- 'rg'
-        -- },
+        vimgrep_arguments = {
+            'rg'
+        },
         -- file_sorter = require('telescope.sorters').fuzzy_with_index_bias()
         -- generic_sorter = nil
 
     },
     pickers = {},
     extensions = {
-        fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_file_sorter = true,    -- override the file sorter
-            override_generic_sorter = true, -- override the generic sorter
-            case_mode = 'smart_case',       -- default "smart_case" or "ignore_case" or "respect_case"
-        },
-        -- manix = {
-        --     cword = true,
-        -- }
+        -- fzf = {
+        --     fuzzy = true,                   -- false will only do exact matching
+        --     override_file_sorter = true,    -- override the file sorter
+        --     override_generic_sorter = true, -- override the generic sorter
+        --     case_mode = 'smart_case',       -- default "smart_case" or "ignore_case" or "respect_case"
+        -- },
     },
 })
 -- require("telescope").load_extension("notify")

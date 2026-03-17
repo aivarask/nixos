@@ -33,6 +33,8 @@
     fd
     w3m
     fzf
+    fzy
+    silver-searcher
     neovim
     disko
     htop

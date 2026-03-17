@@ -100,18 +100,6 @@ in
   programs.starship.enableBashIntegration = true;
   programs.starship.enableZshIntegration = true;
 
-  programs.ncmpcpp.enable = true;
-  xdg.configFile."ncmpcpp/config" = {
-    source = symlink "${xdgconf}/ncmpcpp/config";
-    enable = true;
-    force = true;
-  };
-  xdg.configFile."ncmpcpp/bindings" = {
-    source = symlink "${xdgconf}/ncmpcpp/bindings";
-    enable = true;
-    force = true;
-  };
-
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
 
@@ -120,8 +108,6 @@ in
     enable = true;
     force = true;
     recursive = true;
-    # onChange = ''
-    # '';
   };
 
   programs.eza.enable = true;

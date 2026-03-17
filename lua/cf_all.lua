@@ -26,13 +26,15 @@ require('colorizer').setup({})
 if vim.uv.os_getenv('WAYLAND_DISPLAY') then
     require('image').setup({ backend = 'kitty' }) -- https://raw.githubusercontent.com/3rd/image.nvim/refs/heads/master/README.md
 end
+
+local mini = require('mini.icons')
 require('mini.icons').setup(
     {
         style              = 'glyph', -- ascii
         default            = {},
         directory          = {},
         extension          = {},
-        file               = {},
+        -- file               = { vimrc = require('mini.icons').get('filetype', 'vim') },
         filetype           = {},
         lsp                = {},
         os                 = {},
@@ -40,33 +42,16 @@ require('mini.icons').setup(
     }
 )
 
+local devicons = require('nvim-web-devicons')
 require('nvim-web-devicons').setup({
     override = {
         ['nix'] = { icon = '', color = '#ff0000', cterm_color = '110', name = 'Nix' },
     },
     override_by_filename = {
-        [".gitignore"] = {
-            icon = "",
-            color = "#f1502f",
-            name = "Gitignore"
-        },
-        ["vimrc"] = {
-            icon = "",
-            color = "#f1502f",
-            name = "Gitignore"
-        },
-        -- ["vimrc"] = function()
-        --     icon, name = require 'nvim-web-devicons'.get_icon('.vimrc', 'vim',
-        --         nil)
-        --     return { icon = icon, name = name }
-        -- end
+        [".gitignore"] = { icon = "", color = "#f1502f", name = "Gitignore" },
     },
     override_by_extension = {
-        ["log"] = {
-            icon = "",
-            color = "#81e043",
-            name = "Log"
-        }
+        ["log"] = { icon = "", color = "#81e043", name = "Log" }
     },
 })
 

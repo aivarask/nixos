@@ -81,7 +81,6 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
-        fzf-lua
         (nvim-treesitter.withPlugins (ps: [
           ps.nix
         ]))
@@ -115,7 +114,7 @@ in
           mini-icons
           image-nvim
           telescope-nvim
-          telescope-fzf-native-nvim
+          # telescope-fzf-native-nvim
         ]
       ))
 
