@@ -32,6 +32,7 @@ in
     ./.config/ncmpcpp/default.nix
     ./.config/fzf/default.nix
     ./.config/ripgrep/default.nix
+    ./.config/starship/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -87,11 +88,6 @@ in
   xdg.configFile."lf".source = symlink "${xdgconf}/lf";
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
   xdg.configFile."lazygit".source = symlink "${xdgconf}/lazygit";
-
-  xdg.configFile."starship.toml".source = symlink "${xdgconf}/starship.toml";
-  programs.starship.enable = true;
-  programs.starship.enableBashIntegration = true;
-  programs.starship.enableZshIntegration = true;
 
   programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
