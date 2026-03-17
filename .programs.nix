@@ -54,6 +54,7 @@ in
     dav1d
   ];
 
+  xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";

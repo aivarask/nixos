@@ -5,10 +5,10 @@
 --column
 --smart-case
 
-# --hidden
+--hidden
 --follow
 # --colors=line:none
---colors=line:style:bold
+# --colors=line:style:bold
 
 --max-columns=150
 --max-columns-preview
@@ -19,9 +19,7 @@
 -g=!.{mixxx}/*
 
 -g=!.{viminfo,bash_history,zsh_history,zcompdump,sqlite_history}
-
 -g=!*.{svg,nfo,mp3}
-
 
 --type-add
 web:*.{html,css,js}*

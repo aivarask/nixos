@@ -6,6 +6,7 @@ alias \\l="lazygit"
 alias \\s="systemctl-tui -s all"
 alias \\t="nix-tree"
 alias bw_="bitwarden --no-sandbox --session $BW_SESSION"
+alias fd="fd --hidden --follow"
 alias lg="lazygit"
 alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
 alias nfu="nix flake update"

@@ -3,7 +3,7 @@
 *.lock
 *lock.{json,yml}
 !flake.lock
-result
+result/
 .direnv/
 
 tags
