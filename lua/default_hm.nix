@@ -8,7 +8,7 @@
 }:
 let
   COMMON = with pkgs.vimPlugins; [
-    pkgs.vimPlugins.gruvbox-material
+    gruvbox-material
     ack-vim
     vim-auto-save
     bclose-vim
@@ -36,7 +36,6 @@ in
         vim-which-key
         auto-pairs
         nerdtree
-        #
         vim-indentwise
         vim-commentary
         vim-matchup
@@ -71,10 +70,9 @@ in
       lpeg_patterns
       binaryheap
       luafilesystem
-      fifo # dep in neovim only
+      fifo
       lua-zlib
       compat53
-      # lua-psl
     ];
   home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
@@ -94,11 +92,9 @@ in
         sqlite-lua
       ])
       (with pkgs.vimPlugins; [
-        # new
         nvim-notify
         fidget-nvim
         luvit-meta
-        # overlays
         nvim-lsp-file-operations
         smart-semicolon
       ])
@@ -114,7 +110,6 @@ in
           mini-icons
           image-nvim
           telescope-nvim
-          # telescope-fzf-native-nvim
         ]
       ))
 

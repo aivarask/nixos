@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-FZF_DEFAULT_COMMAND='find . -type f'
+FZF_DEFAULT_COMMAND='fd . -tf'
 fzf \
 	--height=50% --layout=reverse --preview 'pistol {}' \
-	--bind 'ctrl-d:reload(find . -type d),ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")'
+	--bind 'ctrl-d:reload(fd . -td),ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")'

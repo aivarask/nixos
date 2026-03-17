@@ -30,6 +30,7 @@ in
     ./.config/git/default.nix
     ./.config/mpv/default.nix
     ./.config/ncmpcpp/default.nix
+    ./.config/ripgrep/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -60,14 +61,9 @@ in
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
 
-  programs.fzf.enable = true;
-  programs.fzf.enableBashIntegration = true;
-  programs.fzf.enableZshIntegration = true;
-
   # home.file.".mixxx".source = symlink "/etc/nixos/.mixxx";
   home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
-  xdg.configFile."ripgrep".source = symlink "${xdgconf}/ripgrep";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
