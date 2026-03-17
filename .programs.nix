@@ -23,11 +23,13 @@ in
   home.file."Pictures/img".source = symlink "${SELF}/img";
 
   imports = [
+    ./.config/bat/default.nix
     ./.config/chromium/default.nix
     ./.config/firefox/default.nix
     ./.config/zsh/default.nix
     ./.config/git/default.nix
     ./.config/mpv/default.nix
+    ./.config/ncmpcpp/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -49,6 +51,7 @@ in
     celluloid
     dav1d
   ];
+
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
@@ -56,22 +59,14 @@ in
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
+
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableZshIntegration = true;
+
   # home.file.".mixxx".source = symlink "/etc/nixos/.mixxx";
   home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
-  xdg.configFile."bat".source = symlink "${xdgconf}/bat";
-  programs.bat.enable = true;
-  programs.bat.extraPackages = with pkgs.bat-extras; [
-    batgrep
-    batman
-    batpipe
-    batwatch
-    batdiff
-    prettybat
-  ];
   xdg.configFile."ripgrep".source = symlink "${xdgconf}/ripgrep";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
