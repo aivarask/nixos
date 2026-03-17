@@ -1,35 +1,10 @@
 # vim: ft=gitignore
 
-# *
 *.lock
-*lock.yaml
-error.log
-*/config.old
-*.qcow2
-
-# nix
+*lock.{json,yml}
 !flake.lock
 result
-result/
-result/null
 .direnv/
 
-# node
-node_modules/
-*lock.json
-
-# php
-vendor/
-
-# cmake
-CMakeFiles/
-
-# vim
 tags
 Session.vim
-
-# python
-.pytest_cache/
-__pycache__
-
-accels.scm
