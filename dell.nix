@@ -26,7 +26,7 @@
       mountConfig = {
         Options = "noatime";
       };
-      what = "pc:/Music";
+      what = "pc:/root/Music";
       where = "/root/Music/pc";
     }
   ];
