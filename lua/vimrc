@@ -1,32 +1,54 @@
-"vim: ft=vim
-"let &runtimepath.=',/etc/nixos/lua'
-"runtime! lua/**/*{.vim}
+" vim: ft=vim
+" https://devhints.io/vimscript
 
 call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/
-set bufhidden=unload
 set viminfofile=$XDG_CONFIG_HOME/vim/viminfo
-set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
+set bufhidden=unload
+set sessionoptions=buffers,curdir,folds,help,tabpages,options,winpos,winsize
 
+
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMapPreview = '<TAB>'
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''
+let g:airline_inactive_collapse=1
+let g:airline_inactive_alt_sep=1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
+let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 0
 let g:webdevicons_enable_nerdtree = 0
 let g:which_key_vertical = 1
-let g:NERDTreeMapPreview = '<TAB>'
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/shared.vim
 source $XDG_CONFIG_HOME/vim/keymaps.vim
+source $XDG_CONFIG_HOME/vim/switch.vim
 
-nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
-nnoremap <Esc>h :wincmd h<CR>
-nnoremap <Esc>j :wincmd j<CR>
-nnoremap <Esc>k :wincmd k<CR>
-nnoremap <Esc>l :wincmd l<CR>
-
-cnoremap <nowait> <Esc>h <Left>
-cnoremap <nowait> <Esc>l <Right>
+function! Session(...)
+	let cwd = getcwd()
+	" let verbose = 0
+	let verbose = a:0
+	let l:session_file='.session.vim'
+	if cwd == '/etc/nixos'
+		if verbose | echo cwd | endif
+		if filereadable(l:session_file)
+			if verbose | echo session_file | endif
+			if !empty(v:this_session)
+				if verbose | echo v:this_session | endif
+				silent exe 'mksession! ' . l:session_file
+			else
+				silent exe 'source ' . l:session_file
+			endif
+		else
+			silent exe 'mksession! ' .l:session_file
+		endif
+	endif
+endfunction
+call Session()

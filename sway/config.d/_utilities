@@ -1,6 +1,7 @@
 bindsym	$mod+f1 exec $term --directory=/etc/nixos/ nvim
-bindsym $mod+f2 exec $term ncmpcpp
-bindsym $mod+f3 exec $term pulsemixer
+bindsym	$mod+f2 exec $term --directory=/etc/nixos/ vim
+bindsym $mod+f3 exec $term ncmpcpp
+bindsym $mod+f4 exec $term pulsemixer
 bindsym $mod+f11 reload
 bindsym	$mod+f12 exit
 

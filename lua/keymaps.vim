@@ -46,6 +46,7 @@ nnoremap ?? :Files<CR>
 
 nmap qq <cmd>NERDTreeToggle<CR>
 nmap qQ <cmd>NERDTreeFind<CR>
+
 nnoremap <leader><leader>c :Commands<CR>
 nnoremap <leader><leader>f :Files<CR>
 nnoremap <leader><leader>g :Rg<CR>
@@ -55,6 +56,15 @@ nnoremap <leader><leader>k :Maps<CR>
 nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
 nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
 nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+
+nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
+nnoremap <Esc>h :wincmd h<CR>
+nnoremap <Esc>j :wincmd j<CR>
+nnoremap <Esc>k :wincmd k<CR>
+nnoremap <Esc>l :wincmd l<CR>
+
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
 endif
 
 " CTRL-W    delete word to the left of cursor
