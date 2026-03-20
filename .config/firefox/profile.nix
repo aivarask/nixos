@@ -40,28 +40,14 @@ in
         {
           "bing".metaData.hidden = true;
           "google".metaData.alias = "@g";
-          # "" = {
-          #   definedAliases = [ "" ];
-          #   urls = [
-          #     { template = ""; }
-          #   ];
-          # };
           "@nb https://nix-builtins-search.extranix.com" = {
-            definedAliases = [
-              "@nb"
-              "@nix-builtins"
-            ];
+            definedAliases = [ "@nb" ];
             urls = [
-              {
-                template = "https://nix-builtins-search.extranix.com/?query={searchTerms}&release=nix-v2.24";
-              }
+              { template = "https://nix-builtins-search.extranix.com/?query={searchTerms}&release=nix-v2.24"; }
             ];
           };
           "@hm home-manager-options.extranix.com" = {
-            definedAliases = [
-              "@hm"
-              "@home-manager"
-            ];
+            definedAliases = [ "@hm" ];
             urls = [
               {
                 template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
@@ -73,24 +59,15 @@ in
             urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
           };
           "@ad httpd.apache.org/docs/2.4" = {
-            definedAliases = [
-              "@ad"
-              "@apache"
-            ];
+            definedAliases = [ "@ad" ];
             urls = [ { template = "${ddg}site:httpd.apache.org/docs/2.4+{searchTerms}"; } ];
           };
           "@ah askapache.com/htaccess" = {
-            definedAliases = [
-              "@ah"
-              "@apache"
-            ];
+            definedAliases = [ "@ah" ];
             urls = [ { template = "${ddg}site:askapache.com/htaccess+{searchTerms}"; } ];
           };
           "@ff searchfox.org" = {
-            definedAliases = [
-              "@ff"
-              "@sf"
-            ];
+            definedAliases = [ "@sf" ];
             urls = [
               {
                 template = "https://searchfox.org/mozilla-central/search?q={searchTerms}&path=&case=false&regexp=false";

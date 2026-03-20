@@ -58,7 +58,6 @@ require('lualine').setup({
     },
     tabline = {
         lualine_a = {
-            require('auto-session.lib').current_session_name,
             'tabs',
         },
         lualine_b = {

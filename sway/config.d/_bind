@@ -11,9 +11,9 @@ bindsym $mod+shift+c kill
 
 # `         grave
 # ~         asciitilde
+# |         bar
 # PageUp    Prior
 # PageDown  Next
-# |         bar
 
 bindsym $mod+w exec firefox -new-window
 bindsym $mod+shift+w exec firefox -new-window --private-window
@@ -21,16 +21,14 @@ bindsym $mod+c exec chromium-browser --new-window
 
 # layout
 bindsym $mod+u focus parent
-bindsym $mod+s focus child
-bindsym $mod+tab focus next
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+d layout toggle stacking splitv splith
-bindsym $mod+space fullscreen
-bindsym $mod+minus exec "pkill -USR1 waybar"
-bindsym $mod+shift+space floating toggle
-bindsym $mod+ctrl+space focus mode_toggle
 bindsym $mod+p focus parent
+bindsym $mod+tab focus next
+bindsym $mod+s focus child
+bindsym $mod+ctrl+space focus mode_toggle
+bindsym $mod+space fullscreen
+bindsym $mod+shift+space floating toggle
+bindsym $mod+d layout toggle stacking splitv splith
+bindsym $mod+minus exec "pkill -USR1 waybar"
 bindsym $mod+g sticky toggle
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "move"

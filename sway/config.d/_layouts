@@ -16,13 +16,11 @@ floating_maximum_size -1 x -1
 floating_modifier $mod inverse
 tiling_drag $mod
 
-
 mode "move" {
     bindsym Left  exec sway-move-to left
     bindsym Right exec sway-move-to right
     bindsym Down  exec sway-move-to bottom
     bindsym Up    exec sway-move-to top
-
     bindsym w     exec sway-move-to top-left
     bindsym e     exec sway-move-to mid-top
     bindsym r     exec sway-move-to top-right
@@ -32,7 +30,6 @@ mode "move" {
     bindsym x     exec sway-move-to bottom-left
     bindsym c     exec sway-move-to mid-bottom
     bindsym v     exec sway-move-to bottom-right
-
     bindsym q mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
