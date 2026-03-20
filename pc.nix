@@ -33,9 +33,8 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /export         minimal(rw,fsid=0,no_subtree_check)
-    /export/music   minimal(rw,nohide,insecure,no_subtree_check)
     /root/Video     minimal(rw,nohide,insecure,no_subtree_check)
+    /root/Music     minimal(rw,nohide,insecure,no_subtree_check)
   '';
   networking.firewall.allowedTCPPorts = [
     111
