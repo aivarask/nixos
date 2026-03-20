@@ -48,7 +48,6 @@ in
     vimpager
     bitwarden-cli
     # bitwarden-desktop
-    nicotine-plus
     spotify
     ncspot
     celluloid
@@ -59,7 +58,6 @@ in
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
-  xdg.configFile."direnv/direnv.toml".source = symlink "${xdgconf}/direnv/direnv.toml";
   xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
@@ -90,20 +88,17 @@ in
   xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
 
-  xdg.configFile."nicotine" = {
-    source = symlink "${xdgconf}/nicotine";
-    enable = true;
-    force = true;
-    recursive = true;
-  };
-
-  programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   programs.eza.enable = true;
   programs.eza.icons = "auto";
   programs.eza.enableZshIntegration = false;
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  # programs.direnv.config.load_dotenv = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
+  xdg.configFile."direnv/direnv.toml" = {
+    source = symlink "${xdgconf}/direnv/direnv.toml";
+    enable = true;
+    force = true;
+  };
 }
