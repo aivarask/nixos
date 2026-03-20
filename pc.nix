@@ -42,6 +42,30 @@
       # "ro"
     ];
   };
+  fileSystems."/var/lib/mpd/music/Music@root" = {
+    depends = [
+      "/root/Music"
+      "/var/lib/mpd/music"
+    ];
+    device = "/root/Music";
+    fsType = "none";
+    options = [
+      "bind"
+      # "ro"
+    ];
+  };
+  fileSystems."/var/lib/mpd/music/Videos@root" = {
+    depends = [
+      "/root/Videos"
+      "/var/lib/mpd/music"
+    ];
+    device = "/root/Videos";
+    fsType = "none";
+    options = [
+      "bind"
+      # "ro"
+    ];
+  };
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''

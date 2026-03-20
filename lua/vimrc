@@ -1,28 +1,28 @@
-let &runtimepath.=',/etc/nixos'
-runtime! lua/*{.vim}
+"vim: ft=vim
+"let &runtimepath.=',/etc/nixos/lua'
+"runtime! lua/**/*{.vim}
+
 call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/
 set bufhidden=unload
+set viminfofile=$XDG_CONFIG_HOME/vim/viminfo
+set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:webdevicons_enable_nerdtree = 0
 let g:which_key_vertical = 1
 let g:NERDTreeMapPreview = '<TAB>'
 
-nnoremap qq <cmd>NERDTreeToggle<CR>
-nnoremap <leader>c :Commands<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>g :Rg<CR>
-nnoremap <leader>h :Helptags<CR>
-nnoremap <leader>k :Maps<CR>
-nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
-nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+source $XDG_CONFIG_HOME/vim/functions.vim
+source $XDG_CONFIG_HOME/vim/shared.vim
+source $XDG_CONFIG_HOME/vim/keymaps.vim
 
+nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
 nnoremap <Esc>h :wincmd h<CR>
 nnoremap <Esc>j :wincmd j<CR>
 nnoremap <Esc>k :wincmd k<CR>

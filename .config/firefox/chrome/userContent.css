@@ -1,7 +1,7 @@
 @-moz-document url(http://example.com){
 * {
     /* color: green; */
-    color: red;
+    color: red !important;
     /* opacity: 0.05 !important; */
 }
 
@@ -10,14 +10,7 @@ div#foo {
 }
 }
 
-@-moz-document url(https://instagram.com/), domain(instagram.com) {
-
-
-
-
-
-
-
+@-moz-document url(https://instagram.com/), domain("instagram.com") {
     @media (min-width: 1264px) and (max-width: 1919px) {
         div.html-div>div[tabindex="-1"] {
             /* color: red !important; */
@@ -31,14 +24,10 @@ div#foo {
             }
         }
     }
-
-
 }
 
 
-@document url(https://xhamster.com/),
-domain(xhamster.com) {
-
+@-moz-document domain("xhamster.com") {
     :root {
         --top-menu-height: 0px !important;
     }
@@ -63,8 +52,6 @@ domain(xhamster.com) {
     .video-page .player-container {
         margin-right: 0px !important;
     }
-
-
 
 
     @media screen and (min-width: 1536px) {

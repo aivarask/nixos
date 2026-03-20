@@ -1,34 +1,32 @@
-
 if has('nvim')
-    let g:loaded_python3_provider = 0
-    let g:loaded_perl_provider = 0
-	"autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh({ bufnr = 0 })
+	let g:loaded_python3_provider = 0
+	let g:loaded_perl_provider = 0
 	set sessionoptions=buffers,curdir,folds,help,tabpages,winsize,winpos
 	set nofoldenable
-	" set foldmethod=expr
 	set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
+	" set foldmethod=expr
 	" set foldclose=all
 	" set foldlevel=3
 	" set foldnestmax=4
 	" let &foldnestmax = &foldlevel+3
 	" set foldminlines=3
-	set lisp
 
-	nnoremap <leader>A :Telescope autocommands<CR>
 	nnoremap <leader>b :b<Space>
-	nnoremap <leader>` :Telescope buffers<CR>
-	nnoremap <leader>c :Telescope commands<CR>
-	nnoremap <leader>d :Telescope diagnostics<CR>
-	nnoremap <leader>f :Telescope find_files<CR>
-	nnoremap <leader>g :Telescope live_grep<CR>
-	nnoremap <leader>h :Telescope help_tags<CR>
-	nnoremap <leader>H :Telescope command_history<CR>
-	nnoremap <leader>k :Telescope keymaps<CR>
-	nnoremap <leader>R :Telescope reloader<CR>
-	nnoremap <leader>r :Telescope registers<CR>
-	nnoremap <leader>M :Telescope manix<CR>
-	nnoremap <leader>t :Telescope resume<CR>
-	nnoremap <leader>T :Telescope<CR>
+
+	nnoremap<leader><leader><leader>a :Telescope autocommands<CR>
+	nnoremap<leader><leader><leader>b :Telescope buffers<CR>
+	nnoremap<leader><leader><leader>c :Telescope commands<CR>
+	nnoremap<leader><leader><leader>d :Telescope diagnostics<CR>
+	nnoremap<leader><leader><leader>f :Telescope find_files<CR>
+	nnoremap<leader><leader><leader>g :Telescope live_grep<CR>
+	nnoremap<leader><leader><leader>h :Telescope help_tags<CR>
+	nnoremap<leader><leader><leader>H :Telescope command_history<CR>
+	nnoremap<leader><leader><leader>k :Telescope keymaps<CR>
+	nnoremap<leader><leader><leader>R :Telescope reloader<CR>
+	nnoremap<leader><leader><leader>r :Telescope registers<CR>
+	nnoremap<leader><leader><leader>m :Telescope manix<CR>
+	nnoremap<leader><leader><leader>t :Telescope resume<CR>
+	nnoremap<leader><leader><leader><leader>T :Telescope<CR>
 
 	nnoremap <M-h> :wincmd h<CR>
 	nnoremap <M-j> :wincmd j<CR>

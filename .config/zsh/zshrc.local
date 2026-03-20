@@ -14,11 +14,9 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-
 cmd_preview () { echo $BUFFER }
 zle -N cmd_preview cmd_preview
 bindkey -v '^]' cmd_preview
-
 
 _quote_word() {
     # Get words array
@@ -35,6 +33,7 @@ _quote_word() {
 zle -N _quote_word
 bindkey '^[q' _quote_word  # Alt+Q
 
+psgrep() { pgrep "$@" | xargs --no-run-if-empty ps -f -p; }
 
 nix-clean() {
 	nix-env --delete-generations old

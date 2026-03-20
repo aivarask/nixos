@@ -11,23 +11,25 @@
 let
   confDir = "${xdgconf}/mpd";
   playlistDir = "${confDir}/playlists";
-  musicDirectory = "${config.users.users."root".home}/Music";
 in
+# /run/mpd/mpd.conf
 rec {
   environment.systemPackages = [
     pkgs.mpd
     pkgs.mpc
   ];
-  networking.firewall.allowedTCPPorts = [ 6600 ];
+  # networking.firewall.allowedTCPPorts = [ 6600 ];
   services.mpd.enable = true;
-  # services.mpd.startWhenNeeded = true;
   services.mpd.user = "pipewire";
   services.mpd.group = "audio";
-  services.mpd.settings.music_directory = musicDirectory;
-  # /run/mpd/mpd.conf
-  services.mpd.settings.include_optional = "${confDir}/mpd.conf";
-  # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+  # services.mpd.settings = "/etc/nixos/.config/mpd/mpd.conf";
+  services.mpd.settings = {
+    include_optional = "${confDir}/mpd.conf";
+  };
+  # services.mpd.startWhenNeeded = true;
+
   systemd.services.mpd.environment.XDG_RUNTIME_DIR = "/run/user/${
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
     toString config.users.users."pipewire".uid
   }";
   systemd.tmpfiles.settings."10-mpd" = {
@@ -47,16 +49,6 @@ rec {
         mode = "0777";
         type = "L+";
         argument = "${playlistDir}/lt.m3u";
-      };
-    };
-    "/var/lib/mpd/music/root" = lib.mkIf true {
-      "L+" = {
-        user = services.mpd.user;
-        group = services.mpd.group;
-        mode = "0777";
-        type = "L+";
-        argument = "${config.hm.xdg.userDirs.music}";
-
       };
     };
   };
