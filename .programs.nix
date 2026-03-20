@@ -55,6 +55,7 @@ in
     dav1d
   ];
 
+  xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
   xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
@@ -63,8 +64,6 @@ in
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
-
-  # home.file.".mixxx".source = symlink "/etc/nixos/.mixxx";
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
@@ -78,7 +77,6 @@ in
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
-  # home.file.".sway".source = symlink "${SELF}/sway";
   xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
   xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";

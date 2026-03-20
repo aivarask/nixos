@@ -30,6 +30,13 @@ source $XDG_CONFIG_HOME/vim/shared.vim
 source $XDG_CONFIG_HOME/vim/keymaps.vim
 source $XDG_CONFIG_HOME/vim/switch.vim
 
+let g:session_file='.session.vim'
+augroup session
+	au!
+	autocmd VimEnter * if filereadable(g:session_file) | exe 'source ' . g:session_file | endif
+	autocmd VimLeave * silent exe 'mksession! ' . g:session_file
+augroup END
+
 function! Session(...)
 	let cwd = getcwd()
 	" let verbose = 0
@@ -41,7 +48,7 @@ function! Session(...)
 			if verbose | echo session_file | endif
 			if !empty(v:this_session)
 				if verbose | echo v:this_session | endif
-				silent exe 'mksession! ' . l:session_file
+				silent exe 'mksession! ' . v:this_session
 			else
 				silent exe 'source ' . l:session_file
 			endif
@@ -50,4 +57,5 @@ function! Session(...)
 		endif
 	endif
 endfunction
-call Session()
+
+

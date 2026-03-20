@@ -6,7 +6,7 @@ augroup minimal
 	" autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
-  
+
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
@@ -35,7 +35,7 @@ set number
 set norelativenumber
 set splitkeep=topline
 set splitbelow
-set showtabline=2 
+set showtabline=2
 set statusline+=%F
 set nowrap
 " set showbreak=↪>\

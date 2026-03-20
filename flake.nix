@@ -4,7 +4,6 @@
   inputs.systems.url = "github:nix-systems/x86_64-linux";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.flake-utils.inputs.systems.follows = "systems";
-
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager"; # https://github.com/nix-community/home-manager
@@ -17,7 +16,6 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
-  #
   inputs.smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
   inputs.smart-semicolon.flake = false;
   outputs =
