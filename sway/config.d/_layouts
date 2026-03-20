@@ -8,19 +8,6 @@ default_floating_border pixel
 default_orientation auto
 workspace_layout stacking
 
-bindsym $mod+u focus parent
-bindsym $mod+s focus child
-bindsym $mod+tab focus next
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+d layout toggle stacking splitv splith
-bindsym $mod+space fullscreen
-bindsym $mod+minus exec "pkill -USR1 waybar"
-bindsym $mod+shift+space floating toggle
-bindsym $mod+ctrl+space focus mode_toggle
-bindsym $mod+p focus parent
-bindsym $mod+g sticky toggle
-
 # for_window [floating] opacity 0.5
 # swaymsg move position center; swaymsg resize set 80ppt 80ppt
 
@@ -30,7 +17,6 @@ floating_modifier $mod inverse
 tiling_drag $mod
 
 
-bindsym  $mod+m mode "move"
 mode "move" {
     bindsym Left  exec sway-move-to left
     bindsym Right exec sway-move-to right
@@ -52,7 +38,6 @@ mode "move" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
 set $resize_px 20px
 bindsym --whole-window $mod+button4 resize grow height $resize_px
 bindsym --whole-window $mod+button5 resize shrink height $resize_px

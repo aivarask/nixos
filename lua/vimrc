@@ -7,7 +7,6 @@ set viminfofile=$XDG_CONFIG_HOME/vim/viminfo
 set bufhidden=unload
 set sessionoptions=buffers,curdir,folds,help,tabpages,options,winpos,winsize
 
-
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMapPreview = '<TAB>'
 let g:AutoPairsFlyMode = 0

@@ -1,19 +1,38 @@
-bindsym $mod+w exec firefox -new-window
-bindsym $mod+shift+w exec firefox -new-window --private-window
-bindsym $mod+c exec chromium-browser --new-window
 bindsym	$mod+escape reload
 bindsym ctrl+escape scratchpad show
 bindsym ctrl+shift+escape move scratchpad
 bindsym $mod+grave exec $term
-bindsym $mod+return exec $term
-bindsym $mod+Menu exec $menu
+bindsym $mod+menu exec $menu
 bindsym $mod+ctrl+Menu exec nwg-drawer
 bindsym $mod+q kill
+bindsym $mod+delete kill
+bindsym $mod+backspace kill
 bindsym $mod+shift+c kill
 
-mode "quit" {
-	bindsym q kill; mode default
-	bindsym ctrl+w kill
-	bindsym escape mode "default"
-}
+# `         grave
+# ~         asciitilde
+# PageUp    Prior
+# PageDown  Next
+# |         bar
+
+bindsym $mod+w exec firefox -new-window
+bindsym $mod+shift+w exec firefox -new-window --private-window
+bindsym $mod+c exec chromium-browser --new-window
+
+# layout
+bindsym $mod+u focus parent
+bindsym $mod+s focus child
+bindsym $mod+tab focus next
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+d layout toggle stacking splitv splith
+bindsym $mod+space fullscreen
+bindsym $mod+minus exec "pkill -USR1 waybar"
+bindsym $mod+shift+space floating toggle
+bindsym $mod+ctrl+space focus mode_toggle
+bindsym $mod+p focus parent
+bindsym $mod+g sticky toggle
+bindsym $mod+r mode "resize"
+bindsym $mod+m mode "move"
+
 
