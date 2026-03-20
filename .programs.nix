@@ -65,7 +65,7 @@ in
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
 
   # home.file.".mixxx".source = symlink "/etc/nixos/.mixxx";
-  home.file.".alias".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.alias";
+  xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";

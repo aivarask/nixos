@@ -25,7 +25,7 @@
     "source $ZDOTDIR/zshenv.local"
   ];
   programs.zsh.initContent = builtins.concatStringsSep "\n" [
-    "source $HOME/.alias"
+    "source $XDG_CONFIG_HOME/alias"
     "source $ZDOTDIR/zshrc.local"
   ];
   programs.zsh.enable = true;
