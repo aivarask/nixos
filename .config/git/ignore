@@ -6,5 +6,6 @@
 result/
 .direnv/
 
+viminfo
 tags
 Session.vim
