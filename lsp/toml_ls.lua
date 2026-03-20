@@ -1,4 +1,4 @@
 return {
-  cmd = { 'taplo', 'lsp', '-c', '/etc/nixos/.taplo.toml', 'stdio' },
-  filetypes = { 'toml' }
+    cmd = { 'taplo', 'lsp', '-c', '~/.config/taplo/taplo.toml', 'stdio' },
+    filetypes = { 'toml' }
 }

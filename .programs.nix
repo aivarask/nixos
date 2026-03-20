@@ -55,40 +55,40 @@ in
     dav1d
   ];
 
-  xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
-  xdg.configFile."fd".source = symlink "${xdgconf}/fd";
-  xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
-  xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
-  xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
-  xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
-  xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
-  xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
-  xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
-  xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
-  xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
-  xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
-  xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
-  xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
-  xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
-  xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
-  xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
-  xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
-  xdg.configFile."sway".source = symlink "${SELF}/sway";
-  xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
+  xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
+  xdg.configFile."direnv/direnv.toml".source = symlink "${xdgconf}/direnv/direnv.toml";
+  xdg.configFile."fd".source = symlink "${xdgconf}/fd";
+  xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
+  xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
   xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";
   xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";
   xdg.configFile."gtk-4.0".source = symlink "${xdgconf}/gtk-4.0";
   xdg.configFile."htop".source = symlink "${xdgconf}/htop";
+  xdg.configFile."inkscape".source = symlink "${xdgconf}/inkscape";
+  xdg.configFile."kitty".source = symlink "${xdgconf}/kitty";
+  xdg.configFile."lazygit".source = symlink "${xdgconf}/lazygit";
   xdg.configFile."lf".source = symlink "${xdgconf}/lf";
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
-  xdg.configFile."lazygit".source = symlink "${xdgconf}/lazygit";
-
-  programs.pistol.enable = true; # https://github.com/doronbehar/pistol
+  xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
+  xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
+  xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
+  xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
+  xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
+  xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
+  xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
+  xdg.configFile."sway".source = symlink "${SELF}/sway";
+  xdg.configFile."taplo".source = symlink "${xdgconf}/taplo";
+  xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
+  xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
+  xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
+  xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
+  xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
+  xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
 
   xdg.configFile."nicotine" = {
     source = symlink "${xdgconf}/nicotine";
@@ -97,14 +97,13 @@ in
     recursive = true;
   };
 
+  programs.pistol.enable = true; # https://github.com/doronbehar/pistol
   programs.eza.enable = true;
   programs.eza.icons = "auto";
   programs.eza.enableZshIntegration = false;
-
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.direnv.config.load_dotenv = true;
+  # programs.direnv.config.load_dotenv = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.enableZshIntegration = true;
-
 }
