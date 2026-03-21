@@ -59,7 +59,6 @@
         ./lua
         ./modules/torrents.nix
         ./nix.nix
-        ./packages.nix
         ./services.nix
         ./sway
       ];
@@ -85,6 +84,7 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/autologin.nix
+          ./modules/fileSystems.nix
           ./modules/graphics.nix
           ./modules/bluetooth.nix
           ./modules/search.nix
@@ -92,7 +92,6 @@
           ./dnsmasq.nix
           ./minimal.nix
           ./network.nix
-          ./mix.nix
           ./dell.nix
         ];
       };
@@ -100,13 +99,13 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/autologin.nix
+          ./modules/fileSystems.nix
           ./modules/graphics.nix
           ./modules/search.nix
           ./boot.nix
           ./dnsmasq.nix
           ./minimal.nix
           ./network.nix
-          ./mix.nix
           ./pc.nix
         ];
       };

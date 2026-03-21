@@ -28,31 +28,59 @@
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
-    systemctl-tui
-    ripgrep
+    android-tools
+    brightnessctl
+    chafa
+    cht-sh
+    coreutils-full
+    disko
+    fastfetch
     fd
-    w3m
+    file
+    fwupd
     fzf
     fzy
-    silver-searcher
-    neovim
-    disko
-    htop
-    pistol
-    lf
     git
-    lazygit
-    nps
-    coreutils-full
+    glib
+    groff
     gzip
+    highlight
+    htop
+    hyperfine
+    imagemagick
+    jq
+    kmon
+    lazygit
+    lf
+    libnotify
+    libwebp
+    lm_sensors
     man-pages
     man-pages-posix
-    groff
-    cht-sh
-    tldr
     manix
-    glib
-    fwupd
+    nps
+    parallel
+    pciutils
+    pistol
+    procps
+    psmisc
+    pv
+    remarshal
+    reptyr
+    ripgrep
+    silver-searcher
+    systemctl-tui
+    sysz
+    tldr
+    translate-shell
+    trash-cli
+    udevil
+    ueberzugpp
+    unrar
+    unzip
+    usbutils
+    utf8proc
+    w3m
   ];
 
   programs.tmux.enable = true;
@@ -166,7 +194,6 @@
     # nerd-fonts.fira-mono
     # nerd-fonts.fira-code
     # powerline-fonts
-    # joypixels
     # font-awesome
     # noto-fonts
     # noto-fonts-color-emoji
@@ -230,66 +257,5 @@
   security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
   security.sudo.wheelNeedsPassword = false;
   security.pam.services.nginx.setEnvironment = false;
-  nixpkgs.config.joypixels.acceptLicense = true;
-  fileSystems."/var/lib/mpd/music/Music@root" = {
-    depends = [
-      "/root/Music"
-      "/var/lib/mpd/music"
-    ];
-    device = "/root/Music";
-    fsType = "none";
-    options = [
-      "bind"
-      # "ro"
-    ];
-  };
-  fileSystems."/var/lib/mpd/music/Videos@root" = {
-    depends = [
-      "/root/Videos"
-      "/var/lib/mpd/music"
-    ];
-    device = "/root/Videos";
-    fsType = "none";
-    options = [
-      "bind"
-      # "ro"
-    ];
-  };
-  fileSystems."/var/lib/transmission/watchdir" = {
-    depends = [
-      "/root/Downloads"
-      "/var/lib/transmission"
-    ];
-    device = "/root/Downloads";
-    fsType = "none";
-    options = [
-      "bind"
-      # "ro"
-    ];
-  };
-  fileSystems."/root/Downloads/_transmission" = {
-    depends = [
-      "/var/lib/transmission/Downloads"
-      "/root/Downloads"
-    ];
-    device = "/var/lib/transmission/Downloads";
-    fsType = "none";
-    options = [
-      "bind"
-      # "ro"
-    ];
-  };
-  fileSystems."/root/Videos/_transmission" = {
-    depends = [
-      "/var/lib/transmission/Downloads"
-      "/root/Videos"
-    ];
-    device = "/var/lib/transmission/Downloads";
-    fsType = "none";
-    options = [
-      "bind"
-      # "ro"
-    ];
-  };
 
 }

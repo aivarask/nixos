@@ -1,5 +1,9 @@
 { pkgs, config, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    ddcutil
+    ddcui
+  ];
   boot.kernelModules = [
     "i2c-dev"
     "ddcci-backlight"

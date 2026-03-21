@@ -10,6 +10,8 @@
   home.packages = with pkgs; [
     celluloid
     dav1d
+    obs-cli
+    yt-dlp
   ];
   xdg.configFile."mpv".source = osConfig.symlink "${xdgconf}/mpv";
   programs.mpv.enable = true;

@@ -39,6 +39,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    inkscape-with-extensions
     lnav
     htop
     gtk3
@@ -54,6 +55,7 @@ in
     spotify
     ncspot
     lingot # guitar tuner
+    mixxx
   ];
 
   xdg.configFile."lingot".source = symlink "${xdgconf}/lingot";

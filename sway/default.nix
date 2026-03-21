@@ -5,7 +5,6 @@
   ...
 }:
 {
-  imports = [ ];
   environment.variables.WLR_DRM_NO_MODIFIERS = 1;
   environment.variables.WLR_RENDERER = "vulkan";
   environment.variables.XDG_CURRENT_DESKTOP = "sway";
@@ -14,7 +13,6 @@
   environment.variables.CLUTTER_BACKEND = "wayland";
   environment.variables.SDL_VIDEODRIVER = "wayland";
   programs.sway.enable = true;
-
   programs.sway.package = pkgs.swayfx;
   programs.sway.wrapperFeatures.gtk = true;
   programs.uwsm.enable = true;
@@ -24,21 +22,14 @@
 
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
-    # polkit-gnome
     # sway-overfocus
     bemoji
     catt
-    dconf-editor
     eww
     flameshot
     foot
     gammastep
     glib-networking
-    gnome-calculator
-    gnome-network-displays
-    gnome-system-monitor
-    gnome-themes-extra
-    gnome-tweaks
     grim
     gst_all_1.gst-libav
     gst_all_1.gst-plugins-bad
@@ -47,14 +38,11 @@
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-vaapi
     gst_all_1.gstreamer
-    i3
     ifwifi
     kanshi
     localsend
-    lxappearance
     mako
     miraclecast
-    oranchelo-icon-theme
     papirus-icon-theme
     pavucontrol
     pipewire
@@ -106,15 +94,6 @@
     xmodmap
     setxkbmap
     # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
-    nwg-panel
-    nwg-dock
-    nwg-icon-picker
-    nwg-menu
-    nwg-drawer
-    nwg-clipman
-    nwg-dock
-    nwg-displays
-    yt-dlp
 
   ];
 }

@@ -4,7 +4,6 @@
     disko
     qemu
     git
-    sysz
     gdu
     duf
     dust
@@ -15,6 +14,5 @@
     fswatch
     mtools
     parted
-    gparted
   ];
 }
