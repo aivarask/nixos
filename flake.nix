@@ -53,7 +53,6 @@
         # inputs.disko.nixosModules.disko
         ./.config/mpd/default.nix
         ./.config/pipewire/default.nix
-        ./disks.nix
         ./environment.nix
         ./httpd
         ./lua

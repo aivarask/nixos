@@ -3,7 +3,6 @@
   services.udisks2.enable = true;
   services.udisks2.settings = { };
   services.udisks2.mountOnMedia = true;
-  programs.gnome-disks.enable = true;
   services.playerctld.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "ignore";

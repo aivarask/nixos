@@ -28,18 +28,25 @@
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
-    android-tools
+    # android-file-transfer
+    # android-tools
     brightnessctl
     chafa
     cht-sh
     coreutils-full
     disko
+    disko
+    duf
+    dust
     fastfetch
     fd
     file
+    fswatch
     fwupd
     fzf
     fzy
+    gdu
+    git
     git
     glib
     groff
@@ -48,6 +55,8 @@
     htop
     hyperfine
     imagemagick
+    inotify-tools
+    jmtpfs
     jq
     kmon
     lazygit
@@ -58,13 +67,17 @@
     man-pages
     man-pages-posix
     manix
+    mtools
+    nfs-utils
     nps
     parallel
+    parted
     pciutils
     pistol
     procps
     psmisc
     pv
+    qemu
     remarshal
     reptyr
     ripgrep
