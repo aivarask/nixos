@@ -5,7 +5,7 @@
     grc
     # polkit-gnome
     gparted
-    gnome-diskas
+    gnome-disks
     gnome-calculator
     gnome-network-displays
     gnome-system-monitor
