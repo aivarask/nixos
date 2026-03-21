@@ -31,7 +31,6 @@
         # acoustics
         roomeqwizard
 
-        lingot # guitar tuner
         # https://wiki.archlinux.org/title/Convert_FLAC_to_MP3
         flac2all
         calf

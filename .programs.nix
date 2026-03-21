@@ -53,8 +53,10 @@ in
     # bitwarden-desktop
     spotify
     ncspot
+    lingot # guitar tuner
   ];
 
+  xdg.configFile."lingot".source = symlink "${xdgconf}/lingot";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";

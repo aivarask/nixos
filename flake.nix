@@ -27,7 +27,7 @@
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
-            startAsUserService = true;
+            startAsUserService = false;
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
