@@ -1,0 +1,2 @@
+syntax clear NERDTreeFlags
+

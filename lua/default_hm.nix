@@ -35,6 +35,7 @@ in
         vim-which-key
         auto-pairs
         nerdtree
+        vim-nerdtree-syntax-highlight
         vim-indentwise
         vim-commentary
         vim-matchup

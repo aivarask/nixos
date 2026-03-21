@@ -148,12 +148,13 @@
     # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
     # /etc/nixos/bashrc.local
   '';
-  environment.etc."bashrc.local".source = "/etc/nixos/bashrc.local";
+  environment.etc."bashrc.local".source = "/etc/nixos/bash/bashrc.local";
 
   fonts.enableDefaultPackages = true;
   fonts.fontconfig.antialias = true;
   fonts.fontconfig.hinting.enable = true;
   fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
     nerd-fonts.hack
     nerd-fonts.meslo-lg
     papirus-icon-theme

@@ -18,11 +18,9 @@ rec {
     pkgs.mpd
     pkgs.mpc
   ];
-  # networking.firewall.allowedTCPPorts = [ 6600 ];
   services.mpd.enable = true;
   services.mpd.user = "pipewire";
   services.mpd.group = "audio";
-  # services.mpd.settings = "/etc/nixos/.config/mpd/mpd.conf";
   services.mpd.settings = {
     include_optional = "${confDir}/mpd.conf";
   };

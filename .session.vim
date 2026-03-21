@@ -3,8 +3,6 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 inoremap <silent> <Plug>(-fzf-complete-finish) l
-inoremap <silent> <SNR>79_AutoPairsReturn =AutoPairsReturn()
-inoremap <silent> <SNR>43_AutoPairsReturn =AutoPairsReturn()
 inoremap <C-W> u
 inoremap <C-U> u
 imap <silent> <C-G>% <Plug>(matchup-c_g%)
@@ -39,21 +37,21 @@ inoremap Ê :m .+1==gi
 nmap Q <Nop>
 nnoremap ZQ :q!
 nnoremap ZT :tabclose
-omap [- <Plug>(IndentWisePreviousLesserIndent)
 xmap [- <Plug>(IndentWisePreviousLesserIndent)
-omap [= <Plug>(IndentWisePreviousEqualIndent)
+nmap [- <Plug>(IndentWisePreviousLesserIndent)
 xmap [= <Plug>(IndentWisePreviousEqualIndent)
-omap [+ <Plug>(IndentWisePreviousGreaterIndent)
+nmap [= <Plug>(IndentWisePreviousEqualIndent)
 xmap [+ <Plug>(IndentWisePreviousGreaterIndent)
-omap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
+nmap [+ <Plug>(IndentWisePreviousGreaterIndent)
 xmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
-omap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
+nmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
 xmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
 nmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
-nmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
-nmap [+ <Plug>(IndentWisePreviousGreaterIndent)
-nmap [= <Plug>(IndentWisePreviousEqualIndent)
-nmap [- <Plug>(IndentWisePreviousLesserIndent)
+omap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
+omap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
+omap [+ <Plug>(IndentWisePreviousGreaterIndent)
+omap [= <Plug>(IndentWisePreviousEqualIndent)
+omap [- <Plug>(IndentWisePreviousLesserIndent)
 map [t :tabprevious
 map [C :call Ctoggle()
 map [c :cprevious
@@ -72,21 +70,21 @@ nnoremap <silent> \a :call SourceLuafile()
 nnoremap <silent> \q :Bclose
 nnoremap \  :b#
 nmap \Q :%bd|e#
-omap ]- <Plug>(IndentWiseNextLesserIndent)
 xmap ]- <Plug>(IndentWiseNextLesserIndent)
-omap ]= <Plug>(IndentWiseNextEqualIndent)
+nmap ]- <Plug>(IndentWiseNextLesserIndent)
 xmap ]= <Plug>(IndentWiseNextEqualIndent)
-omap ]+ <Plug>(IndentWiseNextGreaterIndent)
+nmap ]= <Plug>(IndentWiseNextEqualIndent)
 xmap ]+ <Plug>(IndentWiseNextGreaterIndent)
-omap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
+nmap ]+ <Plug>(IndentWiseNextGreaterIndent)
 xmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
-omap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
+nmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
 xmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
 nmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
-nmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
-nmap ]+ <Plug>(IndentWiseNextGreaterIndent)
-nmap ]= <Plug>(IndentWiseNextEqualIndent)
-nmap ]- <Plug>(IndentWiseNextLesserIndent)
+omap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
+omap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
+omap ]+ <Plug>(IndentWiseNextGreaterIndent)
+omap ]= <Plug>(IndentWiseNextEqualIndent)
+omap ]- <Plug>(IndentWiseNextLesserIndent)
 nnoremap <silent> ] :WhichKey ']'
 map ]t :tabnext
 map ]C :call Ctoggle()
@@ -120,20 +118,6 @@ nnoremap <silent> <Plug>(-fzf-complete-finish) a
 nnoremap <Plug>(-fzf-:) :
 nnoremap <Plug>(-fzf-/) /
 nnoremap <Plug>(-fzf-vim-do) :execute g:__fzf_command
-xnoremap <silent> <SNR>34_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
-xnoremap <silent> <SNR>34_(matchup-z%) :call matchup#motion#jump_inside(1)
-xnoremap <silent> <SNR>34_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
-xnoremap <silent> <SNR>34_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
-xnoremap <silent> <SNR>34_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
-xnoremap <silent> <SNR>34_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
-nnoremap <silent> <expr> <SNR>34_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
-nnoremap <silent> <expr> <SNR>88_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
-xnoremap <silent> <SNR>88_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
-xnoremap <silent> <SNR>88_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
-xnoremap <silent> <SNR>88_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
-xnoremap <silent> <SNR>88_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
-xnoremap <silent> <SNR>88_(matchup-z%) :call matchup#motion#jump_inside(1)
-xnoremap <silent> <SNR>88_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
 nnoremap <Plug>ManPreGetPage :call dist#man#PreGetPage(0)
 nnoremap <silent> <C-L> :nohlsearch=has('diff')?'|diffupdate':''
 nmap <silent> <2-LeftMouse> <Plug>(matchup-double-click)
@@ -144,24 +128,24 @@ onoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 0, 'd
 xnoremap <silent> <Plug>(matchup-a%) :call matchup#text_obj#delimited(0, 1, 'delim_all')
 xnoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 1, 'delim_all')
 onoremap <silent> <Plug>(matchup-Z%) :call matchup#motion#op('Z%')
-xnoremap <silent> <SNR>80_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
+xnoremap <silent> <SNR>79_(matchup-Z%) :call matchup#motion#jump_inside_prev(1)
 nnoremap <silent> <Plug>(matchup-Z%) <Cmd>call matchup#motion#jump_inside_prev(0)
 onoremap <silent> <Plug>(matchup-z%) :call matchup#motion#op('z%')
-xnoremap <silent> <SNR>80_(matchup-z%) :call matchup#motion#jump_inside(1)
+xnoremap <silent> <SNR>79_(matchup-z%) :call matchup#motion#jump_inside(1)
 nnoremap <silent> <Plug>(matchup-z%) <Cmd>call matchup#motion#jump_inside(0)
 onoremap <silent> <Plug>(matchup-[%) :call matchup#motion#op('[%')
 onoremap <silent> <Plug>(matchup-]%) :call matchup#motion#op(']%')
-xnoremap <silent> <SNR>80_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
-xnoremap <silent> <SNR>80_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
+xnoremap <silent> <SNR>79_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
+xnoremap <silent> <SNR>79_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
 nnoremap <silent> <Plug>(matchup-[%) <Cmd>call matchup#motion#find_unmatched(0, 0)
 nnoremap <silent> <Plug>(matchup-]%) <Cmd>call matchup#motion#find_unmatched(0, 1)
 onoremap <silent> <Plug>(matchup-g%) :call matchup#motion#op('g%')
-xnoremap <silent> <SNR>80_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
+xnoremap <silent> <SNR>79_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
 onoremap <silent> <Plug>(matchup-%) :call matchup#motion#op('%')
-xnoremap <silent> <SNR>80_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
+xnoremap <silent> <SNR>79_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
 nnoremap <silent> <Plug>(matchup-g%) <Cmd>call matchup#motion#find_matching_pair(0, 0)
 nnoremap <silent> <Plug>(matchup-%) <Cmd>call matchup#motion#find_matching_pair(0, 1)
-nnoremap <silent> <expr> <SNR>80_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
+nnoremap <silent> <expr> <SNR>79_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
 nnoremap <silent> <Plug>(matchup-hi-surround) :call matchup#matchparen#highlight_surrounding()
 nmap <silent> <Plug>CommentaryUndo :echoerr "Change your <Plug>CommentaryUndo map to <Plug>Commentary<Plug>Commentary"
 nnoremap <silent> <expr> <Plug>(SwitchReverse) execute("set opfunc=switch#OpfuncReverse").'g@l'
@@ -207,7 +191,7 @@ set complete=.,w,b,u,t
 set completeopt=menu,menuone,noselect
 set display=lastline,truncate
 set fileencodings=ucs-bom,utf-8,default,latin1
-set formatoptions=croqlj
+set formatoptions=tcqj
 set guioptions=agimrLtT
 set helplang=en
 set hidden
@@ -222,9 +206,8 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set mouse=a
 set mousefocus
 set nrformats=bin,hex
-set operatorfunc=<SNR>72_go
-set packpath=/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir,~/.config/vim,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles/after,~/.config/vim/after
-set runtimepath=/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-which-key,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-sensible,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-matchup,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-lastplace,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-indentwise,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-highlightedyank,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-devicons,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-cool,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-commentary,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-auto-save,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-airline,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-abolish,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/tabular,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/switch.vim,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/nerdtree,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/gruvbox-material,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/fzf.vim,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/fzf,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/direnv.vim,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/bclose.vim,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/auto-pairs,~/.config/vim,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92/pack/dist/opt/netrw,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/vim-matchup/after,/nix/store/kgk3y2lbvglciv6i4cs3i82fpjavbn68-vim-pack-dir/pack/home-manager/start/tabular/after,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles/after,~/.config/vim/after
+set packpath=/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir,~/.config/vim,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles/after,~/.config/vim/after
+set runtimepath=/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-which-key,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-sensible,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-nerdtree-syntax-highlight,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-matchup,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-lastplace,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-indentwise,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-highlightedyank,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-devicons,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-cool,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-commentary,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-auto-save,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-airline,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-abolish,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/tabular,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/switch.vim,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/nerdtree,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/gruvbox-material,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/fzf.vim,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/fzf,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/direnv.vim,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/bclose.vim,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/auto-pairs,~/.config/vim,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vim92/pack/dist/opt/netrw,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-nerdtree-syntax-highlight/after,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/vim-matchup/after,/nix/store/xnf7z3b16czligqr5qqlqkkj4kbr41cz-vim-pack-dir/pack/home-manager/start/tabular/after,/nix/store/lkv187jl4yb74dnw65ka7xrk2cmf6jsr-vim-full-9.2.0106/share/vim/vimfiles/after,~/.config/vim/after
 set scrolloff=8
 set sessionoptions=buffers,curdir,folds,help,tabpages,options,winpos,winsize
 set noshowmode
@@ -234,7 +217,7 @@ set sidescrolloff=2
 set smarttab
 set splitbelow
 set splitkeep=topline
-set statusline=%F%F%F%F%F%F%F
+set statusline=%F%F%F
 set noswapfile
 set tabline=%!airline#extensions#tabline#get()
 set tabpagemax=50
@@ -254,7 +237,6 @@ set viminfofile=~/.config/vim/viminfo
 set wildignorecase
 set wildmode=noselect:lastused,full
 set wildoptions=pum
-set window=53
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 doautoall SessionLoadPre
@@ -265,48 +247,50 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess+=aoO
-badd +1 lua/vimrc
+badd +22 lua/vimrc
+badd +9 flake.nix
 argglobal
 %argdel
-edit lua/vimrc
+edit flake.nix
 argglobal
+balt lua/vimrc
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <silent> <M-(> =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
-inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> <M-{> =AutoPairsMoveCharacter('{')
-inoremap <buffer> <silent> <M-}> =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> <M-"> =AutoPairsMoveCharacter('"')
-inoremap <buffer> <silent> <M-'> =AutoPairsMoveCharacter('''')
-inoremap <buffer> <silent> <BS> =AutoPairsDelete()
-inoremap <buffer> <silent> <C-H> =AutoPairsDelete()
-inoremap <buffer> <silent> <M-e> =AutoPairsFastWrap()
-inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
 inoremap <buffer> <silent> <M-n> :call AutoPairsJump()a
-inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
-inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
+inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
+inoremap <buffer> <silent> <M-e> =AutoPairsFastWrap()
+inoremap <buffer> <silent> <C-H> =AutoPairsDelete()
+inoremap <buffer> <silent> <BS> =AutoPairsDelete()
+inoremap <buffer> <silent> <M-'> =AutoPairsMoveCharacter('''')
+inoremap <buffer> <silent> <M-"> =AutoPairsMoveCharacter('"')
+inoremap <buffer> <silent> <M-}> =AutoPairsMoveCharacter('}')
+inoremap <buffer> <silent> <M-{> =AutoPairsMoveCharacter('{')
+inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
+inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
+inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
+inoremap <buffer> <silent> <M-(> =AutoPairsMoveCharacter('(')
 inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
+inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
+inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
+inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
 inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
-inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> î :call AutoPairsJump()a
-noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
+inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
+inoremap <buffer> <silent> å =AutoPairsFastWrap()
+inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
+inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
+inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
+inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
 noremap <buffer> <silent> <M-n> :call AutoPairsJump()
+noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
 inoremap <buffer> <silent>  =AutoPairsDelete()
 inoremap <buffer> <silent>   =AutoPairsSpace()
 inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
 inoremap <buffer> <silent> ( =AutoPairsInsert('(')
 inoremap <buffer> <silent> ) =AutoPairsInsert(')')
-noremap <buffer> <silent> ð :call AutoPairsToggle()
 noremap <buffer> <silent> î :call AutoPairsJump()
+noremap <buffer> <silent> ð :call AutoPairsToggle()
 inoremap <buffer> <silent> [ =AutoPairsInsert('[')
 inoremap <buffer> <silent> ] =AutoPairsInsert(']')
 inoremap <buffer> <silent> ` =AutoPairsInsert('`')
@@ -331,8 +315,8 @@ setlocal cinoptions=
 setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"\\\ ,:\"
-setlocal commentstring=\"%s
+setlocal comments=:#
+setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t
 setlocal completefunc=
 setlocal completeopt=
@@ -346,16 +330,16 @@ setlocal nocursorcolumn
 set cursorline
 setlocal cursorline
 setlocal cursorlineopt=both
-setlocal define=\\v^\\s*export\\s*(def|const|var|final)
+setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
 setlocal eventignorewin=
-setlocal noexpandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+setlocal expandtab
+if &filetype != 'nix'
+setlocal filetype=nix
 endif
 setlocal fillchars=
 setlocal findfunc=
@@ -372,19 +356,19 @@ setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatoptions=jcroql
+setlocal formatoptions=tcqj
 setlocal formatprg=
 setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
-setlocal include=\\v^\\s*import\\s*(autoload)?
+setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=g:VimIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,=endif,=enddef,=endfu,=endfor,=endwh,=endtry,=endclass,=endinterface,=endenum,=},=else,=cat,=finall,=END,0\\,0=\"\\\ ,0=#\\\ 
+setlocal indentexpr=GetNixIndent()
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,0=then,0=else,0=inherit,0=in,*<Return>
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#
-setlocal keywordprg=:VimKeywordPrg
+setlocal iskeyword=@,48-57,_,192-255,-
+setlocal keywordprg=
 setlocal lhistory=10
 setlocal nolinebreak
 setlocal lisp
@@ -401,8 +385,8 @@ setlocal nrformats=bin,hex
 set number
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=vimcomplete#Complete
-setlocal path=.,,,pack/**,runtime/**,autoload/**,colors/**,compiler/**,ftplugin/**,indent/**,keymap/**,macros/**,plugin/**,syntax/**,after/**
+setlocal omnifunc=
+setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -412,7 +396,7 @@ setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=8
+setlocal shiftwidth=2
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
@@ -420,7 +404,7 @@ set signcolumn=yes
 setlocal signcolumn=yes
 setlocal nosmartindent
 setlocal nosmoothscroll
-setlocal softtabstop=0
+setlocal softtabstop=2
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -430,8 +414,8 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != 'nix'
+setlocal syntax=nix
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -440,7 +424,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=78
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
 setlocal undofile
@@ -458,12 +442,12 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 36 - ((25 * winheight(0) + 25) / 50)
+let s:l = 9 - ((8 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
-normal! 0
+keepjumps 9
+normal! 015|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
@@ -476,6 +460,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
