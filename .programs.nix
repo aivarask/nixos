@@ -25,14 +25,17 @@ in
   imports = [
     ./.config/bat/default.nix
     ./.config/chromium/default.nix
+    ./.config/direnv/default.nix
+    ./.config/eza/default.nix
     ./.config/firefox/default.nix
-    ./.config/zsh/default.nix
+    ./.config/fzf/default.nix
     ./.config/git/default.nix
     ./.config/mpv/default.nix
     ./.config/ncmpcpp/default.nix
-    ./.config/fzf/default.nix
+    ./.config/nicotine/default.nix
     ./.config/ripgrep/default.nix
     ./.config/starship/default.nix
+    ./.config/zsh/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -58,6 +61,7 @@ in
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
+  xdg.configFile."eza".source = symlink "${xdgconf}/eza";
   xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
@@ -79,6 +83,7 @@ in
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
+  xdg.configFile."stylua".source = symlink "${xdgconf}/stylua";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
   xdg.configFile."taplo".source = symlink "${xdgconf}/taplo";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
@@ -88,17 +93,4 @@ in
   xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
 
-  programs.eza.enable = true;
-  programs.eza.icons = "auto";
-  programs.eza.enableZshIntegration = false;
-
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.direnv.enableBashIntegration = true;
-  programs.direnv.enableZshIntegration = true;
-  xdg.configFile."direnv/direnv.toml" = {
-    source = symlink "${xdgconf}/direnv/direnv.toml";
-    enable = true;
-    force = true;
-  };
 }
