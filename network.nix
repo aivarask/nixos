@@ -1,5 +1,11 @@
 { lib, pkgs, ... }:
 {
+  programs.bandwhich.enable = true;
+  programs.iftop.enable = true;
+  programs.sharing.enable = true;
+  # programs.mtr.enable = true;
+  # programs.wireshark.enable = true;
+
   environment.systemPackages = with pkgs; [
     ffuf
     curlFull
@@ -25,11 +31,4 @@
     websocat
     websocketd
   ];
-  # netstat -antup
-  # nestat --all --numeric --tcp --udp --program
-  programs.bandwhich.enable = true;
-  programs.iftop.enable = true;
-  programs.sharing.enable = true;
-  programs.mtr.enable = true;
-  programs.wireshark.enable = true;
 }

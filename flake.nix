@@ -60,6 +60,12 @@
         ./nix.nix
         ./services.nix
         ./sway
+        ./modules/autologin.nix
+        ./modules/boot.nix
+        ./modules/fileSystems.nix
+        ./modules/gnome.nix
+        ./modules/graphics.nix
+        ./modules/search.nix
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
@@ -82,13 +88,7 @@
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          ./modules/autologin.nix
-          ./modules/fileSystems.nix
-	  ./modules/gnome.nix
-          ./modules/graphics.nix
           ./modules/bluetooth.nix
-          ./modules/search.nix
-          ./boot.nix
           ./dnsmasq.nix
           ./minimal.nix
           ./network.nix
@@ -98,12 +98,6 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          ./modules/autologin.nix
-          ./modules/fileSystems.nix
-	  ./modules/gnome.nix
-          ./modules/graphics.nix
-          ./modules/search.nix
-          ./boot.nix
           ./dnsmasq.nix
           ./minimal.nix
           ./network.nix

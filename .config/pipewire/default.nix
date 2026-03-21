@@ -12,7 +12,7 @@
     wireplumber
     # qpwgraph
     # pulseaudio
-    easyeffects
+    # easyeffects
   ];
   security.rtkit.enable = true;
   services.pipewire.enable = true;
