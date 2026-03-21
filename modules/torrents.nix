@@ -13,6 +13,18 @@
     openPeerPorts = true;
     settings = {
       # watch-dir = "${config.hm.xdg.userDirs.download}";
+      fileSystems."/root/Downloads/_transmission" = {
+        depends = [
+          "/var/lib/transmission/Downloads"
+          "/root/Downloads"
+        ];
+        device = "/var/lib/transmission/Downloads";
+        fsType = "none";
+        options = [
+          "bind"
+          # "ro"
+        ];
+      };
       watch-dir-enabled = true;
       watch_dir_force_generic = true;
     };

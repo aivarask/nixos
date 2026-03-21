@@ -267,5 +267,29 @@
       # "ro"
     ];
   };
+  fileSystems."/root/Downloads/_transmission" = {
+    depends = [
+      "/var/lib/transmission/Downloads"
+      "/root/Downloads"
+    ];
+    device = "/var/lib/transmission/Downloads";
+    fsType = "none";
+    options = [
+      "bind"
+      # "ro"
+    ];
+  };
+  fileSystems."/root/Videos/_transmission" = {
+    depends = [
+      "/var/lib/transmission/Downloads"
+      "/root/Videos"
+    ];
+    device = "/var/lib/transmission/Downloads";
+    fsType = "none";
+    options = [
+      "bind"
+      # "ro"
+    ];
+  };
 
 }

@@ -36,21 +36,7 @@
     /root/Videos     minimal(rw,nohide,insecure,no_subtree_check)
     /root/Music     minimal(rw,nohide,insecure,no_subtree_check)
   '';
-  networking.firewall.allowedTCPPorts = [
-    111
-    2049
-    4000
-    4001
-    4002
-    20048
-  ];
-  networking.firewall.allowedUDPPorts = [
-    111
-    2049
-    4000
-    4001
-    4002
-    20048
-  ];
+  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall.allowedUDPPorts = [ 2049 ];
 
 }
