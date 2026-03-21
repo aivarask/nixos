@@ -29,6 +29,14 @@
       what = "pc:/root/Music";
       where = "/root/Music/_pc";
     }
+    {
+      type = "nfs";
+      mountConfig = {
+        Options = "noatime";
+      };
+      what = "pc:/root/Videos";
+      where = "/root/Videos/_pc";
+    }
   ];
   systemd.automounts = [
     {
@@ -37,6 +45,13 @@
         TimeoutIdleSec = "600";
       };
       where = "/root/Music/_pc";
+    }
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = {
+        TimeoutIdleSec = "600";
+      };
+      where = "/root/Videos/_pc";
     }
   ];
 }

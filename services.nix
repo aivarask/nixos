@@ -7,6 +7,10 @@
   services.playerctld.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "ignore";
+  services.gnome.gnome-keyring.enable = true;
+  environment.systemPackages = [
+    pkgs.grc
+  ];
 
   services.openssh.enable = true;
   services.openssh.openFirewall = true;

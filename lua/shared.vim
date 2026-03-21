@@ -30,7 +30,6 @@ set ignorecase
 set lazyredraw
 set modeline
 set noshowmode
-set signcolumn=yes
 set number
 set norelativenumber
 set splitkeep=topline

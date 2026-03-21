@@ -14,6 +14,7 @@
   environment.variables.CLUTTER_BACKEND = "wayland";
   environment.variables.SDL_VIDEODRIVER = "wayland";
   programs.sway.enable = true;
+
   programs.sway.package = pkgs.swayfx;
   programs.sway.wrapperFeatures.gtk = true;
   programs.uwsm.enable = true;
