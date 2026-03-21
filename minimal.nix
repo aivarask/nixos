@@ -28,8 +28,6 @@
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
-    # android-file-transfer
-    # android-tools
     brightnessctl
     chafa
     cht-sh

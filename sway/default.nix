@@ -31,13 +31,6 @@
     gammastep
     glib-networking
     grim
-    gst_all_1.gst-libav
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-vaapi
-    gst_all_1.gstreamer
     ifwifi
     kanshi
     localsend
@@ -48,9 +41,7 @@
     pipewire
     playerctl
     python3
-    qtscrcpy
     rofi
-    scrcpy
     slurp
     kdotool
 
@@ -63,7 +54,7 @@
     # sway
     sway-contrib.grimshot
     sway-contrib.inactive-windows-transparency
-    sway-easyfocus
+    # sway-easyfocus
     sway-launcher-desktop
     sway-new-workspace
     sway-scratch
@@ -79,7 +70,7 @@
     wev
     wtype
     evtest
-    wireplumber
+    # wireplumber
     wl-clipboard
     wlr-randr
     wttrbar
