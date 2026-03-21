@@ -7,6 +7,10 @@
 }:
 
 {
+  home.packages = with pkgs; [
+    celluloid
+    dav1d
+  ];
   xdg.configFile."mpv".source = osConfig.symlink "${xdgconf}/mpv";
   programs.mpv.enable = true;
   programs.mpv.package = (

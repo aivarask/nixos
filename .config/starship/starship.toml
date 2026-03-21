@@ -24,7 +24,7 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 
 [env_var.GTK_THEME]
 default = 'gtk_theme'
-format  = "[$symbol$env_value]($style) "
+format = "[$symbol$env_value]($style) "
 
 [cmd_duration] # https://starship.rs/config/#command-duration
 
@@ -39,16 +39,16 @@ disabled = false
 format = "[$user]($style)"
 
 [hostname] # https://starship.rs/config/#hostname
-format   = "[$ssh_symbol@$hostname]($style) "
+format = "[$ssh_symbol@$hostname]($style) "
 ssh_only = false
 
 [localip]
 ssh_only = false
-format   = '@[$localipv4](bold red) '
+format = '@[$localipv4](bold red) '
 disabled = false
 
 [memory_usage]
-disabled  = false
+disabled = false
 threshold = -1
-symbol    = ' '
-style     = 'bold dimmed green'
+symbol = ' '
+style = 'bold dimmed green'

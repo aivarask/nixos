@@ -53,15 +53,12 @@ in
     # bitwarden-desktop
     spotify
     ncspot
-    celluloid
-    dav1d
   ];
 
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
   xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
-  xdg.configFile."eza".source = symlink "${xdgconf}/eza";
   xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
@@ -92,5 +89,4 @@ in
   xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
   xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
-
 }
