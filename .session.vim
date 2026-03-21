@@ -27,26 +27,26 @@ omap <silent> % <Ignore><Plug>(matchup-%)
 xmap <silent> % <Plug>(matchup-%)
 nmap <silent> % <Plug>(matchup-%)
 nnoremap // :Rg
-nnoremap <t_�k>h :wincmd h
-nnoremap <t_�k>j :wincmd j
-nnoremap <t_�k>k :wincmd k
 nnoremap <t_�k>l :wincmd l
+nnoremap <t_�k>k :wincmd k
+nnoremap <t_�k>j :wincmd j
+nnoremap <t_�k>h :wincmd h
 nnoremap ?? :Files
 inoremap Ë :m .-2==gi
 inoremap Ê :m .+1==gi
 nmap Q <Nop>
 nnoremap ZQ :q!
 nnoremap ZT :tabclose
-xmap [- <Plug>(IndentWisePreviousLesserIndent)
-nmap [- <Plug>(IndentWisePreviousLesserIndent)
-xmap [= <Plug>(IndentWisePreviousEqualIndent)
-nmap [= <Plug>(IndentWisePreviousEqualIndent)
-xmap [+ <Plug>(IndentWisePreviousGreaterIndent)
-nmap [+ <Plug>(IndentWisePreviousGreaterIndent)
-xmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
-nmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
-xmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
 nmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
+xmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
+nmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
+xmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
+nmap [+ <Plug>(IndentWisePreviousGreaterIndent)
+xmap [+ <Plug>(IndentWisePreviousGreaterIndent)
+nmap [= <Plug>(IndentWisePreviousEqualIndent)
+xmap [= <Plug>(IndentWisePreviousEqualIndent)
+nmap [- <Plug>(IndentWisePreviousLesserIndent)
+xmap [- <Plug>(IndentWisePreviousLesserIndent)
 omap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
 omap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
 omap [+ <Plug>(IndentWisePreviousGreaterIndent)
@@ -70,16 +70,16 @@ nnoremap <silent> \a :call SourceLuafile()
 nnoremap <silent> \q :Bclose
 nnoremap \  :b#
 nmap \Q :%bd|e#
-xmap ]- <Plug>(IndentWiseNextLesserIndent)
-nmap ]- <Plug>(IndentWiseNextLesserIndent)
-xmap ]= <Plug>(IndentWiseNextEqualIndent)
-nmap ]= <Plug>(IndentWiseNextEqualIndent)
-xmap ]+ <Plug>(IndentWiseNextGreaterIndent)
-nmap ]+ <Plug>(IndentWiseNextGreaterIndent)
-xmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
-nmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
-xmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
 nmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
+xmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
+nmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
+xmap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
+nmap ]+ <Plug>(IndentWiseNextGreaterIndent)
+xmap ]+ <Plug>(IndentWiseNextGreaterIndent)
+nmap ]= <Plug>(IndentWiseNextEqualIndent)
+xmap ]= <Plug>(IndentWiseNextEqualIndent)
+nmap ]- <Plug>(IndentWiseNextLesserIndent)
+xmap ]- <Plug>(IndentWiseNextLesserIndent)
 omap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
 omap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
 omap ]+ <Plug>(IndentWiseNextGreaterIndent)
@@ -114,10 +114,10 @@ nmap q <Nop>
 omap <silent> z% <Plug>(matchup-z%)
 xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
-nnoremap <silent> <Plug>(-fzf-complete-finish) a
-nnoremap <Plug>(-fzf-:) :
-nnoremap <Plug>(-fzf-/) /
 nnoremap <Plug>(-fzf-vim-do) :execute g:__fzf_command
+nnoremap <Plug>(-fzf-/) /
+nnoremap <Plug>(-fzf-:) :
+nnoremap <silent> <Plug>(-fzf-complete-finish) a
 nnoremap <Plug>ManPreGetPage :call dist#man#PreGetPage(0)
 nnoremap <silent> <C-L> :nohlsearch=has('diff')?'|diffupdate':''
 nmap <silent> <2-LeftMouse> <Plug>(matchup-double-click)
@@ -173,8 +173,8 @@ inoremap  u
 inoremap  u
 cnoremap <nowait> l <Right>
 cnoremap <nowait> h <Left>
-cnoremap <nowait> <t_�k>l <Right>
 cnoremap <nowait> <t_�k>h <Left>
+cnoremap <nowait> <t_�k>l <Right>
 vnoremap Ë :m '<-2gv=gv
 vnoremap Ê :m '>+1gv=gv
 nnoremap Ê :m .+1==
@@ -256,41 +256,41 @@ argglobal
 balt lua/vimrc
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <silent> <M-n> :call AutoPairsJump()a
-inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
-inoremap <buffer> <silent> <M-e> =AutoPairsFastWrap()
-inoremap <buffer> <silent> <C-H> =AutoPairsDelete()
-inoremap <buffer> <silent> <BS> =AutoPairsDelete()
-inoremap <buffer> <silent> <M-'> =AutoPairsMoveCharacter('''')
-inoremap <buffer> <silent> <M-"> =AutoPairsMoveCharacter('"')
-inoremap <buffer> <silent> <M-}> =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> <M-{> =AutoPairsMoveCharacter('{')
-inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
 inoremap <buffer> <silent> <M-(> =AutoPairsMoveCharacter('(')
-inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
-inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
-inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
+inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
+inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
+inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
+inoremap <buffer> <silent> <M-{> =AutoPairsMoveCharacter('{')
+inoremap <buffer> <silent> <M-}> =AutoPairsMoveCharacter('}')
+inoremap <buffer> <silent> <M-"> =AutoPairsMoveCharacter('"')
+inoremap <buffer> <silent> <M-'> =AutoPairsMoveCharacter('''')
+inoremap <buffer> <silent> <BS> =AutoPairsDelete()
+inoremap <buffer> <silent> <C-H> =AutoPairsDelete()
+inoremap <buffer> <silent> <M-e> =AutoPairsFastWrap()
+inoremap <buffer> <silent> <expr> <M-p> AutoPairsToggle()
+inoremap <buffer> <silent> <M-n> :call AutoPairsJump()a
 inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
+inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
+inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
+inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
 inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-inoremap <buffer> <silent> î :call AutoPairsJump()a
-inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
-inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
-inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
+inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
 inoremap <buffer> <silent> Ý =AutoPairsMoveCharacter(']')
-inoremap <buffer> <silent> Û =AutoPairsMoveCharacter('[')
-noremap <buffer> <silent> <M-n> :call AutoPairsJump()
+inoremap <buffer> <silent> û =AutoPairsMoveCharacter('{')
+inoremap <buffer> <silent> ý =AutoPairsMoveCharacter('}')
+inoremap <buffer> <silent> å =AutoPairsFastWrap()
+inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
+inoremap <buffer> <silent> î :call AutoPairsJump()a
 noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
+noremap <buffer> <silent> <M-n> :call AutoPairsJump()
 inoremap <buffer> <silent>  =AutoPairsDelete()
 inoremap <buffer> <silent>   =AutoPairsSpace()
 inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
 inoremap <buffer> <silent> ( =AutoPairsInsert('(')
 inoremap <buffer> <silent> ) =AutoPairsInsert(')')
-noremap <buffer> <silent> î :call AutoPairsJump()
 noremap <buffer> <silent> ð :call AutoPairsToggle()
+noremap <buffer> <silent> î :call AutoPairsJump()
 inoremap <buffer> <silent> [ =AutoPairsInsert('[')
 inoremap <buffer> <silent> ] =AutoPairsInsert(']')
 inoremap <buffer> <silent> ` =AutoPairsInsert('`')
@@ -442,7 +442,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 9 - ((8 * winheight(0) + 26) / 52)
+let s:l = 9 - ((8 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt

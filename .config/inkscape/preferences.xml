@@ -117,7 +117,9 @@
       <eventcontext
          id="rect"
          style="fill:blue;"
-         usecurrent="1" />
+         usecurrent="1"
+         width="3840"
+         height="2160" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -372,7 +374,7 @@
     <eventcontext
        id="gradient"
        selcue="1"
-       newgradient="1"
+       newgradient="2"
        newfillorstroke="1" />
     <eventcontext
        id="mesh"
@@ -549,6 +551,8 @@
     <group
        id="CMS"
        visible="1" />
+    <group
+       id="OKHSL" />
   </group>
   <group
      id="embedded">
@@ -613,9 +617,13 @@
        append_extension="1"
        path="">
       <group
-         id="exportarea" />
+         id="exportarea"
+         value="page" />
       <group
          id="defaultxdpi" />
+      <group
+         id="batchexportarea"
+         value="layer" />
     </group>
     <group
        id="save_as"
@@ -623,7 +631,8 @@
        append_extension="1"
        enable_preview="1"
        path=""
-       use_current_dir="1" />
+       use_current_dir="1"
+       enable_svgexport="0" />
     <group
        id="save_copy"
        default=""
@@ -726,7 +735,7 @@
        value="12" />
     <group
        id="cursortolerance"
-       value="8.0" />
+       value="8" />
     <group
        id="dragtolerance"
        value="4.0" />
@@ -961,10 +970,12 @@
        unitType="2" />
     <group
        id="boot"
-       theme="colorful">
+       theme="system"
+       showwelcome="0">
       <group
          id="shown"
-         ver1.4.2="1" />
+         ver1.4.2="1"
+         ver1.4.3="1" />
     </group>
     <group
        id="rendering" />
@@ -977,13 +988,16 @@
      id="extensions"
      org.inkscape.output.png.inkscape.png_bitdepth="99"
      org.inkscape.output.png.inkscape.png_compression="6"
-     org.inkscape.output.png.inkscape.png_antialias="2" />
+     org.inkscape.output.png.inkscape.png_antialias="2"
+     org.inkscape.template.digital.height="2160.0"
+     org.inkscape.template.digital.unit="px"
+     org.inkscape.template.digital.width="3840.0" />
   <group
      id="desktop"
-     style="fill:#000000;text-orientation:auto">
+     style="fill:#1a1a1a;text-orientation:auto;stroke-width:0;fill-opacity:0.58608586">
     <group
-       width="1081"
-       height="820"
+       width="1916"
+       height="935"
        x="0"
        y="0"
        maximized="0"
@@ -1103,20 +1117,22 @@
      id="theme"
      defaultPreferDarkTheme="0"
      defaultIconTheme="Papirus"
-     defaultGtkTheme="Orchis-Dark-Compact"
+     defaultGtkTheme="Adwaita-dark"
      narrowSpinButton="1"
      preferDarkTheme="1"
      darkTheme="1"
-     symbolicIcons="1"
-     symbolicDefaultBaseColors="0"
-     symbolicDefaultHighColors="0"
-     gtkTheme="Adwaita"
-     iconTheme="multicolor">
+     symbolicIcons="0"
+     symbolicDefaultBaseColors="1"
+     symbolicDefaultHighColors="1"
+     syntax-color-theme="inkscape-dark">
     <group
        id="multicolor"
-       symbolicBaseColor="3958107135"
-       symbolicSuccessColor="10029823"
-       symbolicWarningColor="4279865599"
-       symbolicErrorColor="10086143" />
+       symbolicBaseColor="3857049087"
+       symbolicSuccessColor="3435973887"
+       symbolicWarningColor="2155905279"
+       symbolicErrorColor="2155905279" />
   </group>
+  <group
+     id="gradient-edit"
+     stoplist="1" />
 </inkscape>
