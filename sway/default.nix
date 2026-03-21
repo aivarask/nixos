@@ -92,7 +92,6 @@
     evtest
     wireplumber
     wl-clipboard
-    wlr-which-key
     wlr-randr
     wttrbar
     xcursor-pro

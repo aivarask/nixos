@@ -27,7 +27,7 @@
         Options = "noatime";
       };
       what = "pc:/root/Music";
-      where = "/root/Music/pc";
+      where = "/root/Music/_pc";
     }
   ];
   systemd.automounts = [
@@ -36,7 +36,7 @@
       automountConfig = {
         TimeoutIdleSec = "600";
       };
-      where = "/root/Music/pc";
+      where = "/root/Music/_pc";
     }
   ];
 }

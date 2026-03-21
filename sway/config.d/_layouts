@@ -1,15 +1,11 @@
-# floating https://i3wm.org/docs/userguide.html#_floating
 gaps inner 4px
 gaps outer 0px
 smart_gaps on
 default_border pixel
 default_floating_border pixel
-# hide_edge_borders smart_no_gaps
+hide_edge_borders smart_no_gaps
 default_orientation auto
 workspace_layout stacking
-
-# for_window [floating] opacity 0.5
-# swaymsg move position center; swaymsg resize set 80ppt 80ppt
 
 floating_minimum_size 100 x 75
 floating_maximum_size -1 x -1

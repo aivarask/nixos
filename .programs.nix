@@ -89,6 +89,5 @@ in
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
   xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
   xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
-  xdg.configFile."wlr-which-key/config.yaml".source = symlink "${xdgconf}/wlr-which-key/config.yaml";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
 }

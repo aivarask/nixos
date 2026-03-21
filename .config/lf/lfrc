@@ -38,7 +38,6 @@ map od &display $f
 map of &firefox $fx
 map og &gimp $fx
 map ox &xdg-open $fx
-map oz &zathura $fx
 map U !du -hs $fx
 map Yc $cat $f | xclip -selection clipboard
 # map <esc> :quit
