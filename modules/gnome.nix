@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
+  services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
+    grc
     # polkit-gnome
     gparted
     gnome-calculator
