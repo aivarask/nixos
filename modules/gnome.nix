@@ -18,6 +18,7 @@
     gnome-network-displays
     gnome-system-monitor
     gnome-themes-extra
+    gnome-remote-desktop
     gnome-tweaks
     dconf-editor
     lxappearance

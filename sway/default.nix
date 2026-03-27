@@ -12,6 +12,26 @@
   environment.variables.QT_QPA_PLATFORM = "wayland";
   environment.variables.CLUTTER_BACKEND = "wayland";
   environment.variables.SDL_VIDEODRIVER = "wayland";
+
+  services.keyd.enable = true;
+  services.keyd.keyboards."default".settings = {
+    main = {
+      # meta = {
+      #   o = "🥰";
+      # };
+      # capslock = "overload(meta, esc)";
+      # esc = "capslock";
+    };
+  };
+  # Optional, but makes sure that when you type the make palm rejection work with keyd
+  # https://github.com/rvaiya/keyd/issues/723
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
+  '';
+  programs.ydotool.enable = true;
   programs.sway.enable = true;
   programs.sway.package = pkgs.swayfx;
   programs.sway.wrapperFeatures.gtk = true;
@@ -23,6 +43,9 @@
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
     # sway-overfocus
+    waypipe
+    ydotool
+    hyprmagnifier
     bemoji
     catt
     eww
