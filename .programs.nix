@@ -15,6 +15,7 @@ in
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
 
+  services.gnome-keyring.enable = true;
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
@@ -39,6 +40,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    gcr
     inkscape-with-extensions
     lnav
     htop

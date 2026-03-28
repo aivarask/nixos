@@ -39,14 +39,12 @@ in
     clang-tools
     bear
     cmake
-
     ludtwig
     intelephense
     gnumake
     checkmake
     taplo
     yaml-language-server
-
     nixfmt
     nixd
     nurl
@@ -66,18 +64,7 @@ in
         inherit (prev.vimUtils) buildVimPlugin;
       in
       {
-        vimPlugins =
-          with inputs;
-          prev.vimPlugins
-          // {
-            smart-semicolon = buildVimPlugin {
-              name = "smart-semicolon";
-              src = smart-semicolon;
-              meta = {
-                homepage = "https://github.com/iagotito/smart-semicolon.nvim";
-              };
-            };
-          };
+        vimPlugins = with inputs; prev.vimPlugins // { };
       }
     )
   ];

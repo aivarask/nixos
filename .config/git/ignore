@@ -9,3 +9,4 @@ result/
 viminfo
 tags
 Session.vim
+.session.vim

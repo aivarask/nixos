@@ -29,6 +29,7 @@
   ];
   environment.systemPackages = with pkgs; [
     brightnessctl
+    grc
     chafa
     cht-sh
     coreutils-full

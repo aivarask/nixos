@@ -85,7 +85,7 @@ in
         nvim-nio
         auto-session
         which-key-nvim
-        lazygit-nvim
+        # lazygit-nvim
         lualine-nvim
         nvim-tree-lua
         toggleterm-nvim
@@ -96,7 +96,6 @@ in
         fidget-nvim
         luvit-meta
         nvim-lsp-file-operations
-        smart-semicolon
       ])
       # misc
       (lib.mkIf true (

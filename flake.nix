@@ -16,8 +16,6 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
-  inputs.smart-semicolon.url = "github:iagotito/smart-semicolon.nvim";
-  inputs.smart-semicolon.flake = false;
   outputs =
     { nixpkgs, self, ... }@inputs:
     let

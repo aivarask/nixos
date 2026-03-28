@@ -4,6 +4,7 @@ export BW_SESSION="cHLrqQeOTy4Z9JYaFBOjviAXbJSDXQ2uZeqgE55CdvYF+LRzIqbhLnmji2Mg6
 
 alias \\l="lazygit"
 alias \\s="systemctl-tui -s all"
+alias sd="systemctl-tui"
 alias \\t="nix-tree"
 alias bw_="bitwarden --no-sandbox --session $BW_SESSION"
 alias fd="fd --hidden --follow"

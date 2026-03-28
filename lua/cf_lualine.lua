@@ -1,112 +1,86 @@
 if not pcall(require, 'lualine') then
-    return
+	return
 end
+local filetype_names = {
+	NvimTree = 'tree'
+}
 
-local buf_lsp_clients = function()
-    local lsps = ''
-    for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-        lsps = client.config.name .. lsps
-        if client:supports_method('textDocument/formatting') then
-            lsps = lsps .. '[F]'
-        end
-        lsps = lsps .. '/'
-    end
-    return lsps
-end
 require('lualine').setup({
-    extensions = {
-        'fzf',
-        'man',
-        'nvim-tree',
-        'quickfix',
-        'toggleterm',
-    },
-    options = {
-        icons_enabled = false,
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = {
-            winbar = {
-                'NvimTree',
-                'toggleterm',
-            },
-            statusline = {
-                'NvimTree',
-            },
-        },
-    },
+	tabline = {
+		lualine_a = { { 'tabs', mode = 2 }, },
+		lualine_x = {},
+		lualine_y = { { 'windows', filetype_names = filetype_names, } },
+	},
+	winbar = {
+		lualine_a = {},
+		lualine_b = {
+			{
+				'buffers',
+				show_filename_only = false,
+				max_length = vim.o.columns * 4 / 5,
+				mode = 0,
+				filetype_names = filetype_names,
+			},
+		},
+		lualine_y = {},
+		lualine_z = {}
+	},
+	inactive_winbar = {
+		lualine_a = {},
+		lualine_b = { 'filename', },
+		lualine_x = {},
+	},
 
-    winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
-            { "filename", path = 1, },
-        },
-        lualine_x = {
-            buf_lsp_clients
-        },
-        lualine_y = {},
-        lualine_z = {}
-    },
+	sections = {
+		lualine_a = { 'searchcount', 'mode' },
+		lualine_b = {
+			function()
+				local p = vim.fn.expand('%:p')
+				return p:gsub('/nix/store/[%a%d]+-', ''):gsub(
+					vim.uv.cwd() .. '/' or '', '')
+			end,
+		},
+		lualine_c = {},
+		lualine_x = { function()
+			local separator = ''
+			local lsps = ''
+			for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+				lsps = client.config.name .. lsps
+				if client:supports_method('textDocument/formatting') then
+					lsps = lsps .. '[F]'
+				end
+				lsps = lsps .. separator
+			end
+			return lsps
+		end
+		},
+		lualine_y = { 'filetype', },
+		lualine_z = {
+			'location',
+			function() return vim.api.nvim_buf_line_count(0) end,
+		},
+	},
+	inactive_sections = {},
+	extensions = {
+		'fzf',
+		'man',
+		'nvim-tree',
+		'quickfix',
+		'toggleterm',
+	},
+	options = {
+		icons_enabled = true,
+		section_separators = { left = '', right = '' },
+		component_separators = { left = '', right = '' },
+		disabled_filetypes = {
+			winbar = {
+				'NvimTree',
+				'toggleterm',
+			},
+			statusline = {
+				'NvimTree',
+			},
+		},
+	},
 
-    inactive_winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
-    tabline = {
-        lualine_a = {
-            'tabs',
-        },
-        lualine_b = {
-            {
-                'buffers',
-                show_filename_only = false,
-                max_length = vim.o.columns * 4 / 5,
-                mode = 0,
-                filetype_names = {
-                    NvimTree = 'tree'
-                }
-            },
-        },
-        lualine_z = {
-            'searchcount',
-        },
-    },
-    sections = {
-        lualine_a = { 'mode' },
-        lualine_b = {
-            function()
-                local p = vim.fn.expand('%:p')
-                return p:gsub('/nix/store/[%a%d]+-', ''):gsub(
-                    vim.uv.cwd() .. '/' or '', '')
-            end,
-        },
-        lualine_c = {
-            -- { "filename", path = 2, },
-        },
-        lualine_x = {
-            'filetype',
-            -- 'encoding',
-            -- 'fileformat',
-        },
-        lualine_y = {
-            -- 'progress'
-        },
-        lualine_z = {
-            'location',
-            function()
-                return vim.api.nvim_buf_line_count(0)
-            end,
-            -- function()
-            --     return vim.fn.winwidth(0)
-            -- end,
-        },
-    },
-    inactive_sections = {
-        lualine_c = {},
-        lualine_x = {},
-    },
 })

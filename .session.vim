@@ -17,12 +17,13 @@ inoremap <expr> <Plug>(fzf-complete-word) fzf#vim#complete#word()
 inoremap <silent> <SNR>35_AutoPairsReturn =AutoPairsReturn()
 inoremap <M-K> :m .-2==gi
 inoremap <M-J> :m .+1==gi
+nnoremap <silent> 	 :bnext
 nmap  [%
 nnoremap <silent>  :nohlsearch=has('diff')?'|diffupdate':''
-nnoremap l :wincmd l
-nnoremap k :wincmd k
-nnoremap j :wincmd j
 nnoremap h :wincmd h
+nnoremap j :wincmd j
+nnoremap k :wincmd k
+nnoremap l :wincmd l
 omap <silent> % <Ignore><Plug>(matchup-%)
 xmap <silent> % <Plug>(matchup-%)
 nmap <silent> % <Plug>(matchup-%)
@@ -35,8 +36,8 @@ nnoremap ?? :Files
 inoremap Ë :m .-2==gi
 inoremap Ê :m .+1==gi
 nmap Q <Nop>
-nnoremap ZQ :q!
 nnoremap ZT :tabclose
+nnoremap ZQ :q!
 nmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
 xmap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
 nmap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
@@ -47,28 +48,30 @@ nmap [= <Plug>(IndentWisePreviousEqualIndent)
 xmap [= <Plug>(IndentWisePreviousEqualIndent)
 nmap [- <Plug>(IndentWisePreviousLesserIndent)
 xmap [- <Plug>(IndentWisePreviousLesserIndent)
-omap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
-omap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
-omap [+ <Plug>(IndentWisePreviousGreaterIndent)
-omap [= <Plug>(IndentWisePreviousEqualIndent)
-omap [- <Plug>(IndentWisePreviousLesserIndent)
 map [t :tabprevious
 map [C :call Ctoggle()
 map [c :cprevious
 map <silent> [w :wincmd h
 map <silent> [b :bprevious
+omap [% <Plug>(IndentWiseBlockScopeBoundaryBegin)
+omap [_ <Plug>(IndentWisePreviousAbsoluteIndent)
+omap [+ <Plug>(IndentWisePreviousGreaterIndent)
+omap [= <Plug>(IndentWisePreviousEqualIndent)
+nnoremap <silent> [' :wincmd p
+nnoremap <silent> [<BS> :b#
 nnoremap [[ :bprevious
+omap [- <Plug>(IndentWisePreviousLesserIndent)
+nnoremap \  :b#
 nnoremap \K :call dist#man#PreGetPage(0)
-nnoremap <silent> \\ :WhichKey '\' '\'
-nnoremap <silent> \ :WhichKey '\'
 nnoremap \\k :Maps
 nnoremap \\h :Helptags
 nnoremap \\g :Rg
 nnoremap \\f :Files
 nnoremap \\c :Commands
+nnoremap <silent> \ :WhichKey '\'
+nnoremap <silent> \\ :WhichKey '\' '\'
 nnoremap <silent> \a :call SourceLuafile()
 nnoremap <silent> \q :Bclose
-nnoremap \  :b#
 nmap \Q :%bd|e#
 nmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
 xmap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
@@ -80,18 +83,20 @@ nmap ]= <Plug>(IndentWiseNextEqualIndent)
 xmap ]= <Plug>(IndentWiseNextEqualIndent)
 nmap ]- <Plug>(IndentWiseNextLesserIndent)
 xmap ]- <Plug>(IndentWiseNextLesserIndent)
-omap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
-omap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
-omap ]+ <Plug>(IndentWiseNextGreaterIndent)
-omap ]= <Plug>(IndentWiseNextEqualIndent)
-omap ]- <Plug>(IndentWiseNextLesserIndent)
-nnoremap <silent> ] :WhichKey ']'
 map ]t :tabnext
 map ]C :call Ctoggle()
 map ]c :cnext
 map <silent> ]w :wincmd l
 map <silent> ]b :bnext
+omap ]% <Plug>(IndentWiseBlockScopeBoundaryEnd)
+omap ]_ <Plug>(IndentWiseNextAbsoluteIndent)
+omap ]+ <Plug>(IndentWiseNextGreaterIndent)
+omap ]- <Plug>(IndentWiseNextLesserIndent)
+nnoremap <silent> ] :WhichKey ']'
+nnoremap <silent> ]\ :wincmd w
+nnoremap <silent> ]<BS> :b#
 nnoremap ]] :bnext
+omap ]= <Plug>(IndentWiseNextEqualIndent)
 omap <silent> a% <Plug>(matchup-a%)
 xmap <silent> a% <Plug>(matchup-a%)
 nmap cr <Plug>(abolish-coerce-word)
@@ -114,10 +119,13 @@ nmap q <Nop>
 omap <silent> z% <Plug>(matchup-z%)
 xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
+nnoremap <silent> <S-Tab> :bprevious
+nnoremap <silent> <C-Tab> :b#
 nnoremap <Plug>(-fzf-vim-do) :execute g:__fzf_command
 nnoremap <Plug>(-fzf-/) /
 nnoremap <Plug>(-fzf-:) :
 nnoremap <silent> <Plug>(-fzf-complete-finish) a
+nmap <C-K> [%
 nnoremap <Plug>ManPreGetPage :call dist#man#PreGetPage(0)
 nnoremap <silent> <C-L> :nohlsearch=has('diff')?'|diffupdate':''
 nmap <silent> <2-LeftMouse> <Plug>(matchup-double-click)
@@ -160,12 +168,11 @@ nnoremap <silent> <Plug>(fzf-insert) i
 xnoremap <Plug>(open-word-under-cursor) <ScriptCmd>vim9.Open(getregion(getpos('v'), getpos('.'), { type: mode() })->join())
 nnoremap <Plug>(open-word-under-cursor) <ScriptCmd>vim9.Open(GetWordUnderCursor())
 nnoremap <silent> <Plug>(SwitchInLine) :call SwitchLine(v:count1)
-nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc
 vnoremap <M-K> :m '<-2gv=gv
 vnoremap <M-J> :m '>+1gv=gv
 nnoremap <M-J> :m .+1==
 nnoremap <M-K> :m .-2==
-nmap <C-K> [%
+nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc
 nmap <M-q> :Bclose
 nnoremap <silent> <Plug>(Save) :silent write
 imap <silent> % <Plug>(matchup-c_g%)
@@ -237,6 +244,7 @@ set viminfofile=~/.config/vim/viminfo
 set wildignorecase
 set wildmode=noselect:lastused,full
 set wildoptions=pum
+set window=53
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 doautoall SessionLoadPre
@@ -442,12 +450,12 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 9 - ((8 * winheight(0) + 25) / 50)
+let s:l = 2 - ((1 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 9
-normal! 015|
+keepjumps 2
+normal! 07|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
