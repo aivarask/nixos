@@ -1,7 +1,7 @@
 # exec nicotine --hidden
 exec flameshot
 exec gammastep
-exec mako
+# exec mako
 exec kanshi
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store

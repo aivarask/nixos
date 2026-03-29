@@ -25,6 +25,8 @@
   };
   # Optional, but makes sure that when you type the make palm rejection work with keyd
   # https://github.com/rvaiya/keyd/issues/723
+  environment.etc."xdg/swaync/configSchema.json".source =
+    "${pkgs.swaynotificationcenter.outPath}/etc/xdg/swaync/configSchema.json";
   environment.etc."libinput/local-overrides.quirks".text = ''
     [Serial Keyboards]
     MatchUdevType=keyboard

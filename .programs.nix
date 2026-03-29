@@ -88,6 +88,7 @@ in
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
   xdg.configFile."stylua".source = symlink "${xdgconf}/stylua";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
+  xdg.configFile."swaync".source = symlink "${xdgconf}/swaync";
   xdg.configFile."taplo".source = symlink "${xdgconf}/taplo";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
