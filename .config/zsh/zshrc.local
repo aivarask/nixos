@@ -1,5 +1,19 @@
 #!/usr/bin/env zsh
 # shellcheck shell=zsh
+export ZVM_OPEN_FILE_CMD="$VISUAL"
+export ZVM_OPEN_URL_CMD="$BROWSER"
+
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+}
+
+key[Control-Left]="${terminfo[kLFT5]}"
+key[Control-Right]="${terminfo[kRIT5]}"
+[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
+[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+
+
 
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo

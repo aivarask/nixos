@@ -14,8 +14,12 @@ in
   manual.json.enable = true;
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  # services.gnome-keyring.enable = true;
+  # services.swaync.enable = true;
+  # services.swaync.settings = lib.mkForce "${config.xdg.configHome}/swaync/config.json";
+  # xdg.configFile."swaync/config.json".source = symlink "${xdgconf}/swaync/config.json";
+  # services.swaync.settings = lib.mkForce (symlink "${xdgconf}/swaync/config.json");
 
-  services.gnome-keyring.enable = true;
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
@@ -59,6 +63,10 @@ in
     lingot # guitar tuner
     mixxx
   ];
+  xdg.dataFile."nwg-dock/images/grid.svg".source = "${pkgs.nwg-dock-hyprland.out}/images/grid.svg";
+  # symlink "/run/current-system/sw/share/icons/Papirus/96x96/apps";
+  home.file.".inputrc".source = symlink "${SELF}/.inputrc";
+  # https://catonmat.net/bash-vi-editing-mode-cheat-sheet
 
   xdg.configFile."lingot".source = symlink "${xdgconf}/lingot";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
@@ -79,6 +87,7 @@ in
   xdg.configFile."lf".source = symlink "${xdgconf}/lf";
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
+  xdg.configFile."nwg-dock".source = symlink "${xdgconf}/nwg-dock";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
@@ -88,7 +97,6 @@ in
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
   xdg.configFile."stylua".source = symlink "${xdgconf}/stylua";
   xdg.configFile."sway".source = symlink "${SELF}/sway";
-  xdg.configFile."swaync".source = symlink "${xdgconf}/swaync";
   xdg.configFile."taplo".source = symlink "${xdgconf}/taplo";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";

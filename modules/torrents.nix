@@ -17,12 +17,4 @@
       watch_dir_force_generic = true;
     };
   };
-  # http://localhost:7878
-  services.radarr = {
-    enable = false;
-    openFirewall = true;
-    settings = {
-
-    };
-  };
 }

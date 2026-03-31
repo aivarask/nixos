@@ -1,0 +1,8 @@
+set editing-mode vi
+set keymap vi-command
+
+# set completion-query-items -1
+# set page-completions off
+#
+# TAB:complete
+# # TAB:menu-complete

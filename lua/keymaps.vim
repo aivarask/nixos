@@ -7,9 +7,8 @@ nnoremap <silent> <Plug>(Save) :silent write<cr>
 nnoremap ZQ :q!<CR>
 nmap <M-q> :Bclose<cr>
 nmap <leader>Q :%bd\|e#<cr>
-nnoremap <silent> <leader>q :Bclose<CR>
+nnoremap <silent> <leader>q :Bclose!<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
-
 
 nnoremap <silent> ]= :tabnext<CR>
 nnoremap <silent> [- :tabprevious<CR>
@@ -20,12 +19,19 @@ nnoremap <silent> ]<BS> :b#<cr>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 
+nnoremap ` :split \| terminal<CR>
+
+tnoremap <silent> ]] <cmd>bnext<CR>
+tnoremap <silent> [[ <cmd>bprevious<CR>
+tnoremap <Esc> <C-\><C-N>
+tnoremap ` <C-\><C-N><C-W>:hide<CR>
+
 if has('nvim')
 	nnoremap // :Telescope live_grep<CR>
-	nnoremap ?? :Telescope find_files<CR>
+	nnoremap /. :Telescope find_files<CR>
 else
 	nnoremap // :Rg<CR>
-	nnoremap ?? :Files<CR>
+	nnoremap /. :Files<CR>
 	nmap qq <cmd>NERDTreeToggle<CR>
 	nmap qQ <cmd>NERDTreeFind<CR>
 	nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>

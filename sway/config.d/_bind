@@ -15,6 +15,7 @@ bindsym $mod+shift+c kill
 # PageUp    Prior
 # PageDown  Next
 
+bindsym $mod+n exec swaync-client -t -sw
 bindsym $mod+w exec firefox -new-window
 bindsym $mod+shift+w exec firefox -new-window --private-window
 bindsym $mod+c exec chromium-browser --new-window
