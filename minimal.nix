@@ -237,23 +237,16 @@
   environment.variables.MANROFFOPT = "-P -c";
   # environment.etc.nixos-docs.source = "${config.system.build.manual.manualHTML}/share/doc/nixos/";
 
-  documentation = {
-    enable = true;
-    dev.enable = false;
-    doc.enable = true;
-    info.enable = true;
-    nixos.enable = true;
-    nixos.includeAllModules = true;
-
-    # nixos.includeAllModules = true;
-    man = {
-      enable = true;
-      # cache.enable = true;
-      man-db.enable = false;
-      mandoc.enable = false;
-      mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
-    };
-  };
+  documentation.enable = true;
+  documentation.dev.enable = false;
+  documentation.doc.enable = true;
+  documentation.info.enable = true;
+  documentation.nixos.enable = true;
+  documentation.nixos.includeAllModules = true;
+  documentation.man.enable = true;
+  documentation.man.man-db.enable = false;
+  documentation.man.mandoc.enable = false;
+  documentation.man.mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.supportedLocales = [

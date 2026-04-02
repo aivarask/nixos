@@ -29,12 +29,15 @@ tnoremap ` <C-\><C-N><C-W>:hide<CR>
 if has('nvim')
 	nnoremap // :Telescope live_grep<CR>
 	nnoremap /. :Telescope find_files<CR>
+	nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
 else
 	nnoremap // :Rg<CR>
 	nnoremap /. :Files<CR>
 	nmap qq <cmd>NERDTreeToggle<CR>
 	nmap qQ <cmd>NERDTreeFind<CR>
 	nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
+
+	" nmap <silent> / :<C-U>WhichKey '/'<CR>
 	nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
 	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
 	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>

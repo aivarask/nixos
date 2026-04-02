@@ -103,12 +103,12 @@
 
           userFilters = "||accounts.google.com/gsi/iframe";
           selectedFilterLists = [
-            "user-filters"
+            # "user-filters"
             "ublock-filters"
-            "ublock-badware"
-            "ublock-privacy"
-            "ublock-quick-fixes"
-            "ublock-unbreak"
+            # "ublock-badware"
+            # "ublock-privacy"
+            # "ublock-quick-fixes"
+            # "ublock-unbreak"
             # "easylist"
             # "easyprivacy"
             # "urlhaus-1"
@@ -145,49 +145,49 @@
           private_browsing = true;
           inherit adminSettings;
         };
-        "3rdparty".Extensions = {
-          "uBlock0@raymondhill.net" = {
-            inherit adminSettings;
-          };
-        };
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = moz "bitwarden-password-manager";
-          installation_mode = "force_installed";
-        };
-        "markdown-viewer@outofindex.com" = {
-          install_url = moz "markdown-viewer-chrome";
-          installation_mode = "force_installed";
-        };
-        "{943b8007-a895-44af-a672-4f4ea548c95f}" = {
-          install_url = moz "markdown-viewer-webext";
-          installation_mode = "force_installed";
-        };
-        # https://wiki.greasespot.net/
-        "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
-          install_url = moz "greasemonkey";
-          installation_mode = "force_installed";
-          private_browsing = true;
-          default_area = "navbar";
-        };
-        "queryamoid@kaply.com" = {
-          # https://github.com/mkaply/queryamoid
-          installation_mode = "force_installed";
-          install_url = "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
-          default_area = "menupanel";
-        };
-        "{830f38bd-efc5-45dc-a5a6-064d9a638806}" = {
-          # https://addons.mozilla.org/en-US/firefox/addon/dark-mode-by-albert-inc/
-          installation_mode = "force_installed";
-          install_url = moz "dark-mode-by-albert-inc";
-          private_browsing = true;
-          default_area = "navbar";
-        };
         "firefox@ghostery.com" = {
           # https://addons.mozilla.org/en-US/firefox/addon/ghostery/
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox@ghostery.com/latest.xpi";
           installation_mode = "blocked";
           default_area = "menupanel";
         };
+        # "3rdparty".Extensions = {
+        #   "uBlock0@raymondhill.net" = {
+        #     inherit adminSettings;
+        #   };
+        # };
+        # "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+        #   install_url = moz "bitwarden-password-manager";
+        #   installation_mode = "force_installed";
+        # };
+        # "markdown-viewer@outofindex.com" = {
+        #   install_url = moz "markdown-viewer-chrome";
+        #   installation_mode = "force_installed";
+        # };
+        # "{943b8007-a895-44af-a672-4f4ea548c95f}" = {
+        #   install_url = moz "markdown-viewer-webext";
+        #   installation_mode = "force_installed";
+        # };
+        # https://wiki.greasespot.net/
+        # "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}" = {
+        #   install_url = moz "greasemonkey";
+        #   installation_mode = "force_installed";
+        #   private_browsing = true;
+        #   default_area = "navbar";
+        # };
+        # "queryamoid@kaply.com" = {
+        #   # https://github.com/mkaply/queryamoid
+        #   installation_mode = "force_installed";
+        #   install_url = "https://github.com/mkaply/queryamoid/releases/download/v0.1/query_amo_addon_id-0.1-fx.xpi";
+        #   default_area = "menupanel";
+        # };
+        # "{830f38bd-efc5-45dc-a5a6-064d9a638806}" = {
+        #   # https://addons.mozilla.org/en-US/firefox/addon/dark-mode-by-albert-inc/
+        #   installation_mode = "force_installed";
+        #   install_url = moz "dark-mode-by-albert-inc";
+        #   private_browsing = true;
+        #   default_area = "navbar";
+        # };
 
       };
   };

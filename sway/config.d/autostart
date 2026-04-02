@@ -5,6 +5,7 @@
 exec_always nwg-dock -r -nows
 exec_always swaync
 exec kanshi
+
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 # exec ydotoold --socket-path=$YDOTOOL_SOCKET --socket-perm=0660

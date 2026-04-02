@@ -23,9 +23,10 @@ in
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
-  xdg.userDirs.videos = "${config.home.homeDirectory}/Videos";
-  xdg.userDirs.pictures = "${config.home.homeDirectory}/Pictures";
   home.file."Pictures/img".source = symlink "${SELF}/img";
+  xdg.userDirs.extraConfig = {
+    MISC = "${config.home.homeDirectory}/Misc";
+  };
 
   imports = [
     ./.config/bat/default.nix

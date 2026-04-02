@@ -26,7 +26,6 @@ set cursorline
 set mouse=a
 set mousefocus
 set hidden
-set ignorecase
 set lazyredraw
 set modeline
 set noshowmode
@@ -51,6 +50,19 @@ set clipboard=unnamedplus
 set scrolloff=8
 set cmdheight=2
 set lisp
+
+"https://vi.stackexchange.com/questions/43386/how-to-force-vim-to-delete-all-the-no-name-buffers
+set shiftround
+set gdefault
+set ignorecase
+set smartcase
+set wildcharm=<C-Z>
+cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+command! SC vnew
+        \ | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
+        \ | nnoremap <buffer> ,s :silent %source<CR>
+nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+
 
 "set breakindent
 "set breakindentopt=sbr
