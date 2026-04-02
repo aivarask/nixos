@@ -29,11 +29,8 @@ if !has('gui_running')
 	set t_Co=256
 	set guioptions-=e
 endif
-
 syntax on
 filetype plugin indent on
-
-
 set termguicolors
 set title
 set titlestring=%{g:self}\ \ %{getcwd()}
