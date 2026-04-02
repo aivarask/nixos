@@ -1,11 +1,9 @@
 " vim: ft=vim
 " https://devhints.io/vimscript
 
-call mkdir($XDG_STATE_HOME."/vim/undo", "p", 0700)
 set undodir=$XDG_STATE_HOME/vim/undo/
-set viminfofile=$XDG_CONFIG_HOME/vim/viminfo
+call mkdir(&undodir, "p", 0700)
 set bufhidden=unload
-set sessionoptions=buffers,curdir,folds,help,tabpages,terminal,winpos,winsize,options
 
 let g:which_key_vertical = 1
 let g:AutoPairsFlyMode = 0
@@ -36,30 +34,3 @@ source $XDG_CONFIG_HOME/vim/shared.vim
 source $XDG_CONFIG_HOME/vim/keymaps.vim
 source $XDG_CONFIG_HOME/vim/switch.vim
 
-let g:session_file='.session.vim'
-augroup session
-	au!
-	autocmd VimEnter * if filereadable(g:session_file) | exe 'source ' . g:session_file | endif
-	autocmd VimLeave * silent exe 'mksession! ' . g:session_file
-augroup END
-
-function! Session(...)
-	let cwd = getcwd()
-	" let verbose = 0
-	let verbose = a:0
-	let l:session_file='.session.vim'
-	if cwd == '/etc/nixos'
-		if verbose | echo cwd | endif
-		if filereadable(l:session_file)
-			if verbose | echo session_file | endif
-			if !empty(v:this_session)
-				if verbose | echo v:this_session | endif
-				silent exe 'mksession! ' . v:this_session
-			else
-				silent exe 'source ' . l:session_file
-			endif
-		else
-			silent exe 'mksession! ' .l:session_file
-		endif
-	endif
-endfunction

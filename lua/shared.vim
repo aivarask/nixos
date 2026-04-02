@@ -1,3 +1,17 @@
+let g:session_dir=$XDG_STATE_HOME."/vim/session/"
+call mkdir(g:session_dir, "p", 0700)
+let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
+set sessionoptions=buffers,curdir,folds,help,tabpages
+
+if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
+
+augroup session
+	au!
+	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
+	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
+	" autocmd BufEnter * let &titlestring = hostname() .. "/" .. expand("%:p")
+augroup END
+
 augroup minimal
 	autocmd!
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
@@ -18,9 +32,11 @@ endif
 
 syntax on
 filetype plugin indent on
+
+
 set termguicolors
 set title
-set titlestring=\ %{expand('%:p')}\
+set titlestring=%{g:self}\ \ %{getcwd()}
 set completeopt=menu,menuone,noselect
 set cursorline
 set mouse=a
@@ -57,11 +73,11 @@ set gdefault
 set ignorecase
 set smartcase
 set wildcharm=<C-Z>
-cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
 command! SC vnew
         \ | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
         \ | nnoremap <buffer> ,s :silent %source<CR>
-nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+"nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 
 
 "set breakindent
