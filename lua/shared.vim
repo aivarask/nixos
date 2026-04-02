@@ -1,7 +1,7 @@
-let g:session_dir=$XDG_STATE_HOME."/vim/session/"
+let g:session_dir=$XDG_DATA_HOME."/vim/session/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=buffers,curdir,folds,help,tabpages
+set sessionoptions="buffers,curdir,folds,help,tabpages,skiprtp"
 
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 
@@ -9,7 +9,6 @@ augroup session
 	au!
 	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-	" autocmd BufEnter * let &titlestring = hostname() .. "/" .. expand("%:p")
 augroup END
 
 augroup minimal
