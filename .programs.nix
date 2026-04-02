@@ -23,7 +23,7 @@ in
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
-  home.file."Pictures/img".source = symlink "${SELF}/img";
+  home.file."${config.xdg.userDirs.pictures}/img".source = symlink "${SELF}/img";
   xdg.userDirs.extraConfig = {
     MISC = "${config.home.homeDirectory}/Misc";
   };

@@ -33,7 +33,8 @@
     chafa
     cht-sh
     coreutils-full
-    disko
+    sysstat
+
     disko
     duf
     dust
