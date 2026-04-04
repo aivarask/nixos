@@ -11,6 +11,9 @@
 		"DisableFirefoxAccounts": true,
 		"DisplayMenuBar": false,
 		"NewTabPage": true,
+		"Homepage": {
+			"StartPage": "previous-session"
+		},
 		"3rdparty": {
 			"Extensions": {
 				"uBlock0@raymondhill.net": {

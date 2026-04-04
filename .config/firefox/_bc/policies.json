@@ -2,14 +2,6 @@
 {
 	"policies": {
 		"AppAutoUpdate": false,
-		"Homepage": {
-			"Locked": true,
-			"Additional": [
-				"http://example.org/",
-				"http://example.edu/"
-			],
-			"StartPage": "previous-session"
-		},
 		"Preferences": {
 			"browser.translations.automaticallyPopup": false
 		},

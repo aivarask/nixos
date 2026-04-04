@@ -11,6 +11,7 @@ user_pref("devtools.toolbox.previousHost", "right");
 user_pref("devtools.toolbox.selectedTool", "styleeditor");
 user_pref("devtools.toolbox.sidebar.width", 600);
 user_pref("devtools.webconsole.persistlog", true);
+// user_pref("browser.startup.page", false);
 // user_pref("", false);
-// user_pref("", false);
+
 
