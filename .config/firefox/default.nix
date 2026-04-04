@@ -38,6 +38,12 @@ in
     force = true;
     recursive = true;
   };
+  xdg.configFile."mozilla/firefox/profile/search.json.mozlz4" = {
+    source = symlink "${xdgconf}/firefox/search.json.mozlz4";
+    enable = true;
+    force = true;
+    recursive = true;
+  };
   xdg.configFile."mozilla/firefox/profile/user.js" = {
     source = symlink "${xdgconf}/firefox/user.js";
     enable = true;
