@@ -83,7 +83,7 @@ in
           ps.nix
         ]))
         nvim-nio
-        auto-session
+        # auto-session
         which-key-nvim
         # lazygit-nvim
         lualine-nvim

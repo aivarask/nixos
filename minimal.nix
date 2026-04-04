@@ -35,6 +35,7 @@
     coreutils-full
     sysstat
 
+    multitail
     disko
     duf
     dust

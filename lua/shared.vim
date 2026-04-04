@@ -3,6 +3,10 @@ call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
 set sessionoptions="buffers,curdir,folds,help,tabpages,skiprtp"
 
+command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+	\ | diffthis | wincmd p | diffthis
+
+
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 
 augroup session
@@ -95,6 +99,7 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+
 let g:auto_save = 1
 let g:auto_save_no_updatetime = 0
 let g:auto_save_in_insert_mode = 0
