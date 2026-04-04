@@ -14,7 +14,8 @@
       ]
     )
   ];
-  environment.etc."firefox/policies.json".source = "./.config/firefox/policies.json";
+  environment.etc."firefox/policies/policies.json".source =
+    "/etc/nixos/.config/firefox/policies.json";
   environment.variables.SELF = "/etc/nixos";
   environment.variables.EDITOR = "vim";
   environment.variables.VISUAL = "nvim";

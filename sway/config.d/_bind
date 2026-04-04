@@ -16,7 +16,8 @@ bindsym $mod+shift+c kill
 # PageDown  Next
 
 bindsym $mod+n exec swaync-client -t -sw
-bindsym $mod+w exec firefox -new-window
+bindsym $mod+t exec firefox -new-window --profile=$XDG_CONFIG_HOME/mozilla/firefox/test
+bindsym $mod+w exec firefox -new-window --profile=$XDG_CONFIG_HOME/mozilla/firefox/root
 bindsym $mod+shift+w exec firefox -new-window --private-window
 bindsym $mod+c exec chromium-browser --new-window
 

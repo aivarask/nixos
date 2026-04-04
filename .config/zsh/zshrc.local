@@ -49,6 +49,12 @@ bindkey '^[q' _quote_word  # Alt+Q
 
 psgrep() { pgrep "$@" | xargs --no-run-if-empty ps -f -p; }
 
+preexec() {
+# #   print -Pn "\e]0;$0 $@\a"
+# 	echo 'foo'
+	echo $TERM
+}
+
 nix-clean() {
 	nix-env --delete-generations old
 	nix-store --gc

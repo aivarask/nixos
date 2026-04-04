@@ -1,5 +1,8 @@
 { lib, config, ... }:
 {
+
+  # https://extensionworkshop.com/documentation/enterprise/enterprise-development/#how-to-add-policy
+  # https://mozilla.github.io/policy-templates/#extensionsettings
   programs.firefox.policies = {
     # https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
     Preferences = {
