@@ -45,6 +45,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    sqlitebrowser
     gcr
     inkscape-with-extensions
     lnav

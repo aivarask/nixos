@@ -1,15 +1,10 @@
-// vim: ft=jsonc
 {
 	"policies": {
 		"AppAutoUpdate": false,
 		"Preferences": {
 			"browser.translations.automaticallyPopup": false
 		},
-		"DisableTelemetry": true,
 		"ManagedBookmarks": [
-			{
-				//	"toplevel_name": "fooba"
-			},
 			{
 				"name": "policies",
 				"children": [
@@ -32,41 +27,7 @@
 				]
 			}
 		],
-		"3rdparty": {
-			"Extensions": {
-				"uBlock0@raymondhill.net": {
-					"toOverwrite": {
-						"filters": [
-							"youtube.com###cinematics,#shorts-cinematic-container",
-							"||accounts.google.com/gsi/*$xhr,script,3p"
-						]
-					},
-					"adminSettings": {
-						"selectedFilterLists": [
-							"ublock-filters",
-							"ublock-badware",
-							"ublock-privacy",
-							"ublock-unbreak",
-							"ublock-quick-fixes",
-							"fanboy-cookiemonster",
-							"ublock-cookies-easylist",
-							"user-filters"
-						]
-					}
-				}
-			}
-		},
-		"ExtensionSettings": {
-			"uBlock0@raymondhill.net": {
-				"installation_mode": "force_installed",
-				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
-				"private_browsing": true,
-				"default_area": "navbar"
-			}
-		},
-		"DisableFirefoxAccounts": true,
 		"DisableFirefoxScreenshots": true,
-		"DisableFirefoxStudies": true,
 		"DisableProfileImport": true,
 		"DisableForgetButton": true,
 		"DisplayBookmarksToolbar": "always",
@@ -117,10 +78,6 @@
 		},
 		"SearchSuggestEnabled": true,
 		"SearchBar": "unified",
-		"SearchEngines": {
-			"Default": "DuckDuckGo",
-			"PreventInstalls": true
-		},
 		"ShowHomeButton": true,
 		"HardwareAcceleration": false,
 		"SkipTermsOfUse": true,

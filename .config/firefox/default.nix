@@ -26,15 +26,23 @@ in
     force = true;
     recursive = true;
   };
-  xdg.configFile."mozilla/firefox/profile/prefs.js" = {
-    source = symlink "${xdgconf}/firefox/profile/prefs.js";
-    enable = false;
+  xdg.configFile."mozilla/firefox/profile/bookmarks.html" = {
+    source = symlink "${xdgconf}/firefox/bookmarks.html";
+    enable = true;
     force = true;
+    recursive = true;
+  };
+  xdg.configFile."mozilla/firefox/profile/prefs.js" = {
+    source = symlink "${xdgconf}/firefox/prefs.js";
+    enable = true;
+    force = true;
+    recursive = true;
   };
   xdg.configFile."mozilla/firefox/profile/user.js" = {
     source = symlink "${xdgconf}/firefox/user.js";
     enable = true;
     force = true;
+    recursive = true;
   };
   xdg.configFile."mozilla/firefox/profiles.ini" = {
     source = symlink "${xdgconf}/firefox/profiles.ini";
