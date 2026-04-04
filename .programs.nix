@@ -33,7 +33,7 @@ in
     ./.config/chromium/default.nix
     ./.config/direnv/default.nix
     ./.config/eza/default.nix
-    ./.config/firefox/default.nix
+    ./firefox/default.nix
     ./.config/fzf/default.nix
     ./.config/git/default.nix
     ./.config/mpv/default.nix
