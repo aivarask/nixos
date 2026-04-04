@@ -22,6 +22,18 @@
 				"URL": "https://www.youtube.com",
 				"Placement": "menu",
 				"Folder": "policies"
+			},
+			{
+				"Title": "uBlock assets.json",
+				"URL": "https://raw.githubusercontent.com/gorhill/uBlock/refs/heads/master/assets/assets.json",
+				"Placement": "menu",
+				"Folder": "policies"
+			},
+			{
+				"Title": "stackoverflow",
+				"URL": "https://stackoverflow.com/questions",
+				"Placement": "menu",
+				"Folder": "policies"
 			}
 		],
 		"3rdparty": {
@@ -29,19 +41,19 @@
 				"uBlock0@raymondhill.net": {
 					"toOverwrite": {
 						"filters": [
-							"youtube.com###cinematics,#shorts-cinematic-container"
+							"youtube.com###cinematics,#shorts-cinematic-container",
+							"||accounts.google.com/gsi/*$xhr,script,3p"
 						]
 					},
 					"adminSettings": {
 						"selectedFilterLists": [
-							"ublock-quick-fixes",
-							"ublock-experimental",
-							"ublock-privacy",
-							"ublock-badware",
 							"ublock-filters",
-							"ublock-annoyances-cookies",
-							"annoyances-cookies",
-							"ublock-annoyances",
+							"ublock-badware",
+							"ublock-privacy",
+							"ublock-unbreak",
+							"ublock-quick-fixes",
+							"fanboy-cookiemonster",
+							"ublock-cookies-easylist",
 							"user-filters"
 						]
 					}
