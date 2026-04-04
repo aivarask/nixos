@@ -31,10 +31,9 @@ if has('nvim')
 	nnoremap /. :Telescope find_files<CR>
 	nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
 else
+	nnoremap qq :Lexplore<CR>
 	nnoremap // :Rg<CR>
 	nnoremap /. :Files<CR>
-	nmap qq <cmd>NERDTreeToggle<CR>
-	nmap qQ <cmd>NERDTreeFind<CR>
 	nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
 
 	" nmap <silent> / :<C-U>WhichKey '/'<CR>

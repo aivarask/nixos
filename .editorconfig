@@ -12,9 +12,6 @@ root = true
 # max_line_length = 80
 # trim_trailing_whitespace = true
 #
-# [*/cf_toggleterm.lua]
-# max_line_length = 120
-#
 #
 # [*.{diff,md}]
 # trim_trailing_whitespace = false

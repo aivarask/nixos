@@ -66,7 +66,6 @@ require('lualine').setup({
 		'man',
 		'nvim-tree',
 		'quickfix',
-		'toggleterm',
 	},
 	options = {
 		icons_enabled = true,
@@ -75,7 +74,6 @@ require('lualine').setup({
 		disabled_filetypes = {
 			winbar = {
 				'NvimTree',
-				'toggleterm',
 			},
 			statusline = {
 				'NvimTree',

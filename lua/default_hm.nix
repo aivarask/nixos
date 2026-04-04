@@ -34,8 +34,8 @@ in
         vim-airline
         vim-which-key
         auto-pairs
-        nerdtree
-        vim-nerdtree-syntax-highlight
+        # nerdtree
+        # vim-nerdtree-syntax-highlight
         vim-indentwise
         vim-commentary
         vim-matchup
@@ -88,7 +88,7 @@ in
         # lazygit-nvim
         lualine-nvim
         nvim-tree-lua
-        toggleterm-nvim
+        # toggleterm-nvim
         sqlite-lua
       ])
       (with pkgs.vimPlugins; [

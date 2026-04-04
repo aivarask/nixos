@@ -2,7 +2,7 @@
 # exec flameshot
 # exec gammastep
 
-exec_always nwg-dock -r -nows
+# exec_always nwg-dock -r -nows
 exec_always swaync
 exec kanshi
 

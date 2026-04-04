@@ -1,7 +1,7 @@
 let g:session_dir=$XDG_DATA_HOME."/vim/session/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions="buffers,curdir,folds,help,tabpages,skiprtp"
+set sessionoptions=buffers,curdir,folds,help,tabpages,skiprtp
 
 command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
@@ -13,6 +13,7 @@ augroup session
 	au!
 	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
+	autocmd BufHidden * execute 'echo ' .. expand("<abuf>")
 augroup END
 
 augroup minimal
@@ -20,8 +21,7 @@ augroup minimal
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
 	autocmd BufLeave,FocusLost * silent! wal
-	" autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
-	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
+	autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
 
 set wildmode=noselect:lastused,full
@@ -32,6 +32,7 @@ if !has('gui_running')
 	set t_Co=256
 	set guioptions-=e
 endif
+
 syntax on
 filetype plugin indent on
 set termguicolors
