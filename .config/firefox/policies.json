@@ -1,41 +1,16 @@
 {
 	"policies": {
-		"AppAutoUpdate": false,
-		"Homepage": {
-			"Locked": true,
-			"Additional": [
-				"http://example.org/",
-				"http://example.edu/"
-			],
-			"StartPage": "previous-session"
+		"DisablePocket": true,
+		"DisableTelemetry": true,
+		"DisableFirefoxStudies": true,
+		"DNSOverHTTPS": {
+			"Enabled": false
 		},
-		"Bookmarks": [
-			{
-				"Title": "Example",
-				"URL": "https://example.com",
-				"Favicon": "https://example.com/favicon.ico",
-				"Placement": "menu",
-				"Folder": "policies"
-			},
-			{
-				"Title": "YouTube",
-				"URL": "https://www.youtube.com",
-				"Placement": "menu",
-				"Folder": "policies"
-			},
-			{
-				"Title": "uBlock assets.json",
-				"URL": "https://raw.githubusercontent.com/gorhill/uBlock/refs/heads/master/assets/assets.json",
-				"Placement": "menu",
-				"Folder": "policies"
-			},
-			{
-				"Title": "stackoverflow",
-				"URL": "https://stackoverflow.com/questions",
-				"Placement": "menu",
-				"Folder": "policies"
-			}
-		],
+		"CaptivePortal": false,
+		"NetworkPrediction": false,
+		"DisableFirefoxAccounts": true,
+		"DisplayMenuBar": false,
+		"NewTabPage": true,
 		"3rdparty": {
 			"Extensions": {
 				"uBlock0@raymondhill.net": {
@@ -67,55 +42,6 @@
 				"private_browsing": true,
 				"default_area": "navbar"
 			}
-		},
-		"DisableFirefoxAccount": true,
-		"DisableProfileImport": false,
-		"DisplayBookmarksToolbar": "never",
-		"DisplayMenuBar": "default-off",
-		"FirefoxHome": {
-			"Search": true,
-			"TopSites": true,
-			"SponsoredTopSites": false,
-			"Highlights": false,
-			"Pocket": false,
-			"Stories": false,
-			"SponsoredPocket": false,
-			"SponsoredStories": false,
-			"Snippets": false,
-			"Locked": true
-		},
-		"OverrideFirstRunPage": "",
-		"OverridePostUpdatePage": "",
-		"OfferToSaveLoginsDefault": false,
-		"PopupBlocking": {
-			"Allow": [
-				"http://example.org/",
-				"http://example.edu/"
-			],
-			"Default": true,
-			"Locked": true
-		},
-		"PromptForDownloadLocation": true,
-		"RequestedLocales": "lt,de,en-US",
-		"SanitizeOnShutdown": {
-			"Cache": false,
-			"Cookies": false,
-			"FormData": false,
-			"History": false,
-			"Sessions": false,
-			"SiteSettings": false,
-			"Locked": false
-		},
-		"SearchSuggestEnabled": true,
-		"SearchBar": "unified",
-		"SearchEngines": {
-			"Default": "DuckDuckGo",
-			"PreventInstalls": true
-		},
-		"ShowHomeButton": true,
-		"HardwareAcceleration": false,
-		"SkipTermsOfUse": true,
-		"DisablePocket": true,
-		"BlockAboutConfig": false
+		}
 	}
 }

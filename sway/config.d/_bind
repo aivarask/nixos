@@ -16,20 +16,23 @@ bindsym $mod+shift+c kill
 # PageDown  Next
 
 bindsym $mod+n exec swaync-client -t -sw
-bindsym $mod+t exec firefox -new-window --profile=$XDG_CONFIG_HOME/mozilla/firefox/test
-bindsym $mod+w exec firefox -new-window --profile=$XDG_CONFIG_HOME/mozilla/firefox/root
-bindsym $mod+shift+w exec firefox -new-window --private-window
+bindsym $mod+t exec firefox -new-window
+bindsym --release $mod+w+r exec firefox --profile=$XDG_CONFIG_HOME/mozilla/firefox/root
+bindsym --release $mod+w exec firefox
+# bindsym --release $mod+w+shift exec firefox -new-window --private-window
+bindsym --release $mod+w+ctrl exec chromium-browser --new-window
 bindsym $mod+c exec chromium-browser --new-window
 
 # layout
 bindsym $mod+u focus parent
 bindsym $mod+p focus parent
-bindsym $mod+tab focus next
+bindsym --release $mod+tab focus next
 bindsym $mod+s focus child
 bindsym $mod+ctrl+space focus mode_toggle
 bindsym $mod+space fullscreen
 bindsym $mod+shift+space floating toggle
-bindsym $mod+d layout toggle stacking splitv splith
+bindsym $mod+d layout toggle stacking splith
+bindsym $mod+shift+d layout toggle stacking splitv
 bindsym $mod+minus exec "pkill -USR1 waybar"
 bindsym $mod+g sticky toggle
 bindsym $mod+r mode "resize"

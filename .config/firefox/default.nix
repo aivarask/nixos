@@ -16,31 +16,28 @@ in
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox.languagePacks = [ "en-US" ];
-  programs.firefox.profiles."test" = {
-    id = 20;
-    name = "test";
-    path = "test";
+  xdg.configFile."mozilla/firefox/default.nix" = {
+    source = symlink "${xdgconf}/firefox/default.nix";
+    enable = true;
   };
-
-  programs.firefox.profiles."${username}" = {
-    containersForce = true;
-    isDefault = true;
-    id = 16;
-    name = "${username}";
-    path = "${username}";
-    search = import ./search.nix;
-  };
-  # programs.firefox.policies = lib.mkForce /etc/firefox/policies.json;
-
-  xdg.configFile."mozilla/firefox/${username}/chrome/userContent.css" = {
-
-    source = symlink "${xdgconf}/firefox/chrome/userContent.css";
+  xdg.configFile."mozilla/firefox/profile/chrome" = {
+    source = symlink "${xdgconf}/firefox/chrome";
     enable = true;
     force = true;
     recursive = true;
   };
-  xdg.configFile."mozilla/firefox/${username}/user.js" = {
+  xdg.configFile."mozilla/firefox/profile/prefs.js" = {
+    source = symlink "${xdgconf}/firefox/profile/prefs.js";
+    enable = false;
+    force = true;
+  };
+  xdg.configFile."mozilla/firefox/profile/user.js" = {
     source = symlink "${xdgconf}/firefox/user.js";
+    enable = true;
+    force = true;
+  };
+  xdg.configFile."mozilla/firefox/profiles.ini" = {
+    source = symlink "${xdgconf}/firefox/profiles.ini";
     enable = true;
     force = true;
   };

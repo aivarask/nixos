@@ -18,6 +18,7 @@
     gcr
     gparted
     gnome-disk-utility
+    file-roller
     gnome-calculator
     gnome-network-displays
     gnome-system-monitor

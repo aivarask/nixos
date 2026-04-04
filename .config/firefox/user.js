@@ -13,5 +13,4 @@ user_pref("devtools.toolbox.sidebar.width", 600);
 user_pref("devtools.webconsole.persistlog", true);
 // user_pref("", false);
 // user_pref("", false);
-// user_pref("", false);
 
