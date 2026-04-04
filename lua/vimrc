@@ -3,7 +3,7 @@
 
 set undodir=$XDG_STATE_HOME/vim/undo/
 call mkdir(&undodir, "p", 0700)
-set bufhidden=unload
+"set bufhidden=unload
 
 let g:which_key_vertical = 1
 let g:AutoPairsFlyMode = 0

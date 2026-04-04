@@ -60,7 +60,6 @@ set background=dark
 set undofile
 set updatetime=400
 set timeoutlen=500
-set bufhidden=unload
 set conceallevel=2
 set clipboard=unnamedplus
 set scrolloff=8
