@@ -31,7 +31,7 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
-        vim-airline
+        # vim-airline
         vim-which-key
         auto-pairs
         # nerdtree

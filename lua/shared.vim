@@ -21,7 +21,7 @@ augroup minimal
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
 	autocmd BufLeave,FocusLost * silent! wal
-	autocmd CmdlineChanged [:\/\?] call wildtrigger()
+	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
 
 set wildmode=noselect:lastused,full
@@ -38,21 +38,21 @@ filetype plugin indent on
 set termguicolors
 set title
 set titlestring=%{g:self}\ \ %{getcwd()}
+set showtabline=2
+" set tabline=%n
+set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
+set shortmess+=F
+set hidden
+
 set completeopt=menu,menuone,noselect
 set cursorline
 set mouse=a
 set mousefocus
-set hidden
 set lazyredraw
 set modeline
 set noshowmode
-set signcolumn=no
-set nonumber
-set norelativenumber
 set splitkeep=topline
 set splitbelow
-set showtabline=2
-set statusline+=%F
 set nowrap
 " set showbreak=↪>\
 set noswapfile
