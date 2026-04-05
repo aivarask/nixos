@@ -2,6 +2,12 @@ let g:session_dir=$XDG_DATA_HOME."/vim/session/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
 set sessionoptions=buffers,curdir,folds,help,tabpages,skiprtp
+augroup session
+	au!
+	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
+	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
+	" au BufUnload * echo expand("<abuf>")
+augroup END
 
 command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
@@ -10,12 +16,6 @@ command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 
 
-augroup session
-	au!
-	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
-	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-	" au BufUnload * echo expand("<abuf>")
-augroup END
 
 augroup minimal
 	autocmd!

@@ -19,26 +19,32 @@ nnoremap <silent> ]<BS> :b#<cr>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 
-function Term() abort
-  let bufNum = bufnr('term//')
-  let termNum = bufwinnr('term//')
-  if termNum > 0 && winnr('$') > 1
-    execute termNum . 'wincmd c'
-  elseif bufNum > 0 && bufNum != bufnr(@%)
-    execute 'sb ' . bufNum . ' | wincmd p'
-  elseif bufNum == bufnr(@%)
-    execute 'bprevious | sb ' . bufNum . ' | wincmd p'
+function Term(arg = "zsh") abort
+  let bnr = bufnr('!' . a:arg)
+  let wnr = bufwinnr('!' . a:arg)
+  if wnr > 0 && winnr('$') > 1
+    execute wnr . 'wincmd c'
+  elseif bnr > 0 && bnr != bufnr(@%)
+    execute 'sb ' . bnr
+  elseif bnr == bufnr(@%)
+    execute 'bprevious | sb ' . bnr . ' | wincmd p'
   else
-    execute 'terminal'
+	  if has('nvim')
+	  	execute 'sb | edit term://' . a:arg
+	  else
+    		execute 'terminal ++close ' . a:arg 
+	endif
   endif
 endfunction
 command! -bang -nargs=* Term call Term()
 
-nmap ` :Term<cr>
-tnoremap ` <C-w>:Term<cr>
-tnoremap <buffer> <Esc> <C-\><C-n>
+nmap <silent> ` :Term<cr>
+tmap <silent> ` <C-w>:Term<cr>
+tmap <Esc> <C-\><C-n>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 if has('nvim')
+	autocmd! nvim.terminal TermClose
 	nnoremap // :Telescope live_grep<CR>
 	nnoremap /. :Telescope find_files<CR>
 	nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
