@@ -1,157 +1,157 @@
 // -*- mode: jsonc -*-
 [
-    {
-        "name": "bottom_bar",
-        "position": "bottom",
-        "height": 34,
-        "spacing": 8,
-        "layer": "top",
-        "exclusive": true,
-        // "passthrough": true,
-        "start_hidden": false,
-        // "ipc": true,
-        "include": [
-            "./custom.jsonc"
-        ],
-        "modules-left": [
-            "custom/drawer",
-            "custom/symbol",
-            "custom/run_tree",
-            "custom/run_firefox",
-            "custom/tools",
-            "custom/run_editor",
-            "custom/file_manager",
-            "custom/run_music",
-        ],
-        "modules-right": [
-            "pulseaudio",
-            "mpris"
-        ]
-    },
-    {
-        "name": "top_bar",
-        "layer": "top",
-        "position": "top",
-        "height": 34,
-        "spacing": 18,
-        "ipc": true,
-        "reload_style_on_change": true,
-        "include": [
-            "./custom.jsonc"
-        ],
-        "modules-left": [
-            "tray",
-            "sway/workspaces",
-            "wlr/taskbar",
-            "sway/mode",
-        ],
-        "modules-center": [
-            "sway/window"
-        ],
-        "modules-right": [
-            // "idle_inhibitor",
-            "pulseaudio",
-            // "custom/brightness",
-            "battery",
-            "backlight",
-            "network",
-            "sway/language",
-            "custom/wttrbar",
-            "clock",
-            "custom/power"
-        ],
-        "tray": {
-            // waybar-tray
-            "show-passive-items": true,
-            "icon-size": 16,
-            "spacing": 8,
-            // "icons": {}
-        },
-        "battery": {
-            // waybar-battery
-            "format": "{icon} {capacity}",
-            "format-alt": "{icon} {time}",
-            "format-time": "{H}h{M}m",
-            "format-full": "{icon} {capacity}",
-            "format-charging": "{icon} ⚡{capacity}",
-            "format-plugged": "{icon} 🔌{capacity}",
-            "format-icons": [
-                "",
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        "sway/workspaces": {
-            // waybar-sway-workspaces
-            "all-outputs": true,
-            "current-only": false,
-            "format": "{name} {output} {windows}", // value name icon index output windows
-            "format-window-separator": " ",
-            "expand": true,
-            "reverse-scroll": true,
-            "smooth-scrolling-threshold": 4.0,
-            "disable-scroll-wraparound": true,
-            "enable-bar-scroll": true,
-            "disable-auto-back-and-forth": true,
-            "warp-on-scroll": false,
-            "window-rewrite-default": "",
-            "window-rewrite": {
-                "class<firefox>": "",
-                "class<chromium-browser>": "",
-                "class<kitty>": "",
-                "class<spotify>": ""
-                // "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
-            },
-        },
-        "sway/mode": {
-            // waybar-sway-mode
-            "format": "{}",
-            "max-length": 50
-        },
-        "backlight": {
-            // waybar-backlight
-            "format": "🔅{percent}",
-            "smooth-scrolling-threshold": 3.0,
-            "reverse-scrolling": true,
-            "scroll-step": 5.0,
-            "min-brightness": 5.0
-        },
-        "network": {
-            // waybar-network
-            "format-ethernet": "🌐",
-            "tooltip-format-ethernet": "{ipaddr} {ifname}",
-            "format-wifi": "  {essid} {signalStrength} {signaldBm}",
-            "tooltip-format-wifi": "{ipaddr} {ifname} \n left reconnect \n middle disconnect \n right 192.168.0.1",
-            "format-disconnected": " ",
-            "tooltip-format-disconnected": "click to connect",
-            "on-click": "iwctl station wlan0 connect zte",
-            "on-click-middle": "iwctl station wlan0 disconnect",
-            "on-click-right": "iwctl station wlan0 disconnect",
-            // "on-click-right": "xdg-open http://192.168.0.1"
-        },
-        "sway/language": {
-            "format": "{flag}",
-            "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
-        },
-        "sway/scratchpad": {
-            "format": "{icon} {count}",
-            "show-empty": false,
-            "tooltip": true,
-            "tooltip-format": "{app}: {title}"
-        },
-        "clock": {
-            "format": "{:%A %B %d %H:%M %p}",
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-        },
-        "idle_inhibitor": {
-            "format": "{icon} ",
-            "format-icons": {
-                "activated": "",
-                "deactivated": ""
-            },
-            "timeout": 30.5
-        }
-    }
+	{
+		"name": "bottom_bar",
+		"position": "bottom",
+		"height": 32,
+		"spacing": 8,
+		"layer": "top",
+		"exclusive": true,
+		// "passthrough": true,
+		"start_hidden": false,
+		// "ipc": true,
+		"include": [
+			"./custom.jsonc"
+		],
+		"modules-left": [
+			"custom/drawer",
+			"custom/symbol",
+			"custom/run_tree",
+			"custom/run_firefox",
+			"custom/tools",
+			"custom/run_editor",
+			"custom/file_manager",
+			"custom/run_music",
+		],
+		"modules-right": [
+			"pulseaudio",
+			"mpris"
+		]
+	},
+	{
+		"name": "top_bar",
+		"layer": "top",
+		"position": "top",
+		"height": 32,
+		"spacing": 18,
+		"ipc": true,
+		"reload_style_on_change": true,
+		"include": [
+			"./custom.jsonc"
+		],
+		"modules-left": [
+			"tray",
+			"sway/workspaces",
+			"wlr/taskbar",
+			"sway/mode",
+		],
+		"modules-center": [
+			"sway/window"
+		],
+		"modules-right": [
+			// "idle_inhibitor",
+			"pulseaudio",
+			// "custom/brightness",
+			"battery",
+			"backlight",
+			"network",
+			"sway/language",
+			"custom/wttrbar",
+			"clock",
+			"custom/power"
+		],
+		"tray": {
+			// waybar-tray
+			"show-passive-items": true,
+			"icon-size": 12,
+			"spacing": 8,
+			// "icons": {}
+		},
+		"battery": {
+			// waybar-battery
+			"format": "{icon} {capacity}",
+			"format-alt": "{icon} {time}",
+			"format-time": "{H}h{M}m",
+			"format-full": "{icon} {capacity}",
+			"format-charging": "{icon} ⚡{capacity}",
+			"format-plugged": "{icon} 🔌{capacity}",
+			"format-icons": [
+				"",
+				"",
+				"",
+				"",
+				""
+			]
+		},
+		"sway/workspaces": {
+			// waybar-sway-workspaces
+			"all-outputs": true,
+			"current-only": false,
+			"format": "{name} {output} {windows}", // value name icon index output windows
+			"format-window-separator": " ",
+			"expand": true,
+			"reverse-scroll": true,
+			"smooth-scrolling-threshold": 4.0,
+			"disable-scroll-wraparound": true,
+			"enable-bar-scroll": true,
+			"disable-auto-back-and-forth": true,
+			"warp-on-scroll": false,
+			"window-rewrite-default": "",
+			"window-rewrite": {
+				"class<firefox>": "",
+				"class<chromium-browser>": "",
+				"class<kitty>": "",
+				"class<spotify>": ""
+				// "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
+			},
+		},
+		"sway/mode": {
+			// waybar-sway-mode
+			"format": "{}",
+			"max-length": 50
+		},
+		"backlight": {
+			// waybar-backlight
+			"format": "🔅{percent}",
+			"smooth-scrolling-threshold": 3.0,
+			"reverse-scrolling": true,
+			"scroll-step": 5.0,
+			"min-brightness": 5.0
+		},
+		"network": {
+			// waybar-network
+			"format-ethernet": "🌐",
+			"tooltip-format-ethernet": "{ipaddr} {ifname}",
+			"format-wifi": "  {essid} {signalStrength} {signaldBm}",
+			"tooltip-format-wifi": "{ipaddr} {ifname} \n left reconnect \n middle disconnect \n right 192.168.0.1",
+			"format-disconnected": " ",
+			"tooltip-format-disconnected": "click to connect",
+			"on-click": "iwctl station wlan0 connect zte",
+			"on-click-middle": "iwctl station wlan0 disconnect",
+			"on-click-right": "iwctl station wlan0 disconnect",
+			// "on-click-right": "xdg-open http://192.168.0.1"
+		},
+		"sway/language": {
+			"format": "{flag}",
+			"on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+		},
+		"sway/scratchpad": {
+			"format": "{icon} {count}",
+			"show-empty": false,
+			"tooltip": true,
+			"tooltip-format": "{app}: {title}"
+		},
+		"clock": {
+			"format": "{:%A %B %d %H:%M %p}",
+			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+		},
+		"idle_inhibitor": {
+			"format": "{icon} ",
+			"format-icons": {
+				"activated": "",
+				"deactivated": ""
+			},
+			"timeout": 30.5
+		}
+	}
 ]

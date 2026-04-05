@@ -1,66 +1,73 @@
-@-moz-document url(http://example.com){
-* {
-    /* color: green; */
-    color: red !important;
-    /* opacity: 0.05 !important; */
+@-moz-document domain("example.com") {
+
+	* {
+		color: red !important;
+		/* display: none !important; */
+	}
+
 }
 
-div#foo {
-    color: red;
+@-moz-document domain("youtube.com") {
+
+	div#text-container {
+		color: red !important;
+		display: none !important;
+	}
+
 }
-}
+
 
 @-moz-document url(https://instagram.com/), domain("instagram.com") {
-    @media (min-width: 1264px) and (max-width: 1919px) {
-        div.html-div>div[tabindex="-1"] {
-            /* color: red !important; */
-            --x---custom-text-color: red !important;
-            --ig-primary-text: 0, 255, 0;
+	@media (min-width: 1264px) and (max-width: 1919px) {
+		div.html-div>div[tabindex="-1"] {
+			/* color: red !important; */
+			--x---custom-text-color: red !important;
+			--ig-primary-text: 0, 255, 0;
 
-            --nav-medium-width: var(--nav-narrow-width);
+			--nav-medium-width: var(--nav-narrow-width);
 
-            &>div>div>div {
-                width: var(--nav-narrow-width) !important;
-            }
-        }
-    }
+			&>div>div>div {
+				width: var(--nav-narrow-width) !important;
+			}
+		}
+	}
 }
 
 
 @-moz-document domain("xhamster.com") {
-    :root {
-        --top-menu-height: 0px !important;
-    }
+	:root {
+		--top-menu-height: 0px !important;
+	}
 
-    .top-menu-container,
-    .controls,
-    .xplayer-background-top,
-    .xplayer-background-bottom,
-    #commentBox:nth-child(1) {
-        display: none !important;
-        visibility: hidden !important;
-    }
+	.top-menu-container,
+	.controls,
+	.xplayer-background-top,
+	.xplayer-background-bottom,
+	#commentBox:nth-child(1) {
+		display: none !important;
+		visibility: hidden !important;
+	}
 
-    body>div.main-wrap {
-        margin: 0 0 !important;
-    }
+	body>div.main-wrap {
+		margin: 0 0 !important;
+	}
 
-    .width-wrap {
-        max-width: 100vw !important;
-    }
+	.width-wrap {
+		max-width: 100vw !important;
+	}
 
-    .video-page .player-container {
-        margin-right: 0px !important;
-    }
+	.video-page .player-container {
+		margin-right: 0px !important;
+	}
 
 
-    @media screen and (min-width: 1536px) {
-        .main-wrap {
-            max-width: 100vw !important;
-        }
+	@media screen and (min-width: 1536px) {
+		.main-wrap {
+			max-width: 100vw !important;
+		}
 
-        .width-wrap {
-            max-width: 100vw !important;
-        }
-    }
+		.width-wrap {
+			max-width: 100vw !important;
+		}
+	}
 }

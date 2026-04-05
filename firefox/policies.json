@@ -3,9 +3,7 @@
 		"Permissions": {
 			"Autoplay": {
 				"Allow": [],
-				"Block": [
-					"https://mozilla.github.io/policy-templates/#permissions"
-				],
+				"Block": [],
 				"Default": "allow-audio-video",
 				"Locked": false
 			}

@@ -5,6 +5,7 @@ bindsym --release $mod+grave exec $term
 bindsym --release $mod+menu exec $menu
 bindsym --release $mod+ctrl+menu exec nwg-drawer
 bindsym --release $mod+q kill
+bindsym $mod+shift+c kill
 bindsym --release $mod+backspace kill
 
 # `         grave
@@ -16,30 +17,33 @@ floating_minimum_size 100 x 75
 floating_maximum_size -1 x -1
 tiling_drag $mod
 floating_modifier $mod normal
-hide_edge_borders --i3 smart
-# focus_on_window_activation smart
+# hide_edge_borders --i3 smart
+focus_on_window_activation smart
 force_display_urgency_hint 100
 
 
-for_window [all] title_window_icon yes
-for_window [shell="xwayland"] title_format "[XWayland] %title"
-for_window [app_id="thunar"] floating enable
-for_window [app_id="^org.gnome.{Calculator,SystemMonitor,tweaks}$"] floating enable
-# for_window [app_id="org.gnome.tweaks"] floating enable
-# for_window [app_id="org.gnome.SystemMonitor"] floating enable
-for_window [app_id="nwg-displays"] floating enable
-for_window [title="^Picture-in-Picture$" app_id="firefox"] floating enable, sticky enable
-for_window [title="scratchpad-term"] move to scratchpad
-
+# for_window [all] title_window_icon yes
+# for_window [shell="xwayland"] title_format "[XWayland] %title"
+# for_window [app_id="thunar"] floating enable
+# for_window [app_id="^org.gnome.{Calculator,SystemMonitor,tweaks}$"] floating enable
+# # for_window [app_id="org.gnome.tweaks"] floating enable
+# # for_window [app_id="org.gnome.SystemMonitor"] floating enable
+# for_window [app_id="nwg-displays"] floating enable
+# for_window [title="^Picture-in-Picture$" app_id="firefox"] floating enable, sticky enable
+# for_window [title="scratchpad-term"] move to scratchpad
+#
 # no_focus [window_role="pop-up"]
 # for_window [instance=notepad] sticky enable
-for_window [title="sway_treeview"] floating enable, resize set 30ppt 30ppt, move position 69ppt 69ppt, nofocus
+for_window [app_id="sway_treeview"] floating enable, resize set 30ppt 30ppt, move position 69ppt 69ppt;
 # for_window [app_id="sway_treeview"] nofocus
 
-bindsym $mod+a exec --no-startup-id $term -o font_size=8 sway_treeview
+bindsym $mod+a exec  $term --app-id="sway_treeview" -o font_size=8 sway_treeview
+bindsym $mod+s exec no-startup-id pkill -f 'kitty --app-id=sway' && notify-send 'woo' ||  notify-send 'f'
+bindsym $mod+b exec no-startup-id pkill -f 'kitty --app-id=sway' || $term --app-id="sway_treeview" -o font_size=8 sway_treeview
 bindsym --release $mod+Prior exec $term htop 
 bindsym --release $mod+n exec swaync-client -t -sw
 bindsym --release $mod+w exec firefox
+# bindsym --release $mod+w exec firefox --new-instance
 bindsym --release $mod+shift+w exec firefox --private-window
 bindsym --release $mod+ctrl+w exec chromium-browser --new-window
 bindsym --release $mod+c exec chromium-browser --new-window

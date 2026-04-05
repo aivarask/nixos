@@ -16,11 +16,16 @@ require('which-key').setup({
 	},
 })
 
--- require('auto-session').setup({
--- 	allowed_dirs = { '/etc/nixos' },
--- 	log_level = vim.log.levels.ERROR,
--- })
---
+require('kitty-scrollback').setup(
+	{
+		search = {
+			callbacks = {
+				after_ready = function()
+					vim.api.nvim_feedkeys('?', 'n', false)
+				end,
+			},
+		},
+	})
 require('flatten').setup {}
 require('colorizer').setup({})
 if vim.uv.os_getenv('WAYLAND_DISPLAY') then

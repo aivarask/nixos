@@ -17,7 +17,6 @@ client.urgent             $red        $red        $white      $red        $red
 client.placeholder        #000000     #0c0c0c     $white     $bg     #0c0c0c
 
 output * bg /etc/nixos/img/dark_grad.png center
-font $font 10
 seat seat0 xcursor_theme "XCursor-Pro-Light" 24
 
 # swayfx

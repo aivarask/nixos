@@ -26,6 +26,7 @@ in
   programs.firefox.languagePacks = [ "en-US" ];
   xdg.configFile."${d}/default.nix".source = symlink "${s}/default.nix";
   xdg.configFile."${p}/chrome/userChrome.css".source = symlink "${s}/userChrome.css";
+  xdg.configFile."${p}/chrome/userContent.css".source = symlink "${s}/userContent.css";
   # xdg.configFile."${p}/bookmarks.html".source = symlink "${s}/bookmarks.html";
   # xdg.configFile."${p}/prefs.js".source = symlink "${s}/prefs.js";
   xdg.configFile."${p}/user.js".source = symlink "${s}/user.js";

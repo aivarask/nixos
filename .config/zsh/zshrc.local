@@ -52,7 +52,7 @@ psgrep() { pgrep "$@" | xargs --no-run-if-empty ps -f -p; }
 preexec() {
 # #   print -Pn "\e]0;$0 $@\a"
 # 	echo 'foo'
-	echo $TERM
+	# echo $TERM
 }
 
 nix-clean() {

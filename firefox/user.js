@@ -14,7 +14,7 @@ user_pref("browser.translations.automaticallyPopup", false);
 user_pref("devtools.chrome.enabled", true);
 user_pref("devtools.debugger.prompt-connection", false);
 user_pref("devtools.debugger.remote-enabled", true);
-user_pref("devtools.toolbox.host", "right");
+user_pref("devtools.toolbox.host", "window");
 user_pref("devtools.toolbox.previousHost", "right");
 user_pref("devtools.toolbox.selectedTool", "styleeditor");
 user_pref("devtools.toolbox.sidebar.width", 600);

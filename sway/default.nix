@@ -44,6 +44,7 @@
   environment.systemPackages = with pkgs; [
     # sway-overfocus
     fuzzel
+    x11perf
     waypipe
     ydotool
     hyprmagnifier

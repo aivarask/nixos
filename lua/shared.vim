@@ -15,10 +15,9 @@ command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 
-
-
 augroup minimal
 	autocmd!
+	autocmd bufwritepost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
 	autocmd BufLeave,FocusLost * silent! wal
