@@ -36,7 +36,8 @@
 					"toOverwrite": {
 						"filters": [
 							"youtube.com###cinematics,#shorts-cinematic-container",
-							"||accounts.google.com/gsi/*$xhr,script,3p"
+							"||accounts.google.com/gsi/*$xhr,script,3p",
+							"youtube.com##ytd-video-quality-promo-renderer"
 						]
 					},
 					"adminSettings": {
