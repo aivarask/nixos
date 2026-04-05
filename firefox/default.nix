@@ -5,6 +5,7 @@
   SELF,
   xdgconf,
   osConfig,
+  inputs,
   ...
 }:
 let
@@ -16,6 +17,9 @@ let
 
 in
 {
+  home.packages = with pkgs; [
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
   home.file.".mozilla/native-messaging-hosts".enable = false;
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";

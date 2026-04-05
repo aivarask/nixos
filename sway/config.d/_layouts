@@ -7,11 +7,6 @@ hide_edge_borders smart_no_gaps
 default_orientation auto
 workspace_layout stacking
 
-floating_minimum_size 100 x 75
-floating_maximum_size -1 x -1
-floating_modifier $mod inverse
-tiling_drag $mod
-
 mode "move" {
     bindsym Left  exec sway-move-to left
     bindsym Right exec sway-move-to right
@@ -31,20 +26,21 @@ mode "move" {
     bindsym Escape mode "default"
 }
 
-set $resize_px 20px
-bindsym --whole-window $mod+button4 resize grow height $resize_px
-bindsym --whole-window $mod+button5 resize shrink height $resize_px
+
+set $res 5ppt
+bindsym --whole-window $mod+button4 resize grow height $res
+bindsym --whole-window $mod+button5 resize shrink height $res
 mode "resize" {
-    bindsym --whole-window button4 resize grow height $resize_px
-    bindsym --whole-window button5 resize shrink height $resize_px
-    bindsym $left resize shrink width $resize_px
-    bindsym $down resize grow height $resize_px
-    bindsym $up resize shrink height $resize_px
-    bindsym $right resize grow width $resize_px
-    bindsym Left resize shrink width $resize_px
-    bindsym Down resize grow height $resize_px
-    bindsym Up resize shrink height $resize_px
-    bindsym Right resize grow width $resize_px
+    bindsym --whole-window button4 resize grow height $res
+    bindsym --whole-window button5 resize shrink height $res
+    bindsym $left resize shrink width $res
+    bindsym $down resize grow height $res
+    bindsym $up resize shrink height $res
+    bindsym $right resize grow width $res
+    bindsym Left resize shrink width $res
+    bindsym Down resize grow height $res
+    bindsym Up resize shrink height $res
+    bindsym Right resize grow width $res
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

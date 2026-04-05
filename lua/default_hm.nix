@@ -84,13 +84,11 @@ in
           ps.nix
         ]))
         nvim-nio
-        # auto-session
         which-key-nvim
-        # lazygit-nvim
         lualine-nvim
         nvim-tree-lua
-        # toggleterm-nvim
         sqlite-lua
+        kitty-scrollback-nvim
       ])
       (with pkgs.vimPlugins; [
         nvim-notify

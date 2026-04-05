@@ -15,6 +15,8 @@
   inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.zen-browser.url = "github:youwen5/zen-browser-flake";
+  inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   inputs.musnix.url = "github:musnix/musnix";
   outputs =
     { nixpkgs, self, ... }@inputs:
