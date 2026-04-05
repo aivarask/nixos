@@ -1,5 +1,15 @@
 {
 	"policies": {
+		"Permissions": {
+			"Autoplay": {
+				"Allow": [],
+				"Block": [
+					"https://mozilla.github.io/policy-templates/#permissions"
+				],
+				"Default": "allow-audio-video",
+				"Locked": false
+			}
+		},
 		"DisablePocket": true,
 		"DisableTelemetry": true,
 		"DisableFirefoxStudies": true,

@@ -50,8 +50,8 @@ input type:touchpad {
 		drag_lock enabled
 }
 input type:pointer {
-	left_handed disabled
 	accel_profile adaptive
+	left_handed disabled
 	pointer_accel -0.9
 }
 input 'Dell_Dell_Wired_Multimedia_Keyboard' {

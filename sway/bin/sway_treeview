@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+swaymsg -t get_tree
 while
     swaymsg -t subscribe '["window"]' > /dev/null
 do

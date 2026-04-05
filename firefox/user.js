@@ -9,7 +9,7 @@ user_pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false);
 user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 user_pref("browser.tabs.firefox-view.importHistory.dismissed", true);
 user_pref("browser.tabs.loadInBackground", false);
-user_pref("browser.toolbars.bookmarks.visibility", "always"); // newtab
+user_pref("browser.toolbars.bookmarks.visibility", "newtab"); // newtab
 user_pref("browser.translations.automaticallyPopup", false);
 user_pref("devtools.chrome.enabled", true);
 user_pref("devtools.debugger.prompt-connection", false);

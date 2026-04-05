@@ -15,6 +15,8 @@
     # gst_all_1.gstreamer # https://wiki.nixos.org/wiki/GStreamer
     # seahorse
     # gnome-keyring
+    gvfs
+    thunar-volman
     gcr
     gparted
     gnome-disk-utility
