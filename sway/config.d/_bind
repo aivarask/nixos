@@ -43,10 +43,10 @@ bindsym --release $mod+ctrl+space focus mode_toggle
 bindsym --release $mod+shift+space floating toggle
 bindsym --release $mod+minus exec "pkill -USR1 waybar"
 
-bindgesture tap:4 exec playerctl play-pause
-bindgesture hold:4:very-short exec playerctl play-pause
-bindgesture scroll:3:up exec volumectl +1%
-bindgesture scroll:3:down exec volumectl -1%
+bindgesture pinch:4 exec playerctl play-pause
+bindgesture hold:4 exec playerctl play-pause
+bindgesture swipe:3:up exec volumectl +1%
+bindgesture swipe:3:down exec volumectl -1%
 
 # bindsym $mod+u focus parent
 # bindsym $mod+p focus parent
