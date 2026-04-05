@@ -1,5 +1,5 @@
 let g:bclose_no_plugin_maps=1
-let no_vim_maps = 1
+let no_vim_maps=1
 
 nmap q <Nop>
 nmap Q <Nop>
@@ -12,19 +12,37 @@ nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 
 nnoremap <silent> ]= :tabnext<CR>
 nnoremap <silent> [- :tabprevious<CR>
-nnoremap <silent> ]] :bnext<CR>
-nnoremap <silent> [[ :bprevious<CR>
+map <silent> ]] :bnext<CR>
+map <silent> [[ :bprevious<CR>
 nnoremap <silent> [<BS> :b#<cr>
 nnoremap <silent> ]<BS> :b#<cr>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 
-nnoremap ` :split \| terminal<CR>
+nnoremap ` :terminal<CR>
 
-tnoremap <silent> ]] <cmd>bnext<CR>
-tnoremap <silent> [[ <cmd>bprevious<CR>
+tmap <silent> ]] <cmd>bnext<CR>
+tmap <silent> [[ <cmd>bprevious<CR>
+
 tnoremap <Esc> <C-\><C-N>
 tnoremap ` <C-\><C-N><C-W>:hide<CR>
+
+map <Leader>t :term ++close<cr>
+tmap <Leader>t <c-w>:term ++close<cr>
+
+function! Toggle()
+	  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
+  " echo buffers
+
+  for i in buffers
+	  let ft = getbufvar(i,'&buftype')
+	if ft == 'terminal'
+	      echom 'WWOOO'
+	endif
+	endfor
+
+
+endfunction
 
 if has('nvim')
 	nnoremap // :Telescope live_grep<CR>
@@ -36,7 +54,6 @@ else
 	nnoremap /. :Files<CR>
 	nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
 
-	" nmap <silent> / :<C-U>WhichKey '/'<CR>
 	nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
 	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
 	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>

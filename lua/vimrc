@@ -8,37 +8,10 @@ let g:which_key_vertical = 1
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = ''
 
-let g:airline_inactive_collapse=1
-let g:airline_inactive_alt_sep=1
-let g:webdevicons_enable_airline_tabline = 0
-let g:webdevicons_enable_airline_statusline = 0
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
-let g:airline#extensions#fzf#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_powerline_fonts = 0
-
-let g:airline_disable_statusline = 1
-
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=-30
 let g:netrw_wiw=0
-" let g:netrw_special_syntax=1
-" let g:netrw_sizestyle="H"
-" let g:netrw_usetab=1
-" let g:netrw_chgwin=1
-" let g:netrw_preview=1
-" let g:netrw_alto=&sb
-" let g:netrw_altv=&spr
-" let g:netrw_altfile=0
-" let g:netrw_browse_split=2
-" let g:netrw_fastbrowse=2
-
 
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/shared.vim

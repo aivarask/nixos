@@ -9,11 +9,12 @@ command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 
+
 augroup session
 	au!
 	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-	autocmd BufHidden * execute 'echo ' .. expand("<abuf>")
+	" au BufUnload * echo expand("<abuf>")
 augroup END
 
 augroup minimal
@@ -33,13 +34,13 @@ if !has('gui_running')
 	set guioptions-=e
 endif
 
+
 syntax on
 filetype plugin indent on
 set termguicolors
 set title
 set titlestring=%{g:self}\ \ %{getcwd()}
 set showtabline=2
-" set tabline=%n
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 set shortmess+=F
 set hidden
@@ -120,3 +121,43 @@ function! LspFormat()
   endif
 endfunction
 
+
+function! SpawnBufferLine()
+  let s = ''
+  " Making a tab list on the right side
+  for i in range(1, tabpagenr('$'))  " Loop through the number of tabs
+    let s .= (i == tabpagenr()) ? ('%#TabLineSel#') : ('%#TabLine#')
+    let s .= '%' . i . 'T '  " set the tab page number (for mouse clicks)
+    let s .= i . ' '          " set page number string
+  endfor
+  let s .= '%#TabLineFill#%T'  " Reset highlight
+  if tabpagenr('$') > 1
+    let s .= '%999X X '
+  endif
+
+  " Get the list of buffers. Use bufexists() to include hidden buffers
+  let bufferNums = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+  for i in bufferNums
+    let s .= (i == bufnr()) ? ('%#TabLineSel#') : ('%#TabLine#')
+    let s .=' ' . i . '' 
+    if bufname(i) == ''
+      let s .= '[No Name]'
+    endif
+    if getbufvar(i, "&modifiable")
+      let s .= fnamemodify(bufname(i), ':t') 
+      " let s .= pathshorten(bufname(i)) 
+      let s .= (getbufvar(i, "&modified")) ? ('+') : ('')
+    else
+      let s .= fnamemodify(bufname(i), ':t') . '-'
+    endif
+    let s .= ' '
+  endfor
+  " let s .= '%#TabLineFill#%T'  " Reset highlight
+  let s .= '%=' " Spacer
+
+
+
+  return s
+endfunction
+
+set tabline=%!SpawnBufferLine()  " Assign the tabline
