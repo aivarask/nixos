@@ -14,6 +14,7 @@ let
     fzf-vim
     gruvbox-material
     switch-vim
+    vim-scriptease
     vim-abolish
     vim-cool
     vim-devicons
@@ -33,12 +34,12 @@ in
       (with pkgs.vimPlugins; [
         # vim-airline
         vim-which-key
-        auto-pairs
+        # auto-pairs
         # nerdtree
         # vim-nerdtree-syntax-highlight
-        vim-indentwise
+        # vim-indentwise
         vim-commentary
-        vim-matchup
+        # vim-matchup
       ])
     ]
   );

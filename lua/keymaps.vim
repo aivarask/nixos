@@ -31,17 +31,13 @@ map <Leader>t :term ++close<cr>
 tmap <Leader>t <c-w>:term ++close<cr>
 
 function! Toggle()
-	  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
-  " echo buffers
+	let buffers = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
+	for i in buffers
+		let buftype = getbufvar(i,'&buftype')
+		if buftype == 'terminal'
 
-  for i in buffers
-	  let ft = getbufvar(i,'&buftype')
-	if ft == 'terminal'
-	      echom 'WWOOO'
-	endif
+		endif
 	endfor
-
-
 endfunction
 
 if has('nvim')
@@ -57,6 +53,7 @@ else
 	nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
 	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
 	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+	" nnoremap <silent> z :<C-U>WhichKey 'z'<CR>
 	cnoremap <nowait> <Esc>h <Left>
 	cnoremap <nowait> <Esc>l <Right>
 endif

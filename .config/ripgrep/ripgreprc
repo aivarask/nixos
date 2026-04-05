@@ -17,6 +17,7 @@
 -g=!.cache/*
 -g=!.local/*
 -g=!.{mixxx}/*
+-g=!{ardour8,kitty}/*
 
 -g=!.{viminfo,bash_history,zsh_history,zcompdump,sqlite_history}
 -g=!*.{svg,nfo,mp3}
