@@ -19,26 +19,24 @@ nnoremap <silent> ]<BS> :b#<cr>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 
-nnoremap ` :terminal<CR>
-
-tmap <silent> ]] <cmd>bnext<CR>
-tmap <silent> [[ <cmd>bprevious<CR>
-
-tnoremap <Esc> <C-\><C-N>
-tnoremap ` <C-\><C-N><C-W>:hide<CR>
-
-map <Leader>t :term ++close<cr>
-tmap <Leader>t <c-w>:term ++close<cr>
-
-function! Toggle()
-	let buffers = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
-	for i in buffers
-		let buftype = getbufvar(i,'&buftype')
-		if buftype == 'terminal'
-
-		endif
-	endfor
+function Term() abort
+  let bufNum = bufnr('term//')
+  let termNum = bufwinnr('term//')
+  if termNum > 0 && winnr('$') > 1
+    execute termNum . 'wincmd c'
+  elseif bufNum > 0 && bufNum != bufnr(@%)
+    execute 'sb ' . bufNum . ' | wincmd p'
+  elseif bufNum == bufnr(@%)
+    execute 'bprevious | sb ' . bufNum . ' | wincmd p'
+  else
+    execute 'terminal'
+  endif
 endfunction
+command! -bang -nargs=* Term call Term()
+
+nmap ` :Term<cr>
+tnoremap ` <C-w>:Term<cr>
+tnoremap <buffer> <Esc> <C-\><C-n>
 
 if has('nvim')
 	nnoremap // :Telescope live_grep<CR>
@@ -53,7 +51,6 @@ else
 	nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
 	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
 	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
-	" nnoremap <silent> z :<C-U>WhichKey 'z'<CR>
 	cnoremap <nowait> <Esc>h <Left>
 	cnoremap <nowait> <Esc>l <Right>
 endif
