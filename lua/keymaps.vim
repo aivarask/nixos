@@ -20,8 +20,10 @@ nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 
 function Term(arg = "zsh") abort
-  let bnr = bufnr('!' . a:arg)
-  let wnr = bufwinnr('!' . a:arg)
+  let tname = '!' . a:arg
+  if has('nvim') | let tname = 'term:/' | endif
+  let bnr = bufnr(tname)
+  let wnr = bufwinnr(tname)
   if wnr > 0 && winnr('$') > 1
     execute wnr . 'wincmd c'
   elseif bnr > 0 && bnr != bufnr(@%)
@@ -29,18 +31,15 @@ function Term(arg = "zsh") abort
   elseif bnr == bufnr(@%)
     execute 'bprevious | sb ' . bnr . ' | wincmd p'
   else
-	  if has('nvim')
-	  	execute 'sb | edit term://' . a:arg
-	  else
-    		execute 'terminal ++close ' . a:arg 
-	endif
+	if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
   endif
 endfunction
 command! -bang -nargs=* Term call Term()
 
+"tmap <silent> ` <C-w>:Term<cr>
 nmap <silent> ` :Term<cr>
-tmap <silent> ` <C-w>:Term<cr>
-tmap <Esc> <C-\><C-n>
+tmap <silent> ` <C-\><C-N><C-w>:Term<cr>
+tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 if has('nvim')

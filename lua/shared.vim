@@ -1,10 +1,11 @@
+if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
-execute "set undodir=".$XDG_DATA_HOME."/". g:self . "/undo"
+execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
-let g:session_dir=$XDG_DATA_HOME."/". g:self."/sessions/"
+let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,options,localoptions,winpos,winsize
+set sessionoptions=buffers,curdir,folds,help,tabpages,options,winpos,winsize
 augroup shared
 	autocmd!
 	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
@@ -23,15 +24,9 @@ set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
 
-"set t_Co=256
-if !has('gui_running') | set t_Co=256 guioptions-=e |endif
-
-
 syntax on
 filetype plugin indent on
-set termguicolors
-set title
-set titlestring=%{g:self}\ \ %{getcwd()}
+"set termguicolors
 set showtabline=2
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 set shortmess+=F
@@ -75,7 +70,7 @@ command! SC vnew
 
 "set breakindent
 "set breakindentopt=sbr
-"set autoindent
+set autoindent
 "set smartindent
 "set shiftwidth=2
 "set tabstop=4
