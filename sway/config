@@ -16,9 +16,8 @@ set $scrollleft button7
 
 set $font pango:FiraCode Nerd Font Mono, Hack Nerd Font
 font $font 8
-# font monospace 5
 set $maximize border none, move position center, resize set width 100 ppt height 100 ppt
-set $opacity 80
+set $opacity 0.8
 
 xwayland disable
 focus_follows_mouse yes

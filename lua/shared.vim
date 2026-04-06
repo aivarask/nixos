@@ -1,22 +1,14 @@
-let g:session_dir=$XDG_DATA_HOME."/vim/session/"
+if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
+execute "set undodir=".$XDG_DATA_HOME."/". g:self . "/undo"
+call mkdir(&undodir, "p", 0700)
+let g:session_dir=$XDG_DATA_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=buffers,curdir,folds,help,tabpages,skiprtp
-augroup session
-	au!
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,options,localoptions,winpos,winsize
+augroup shared
+	autocmd!
 	autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-	" au BufUnload * echo expand("<abuf>")
-augroup END
-
-command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
-	\ | diffthis | wincmd p | diffthis
-
-
-if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
-
-augroup minimal
-	autocmd!
 	autocmd bufwritepost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
 	autocmd VimResized * wincmd =
@@ -24,14 +16,15 @@ augroup minimal
 	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
 
+command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+	\ | diffthis | wincmd p | diffthis
+
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
 
-if !has('gui_running')
-	set t_Co=256
-	set guioptions-=e
-endif
+"set t_Co=256
+if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 
 
 syntax on
