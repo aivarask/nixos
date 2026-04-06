@@ -26,7 +26,7 @@ set wildignorecase
 
 syntax on
 filetype plugin indent on
-"set termguicolors
+set termguicolors
 set showtabline=2
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 set shortmess+=F
