@@ -16,7 +16,6 @@
     # seahorse
     # gnome-keyring
     gvfs
-    thunar-volman
     gcr
     gparted
     gnome-disk-utility

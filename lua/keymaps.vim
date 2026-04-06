@@ -1,5 +1,5 @@
 let g:bclose_no_plugin_maps=1
-let no_vim_maps=1
+let g:no_vim_maps=1
 
 nmap q <Nop>
 nmap Q <Nop>

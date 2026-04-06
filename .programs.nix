@@ -54,6 +54,8 @@ in
     gtk4
     nautilus
     thunar
+    thunar-volman
+    xfce4-settings
     tumbler
     kitty
     gtk-doc

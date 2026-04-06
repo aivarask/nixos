@@ -1,5 +1,6 @@
 " vim: ft=vim
 " https://devhints.io/vimscript
+packadd! editorconfig
 
 let g:which_key_vertical = 1
 let g:AutoPairsFlyMode = 0
