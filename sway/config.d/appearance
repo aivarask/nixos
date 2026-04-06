@@ -26,5 +26,5 @@ blur_passes 2
 blur_radius 4
 shadows disable
 shadow_blur_radius 4
-default_dim_inactive 0.25
+default_dim_inactive 0.20
 

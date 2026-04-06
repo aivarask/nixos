@@ -15,8 +15,9 @@
   inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.zen-browser.url = "github:youwen5/zen-browser-flake";
+  inputs.zen-browser.url = "github:0xc000022070/zen-browser-flake";
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.zen-browser.inputs.home-manager.follows = "home-manager";
   inputs.musnix.url = "github:musnix/musnix";
   outputs =
     { nixpkgs, self, ... }@inputs:
@@ -44,6 +45,8 @@
               home.homeDirectory = "/root";
               imports = [
                 inputs.nix-colors.homeManagerModules.default
+                inputs.zen-browser.homeModules.twilight
+
                 ./.programs.nix
                 ./lua/default_hm.nix
               ];

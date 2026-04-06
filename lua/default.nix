@@ -4,6 +4,8 @@ let
     ps: with ps; [
       # https://github.com/rest-nvim/rest.nvim
       lgi
+      pkgs.luajitPackages.mp
+      mp
       luv
       cjson
       luasocket # https://github.com/lunarmodules/luasocket

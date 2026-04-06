@@ -56,7 +56,8 @@ return {
 			},
 			diagnostics = { -- luals.github.io/wiki/diagnostics
 				disable = { 'lowercase-global', 'unudirsed-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
-				globals = { "mp", "client", "root", "screen" }
+				globals = { "mp", "client", "root", "screen" },
+				ignoredFiles = "Disable"
 			},
 			format = {
 				enable = true
@@ -76,7 +77,7 @@ return {
 				library = library,
 				-- library = vim.api.nvim_list_runtime_paths(),
 				preloadFileSize = 600,
-				ignoreDir = { 'node_modules', 'vendor' },
+				ignoreDir = { 'node_modules', 'vendor', 'mpv/scripts' },
 				-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty
 				userThirdParty = userThirdParty,
 			},

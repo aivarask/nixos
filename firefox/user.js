@@ -27,10 +27,18 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("ui.tooltip.delay_ms", 160);
 // user_pref("browser.bookmarks.max_backups", 0);
 
+user_pref("zen.view.compact", true);
+user_pref("zen.tabs.vertical", true);
 
-
-
-
-
+user_pref("zen.tabs.show-newtab-vertical" , false);
+user_pref("zen.theme.accent-color" , "#8aadf4");
+user_pref("zen.urlbar.behavior" , "float");
+user_pref("zen.view.compact.enable-at-startup" , true);
+user_pref("zen.view.compact.hide-toolbar" , true);
+user_pref("zen.view.compact.toolbar-flash-popup" , true);
+user_pref("zen.view.show-newtab-button-top" , false);
+user_pref("zen.view.window.scheme" , 0);
+user_pref("zen.welcome-screen.seen" , true);
+user_pref("zen.workspaces.continue-where-left-off" , true);
 
 

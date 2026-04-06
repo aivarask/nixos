@@ -10,6 +10,7 @@ let g:switch_custom_definitions =
 	\     '\v^(\s*\d+\. )?\[x\]': '\1[-]',
 	\     '\v^(\s*\d+\. )?\[-\]': '\1[ ]',
 	\   },
+	\   ['left', 'right', 'middle'],
 	\   ['yes', 'no'],
 	\   ['on', 'off'],
 	\   ['default', 'tabbed', 'stacking'],

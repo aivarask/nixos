@@ -9,7 +9,6 @@
 let
   COMMON = with pkgs.vimPlugins; [
     gruvbox-material
-    vim-auto-save
     bclose-vim
     fzf-vim
     gruvbox-material

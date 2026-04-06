@@ -25,6 +25,10 @@ force_display_urgency_hint 100
 # for_window [all] title_window_icon yes
 # for_window [class=".*"] opacity $opacity
 # for_window [app_id=".*"] opacity $opacity
+
+for_window [app_id="mpv"] floating enable, resize set 40ppt 30ppt, move position 55ppt 5ppt
+for_window [app_id="lxappearance"] floating enable, resize set 40ppt 30ppt, opacity $opacity
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 40ppt 30ppt, opacity $opacity
 for_window [app_id="one.alynx.showmethekey"] floating enable, sticky enable, opacity $opacity
 for_window [app_id="org.gnome.(Calculator|tweaks)"] floating enable, opacity $opacity
 for_window [app_id=thunar] floating enable, resize set 40ppt 60ppt, opacity $opacity
@@ -38,8 +42,9 @@ bindsym $mod+e exec "killall foot; foot -a tree sway_treeview"
 bindsym --release $mod+Prior exec $term htop 
 bindsym --release $mod+n exec swaync-client -t -sw
 bindsym --release $mod+w exec firefox
-# bindsym --release $mod+w exec firefox --new-instance
 bindsym --release $mod+shift+w exec firefox --private-window
+bindsym $mod+shift+z exec zen-twilight
+bindsym $mod+ctrl+z exec zen-twilight --private-window
 bindsym --release $mod+ctrl+w exec chromium-browser --new-window
 bindsym --release $mod+c exec chromium-browser --new-window
 

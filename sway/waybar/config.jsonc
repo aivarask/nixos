@@ -21,7 +21,7 @@
 			"custom/tools",
 			"custom/run_editor",
 			"custom/file_manager",
-			"custom/run_music",
+			"custom/run_music"
 		],
 		"modules-right": [
 			"pulseaudio",
@@ -43,7 +43,7 @@
 			"tray",
 			"sway/workspaces",
 			"wlr/taskbar",
-			"sway/mode",
+			"sway/mode"
 		],
 		"modules-center": [
 			"sway/window"
@@ -64,7 +64,7 @@
 			// waybar-tray
 			"show-passive-items": true,
 			"icon-size": 12,
-			"spacing": 8,
+			"spacing": 8
 			// "icons": {}
 		},
 		"battery": {
@@ -103,7 +103,7 @@
 				"class<kitty>": "",
 				"class<spotify>": ""
 				// "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
-			},
+			}
 		},
 		"sway/mode": {
 			// waybar-sway-mode
@@ -128,7 +128,7 @@
 			"tooltip-format-disconnected": "click to connect",
 			"on-click": "iwctl station wlan0 connect zte",
 			"on-click-middle": "iwctl station wlan0 disconnect",
-			"on-click-right": "iwctl station wlan0 disconnect",
+			"on-click-right": "iwctl station wlan0 disconnect"
 			// "on-click-right": "xdg-open http://192.168.0.1"
 		},
 		"sway/language": {

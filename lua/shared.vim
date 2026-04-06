@@ -7,19 +7,12 @@
 "set tabstop=4
 "set softtabstop=2
 "set paste
+"set cursorbind
 " cpoptions=BceFsz 
 set cpoptions+=ILq
-"set cursorbind
 
 
 
-if !has('nvim')
-	" let g:vim_indent = #{
-	" \ line_continuation: shiftwidth() * 3,
-	"     \ more_in_bracket_block: v:false,
-	"     \ searchpair_timeout: 100,
-	" \ }
-endif
 
 if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
@@ -29,13 +22,19 @@ let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
 set sessionoptions=buffers,curdir,folds,help,tabpages,options,localoptions
-augroup shared
+augroup session
 	autocmd!
 	" autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	" autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-	autocmd bufwritepost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
+augroup	END
+augroup files
+	autocmd!
+	" autocmd BufRead * if &filetype == "" | setlocal ft=text | endif
+	autocmd FileType * autocmd TextChanged,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent write | endif
+
 	autocmd FocusGained,BufEnter,CursorHold,VimResume,FileChangedShellPost * :silent! checktime
-	autocmd VimResized * wincmd =
+	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
+	"autocmd VimResized * wincmd =
 	" autocmd BufLeave,FocusLost * silent! wal
 	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
@@ -43,18 +42,14 @@ augroup END
 command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
-set wildmode=noselect:lastused,full
-set wildoptions=pum
-set wildignorecase
-
 syntax on
 filetype plugin indent on
+
 set termguicolors
 set showtabline=2
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 set shortmess+=F
 set hidden
-
 set completeopt=menu,menuone,noselect
 set cursorline
 set mouse=a
@@ -77,6 +72,9 @@ set clipboard=unnamedplus
 set scrolloff=8
 set cmdheight=2
 
+set wildmode=noselect:lastused,full
+set wildoptions=pum
+set wildignorecase
 "https://vi.stackexchange.com/questions/43386/how-to-force-vim-to-delete-all-the-no-name-buffers
 set shiftround
 set gdefault
@@ -99,13 +97,6 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-" let g:auto_save = 1
-let g:auto_save_no_updatetime = 0
-let g:auto_save_in_insert_mode = 0
-let g:auto_save_silent = 1
-
-" let g:auto_save_events = ["InsertLeave"]
-" let g:auto_save_write_all_buffers = 1
 
 
 "let g:auto_save_postsave_hook = 'TagsGenerate'

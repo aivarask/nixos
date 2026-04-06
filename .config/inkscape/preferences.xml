@@ -306,7 +306,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="px" />
+       unit="mm" />
     <eventcontext
        id="text"
        usecurrent="1"
@@ -996,8 +996,8 @@
      id="desktop"
      style="fill:#1a1a1a;text-orientation:auto;stroke-width:0;fill-opacity:0.58608586">
     <group
-       width="1916"
-       height="935"
+       width="744"
+       height="1002"
        x="0"
        y="0"
        maximized="0"
@@ -1115,9 +1115,9 @@
      flattening="0" />
   <group
      id="theme"
-     defaultPreferDarkTheme="0"
+     defaultPreferDarkTheme="1"
      defaultIconTheme="Papirus"
-     defaultGtkTheme="Adwaita-dark"
+     defaultGtkTheme="Orchis-Dark-Compact"
      narrowSpinButton="1"
      preferDarkTheme="1"
      darkTheme="1"

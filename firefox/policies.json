@@ -14,18 +14,63 @@
 		"DNSOverHTTPS": {
 			"Enabled": false
 		},
+		"AutofillAddressEnabled": true,
+		"AutofillCreditCardEnabled": false,
+		"DisableAppUpdate": true,
+		"DisableFeedbackCommands": true,
+		"DontCheckDefaultBrowser": true,
+		"EnableTrackingProtection": {
+			"Value": true,
+			"Locked": true,
+			"Cryptomining": true,
+			"FingerPrinting": true
+		},
+		"OfferToSaveLogins": false,
 		"CaptivePortal": false,
 		"NetworkPrediction": false,
 		"DisableFirefoxAccounts": true,
 		"DisplayMenuBar": false,
+		"DisableProfileImport": true,
 		"NewTabPage": true,
 		"Homepage": {
 			"StartPage": "previous-session"
 		},
+		"NoDefaultBookmarks": true,
+		"Bookmarks": [
+			{
+				"Title": "wiki.nixos.org",
+				"URL": "https://wiki.nixos.org/wiki/NixOS_Wiki",
+				"Favicon": "https://wiki.nixos.org/favicon.ico",
+				"Placement": "toolbar",
+				"Folder": "1"
+			},
+			{
+				"Title": "Example",
+				"URL": "https://example.com",
+				"Favicon": "https://example.com/favicon.ico",
+				"Placement": "toolbar",
+				"Folder": "1"
+			},
+			{
+				"Title": "YouTube",
+				"URL": "https://www.youtube.com",
+				"Favicon": "https://www.youtube.com/favicon.ico",
+				"Placement": "toolbar",
+				"Folder": "1"
+			}
+		],
 		"SearchEngines": {
 			"Default": "DuckDuckGo",
 			"PreventInstalls": true,
 			"Add": [
+				{
+					"Name": "wiki.nixos.org",
+					"URLTemplate": "https://wiki.nixos.org/w/index.php?search={searchTerms}",
+					"Method": "GET",
+					"IconURL": "https://wiki.nixos.org/favicon.ico",
+					"Alias": "@nw",
+					"Description": "nixos wiki site"
+				},
 				{
 					"Name": "Example1",
 					"URLTemplate": "https://www.example.org/q={searchTerms}",

@@ -1,5 +1,6 @@
 # Profile
 https://ffprofile.com
+https://docs.zen-browser.app/guides/manage-profiles
 
 # Policies
 https://extensionworkshop.com/documentation/enterprise/enterprise-development/#how-to-add-policy

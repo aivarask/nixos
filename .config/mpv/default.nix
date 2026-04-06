@@ -20,8 +20,7 @@
       # vapoursynthSupport = true;
       youtubeSupport = true;
       scripts = with pkgs.mpvScripts; [
-        pkgs.mpvScripts.uosc # https://github.com/tomasklaen/uosc
-        pkgs.mpvScripts.reload # https://github.com/4e6/mpv-reload
+        reload
       ];
     }
   );

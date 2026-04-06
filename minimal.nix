@@ -200,6 +200,7 @@
     nerd-fonts.hack
     nerd-fonts.meslo-lg
     papirus-icon-theme
+    material-design-icons
     # liberation_ttf
     # terminus_font_ttf
     # lato
