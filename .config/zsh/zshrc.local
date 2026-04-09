@@ -13,7 +13,10 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
-
+set zle_bracketed_paste
+autoload -Uz bracketed-paste-magic url-quote-magic
+zle -N bracketed-paste bracketed-paste-magic
+zle -N self-insert url-quote-magic
 
 (( ${+aliases[run-help]} )) && unalias run-help
 autoload run-help run-help-git run-help-nix run-help-ip run-help-openssl run-help-sudo
