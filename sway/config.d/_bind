@@ -5,6 +5,7 @@ bindsym --release $mod+grave exec $term
 bindsym --release $mod+menu exec $menu
 bindsym --release $mod+ctrl+menu exec nwg-drawer
 bindsym --release $mod+q kill
+bindsym $mod+r exec thunar
 bindsym $mod+shift+c kill
 bindsym --release $mod+backspace kill
 

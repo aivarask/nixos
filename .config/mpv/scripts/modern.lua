@@ -15,14 +15,14 @@ local utils = require 'mp.utils'
 local user_opts = {
 	showwindowed = true, -- show OSC when windowed?
 	showfullscreen = true, -- show OSC when fullscreen?
-	scalewindowed = 1.5, -- scaling of the controller when windowed
-	scalefullscreen = 2, -- scaling of the controller when fullscreen
+	scalewindowed = 1.25, -- scaling of the controller when windowed
+	scalefullscreen = 1.5, -- scaling of the controller when fullscreen
 	scaleforcedwindow = 1, -- scaling when rendered on a forced window
 	vidscale = false, -- scale the controller with the video?
 	hidetimeout = 1000, -- duration in ms until the OSC hides if no
 	-- mouse movement. enforced non-negative for the
 	-- user, but internally negative is 'always-on'.
-	fadeduration = 500, -- duration of fade out in ms, 0 = no fade
+	fadeduration = 200, -- duration of fade out in ms, 0 = no fade
 	minmousemove = 3, -- minimum amount of pixels the mouse has to
 	-- move between ticks to make the OSC show up
 	iamaprogrammer = false, -- use native mpv values and disable OSC
@@ -39,7 +39,7 @@ local user_opts = {
 	visibility = 'auto', -- only used at init to set visibility_mode(...)
 	windowcontrols = 'auto', -- whether to show window controls
 	volumecontrol = true, -- whether to show mute button and volumne slider
-	processvolume = true, -- volue slider show processd volume
+	processvolume = true, -- volume slider show processd volume
 	language = 'eng',  -- eng=English, chs=Chinese
 	thumbpad = 0,      -- thumbnail border size
 }
