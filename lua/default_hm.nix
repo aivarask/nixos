@@ -93,7 +93,6 @@ in
         nvim-notify
         fidget-nvim
         luvit-meta
-        nvim-lsp-file-operations
       ])
       # misc
       (lib.mkIf true (

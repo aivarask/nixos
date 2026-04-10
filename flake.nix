@@ -18,7 +18,6 @@
   inputs.zen-browser.url = "github:0xc000022070/zen-browser-flake";
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   inputs.zen-browser.inputs.home-manager.follows = "home-manager";
-  inputs.musnix.url = "github:musnix/musnix";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
