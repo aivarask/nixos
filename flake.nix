@@ -21,6 +21,7 @@
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
+      foo = {};
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
@@ -45,7 +46,6 @@
               imports = [
                 inputs.nix-colors.homeManagerModules.default
                 inputs.zen-browser.homeModules.twilight
-
                 ./.programs.nix
                 ./lua/default_hm.nix
               ];
@@ -108,4 +108,4 @@
         ];
       };
     });
-}
+  }

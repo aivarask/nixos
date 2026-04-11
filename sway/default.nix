@@ -23,7 +23,7 @@
       # esc = "capslock";
     };
   };
-  # Optional, but makes sure that when you type the make palm rejection work with keyd
+  environment.etc."keyd/test.conf".source = "/etc/nixos/keyd/test.conf";
   # https://github.com/rvaiya/keyd/issues/723
   environment.etc."libinput/local-overrides.quirks".text = ''
     [Serial Keyboards]
@@ -42,6 +42,9 @@
 
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
+    keyd
+    wshowkeys
+    libinput
     # sway-overfocus
     showmethekey
     fuzzel

@@ -1,13 +1,20 @@
-bindsym	--release $mod+escape reload
+bindsym	--release $_+escape reload
 bindsym --release ctrl+escape scratchpad show
 bindsym --release shift+escape move scratchpad
-bindsym --release $mod+grave exec $term
+
+bindsym --release $_+grave workspace next 
+
+bindsym --release $_+tab focus next
+bindsym --release $mod+q kill
+
+bindsym --release $mod+return exec $term 
+bindsym --release $mod+ctrl+grave exec $term 
 bindsym --release $mod+menu exec $menu
 bindsym --release $mod+ctrl+menu exec nwg-drawer
-bindsym --release $mod+q kill
 bindsym $mod+r exec thunar
 bindsym $mod+shift+c kill
 bindsym --release $mod+backspace kill
+bindsym --release $mod+w exec firefox
 
 # `         grave
 # ~         asciitilde
@@ -21,7 +28,6 @@ floating_modifier $mod normal
 # hide_edge_borders --i3 smart
 focus_on_window_activation smart
 force_display_urgency_hint 100
-
 
 # for_window [all] title_window_icon yes
 # for_window [class=".*"] opacity $opacity
@@ -39,10 +45,8 @@ bindsym $mod+e exec "killall foot; foot -a tree sway_treeview"
 
 
 
-
 bindsym --release $mod+Prior exec $term htop 
 bindsym --release $mod+n exec swaync-client -t -sw
-bindsym --release $mod+w exec firefox
 bindsym --release $mod+shift+w exec firefox --private-window
 bindsym $mod+shift+z exec zen-twilight
 bindsym $mod+ctrl+z exec zen-twilight --private-window
@@ -52,7 +56,6 @@ bindsym --release $mod+c exec chromium-browser --new-window
 bindsym --release $mod+d layout toggle stacking splith
 bindsym --release $mod+shift+d layout toggle stacking splitv
 bindsym --release $mod+p sticky toggle
-bindsym --release $mod+tab focus next
 bindsym --release $mod+space fullscreen
 bindsym --release $mod+ctrl+space focus mode_toggle
 bindsym --release $mod+shift+space floating toggle

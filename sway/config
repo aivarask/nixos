@@ -1,4 +1,5 @@
 set $mod Mod4
+set $_ Mod4
 set $alt Mod1
 set $term kitty
 # set $menu rofi -show drun
@@ -16,7 +17,6 @@ set $scrollright button6
 set $scrollleft button7
 
 set $font pango:FiraCode Nerd Font Mono, Hack Nerd Font
-font $font 8
 set $maximize border none, move position center, resize set width 100 ppt height 100 ppt
 set $opacity 0.8
 

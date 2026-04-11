@@ -9,18 +9,17 @@
 let
   COMMON = with pkgs.vimPlugins; [
     gruvbox-material
-    bclose-vim
+    # bclose-vim
     fzf-vim
-    gruvbox-material
     switch-vim
     vim-scriptease
     vim-abolish
-    vim-cool
+    # vim-cool
     vim-devicons
     vim-highlightedyank
     vim-lastplace
-    direnv-vim
-    tabular
+    # direnv-vim
+    # tabular
   ];
 in
 {
@@ -31,13 +30,15 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
+
+        # YouCompleteMe
+	# vim-which-key
+	vim-commentary
         # vim-airline
-        vim-which-key
         # auto-pairs
         # nerdtree
         # vim-nerdtree-syntax-highlight
         # vim-indentwise
-        vim-commentary
         # vim-matchup
       ])
     ]

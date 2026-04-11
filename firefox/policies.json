@@ -42,14 +42,20 @@
 				"URL": "https://wiki.nixos.org/wiki/NixOS_Wiki",
 				"Favicon": "https://wiki.nixos.org/favicon.ico",
 				"Placement": "toolbar",
-				"Folder": "1"
+				"Folder": "2" 
+			},
+			{
+				"Title": "home-manager-options",
+				"URL": "https://home-manager-options.extranix.com",
+				"Placement": "toolbar",
+				"Folder": "2"
 			},
 			{
 				"Title": "Example",
 				"URL": "https://example.com",
 				"Favicon": "https://example.com/favicon.ico",
 				"Placement": "toolbar",
-				"Folder": "1"
+				"Folder": "2"
 			},
 			{
 				"Title": "YouTube",

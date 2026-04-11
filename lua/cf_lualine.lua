@@ -28,7 +28,9 @@ require('lualine').setup({
 	inactive_winbar = {
 		lualine_a = {},
 		lualine_b = { 'filename', },
-		lualine_x = {},
+		lualine_x = {
+
+		},
 	},
 
 	sections = {
@@ -39,8 +41,11 @@ require('lualine').setup({
 				return p:gsub('/nix/store/[%a%d]+-', ''):gsub(
 					vim.uv.cwd() .. '/' or '', '')
 			end,
+			function() return vim.api.nvim_buf_line_count(0) end,
+			'location',
 		},
-		lualine_c = {},
+		lualine_c = {
+		},
 		lualine_x = { function()
 			local separator = ''
 			local lsps = ''
@@ -56,8 +61,6 @@ require('lualine').setup({
 		},
 		lualine_y = { 'filetype', },
 		lualine_z = {
-			'location',
-			function() return vim.api.nvim_buf_line_count(0) end,
 		},
 	},
 	inactive_sections = {},
