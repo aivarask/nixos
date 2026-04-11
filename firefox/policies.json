@@ -42,7 +42,13 @@
 				"URL": "https://wiki.nixos.org/wiki/NixOS_Wiki",
 				"Favicon": "https://wiki.nixos.org/favicon.ico",
 				"Placement": "toolbar",
-				"Folder": "2" 
+				"Folder": "2"
+			},
+			{
+				"Title": "i3",
+				"URL": "https://i3wm.org/docs/userguide.html",
+				"Placement": "toolbar",
+				"Folder": "2"
 			},
 			{
 				"Title": "home-manager-options",

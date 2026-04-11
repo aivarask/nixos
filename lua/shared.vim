@@ -28,12 +28,25 @@ augroup	END
 
 augroup saves
 	autocmd!
-	autocmd FileType * autocmd TextChanged,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write | endif
+	autocmd FileType * autocmd TextChanged,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
+	autocmd FileChangedShellPost lua/shared.vim echo &bufname
+
+
+
+
+
+
+
+
+
+
 augroup END 
 
 
 augroup reads
+	au!
+	set autoread
 	autocmd VimResume,FileChangedShellPost * checktime
 	" autocmd BufRead * if &filetype == "" | setlocal ft=text | endif
 augroup END
@@ -81,7 +94,6 @@ set noswapfile
 set autowriteall
 set background=dark
 set undofile
-set autoread
 set updatetime=400
 set timeoutlen=500
 set conceallevel=2
@@ -148,11 +160,7 @@ function! SpawnBufferLine()
 	endfor
 	" let s .= '%#TabLineFill#%T'  " Reset highlight
 	let s .= '%=' " Spacer
-
-
-
 	return s
 endfunction
-
 set tabline=%!SpawnBufferLine()  " Assign the tabline
 
