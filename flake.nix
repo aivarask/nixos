@@ -95,6 +95,7 @@
           ./minimal.nix
           ./network.nix
           ./dell.nix
+          ./hdmi-cec.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
