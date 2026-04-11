@@ -7,7 +7,7 @@ nnoremap <silent> <Plug>(Save) :silent write<cr>
 nnoremap ZQ :q!<CR>
 nmap <M-Q> :<cr>
 nmap <leader>Q :%bd\|e#<cr>
-nnoremap <silent> <leader>q :bd<CR>
+nnoremap <silent> <leader>q :bd!<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 
 nnoremap <silent> ]= :tabnext<CR>
@@ -24,27 +24,30 @@ nnoremap <silent> [' :wincmd p<CR>
 
 inoremap jk <Esc>
 
-let c='a'
-
-"while c <= 'z'
-"  exec "set <M-".c.">=\e".c
-"  exec "imap \e".c." <M-".c.">"
-"  let c = nr2char(1+char2nr(c))
-"endwhile
 
 
-" nnoremap <M-K> :m .-2<CR>==
-" nnoremap <M-J> :m .+1<CR>==
-" inoremap <M-J> <Esc>:m .+1<CR>==gi
-" inoremap <M-K> <Esc>:m .-2<CR>==gi
-" vnoremap <M-J> :m '>+1<CR>gv=gv
-" vnoremap <M-K> :m '<-2<CR>gv=gv
+inoremap <M-S-B> msb
+"inoremap <M-N> mN
+inoremap <M-S-N> msN
 
-" inoremap <M-j> <C-O><Down>
-" inoremap <M-k> <C-O><Up>
+inoremap <M-n> mn
+
+inoremap <M-j> <C-O><Down>
+inoremap <M-k> <C-O><Up>
+
+
+
+
+
+nnoremap <M-K> :m .-2<CR>==
+nnoremap <M-J> :m .+1<CR>==
+inoremap <M-J> <Esc>:m .+1<CR>==gi
+inoremap <M-K> <Esc>:m .-2<CR>==gi
+vnoremap <M-J> :m '>+1<CR>gv=gv
+vnoremap <M-K> :m '<-2<CR>gv=gv
 
 " let scroll=8
-" map <Space> 8<C-E>
+ "map <Space> 8<C-E>
 " map <S-Space> 8<C-Y>
 " imap <C-Space> 
 
@@ -63,7 +66,7 @@ function Term(arg = "zsh") abort
 		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
 	endif
 endfunction
-command! -bang -nargs=* Term call Term('lazygit')
+command! -bang -nargs=* Term call Term()
 
 "tmap <silent> ` <C-w>:Term<cr>
 nmap <silent> ` :Term<CR>
@@ -71,6 +74,8 @@ nmap <silent> <C-`> :Term lazygit<CR>
 tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
 tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
 
 if has('nvim')
 	"autocmd! nvim.terminal TermClose
@@ -83,9 +88,9 @@ else
 	nnoremap /. :Files<CR>
 	nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
 
-	nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
-	nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
-	nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+	" nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
+	" nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
+	" nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
 	cnoremap <nowait> <Esc>h <Left>
 	cnoremap <nowait> <Esc>l <Right>
 endif

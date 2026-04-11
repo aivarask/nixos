@@ -18,6 +18,7 @@ bindsym --release $_+ctrl+grave exec $term
 
 bindsym --release $_+tab focus next
 bindsym --release $_+q kill
+bindsym --release $_+w+ctrl exec chromium-browser --new-window
 
 bindsym --release $_+d layout toggle stacking splith
 bindsym --release $_+return exec $term 
@@ -27,7 +28,7 @@ bindsym --release $mod+ctrl+menu exec nwg-drawer
 bindsym $mod+r exec thunar
 bindsym $mod+shift+c kill
 bindsym --release $mod+backspace kill
-bindsym --release $mod+w exec firefox
+bindsym --release $_+w exec firefox
 
 bindsym --release ctrl+escape scratchpad show
 bindsym --release shift+escape move scratchpad
@@ -69,7 +70,6 @@ bindsym --release $mod+n exec swaync-client -t -sw
 bindsym --release $mod+shift+w exec firefox --private-window
 bindsym $mod+shift+z exec zen-twilight
 bindsym $mod+ctrl+z exec zen-twilight --private-window
-bindsym --release $mod+ctrl+w exec chromium-browser --new-window
 bindsym --release $mod+c exec chromium-browser --new-window
 
 bindsym --release $mod+shift+d layout toggle stacking splitv

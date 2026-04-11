@@ -1,25 +1,22 @@
-syntax on
-filetype plugin indent on
-
-function! Woo()
-	if true
-		echo true
-	else
-		echo false
-	endif
-endfunction
-
-
+" terminal
+if !has('nvim') | set term=kitty | endif
+set termguicolors
 if &term =~ '256color' | set t_ut= | endif
 if !has('gui_running') | set t_Co=256 guioptions-=e |endif
+let &t_EI = "\<Esc>[2 q"
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+
+" undo
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
+
+" session
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
 set sessionoptions=buffers,curdir,folds,help,tabpages,options,localoptions
-
 augroup sessions
 	autocmd!
 	" autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
@@ -31,16 +28,6 @@ augroup saves
 	autocmd FileType * autocmd TextChanged,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 	autocmd FileChangedShellPost lua/shared.vim echo &bufname
-
-
-
-
-
-
-
-
-
-
 augroup END 
 
 
@@ -51,6 +38,20 @@ augroup reads
 	" autocmd BufRead * if &filetype == "" | setlocal ft=text | endif
 augroup END
 
+aug test
+	au!
+	autocmd BufRead lua/{keymaps,shared}.vim echo expand("%") strftime("%H:%M")
+	"au!
+aug END
+
+set wildmode=noselect:lastused,full
+set wildoptions=pum
+set wildignorecase
+set wildcharm=<C-Z>
+"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 augroup etc
 	autocmd!
 	autocmd CmdlineChanged [:\/\?] call wildtrigger()
@@ -58,23 +59,9 @@ augroup etc
 	" autocmd BufLeave,FocusLost * silent! wal
 augroup END
 
-aug test
-	au!
-	autocmd BufRead lua/{keymaps,shared}.vim echo expand("%") strftime("%H:%M")
-	"au!
-aug END
-
-
-
-
-
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
-			\ | diffthis | wincmd p | diffthis
 
 syntax on
 filetype plugin indent on
-
-set termguicolors
 set showtabline=2
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 "set shortmess=filnxToOScF
@@ -100,26 +87,12 @@ set conceallevel=2
 set clipboard=unnamedplus
 set scrolloff=8
 set cmdheight=2
-set wildmode=noselect:lastused,full
-set wildoptions=pum
-set wildignorecase
 set shiftround
 set gdefault
 set ignorecase
 set smartcase
-set wildcharm=<C-Z>
 set whichwrap+=<,>,[,]
-"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-command! SC vnew
-			\ | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
-			\ | nnoremap <buffer> ,s :silent %source<CR>
-"nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 
-
-
-let &t_EI = "\<Esc>[2 q"
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
