@@ -11,6 +11,7 @@ let &t_SR = "\<Esc>[4 q"
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
+set undofile
 
 " session
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
@@ -23,42 +24,35 @@ augroup sessions
 	" autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
 augroup	END
 
-augroup saves
-	autocmd!
-	autocmd FileType * autocmd TextChanged,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | endif
-	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
-	autocmd FileChangedShellPost lua/shared.vim echo &bufname
-augroup END 
-
+set noswapfile
+set updatetime=400
+set autoread
+set breakindent
+" set breakindentopt="sbr,shift:16"
+set wrap
+set sidescrolloff=8
 
 augroup reads
 	au!
-	set autoread
-	autocmd VimResume,FileChangedShellPost * checktime
-	" autocmd BufRead * if &filetype == "" | setlocal ft=text | endif
+	autocmd FocusLost,InsertLeave,TextChanged <buffer> if empty(&buftype) && &readonly == 0 | silent! update | echom strftime("%H:%M") 'update' | endif
+	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | echom strftime("%H:%M") 'written' | endif
+	autocmd FocusGained,CursorHold,CursorHoldI * checktime
+	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
+	autocmd BufWinEnter lua/{keymaps,shared}.vim echo expand("%") strftime("%H:%M")
 augroup END
-
-aug test
-	au!
-	autocmd BufRead lua/{keymaps,shared}.vim echo expand("%") strftime("%H:%M")
-	"au!
-aug END
 
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
 set wildcharm=<C-Z>
-"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
-augroup etc
+augroup wild
 	autocmd!
 	autocmd CmdlineChanged [:\/\?] call wildtrigger()
-	"autocmd VimResized * wincmd =
-	" autocmd BufLeave,FocusLost * silent! wal
 augroup END
-
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
+"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 
 syntax on
 filetype plugin indent on
@@ -76,12 +70,7 @@ set modeline
 set noshowmode
 set splitkeep=topline
 set splitbelow
-set nowrap
-set noswapfile
-set autowriteall
 set background=dark
-set undofile
-set updatetime=400
 set timeoutlen=500
 set conceallevel=2
 set clipboard=unnamedplus
@@ -98,7 +87,6 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-
 
 
 function! SpawnBufferLine()

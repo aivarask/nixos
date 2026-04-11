@@ -24,21 +24,10 @@ nnoremap <silent> [' :wincmd p<CR>
 
 inoremap jk <Esc>
 
-
-
-inoremap <M-S-B> msb
-"inoremap <M-N> mN
-inoremap <M-S-N> msN
-
-inoremap <M-n> mn
-
+inoremap <M-h> <C-O><Left>
 inoremap <M-j> <C-O><Down>
 inoremap <M-k> <C-O><Up>
-
-
-
-
-
+inoremap <M-l> <C-O><Right>
 nnoremap <M-K> :m .-2<CR>==
 nnoremap <M-J> :m .+1<CR>==
 inoremap <M-J> <Esc>:m .+1<CR>==gi
@@ -52,6 +41,7 @@ vnoremap <M-K> :m '<-2<CR>gv=gv
 " imap <C-Space> 
 
 function Term(arg = "zsh") abort
+	echom a:arg
 	let tname = '!' . a:arg
 	if has('nvim') | let tname = 'term:/' | endif
 	let bnr = bufnr(tname)
@@ -66,7 +56,7 @@ function Term(arg = "zsh") abort
 		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
 	endif
 endfunction
-command! -bang -nargs=* Term call Term()
+command! -bang -nargs=* Term call Term(<f-args>)
 
 "tmap <silent> ` <C-w>:Term<cr>
 nmap <silent> ` :Term<CR>

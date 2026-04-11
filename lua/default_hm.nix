@@ -16,8 +16,8 @@ let
     vim-abolish
     # vim-cool
     vim-devicons
-    vim-highlightedyank
-    vim-lastplace
+    # vim-highlightedyank
+    # vim-lastplace
     # direnv-vim
     # tabular
   ];
@@ -32,8 +32,8 @@ in
       (with pkgs.vimPlugins; [
 
         # YouCompleteMe
-	# vim-which-key
-	vim-commentary
+        # vim-which-key
+        vim-commentary
         # vim-airline
         # auto-pairs
         # nerdtree
