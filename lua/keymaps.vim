@@ -63,10 +63,11 @@ function Term(arg = "zsh") abort
 		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
 	endif
 endfunction
-command! -bang -nargs=* Term call Term()
+command! -bang -nargs=* Term call Term('lazygit')
 
 "tmap <silent> ` <C-w>:Term<cr>
 nmap <silent> ` :Term<CR>
+nmap <silent> <C-`> :Term lazygit<CR>
 tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
 tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'

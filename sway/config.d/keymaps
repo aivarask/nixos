@@ -5,6 +5,10 @@ bindsym --release $_+f3 exec "kitty --directory=/etc/nixos/ vim lua/shared.vim l
 bindsym --release $_+f4 exec kitty; exec kitty; layout splith
 bindsym --release $_+f5 exec "kitty & kitty & kitty --hold swaymsg layout splith"
 bindsym --release $_+f6 exec $term pulsemixer
+bindsym --release $_+f7 reload
+bindsym --release $_+f8 reload
+bindsym --release $_+f9 reload
+bindsym --release $_+f10 reload
 bindsym --release $_+f11 reload
 bindsym	--release $_+f12 exit
 
