@@ -27,24 +27,24 @@ augroup sessions
 augroup	END
 " }}}
 
+" io {{{
 set foldmethod=marker
 set noswapfile
 set updatetime=400
 set autoread
 set breakindent
-" set breakindentopt="sbr,shift:16"
 set wrap
 set sidescrolloff=8
-
 augroup reads
 	au!
 	autocmd FocusLost,InsertLeave,TextChanged <buffer> if empty(&buftype) && &readonly == 0 | silent! update | echom strftime("%H:%M") 'update' | endif
 	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | echom strftime("%H:%M") 'written' | endif
 	autocmd FocusGained,CursorHold,CursorHoldI * checktime
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
-	autocmd BufWinEnter lua/{keymaps,shared}.vim echo expand("%") strftime("%H:%M")
 augroup END
+" }}}
 
+" cmd {{{
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
@@ -57,7 +57,9 @@ command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
 command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 "cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+" }}}
 
+" settings {{{
 syntax on
 filetype plugin indent on
 set showtabline=2
@@ -85,14 +87,14 @@ set gdefault
 set ignorecase
 set smartcase
 set whichwrap+=<,>,[,]
-
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+" }}}
 
-
+" status {{{
 function! SpawnBufferLine()
 	let s = ''
 	" Making a tab list on the right side
@@ -105,7 +107,6 @@ function! SpawnBufferLine()
 	if tabpagenr('$') > 1
 		let s .= '%999X X '
 	endif
-
 	" Get the list of buffers. Use bufexists() to include hidden buffers
 	let bufferNums = filter(range(1, bufnr('$')), 'buflisted(v:val)')
 	for i in bufferNums
@@ -128,4 +129,4 @@ function! SpawnBufferLine()
 	return s
 endfunction
 set tabline=%!SpawnBufferLine()  " Assign the tabline
-
+" }}}
