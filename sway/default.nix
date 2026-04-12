@@ -5,6 +5,7 @@
   ...
 }:
 {
+
   environment.variables.WLR_DRM_NO_MODIFIERS = 1;
   environment.variables.WLR_RENDERER = "vulkan";
   environment.variables.XDG_CURRENT_DESKTOP = "sway";
@@ -42,6 +43,7 @@
 
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
+    mcat
     keyd
     wshowkeys
     libinput

@@ -1,4 +1,4 @@
-" terminal
+" terminal {{{
 if !has('nvim') | set term=kitty | endif
 set termguicolors
 if &term =~ '256color' | set t_ut= | endif
@@ -6,14 +6,16 @@ if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
+" }}}
 
-" undo
+" undo {{{
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
 set undofile
+" }}}
 
-" session
+" session {{{
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
@@ -23,7 +25,9 @@ augroup sessions
 	" autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	" autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
 augroup	END
+" }}}
 
+set foldmethod=marker
 set noswapfile
 set updatetime=400
 set autoread
