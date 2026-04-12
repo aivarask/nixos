@@ -80,33 +80,29 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (ps: [
-          ps.nix
-        ]))
+        (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
         nvim-nio
         which-key-nvim
-        lualine-nvim
-        nvim-tree-lua
+	SchemaStore-nvim
+	outline-nvim
+	flatten-nvim
+	nvim-colorizer-lua
+	nvim-web-devicons
+	mini-icons
+	image-nvim
         sqlite-lua
         kitty-scrollback-nvim
-      ])
-      (with pkgs.vimPlugins; [
         nvim-notify
         fidget-nvim
         luvit-meta
       ])
       # misc
-      (lib.mkIf true (
+      (lib.mkIf false (
         with pkgs.vimPlugins;
         [
-          SchemaStore-nvim
-          outline-nvim
-          flatten-nvim
-          nvim-colorizer-lua
-          nvim-web-devicons
-          mini-icons
-          image-nvim
-          telescope-nvim
+        # lualine-nvim
+        # nvim-tree-lua
+	# telescope-nvim
         ]
       ))
 

@@ -6,6 +6,33 @@ if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
+augroup terminals
+	au!
+	" autocmd TermOpen,WinEnter "term://*" startinsert  
+augroup END
+function Term(arg = "zsh") abort
+	echom a:arg
+	let tname = '!' . a:arg
+	if has('nvim') | let tname = 'term:/' | endif
+	let bnr = bufnr(tname)
+	let wnr = bufwinnr(tname)
+	if wnr > 0 && winnr('$') > 1
+		execute wnr . 'wincmd c'
+	elseif bnr > 0 && bnr != bufnr(@%)
+		execute 'sb ' . bnr
+	elseif bnr == bufnr(@%)
+		execute 'bprevious | sb ' . bnr . ' | wincmd p'
+	else
+		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
+	endif
+endfunction
+command! -bang -nargs=* Term call Term(<f-args>)
+"tmap <silent> ` <C-w>:Term<cr>
+nmap <silent> ` :Term<CR>
+nmap <silent> <C-`> :Term lazygit<CR>
+tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
+tmap <Esc> <C-\><C-N>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
 
 " undo {{{
@@ -38,8 +65,8 @@ set sidescrolloff=8
 augroup reads
 	au!
 	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 | update | echom strftime("%H:%M") 'update' | endif
-	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | echom strftime("%H:%M") 'written' | endif
-	autocmd FocusGained,CursorHold,CursorHoldI * checktime
+	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if...
+	autocmd FocusGained,CursorHold,CursorHoldI * if empty(&buftype) | checktime | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 augroup END
 " }}}
@@ -49,6 +76,13 @@ set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
 set wildcharm=<C-Z>
+cnoremap <Left> <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
+" cmap <expr> <C-T> wildmenumode() ? "echo yes" : "echo no"
+cmap <expr> <C-T> pumvisible() ? (complete_info().selected == -1 ? '<C-y><CR>' : '<C-y>') : '<CR>'
+
 augroup wild
 	autocmd!
 	autocmd CmdlineChanged [:\/\?] call wildtrigger()
