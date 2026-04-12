@@ -21,7 +21,7 @@
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-      foo = {};
+      foo = { };
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
@@ -108,4 +108,4 @@
         ];
       };
     });
-  }
+}

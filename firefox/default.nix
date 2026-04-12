@@ -23,7 +23,7 @@ in
   imports = [
     # inputs.zen-browser.homeModules.twilight
   ];
-    programs.zen-browser.nativeMessagingHosts = [pkgs.firefoxpwa];
+  programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
   programs.zen-browser = {
     enable = true;
 
