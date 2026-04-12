@@ -71,27 +71,6 @@ augroup reads
 augroup END
 " }}}
 
-" cmdline {{{
-set wildmode=noselect:lastused,full
-set wildoptions=pum
-set wildignorecase
-set wildcharm=<C-Z>
-cnoremap <Left> <Space><BS><Left>
-cnoremap <Right> <Space><BS><Right>
-cnoremap <nowait> <Esc>h <Left>
-cnoremap <nowait> <Esc>l <Right>
-" cmap <expr> <C-T> wildmenumode() ? "echo yes" : "echo no"
-cmap <expr> <C-T> pumvisible() ? (complete_info().selected == -1 ? '<C-y><CR>' : '<C-y>') : '<CR>'
-
-augroup wild
-	autocmd!
-	autocmd CmdlineChanged [:\/\?] call wildtrigger()
-augroup END
-command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
-"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
-" }}}
 
 " settings {{{
 syntax on
@@ -163,4 +142,42 @@ function! SpawnBufferLine()
 	return s
 endfunction
 set tabline=%!SpawnBufferLine()  " Assign the tabline
+" }}}
+
+" cmdline {{{
+set wildmode=noselect:lastused,full
+set wildoptions=pum
+set wildignorecase
+set wildcharm=<C-Z>
+augroup wild
+	autocmd!
+	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
+augroup END
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
+"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+" cmap <expr> / pumvisible() ? (complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
+nnoremap <expr> <F2> Woo()
+inoremap <expr> ?? Woo()
+" cunmap <expr> <Tab> Woo()
+
+function! Test()
+	e lua/
+endfunction
+
+
+cnoremap <Left> <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
+
+function! Woo()
+
+	echom complete_info()
+	" startinsert
+	
+	return "\<Ignore>"
+endfunction
+
 " }}}
