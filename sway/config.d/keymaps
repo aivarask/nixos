@@ -1,8 +1,9 @@
+# esc {{{
 bindsym	--release $_+escape reload
 bindsym	--release $_+f1 exec $term --directory=/etc/nixos/ nvim
 bindsym --release $_+f2 exec $term --directory=/etc/nixos/ vim
 bindsym --release $_+f3 exec "kitty --directory=/etc/nixos/ vim lua/shared.vim lua/keymaps.vim & kitty --directory=/etc/nixos/ nvim lua/shared.vim lua/keymaps.vim & kitty swaymsg layout splith"
-bindsym --release $_+f4 exec kitty; exec kitty; layout splith
+bindsym --release $_+f4 exec kitty
 bindsym --release $_+f5 exec "kitty & kitty & kitty --hold swaymsg layout splith"
 bindsym --release $_+f6 exec $term pulsemixer
 bindsym --release $_+f7 reload
@@ -11,25 +12,43 @@ bindsym --release $_+f9 reload
 bindsym --release $_+f10 reload
 bindsym --release $_+f11 reload
 bindsym	--release $_+f12 exit
+# }}}
 
-
+# num {{{
 bindsym --release $_+grave workspace next 
-bindsym --release $_+ctrl+grave exec $term 
+bindsym --release $_+grave+ctrl exec $term 
+bindsym $_+1 workspace number 1
+bindsym $_+2 workspace number 2
+bindsym $_+3 workspace number 3
+bindsym $_+4 workspace number 4
+bindsym $_+1+shift move container to workspace number 1
+bindsym $_+2+shift move container to workspace number 2
+bindsym $_+3+shift move container to workspace number 3
+bindsym $_+4+shift move container to workspace number 4
+bindsym --release $_+backspace kill
+# }}}
 
+# tab {{{
 bindsym --release $_+tab focus next
 bindsym --release $_+q kill
+bindsym --release $_+w exec firefox
+bindsym --release $_+w+shift exec firefox --private-window
 bindsym --release $_+w+ctrl exec chromium-browser --new-window
 
 bindsym --release $_+d layout toggle stacking splith
 bindsym --release $_+return exec $term 
+# }}}
 
-bindsym --release $mod+menu exec $menu
-bindsym --release $mod+ctrl+menu exec nwg-drawer
-bindsym $mod+r exec thunar
-bindsym $mod+shift+c kill
-bindsym --release $mod+backspace kill
-bindsym --release $_+w exec firefox
 
+bindsym --release $_+menu exec $menu
+bindsym --release $_+ctrl+menu exec nwg-drawer
+bindsym $_+less move workspace to output left
+bindsym $_+greater move workspace to output right
+bindsym $_+r exec thunar
+bindsym $_+c+shift kill
+
+bindsym $_+z+shift exec zen-twilight
+bindsym $_+z+ctrl exec zen-twilight --private-window
 bindsym --release ctrl+escape scratchpad show
 bindsym --release shift+escape move scratchpad
 # `         grave
@@ -67,9 +86,7 @@ bindsym $mod+e exec "killall foot; foot -a tree sway_treeview"
 
 bindsym --release $mod+Prior exec $term htop 
 bindsym --release $mod+n exec swaync-client -t -sw
-bindsym --release $mod+shift+w exec firefox --private-window
-bindsym $mod+shift+z exec zen-twilight
-bindsym $mod+ctrl+z exec zen-twilight --private-window
+
 bindsym --release $mod+c exec chromium-browser --new-window
 
 bindsym --release $mod+shift+d layout toggle stacking splitv

@@ -37,14 +37,14 @@ set wrap
 set sidescrolloff=8
 augroup reads
 	au!
-	autocmd FocusLost,InsertLeave,TextChanged <buffer> if empty(&buftype) && &readonly == 0 | silent! update | echom strftime("%H:%M") 'update' | endif
+	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 | update | echom strftime("%H:%M") 'update' | endif
 	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if empty(&buftype) && &readonly == 0 | silent! write! | echom strftime("%H:%M") 'written' | endif
 	autocmd FocusGained,CursorHold,CursorHoldI * checktime
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 augroup END
 " }}}
 
-" cmd {{{
+" cmdline {{{
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
