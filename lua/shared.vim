@@ -10,7 +10,7 @@ augroup terminals
 	au!
 	" autocmd TermOpen,WinEnter "term://*" startinsert  
 augroup END
-function Term(arg = "zsh") abort
+function! Term(arg = "zsh") abort
 	echom a:arg
 	let tname = '!' . a:arg
 	if has('nvim') | let tname = 'term:/' | endif
@@ -46,12 +46,15 @@ set undofile
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=buffers,curdir,folds,help,tabpages,options,localoptions
+set sessionoptions=buffers,curdir,folds,help,tabpages,options
 augroup sessions
 	autocmd!
-	" autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
-	" autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
+	 "autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
+	 "autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
 augroup	END
+function! SessionClear()
+	call delete(v:this_session)
+endfunction
 " }}}
 
 " io {{{
@@ -71,7 +74,6 @@ augroup reads
 augroup END
 " }}}
 
-
 " settings {{{
 syntax on
 filetype plugin indent on
@@ -81,7 +83,6 @@ set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\
 "set shortmess=ltToOCF
 set shortmess=aoOstTWAIcCFS
 set hidden
-set completeopt=menu,menuone,noselect
 set mouse=a
 set mousefocus
 set lazyredraw
@@ -181,3 +182,69 @@ function! Woo()
 endfunction
 
 " }}}
+
+" find {{{
+set path=**
+set wildignore+=**/.git/**
+
+function! FindFuncGlob(cmdarg, cmdcomplete)
+	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
+	return glob(pat, v:false, v:true)
+endfunc
+
+function! FindGitFiles(cmdarg, cmdcomplete)
+	let fnames = systemlist('git ls-files')
+	return fnames->filter('v:val =~? a:cmdarg')
+endfunc
+
+function! FindFiles(filename)
+  let error_file = tempname()
+  silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
+  set errorformat=%f:%l:%m
+  exe "cfile ". error_file
+  copen
+endfunction
+
+command! -nargs=1 Find call FindFiles(<q-args>)
+nmap /. :Find<space>
+function! FindFunc(cmdarg, cmdcomplete)
+    let files = glob("**", v:false, v:true)
+    return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
+endfunc
+set findfunc=FindFunc
+set autocomplete
+set autocompletetimeout=100
+set autocompletedelay=300
+let &l:complete = 'o,' . &l:complete
+set completetimeout=100
+set completeopt=menu,menuone,noselect
+set completeopt+=fuzzy
+
+
+
+" grep
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
+function! Grep(...)
+  return system(join([&grepprg] + a:000), ' ')
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
+nmap // :Grep<space>
+"}}}
+
+" tags {{{
+" set tagfunc=ctags
+set tags=tags
+" }}}
+
+if !has('nvim')
+	packadd! editorconfig
+	packadd hlyank
+	packadd comment
+endif
+
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_winsize=-30
+let g:netrw_wiw=0
+
+let g:which_key_vertical = 1

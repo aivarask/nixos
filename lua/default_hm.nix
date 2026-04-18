@@ -14,8 +14,9 @@ let
 in
 {
   home.packages = with pkgs; [
-    ctags
+    # ctags
     universal-ctags
+    geekbench
   ];
   xdg.configFile."vim".source = osConfig.symlink "/etc/nixos/lua";
   programs.vim.enable = true;
@@ -24,8 +25,6 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
-
-        vim-commentary
       ])
     ]
   );
@@ -44,6 +43,29 @@ in
     ];
   programs.neovim.package =
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
+  programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
+    lib.mkMerge [
+      COMMON
+      (with pkgs.vimPlugins; [
+        (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
+        nvim-nio
+        which-key-nvim
+        SchemaStore-nvim
+        flatten-nvim
+        nvim-colorizer-lua
+        nvim-web-devicons
+        mini-icons
+        image-nvim
+        sqlite-lua
+        kitty-scrollback-nvim
+        nvim-notify
+        fidget-nvim
+        luvit-meta
+      ])
+
+    ]
+  );
   programs.neovim.extraLuaPackages =
     ps: with ps; [
       plenary-nvim
@@ -61,37 +83,5 @@ in
       lua-zlib
       compat53
     ];
-  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
-  programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
-    lib.mkMerge [
-      COMMON
-      (with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
-        nvim-nio
-        which-key-nvim
-        SchemaStore-nvim
-        outline-nvim
-        flatten-nvim
-        nvim-colorizer-lua
-        nvim-web-devicons
-        mini-icons
-        image-nvim
-        sqlite-lua
-        kitty-scrollback-nvim
-        nvim-notify
-        fidget-nvim
-        luvit-meta
-      ])
-      # misc
-      (lib.mkIf false (
-        with pkgs.vimPlugins;
-        [
-          # lualine-nvim
-          # nvim-tree-lua
-          # telescope-nvim
-        ]
-      ))
 
-    ]
-  );
 }
