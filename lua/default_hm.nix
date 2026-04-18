@@ -10,24 +10,21 @@ let
   COMMON = with pkgs.vimPlugins; [
     gruvbox-material
     vim-scriptease
+    vim-gutentags
+    ctrlp-vim
+
   ];
 in
 {
   home.packages = with pkgs; [
-    # ctags
     universal-ctags
-    geekbench
+    cscope
+    gdb
   ];
   xdg.configFile."vim".source = osConfig.symlink "/etc/nixos/lua";
   programs.vim.enable = true;
-  programs.vim.extraConfig = "source $XDG_CONFIG_HOME/vim/vimrc";
-  programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (
-    lib.mkMerge [
-      COMMON
-      (with pkgs.vimPlugins; [
-      ])
-    ]
-  );
+  programs.vim.extraConfig = "source $XDG_CONFIG_HOME/vim/shared.vim";
+  programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (lib.mkMerge [ COMMON ]);
   programs.neovim.enable = true;
   programs.neovim.initLua =
     let
@@ -41,9 +38,9 @@ in
       nvimEarlyInit
       # nvimLateInit
     ];
+  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.package =
     inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  home.sessionVariables.SQLITE_CLIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}";
   programs.neovim.plugins = lib.mkIf (config.programs.neovim.enable == true) (
     lib.mkMerge [
       COMMON
@@ -53,7 +50,6 @@ in
         which-key-nvim
         SchemaStore-nvim
         flatten-nvim
-        nvim-colorizer-lua
         nvim-web-devicons
         mini-icons
         image-nvim

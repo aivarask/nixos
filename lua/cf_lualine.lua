@@ -46,19 +46,7 @@ require('lualine').setup({
 		},
 		lualine_c = {
 		},
-		lualine_x = { function()
-			local separator = ''
-			local lsps = ''
-			for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-				lsps = client.config.name .. lsps
-				if client:supports_method('textDocument/formatting') then
-					lsps = lsps .. '[F]'
-				end
-				lsps = lsps .. separator
-			end
-			return lsps
-		end
-		},
+		lualine_x = { 		},
 		lualine_y = { 'filetype', },
 		lualine_z = {
 		},

@@ -1,3 +1,12 @@
+" hlsearch {{{
+augroup AutoHighlighting
+    au!
+    autocmd CmdlineEnter /,\? set hlsearch
+    autocmd CmdlineLeave /,\? set nohlsearch
+augroup END
+nnoremap <leader>h <cmd>set hlsearch!<cr>
+" }}}
+
 " terminal {{{
 if !has('nvim') | set term=kitty | endif
 set termguicolors
@@ -81,7 +90,7 @@ set showtabline=2
 set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
-set shortmess=aoOstTWAIcCFS
+set shortmess=aoOstTWAIcCF
 set hidden
 set mouse=a
 set mousefocus
@@ -232,19 +241,85 @@ nmap // :Grep<space>
 "}}}
 
 " tags {{{
-" set tagfunc=ctags
+"set tagfunc=ctags -R *
 set tags=tags
 " }}}
 
-if !has('nvim')
-	packadd! editorconfig
-	packadd hlyank
-	packadd comment
-endif
-
+" netrw {{{
+let g:netrw_keepdir = 0
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=-30
+let g:netrw_preview=1
 let g:netrw_wiw=0
+let g:netrw_sizestyle="H"
+let g:netrw_sort_options="i"
+"}}}
 
-let g:which_key_vertical = 1
+if !has('nvim')
+	packadd! editorconfig
+	packadd! hlyank
+	packadd! comment
+	packadd! helpcurwin
+	packadd! termdebug
+else
+	let g:loaded_python3_provider = 0
+	let g:loaded_perl_provider = 0
+endif
+
+let g:which_key_vertical=1
+" let g:no_vim_maps=1
+
+nmap q <Nop>
+nmap Q <Nop>
+nnoremap <silent> <Plug>(Save) :silent write<cr>
+nnoremap ZQ :q!<CR>
+nmap <M-Q> :<cr>
+nmap <leader>Q :%bd\|e#<cr>
+nnoremap <silent> <leader>q :bd!<CR>
+nnoremap <silent> <leader>a :call SourceLuafile()<CR>
+
+nnoremap <silent> ]= :tabnext<CR>
+nnoremap <silent> [- :tabprevious<CR>
+map <silent> ]] :bnext<CR>
+map <silent> [[ :bprevious<CR>
+tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
+tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
+
+nnoremap <silent> [<BS> :b#<CR>
+nnoremap <silent> ]<BS> :b#<CR>
+nnoremap <silent> ]\ :wincmd w<CR>
+nnoremap <silent> [' :wincmd p<CR>
+
+inoremap jk <Esc>
+
+inoremap <M-h> <C-O><Left>
+inoremap <M-j> <C-O><Down>
+inoremap <M-k> <C-O><Up>
+inoremap <M-l> <C-O><Right>
+nnoremap <M-K> :m .-2<CR>==
+nnoremap <M-J> :m .+1<CR>==
+inoremap <M-J> <Esc>:m .+1<CR>==gi
+inoremap <M-K> <Esc>:m .-2<CR>==gi
+vnoremap <M-J> :m '>+1<CR>gv=gv
+vnoremap <M-K> :m '<-2<CR>gv=gv
+
+" let scroll=8
+ "map <Space> 8<C-E>
+" map <S-Space> 8<C-Y>
+" imap <C-Space> 
+
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
+
+"autocmd! nvim.terminal TermClose
+nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
+nnoremap qq :Lexplore<CR>
+nnoremap // :Rg<CR>
+nnoremap /. :Files<CR>
+nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
+" nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
+" nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
+" nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
+
+

@@ -1,7 +1,3 @@
 " vim: ft=vim
-" https://devhints.io/vimscript
-
-source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/shared.vim
-source $XDG_CONFIG_HOME/vim/keymaps.vim
 

@@ -26,8 +26,7 @@ require('kitty-scrollback').setup(
 			},
 		},
 	})
-require('flatten').setup {}
-require('colorizer').setup({})
+require('flatten').setup {integrations = {kitty=true}}
 if vim.uv.os_getenv('WAYLAND_DISPLAY') then
 	require('image').setup({ backend = 'kitty' }) -- https://raw.githubusercontent.com/3rd/image.nvim/refs/heads/master/README.md
 end

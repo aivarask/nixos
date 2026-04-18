@@ -24,6 +24,13 @@ let
   );
 in
 {
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.pathsToLink = [ "/include" ];

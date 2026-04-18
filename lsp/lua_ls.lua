@@ -1,15 +1,7 @@
 local library = {
 	vim.env.VIMRUNTIME,
-	-- '/etc/static/luajit/share/lua/5.1',
-	-- '${3rd}/luv/library',
-	-- '${3rd}/busted/library',
-	-- '${3rd}/luassert/library',
-	-- '/etc/nixos/httpd'
 }
 
-local userThirdParty = {
-	-- '/etc/static/lua-language-server/share/lua-language-server/meta/3rd',
-}
 
 local path = {
 	'lua/?/init.lua',
@@ -28,9 +20,6 @@ for i = #library, 1, -1 do
 	end
 end
 for _, name in ipairs({
-	'nvim%-tree',
-	'nvim%-web%-devicons'
-	, 'telescope.nvim',
 	-- 'plenary.nvim',
 }) do
 	for _, v in ipairs(vim.api.nvim_list_runtime_paths()) do

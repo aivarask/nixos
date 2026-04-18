@@ -56,7 +56,6 @@ function! Syn()
 endfunction
 
 
-
 function! MimeType(filename) abort
   if !executable('file')
     throw 'No ''file'' in ' . $PATH
