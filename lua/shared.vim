@@ -1,3 +1,6 @@
+" let g:loaded_matchit = 1
+let g:no_vim_maps=1
+
 " hlsearch {{{
 augroup AutoHighlighting
     au!
@@ -55,9 +58,10 @@ set undofile
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=buffers,curdir,folds,help,tabpages,options
+set sessionoptions=buffers,curdir,folds,help,tabpages,options,winsize,winpos
 augroup sessions
 	autocmd!
+	 " autocmd VimEnter * Obsession
 	 "autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
 	 "autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
 augroup	END
@@ -76,8 +80,8 @@ set wrap
 set sidescrolloff=8
 augroup reads
 	au!
-	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 | update | echom strftime("%H:%M") 'update' | endif
-	" autocmd FileType * autocmd FocusLost,InsertLeave <buffer> if...
+	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 && !empty(&filetype) | update | echom strftime("%H:%M") 'update' | endif
+	autocmd FileType * autocmd BufEnter <buffer> let b:did_add_maps=1
 	autocmd FocusGained,CursorHold,CursorHoldI * if empty(&buftype) | checktime | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 augroup END
@@ -85,18 +89,16 @@ augroup END
 
 " settings {{{
 syntax on
-filetype plugin indent on
-set showtabline=2
-set statusline=%n\ %f:%l:%c\ %L\ %m\ %r\ %y\ %q\ 
+" filetype indent plugin off
+filetype plugin off
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
-set shortmess=aoOstTWAIcCF
+set shortmess=oOstTWAIcCF
 set hidden
 set mouse=a
 set mousefocus
 set lazyredraw
 set modeline
-set noshowmode
 set splitkeep=topline
 set splitbelow
 set background=dark
@@ -104,20 +106,26 @@ set timeoutlen=500
 set conceallevel=2
 set clipboard=unnamedplus
 set scrolloff=8
-set cmdheight=2
 set shiftround
 set gdefault
 set ignorecase
 set smartcase
 set whichwrap+=<,>,[,]
+set previewheight=32
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 " }}}
 
 " status {{{
+set showtabline=2
+set title titlestring=%{g:self}\ %{getcwd()}\ %f\ 
+let &titleold=getcwd()
+set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}
+" set statusline+=%S
+set showmode
+set cmdheight=2
 function! SpawnBufferLine()
 	let s = ''
 	" Making a tab list on the right side
@@ -242,57 +250,75 @@ nmap // :Grep<space>
 
 " tags {{{
 "set tagfunc=ctags -R *
-set tags=tags
+"set tags=tags
 " }}}
 
 " netrw {{{
-let g:netrw_keepdir = 0
+"let g:netrw_keepdir = 0
 let g:netrw_banner=0
 let g:netrw_liststyle=3
-let g:netrw_winsize=-30
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=15
+" let g:netrw_winsize=-30
 let g:netrw_preview=1
 let g:netrw_wiw=0
 let g:netrw_sizestyle="H"
 let g:netrw_sort_options="i"
+let g:netrw_mousemaps=0
 "}}}
 
+" packadd {{{
 if !has('nvim')
+	source $VIMRUNTIME/xdg.vim
+	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after"
 	packadd! editorconfig
 	packadd! hlyank
 	packadd! comment
 	packadd! helpcurwin
-	packadd! termdebug
+	" packadd! termdebug
+	packadd! matchit
 else
-	let g:loaded_python3_provider = 0
-	let g:loaded_perl_provider = 0
 endif
+" }}}
 
-let g:which_key_vertical=1
-" let g:no_vim_maps=1
+" maps {{{1
+
+" let scroll=8
+ "map <Space> 8<C-E>
+" map <S-Space> 8<C-Y>
+" imap <C-Space> 
 
 nmap q <Nop>
 nmap Q <Nop>
-nnoremap <silent> <Plug>(Save) :silent write<cr>
+nnoremap qq :Lexplore<CR>
 nnoremap ZQ :q!<CR>
-nmap <M-Q> :<cr>
-nmap <leader>Q :%bd\|e#<cr>
+inoremap jk <Esc>
+nnoremap <silent> <leader>Q :%bd\|e#<cr>
 nnoremap <silent> <leader>q :bd!<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
+nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
+nnoremap <F5> :w\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
+imap <F5> <C-O><F5>
 
+nmap hg zc
+
+" focus {{{2
 nnoremap <silent> ]= :tabnext<CR>
 nnoremap <silent> [- :tabprevious<CR>
-map <silent> ]] :bnext<CR>
-map <silent> [[ :bprevious<CR>
+nnoremap <silent> ]] :bnext<CR>
+nnoremap <silent> [[ :bprevious<CR>
 tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
 tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
-
 nnoremap <silent> [<BS> :b#<CR>
 nnoremap <silent> ]<BS> :b#<CR>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
+" }}}
 
-inoremap jk <Esc>
-
+" shiftround {{{3
 inoremap <M-h> <C-O><Left>
 inoremap <M-j> <C-O><Down>
 inoremap <M-k> <C-O><Up>
@@ -303,23 +329,6 @@ inoremap <M-J> <Esc>:m .+1<CR>==gi
 inoremap <M-K> <Esc>:m .-2<CR>==gi
 vnoremap <M-J> :m '>+1<CR>gv=gv
 vnoremap <M-K> :m '<-2<CR>gv=gv
+" }}}
 
-" let scroll=8
- "map <Space> 8<C-E>
-" map <S-Space> 8<C-Y>
-" imap <C-Space> 
-
-nnoremap <C-N> :cnext<CR>
-nnoremap <C-P> :cprev<CR>
-
-"autocmd! nvim.terminal TermClose
-nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
-nnoremap qq :Lexplore<CR>
-nnoremap // :Rg<CR>
-nnoremap /. :Files<CR>
-nnoremap <F5> :source $XDG_CONFIG_HOME/vim/vimrc<CR>
-" nnoremap <silent> <leader><leader> :<C-U>WhichKey '\' '\'<CR>
-" nnoremap <silent> <leader> :<C-U>WhichKey '\'<CR>
-" nnoremap <silent> ] :<C-U>WhichKey ']'<CR>
-
-
+" }}}

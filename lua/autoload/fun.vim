@@ -1,21 +1,21 @@
 if !exists('*SourceLuafile')
-	function! SourceLuafile() abort
-		if &filetype ==?'vim'
-			" :%s/\s\+$//e
-			:silent! write
-			:source %
-		elseif &filetype ==?'lua'
-			:silent! write
-			:luafile %
-		else
-		endif
-		:edit | call feedkeys('zx')
-		return
-	endfunction
 endif
+function! sourceluafile() abort
+	if &filetype ==?'vim'
+		" :%s/\s\+$//e
+		:silent! write
+		:source %
+	elseif &filetype ==?'lua'
+		:silent! write
+		:luafile %
+	else
+	endif
+	:edit | call feedkeys('zx')
+	return
+endfunction
 
 function! RuntimepathList() 
-	exe "new | put =split(" . expand(&runtimepath) . ",  ',')"
+	:exe "new | put =split(" . expand(&runtimepath) . ",  ',')"
 endfunction
 
 function! Ctoggle()
@@ -36,8 +36,8 @@ function! RegistersClear()
 	let regs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
 	let i = 0
 	while (i < strlen(regs))
-			execute 'let @' . regs[i] . ' = ""'
-			let i = i + 1
+		execute 'let @' . regs[i] . ' = ""'
+		let i = i + 1
 	endwhile
 	unlet regs
 endfunction
@@ -51,26 +51,26 @@ endfunction
 
 function! Syn()
 	for id in synstack(line('.'), col('.'))
-		 echo synIDattr(id, 'name')
+		echo synIDattr(id, 'name')
 	endfor
 endfunction
 
 
 function! MimeType(filename) abort
-  if !executable('file')
-    throw 'No ''file'' in ' . $PATH
-  endif
+	if !executable('file')
+		throw 'No ''file'' in ' . $PATH
+	endif
 
-  let l:output = systemlist('file --mime-type ' . shellescape(a:filename))
-  if v:shell_error !=# 0 || len(l:output) ==# 0
-    throw 'Command error: ''file --mime-type'': ' . join(l:output, "\n")
-  endif
+	let l:output = systemlist('file --mime-type ' . shellescape(a:filename))
+	if v:shell_error !=# 0 || len(l:output) ==# 0
+		throw 'Command error: ''file --mime-type'': ' . join(l:output, "\n")
+	endif
 
-  let l:file_output = l:output[0]
-  let l:mimetype = substitute(l:file_output, '\v^.*\:\s*(.*)\s*$', '\1', '')
-  if l:mimetype ==# '' || stridx(l:mimetype, '/') ==# -1
-    return 'The MIME type could not be detected'
-  endif
+	let l:file_output = l:output[0]
+	let l:mimetype = substitute(l:file_output, '\v^.*\:\s*(.*)\s*$', '\1', '')
+	if l:mimetype ==# '' || stridx(l:mimetype, '/') ==# -1
+		return 'The MIME type could not be detected'
+	endif
 
-  return l:mimetype
+	return l:mimetype
 endfunction

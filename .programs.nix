@@ -108,4 +108,5 @@ in
   xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
   xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
+  xdg.configFile."w3m".source = symlink "${xdgconf}/w3m";
 }

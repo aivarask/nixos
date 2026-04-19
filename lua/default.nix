@@ -18,19 +18,13 @@ let
       penlight
       plenary-nvim
       luafilesystem
-      # nlua # nvim as lua interpreter
       busted
     ]
   );
 in
 {
-
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
-
+  programs.nix-ld.libraries = with pkgs; [ ];
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.pathsToLink = [ "/include" ];
@@ -42,10 +36,6 @@ in
     # vscode-langservers-extracted
     glibc
     # glibcInfo
-    clang
-    clang-tools
-    bear
-    cmake
     ludtwig
     intelephense
     gnumake

@@ -1,7 +1,7 @@
 # esc {{{
 bindsym	--release $_+escape reload
 bindsym	--release $_+f1 exec $term --directory=/etc/nixos/ nvim
-bindsym --release $_+f2 exec $term --directory=/etc/nixos/ vim
+bindsym --release $_+f2 exec $term --directory=/etc/nixos/ vim -S
 bindsym --release $_+f3 exec "kitty --directory=/etc/nixos/ vim lua/shared.vim lua/keymaps.vim & kitty --directory=/etc/nixos/ nvim lua/shared.vim lua/keymaps.vim & kitty swaymsg layout splith"
 bindsym --release $_+f4 exec kitty
 bindsym --release $_+f5 exec "kitty & kitty & kitty --hold swaymsg layout splith"

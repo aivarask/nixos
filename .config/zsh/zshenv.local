@@ -3,6 +3,7 @@
 
 setopt extended_glob
 
+export W3M_DIR="$XDG_CONFIG_HOME/w3m"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 export YDIFF_OPTIONS='-w40'
@@ -14,6 +15,7 @@ export PAPIRUS=/run/current-system/sw/share/icons/Papirus/
 typeset -TU PATH path ':'
 path+=(${0:a:h}/bin)
 path+=($XDG_CONFIG_HOME/sway/bin)
+path+=($HOME/.local/bin)
 # path+=( /etc/nixos/*(N-/) )
 
 typeset -TU CPATH cpath ':'
