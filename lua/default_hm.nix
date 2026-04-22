@@ -12,6 +12,7 @@ let
     vim-scriptease
     vim-obsession
     vim-gutentags
+    vim-vinegar
     ctrlp-vim
   ];
 in

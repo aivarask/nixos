@@ -11,5 +11,5 @@ x-scheme-handler/tonsite=org.telegram.desktop.desktop
 x-scheme-handler/tg=org.telegram.desktop.desktop;
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
 application/zip=org.gnome.FileRoller.desktop;
-video/webm=umpv.desktop;io.github.celluloid_player.Celluloid.desktop;mpv.desktop;
+video/webm=mpv.desktop;umpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/mp4=mpv.desktop;

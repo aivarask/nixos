@@ -1,22 +1,22 @@
 # esc {{{
-bindsym	--release $_+escape reload
-bindsym	--release $_+f1 exec $term --directory=/etc/nixos/ nvim
-bindsym --release $_+f2 exec $term --directory=/etc/nixos/ vim -S
-bindsym --release $_+f3 exec "kitty --directory=/etc/nixos/ vim lua/shared.vim lua/keymaps.vim & kitty --directory=/etc/nixos/ nvim lua/shared.vim lua/keymaps.vim & kitty swaymsg layout splith"
-bindsym --release $_+f4 exec kitty
-bindsym --release $_+f5 exec "kitty & kitty & kitty --hold swaymsg layout splith"
-bindsym --release $_+f6 exec $term pulsemixer
-bindsym --release $_+f7 reload
-bindsym --release $_+f8 exec kitten quick-access-terminal
-bindsym --release $_+f9 reload
-bindsym --release $_+f10 reload
-bindsym --release $_+f11 reload
-bindsym	--release $_+f12 exit
+bindsym	$_+escape reload
+bindsym	$_+f1 exec $term --directory=/etc/nixos/ nvim -S
+bindsym $_+f2 exec $term --directory=/etc/nixos/ vim -S
+bindsym $_+f3 exec "kitty --directory=/etc/nixos/ vim lua/shared.vim lua/keymaps.vim & kitty --directory=/etc/nixos/ nvim lua/shared.vim lua/keymaps.vim & kitty swaymsg layout splith"
+bindsym $_+f4 exec kitty
+bindsym $_+f5 exec "kitty & kitty & kitty --hold swaymsg layout splith"
+bindsym $_+f6 exec $term pulsemixer
+bindsym $_+f7 reload
+bindsym $_+f8 exec kitten quick-access-terminal
+bindsym $_+f9 reload
+bindsym $_+f10 reload
+bindsym $_+f11 reload
+bindsym	$_+f12 exit
 # }}}
 
 # num {{{
-bindsym --release $_+grave workspace next 
-bindsym --release $_+grave+ctrl exec $term 
+bindsym $_+grave workspace next 
+bindsym $_+grave+ctrl exec $term 
 bindsym $_+1 workspace number 1
 bindsym $_+2 workspace number 2
 bindsym $_+3 workspace number 3
@@ -25,18 +25,24 @@ bindsym $_+1+shift move container to workspace number 1
 bindsym $_+2+shift move container to workspace number 2
 bindsym $_+3+shift move container to workspace number 3
 bindsym $_+4+shift move container to workspace number 4
-bindsym --release $_+backspace kill
+bindsym $_+backspace kill
 # }}}
 
 # tab {{{
-bindsym --release $_+tab focus next
-bindsym --release $_+q kill
-bindsym --release $_+w exec firefox
-bindsym --release $_+w+shift exec firefox --private-window
-bindsym --release $_+w+ctrl exec chromium-browser --new-window
+bindsym $_+tab focus next
+bindsym $_+q kill
+bindsym $_+w exec firefox
+bindsym $_+w+shift exec firefox --private-window
+bindsym $_+w+ctrl exec chromium-browser --new-window
+bindsym	$_+e exec $term --directory=/etc/nixos/ nvim -S
+bindsym $_+r exec $term --directory=/etc/nixos/ vim -S
+for_window [app_id=tree] floating enable, resize set 30ppt 30ppt, move position 69ppt 1ppt, opacity $opacity
+bindsym $_+t exec "killall foot; foot -a tree sway_treeview"
+# }}}
 
-bindsym --release $_+d layout toggle stacking splith
-bindsym --release $_+return exec $term 
+# caps {{{
+bindsym $_+d layout toggle stacking splith
+bindsym $_+return exec $term 
 # }}}
 
 
@@ -44,7 +50,7 @@ bindsym --release $_+menu exec $menu
 bindsym --release $_+ctrl+menu exec nwg-drawer
 bindsym $_+less move workspace to output left
 bindsym $_+greater move workspace to output right
-bindsym $_+r exec thunar
+# bindsym $_+r exec thunar
 bindsym $_+c+shift kill
 
 bindsym $_+z+shift exec zen-twilight
@@ -78,11 +84,6 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 40p
 for_window [app_id="one.alynx.showmethekey"] floating enable, sticky enable, opacity $opacity
 for_window [app_id="org.gnome.(Calculator|tweaks)"] floating enable, opacity $opacity
 for_window [app_id=thunar] floating enable, resize set 40ppt 60ppt, opacity $opacity
-
-for_window [app_id=tree] floating enable, resize set 30ppt 30ppt, move position 69ppt 1ppt, opacity $opacity
-bindsym $mod+e exec "killall foot; foot -a tree sway_treeview"
-
-
 
 bindsym --release $mod+Prior exec $term htop 
 bindsym --release $mod+n exec swaync-client -t -sw

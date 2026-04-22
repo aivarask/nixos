@@ -1,5 +1,14 @@
-" let g:loaded_matchit = 1
+let g:loaded_matchit=1
+let g:loaded_scriptease=1
+let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
+let g:ctrlp_map='<M-e>'
+" let g:ctrlp_user_command='fd --full-path "\/etc\/nixos"'
+" let g:ctrlp_user_command = 'find %s -type f' 
+let g:ctrlp_user_command = 'fd --type f --hidden --color never "" %s'
+let g:ctrlp_show_hidden = 1
+set verbosefile="./verbose"
+set verbose=0
 
 " hlsearch {{{
 augroup AutoHighlighting
@@ -58,7 +67,11 @@ set undofile
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set sessionoptions=buffers,curdir,folds,help,tabpages,options,winsize,winpos
+set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+
+"set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
+"set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
+" set sessionoptions+=globals,terminal
 augroup sessions
 	autocmd!
 	 " autocmd VimEnter * Obsession
@@ -80,7 +93,7 @@ set wrap
 set sidescrolloff=8
 augroup reads
 	au!
-	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 && !empty(&filetype) | update | echom strftime("%H:%M") 'update' | endif
+	autocmd FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 && !empty(&filetype) | update | echom 0 && strftime("%H:%M") 'update' | endif
 	autocmd FileType * autocmd BufEnter <buffer> let b:did_add_maps=1
 	autocmd FocusGained,CursorHold,CursorHoldI * if empty(&buftype) | checktime | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
@@ -89,8 +102,7 @@ augroup END
 
 " settings {{{
 syntax on
-" filetype indent plugin off
-filetype plugin off
+filetype indent plugin on
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
 set shortmess=oOstTWAIcCF
@@ -112,6 +124,7 @@ set ignorecase
 set smartcase
 set whichwrap+=<,>,[,]
 set previewheight=32
+set previewwindow
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
@@ -272,17 +285,17 @@ let g:netrw_mousemaps=0
 if !has('nvim')
 	source $VIMRUNTIME/xdg.vim
 	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after"
-	packadd! editorconfig
+	" packadd! editorconfig
 	packadd! hlyank
 	packadd! comment
-	packadd! helpcurwin
+	" packadd! helpcurwin
 	" packadd! termdebug
-	packadd! matchit
+	" packadd! matchit
 else
 endif
 " }}}
 
-" maps {{{1
+" maps {{{
 
 " let scroll=8
  "map <Space> 8<C-E>
@@ -298,12 +311,12 @@ nnoremap <silent> <leader>Q :%bd\|e#<cr>
 nnoremap <silent> <leader>q :bd!<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
-nnoremap <F5> :w\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
+nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
 imap <F5> <C-O><F5>
 
 nmap hg zc
 
-" focus {{{2
+" focus {{{
 nnoremap <silent> ]= :tabnext<CR>
 nnoremap <silent> [- :tabprevious<CR>
 nnoremap <silent> ]] :bnext<CR>
@@ -318,7 +331,7 @@ nnoremap <C-N> :cnext<CR>
 nnoremap <C-P> :cprev<CR>
 " }}}
 
-" shiftround {{{3
+" shiftround {{{
 inoremap <M-h> <C-O><Left>
 inoremap <M-j> <C-O><Down>
 inoremap <M-k> <C-O><Up>
@@ -332,3 +345,61 @@ vnoremap <M-K> :m '<-2<CR>gv=gv
 " }}}
 
 " }}}
+
+" switch {{{
+let g:switch_mapping = ''
+let g:switch_custom_definitions =
+\ [
+	\   { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+	\   { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+	\   { '\v^(\s*[*+-] )?\[ \]': '\1[x]',
+	\     '\v^(\s*[*+-] )?\[x\]': '\1[-]',
+	\     '\v^(\s*[*+-] )?\[-\]': '\1[ ]',
+	\   },
+	\   { '\v^(\s*\d+\. )?\[ \]': '\1[x]',
+	\     '\v^(\s*\d+\. )?\[x\]': '\1[-]',
+	\     '\v^(\s*\d+\. )?\[-\]': '\1[ ]',
+	\   },
+	\   ['left', 'right', 'middle'],
+	\   ['yes', 'no'],
+	\   ['on', 'off'],
+	\   ['default', 'tabbed', 'stacking'],
+	\   ['foldenable', 'nofoldenable'],
+	\   ['true', 'false'],
+	\   ['horizontal', 'vertical'],
+	\   ['top', 'bottom'],
+	\   ['hide', 'show'],
+	\   ['enable', 'disable'],
+	\   ['firefox', 'chromium-browser'],
+	\   ['foo', 'bar', 'baz'],
+	\   ['red', 'green', 'blue']
+\ ]
+nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
+nmap gs <Plug>(SwitchInLine)
+
+function! SwitchLine(cnt)
+    let tick = b:changedtick
+    let start = getcurpos()
+    for n in range(a:cnt)
+        Switch
+    endfor
+    if b:changedtick != tick
+        return
+    endif
+    while v:true
+        let pos = getcurpos()
+        normal! w
+        if pos[1] != getcurpos()[1] || pos == getcurpos()
+            break
+        endif
+        for n in range(a:cnt)
+            Switch
+        endfor
+        if b:changedtick != tick
+            return
+        endif
+    endwhile
+    call setpos('.', start)
+endfun
+" }}}
+
