@@ -2,14 +2,18 @@ let g:loaded_matchit=1
 let g:loaded_scriptease=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
+
+" ctrlp {{{
 let g:ctrlp_map='<M-e>'
 " let g:ctrlp_user_command='fd --full-path "\/etc\/nixos"'
 " let g:ctrlp_user_command = 'find %s -type f' 
 let g:ctrlp_user_command = 'fd --type f --hidden --color never "" %s'
 let g:ctrlp_show_hidden = 1
+" }}}
+" inspect,debug {{{
 set verbosefile="./verbose"
 set verbose=0
-
+" }}}
 " hlsearch {{{
 augroup AutoHighlighting
     au!
@@ -18,7 +22,6 @@ augroup AutoHighlighting
 augroup END
 nnoremap <leader>h <cmd>set hlsearch!<cr>
 " }}}
-
 " terminal {{{
 if !has('nvim') | set term=kitty | endif
 set termguicolors
@@ -55,19 +58,17 @@ tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
 tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
-
 " undo {{{
 if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
 set undofile
 " }}}
-
 " session {{{
 let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
 call mkdir(g:session_dir, "p", 0700)
 let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set ssop="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+set ssop="blank,buffers,curdir,folds,help,tabpages,winpos,winsize,terminal"
 
 "set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
 "set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
@@ -82,7 +83,6 @@ function! SessionClear()
 	call delete(v:this_session)
 endfunction
 " }}}
-
 " io {{{
 set foldmethod=marker
 set noswapfile
@@ -99,7 +99,6 @@ augroup reads
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 augroup END
 " }}}
-
 " settings {{{
 syntax on
 filetype indent plugin on
@@ -130,7 +129,6 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 colorscheme gruvbox-material
 " }}}
-
 " status {{{
 set showtabline=2
 set title titlestring=%{g:self}\ %{getcwd()}\ %f\ 
@@ -174,7 +172,6 @@ function! SpawnBufferLine()
 endfunction
 set tabline=%!SpawnBufferLine()  " Assign the tabline
 " }}}
-
 " cmdline {{{
 set wildmode=noselect:lastused,full
 set wildoptions=pum
@@ -212,7 +209,6 @@ function! Woo()
 endfunction
 
 " }}}
-
 " find {{{
 set path=**
 set wildignore+=**/.git/**
@@ -260,27 +256,29 @@ endfunction
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 nmap // :Grep<space>
 "}}}
-
 " tags {{{
 "set tagfunc=ctags -R *
 "set tags=tags
 " }}}
 
+" PLUGINS {{{
 " netrw {{{
 "let g:netrw_keepdir = 0
 let g:netrw_banner=0
 let g:netrw_liststyle=3
-let g:netrw_browse_split=4
+let g:netrw_browse_split=0
 let g:netrw_altv=1
+let g:netrw_alto=1
 let g:netrw_winsize=15
 " let g:netrw_winsize=-30
 let g:netrw_preview=1
-let g:netrw_wiw=0
+let g:netrw_wiw=4
 let g:netrw_sizestyle="H"
 let g:netrw_sort_options="i"
 let g:netrw_mousemaps=0
-"}}}
-
+" let g:netrw_list_hide=
+let g:netrw_localmovecmd=0
+" }}}
 " packadd {{{
 if !has('nvim')
 	source $VIMRUNTIME/xdg.vim
@@ -294,7 +292,6 @@ if !has('nvim')
 else
 endif
 " }}}
-
 " maps {{{
 
 " let scroll=8
@@ -345,7 +342,6 @@ vnoremap <M-K> :m '<-2<CR>gv=gv
 " }}}
 
 " }}}
-
 " switch {{{
 let g:switch_mapping = ''
 let g:switch_custom_definitions =
@@ -402,4 +398,4 @@ function! SwitchLine(cnt)
     call setpos('.', start)
 endfun
 " }}}
-
+" }}}

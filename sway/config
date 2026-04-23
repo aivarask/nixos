@@ -1,8 +1,13 @@
+# xwayland disable
+focus_follows_mouse yes
+# output * bg /etc/nixos/img/dark_grad.png center
+seat seat0 xcursor_theme "XCursor-Pro-Light" 24
+
+# set {{{
 set $mod Mod4
 set $_ Mod4
 set $alt Mod1
 set $term kitty
-# set $menu rofi -show drun
 set $menu fuzzel
 set $left h
 set $down j
@@ -15,32 +20,177 @@ set $scrollup button4
 set $scrolldown button5
 set $scrollright button6
 set $scrollleft button7
-
 set $font pango:FiraCode Nerd Font Mono, Hack Nerd Font
 set $maximize border none, move position center, resize set width 100 ppt height 100 ppt
 set $opacity 0.8
-
-xwayland disable
-focus_follows_mouse yes
-
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-bindsym $mod+left focus left
-bindsym $mod+down focus down
-bindsym $mod+up focus up
-bindsym $mod+right focus right
-
-bindsym $mod+shift+$left move left
-bindsym $mod+shift+$down move down
-bindsym $mod+shift+$up move up
-bindsym $mod+shift+$right move right
-bindsym $mod+shift+Left move left
-bindsym $mod+shift+Down move down
-bindsym $mod+shift+Up move up
-bindsym $mod+shift+Right move right
+# }}}
+# autostart {{{
+# exec nicotine --hidden
+# exec flameshot
+# exec gammastep
+# exec_always nwg-dock -r -nows
+exec_always swaync
+exec kanshi
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+# exec ydotoold --socket-path=$YDOTOOL_SOCKET --socket-perm=0660
+# }}}
+# bar {{{
+bar {
+	swaybar_command waybar
+}
+# }}}
+# idle {{{
+for_window [app_id="firefox"] inhibit_idle fullscreen
+exec swayidle -w \
+    timeout 6000 'systemctl suspend'
+# }}}
+# layout {{{
+gaps inner 4px
+gaps outer 0px
+smart_gaps on
+default_border pixel
+default_floating_border pixel
+hide_edge_borders smart_no_gaps
+default_orientation auto
+workspace_layout stacking
+# }}}
+# focus {{{
+bindsym $_+$left focus left
+bindsym $_+$right focus right
+bindsym $_+$up focus up
+bindsym $_+$down focus down
+bindsym $_+left focus left
+bindsym $_+right focus right
+bindsym $_+up focus up
+bindsym $_+down focus down
+# }}}
+# move {{{
+bindsym $_+shift+$left move left
+bindsym $_+shift+$right move right
+bindsym $_+shift+$up move up
+bindsym $_+shift+$down move down
+bindsym $_+shift+left move left
+bindsym $_+shift+right move right
+bindsym $_+shift+up move up
+bindsym $_+shift+down move down
+# }}}
+# move mode {{{
+mode "move" {
+    bindsym Left  exec sway-move-to left
+    bindsym Right exec sway-move-to right
+    bindsym Down  exec sway-move-to bottom
+    bindsym Up    exec sway-move-to top
+    bindsym w     exec sway-move-to top-left
+    bindsym e     exec sway-move-to mid-top
+    bindsym r     exec sway-move-to top-right
+    bindsym s     exec sway-move-to mid-left
+    bindsym d     exec sway-move-to centre
+    bindsym f     exec sway-move-to mid-right
+    bindsym x     exec sway-move-to bottom-left
+    bindsym c     exec sway-move-to mid-bottom
+    bindsym v     exec sway-move-to bottom-right
+    bindsym q mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# }}}
+# resize mode {{{
+set $res 5ppt
+bindsym --whole-window $mod+button4 resize grow height $res
+bindsym --whole-window $mod+button5 resize shrink height $res
+mode "resize" {
+    bindsym --whole-window button4 resize grow height $res
+    bindsym --whole-window button5 resize shrink height $res
+    bindsym $left resize shrink width $res
+    bindsym $down resize grow height $res
+    bindsym $up resize shrink height $res
+    bindsym $right resize grow width $res
+    bindsym Left resize shrink width $res
+    bindsym Down resize grow height $res
+    bindsym Up resize shrink height $res
+    bindsym Right resize grow width $res
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# }}}
+# input {{{
+# swaymsg -t get_inputs --raw | jq '.[] | select(.type=="touchpad")'
+input type:keyboard {
+	repeat_delay 250
+	repeat_rate 50
+	xkb_numlock enabled
+	xkb_layout "us,lt"
+	xkb_variant "euro"
+	xkb_options "grp:alt_space_toggle"
+	# xkb_options "grp:menu_toggle"
+	# xkb_options "caps:escape"
+}
+input type:touchpad {
+		dwt enabled
+		tap enabled
+		natural_scroll enabled
+		middle_emulation enabled
+		drag_lock enabled
+}
+input type:pointer {
+	accel_profile adaptive
+	left_handed disabled
+	pointer_accel -0.9
+}
+input 'Dell_Dell_Wired_Multimedia_Keyboard' {
+    accel_profile flat
+}
+# }}}
+# outputs {{{
+output * bg #000000 solid_color
+# output * allow_tearing yes
+# output * max_render_time 6
+# output * max_render_time 0
+# output * adaptive_sync on
+# output * scale_filter nearest
+set $4k 3840x2160
+output DP-1     resolution 3840x2160 position 1920,0 scale 2
+output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
+# output HDMI-A-1 resolution 3840x2160 position 0,0 scale 2
+# output HDMI-A-1 color_profile srgb
+# output HDMI-A-1 disable
+# output eDP-1    resolution 3840x2160 position 0,0 scale 2
+# output DP-3     resolution 1920x1080 position 1920,0 scale 1
+output eDP-1    resolution 3840x2160 position 1920,0 scale 2
+output DP-3     resolution 1920x1080 position 0,0 scale 1
+# }}}
+# gruvbox {{{
+set $white #ffffff
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+# }}}
+# colors {{{
+#                         border      backgr      text        indicator   child_border
+client.focused            $gray       $gray       $darkgray   $green     $darkgray
+client.focused_inactive   $darkgray   $darkgray   $white     $green     $darkgray
+client.unfocused          $darkgray   $darkgray   $white     $green     $darkgray
+client.urgent             $red        $red        $white      $red        $red
+client.placeholder        #000000     #0c0c0c     $white     $bg     #0c0c0c
+# }}}
+# swayfx {{{
+corner_radius 4
+blur enable
+blur_passes 2
+blur_radius 4
+shadows disable
+shadow_blur_radius 4
+default_dim_inactive 0.20
+# }}}
 
 include /etc/sway/config.d/*
-include $HOME/.config/sway/config.d/*
+include $HOME/.config/sway/keymaps
+# include $HOME/.config/sway/config.d/*
 

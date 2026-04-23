@@ -1,5 +1,6 @@
 {
 	"policies": {
+		"HardwareAcceleration": false,
 		"Permissions": {
 			"Autoplay": {
 				"Allow": [],
