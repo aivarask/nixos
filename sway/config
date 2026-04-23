@@ -146,7 +146,6 @@ input 'Dell_Dell_Wired_Multimedia_Keyboard' {
 output * bg #000000 solid_color
 # output * allow_tearing yes
 # output * max_render_time 6
-# output * max_render_time 0
 # output * adaptive_sync on
 # output * scale_filter nearest
 set $4k 3840x2160
@@ -192,5 +191,4 @@ default_dim_inactive 0.20
 
 include /etc/sway/config.d/*
 include $HOME/.config/sway/keymaps
-# include $HOME/.config/sway/config.d/*
 

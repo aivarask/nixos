@@ -14,6 +14,7 @@ let
     vim-gutentags
     vim-vinegar
     ctrlp-vim
+    switch-vim
   ];
 in
 {

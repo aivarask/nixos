@@ -1,6 +1,19 @@
+" vim: foldmethod=indent
+
+function! Bclose(bang, buffer)
+	if empty(a:buffer)
+		let btarget = bufnr('%')
+	elseif a:buffer =~ '^\d\+$'
+		let btarget = bufnr(str2nr(a:buffer))
+	else
+		let btarget = bufnr(a:buffer)
+	endif
+	execute 'bdelete' btarget
+endfunction
+
 if !exists('*SourceLuafile')
 endif
-function! sourceluafile() abort
+function! SourceLuafile() abort
 	if &filetype ==?'vim'
 		" :%s/\s\+$//e
 		:silent! write
@@ -12,6 +25,22 @@ function! sourceluafile() abort
 	endif
 	:edit | call feedkeys('zx')
 	return
+endfunction
+
+function! MimeType(filename) abort
+	if !executable('file')
+		throw 'No ''file'' in ' . $PATH
+	endif
+	let l:output = systemlist('file --mime-type ' . shellescape(a:filename))
+	if v:shell_error !=# 0 || len(l:output) ==# 0
+		throw 'Command error: ''file --mime-type'': ' . join(l:output, "\n")
+	endif
+	let l:file_output = l:output[0]
+	let l:mimetype = substitute(l:file_output, '\v^.*\:\s*(.*)\s*$', '\1', '')
+	if l:mimetype ==# '' || stridx(l:mimetype, '/') ==# -1
+		return 'The MIME type could not be detected'
+	endif
+	return l:mimetype
 endfunction
 
 function! RuntimepathList() 
@@ -53,24 +82,4 @@ function! Syn()
 	for id in synstack(line('.'), col('.'))
 		echo synIDattr(id, 'name')
 	endfor
-endfunction
-
-
-function! MimeType(filename) abort
-	if !executable('file')
-		throw 'No ''file'' in ' . $PATH
-	endif
-
-	let l:output = systemlist('file --mime-type ' . shellescape(a:filename))
-	if v:shell_error !=# 0 || len(l:output) ==# 0
-		throw 'Command error: ''file --mime-type'': ' . join(l:output, "\n")
-	endif
-
-	let l:file_output = l:output[0]
-	let l:mimetype = substitute(l:file_output, '\v^.*\:\s*(.*)\s*$', '\1', '')
-	if l:mimetype ==# '' || stridx(l:mimetype, '/') ==# -1
-		return 'The MIME type could not be detected'
-	endif
-
-	return l:mimetype
 endfunction

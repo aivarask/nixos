@@ -1,24 +1,123 @@
+" packadd {{{
+if !has('nvim')
+	source $VIMRUNTIME/xdg.vim
+	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after"
+	packadd! hlyank
+	packadd! comment
+" packadd! editorconfig
+" packadd! helpcurwin
+" packadd! termdebug
+" packadd! matchit
+else
+endif
+" }}}
+" session {{{
+" aug sess | au! | au SessionLoadPost * Lexplore | aug END
+set ssop="curdir,folds,help,tabpages,winpos,winsize,terminal"
+" }}}
 let g:loaded_matchit=1
-let g:loaded_scriptease=1
+let g:loaded_scriptease=0
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
-
+au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 | silent! bwipeout! | endif
+" netrw {{{
+" let g:loaded_netrw = 0
+" let g:loaded_netrwPlugin = 0
+" let g:netrw_keepdir = 0
+" let g:netrw_preview=1
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=0
+let g:netrw_altv=1
+let g:netrw_alto=1
+let g:netrw_winsize=15
+let g:netrw_wiw=4
+let g:netrw_sizestyle="H"
+let g:netrw_sort_options="i"
+let g:netrw_mousemaps=0
+function! NetrwMappings() abort
+	map <buffer> D <Nop>
+endfunction
+augroup netrw_mappings
+	autocmd!
+	autocmd filetype netrw call NetrwMappings()
+augroup END
+" }}}
 " ctrlp {{{
 let g:ctrlp_map='<M-e>'
-" let g:ctrlp_user_command='fd --full-path "\/etc\/nixos"'
-" let g:ctrlp_user_command = 'find %s -type f' 
+let g:ctrlp_arg_map = 1
 let g:ctrlp_user_command = 'fd --type f --hidden --color never "" %s'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
 " }}}
+" switch {{{ 
+let g:switch_mapping = ''
+let g:switch_custom_definitions =
+			\ [
+			\   { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
+			\   { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
+			\   { '\v^(\s*[*+-] )?\[ \]': '\1[x]',
+			\     '\v^(\s*[*+-] )?\[x\]': '\1[-]',
+			\     '\v^(\s*[*+-] )?\[-\]': '\1[ ]',
+			\   },
+			\   { '\v^(\s*\d+\. )?\[ \]': '\1[x]',
+			\     '\v^(\s*\d+\. )?\[x\]': '\1[-]',
+			\     '\v^(\s*\d+\. )?\[-\]': '\1[ ]',
+			\   },
+			\   ['left', 'right', 'middle'],
+			\   ['yes', 'no'],
+			\   ['on', 'off'],
+			\   ['default', 'tabbed', 'stacking'],
+			\   ['foldenable', 'nofoldenable'],
+			\   ['true', 'false'],
+			\   ['horizontal', 'vertical'],
+			\   ['top', 'bottom'],
+			\   ['hide', 'show'],
+			\   ['enable', 'disable'],
+			\   ['firefox', 'chromium-browser'],
+			\   ['foo', 'bar', 'baz'],
+			\   ['red', 'green', 'blue']
+			\ ]
+nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
+nmap gs <Plug>(SwitchInLine)
+function! SwitchLine(cnt)
+	let tick = b:changedtick
+	let start = getcurpos()
+	for n in range(a:cnt)
+		Switch
+	endfor
+	if b:changedtick != tick
+		return
+	endif
+	while v:true
+		let pos = getcurpos()
+		normal! w
+		if pos[1] != getcurpos()[1] || pos == getcurpos()
+			break
+		endif
+		for n in range(a:cnt)
+			Switch
+		endfor
+		if b:changedtick != tick
+			return
+		endif
+	endwhile
+	call setpos('.', start)
+endfun
+" }}}
+
 " inspect,debug {{{
 set verbosefile="./verbose"
 set verbose=0
 " }}}
 " hlsearch {{{
 augroup AutoHighlighting
-    au!
-    autocmd CmdlineEnter /,\? set hlsearch
-    autocmd CmdlineLeave /,\? set nohlsearch
+	au!
+	autocmd CmdlineEnter /,\? set hlsearch
+	autocmd CmdlineLeave /,\? set nohlsearch
+	" au CursorHold * :exec 'match Search /\V\<' . expand('<cword>') . '\>/'
 augroup END
 nnoremap <leader>h <cmd>set hlsearch!<cr>
 " }}}
@@ -64,25 +163,6 @@ execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
 call mkdir(&undodir, "p", 0700)
 set undofile
 " }}}
-" session {{{
-let g:session_dir=$XDG_STATE_HOME."/". g:self."/sessions/"
-call mkdir(g:session_dir, "p", 0700)
-let g:session_file=g:session_dir . substitute(getcwd(), "/","+", "g")
-set ssop="blank,buffers,curdir,folds,help,tabpages,winpos,winsize,terminal"
-
-"set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
-"set sessionoptions=blank,buffers,curdir,folds,help,localoptions,options,skiprtp,resize,sesdir,tabpages,winpos,winsize
-" set sessionoptions+=globals,terminal
-augroup sessions
-	autocmd!
-	 " autocmd VimEnter * Obsession
-	 "autocmd VimEnter * if filereadable( g:session_file) | exe 'source ' . g:session_file | endif
-	 "autocmd VimLeave,FocusLost * silent exe 'mksession! ' . g:session_file
-augroup	END
-function! SessionClear()
-	call delete(v:this_session)
-endfunction
-" }}}
 " io {{{
 set foldmethod=marker
 set noswapfile
@@ -123,7 +203,9 @@ set ignorecase
 set smartcase
 set whichwrap+=<,>,[,]
 set previewheight=32
-set previewwindow
+" set previewwindow
+set scrolloff=16
+set cmdheight=2
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
@@ -153,7 +235,8 @@ function! SpawnBufferLine()
 	let bufferNums = filter(range(1, bufnr('$')), 'buflisted(v:val)')
 	for i in bufferNums
 		let s .= (i == bufnr()) ? ('%#TabLineSel#') : ('%#TabLine#')
-		let s .=' ' . i . '' 
+		let s .=' ' 
+		" let s .=' ' . i . '' 
 		if bufname(i) == ''
 			let s .= '[No Name]'
 		endif
@@ -166,7 +249,7 @@ function! SpawnBufferLine()
 		endif
 		let s .= ' '
 	endfor
-	" let s .= '%#TabLineFill#%T'  " Reset highlight
+	let s .= '%#TabLineFill#%T'  " Reset highlight
 	let s .= '%=' " Spacer
 	return s
 endfunction
@@ -190,21 +273,14 @@ nnoremap <expr> <F2> Woo()
 inoremap <expr> ?? Woo()
 " cunmap <expr> <Tab> Woo()
 
-function! Test()
-	e lua/
-endfunction
-
-
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 cnoremap <nowait> <Esc>h <Left>
 cnoremap <nowait> <Esc>l <Right>
 
 function! Woo()
-
 	echom complete_info()
 	" startinsert
-	
 	return "\<Ignore>"
 endfunction
 
@@ -212,32 +288,35 @@ endfunction
 " find {{{
 set path=**
 set wildignore+=**/.git/**
-
 function! FindFuncGlob(cmdarg, cmdcomplete)
 	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
 	return glob(pat, v:false, v:true)
 endfunc
-
 function! FindGitFiles(cmdarg, cmdcomplete)
 	let fnames = systemlist('git ls-files')
 	return fnames->filter('v:val =~? a:cmdarg')
 endfunc
-
 function! FindFiles(filename)
-  let error_file = tempname()
-  silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
-  set errorformat=%f:%l:%m
-  exe "cfile ". error_file
-  copen
+	let error_file = tempname()
+	silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
+	set errorformat=%f:%l:%m
+	exe "cfile ". error_file
+	copen
 endfunction
-
 command! -nargs=1 Find call FindFiles(<q-args>)
-nmap /. :Find<space>
+
 function! FindFunc(cmdarg, cmdcomplete)
-    let files = glob("**", v:false, v:true)
-    return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
+	let files = glob("**", v:false, v:true)
+	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
 endfunc
 set findfunc=FindFunc
+
+" set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
+function! Grep(...) 
+       return system(join([&grepprg] + a:000), ' ')	      
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
+
 set autocomplete
 set autocompletetimeout=100
 set autocompletedelay=300
@@ -245,75 +324,25 @@ let &l:complete = 'o,' . &l:complete
 set completetimeout=100
 set completeopt=menu,menuone,noselect
 set completeopt+=fuzzy
-
-
-
-" grep
-set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
-function! Grep(...)
-  return system(join([&grepprg] + a:000), ' ')
-endfunction
-command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
-nmap // :Grep<space>
 "}}}
-" tags {{{
-"set tagfunc=ctags -R *
-"set tags=tags
-" }}}
 
-" PLUGINS {{{
-" netrw {{{
-"let g:netrw_keepdir = 0
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_browse_split=0
-let g:netrw_altv=1
-let g:netrw_alto=1
-let g:netrw_winsize=15
-" let g:netrw_winsize=-30
-let g:netrw_preview=1
-let g:netrw_wiw=4
-let g:netrw_sizestyle="H"
-let g:netrw_sort_options="i"
-let g:netrw_mousemaps=0
-" let g:netrw_list_hide=
-let g:netrw_localmovecmd=0
-" }}}
-" packadd {{{
-if !has('nvim')
-	source $VIMRUNTIME/xdg.vim
-	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after"
-	" packadd! editorconfig
-	packadd! hlyank
-	packadd! comment
-	" packadd! helpcurwin
-	" packadd! termdebug
-	" packadd! matchit
-else
-endif
-" }}}
-" maps {{{
-
-" let scroll=8
- "map <Space> 8<C-E>
-" map <S-Space> 8<C-Y>
-" imap <C-Space> 
-
+nmap /. :Find<space>
+nmap // :Grep<space>
 nmap q <Nop>
 nmap Q <Nop>
 nnoremap qq :Lexplore<CR>
 nnoremap ZQ :q!<CR>
-inoremap jk <Esc>
 nnoremap <silent> <leader>Q :%bd\|e#<cr>
 nnoremap <silent> <leader>q :bd!<CR>
 nnoremap <silent> <leader>a :call SourceLuafile()<CR>
 nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
 nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
 imap <F5> <C-O><F5>
-
 nmap hg zc
 
-" focus {{{
+" buf/win/tab next/prev  {{{
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
 nnoremap <silent> ]= :tabnext<CR>
 nnoremap <silent> [- :tabprevious<CR>
 nnoremap <silent> ]] :bnext<CR>
@@ -324,11 +353,8 @@ nnoremap <silent> [<BS> :b#<CR>
 nnoremap <silent> ]<BS> :b#<CR>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
-nnoremap <C-N> :cnext<CR>
-nnoremap <C-P> :cprev<CR>
 " }}}
-
-" shiftround {{{
+" move lines {{{
 inoremap <M-h> <C-O><Left>
 inoremap <M-j> <C-O><Down>
 inoremap <M-k> <C-O><Up>
@@ -339,63 +365,4 @@ inoremap <M-J> <Esc>:m .+1<CR>==gi
 inoremap <M-K> <Esc>:m .-2<CR>==gi
 vnoremap <M-J> :m '>+1<CR>gv=gv
 vnoremap <M-K> :m '<-2<CR>gv=gv
-" }}}
-
-" }}}
-" switch {{{
-let g:switch_mapping = ''
-let g:switch_custom_definitions =
-\ [
-	\   { '\<\([invoxtcl]\?\)noremap\>': '\1map'},
-	\   { '\<\([invoxtcl]\?\)map\>': '\1noremap'},
-	\   { '\v^(\s*[*+-] )?\[ \]': '\1[x]',
-	\     '\v^(\s*[*+-] )?\[x\]': '\1[-]',
-	\     '\v^(\s*[*+-] )?\[-\]': '\1[ ]',
-	\   },
-	\   { '\v^(\s*\d+\. )?\[ \]': '\1[x]',
-	\     '\v^(\s*\d+\. )?\[x\]': '\1[-]',
-	\     '\v^(\s*\d+\. )?\[-\]': '\1[ ]',
-	\   },
-	\   ['left', 'right', 'middle'],
-	\   ['yes', 'no'],
-	\   ['on', 'off'],
-	\   ['default', 'tabbed', 'stacking'],
-	\   ['foldenable', 'nofoldenable'],
-	\   ['true', 'false'],
-	\   ['horizontal', 'vertical'],
-	\   ['top', 'bottom'],
-	\   ['hide', 'show'],
-	\   ['enable', 'disable'],
-	\   ['firefox', 'chromium-browser'],
-	\   ['foo', 'bar', 'baz'],
-	\   ['red', 'green', 'blue']
-\ ]
-nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
-nmap gs <Plug>(SwitchInLine)
-
-function! SwitchLine(cnt)
-    let tick = b:changedtick
-    let start = getcurpos()
-    for n in range(a:cnt)
-        Switch
-    endfor
-    if b:changedtick != tick
-        return
-    endif
-    while v:true
-        let pos = getcurpos()
-        normal! w
-        if pos[1] != getcurpos()[1] || pos == getcurpos()
-            break
-        endif
-        for n in range(a:cnt)
-            Switch
-        endfor
-        if b:changedtick != tick
-            return
-        endif
-    endwhile
-    call setpos('.', start)
-endfun
-" }}}
 " }}}
