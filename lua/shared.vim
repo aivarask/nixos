@@ -1,25 +1,25 @@
+source /etc/nixos/lua/functions.vim
 " packadd {{{
-if !has('nvim')
+if !has('nvim') && !exists('g:rtpset')
+	let g:rtpset=1
 	source $VIMRUNTIME/xdg.vim
-	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after"
+	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after
 	packadd! hlyank
 	packadd! comment
-" packadd! editorconfig
-" packadd! helpcurwin
-" packadd! termdebug
-" packadd! matchit
-else
+	" packadd! editorconfig
+	" packadd! helpcurwin
+	" packadd! termdebug
+	" packadd! matchit
 endif
 " }}}
 " session {{{
 " aug sess | au! | au SessionLoadPost * Lexplore | aug END
-set ssop="curdir,folds,help,tabpages,winpos,winsize,terminal"
+" let g:obsession_no_bufenter=1
+set sessionoptions=curdir,folds,help,tabpages,terminal
 " }}}
 let g:loaded_matchit=1
-let g:loaded_scriptease=0
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
-au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 | silent! bwipeout! | endif
 " netrw {{{
 " let g:loaded_netrw = 0
 " let g:loaded_netrwPlugin = 0
@@ -107,7 +107,6 @@ function! SwitchLine(cnt)
 	call setpos('.', start)
 endfun
 " }}}
-
 " inspect,debug {{{
 set verbosefile="./verbose"
 set verbose=0
@@ -178,10 +177,15 @@ augroup reads
 	autocmd FocusGained,CursorHold,CursorHoldI * if empty(&buftype) | checktime | endif
 	autocmd BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 augroup END
+aug clean
+	au!
+	au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 | silent! bd! | endif
+aug END
 " }}}
 " settings {{{
 syntax on
 filetype indent plugin on
+set history=50
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
 set shortmess=oOstTWAIcCF
@@ -196,7 +200,6 @@ set background=dark
 set timeoutlen=500
 set conceallevel=2
 set clipboard=unnamedplus
-set scrolloff=8
 set shiftround
 set gdefault
 set ignorecase
@@ -264,58 +267,11 @@ augroup wild
 	autocmd!
 	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
 augroup END
-command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
-"cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
-" cmap <expr> / pumvisible() ? (complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
-nnoremap <expr> <F2> Woo()
-inoremap <expr> ?? Woo()
-" cunmap <expr> <Tab> Woo()
-
-cnoremap <Left> <Space><BS><Left>
-cnoremap <Right> <Space><BS><Right>
-cnoremap <nowait> <Esc>h <Left>
-cnoremap <nowait> <Esc>l <Right>
-
-function! Woo()
-	echom complete_info()
-	" startinsert
-	return "\<Ignore>"
-endfunction
 
 " }}}
 " find {{{
 set path=**
 set wildignore+=**/.git/**
-function! FindFuncGlob(cmdarg, cmdcomplete)
-	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
-	return glob(pat, v:false, v:true)
-endfunc
-function! FindGitFiles(cmdarg, cmdcomplete)
-	let fnames = systemlist('git ls-files')
-	return fnames->filter('v:val =~? a:cmdarg')
-endfunc
-function! FindFiles(filename)
-	let error_file = tempname()
-	silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
-	set errorformat=%f:%l:%m
-	exe "cfile ". error_file
-	copen
-endfunction
-command! -nargs=1 Find call FindFiles(<q-args>)
-
-function! FindFunc(cmdarg, cmdcomplete)
-	let files = glob("**", v:false, v:true)
-	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
-endfunc
-set findfunc=FindFunc
-
-" set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
-function! Grep(...) 
-       return system(join([&grepprg] + a:000), ' ')	      
-endfunction
-command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 
 set autocomplete
 set autocompletetimeout=100
@@ -326,16 +282,26 @@ set completeopt=menu,menuone,noselect
 set completeopt+=fuzzy
 "}}}
 
+" cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+" cmap <expr> / pumvisible() ? (complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
+nnoremap <expr> <F2> Woo()
+inoremap <expr> ?? Woo()
+" cunmap <expr> <Tab> Woo()
+cnoremap <Left> <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
+nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
 nmap /. :Find<space>
 nmap // :Grep<space>
 nmap q <Nop>
 nmap Q <Nop>
-nnoremap qq :Lexplore<CR>
+nnoremap <silent> qq :Lexplore<CR>
 nnoremap ZQ :q!<CR>
-nnoremap <silent> <leader>Q :%bd\|e#<cr>
-nnoremap <silent> <leader>q :bd!<CR>
-nnoremap <silent> <leader>a :call SourceLuafile()<CR>
-nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
+nnoremap <silent> \\Q :%bd\|e#<cr>
+nnoremap <silent> \\q :bd!<CR>
+nnoremap <silent> \\a :call SourceLuafile()<CR>
 nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
 imap <F5> <C-O><F5>
 nmap hg zc
@@ -366,3 +332,36 @@ inoremap <M-K> <Esc>:m .-2<CR>==gi
 vnoremap <M-J> :m '>+1<CR>gv=gv
 vnoremap <M-K> :m '<-2<CR>gv=gv
 " }}}
+
+" grep find {{{
+set findfunc=FindFunc
+set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
+function! Grep(...) 
+	return system(join([&grepprg] + a:000), ' ')	      
+endfunction
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
+function! FindFuncGlob(cmdarg, cmdcomplete)
+	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
+	return glob(pat, v:false, v:true)
+endfunc
+function! FindGitFiles(cmdarg, cmdcomplete)
+	let fnames = systemlist('git ls-files')
+	return fnames->filter('v:val =~? a:cmdarg')
+endfunc
+function! FindFiles(filename)
+	let error_file = tempname()
+	silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
+	set errorformat=%f:%l:%m
+	exe "cfile ". error_file
+	copen
+endfunction
+command! -nargs=1 Find call FindFiles(<q-args>)
+
+function! FindFunc(cmdarg, cmdcomplete)
+	let files = glob("**", v:false, v:true)
+	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
+endfunc
+" }}}
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis

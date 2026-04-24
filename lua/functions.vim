@@ -1,5 +1,11 @@
 " vim: foldmethod=indent
 
+function! Woo()
+	echom complete_info()
+	" startinsert
+	return "\<Ignore>"
+endfunction
+
 function! Bclose(bang, buffer)
 	if empty(a:buffer)
 		let btarget = bufnr('%')
