@@ -1,7 +1,5 @@
 # xwayland disable
 focus_follows_mouse yes
-# output * bg /etc/nixos/img/dark_grad.png center
-seat seat0 xcursor_theme "XCursor-Pro-Light" 24
 
 # set {{{
 set $mod Mod4
@@ -117,7 +115,7 @@ mode "resize" {
 # input {{{
 # swaymsg -t get_inputs --raw | jq '.[] | select(.type=="touchpad")'
 input type:keyboard {
-	repeat_delay 250
+	repeat_delay 250;
 	repeat_rate 50
 	xkb_numlock enabled
 	xkb_layout "us,lt"
@@ -133,31 +131,42 @@ input type:touchpad {
 		middle_emulation enabled
 		drag_lock enabled
 }
-input type:pointer {
-	accel_profile adaptive
-	left_handed disabled
-	pointer_accel -0.9
-}
 input 'Dell_Dell_Wired_Multimedia_Keyboard' {
     accel_profile flat
 }
 # }}}
 # outputs {{{
-output * bg #000000 solid_color
+# output * bg #000000 solid_color
+output * bg /etc/nixos/img/dark_grad.png center
 # output * allow_tearing yes
 # output * max_render_time 6
 # output * adaptive_sync on
 # output * scale_filter nearest
 set $4k 3840x2160
-output DP-1     resolution 3840x2160 position 1920,0 scale 2
-output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
-# output HDMI-A-1 resolution 3840x2160 position 0,0 scale 2
+# output DP-1     resolution 3840x2160 position 1920,0 scale 2 
+# output HDMI-A-1 resolution 1920x1080 position 0,0 scale 1
+
+output DP-1     resolution 3840x2160 position 3840 0 scale 2
+output HDMI-A-1	resolution 3840x2160 position 0 0
+
+set $sens "type:pointer" accel_profile adaptive pointer_accel -0.8
+input $sens map_to_output DP-1
+
+
+seat seat0 xcursor_theme "XCursor-Pro-Light" 48
+output HDMI-A-1 { }	
+
+set $sens2 type:pointer accel_profile flat pointer_accel 0.1
+input $sens2 map_to_output HDMI-A-1
+
 # output HDMI-A-1 color_profile srgb
 # output HDMI-A-1 disable
+
 # output eDP-1    resolution 3840x2160 position 0,0 scale 2
 # output DP-3     resolution 1920x1080 position 1920,0 scale 1
-output eDP-1    resolution 3840x2160 position 1920,0 scale 2
-output DP-3     resolution 1920x1080 position 0,0 scale 1
+output eDP-1    resolution 3840x2160 position 1920 0 scale 2
+output DP-3     resolution 1920x1080 position 0 0 scale 1
+
 # }}}
 # gruvbox {{{
 set $white #ffffff

@@ -15,3 +15,4 @@ application/zip=org.gnome.FileRoller.desktop;
 video/webm=mpv.desktop;umpv.desktop;io.github.celluloid_player.Celluloid.desktop;
 video/mp4=mpv.desktop;
 application/x-partial-download=mpv.desktop;
+video/x-matroska=mpv.desktop;

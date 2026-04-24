@@ -105,6 +105,7 @@
           ./minimal.nix
           ./network.nix
           ./pc.nix
+	  ./modules/steam.nix
         ];
       };
     });

@@ -13,8 +13,6 @@ if !has('nvim') && !exists('g:rtpset')
 endif
 " }}}
 " session {{{
-" aug sess | au! | au SessionLoadPost * Lexplore | aug END
-" let g:obsession_no_bufenter=1
 set sessionoptions=curdir,folds,help,tabpages,terminal
 " }}}
 let g:loaded_matchit=1
@@ -38,10 +36,7 @@ let g:netrw_mousemaps=0
 function! NetrwMappings() abort
 	map <buffer> D <Nop>
 endfunction
-augroup netrw_mappings
-	autocmd!
-	autocmd filetype netrw call NetrwMappings()
-augroup END
+aug netrw | au! filetype netrw call NetrwMappings() |augroup END
 " }}}
 " ctrlp {{{
 let g:ctrlp_map='<M-e>'
@@ -258,21 +253,14 @@ function! SpawnBufferLine()
 endfunction
 set tabline=%!SpawnBufferLine()  " Assign the tabline
 " }}}
-" cmdline {{{
+" wild completion {{{
+set wildignore+=**/.git/**
 set wildmode=noselect:lastused,full
 set wildoptions=pum
 set wildignorecase
 set wildcharm=<C-Z>
-augroup wild
-	autocmd!
-	" autocmd CmdlineChanged [:\/\?] call wildtrigger()
-augroup END
-
-" }}}
-" find {{{
+aug wild | au! CmdlineChanged [:\/\?] call wildtrigger() |aug END
 set path=**
-set wildignore+=**/.git/**
-
 set autocomplete
 set autocompletetimeout=100
 set autocompletedelay=300
@@ -299,40 +287,20 @@ nmap q <Nop>
 nmap Q <Nop>
 nnoremap <silent> qq :Lexplore<CR>
 nnoremap ZQ :q!<CR>
-nnoremap <silent> \\Q :%bd\|e#<cr>
-nnoremap <silent> \\q :bd!<CR>
-nnoremap <silent> \\a :call SourceLuafile()<CR>
+nnoremap <silent> \Q :%bd\|e#<cr>
+" nnoremap <silent> \q Bclose()<CR>
+nnoremap <silent> \q :bd!<CR>
+nnoremap <silent> \a :call SourceLuafile()<CR>
 nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
 imap <F5> <C-O><F5>
 nmap hg zc
 
-" buf/win/tab next/prev  {{{
-nnoremap <C-N> :cnext<CR>
-nnoremap <C-P> :cprev<CR>
-nnoremap <silent> ]= :tabnext<CR>
-nnoremap <silent> [- :tabprevious<CR>
-nnoremap <silent> ]] :bnext<CR>
-nnoremap <silent> [[ :bprevious<CR>
-tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
-tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
-nnoremap <silent> [<BS> :b#<CR>
-nnoremap <silent> ]<BS> :b#<CR>
-nnoremap <silent> ]\ :wincmd w<CR>
-nnoremap <silent> [' :wincmd p<CR>
-" }}}
-" move lines {{{
-inoremap <M-h> <C-O><Left>
-inoremap <M-j> <C-O><Down>
-inoremap <M-k> <C-O><Up>
-inoremap <M-l> <C-O><Right>
-nnoremap <M-K> :m .-2<CR>==
-nnoremap <M-J> :m .+1<CR>==
-inoremap <M-J> <Esc>:m .+1<CR>==gi
-inoremap <M-K> <Esc>:m .-2<CR>==gi
-vnoremap <M-J> :m '>+1<CR>gv=gv
-vnoremap <M-K> :m '<-2<CR>gv=gv
-" }}}
 
+
+" diff {{{
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
+" }}}
 " grep find {{{
 set findfunc=FindFunc
 set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
@@ -357,11 +325,35 @@ function! FindFiles(filename)
 	copen
 endfunction
 command! -nargs=1 Find call FindFiles(<q-args>)
-
 function! FindFunc(cmdarg, cmdcomplete)
 	let files = glob("**", v:false, v:true)
 	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
 endfunc
 " }}}
-command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
+" buf/win/tab next/prev  {{{
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprev<CR>
+nnoremap <silent> ]= :tabnext<CR>
+nnoremap <silent> [- :tabprevious<CR>
+nnoremap <silent> ]] :bnext<CR>
+nnoremap <silent> [[ :bprevious<CR>
+tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
+tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
+nnoremap <silent> [<BS> :b#<CR>
+nnoremap <silent> ]<BS> :b#<CR>
+nnoremap <silent> ]\ :wincmd w<CR>
+nnoremap <silent> [' :wincmd p<CR>
+" }}}
+" move/lines {{{
+inoremap <M-h> <C-O><Left>
+inoremap <M-j> <C-O><Down>
+inoremap <M-k> <C-O><Up>
+inoremap <M-l> <C-O><Right>
+nnoremap <M-K> :m .-2<CR>==
+nnoremap <M-J> :m .+1<CR>==
+inoremap <M-J> <Esc>:m .+1<CR>==gi
+inoremap <M-K> <Esc>:m .-2<CR>==gi
+vnoremap <M-J> :m '>+1<CR>gv=gv
+vnoremap <M-K> :m '<-2<CR>gv=gv
+" }}}
+
