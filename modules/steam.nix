@@ -15,5 +15,7 @@
 	};
 	environment.systemPackages = with pkgs; [
 		gamescope-wsi # HDR won't work without this
+                steam-run
+              
 	];
 }

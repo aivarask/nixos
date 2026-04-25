@@ -13,7 +13,7 @@ if !has('nvim') && !exists('g:rtpset')
 endif
 " }}}
 " session {{{
-set sessionoptions=curdir,folds,help,tabpages,terminal
+set sessionoptions=curdir,folds,help,tabpages,terminal,globals
 " }}}
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
@@ -35,6 +35,7 @@ let g:netrw_sort_options="i"
 let g:netrw_mousemaps=0
 function! NetrwMappings() abort
 	map <buffer> D <Nop>
+	map <buffer> a <Nop>
 endfunction
 aug netrw | au! filetype netrw call NetrwMappings() |augroup END
 " }}}
@@ -291,8 +292,8 @@ nnoremap <silent> \Q :%bd\|e#<cr>
 " nnoremap <silent> \q Bclose()<CR>
 nnoremap <silent> \q :bd!<CR>
 nnoremap <silent> \a :call SourceLuafile()<CR>
-nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR>
-imap <F5> <C-O><F5>
+nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
+nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR> | imap <F5> <C-O><F5>
 nmap hg zc
 
 

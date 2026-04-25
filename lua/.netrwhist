@@ -1,4 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/etc/nixos/lua'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/etc/nixos'
+let g:netrw_dirhist_6='/etc/nixos/lua'
+let g:netrw_dirhist_5='/etc/nixos'
+let g:netrw_dirhist_4='/etc/nixos/modules'
+let g:netrw_dirhist_3='/etc/nixos'
+let g:netrw_dirhist_2='/etc/nixos/modules'
 let g:netrw_dirhist_1='/etc/nixos'
+let g:netrw_dirhist_0='/etc/nixos/.config/kitty'
+let g:netrw_dirhist_9='/etc/nixos/.config'
+let g:netrw_dirhist_8='/etc/nixos'

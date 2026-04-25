@@ -5,9 +5,7 @@
   programs.sharing.enable = true;
   # programs.mtr.enable = true;
   # programs.wireshark.enable = true;
-
   networking.nftables.enable = true;
-
   environment.systemPackages = with pkgs; [
     ffuf
     curlFull
