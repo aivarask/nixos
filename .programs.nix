@@ -42,7 +42,6 @@ in
     ./.config/ripgrep/default.nix
     ./.config/starship/default.nix
     ./.config/zsh/default.nix
-    ./vim.nix
   ];
 
   home.packages = with pkgs; [

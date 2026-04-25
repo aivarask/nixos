@@ -47,7 +47,7 @@
                 inputs.nix-colors.homeManagerModules.default
                 inputs.zen-browser.homeModules.twilight
                 ./.programs.nix
-                ./lua/default_hm.nix
+                ./vim.nix
               ];
             };
           };

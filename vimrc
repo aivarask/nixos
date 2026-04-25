@@ -1,13 +1,15 @@
-packadd! netrw
-packadd! comment
+if !has('nvim')
+	packadd! netrw
+	packadd! comment
+endif
 
 " packloadall
 if !v:vim_did_init
-" packadd hlyank
-" packadd! editorconfig
-" packadd! helpcurwin
-" packadd! termdebug
-" packadd! matchit
+	" packadd hlyank
+	" packadd! editorconfig
+	" packadd! helpcurwin
+	" packadd! termdebug
+	" packadd! matchit
 
 endif
 

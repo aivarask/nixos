@@ -60,8 +60,8 @@ in
     let
       nvimEarlyInit = lib.mkOrder 500 ''
         vim.opt.rtp:prepend('/etc/nixos')
-        vim.cmd.source('~/.config/nvim/shared.vim')
-        require('setup')
+        vim.cmd.source('~/.config/vim/vim.vim')
+        require('vimrc')
       '';
     in
     lib.mkMerge [

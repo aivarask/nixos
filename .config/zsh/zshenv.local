@@ -30,6 +30,7 @@ typeset -TU GTK_PATH gtk_path ':'
 typeset -TU XCURSOR_PATH xcursor_path ':'
 
 typeset -TU LUA_PATH lua_path ';'
+# lua_path+=('/etc/?/lua/init.lua')
 lua_path+=('/etc/nixos/lua/?.lua')
 lua_path+=('/etc/nixos/lua/?/init.lua')
 lua_path+=('/etc/luajit/share/lua/5.1/?/init.lua')
