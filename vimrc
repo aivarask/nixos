@@ -1,6 +1,7 @@
 packadd! netrw
 packadd! comment
 
+" packloadall
 if !v:vim_did_init
 " packadd hlyank
 " packadd! editorconfig
@@ -10,10 +11,8 @@ if !v:vim_did_init
 
 endif
 
-source ~/.config/vim/xdg.vim
 set sessionoptions=curdir,folds,help,tabpages,terminal,globals,skiprtp
-set verbose=1
-
+set verbose=0
 
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
@@ -172,7 +171,6 @@ aug clean
 aug END
 " }}}
 " settings {{{
-syntax on
 filetype indent plugin on
 set history=50
 "set shortmess=filnxToOScF
@@ -185,7 +183,6 @@ set lazyredraw
 set modeline
 set splitkeep=topline
 set splitbelow
-set background=dark
 set timeoutlen=500
 set conceallevel=2
 set clipboard=unnamedplus
@@ -199,8 +196,10 @@ set previewheight=32
 set scrolloff=16
 set cmdheight=2
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
+syntax on
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
+set background=dark
 colorscheme gruvbox-material
 " }}}
 " status {{{
@@ -287,7 +286,7 @@ nnoremap <silent> \Q :%bd\|e#<cr>
 nnoremap <silent> \q :bd!<CR>
 nnoremap <silent> \a :call SourceLuafile()<CR>
 nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
-nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/shared.vim<CR> | imap <F5> <C-O><F5>
+nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/vim.vim<CR> | imap <F5> <C-O><F5>
 nmap hg zc
 
 

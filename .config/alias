@@ -23,7 +23,7 @@ alias wttr="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr
 alias wttr_srv="wttrbar --location Sirvintos"
 alias celluloid="celluloid --mpv-vo=gpu-next --mpv-gpu-api=vulkan --mpv-hwdec=vulkan --mpv-gpu-context=waylandvk"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
-alias vim="vim -S"
+# alias vim="vim -S"
 alias nvim="nvim -S"
 # alias firefox="firefox --profile=$XDG_CONFIG_HOME/mozilla/firefox/root"
 

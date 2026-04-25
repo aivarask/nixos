@@ -1,1 +1,0 @@
-/nix/store/k2my3zskjcj3j8najvd6sd4cpjwgg9l6-home-manager-files/.config/vim/xdg.vim
