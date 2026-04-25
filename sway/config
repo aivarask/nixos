@@ -153,7 +153,7 @@ set $sens "type:pointer" accel_profile adaptive pointer_accel -0.8
 input $sens map_to_output DP-1
 
 
-seat seat0 xcursor_theme "XCursor-Pro-Light" 48
+seat seat0 xcursor_theme "XCursor-Pro-Light" 24
 output HDMI-A-1 { }	
 
 set $sens2 type:pointer accel_profile flat pointer_accel 0.1

@@ -101,11 +101,12 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          ./dnsmasq.nix
+          # ./dnsmasq.nix
+          ./modules/pihole.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
-	  ./modules/steam.nix
+          ./modules/steam.nix
         ];
       };
     });
