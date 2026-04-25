@@ -13,6 +13,7 @@ let
     vim-obsession
     vim-gutentags
     vim-vinegar
+    vim-nix
     ctrlp-vim
     switch-vim
   ];

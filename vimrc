@@ -103,8 +103,6 @@ function! SwitchLine(cnt)
 	call setpos('.', start)
 endfun
 " }}}
-" inspect,debug {{{
-" }}}
 " hlsearch {{{
 augroup AutoHighlighting
 	au!
