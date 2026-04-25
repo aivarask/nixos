@@ -13,6 +13,7 @@
   services.pihole-ftl.settings.dns.hosts = [
     "192.168.1.188 hostname.domain"
     "9.9.9.9 linkomanija.net"
+    "62.72.23.210 dserv"
   ];
   services.pihole-ftl.lists = [
     {

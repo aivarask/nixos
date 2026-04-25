@@ -91,7 +91,8 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/bluetooth.nix
-          ./dnsmasq.nix
+          # ./dnsmasq.nix
+          ./pihole.nix
           ./minimal.nix
           ./network.nix
           ./dell.nix
@@ -102,7 +103,7 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           # ./dnsmasq.nix
-          ./modules/pihole.nix
+          ./pihole.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix

@@ -1,23 +1,24 @@
-source /etc/nixos/lua/functions.vim
-" packadd {{{
-if !has('nvim') && !exists('g:rtpset')
-	let g:rtpset=1
-	source $VIMRUNTIME/xdg.vim
-	set rtp=$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/after
-	packadd! hlyank
-	packadd! comment
-	" packadd! editorconfig
-	" packadd! helpcurwin
-	" packadd! termdebug
-	" packadd! matchit
+if !v:vim_did_init
+	source $MYVIMDIR/xdg.vim
 endif
-" }}}
-" session {{{
-set sessionoptions=curdir,folds,help,tabpages,terminal,globals
-" }}}
+source $MYVIMDIR/functions.vim
+if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
+
+" packadd hlyank
+" packadd comment
+" packadd! editorconfig
+" packadd! helpcurwin
+" packadd! termdebug
+" packadd! matchit
+
+set sessionoptions=curdir,folds,help,tabpages,terminal,globals,skiprtp
+set verbose=1
+
+
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
+
 " netrw {{{
 " let g:loaded_netrw = 0
 " let g:loaded_netrwPlugin = 0
@@ -104,8 +105,6 @@ function! SwitchLine(cnt)
 endfun
 " }}}
 " inspect,debug {{{
-set verbosefile="./verbose"
-set verbose=0
 " }}}
 " hlsearch {{{
 augroup AutoHighlighting
@@ -153,10 +152,6 @@ tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
 " undo {{{
-if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
-execute "set undodir=".$XDG_STATE_HOME."/". g:self . "/undo"
-call mkdir(&undodir, "p", 0700)
-set undofile
 " }}}
 " io {{{
 set foldmethod=marker
@@ -182,6 +177,7 @@ aug END
 syntax on
 filetype indent plugin on
 set history=50
+set undofile
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
 set shortmess=oOstTWAIcCF
