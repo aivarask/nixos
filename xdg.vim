@@ -24,6 +24,7 @@ if isdirectory(s:config .. '/vim')
 
   " Persistent Data:
   let &undodir = s:mkvimdir(s:data .. '/vim/undo')
+  set undofile
   let &viewdir = s:mkvimdir(s:data .. '/vim/view')
   let g:netrw_home = s:mkvimdir(s:data .. '/vim')
   call s:mkvimdir(s:data .. '/vim/spell')

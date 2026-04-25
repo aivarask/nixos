@@ -1,16 +1,16 @@
-if !v:vim_did_init
-	source $MYVIMDIR/xdg.vim
-endif
-source $MYVIMDIR/functions.vim
-if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
+packadd! netrw
+packadd! comment
 
+if !v:vim_did_init
 " packadd hlyank
-" packadd comment
 " packadd! editorconfig
 " packadd! helpcurwin
 " packadd! termdebug
 " packadd! matchit
 
+endif
+
+source ~/.config/vim/xdg.vim
 set sessionoptions=curdir,folds,help,tabpages,terminal,globals,skiprtp
 set verbose=1
 
@@ -151,8 +151,6 @@ tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
 tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " }}}
-" undo {{{
-" }}}
 " io {{{
 set foldmethod=marker
 set noswapfile
@@ -177,7 +175,6 @@ aug END
 syntax on
 filetype indent plugin on
 set history=50
-set undofile
 "set shortmess=filnxToOScF
 "set shortmess=ltToOCF
 set shortmess=oOstTWAIcCF
@@ -208,6 +205,7 @@ colorscheme gruvbox-material
 " }}}
 " status {{{
 set showtabline=2
+if has('nvim') | let g:self='nvim' | else | let g:self='vim' | endif  
 set title titlestring=%{g:self}\ %{getcwd()}\ %f\ 
 let &titleold=getcwd()
 set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}
