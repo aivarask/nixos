@@ -16,12 +16,12 @@
     "62.72.23.210 dserv"
   ];
   services.pihole-ftl.lists = [
-    {
-      url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
-      type = "block";
-      enabled = true;
-      description = "hagezi";
-    }
+    # {
+    #   url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
+    #   type = "block";
+    #   enabled = true;
+    #   description = "hagezi";
+    # }
     {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
       type = "block";

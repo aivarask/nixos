@@ -1,0 +1,1 @@
+/nix/store/19sd79y0ndfjz60l5hsiw55gnnn232gx-home-manager-files/.config/vim/vim.vim

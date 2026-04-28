@@ -36,17 +36,18 @@ in
     viu
     cadaver
     fetch-scm
-    elinks
+    # elinks
+    tree-sitter
   ];
   # }}}
   # vim {{{
   xdg.configFile."vim/vim.vim".source = osConfig.symlink "/etc/nixos/vimrc";
   programs.vim.enable = true;
   #  programs.vim.package = pkgs.vim-full;
-  programs.vim.extraConfig =  ''
-  source $VIMRUNTIME/xdg.vim
-  source ~/.config/vim/vim.vim
-    '';
+  programs.vim.extraConfig = ''
+    source $VIMRUNTIME/xdg.vim
+    source ~/.config/vim/vim.vim
+  '';
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (lib.mkMerge [ COMMON ]);
   # }}}
   # nvim {{{
@@ -74,6 +75,7 @@ in
     lib.mkMerge [
       COMMON
       (with pkgs.vimPlugins; [
+        # nvim-treesitter.withAllGrammars
         (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
         nvim-nio
         SchemaStore-nvim

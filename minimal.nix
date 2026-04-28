@@ -251,7 +251,7 @@
   documentation.man.mandoc.enable = false;
   documentation.man.mandoc.settings.manpath = [ "/run/current-system/sw/share/man" ];
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "C.UTF-8";
   i18n.supportedLocales = [
     "C.UTF-8/UTF-8"
     "en_US.UTF-8/UTF-8"

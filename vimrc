@@ -1,11 +1,11 @@
 if !has('nvim')
 	packadd! netrw
 	packadd! comment
+	packadd hlyank
 endif
 
 " packloadall
 if !v:vim_did_init
-	" packadd hlyank
 	" packadd! editorconfig
 	" packadd! helpcurwin
 	" packadd! termdebug
