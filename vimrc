@@ -1,25 +1,47 @@
-" source "lua/functions.vim"
+source $XDG_CONFIG_HOME/vim/functions.vim"
+set verbose=0
+set sessionoptions=curdir,folds,help,tabpages,terminal,globals
 if !has('nvim')
-	packadd! netrw
+	set sessionoptions+=localoptions
+	" editorconfig helpcurwin termdebug matchit
+	packadd! netrw 
 	packadd! comment
 	packadd hlyank
 endif
-
-" packloadall
-if !v:vim_did_init
-	" packadd! editorconfig
-	" packadd! helpcurwin
-	" packadd! termdebug
-	" packadd! matchit
-
-endif
-
-set sessionoptions=curdir,folds,help,tabpages,terminal,globals
-set verbose=0
-
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
+
+
+" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
+nnoremap <expr> <F2> Woo()
+inoremap <expr> ?? Woo()
+nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
+nmap /. :Find<space>
+nmap // :Grep<space>
+nmap q <Nop>
+nmap Q <Nop>
+nnoremap <silent> qq :Lexplore<CR>
+nnoremap <silent> ZQ :q!<CR>
+nnoremap <silent> \Q :%bd\|e#<cr>
+nnoremap <silent> \q Bclose()<CR>
+nnoremap <silent> \q :bd!<CR>
+nnoremap <silent> \a :call SourceLuafile()<CR>
+nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
+nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/vim.vim<CR> | imap <F5> <C-O><F5>
+
+" cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
+cmap <expr> / printf(complete_info())
+" cnoremap <expr> / pumvisible() && return 
+" cnoremap <expr> / pumvisible() && printf(complete_info().selected == -1)
+" cmap <expr> / pumvisible() && echo complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
+
+" au! CmdlineChanged * execute printf(complete_info())
+
+cnoremap <Left> <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>
+cnoremap <nowait> <Esc>h <Left>
+cnoremap <nowait> <Esc>l <Right>
 
 " netrw {{{
 " let g:loaded_netrw = 0
@@ -264,34 +286,6 @@ set completetimeout=100
 set completeopt=menu,menuone,noselect
 set completeopt+=fuzzy
 "}}}
-
-" cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-" nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
-" cmap <expr> / pumvisible() ? (complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
-nnoremap <expr> <F2> Woo()
-inoremap <expr> ?? Woo()
-" cunmap <expr> <Tab> Woo()
-cnoremap <Left> <Space><BS><Left>
-cnoremap <Right> <Space><BS><Right>
-cnoremap <nowait> <Esc>h <Left>
-cnoremap <nowait> <Esc>l <Right>
-nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
-nmap /. :Find<space>
-nmap // :Grep<space>
-nmap q <Nop>
-nmap Q <Nop>
-nnoremap <silent> qq :Lexplore<CR>
-nnoremap ZQ :q!<CR>
-nnoremap <silent> \Q :%bd\|e#<cr>
-" nnoremap <silent> \q Bclose()<CR>
-nnoremap <silent> \q :bd!<CR>
-nnoremap <silent> \a :call SourceLuafile()<CR>
-nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
-nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/vim.vim<CR> | imap <F5> <C-O><F5>
-nmap hg zc
-
-
-
 " diff {{{
 command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
 command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
