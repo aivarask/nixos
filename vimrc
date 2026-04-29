@@ -1,3 +1,4 @@
+" source "lua/functions.vim"
 if !has('nvim')
 	packadd! netrw
 	packadd! comment
@@ -13,7 +14,7 @@ if !v:vim_did_init
 
 endif
 
-set sessionoptions=curdir,folds,help,tabpages,terminal,globals,skiprtp
+set sessionoptions=curdir,folds,help,tabpages,terminal,globals
 set verbose=0
 
 let g:loaded_matchit=1
@@ -30,7 +31,7 @@ let g:netrw_liststyle=3
 let g:netrw_browse_split=0
 let g:netrw_altv=1
 let g:netrw_alto=1
-let g:netrw_winsize=15
+let g:netrw_winsize=20
 let g:netrw_wiw=4
 let g:netrw_sizestyle="H"
 let g:netrw_sort_options="i"
@@ -167,7 +168,7 @@ augroup reads
 augroup END
 aug clean
 	au!
-	au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 | silent! bd! | endif
+	au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 && &filetype != "qf" | silent! bd! | endif
 aug END
 " }}}
 " settings {{{
@@ -297,8 +298,20 @@ command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis
 " }}}
 " grep find {{{
 set findfunc=FindFunc
-set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
+" set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
+augroup qf
+	" clear all autocommands in this group
+	autocmd!
+	" do :cwindow if the quickfix command doesn't start
+	" with a 'l' (:grep, :make, etc.)
+	autocmd QuickFixCmdPost [^l]* cwindow
+	" do :lwindow if the quickfix command starts with
+	" a 'l' (:lgrep, :lmake, etc.)
+	autocmd QuickFixCmdPost l*    lwindow
+	" do :cwindow when Vim was started with the '-q' flag
+	autocmd VimEnter        *     cwindow
+augroup END
 function! Grep(...) 
 	return system(join([&grepprg] + a:000), ' ')	      
 endfunction

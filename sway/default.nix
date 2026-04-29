@@ -36,13 +36,20 @@
   programs.sway.enable = true;
   programs.sway.package = pkgs.swayfx;
   programs.sway.wrapperFeatures.gtk = true;
+
   programs.uwsm.enable = true;
-  programs.uwsm.waylandCompositors.sway.binPath = "${pkgs.swayfx}/bin/sway";
-  programs.uwsm.waylandCompositors.sway.prettyName = "mysway";
+  programs.uwsm.waylandCompositors.sway.binPath = "/run/current-system/sw/bin/sway";
+  programs.uwsm.waylandCompositors.sway.extraArgs = [
+    "-V"
+  ];
+  programs.uwsm.waylandCompositors.sway.prettyName = "swayfx";
+  programs.uwsm.waylandCompositors.sway.comment = "swayfx verbose";
+
   programs.dconf.enable = true;
 
   environment.variables.GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   environment.systemPackages = with pkgs; [
+    clipman
     mcat
     keyd
     wshowkeys
@@ -93,7 +100,6 @@
     swayidle
     swaylock
     swayr
-    uwsm
     waybar
     wayvnc
     wdisplays
