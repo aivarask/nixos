@@ -39,11 +39,16 @@
 		"NoDefaultBookmarks": true,
 		"Bookmarks": [
 			{
+				"Title": "firefox-admin",
+				"URL": "https://firefox-admin-docs.mozilla.org/reference/",
+				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.ico",
+				"Placement": "toolbar"
+			},
+			{
 				"Title": "wiki.nixos.org",
 				"URL": "https://wiki.nixos.org/wiki/NixOS_Wiki",
 				"Favicon": "https://wiki.nixos.org/favicon.ico",
-				"Placement": "toolbar",
-				"Folder": "2"
+				"Placement": "toolbar"
 			},
 			{
 				"Title": "i3",

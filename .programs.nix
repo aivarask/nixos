@@ -101,12 +101,12 @@ in
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
   xdg.configFile."stylua".source = symlink "${xdgconf}/stylua";
-  xdg.configFile."sway.config".source = symlink "${SELF}/sway.config";
+  xdg.configFile."sway/config".source = symlink "${SELF}/sway.config";
   xdg.configFile."taplo".source = symlink "${xdgconf}/taplo";
   xdg.configFile."tmux".source = symlink "${xdgconf}/tmux";
   xdg.configFile."user-dirs.dirs".source = symlink "${xdgconf}/user-dirs.dirs";
   xdg.configFile."user-dirs.locale".source = symlink "${xdgconf}/user-dirs.locale";
-  xdg.configFile."waybar".source = symlink "${SELF}/sway/waybar";
+  xdg.configFile."waybar".source = symlink "${SELF}/waybar";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
   xdg.configFile."w3m".source = symlink "${xdgconf}/w3m";
 }

@@ -24,6 +24,7 @@
     gnome-network-displays
     gnome-system-monitor
     gnome-themes-extra
+    orchis-theme
     gnome-tweaks
     dconf-editor
     lxappearance

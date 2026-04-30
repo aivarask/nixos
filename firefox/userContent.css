@@ -1,3 +1,19 @@
+@-moz-document domain("wiki.nixos.org") {
+	@media screen {
+		body {
+			background-color: var(--background-color-neutral-subtle, #f8f9fa);
+			background-color: var(--background-color-neutral-subtle, #000000) !important;
+			color: var(--color-base, #202122);
+		}
+	}
+
+	* {
+		color: red !important;
+		/* display: none !important; */
+	}
+
+}
+
 @-moz-document domain("example.com") {
 
 	* {

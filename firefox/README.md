@@ -3,6 +3,7 @@ https://ffprofile.com
 https://docs.zen-browser.app/guides/manage-profiles
 
 # Policies
+https://firefox-admin-docs.mozilla.org/reference/
 https://extensionworkshop.com/documentation/enterprise/enterprise-development/#how-to-add-policy
 https://mozilla.github.io/policy-templates
 

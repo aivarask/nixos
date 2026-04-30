@@ -8,8 +8,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 export YDIFF_OPTIONS='-w40'
 export NIXPKGS_ALLOW_BROKEN=1
-export GTK_THEME=Adwaita:dark
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+#export GTK_THEME=Orchis-Dark-Compact-hdpi
+# export GTK_THEME=Adwaita:dark
+#export QT_STYLE_OVERRIDE=Adwaita-Dark
 export PAPIRUS=/run/current-system/sw/share/icons/Papirus/
 
 typeset -TU PATH path ':'

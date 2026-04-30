@@ -311,6 +311,7 @@ augroup qf
 	" do :cwindow when Vim was started with the '-q' flag
 	autocmd VimEnter        *     cwindow
 augroup END
+command! -nargs=+ Gr execute 'silent grep! <args>' | :exe 'copen ' . &scrolloff
 function! Grep(...) 
 	return system(join([&grepprg] + a:000), ' ')	      
 endfunction
