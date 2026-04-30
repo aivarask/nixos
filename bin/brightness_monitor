@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 ddcutil getvcp 10 --brief |
 	awk '{print $4}' |
 	xargs -I{} echo '{"text":"{}"}' |

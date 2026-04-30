@@ -98,7 +98,6 @@
           ./network.nix
           ./dell.nix
           # ./hdmi-cec.nix
-          ./ai.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
@@ -110,6 +109,7 @@
           ./network.nix
           ./pc.nix
           ./modules/steam.nix
+          ./ai.nix
         ];
       };
     });
