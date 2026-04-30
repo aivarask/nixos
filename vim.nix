@@ -41,10 +41,12 @@ in
   ];
   # }}}
   # vim {{{
-  xdg.configFile."vim/vim.vim".source = osConfig.symlink "/etc/nixos/vimrc";
+  xdg.configFile."vim/vimrc".source = osConfig.symlink "/etc/nixos/vimrc";
   programs.vim.enable = true;
   #  programs.vim.package = pkgs.vim-full;
   programs.vim.extraConfig = ''
+    set rtp^="/etc/nixos" 
+    set rtp+="/etc/nixos" 
     source $VIMRUNTIME/xdg.vim
     source ~/.config/vim/vim.vim
   '';
