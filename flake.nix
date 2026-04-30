@@ -57,7 +57,7 @@
         ./.config/pipewire/default.nix
         ./environment.nix
         ./httpd
-        ./lua
+        ./vimlua.nix
         ./modules/torrents.nix
         ./nix.nix
         ./services.nix
