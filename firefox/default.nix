@@ -18,17 +18,16 @@ let
   zen = "zen";
   zenprof = "${zen}/profile_zen_twilight";
 in
-{
+rec {
+
   # https://github.com/0xc000022070/zen-browser-flake
   imports = [
     # inputs.zen-browser.homeModules.twilight
   ];
   programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
-  programs.zen-browser = {
-    enable = true;
+  programs.zen-browser.enable = true;
+  # setAsDefaultBrowser = true;
 
-    # setAsDefaultBrowser = true;
-  };
   # home.packages = with pkgs; [
   #   # inputs.zen-browser.homeModules.twilight
   #   (inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight-unwrapped.override (
@@ -39,6 +38,9 @@ in
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox.languagePacks = [ "en-US" ];
+
+  programs.librewolf.enable = true;
+  programs.librewolf.languagePacks = programs.firefox.languagePacks;
 
   xdg.configFile."${ff}/profiles.ini".source = symlink "${s}/profiles.ini";
   xdg.configFile."${ffprof}/chrome/userChrome.css".source = symlink "${s}/userChrome.css";

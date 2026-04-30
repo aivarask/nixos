@@ -1,4 +1,4 @@
-source $XDG_CONFIG_HOME/vim/functions.vim"
+source $XDG_CONFIG_HOME/vim/functions.vim
 set verbose=0
 set sessionoptions=curdir,folds,help,tabpages,terminal,globals
 if !has('nvim')
@@ -11,7 +11,6 @@ endif
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
-
 
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 nnoremap <expr> <F2> Woo()
@@ -30,19 +29,25 @@ nnoremap <silent> \a :call SourceLuafile()<CR>
 nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
 nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/vim.vim<CR> | imap <F5> <C-O><F5>
 
+" au! CmdlineChanged * silent call Exec('PP complete_info()')
+function! Exec(command)
+	redir! >>.vim_ex_log.txt
+	silent exec a:command
+	redir END
+	" return output
+endfunction
+" imap , <Cmd>put =complete_info(['selected'])['selected']<CR>
+
 " cnoremap ss so /etc/nixos/lua/*.vim<C-Z>
-cmap <expr> / printf(complete_info())
-" cnoremap <expr> / pumvisible() && return 
-" cnoremap <expr> / pumvisible() && printf(complete_info().selected == -1)
 " cmap <expr> / pumvisible() && echo complete_info().selected == -1 ? '<C-y><Tab>' : '<C-y>') : '<CR>'
-
-" au! CmdlineChanged * execute printf(complete_info())
-
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 cnoremap <nowait> <Esc>h <Left>
 cnoremap <nowait> <Esc>l <Right>
 
+" macros {{{
+let @a = "ggo/* Comment header */\n*/\n"
+" }}}
 " netrw {{{
 " let g:loaded_netrw = 0
 " let g:loaded_netrwPlugin = 0

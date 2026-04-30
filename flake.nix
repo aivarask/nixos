@@ -68,6 +68,7 @@
         ./modules/gnome.nix
         ./modules/graphics.nix
         ./modules/search.nix
+        ./modules/searx.nix
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
@@ -97,6 +98,7 @@
           ./network.nix
           ./dell.nix
           # ./hdmi-cec.nix
+          ./ai.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {

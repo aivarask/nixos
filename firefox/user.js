@@ -25,7 +25,14 @@ user_pref("sidebar.verticalTabs", true);
 user_pref("sidebar.verticalTabs.dragToPinPromo.dismissed", true);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("ui.tooltip.delay_ms", 160);
-// user_pref("browser.bookmarks.max_backups", 0);
+user_pref("browser.compactmode.show", 1);
+user_pref("browser.bookmarks.addedImportButton", false);
+// user_pref("", 0);
+// user_pref("", 0);
+// user_pref("", 0);
+// user_pref("", 0);
+// user_pref("", 0);
+// user_pref("", 0);
 
 user_pref("zen.view.compact", true);
 user_pref("zen.tabs.vertical", true);
