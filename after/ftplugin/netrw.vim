@@ -1,2 +1,2 @@
-setlocal statusline=\ 
-filetype plugin off
+" setlocal statusline=\ 
+" filetype plugin off

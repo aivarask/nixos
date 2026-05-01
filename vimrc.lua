@@ -1,7 +1,7 @@
 uv = vim.uv
 
 -- setups {{{
-require('flatten').setup {integrations = {kitty=true}}
+require('flatten').setup { integrations = { kitty = true } }
 require('kitty-scrollback').setup(
 	{
 		search = {
@@ -15,9 +15,9 @@ require('kitty-scrollback').setup(
 
 
 if vim.uv.os_getenv('WAYLAND_DISPLAY') then require('image').setup({ backend = 'kitty' }) end
-require('fidget').setup({})
-require('notify').setup({ top_down = false, })
-vim.notify = require('notify')
+-- require('fidget').setup({})
+-- require('notify').setup({ top_down = false, })
+-- vim.notify = require('notify')
 -- }}}
 
 -- rest {{{
@@ -40,7 +40,6 @@ local function Shorten()
 		vim.uv.cwd() .. '/' or '', '')
 end
 --}}}
-
 -- lspattach {{{
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('lsp:attach', {}),
@@ -112,7 +111,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 -- }}}
-
 -- lsp {{{
 vim.o.pumheight = 16
 vim.o.pumblend = 30
@@ -155,13 +153,12 @@ vim.lsp.enable {
 	'yaml_ls',
 }
 -- }}}
-
 -- diagnostics {{{
 vim.lsp.inlay_hint.enable(false)
 local severity = {
 	min = vim.diagnostic.severity.WARN,
 	max = vim.diagnostic
-	.severity.ERROR
+	    .severity.ERROR
 }
 vim.diagnostic.config({
 	underline = { severity = severity },
@@ -192,21 +189,21 @@ vim.diagnostic.config({
 
 
 vim.api.nvim_create_autocmd('CursorHold',
-{
-	group = vim.api.nvim_create_augroup('diagnostic', { clear = true }),
-	callback = function()
-		vim.diagnostic.open_float({
-			scope = 'buffer',
-			close_events = { 'CursorMoved' },
-			severity = severity,
-			foo = '',
-			pos = { 30, 30 },
-			focusable = false
+	{
+		group = vim.api.nvim_create_augroup('diagnostic', { clear = true }),
+		callback = function()
+			vim.diagnostic.open_float({
+				scope = 'buffer',
+				close_events = { 'CursorMoved' },
+				severity = severity,
+				foo = '',
+				pos = { 30, 30 },
+				focusable = false
 
 
-		})
-	end,
-})
+			})
+		end,
+	})
 
 if false then
 	vim.diagnostic.handlers.loclist = {

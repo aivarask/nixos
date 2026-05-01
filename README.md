@@ -6,6 +6,16 @@
 " CTRL-T    indent current line
 " CTRL-D    un-indent current line
 
+<Ctrl + ]>: Tags file completion
+<Ctrl + d>: Definition completion
+<Ctrl + f>: Filename completion (based on files in $PWD)
+<Ctrl + i>: Path pattern completion
+<Ctrl + k>: Dictionary completion
+<Ctrl + l>: Whole line completion
+<Ctrl + n>: Keyword local completion
+<Ctrl + o>: Omni completion completion
+<Ctrl + v>: Command line completion
+
 # Pattern	Description
 .	Matches any character (except a newline).
 %a	Matches any letter (alphabetical character).

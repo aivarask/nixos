@@ -36,3 +36,5 @@ lua_path+=('/etc/nixos/lua/?.lua')
 lua_path+=('/etc/nixos/lua/?/init.lua')
 lua_path+=('/etc/luajit/share/lua/5.1/?/init.lua')
 lua_path+=('/etc/luajit/share/lua/5.1/?.lua')
+
+. /etc/environment

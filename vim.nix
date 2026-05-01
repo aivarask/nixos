@@ -1,3 +1,4 @@
+# vim: nofoldenable
 {
   pkgs,
   lib,
@@ -9,12 +10,14 @@
 let
   COMMON = with pkgs.vimPlugins; [
     gruvbox-material
+    vim-commentary
+    vim-highlightedyank
     vim-scriptease
     vim-obsession
     vim-gutentags
     vim-vinegar
     vim-nix
-    ctrlp-vim
+    # ctrlp-vim
     switch-vim
   ];
 in
@@ -41,29 +44,24 @@ in
   ];
   # }}}
   # vim {{{
-  xdg.configFile."vim/vimrc".source = osConfig.symlink "/etc/nixos/vimrc";
   programs.vim.enable = true;
-  #  programs.vim.package = pkgs.vim-full;
   programs.vim.extraConfig = ''
-    set rtp^="/etc/nixos" 
-    set rtp+="/etc/nixos" 
-    source $VIMRUNTIME/xdg.vim
-    source ~/.config/vim/vim.vim
+    set runtimepath^=/etc/nixos 
+    set runtimepath+=/etc/nixos/after 
+    source vimrc
   '';
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (lib.mkMerge [ COMMON ]);
+  home.sessionVariables.VIM9 = "${config.programs.vim.package}/share/vim/vim92";
+
   # }}}
   # nvim {{{
-  xdg.configFile."nvim/after".source = osConfig.symlink "/etc/nixos/lua/after";
-  xdg.configFile."nvim/autoload".source = osConfig.symlink "/etc/nixos/lua/autoload";
-  xdg.configFile."nvim/plugin".source = osConfig.symlink "/etc/nixos/lua/plugin";
-  xdg.configFile."nvim/shared.vim".source = osConfig.symlink "/etc/nixos/lua/shared.vim";
-  xdg.configFile."nvim/setup.lua".source = osConfig.symlink "/etc/nixos/lua/setup.lua";
   programs.neovim.enable = true;
   programs.neovim.initLua =
     let
       nvimEarlyInit = lib.mkOrder 500 ''
-        vim.opt.rtp:prepend('/etc/nixos')
-        vim.cmd.source('~/.config/vim/vim.vim')
+        vim.opt.runtimepath:prepend('/etc/nixos')
+        vim.opt.runtimepath:append('/etc/nixos/after')
+        vim.cmd.source('vimrc')
         require('vimrc')
       '';
     in
@@ -78,7 +76,7 @@ in
       COMMON
       (with pkgs.vimPlugins; [
         # nvim-treesitter.withAllGrammars
-        (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
+        # (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
         nvim-nio
         SchemaStore-nvim
         flatten-nvim

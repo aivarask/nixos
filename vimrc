@@ -1,13 +1,21 @@
-source $XDG_CONFIG_HOME/vim/functions.vim
 set verbose=0
-set sessionoptions=curdir,folds,help,tabpages,terminal,globals
-if !has('nvim')
-	set sessionoptions+=localoptions
-	" editorconfig helpcurwin termdebug matchit
-	packadd! netrw 
-	packadd! comment
-	packadd hlyank
-endif
+source vimfunc.vim
+source vimpersist.vim
+" source vcomp.vim
+packadd cfilter
+" session {{{
+set sessionoptions=buffers,curdir,folds,help,tabpages,terminal
+autocmd VimEnter * nested
+			\ if !argc() && empty(v:this_session) && !&modified|
+			\   if filereadable('Session.vim')|
+			\     source Session.vim|
+			\   else|
+			\     Obsession|
+			\   endif|
+			\ endif
+if !has('nvim')| set sessionoptions+=localoptions| endif
+" }}}
+let g:loaded_sensible=1
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
@@ -15,8 +23,8 @@ let g:no_vim_maps=1
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 nnoremap <expr> <F2> Woo()
 inoremap <expr> ?? Woo()
-nnoremap /, :execute 'terminal lf ' .. expand("%:h")<CR>
-nmap /. :Find<space>
+nnoremap /<CR> :execute 'terminal++close lf ' .. expand("%:h")<CR>
+nmap /. :find<space>
 nmap // :Grep<space>
 nmap q <Nop>
 nmap Q <Nop>
@@ -27,7 +35,8 @@ nnoremap <silent> \q Bclose()<CR>
 nnoremap <silent> \q :bd!<CR>
 nnoremap <silent> \a :call SourceLuafile()<CR>
 nnoremap <F6> :Obsession!<CR> | imap <F6> <C-O><F6> 
-nnoremap <F5> :wall\|source $XDG_CONFIG_HOME/vim/vim.vim<CR> | imap <F5> <C-O><F5>
+nnoremap <F5> :w\|source vimrc<CR> | imap <F5> <C-O><F5>
+
 
 " au! CmdlineChanged * silent call Exec('PP complete_info()')
 function! Exec(command)
@@ -150,10 +159,16 @@ if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
-augroup terminals
-	au!
-	" autocmd TermOpen,WinEnter "term://*" startinsert  
-augroup END
+aug terminal
+	if !has('nvim') 
+		au!|au TerminalOpen,WinEnter "term://*" startinsert  
+	endif
+aug END
+
+function! TermFloat(arg = "zsh")
+	let buf = term_start([a:arg], #{hidden: 1, term_finish: 'close'})
+	let winid = popup_create(buf, #{minwidth: 120, minheight: 40})
+endfunction
 function! Term(arg = "zsh") abort
 	echom a:arg
 	let tname = '!' . a:arg
@@ -222,7 +237,7 @@ set whichwrap+=<,>,[,]
 set previewheight=32
 " set previewwindow
 set scrolloff=16
-set cmdheight=2
+set cmdheight=4
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 syntax on
 let g:gruvbox_material_background = 'hard'
@@ -238,7 +253,6 @@ let &titleold=getcwd()
 set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}
 " set statusline+=%S
 set showmode
-set cmdheight=2
 function! SpawnBufferLine()
 	let s = ''
 	" Making a tab list on the right side
@@ -282,21 +296,84 @@ set wildoptions=pum
 set wildignorecase
 set wildcharm=<C-Z>
 aug wild | au! CmdlineChanged [:\/\?] call wildtrigger() |aug END
-set path=**
+set path=.,,**
 set autocomplete
 set autocompletetimeout=100
 set autocompletedelay=300
-let &l:complete = 'o,' . &l:complete
+" let &l:complete = 'o,' . &l:complete
+set complete^=o
 set completetimeout=100
 set completeopt=menu,menuone,noselect
-set completeopt+=fuzzy
+" set completeopt+=fuzzy
+" set completeopt+=popuphidden
+set completeopt+=popup
+set completeopt+=preview
+set completepopup=height:10,border:single,highlight:InfoPopup
+set omnifunc=
+" setlocal omnifunc=vimcomplete#Complete
+
+augroup HelpPlease
+  au!
+  au BufEnter *
+        \   if &buftype == 'help'
+        \ |   filetype detect
+        \ | endif
+  au FileType help
+        \   set buftype=
+        \ | exe winnr('#').'quit'
+augroup END
+inoremap <F4> <C-R>=Complete()<CR>
+function! Complete(cmdarg, cmdcomplete)
+	let words = ['January', 'February', 'March',
+				\ 'April', 'May', 'June', 'July', 'August',
+				\ 'September', 'October', 'November', 'December'] 
+	" complete-items
+	let compitems = [ 
+				\{'word': 'one', 'abbr': 'on', 'menu':'on_menu', 'info':'on_info', 'kind': 'A'},
+				\{'word': 'two', 'abbr': 'tw', 'menu':'tw_menu', 'info':'tw_info', 'kind': 'Z'},
+				\ ]
+	call complete(col('.'), compitems)
+	let files = glob("**", v:false, v:true)
+	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
+endfunction
+
+" let Compl = function('CompleteF' )
+" set complete=F
+" set complete=
+"
+" let &completefunc=Complete
+set completefunc=Complete
+
+
+
+
+
+
+
+
+
+aug complete
+	au!
+	au FileType help map <buffer> [[ :bprevious<CR>
+	au FileType help map <buffer> ]] :bnext<CR>
+	au CompleteChanged * call UpdateCompleteInfo()
+aug END
+
+func! UpdateCompleteInfo()
+	let item = v:event.completed_item
+	let comp_info = complete_info()
+	let id = popup_findinfo()
+	if id
+		call popup_settext(id, 'async info: ' .. item.info)
+		call popup_show(id)
+	endif
+endfunc
 "}}}
 " diff {{{
 command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
 command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 " }}}
-" grep find {{{
-set findfunc=FindFunc
+" grep {{{
 " set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
 augroup qf
@@ -316,6 +393,23 @@ function! Grep(...)
 	return system(join([&grepprg] + a:000), ' ')	      
 endfunction
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
+" }}}
+" find {{{
+set findfunc=FindFunc
+function! FindFunc(cmdarg, cmdcomplete)
+	augroup HelpPlease
+  au!
+  au BufEnter *
+        \   if &buftype == 'help'
+        \ |   filetype detect
+        \ | endif
+  au FileType help
+        \   set buftype=
+        \ | lcd %:h
+        \ | exe winnr('#').'quit'
+augroup ENDlet files = glob("**", v:false, v:true)
+	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
+endfunc
 function! FindFuncGlob(cmdarg, cmdcomplete)
 	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
 	return glob(pat, v:false, v:true)
@@ -331,11 +425,7 @@ function! FindFiles(filename)
 	exe "cfile ". error_file
 	copen
 endfunction
-command! -nargs=1 Find call FindFiles(<q-args>)
-function! FindFunc(cmdarg, cmdcomplete)
-	let files = glob("**", v:false, v:true)
-	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
-endfunc
+command! -nargs=1 FindFiles call FindFiles(<q-args>)
 " }}}
 " buf/win/tab next/prev  {{{
 nnoremap <C-N> :cnext<CR>
@@ -364,3 +454,13 @@ vnoremap <M-J> :m '>+1<CR>gv=gv
 vnoremap <M-K> :m '<-2<CR>gv=gv
 " }}}
 
+" fold {{{
+set foldtext=FoldText()
+function FoldText()
+	let line = getline(v:foldstart)
+	let ln = v:foldend - v:foldstart + 1
+	let sub = line
+	return v:folddashes .. sub .. ln
+endfunction
+
+" }}}

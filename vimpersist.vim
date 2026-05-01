@@ -2,7 +2,9 @@ let s:config = empty($XDG_CONFIG_HOME) ? expand("~/.config") : expand("$XDG_CONF
 let s:data   = empty($XDG_DATA_HOME)   ? expand("~/.local/share") : expand("$XDG_DATA_HOME")
 let s:state  = empty($XDG_STATE_HOME)  ? expand("~/.local/state") : expand("$XDG_STATE_HOME")
 
-if isdirectory(s:config .. '/vim')
+if has('nvim') | let s:self='/nvim' | else | let s:self='/vim' | endif  
+
+if isdirectory(s:config .. s:self) || 1
   func s:mkvimdir(dir)
     if !isdirectory(a:dir)
       call mkdir(a:dir, 'p', 0700)
@@ -11,9 +13,9 @@ if isdirectory(s:config .. '/vim')
   endfunc
 
   " Use Data for packages, prevent duplicates
-  if index(split(&packpath, ','), s:data .. '/vim') == -1
-    exe $"set packpath^={s:data}/vim"
-    exe $"set packpath+={s:data}/vim/after"
+  if index(split(&packpath, ','), s:data .. s:self) == -1
+	  exe $"set packpath^={s:data}{s:self}"
+	  exe $"set packpath+={s:data}{s:self}/after"
   endif
 
   " These options are not set by default because they change the behavior of
@@ -23,19 +25,19 @@ if isdirectory(s:config .. '/vim')
   " while Swap/Backups use STATE_HOME as transient session state.
 
   " Persistent Data:
-  let &undodir = s:mkvimdir(s:data .. '/vim/undo')
+  let &undodir = s:mkvimdir(s:data .. s:self .. '/undo')
   set undofile
-  let &viewdir = s:mkvimdir(s:data .. '/vim/view')
-  let g:netrw_home = s:mkvimdir(s:data .. '/vim')
-  call s:mkvimdir(s:data .. '/vim/spell')
+  let &viewdir = s:mkvimdir(s:data .. s:self .. '/view')
+  let g:netrw_home = s:mkvimdir(s:data .. s:self)
+  " call s:mkvimdir(s:data .. s:self .. '/spell')
 
   " Transient State:
-  let &viminfofile = s:mkvimdir(s:state .. '/vim') .. '/viminfo'
-  let &directory = s:mkvimdir(s:state .. '/vim/swap')   .. '//'
-  let &backupdir = s:mkvimdir(s:state .. '/vim/backup') .. '//'
+  let &viminfofile = s:mkvimdir(s:state .. s:self) .. '/viminfo'
+  let &directory = s:mkvimdir(s:state .. s:self .. '/swap')   .. '//'
+  let &backupdir = s:mkvimdir(s:state .. s:self .. '/backup') .. '//'
 
   delfunction s:mkvimdir
 endif
 
-unlet s:config s:data s:state
+unlet s:config s:data s:state s:self
 

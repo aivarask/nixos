@@ -25,6 +25,8 @@ in
 {
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
+  environment.etc."environment".source = "/etc/nixos/environment";
+  environment.etc."profile.local".source = "/etc/nixos/profile.local";
   environment.etc."luajit".source = myLua;
   environment.etc."lua-language-server".source = pkgs.lua-language-server;
   environment.pathsToLink = [ "/include" ];
