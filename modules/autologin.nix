@@ -10,6 +10,9 @@ in
     uwsm start sway-uwsm.desktop
 
     [[ "$(tty)" == /dev/tty2 ]] &&
+    niri-session -l
+
+    [[ "$(tty)" == /dev/tty3 ]] &&
     {}
   '';
 

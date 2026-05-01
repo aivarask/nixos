@@ -61,6 +61,7 @@
         ./modules/torrents.nix
         ./nix.nix
         ./services.nix
+        ./niri.nix
         ./sway.nix
         ./modules/autologin.nix
         ./modules/boot.nix

@@ -92,6 +92,7 @@ in
   xdg.configFile."lf".source = symlink "${xdgconf}/lf";
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
+  xdg.configFile."niri/config.kdl".source = symlink "${SELF}/niri.kdl";
   xdg.configFile."nwg-dock".source = symlink "${xdgconf}/nwg-dock";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";

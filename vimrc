@@ -24,8 +24,8 @@ aug vimrc
 	au BufEnter * if &buftype == 'help' | filetype detect | endif
 	" au FileType help | set buftype= | exe winnr('#').'quit'
 	" au FileType * autocmd BufEnter <buffer>  let b:did_add_maps=1
-	au FileType help map <buffer> [[ :bprevious<CR>
-	au FileType help map <buffer> ]] :bnext<CR>
+	au FileType help,netrw map <buffer> [[ :bprevious<CR>
+	au FileType help,netrw map <buffer> ]] :bnext<CR>
 	au filetype netrw map <buffer> D <Nop>
 	au filetype netrw map <buffer> a <Nop>
 	au QuickFixCmdPost [^l]* cwindow
