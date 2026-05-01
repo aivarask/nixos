@@ -17,6 +17,7 @@ let
     vim-gutentags
     vim-vinegar
     vim-nix
+    vim-lsp
     # ctrlp-vim
     switch-vim
   ];
@@ -48,7 +49,7 @@ in
   programs.vim.extraConfig = ''
     set runtimepath^=/etc/nixos 
     set runtimepath+=/etc/nixos/after 
-    source vimrc
+    source /etc/nixos/vimrc
   '';
   programs.vim.plugins = lib.mkIf (config.programs.vim.enable == true) (lib.mkMerge [ COMMON ]);
   home.sessionVariables.VIM9 = "${config.programs.vim.package}/share/vim/vim92";
@@ -61,7 +62,7 @@ in
       nvimEarlyInit = lib.mkOrder 500 ''
         vim.opt.runtimepath:prepend('/etc/nixos')
         vim.opt.runtimepath:append('/etc/nixos/after')
-        vim.cmd.source('vimrc')
+        vim.cmd.source('/etc/nixos/vimrc')
         require('vimrc')
       '';
     in
