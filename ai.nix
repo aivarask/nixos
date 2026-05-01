@@ -8,8 +8,8 @@
   environment.systemPackages = with pkgs; [
     openclaw
   ];
-
   nixpkgs.config.permittedInsecurePackages = [
     "openclaw-2026.4.21"
   ];
 }
+

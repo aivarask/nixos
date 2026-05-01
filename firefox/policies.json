@@ -39,13 +39,13 @@
 		"NoDefaultBookmarks": true,
 		"Bookmarks": [
 			{
-				"Title": "firefox-admin",
+				"Title": "admin",
 				"URL": "https://firefox-admin-docs.mozilla.org/reference/",
 				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.ico",
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "wiki.nixos.org",
+				"Title": "wiki",
 				"URL": "https://wiki.nixos.org/wiki/NixOS_Wiki",
 				"Favicon": "https://wiki.nixos.org/favicon.ico",
 				"Placement": "toolbar"
@@ -53,28 +53,24 @@
 			{
 				"Title": "i3",
 				"URL": "https://i3wm.org/docs/userguide.html",
-				"Placement": "toolbar",
-				"Folder": "2"
+				"Placement": "toolbar"
 			},
 			{
 				"Title": "home-manager-options",
 				"URL": "https://home-manager-options.extranix.com",
-				"Placement": "toolbar",
-				"Folder": "2"
+				"Placement": "toolbar"
 			},
 			{
 				"Title": "Example",
 				"URL": "https://example.com",
 				"Favicon": "https://example.com/favicon.ico",
-				"Placement": "toolbar",
-				"Folder": "2"
+				"Placement": "toolbar"
 			},
 			{
 				"Title": "YouTube",
 				"URL": "https://www.youtube.com",
 				"Favicon": "https://www.youtube.com/favicon.ico",
-				"Placement": "toolbar",
-				"Folder": "1"
+				"Placement": "toolbar"
 			}
 		],
 		"SearchEngines": {

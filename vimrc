@@ -8,7 +8,6 @@ let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
 " }}}
-
 set sessionoptions=buffers,curdir,folds,help,tabpages,terminal
 if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
 aug vimrc
@@ -46,14 +45,54 @@ aug vimrc
 	au BufWritePost *kitty/quick_access_terminal.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 	" au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 && &filetype != "qf" | silent! bd | endif
 	au CmdlineChanged [:\/\?] call wildtrigger()
-	au CmdlineChanged * call Log('cmd')
-	au CompleteChanged * call CompleteInfo()
+	" au CmdlineChanged * call Log('cmd')
+	" au CompleteChanged * call CompleteInfo()
 	" au CompleteChanged * call Log('comp')
 	argadd
 aug END
 
 
+" lsp {{{
+let g:lsp_use_native_client = 1
+let g:lsp_fold_enabled = 0
+if (executable('nixd'))
+	au User lsp_setup call lsp#register_server({
+				\ 'name': 'nixd',
+				\ 'cmd': {server_info->['nixd']},
+				\ 'allowlist': ['nix'],
+				\ 'config': {},
+				\ 'workspace_config': {'param': {'enabled': v:true}},
+				\ 'languageId': {server_info->'nix'},
+				\ })
+endif
+function! s:on_lsp_buffer_enabled() abort
+	setlocal omnifunc=lsp#complete
+	setlocal signcolumn=yes
+	if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+	nmap <buffer> gd <plug>(lsp-definition)
+	nmap <buffer> gs <plug>(lsp-document-symbol-search)
+	nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+	nmap <buffer> gr <plug>(lsp-references)
+	nmap <buffer> gi <plug>(lsp-implementation)
+	nmap <buffer> gt <plug>(lsp-type-definition)
+	nmap <buffer> grap <plug>(lsp-code-action-preview)
+	nmap <buffer> gra <plug>(lsp-code-action)
+	nmap <buffer> grn <plug>(lsp-rename)
+	nmap <buffer> [d <plug>(lsp-previous-diagnostic)
+	nmap <buffer> ]d <plug>(lsp-next-diagnostic)
+	nmap <buffer> K <plug>(lsp-hover)
+	nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+	nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
+	let g:lsp_format_sync_timeout = 1000
+	autocmd! BufWritePre *.nix,*.go call execute('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+	au!
+	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+" }}}
 
 function! Log(...) abort 
 	redir! >vim.log
@@ -79,14 +118,9 @@ function! CompleteInfo()
 endfunction
 
 function! Complete(findstart, base)
-	let words = ['January', 'February', 'March',
-				\ 'April', 'May', 'June', 'July', 'August',
-				\ 'September', 'October', 'November', 'December'] 
-	" complete-items
-	let compitems = [ 
-				\{'word': 'one', 'abbr': 'on', 'menu':'on_menu', 'info':'on_info', 'kind': 'A'},
-				\{'word': 'two', 'abbr': 'tw', 'menu':'tw_menu', 'info':'tw_info', 'kind': 'Z'},
-				\ ]
+	let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] 
+	let compitems = [{'word': 'one', 'abbr': 'on', 'menu':'on_menu', 'info':'on_info', 'kind': 'A'},
+				\{'word': 'two', 'abbr': 'tw', 'menu':'tw_menu', 'info':'tw_info', 'kind': 'Z'}]
 	call complete(col('.'), compitems)
 	let files = glob("**", v:false, v:true)
 	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
@@ -102,7 +136,7 @@ set autocomplete
 set autocompletetimeout=100
 set autocompletedelay=300
 set complete^=o
-set complete=.
+" set complete=.
 set completetimeout=100
 set completeopt=menu,menuone,noselect
 set completeopt+=popup
