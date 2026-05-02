@@ -93,7 +93,7 @@ output "Sony SONY TV  *00 0x01010101" {
 }
 // }}}
 
-// layout https://niri-wm.github.io/niri/Configuration:-Layout {{{
+// https://niri-wm.github.io/niri/Configuration:-Layout {{{
 layout {
     gaps 4
     // When to center a column when changing focus, options are:
@@ -236,6 +236,7 @@ layout {
 }
 // }}}
 
+// https://niri-wm.github.io/niri/Configuration:-Miscellaneous.html {{{
 spawn-at-startup "waybar"
 // spawn-sh-at-startup "bash -c ~/.local/bin"
 hotkey-overlay { 
@@ -245,8 +246,9 @@ prefer-no-csd
 
 // screenshot-path null // to disable saving to disk // strftime(3)
 screenshot-path "~/Pictures/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// }}}
 
-// animations https://niri-wm.github.io/niri/Configuration:-Animations {{{
+// https://niri-wm.github.io/niri/Configuration:-Animations {{{
 animations {
     // Uncomment to turn off all animations.
     // off
@@ -256,7 +258,7 @@ animations {
 }
 // }}}
 
-// window-rules https://niri-wm.github.io/niri/Configuration:-Window-Rules {{{
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules {{{
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
@@ -281,6 +283,7 @@ window-rule {
 }
 // }}}
 
+// https://niri-wm.github.io/niri/Configuration:-Key-Bindings {{{
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -566,3 +569,4 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+// }}}
