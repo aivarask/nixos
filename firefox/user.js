@@ -27,7 +27,7 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("ui.tooltip.delay_ms", 160);
 user_pref("browser.compactmode.show", 1);
 user_pref("browser.bookmarks.addedImportButton", false);
-// user_pref("", 0);
+user_pref("network.standard-url.encode-utf8", true);
 // user_pref("", 0);
 // user_pref("", 0);
 // user_pref("", 0);

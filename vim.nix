@@ -17,8 +17,8 @@ let
     vim-gutentags
     vim-vinegar
     vim-nix
-    vim-lsp
-    # ctrlp-vim
+    vim-ls
+    vim-css-color
     switch-vim
   ];
 in
