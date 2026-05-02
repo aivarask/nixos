@@ -7,10 +7,10 @@ in
   services.getty.autologinOnce = false;
   environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] &&
-    uwsm start sway-uwsm.desktop
+    niri-session -l
 
     [[ "$(tty)" == /dev/tty2 ]] &&
-    niri-session -l
+    uwsm start sway-uwsm.desktop
 
     [[ "$(tty)" == /dev/tty3 ]] &&
     {}

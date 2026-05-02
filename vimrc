@@ -150,12 +150,14 @@ set completeopt+=preview
 "}}}
 
 
+
 " keymaps {{{
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 let @a = "ggo/* Comment header */\n*/\n"
 let @b = "ggo Comment header <Esc>gcc"
 nmap q <Nop>
 nmap Q <Nop>
+nmap <BS> X
 nnoremap <expr> <F2> Woo() 
 inoremap <F4> <C-R>=Complete()<CR>
 nnoremap <F5> :silent update\|source vimrc\|silent Runtime<CR> | imap <F5> <C-O><F5>
@@ -206,20 +208,20 @@ nnoremap <silent> ]] :bnext<CR>
 nnoremap <silent> [[ :bprevious<CR>
 tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
 tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
-nnoremap <silent> [<BS> :b#<CR>
-nnoremap <silent> ]<BS> :b#<CR>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
 " }}}
 
 " terminal {{{
-if !has('nvim') | set term=kitty | endif
 set termguicolors
+if !has('nvim') | set term=kitty | endif
 if &term =~ '256color' | set t_ut= | endif
 if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 let &t_EI = "\<Esc>[2 q"
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
+let &t_kb = "^V<BS>"
+" fixdel
 " }}}
 
 " settings {{{
@@ -263,7 +265,7 @@ colorscheme gruvbox-material
 set wildignore+=.git/
 " set wildignore=
 set shortmess+=Ss
-set hlsearch
+" set hlsearch
 set incsearch
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow	
 set findfunc=FindFunc
@@ -271,15 +273,16 @@ set foldmethod=marker
 set foldtext=FoldText()
 " }}}
 
-" status {{{
+" title/tabline/statusline {{{
+" let &titleold=getcwd()
 set title 
 set titlestring=%{Progname()}\ %{getcwd()}\ %f\ 
-" let &titleold=getcwd()
-set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}
-set laststatus=2
-set noshowmode
 set showtabline=2
 set tabline=%!TabLine()
+set showcmdloc=statusline
+set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}\ %S
+set laststatus=2
+set showmode
 " }}}
 
 " netrw {{{
