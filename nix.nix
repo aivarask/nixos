@@ -25,7 +25,9 @@ in
   nix.gc.options = "--delete-older-than 7d";
   nix.channel.enable = false;
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-  nix.nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  nix.nixPath = (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs) ++ [
+    "nixpkgs-overlays=/etc/nixos/overlays-compat/"
+  ];
   nix.extraOptions = ''
     use-xdg-base-directories = true
     warn-dirty = false

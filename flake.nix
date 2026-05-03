@@ -29,6 +29,8 @@
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
+        {
+        }
         inputs.nirinit.nixosModules.nirinit
         {
           services.nirinit = {
