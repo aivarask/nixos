@@ -1,18 +1,12 @@
 # Niri Session Manager Configuration
 
 # Apps that should only have one instance
-[single_instance_apps] 
-apps = [
-    "firefox"
-    "zen"
-]
+[single_instance_apps]
+apps = ["firefox"]
 
 # Applications to skip during startup
 [skip_apps]
-apps = [
-    "discord",
-    "slack"
-]
+apps = ["discord", "slack"]
 
 #Application remapping
 [app_mappings]
@@ -28,4 +22,4 @@ apps = [
 "org.wezfurlong.wezterm" = ["wezterm"]
 
 # Commands with arguments
-"firefox-custom" = ["firefox", "--profile", "default-release"]
+"ff-test" = ["firefox", "--profile", "profile_test"]

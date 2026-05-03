@@ -19,19 +19,43 @@
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   inputs.zen-browser.inputs.home-manager.follows = "home-manager";
   inputs.niri-session-manager.url = "github:MTeaHead/niri-session-manager";
+  inputs.nirinit = {
+    url = "github:amaanq/nirinit";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
+        inputs.nirinit.nixosModules.nirinit
+        {
+          services.nirinit = {
+            # https://github.com/amaanq/nirinit
+            enable = true;
+            settings = {
+              # Map app_id to launch command (useful for PWAs, flatpaks, etc.)
+              launch = {
+                "chromium-example.com__-Default" = "example-web-app";
+              };
+              # Apps to skip during restore
+              skip.apps = [ "steam" ];
+            };
+          };
+        }
         inputs.niri-session-manager.nixosModules.niri-session-manager
         {
           services.niri-session-manager.enable = true;
-          # services.niri-session-manager.settings = {
-          #   save-interval = 30; 
+          # services.niri-session-manager.package = {
+          #   save-interval = 1;
           #   max-backup-count = 3;
           # };
+          # --save-interval <MINUTES>     How often to save the session (default: 15)
+          # --max-backup-count <COUNT>    Number of backup files to keep (default: 5)
+          # --spawn-timeout <SECONDS>     How long to wait for windows to spawn (default: 5)
+          # --retry-attempts <COUNT>      Number of restore attempts (default: 3)
+          # --retry-delay <SECONDS>       Delay between retry attempts (default: 2)
         }
         inputs.home-manager.nixosModules.home-manager
         {
