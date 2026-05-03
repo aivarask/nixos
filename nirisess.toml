@@ -1,0 +1,31 @@
+# Niri Session Manager Configuration
+
+# Apps that should only have one instance
+[single_instance_apps] 
+apps = [
+    "firefox"
+    "zen"
+]
+
+# Applications to skip during startup
+[skip_apps]
+apps = [
+    "discord",
+    "slack"
+]
+
+#Application remapping
+[app_mappings]
+
+# flatpak remapping
+"vesktop" = ["flatpak", "run", "dev.vencord.Vesktop"]
+"discord" = ["flatpak", "run", "com.discordapp.Discord"]
+"slack" = ["flatpak", "run", "com.slack.Slack"]
+"obs" = ["flatpak", "run", "com.obsproject.Studio"]
+
+# Simple command remapping
+"com.mitchellh.ghostty" = ["ghostty"]
+"org.wezfurlong.wezterm" = ["wezterm"]
+
+# Commands with arguments
+"firefox-custom" = ["firefox", "--profile", "default-release"]

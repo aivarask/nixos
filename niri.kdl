@@ -339,7 +339,7 @@ binds {
 	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
 	// The quit action will show a confirmation dialog to avoid accidental exits.
-	Mod+F12 { spawn-sh loginctl terminate-user "";}
+	Mod+F12 hotkey-overlay-title="aaa" { spawn-sh "loginctl terminate-user ''";}
 	Mod+Shift+E { quit; }
 	Ctrl+Alt+Delete { quit; }
 

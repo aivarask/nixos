@@ -18,13 +18,21 @@
   inputs.zen-browser.url = "github:0xc000022070/zen-browser-flake";
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   inputs.zen-browser.inputs.home-manager.follows = "home-manager";
+  inputs.niri-session-manager.url = "github:MTeaHead/niri-session-manager";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-      foo = { };
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
+        inputs.niri-session-manager.nixosModules.niri-session-manager
+        {
+          services.niri-session-manager.enable = true;
+          # services.niri-session-manager.settings = {
+          #   save-interval = 30; 
+          #   max-backup-count = 3;
+          # };
+        }
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {

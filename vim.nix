@@ -3,7 +3,6 @@
   pkgs,
   lib,
   config,
-  osConfig,
   inputs,
   ...
 }:
@@ -17,7 +16,7 @@ let
     vim-gutentags
     vim-vinegar
     vim-nix
-    vim-ls
+    vim-lsp
     vim-css-color
     switch-vim
   ];
