@@ -76,97 +76,83 @@ output "HDMI-A-1" {
 
 }
 // }}}
+
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings {{{
 binds {
-
-	Mod+Shift+Slash { show-hotkey-overlay; }
-
-	Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-	Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-	Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-
-	// Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-	// Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-	// For example, this is a standard bind to toggle the screen reader (orca).
-	Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-
-	// Example volume keys mappings for PipeWire & WirePlumber.
-	// The allow-when-locked=true property makes them work even when the session is locked.
-	// Using spawn-sh allows to pass multiple arguments together with the command.
-	// "-l 1.0" limits the volume to 100%.
-	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-	XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+	// X86 {{{
+	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+	XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
 	XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
 	XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-	// Example media keys mapping using playerctl.
-	// This will work with any MPRIS-enabled media player.
 	XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
 	XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
 	XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
 	XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-
 	XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
 	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+	// }}}
+	// Escape {{{
+	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; } 
+	Mod+F1 { show-hotkey-overlay; }
+	Mod+F9 hotkey-overlay-title="nix-tree" { spawn-sh "nix-tree"; }
+	Mod+F10 hotkey-overlay-title="swaylock" { spawn "swaylock"; }
+	Mod+F11 hotkey-overlay-title="quit" { quit skip-confirmation=true; }
+	Mod+F12 hotkey-overlay-title="loginctl terminate-user" { spawn-sh "loginctl terminate-user ''";}
+	Print { screenshot; }
+	Ctrl+Print { screenshot-screen; }
+	Alt+Print { screenshot-window; }
+	Mod+Pause { power-off-monitors; } // any input to turn on
+	// }}}
 
-	// Open/close the Overview: a zoomed-out view of workspaces and windows.
-	// You can also move the mouse into the top-left hot corner,
-	// or do a four-finger swipe up on a touchpad.
+	// ~` {{{
+	Mod+1 { focus-workspace 1; }
+	Mod+2 { focus-workspace 2; }
+	Mod+3 { focus-workspace 3; }
+	Mod+Ctrl+1 { move-column-to-workspace 1; }
+	Mod+Ctrl+2 { move-column-to-workspace 2; }
+	Mod+Ctrl+3 { move-column-to-workspace 3; }
+	// }}}
+	Mod+T hotkey-overlay-title="kitty" { spawn "kitty"; }
+	Mod+D hotkey-overlay-title="fuzzel" { spawn "fuzzel"; }
+	Mod+E { spawn "kitty" "-d" "/etc/nixos" "vim"; }
+	// Mod+W { toggle-column-tabbed-display; } // vertical tabs not stack
+	Mod+W { spawn "firefox" "--new-window"; } // vertical tabs not stack
+	Mod+Shift+W { spawn "firefox" "--private-window" "xhamster.com"; } // vertical tabs not stack
+	Mod+Return { spawn "kitty"; }
+	Mod+C { spawn "chromium" "-incognito" "xhamster.com"; }
+	// Mod+C { center-column; }
+
+	Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "|| exec orca"; }
+
 	Mod+O repeat=false { toggle-overview; }
-
 	Mod+Q repeat=false { close-window; }
 
 	Mod+Left  { focus-column-left; }
 	Mod+Down  { focus-window-down; }
 	Mod+Up    { focus-window-up; }
 	Mod+Right { focus-column-right; }
-	Mod+H     { focus-column-left; }
-	Mod+J     { focus-window-down; }
-	Mod+K     { focus-window-up; }
-	Mod+L     { focus-column-right; }
 
 	Mod+Ctrl+Left  { move-column-left; }
+	Mod+Ctrl+Right { move-column-right; }
 	Mod+Ctrl+Down  { move-window-down; }
 	Mod+Ctrl+Up    { move-window-up; }
-	Mod+Ctrl+Right { move-column-right; }
-	Mod+Ctrl+H     { move-column-left; }
-	Mod+Ctrl+J     { move-window-down; }
-	Mod+Ctrl+K     { move-window-up; }
-	Mod+Ctrl+L     { move-column-right; }
 
-	// Alternative commands that move across workspaces when reaching
-	// the first or last window in a column.
-	// Mod+J     { focus-window-or-workspace-down; }
-	// Mod+K     { focus-window-or-workspace-up; }
-	// Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-	// Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+	// Mod+J    	{ focus-window-or-workspace-down; }
+	// Mod+Shift+J	{ move-window-down-or-to-workspace-down; }
 
-	Mod+Home { focus-column-first; }
-	Mod+End  { focus-column-last; }
+	// Mod+Home { focus-column-first; }
 	Mod+Ctrl+Home { move-column-to-first; }
 	Mod+Ctrl+End  { move-column-to-last; }
 
-	// Mod+Shift+Left  { focus-monitor-left; }
-	Mod+Shift+Down  { focus-monitor-down; }
-	Mod+Shift+Up    { focus-monitor-up; }
+	/-Mod+Shift+Left  { focus-monitor-left; }
 	Mod+Shift+Right { focus-monitor-right; }
-	Mod+Shift+H     { focus-monitor-left; }
-	Mod+Shift+J     { focus-monitor-down; }
-	Mod+Shift+K     { focus-monitor-up; }
-	Mod+Shift+L     { focus-monitor-right; }
 
 	Mod+Shift+Left  { move-column-to-monitor-left; }
 	Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
 	Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
 	Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-	Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-	Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-	Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-	Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-	// Alternatively, there are commands to move just a single window:
 	// Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-	// ...
 
 	// And you can also move a whole workspace to another monitor:
 	Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
@@ -222,38 +208,12 @@ binds {
 	// Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
 	// Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
-	// You can refer to workspaces by index. However, keep in mind that
-	// niri is a dynamic workspace system, so these commands are kind of
-	// "best effort". Trying to refer to a workspace index bigger than
-	// the current workspace count will instead refer to the bottommost
-	// (empty) workspace.
-	//
-	// For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
-	// will all refer to the 3rd workspace.
-	Mod+1 { focus-workspace 1; }
-	Mod+2 { focus-workspace 2; }
-	Mod+3 { focus-workspace 3; }
-	Mod+4 { focus-workspace 4; }
-	Mod+5 { focus-workspace 5; }
-	Mod+6 { focus-workspace 6; }
-	Mod+7 { focus-workspace 7; }
-	Mod+8 { focus-workspace 8; }
-	Mod+9 { focus-workspace 9; }
-	Mod+Ctrl+1 { move-column-to-workspace 1; }
-	Mod+Ctrl+2 { move-column-to-workspace 2; }
-	Mod+Ctrl+3 { move-column-to-workspace 3; }
-	Mod+Ctrl+4 { move-column-to-workspace 4; }
-	Mod+Ctrl+5 { move-column-to-workspace 5; }
-	Mod+Ctrl+6 { move-column-to-workspace 6; }
-	Mod+Ctrl+7 { move-column-to-workspace 7; }
-	Mod+Ctrl+8 { move-column-to-workspace 8; }
-	Mod+Ctrl+9 { move-column-to-workspace 9; }
 
 	// Alternatively, there are commands to move just a single window:
 	// Mod+Ctrl+1 { move-window-to-workspace 1; }
 
 	// Switches focus between the current and the previous workspace.
-	// Mod+Tab { focus-workspace-previous; }
+	Mod+Tab { focus-workspace-previous; }
 
 	// The following binds move the focused window in and out of a column.
 	// If the window is alone, they will consume it into the nearby column to the side.
@@ -287,9 +247,7 @@ binds {
 	// Makes the column "fill the rest of the space".
 	Mod+Ctrl+F { expand-column-to-available-width; }
 
-	Mod+C { center-column; }
-
-	// Center all fully visible columns on screen.
+	// Mod+C { center-column; }
 	Mod+Ctrl+C { center-visible-columns; }
 
 	// Finer width adjustments.
@@ -311,44 +269,15 @@ binds {
 	Mod+V       { toggle-window-floating; }
 	Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-	// Toggle tabbed column display mode.
-	// Windows in this column will appear as vertical tabs,
-	// rather than stacked on top of each other.
-	Mod+W { toggle-column-tabbed-display; }
-
-	// Actions to switch layouts.
-	// Note: if you uncomment these, make sure you do NOT have
-	// a matching layout switch hotkey configured in xkb options above.
-	// Having both at once on the same hotkey will break the switching,
-	// since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
 	Mod+Space       { switch-layout "next"; }
 	Mod+Shift+Space { switch-layout "prev"; }
 
-	Print { screenshot; }
-	Ctrl+Print { screenshot-screen; }
-	Alt+Print { screenshot-window; }
+	// allow-inhibiting=false ensures niri always processes them
 
-	// Applications such as remote-desktop clients and software KVM switches may
-	// request that niri stops processing the keyboard shortcuts defined here
-	// so they may, for example, forward the key presses as-is to a remote machine.
-	// It's a good idea to bind an escape hatch to toggle the inhibitor,
-	// so a buggy application can't hold your session hostage.
-	//
-	// The allow-inhibiting=false property can be applied to other binds as well,
-	// which ensures niri always processes them, even when an inhibitor is active.
-	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-	// The quit action will show a confirmation dialog to avoid accidental exits.
-	Mod+F12 hotkey-overlay-title="aaa" { spawn-sh "loginctl terminate-user ''";}
-	Mod+F11 hotkey-overlay-title="quit" { quit; }
-	Mod+Shift+E { quit; }
-	Ctrl+Alt+Delete { quit; }
-
-	// Powers off the monitors. To turn them back on, do any input like
-	// moving the mouse or pressing any other key.
-	Mod+Shift+P { power-off-monitors; }
 }
 // }}}
+
 // https://niri-wm.github.io/niri/Configuration:-Switch-Events {{{
 switch-events {
 	lid-close { spawn "notify-send" "The laptop lid is closed!"; }
@@ -361,11 +290,11 @@ switch-events {
 layout {
 	gaps 16
 	/-struts {
-        left -16
-        right -16
-        top -16
-        bottom -16
-    }
+		left -16
+		right -16
+		top -16
+		bottom -16
+	}
 	center-focused-column "never"
 
 	// switch-preset-column-width (Mod+R) toggles between.
@@ -408,11 +337,11 @@ layout {
 		color "#0007"
 	}
 	insert-hint {
-        // off
-        on
-        color "#ffc87f80"
-        // gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
-    }
+		// off
+		on
+		color "#ffc87f80"
+		// gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+	}
 
 }
 // }}}
@@ -443,7 +372,7 @@ xwayland-satellite {
 	path "xwayland-satellite"
 }
 clipboard {
-    disable-primary
+	disable-primary
 }
 
 hotkey-overlay { 
@@ -451,11 +380,11 @@ hotkey-overlay {
 	hide-not-bound
 }
 blur {
-    // off
-    passes 3
-    offset 3
-    noise 0.02
-    saturation 1.5
+	// off
+	passes 3
+	offset 3
+	noise 0.02
+	saturation 1.5
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules {{{
@@ -533,51 +462,51 @@ animations {
 	// off
 	// slowdown 2.0
 	workspace-switch {
-        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    }
+		spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+	}
 
-    window-open {
-        duration-ms 150
-        curve "ease-out-expo"
-    }
+	window-open {
+		duration-ms 150
+		curve "ease-out-expo"
+	}
 
-    window-close {
-        duration-ms 150
-        curve "ease-out-quad"
-    }
+	window-close {
+		duration-ms 150
+		curve "ease-out-quad"
+	}
 
-    horizontal-view-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
+	horizontal-view-movement {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+	}
 
-    window-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
+	window-movement {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+	}
 
-    window-resize {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
+	window-resize {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+	}
 
-    config-notification-open-close {
-        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
-    }
+	config-notification-open-close {
+		spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+	}
 
-    exit-confirmation-open-close {
-        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
-    }
+	exit-confirmation-open-close {
+		spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+	}
 
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
+	screenshot-ui-open {
+		duration-ms 200
+		curve "ease-out-quad"
+	}
 
-    overview-open-close {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
+	overview-open-close {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+	}
 
-    recent-windows-close {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.001
-    }
+	recent-windows-close {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+	}
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Gestures {{{
@@ -602,7 +531,6 @@ gestures {
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Recent-Windows {{{
 recent-windows {
-	// off
 	debounce-ms 750
 	open-delay-ms 150
 	highlight {
@@ -635,9 +563,9 @@ debug {
 	disable-direct-scanout
 	restrict-primary-scanout-to-matching-format
 	force-disable-connectors-on-resume
-	render-drm-device "/dev/dri/renderD129"
-	ignore-drm-device "/dev/dri/renderD128"
-	ignore-drm-device "/dev/dri/renderD130"
+	render-drm-device "/dev/dri/renderD128"
+	// ignore-drm-device "/dev/dri/renderD128"
+	// ignore-drm-device "/dev/dri/renderD130"
 	force-pipewire-invalid-modifier
 	dbus-interfaces-in-non-session-instances
 	wait-for-frame-completion-before-queueing

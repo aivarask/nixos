@@ -138,8 +138,8 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          # ./dnsmasq.nix
-          ./pihole.nix
+          ./dnsmasq.nix
+          # ./pihole.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix

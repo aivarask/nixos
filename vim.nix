@@ -41,6 +41,7 @@ in
     fetch-scm
     # elinks
     tree-sitter
+    pandoc
   ];
   # }}}
   # vim {{{

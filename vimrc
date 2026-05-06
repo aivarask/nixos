@@ -10,8 +10,12 @@ let g:no_vim_maps=1
 " }}}
 set sessionoptions=buffers,curdir,folds,help,tabpages,terminal
 if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
+set bufhidden=delete
+
+runtime ftplugin/man.vim
 aug vimrc
 	au!
+	au VimResized * wincmd =
 	au VimEnter * nested
 				\ if !argc() && empty(v:this_session) && !&modified|
 				\   if filereadable('Session.vim')|
@@ -21,7 +25,7 @@ aug vimrc
 				\     Obsession|
 				\   endif|
 				\ endif
-	au BufEnter * if &buftype == 'help' | filetype detect | endif
+	" au BufEnter * if &buftype == 'help' | filetype detect | endif
 	" au FileType help | set buftype= | exe winnr('#').'quit'
 	" au FileType * autocmd BufEnter <buffer>  let b:did_add_maps=1
 	au FileType help,netrw map <buffer> [[ :bprevious<CR>
@@ -48,7 +52,6 @@ aug vimrc
 	" au CmdlineChanged * call Log('cmd')
 	" au CompleteChanged * call CompleteInfo()
 	" au CompleteChanged * call Log('comp')
-	argadd
 aug END
 
 
@@ -152,6 +155,8 @@ set completeopt+=preview
 
 
 " keymaps {{{
+let no_plugin_maps = 1
+
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
 let @a = "ggo/* Comment header */\n*/\n"
 let @b = "ggo Comment header <Esc>gcc"

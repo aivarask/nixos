@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ncmpcpp
+Comment=Launches ncmpcpp
+Icon=utilities-terminal
+Terminal=true
+Exec=ncmpcpp
+Categories=ConsoleOnly;System;
+MimeType=inode/directory;
