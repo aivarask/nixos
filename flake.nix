@@ -6,7 +6,7 @@
   inputs.flake-utils.inputs.systems.follows = "systems";
   inputs.disko.url = "github:nix-community/disko/latest";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.home-manager.url = "github:nix-community/home-manager"; # https://github.com/nix-community/home-manager
+  inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nix-colors.url = "github:misterio77/nix-colors";
   inputs.nix-index-database.url = "github:nix-community/nix-index-database";
@@ -19,36 +19,26 @@
   inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   inputs.zen-browser.inputs.home-manager.follows = "home-manager";
   inputs.niri-session-manager.url = "github:MTeaHead/niri-session-manager";
-  inputs.nirinit = {
-    url = "github:amaanq/nirinit";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+  inputs.nirinit.url = "github:amaanq/nirinit";
+  inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
-        {
-        }
         inputs.nirinit.nixosModules.nirinit
         {
           services.nirinit = {
-            # https://github.com/amaanq/nirinit
             enable = true;
-            settings = {
-              # Map app_id to launch command (useful for PWAs, flatpaks, etc.)
-              launch = {
-                "chromium-example.com__-Default" = "example-web-app";
-              };
-              # Apps to skip during restore
-              skip.apps = [ "steam" ];
-            };
+            settings.skip.apps = [ "steam" ];
+            settings.launch."chromium-example.com__-Default" = "example-web-app";
+
           };
         }
-        inputs.niri-session-manager.nixosModules.niri-session-manager
+        # inputs.niri-session-manager.nixosModules.niri-session-manager
         {
-          services.niri-session-manager.enable = true;
+          # services.niri-session-manager.enable = true;
           # services.niri-session-manager.package = {
           #   save-interval = 1;
           #   max-backup-count = 3;
@@ -99,7 +89,7 @@
         ./sway.nix
         ./modules/autologin.nix
         ./modules/boot.nix
-        ./modules/fileSystems.nix
+        # ./modules/fileSystems.nix
         ./modules/gnome.nix
         ./modules/graphics.nix
         ./modules/search.nix
@@ -138,12 +128,12 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          ./dnsmasq.nix
+          ./modules/dnsmasq.nix
           # ./pihole.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
-          ./modules/steam.nix
+          # ./modules/steam.nix
           ./ai.nix
         ];
       };

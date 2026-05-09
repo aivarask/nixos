@@ -8,7 +8,7 @@
   # https://oneuptime.com/blog/post/2026-01-15-setup-dnsmasq-local-dns-ubuntu/view
   services.dnsmasq.enable = true;
   services.dnsmasq.resolveLocalQueries = false;
-  environment.etc."dnsmasq.conf".source = "/etc/nixos/dnsmasq.conf";
+  environment.etc."dnsmasq.conf".source = "/etc/nixos/modules/dnsmasq.conf";
   systemd.services.dnsmasq =
     let
       stateDir = "/var/lib/dnsmasq";

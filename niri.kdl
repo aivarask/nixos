@@ -34,7 +34,7 @@ input {
 	disable-power-key-handling
 	warp-mouse-to-focus
 	focus-follows-mouse max-scroll-amount="0%"
-	workspace-auto-back-and-forth
+	// workspace-auto-back-and-forth
 	mod-key "Super"
 	mod-key-nested "Alt"
 }

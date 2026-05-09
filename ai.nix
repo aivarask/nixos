@@ -6,10 +6,11 @@
     loadModels = [ "qwen3.6" ];
   };
   environment.systemPackages = with pkgs; [
-    openclaw
+    # openclaw
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "openclaw-2026.4.21"
+    "openclaw-2026.4.22"
   ];
 }
 
