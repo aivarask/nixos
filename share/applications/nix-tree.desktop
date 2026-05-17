@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=nix-tree
+Icon=utilities-terminal
+Terminal=true
+Categories=System;
+Keywords=shell;
+
+Name=nix-tree
+GenericName=NixTree
+Comment=Launches nix-tree
