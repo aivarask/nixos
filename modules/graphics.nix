@@ -13,9 +13,9 @@
     libva-utils # vainfo
     intel-gpu-tools # intel_gpu_top
     nvtopPackages.nvidia # nvtop
-    ffmpeg-full
-    # ((pkgs.ffmpeg-full.override { withUnfree = true; }).overrideAttrs (_: {
-    #   doCheck = false;
-    # }))
+    # ffmpeg-full
+    ((pkgs.ffmpeg-full.override { withUnfree = true; }).overrideAttrs (_: {
+      doCheck = false;
+    }))
   ];
 }
