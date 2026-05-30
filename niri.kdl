@@ -93,7 +93,7 @@ binds {
 	// }}}
 
 	// Esc {{{
-	// Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; } 
+	Mod+Escape repeat=false { toggle-overview; }
 	Mod+F1 { show-hotkey-overlay; }
 	Mod+F9 hotkey-overlay-title="nix-tree" { spawn-sh "nix-tree"; }
 	Mod+F10 hotkey-overlay-title="swaylock" { spawn "swaylock"; }
@@ -102,42 +102,40 @@ binds {
 	Print { screenshot; }
 	Ctrl+Print { screenshot-screen; }
 	Alt+Print { screenshot-window; }
-	Mod+Pause { power-off-monitors; } // any input to turn on
+	Mod+Pause { power-off-monitors; }
 	// }}}
 
 	// Grave {{{
+	// Mod+Grave { focus-workspace-down; }
 	Mod+1 { focus-workspace 1; }
 	Mod+2 { focus-workspace 2; }
 	Mod+3 { focus-workspace 3; }
-	Mod+Ctrl+1 { move-column-to-workspace 1; }
-	Mod+Ctrl+2 { move-column-to-workspace 2; }
-	Mod+Ctrl+3 { move-column-to-workspace 3; }
+	Mod+Shift+1 { move-column-to-workspace 1; }
+	Mod+Shift+2 { move-column-to-workspace 2; }
+	Mod+Shift+3 { move-column-to-workspace 3; }
 	// }}}
 
 	// Tab {{{
-	Mod+Tab { focus-workspace-previous; }
 	Mod+Q repeat=false { close-window; }
 	Mod+W { spawn "firefox" "--new-window"; } // vertical tabs not stack
 	Mod+Shift+W { spawn "firefox" "--private-window" "x.com"; } // vertical tabs not stack
 	Mod+E { spawn "kitty" "-d" "/etc/nixos" "vim"; }
 	Mod+R { switch-preset-column-width; }
-	Mod+T hotkey-overlay-title="kitty" { spawn "kitty"; }
-	Mod+O repeat=false { toggle-overview; }
 	Mod+BracketLeft { consume-or-expel-window-left; }
 	Mod+BracketRight { consume-or-expel-window-right; }
+	Mod+Shift+BracketLeft { consume-window-into-column; }
+	Mod+Shift+BracketRight { expel-window-from-column; }
 	// }}}
 
 	// Caps {{{
 	Mod+D hotkey-overlay-title="fuzzel" { spawn "fuzzel"; }
-	Mod+Return { spawn "kitty"; }
+	Mod+Return hotkey-overlay-title="kitty" { spawn "kitty"; }
 	// }}}
 
 	// Shift {{{
 	Mod+Z allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
 	Mod+X allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
 	Mod+C { spawn "chromium" "-incognito" "x.com"; }
-	Mod+Comma  { consume-window-into-column; }
-	Mod+Period { expel-window-from-column; }
 	// }}}
 
 	// Arrow {{{
@@ -145,63 +143,16 @@ binds {
 	Mod+Left  { focus-column-left; }
 	Mod+Down  { focus-window-down; }
 	Mod+Up    { focus-window-up; }
+	Mod+Shift+Right { move-column-right; }
+	Mod+Shift+Left  { move-column-left; }
+	Mod+Shift+Down  { move-window-down; }
+	Mod+Shift+Up    { move-window-up; }
 	// }}}
 
 	// Mouse {{{
-	// Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+	Mod+WheelScrollDown { focus-window-or-workspace-down; }
+	Mod+WheelScrollUp { focus-window-or-workspace-up; }
 	// }}}
-
-	// allow-inhibiting=false ensures niri always processes them
-	// allow-when-locked=true hotkey-overlay-title=null { spawn-sh "|| exec "; }
-
-	// { center-column; }
-	// { center-visible-columns; }
-	// { expand-column-to-available-width; }
-	// { focus-column-left; }
-	// { focus-column-right; }
-	// { focus-column-first; }
-	// { focus-monitor-left; }
-	// { focus-monitor-right; }
-	// { focus-window-or-workspace-down; }
-	// { focus-workspace-down; }
-	// { focus-workspace-up; }
-	// { fullscreen-window; }
-	// { maximize-column; }
-	// { maximize-window-to-edges; }
-	// { move-column-left; }
-	// { move-column-right; }
-	// { move-column-to-first; }
-	// { move-column-to-last; }
-	// { move-column-to-monitor-down; }
-	// { move-column-to-monitor-left; }
-	// { move-column-to-monitor-right; }
-	// { move-column-to-monitor-up; }
-	// { move-column-to-workspace-down; }
-	// { move-column-to-workspace-up; }
-	// { move-window-down-or-to-workspace-down; }
-	// { move-window-down; }
-	// { move-window-to-monitor-left; }
-	// { move-window-to-workspace 1; }
-	// { move-window-to-workspace-down; }
-	// { move-window-up; }
-	// { move-workspace-down; }
-	// { move-workspace-to-monitor-left; }
-	// { move-workspace-up; }
-	// { reset-window-height; }
-	// { set-column-width "+10%"; }
-	// { set-column-width "-10%"; }
-	// { set-window-height "+10%"; }
-	// { set-window-height "-10%"; }
-	// { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-	// { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
-	// { switch-focus-between-floating-and-tiling; }
-	// { switch-layout "next"; }
-	// { switch-layout "prev"; }
-	// { switch-preset-column-width-back; }
-	// { switch-preset-window-height; }
-	// { toggle-column-tabbed-display; } // vertical tabs not stack
-	// { toggle-window-floating; }
-
 }
 // }}}
 
@@ -239,7 +190,7 @@ layout {
 
 	focus-ring {
 		on
-		width 4
+		width 1
 		active-color "#7fc8ff"
 		inactive-color "#505050"
 		urgent-color "#9b0000"
@@ -256,10 +207,10 @@ layout {
 	}
 
 	shadow {
-		on
-		softness 30
-		spread 5
-		offset x=0 y=5
+		off
+		softness 16
+		spread 4
+		offset x=0 y=4
 		draw-behind-window true
 		color "#0007"
 	}
@@ -280,34 +231,22 @@ cursor {
 	xcursor-theme "XCursor-Pro-Light"
 	xcursor-size 24
 	hide-when-typing
-	hide-after-inactive-ms 1000
+	hide-after-inactive-ms 2000
 }
 overview {
-	zoom 0.5
-	backdrop-color "#262626"
-
-	workspace-shadow {
-		// off
-		softness 40
-		spread 10
-		offset x=0 y=10
-		color "#00000050"
-	}
+	zoom 0.3
 }
 xwayland-satellite {
-	// off
 	path "xwayland-satellite"
 }
 clipboard {
 	disable-primary
 }
-
 hotkey-overlay { 
 	skip-at-startup
 	hide-not-bound
 }
 blur {
-	// off
 	passes 3
 	offset 3
 	noise 0.02
@@ -386,54 +325,58 @@ window-rule {
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Animations {{{
 animations {
-	// off
-	// slowdown 2.0
-	workspace-switch {
-		spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-	}
+    // Uncomment to turn off all animations.
+    // You can also put "off" into each individual animation to disable it.
+    // off
 
-	window-open {
-		duration-ms 150
-		curve "ease-out-expo"
-	}
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+    // workspace-switch {
+    //     spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    // }
 
-	window-close {
-		duration-ms 150
-		curve "ease-out-quad"
-	}
+    // window-open {
+    //     duration-ms 150
+    //     curve "ease-out-expo"
+    // }
 
-	horizontal-view-movement {
-		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-	}
+    // window-close {
+    //     duration-ms 150
+    //     curve "ease-out-quad"
+    // }
 
-	window-movement {
-		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-	}
+    // horizontal-view-movement {
+    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    // }
 
-	window-resize {
-		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-	}
+    // window-movement {
+    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    // }
 
-	config-notification-open-close {
-		spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
-	}
+    // window-resize {
+    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    // }
 
-	exit-confirmation-open-close {
-		spring damping-ratio=0.6 stiffness=500 epsilon=0.01
-	}
+    // config-notification-open-close {
+    //     spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    // }
 
-	screenshot-ui-open {
-		duration-ms 200
-		curve "ease-out-quad"
-	}
+    // exit-confirmation-open-close {
+    //     spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    // }
 
-	overview-open-close {
-		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-	}
+    // screenshot-ui-open {
+    //     duration-ms 200
+    //     curve "ease-out-quad"
+    // }
 
-	recent-windows-close {
-		spring damping-ratio=1.0 stiffness=800 epsilon=0.001
-	}
+    // overview-open-close {
+    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    // }
+
+    // recent-windows-close {
+    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+    // }
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Gestures {{{
@@ -449,7 +392,6 @@ gestures {
 		max-speed 1500
 	}
 	hot-corners {
-		// off
 		top-left
 		top-right
 	}
@@ -458,6 +400,12 @@ gestures {
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Recent-Windows {{{
 recent-windows {
+	binds {
+		Mod+Tab         { next-window scope="output"; }
+		Mod+Shift+Tab   { previous-window scope="output"; }
+		Mod+Grave       { next-window     filter="app-id"; }
+		Mod+Shift+grave { previous-window filter="app-id"; }
+	}
 	debounce-ms 750
 	open-delay-ms 150
 	highlight {
@@ -466,18 +414,9 @@ recent-windows {
 		padding 8
 		corner-radius 4
 	}
-
 	previews {
 		max-height 1080
-		max-scale 0.5
-	}
-
-	binds {
-
-		Mod+Tab         { next-window scope="output"; }
-		Mod+Shift+Tab   { previous-window scope="output"; }
-		Mod+grave       { next-window     filter="app-id"; }
-		Mod+Shift+grave { previous-window filter="app-id"; }
+		max-scale 0.75
 	}
 }
 // }}}
