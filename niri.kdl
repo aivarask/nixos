@@ -80,8 +80,8 @@ output "HDMI-A-1" {
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings {{{
 binds {
 	// X86 {{{
-	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
 	XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
 	XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
 	XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 	XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
@@ -93,7 +93,7 @@ binds {
 	// }}}
 
 	// Esc {{{
-	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; } 
+	// Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; } 
 	Mod+F1 { show-hotkey-overlay; }
 	Mod+F9 hotkey-overlay-title="nix-tree" { spawn-sh "nix-tree"; }
 	Mod+F10 hotkey-overlay-title="swaylock" { spawn "swaylock"; }
@@ -133,6 +133,8 @@ binds {
 	// }}}
 
 	// Shift {{{
+	Mod+Z allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+	Mod+X allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
 	Mod+C { spawn "chromium" "-incognito" "x.com"; }
 	Mod+Comma  { consume-window-into-column; }
 	Mod+Period { expel-window-from-column; }
