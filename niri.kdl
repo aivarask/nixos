@@ -50,7 +50,7 @@ output "eDP-1" {
 	mode "3840x2160"
 	scale 2.0
 	position x=0 y=0
-	// variable-refresh-rate // on-demand=true
+	variable-refresh-rate on-demand=true
 	focus-at-startup
 	backdrop-color "#001100"
 
@@ -151,10 +151,8 @@ blur {
 window-rule {
 	geometry-corner-radius 2
 	clip-to-geometry true
-}
-window-rule {
-	match app-id=r#"^org\.wezfurlong\.wezterm$"#
-	default-column-width {}
+	open-maximized-to-edges false
+	open-maximized true
 }
 
 window-rule {
@@ -163,10 +161,15 @@ window-rule {
 }
 
 window-rule {
+	match app-id=r#"^org\.wezfurlong\.wezterm$"#
+	default-column-width {}
+
+}
+
+window-rule {
 	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
 	match app-id=r#"^org\.gnome\.World\.Secrets$"#
 	block-out-from "screen-capture"
-	// Use this instead if you want them visible on third-party screenshot tools.
 	// block-out-from "screencast"
 };
 // https://niri-wm.github.io/niri/Configuration:-Layer-Rules
@@ -237,10 +240,10 @@ gestures {
 // https://niri-wm.github.io/niri/Configuration:-Recent-Windows
 recent-windows {
 	binds {
+		// Mod+Grave       { next-window     filter="app-id"; }
+		// Mod+Shift+grave { previous-window filter="app-id"; }
 		Mod+Tab         { next-window scope="output"; }
 		Mod+Shift+Tab   { previous-window scope="output"; }
-		Mod+Grave       { next-window     filter="app-id"; }
-		Mod+Shift+grave { previous-window filter="app-id"; }
 	}
 	highlight {
 		padding 0

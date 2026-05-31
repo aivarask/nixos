@@ -1,52 +1,20 @@
 /* https: //github.com/kamlendras/waybar-macos-sequoia/tree/main */
 
 window#waybar.bottom_bar {
-    background: #1d2021;
-}
-
-#workspaces button.focused {
-    background: gray;
-}
-
-#workspaces button:hover {
-    background: darkslategrey;
+	background: #1d2021;
 }
 
 #clock {
-    font-size: 12px;
+	font-size: 12px;
 }
 
-#custom-file_manager {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/system-file-manager.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 70%;
+#custom-firefox {
+	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 70%;
 }
 
-#custom-run_music {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/spotify.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-size: contain; */
-    background-size: auto 70%;
-}
-
-
-#custom-run_firefox {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 70%;
-}
-
-#custom-run_firefox:hover {
-    background-size: contain;
-}
-
-#custom-run_editor {
-    background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/nvim.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 70%;
-    /* background-size: contain; */
+#custom-firefox:hover {
+	background-size: contain;
 }

@@ -13,13 +13,7 @@
 		"include": [
 			"./custom.jsonc"
 		],
-		"modules-left": [
-			"custom/drawer",
-			"custom/symbol",
-			"custom/run_firefox",
-			"custom/file_manager",
-			"custom/run_music"
-		],
+		"modules-left": [],
 		"modules-right": [
 			"pulseaudio",
 			"mpris"
@@ -37,13 +31,11 @@
 			"./custom.jsonc"
 		],
 		"modules-left": [
-			"tray",
-			"sway/workspaces",
-			"wlr/taskbar",
-			"sway/mode"
+			"tray"
 		],
 		"modules-center": [
-			"sway/window"
+			"custom/drawer",
+			"wlr/taskbar"
 		],
 		"modules-right": [
 			// "idle_inhibitor",
@@ -52,7 +44,7 @@
 			"battery",
 			"backlight",
 			"network",
-			"sway/language",
+			"niri/language",
 			"custom/wttrbar",
 			"clock",
 			"custom/power"
@@ -60,9 +52,8 @@
 		"tray": {
 			// waybar-tray
 			"show-passive-items": true,
-			"icon-size": 12,
+			"icon-size": 16,
 			"spacing": 8
-			// "icons": {}
 		},
 		"battery": {
 			// waybar-battery
@@ -79,33 +70,6 @@
 				"",
 				""
 			]
-		},
-		"sway/workspaces": {
-			// waybar-sway-workspaces
-			"all-outputs": true,
-			"current-only": false,
-			"format": "{name} {output} {windows}", // value name icon index output windows
-			"format-window-separator": " ",
-			"expand": true,
-			"reverse-scroll": true,
-			"smooth-scrolling-threshold": 4.0,
-			"disable-scroll-wraparound": true,
-			"enable-bar-scroll": true,
-			"disable-auto-back-and-forth": true,
-			"warp-on-scroll": false,
-			"window-rewrite-default": "",
-			"window-rewrite": {
-				"class<firefox>": "",
-				"class<chromium-browser>": "",
-				"class<kitty>": "",
-				"class<spotify>": ""
-				// "title<.* - (.*) - VSCodium>": "codium $1" // captures part of the window title and formats it into output
-			}
-		},
-		"sway/mode": {
-			// waybar-sway-mode
-			"format": "{}",
-			"max-length": 50
 		},
 		"backlight": {
 			// waybar-backlight
@@ -128,15 +92,10 @@
 			"on-click-right": "iwctl station wlan0 disconnect"
 			// "on-click-right": "xdg-open http://192.168.0.1"
 		},
-		"sway/language": {
-			"format": "{flag}",
-			"on-click": "swaymsg input type:keyboard xkb_switch_layout next"
-		},
-		"sway/scratchpad": {
-			"format": "{icon} {count}",
-			"show-empty": false,
-			"tooltip": true,
-			"tooltip-format": "{app}: {title}"
+		"niri/language": {
+			"format-en": "🇺🇸",
+			"format-lt": "🇱🇹",
+			"on-click": "niri msg action switch-layout next"
 		},
 		"clock": {
 			"format": "{:%A %B %d %H:%M %p}",
@@ -149,6 +108,54 @@
 				"deactivated": ""
 			},
 			"timeout": 30.5
+		},
+		"custom/drawer": {
+			"format": " {}",
+			"on-click": "nwg-drawer",
+			"on-click-right": "nwg-menu",
+			"tooltip": false,
+			"tooltip-format": "nwg-drawer"
+		},
+		"custom/brightness": {
+			// waybar-custom
+			"exec": "brightness_monitor",
+			"format": "🔅 {text}",
+			"return-type": "json",
+			"restart-interval": 2,
+			"tooltip": false,
+			"on-scroll-up": "ddcutil setvcp 10 + 5",
+			"on-scroll-down": "ddcutil setvcp 10 - 5",
+			"on-click": "ddcutil setvcp 10 20",
+			"on-click-right": "ddcutil setvcp 10 90"
+		},
+		"custom/wttrbar": {
+			"format": "{}° ",
+			"return-type": "json",
+			"exec": "wttrbar --location Sirvintos",
+			"tooltip": true,
+			"interval": 3600
+		},
+		"custom/power": {
+			"format": " ⏻ ",
+			"tooltip": false,
+			"menu": "on-click",
+			"menu-file": "$HOME/.config/waybar/power.xml",
+			"menu-actions": {
+				"suspend": "systemctl suspend",
+				// "hibernate": "systemctl hibernate",
+				"reboot": "systemctl reboot",
+				"poweroff": "systemctl poweroff"
+			}
+		},
+		"wlr/taskbar": {
+			// waybar-wlr-taskbar
+			"format": "{icon}",
+			"icon-size": 16,
+			"spacing": 4,
+			"on-click-middle": "close",
+			"tooltip-format": "{title}",
+			"ignore-list": [],
+			"on-click": "activate"
 		}
 	}
 ]

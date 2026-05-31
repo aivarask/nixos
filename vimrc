@@ -167,7 +167,7 @@ nnoremap <expr> <F2> Woo()
 inoremap <F4> <C-R>=Complete()<CR>
 nnoremap <F5> :silent update\|source vimrc\|silent Runtime<CR> | imap <F5> <C-O><F5>
 nnoremap <F6> <cmd>Obsession!<CR> | imap <F6> <C-O><F6> 
-nnoremap <silent> qq :Lexplore<CR>
+" nnoremap <silent> qq :Lexplore<CR>
 nnoremap <silent> ZQ <cmd>quitall!<cr>
 nnoremap <silent> \Q <cmd>%bd\|e#<cr>
 nnoremap <silent> \q <cmd>bd!<CR>

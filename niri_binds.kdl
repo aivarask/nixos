@@ -34,6 +34,7 @@ binds {
     Mod+Pause	hotkey-overlay-title="power-off-monitors"	{ power-off-monitors; };
 
     // -Grave
+    Mod+Grave	hotkey-overlay-title="quick-access-terminal"	{ spawn "kitten" "quick-access-terminal"; }
     Mod+1	hotkey-overlay-title="focus-workspace 1"	{ focus-workspace 1; }
     Mod+2	hotkey-overlay-title="focus-workspace 2"	{ focus-workspace 2; }
     Mod+3	hotkey-overlay-title="focus-workspace 3"	{ focus-workspace 3; }
@@ -81,6 +82,6 @@ binds {
     Mod+Shift+Up		{ move-window-up; };
 
     // -Mouse
-    Mod+WheelScrollDown		{ focus-window-or-workspace-down; }
-    Mod+WheelScrollUp		{ focus-window-or-workspace-up; };
+    Mod+WheelScrollDown		{ focus-column-right-or-first; }
+    Mod+WheelScrollUp		{ focus-column-left-or-last; };
 }
