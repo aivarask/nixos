@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ncmpcpp
-Exec=xdg-terminal-exec ncmpcpp
-Terminal=false
-Categories=AudioVideo;

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=nixos lf
-Exec=xdg-terminal-exec --dir=/etc/nixos lf 
-Terminal=false
-Categories=System;
-

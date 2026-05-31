@@ -1,0 +1,36 @@
+[Desktop Entry]
+Type=Application
+Name=/etc/nixos
+Exec=xdg-terminal-exec --dir=/etc/nixos 
+Terminal=false
+Categories=System;
+Actions=nvim;lf;git;nix-tree;manix;apps;test
+
+[Desktop Action test]
+Name=test
+Exec=notify-send 'test'
+
+[Desktop Action nvim]
+Name=nvim
+Exec=xdg-terminal-exec --dir=/etc/nixos nvim 
+
+[Desktop Action lf]
+Name=lf
+Exec=xdg-terminal-exec --dir=/etc/nixos lf 
+
+[Desktop Action git]
+Name=git
+Exec=xdg-terminal-exec --dir=/etc/nixos lazygit 
+
+[Desktop Action nix-tree]
+Name=nix-tree
+Exec=xdg-terminal-exec --dir=/etc/nixos nix-tree 
+
+[Desktop Action manix]
+Name=manix
+Exec=xdg-terminal-exec manix_fzf 
+
+[Desktop Action apps]
+Name=apps
+Exec=xdg-terminal-exec --hold sh -c "for p in $(echo $XDG_DATA_DIRS | tr ':' '\n'); do echo $p; ls $p/applications 2> /dev/null; done | fzf --preview='bat {}'" 
+

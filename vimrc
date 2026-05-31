@@ -174,7 +174,8 @@ nnoremap <silent> \q <cmd>bd!<CR>
 nnoremap <silent> \a <cmd>call SourceLuafile()<CR>
 nnoremap <silent> \h <cmd>set hlsearch!<cr>
 nmap gs <Plug>(SwitchInLine)
-nnoremap /<CR> :execute 'terminal++close lf ' .. expand("%:h")<CR>
+nnoremap /<CR> :execute 'terminal lf ' .. expand("%:h")<CR>
+" nnoremap /<CR> :execute 'terminal ++close lf ' .. expand("%:h")<CR>
 nmap /. :find<space>
 nmap // :Grep<space>
 

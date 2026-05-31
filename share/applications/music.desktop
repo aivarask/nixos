@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Application
+Categories=AudioVideo;
+Name=music 
+Exec=xdg-terminal-exec --dir=~/Music
+Terminal=false
+Actions=spotify;ncspot;ncmpcpp;download;next;
+
+[Desktop Action spotify]
+Name=spotify
+Exec=spotify 
+
+[Desktop Action ncspot]
+Name=ncspot
+Exec=xdg-terminal-exec ncspot 
+
+[Desktop Action ncmpcpp]
+Name=ncmpcpp
+Exec=xdg-terminal-exec ncmpcpp 
+
+[Desktop Action download]
+Name=download
+Exec=nicotine 
+
+[Desktop Action next]
+Name=next
+Exec=playerctl next 
+

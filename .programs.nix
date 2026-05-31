@@ -22,6 +22,14 @@ in
   };
 
   imports = [
+    {
+      home.packages = with pkgs; [
+        reaper
+        reaper-sws-extension
+        reaper-reapack-extension
+        surge-xt
+      ];
+    }
     ./.config/bat/default.nix
     ./.config/chromium/default.nix
     ./.config/direnv/default.nix

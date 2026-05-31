@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=/etc/nixos nvim
-Exec=xdg-terminal-exec --dir=/etc/nixos nvim 
-Terminal=false
-Categories=System;
-

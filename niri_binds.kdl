@@ -50,7 +50,7 @@ binds {
 
     // Caps {{{
     Mod+A	hotkey-overlay-title="fuzzel"	{ spawn "fuzzel"; }
-    Mod+S	hotkey-overlay-title="fuzzel"	{ spawn "fuzzel"; }
+    Mod+S	hotkey-overlay-title="fuzzel --placeholder='Search'"	{ spawn "fuzzel"; }
     Mod+D	hotkey-overlay-title="fuzzel"	{ spawn "fuzzel"; }
     Mod+Return	hotkey-overlay-title="kitty"	{ spawn "kitty"; }
     // }}}

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=nix-tree
-Exec=xdg-terminal-exec nix-tree 
-Terminal=false
-Categories=System;
-
