@@ -64,8 +64,6 @@
     bemoji
     catt
     eww
-    flameshot
-    foot
     gammastep
     glib-networking
     grim
@@ -79,23 +77,15 @@
     pipewire
     playerctl
     python3
-    slurp
     kdotool
 
     # internet speed
     ookla-speedtest
-    speedtest-cli
+    # speedtest-cli
     iperf3
     traceroute
 
     # sway
-    sway-contrib.grimshot
-    sway-contrib.inactive-windows-transparency
-    # sway-easyfocus
-    sway-launcher-desktop
-    sway-new-workspace
-    sway-scratch
-    swaybg
     swayidle
     swaylock
     swayr

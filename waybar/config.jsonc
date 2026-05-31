@@ -16,10 +16,7 @@
 		"modules-left": [
 			"custom/drawer",
 			"custom/symbol",
-			"custom/run_tree",
 			"custom/run_firefox",
-			"custom/tools",
-			"custom/run_editor",
 			"custom/file_manager",
 			"custom/run_music"
 		],

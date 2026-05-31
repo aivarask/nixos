@@ -1,4 +1,6 @@
-" dependencies {{{
+" vim: foldmarker="\ *,"*
+
+" *dependencies
 set verbose=0
 source /etc/nixos/vimfunc.vim
 source /etc/nixos/vimpersist.vim
@@ -7,7 +9,8 @@ let g:loaded_sensible=1
 let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
-" }}}
+"*
+
 set sessionoptions=buffers,curdir,folds,help,tabpages,terminal
 if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
 set bufhidden=delete
@@ -55,7 +58,7 @@ aug vimrc
 aug END
 
 
-" lsp {{{
+" *lsp
 let g:lsp_use_native_client = 1
 let g:lsp_fold_enabled = 0
 if (executable('nixd'))
@@ -95,7 +98,7 @@ augroup lsp_install
 	au!
 	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
-" }}}
+"*
 
 function! Log(...) abort 
 	redir! >vim.log
@@ -129,7 +132,7 @@ function! Complete(findstart, base)
 	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
 endfunction
 
-" completion {{{
+" *completion
 set path=.,,**
 set wildignorecase
 set wildmode=noselect:lastused,full
@@ -150,11 +153,8 @@ set completeopt+=preview
 " set complete^=F
 " let &completefunc=Complete
 " set completefunc=Complete
-"}}}
-
-
-
-" keymaps {{{
+"*
+" *keymaps
 let no_plugin_maps = 1
 
 " nnoremap <buffer> ,<CR> :silent %y\|@b<CR>
@@ -184,8 +184,8 @@ nmap <silent> <C-`> :Term lazygit<CR>
 tmap <silent> ` <C-\><C-N><C-W>:Term<CR>
 tmap <Esc> <C-\><C-N>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-" }}}
-" move/lines {{{
+"*
+" *move/lines
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 cnoremap <nowait> <Esc>h <Left>
@@ -200,8 +200,8 @@ inoremap <M-J> <Esc>:m .+1<CR>==gi
 inoremap <M-K> <Esc>:m .-2<CR>==gi
 vnoremap <M-J> :m '>+1<CR>gv=gv
 vnoremap <M-K> :m '<-2<CR>gv=gv
-" }}}
-" buf/win/tab next/prev  {{{
+"*
+" *buf/win/tab next/prev
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <C-N> :cnext<CR>
@@ -216,9 +216,8 @@ tnoremap <silent> ]] <C-\><C-N>:bnext<CR>
 tnoremap <silent> [[ <C-\><C-N>:bprevious<CR>
 nnoremap <silent> ]\ :wincmd w<CR>
 nnoremap <silent> [' :wincmd p<CR>
-" }}}
-
-" terminal {{{
+"*
+" *terminal
 set termguicolors
 if !has('nvim') | set term=kitty | endif
 if &term =~ '256color' | set t_ut= | endif
@@ -228,9 +227,8 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_kb = "^V<BS>"
 " fixdel
-" }}}
-
-" settings {{{
+"*
+" *settings
 syntax on
 filetype indent plugin on
 set history=50
@@ -265,9 +263,8 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 set background=dark
 colorscheme gruvbox-material
-" }}}
-
-" search grep find fold {{{
+"*
+" *search grep find fold
 " set grepformat="%f:%l:%m,%f:%l%m,%f  %l%m"
 set wildignore+=.git/
 " set wildignore=
@@ -278,9 +275,8 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set findfunc=FindFunc
 set foldmethod=marker
 set foldtext=FoldText()
-" }}}
-
-" title/tabline/statusline {{{
+"*
+" *title/tabline/statusline
 " let &titleold=getcwd()
 set title 
 set titlestring=%{Progname()}\ %{getcwd()}\ %f\ 
@@ -290,9 +286,8 @@ set showcmdloc=statusline
 set statusline=%#Search#%h%w%q\ %n\ %.24f\ %l\/%L\ %m%r%y\ %{ObsessionStatus()}\ %S
 set laststatus=2
 set showmode
-" }}}
-
-" netrw {{{
+"*
+" *netrw
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_browse_split=0
@@ -303,9 +298,8 @@ let g:netrw_wiw=4
 let g:netrw_sizestyle="H"
 let g:netrw_sort_options="i"
 let g:netrw_mousemaps=0
-" }}}
-
-" switch {{{ 
+"*
+" *switch 
 let g:switch_mapping = ''
 let g:switch_custom_definitions =
 			\ [
@@ -334,6 +328,6 @@ let g:switch_custom_definitions =
 			\   ['red', 'green', 'blue']
 			\ ]
 nnoremap <silent> <Plug>(SwitchInLine) :<C-u>call SwitchLine(v:count1)<cr>
-" }}}
+"*
 
 

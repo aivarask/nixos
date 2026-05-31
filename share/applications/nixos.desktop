@@ -6,7 +6,7 @@ Terminal=false
 Name=/etc/nixos
 Exec=xdg-terminal-exec --dir=/etc/nixos 
 
-Actions=nrs;nvim;lf;git;nix-tree;manix;apps;test
+Actions=nrs;vim;nvim;lf;lazygit;nix-tree;manix;apps;test
 
 [Desktop Action nrs]
 Name=nrs
@@ -16,6 +16,10 @@ Exec=xdg-terminal-exec --hold /usr/bin/env sh -c 'nixos-rebuild switch --no-reex
 Name=test
 Exec=xdg-terminal-exec --hold sh -c ''
 
+[Desktop Action vim]
+Name=vim
+Exec=xdg-terminal-exec --dir=/etc/nixos vim 
+
 [Desktop Action nvim]
 Name=nvim
 Exec=xdg-terminal-exec --dir=/etc/nixos nvim 
@@ -24,8 +28,9 @@ Exec=xdg-terminal-exec --dir=/etc/nixos nvim
 Name=lf
 Exec=xdg-terminal-exec --dir=/etc/nixos lf 
 
-[Desktop Action git]
-Name=git
+[Desktop Action lazygit]
+Name=lazygit
+Keywords=lg;
 Exec=xdg-terminal-exec --dir=/etc/nixos lazygit 
 
 [Desktop Action nix-tree]

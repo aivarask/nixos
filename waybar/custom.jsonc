@@ -18,55 +18,6 @@
 			"glyph": "firefox --new-window glyphsearch.com/?copy=unicode"
 		}
 	},
-	"custom/run_tree": {
-		"format": "🪾 {}",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/tree.xml",
-		"menu-actions": {
-			"nix_tree": "kitty -e nix-tree",
-			"sway_tree": "kitty --hold -e swaymsg -t get_tree",
-			"sway_treeview": "kitty --hold -e /root/.config/sway/sway_treeview"
-		}
-	},
-	"custom/tools": {
-		"format": "🛠️ {}",
-		"menu": "on-click",
-		"tooltip": false,
-		"menu-file": "$HOME/.config/waybar/tools.xml",
-		"menu-actions": {
-			"bitwarden": "bitwarden --no-sandbox",
-			"calculator": "gnome-calculator",
-			"settings": "gnome-tweaks",
-			"performance": "gnome-system-monitor",
-			"displays": "nwg-displays"
-		}
-	},
-	"custom/run_firefox": {
-		"format": "{}       ",
-		"tooltip": false,
-		"on-click": "firefox",
-		"menu": "on-click-right",
-		"menu-file": "$HOME/.config/waybar/firefox.xml",
-		"menu-actions": {
-			"r_swaywm": "firefox --new-window reddit.com/r/swaywm",
-			"youtube": "firefox --new-window youtube.com",
-			"messenger": "firefox --new-window messenger.com/t/kalesnykas.aivaras",
-			"facebook": "firefox facebook.com",
-			"private": "firefox --private-window"
-		}
-	},
-	"custom/run_editor": {
-		"format": "{}        ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "/root/.config/waybar/edit.xml",
-		"menu-actions": {
-			"nixos": "kitty --directory /etc/nixos -e nvim",
-			"find_files": "kitty --directory=/etc/nixos -- nvim +Files",
-			"find_files_home": "kitty nvim -c ':lua require(\"telescope.builtin\").find_files()'"
-		}
-	},
 	"custom/file_manager": {
 		"format": "{}     ",
 		"tooltip": false,

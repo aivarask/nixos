@@ -11,18 +11,16 @@ alias nt="nix-tree"
 alias bw_="bitwarden --no-sandbox --session $BW_SESSION"
 alias fd="fd --hidden --follow"
 alias lg="lazygit"
-alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/log $XDG_STATE_HOME/nvim/*.log'
+alias lnav_nvim='lnav $XDG_STATE_HOME/nvim/logs/*.log'
 alias nfu="nix flake update"
 alias nrs_="nixos-rebuild switch"
 alias nrs="nixos-rebuild switch --no-reexec --verbose"
 alias nrs_offline="nrs --option substitute false"
 alias nr='nrs --option substituters "https://cache.nixos.org https://nix-community.cachix.org"'
 alias pw-rec="pw-record --latency=20ms --volume=1.0 --format=f32 --channel-map stereo --rate 44100"
-alias sway_start="uwsm start sway-uwsm.desktop"
 alias st="speedtest"
 alias wttr="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in
 alias wttr_srv="wttrbar --location Sirvintos"
-alias celluloid="celluloid --mpv-vo=gpu-next --mpv-gpu-api=vulkan --mpv-hwdec=vulkan --mpv-gpu-context=waylandvk"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 # alias vim="vim -S"
 alias nvim="nvim -S"

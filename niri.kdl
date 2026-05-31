@@ -1,6 +1,6 @@
-// vim: sw=4 tabstop=4
-// https://niri-wm.github.io/niri/Configuration:-Introduction
-// https://niri-wm.github.io/niri/Configuration:-Input {{{
+// vim: sw=4 tabstop=4 invlist foldmarker=//\ https\://niri,};
+
+// https://niri-wm.github.io/niri/Configuration:-Input
 input {
 	keyboard {
 		xkb {
@@ -35,9 +35,8 @@ input {
 	// workspace-auto-back-and-forth
 	mod-key "Super"
 	mod-key-nested "Alt"
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Outputs {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Outputs
 output "DP-1" {
 	// off
 	mode "3840x2160"
@@ -72,22 +71,19 @@ output "HDMI-A-1" {
 	mode "1920x1080"
 	position x=0 y=0
 
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Key-Bindings {{{
-binds {
-}
+};
+// https://niri-wm.github.io/niri/Configuration:-Key-Bindings
 include "binds.kdl"
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Switch-Events {{{
+binds {
+};
+// https://niri-wm.github.io/niri/Configuration:-Switch-Events
 switch-events {
 	lid-close	{ spawn "notify-send" "The laptop lid is closed!"; }
 	lid-open	{ spawn "notify-send" "The laptop lid is open!"; }
 	tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
 	tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Layout {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
 	gaps 8
 	center-focused-column "never"
@@ -114,9 +110,8 @@ layout {
 	insert-hint {
 		color "#ffc87f80"
 	}
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Miscellaneous {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Miscellaneous
 spawn-at-startup "waybar"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
@@ -151,9 +146,8 @@ blur {
 	offset 3
 	noise 0.02
 	saturation 1.5
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Window-Rules {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
 window-rule {
 	geometry-corner-radius 2
 	clip-to-geometry true
@@ -174,10 +168,8 @@ window-rule {
 	block-out-from "screen-capture"
 	// Use this instead if you want them visible on third-party screenshot tools.
 	// block-out-from "screencast"
-}
-
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Layer-Rules {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Layer-Rules
 /-layer-rule {
 	match namespace="waybar"
 	match at-startup=true
@@ -221,13 +213,11 @@ window-rule {
 			saturation 3
 		}
 	}
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Animations {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Animations
 animations {
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Gestures {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Gestures
 gestures {
 	dnd-edge-view-scroll {
 		trigger-width 30
@@ -243,10 +233,8 @@ gestures {
 		top-left
 		top-right
 	}
-}
-
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Recent-Windows {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Recent-Windows
 recent-windows {
 	binds {
 		Mod+Tab         { next-window scope="output"; }
@@ -262,9 +250,8 @@ recent-windows {
 		max-height 1080
 		max-scale 0.75
 	}
-}
-// }}}
-// https://niri-wm.github.io/niri/Configuration:-Debug-Options {{{
+};
+// https://niri-wm.github.io/niri/Configuration:-Debug-Options
 debug {
 	preview-render "screencast"
 	// preview-render "screen-capture"
@@ -288,11 +275,10 @@ debug {
 	honor-xdg-activation-with-invalid-serial
 	skip-cursor-only-updates-during-vrr
 	deactivate-unfocused-windows
-}
+	/-binds {
+		Mod+Shift+Ctrl+T { toggle-debug-tint; }
+		Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+		Mod+Shift+Ctrl+D { debug-toggle-damage; }
+	}
+};
 
-/-binds {
-	Mod+Shift+Ctrl+T { toggle-debug-tint; }
-	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
-	Mod+Shift+Ctrl+D { debug-toggle-damage; }
-}
-// }}}

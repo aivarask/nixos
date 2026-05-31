@@ -47,6 +47,7 @@ in
 
   home.packages = with pkgs; [
     xdg-terminal-exec
+    xdg-launch
     sqlitebrowser
     gcr
     inkscape-with-extensions
@@ -57,7 +58,6 @@ in
     nautilus
     thunar
     thunar-volman
-    xfce4-settings
     tumbler
     kitty
     gtk-doc
@@ -68,6 +68,69 @@ in
     ncspot
     lingot # guitar tuner
     mixxx
+    #################### from sway
+    clipman
+    mcat
+    keyd
+    wshowkeys
+    libinput
+    # sway-overfocus
+    showmethekey
+    fuzzel
+    x11perf
+    waypipe
+    ydotool
+    hyprmagnifier
+    bemoji
+    catt
+    eww
+    gammastep
+    glib-networking
+    grim
+    ifwifi
+    kanshi
+    localsend
+    # mako
+    miraclecast
+    papirus-icon-theme
+    pavucontrol
+    pipewire
+    playerctl
+    python3
+    kdotool
+
+    # internet speed
+    ookla-speedtest
+    # speedtest-cli
+    iperf3
+    traceroute
+
+    # sway
+    swayidle
+    swaylock
+    swayr
+    waybar
+    wayvnc
+    wdisplays
+    wev
+    wtype
+    evtest
+    # wireplumber
+    wl-clipboard
+    wlr-randr
+    wttrbar
+    xcursor-pro
+    xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
+    xdg-terminal-exec
+    xdg-user-dirs
+    xdg-user-dirs-gtk
+    # xdg-desktop-portal-wlr
+    xkeyboard-config
+    xkbcomp
+    xmodmap
+    setxkbmap
+    # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
+
   ];
   xdg.dataFile."nwg-dock/images/grid.svg".source = "${pkgs.nwg-dock-hyprland.out}/images/grid.svg";
   # symlink "/run/current-system/sw/share/icons/Papirus/96x96/apps";
@@ -77,7 +140,6 @@ in
   xdg.configFile."lingot".source = symlink "${xdgconf}/lingot";
   xdg.configFile."Thunar".source = symlink "${xdgconf}/Thunar";
   xdg.configFile."alias".source = symlink "${xdgconf}/alias";
-  xdg.configFile."ardour8".source = symlink "${xdgconf}/ardour8";
   xdg.configFile."clangd".source = symlink "${xdgconf}/clangd";
   xdg.configFile."fd".source = symlink "${xdgconf}/fd";
   xdg.configFile."flameshot".source = symlink "${xdgconf}/flameshot";

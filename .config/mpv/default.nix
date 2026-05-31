@@ -8,7 +8,6 @@
 
 {
   home.packages = with pkgs; [
-    celluloid
     dav1d
     obs-cli
     yt-dlp

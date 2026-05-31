@@ -86,7 +86,6 @@
         ./nix.nix
         ./services.nix
         ./niri.nix
-        ./sway.nix
         ./modules/autologin.nix
         ./modules/boot.nix
         # ./modules/fileSystems.nix
@@ -117,8 +116,7 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/bluetooth.nix
-          # ./dnsmasq.nix
-          ./pihole.nix
+          ./modules/pihole.nix
           ./minimal.nix
           ./network.nix
           ./dell.nix
@@ -128,13 +126,11 @@
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
-          ./modules/dnsmasq.nix
-          # ./pihole.nix
+          ./modules/pihole.nix
           ./minimal.nix
           ./network.nix
           ./pc.nix
           # ./modules/steam.nix
-          ./ai.nix
         ];
       };
     });

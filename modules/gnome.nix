@@ -17,13 +17,10 @@
     orchis-theme
     gnome-tweaks
     dconf-editor
-    lxappearance
 
-    rtfm
 
     # https://nwg-piotr.github.io/nwg-shell/
     nwg-hello
-    nwg-panel
     nwg-drawer
     nwg-dock
     nwg-menu

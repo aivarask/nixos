@@ -1,4 +1,4 @@
-" vim: foldmethod=indent  foldnestmax=1
+" vim: foldmethod=indent foldnestmax=1
 
 function! Progname()
 	return v:progname
@@ -39,7 +39,7 @@ function FoldText()
 	let line = getline(v:foldstart)
 	let ln = v:foldend - v:foldstart + 1
 	let sub = line
-	return v:folddashes .. sub .. ln
+	return v:folddashes .. ' ' .. ln .. ' ' .. sub
 endfunction
 
 function! FindFunc(cmdarg, cmdcomplete)
