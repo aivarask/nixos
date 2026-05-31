@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=nix-tree
-Exec=xdg-terminal-exec nix-tree 
+Name=nixos lf
+Exec=xdg-terminal-exec --dir=/etc/nixos lf 
 Terminal=false
 Categories=System;
 

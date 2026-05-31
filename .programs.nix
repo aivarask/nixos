@@ -4,7 +4,6 @@
   SELF,
   xdgconf,
   inputs,
-  lib,
   ...
 }:
 let
@@ -14,19 +13,6 @@ in
   manual.json.enable = true;
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
-  # services.gnome-keyring.enable = true;
-  # services.swaync.enable = true;
-  # services.swaync.settings = lib.mkForce "${config.xdg.configHome}/swaync/config.json";
-  # xdg.configFile."swaync/config.json".source = symlink "${xdgconf}/swaync/config.json";
-  # services.swaync.settings = lib.mkForce (symlink "${xdgconf}/swaync/config.json");
-  xdg.terminal-exec = {
-    enable = true;
-    settings = {
-      default = [
-        "kitty.desktop"
-      ];
-    };
-  };
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
@@ -52,6 +38,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    xdg-terminal-exec
     sqlitebrowser
     gcr
     inkscape-with-extensions

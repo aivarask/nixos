@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=/etc/nixos lazygit
+Exec=xdg-terminal-exec --dir=/etc/nixos lazygit 
+Keywords=lg;
+Terminal=false
+Categories=System;
+

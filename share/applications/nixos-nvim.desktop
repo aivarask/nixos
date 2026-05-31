@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
-Name=nix-tree
-Exec=xdg-terminal-exec nix-tree 
+Name=/etc/nixos nvim
+Exec=xdg-terminal-exec --dir=/etc/nixos nvim 
 Terminal=false
 Categories=System;
 

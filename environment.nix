@@ -18,7 +18,7 @@
   environment.variables.SELF = "/etc/nixos";
   environment.variables.EDITOR = "vim";
   environment.variables.VISUAL = "nvim";
-  environment.variables.TERMINAL = "kitty";
+  # environment.variables.TERMINAL = "kitty";
   environment.pathsToLink = [
     "share/man"
   ];
