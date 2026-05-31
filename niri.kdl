@@ -122,7 +122,7 @@ spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "udiskie --tray"
 // spawn-at-startup "hyprpaper"
-// spawn-at-startup "wluma"
+spawn-at-startup "wluma"
 // https://gist.github.com/zkat/beefc09ad8191dc7077290feceb19582
 
 prefer-no-csd
