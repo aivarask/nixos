@@ -258,6 +258,7 @@ set wrap
 set sidescrolloff=8
 set scrolloff=16
 set cmdheight=4
+set listchars=tab:>-,space:·
 let g:sqlite_clib_path = $SQLITE_CLIB_PATH
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'

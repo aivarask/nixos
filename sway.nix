@@ -79,7 +79,6 @@
     pipewire
     playerctl
     python3
-    rofi
     slurp
     kdotool
 

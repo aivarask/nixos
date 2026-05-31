@@ -19,6 +19,7 @@ let
     vim-lsp
     vim-css-color
     switch-vim
+    tabular
   ];
 in
 {

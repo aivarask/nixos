@@ -17,6 +17,7 @@ alias nrs_="nixos-rebuild switch"
 alias nrs="nixos-rebuild switch --no-reexec --verbose"
 alias nrs_offline="nrs --option substitute false"
 alias nr='nrs --option substituters "https://cache.nixos.org https://nix-community.cachix.org"'
+alias pw-rec="pw-record --latency=20ms --volume=1.0 --format=f32 --channel-map stereo --rate 44100"
 alias sway_start="uwsm start sway-uwsm.desktop"
 alias st="speedtest"
 alias wttr="curl wttr.in" # https://wttr.in/:help https://github.com/chubin/wttr.in

@@ -1,15 +1,5 @@
 { pkgs, ... }:
 {
-  # services.desktopManager.gnome.enable = true;
-
-  # services.gnome.gnome-remote-desktop.enable = true;
-  # systemd.services.gnome-remote-desktop.wantedBy = [ "graphical.target" ]; # for starting the unit automatically at boot
-  # networking.firewall.allowedTCPPorts = [ 3389 ];
-
-  # services.gnome.gnome-keyring.enable = true;
-  # security.pam.services.login.enableGnomeKeyring = true;
-
-  # xdg.portal.extraPortals = [ pkgs.gnome-keyring ];
 
   environment.systemPackages = with pkgs; [
     # gst_all_1.gstreamer # https://wiki.nixos.org/wiki/GStreamer

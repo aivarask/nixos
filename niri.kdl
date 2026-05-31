@@ -1,7 +1,5 @@
 // vim: sw=4 tabstop=4
-// https://kdl.dev "/-" comments out node
 // https://niri-wm.github.io/niri/Configuration:-Introduction
-
 // https://niri-wm.github.io/niri/Configuration:-Input {{{
 input {
 	keyboard {
@@ -76,106 +74,24 @@ output "HDMI-A-1" {
 
 }
 // }}}
-
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings {{{
 binds {
-	// X86 {{{
-	XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-	XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
-	XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-	XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-	XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-	XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-	XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-	XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-	XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-	// }}}
-
-	// Esc {{{
-	Mod+Escape repeat=false { toggle-overview; }
-	Mod+F1 { show-hotkey-overlay; }
-	Mod+F9 hotkey-overlay-title="nix-tree" { spawn-sh "nix-tree"; }
-	Mod+F10 hotkey-overlay-title="swaylock" { spawn "swaylock"; }
-	Mod+F11 hotkey-overlay-title="quit" { quit skip-confirmation=true; }
-	Mod+F12 hotkey-overlay-title="loginctl terminate-user" { spawn-sh "loginctl terminate-user ''";}
-	Print { screenshot; }
-	Ctrl+Print { screenshot-screen; }
-	Alt+Print { screenshot-window; }
-	Mod+Pause { power-off-monitors; }
-	// }}}
-
-	// Grave {{{
-	// Mod+Grave { focus-workspace-down; }
-	Mod+1 { focus-workspace 1; }
-	Mod+2 { focus-workspace 2; }
-	Mod+3 { focus-workspace 3; }
-	Mod+Shift+1 { move-column-to-workspace 1; }
-	Mod+Shift+2 { move-column-to-workspace 2; }
-	Mod+Shift+3 { move-column-to-workspace 3; }
-	// }}}
-
-	// Tab {{{
-	Mod+Q repeat=false { close-window; }
-	Mod+W { spawn "firefox" "--new-window"; } // vertical tabs not stack
-	Mod+Shift+W { spawn "firefox" "--private-window" "x.com"; } // vertical tabs not stack
-	Mod+E { spawn "kitty" "-d" "/etc/nixos" "vim"; }
-	Mod+R { switch-preset-column-width; }
-	Mod+BracketLeft { consume-or-expel-window-left; }
-	Mod+BracketRight { consume-or-expel-window-right; }
-	Mod+Shift+BracketLeft { consume-window-into-column; }
-	Mod+Shift+BracketRight { expel-window-from-column; }
-	// }}}
-
-	// Caps {{{
-	Mod+D hotkey-overlay-title="fuzzel" { spawn "fuzzel"; }
-	Mod+Return hotkey-overlay-title="kitty" { spawn "kitty"; }
-	// }}}
-
-	// Shift {{{
-	Mod+Z allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-	Mod+X allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
-	Mod+C { spawn "chromium" "-incognito" "x.com"; }
-	// }}}
-
-	// Arrow {{{
-	Mod+Right { focus-column-right; }
-	Mod+Left  { focus-column-left; }
-	Mod+Down  { focus-window-down; }
-	Mod+Up    { focus-window-up; }
-	Mod+Shift+Right { move-column-right; }
-	Mod+Shift+Left  { move-column-left; }
-	Mod+Shift+Down  { move-window-down; }
-	Mod+Shift+Up    { move-window-up; }
-	// }}}
-
-	// Mouse {{{
-	Mod+WheelScrollDown { focus-window-or-workspace-down; }
-	Mod+WheelScrollUp { focus-window-or-workspace-up; }
-	// }}}
 }
+include "binds.kdl"
 // }}}
-
 // https://niri-wm.github.io/niri/Configuration:-Switch-Events {{{
 switch-events {
-	lid-close { spawn "notify-send" "The laptop lid is closed!"; }
-	lid-open { spawn "notify-send" "The laptop lid is open!"; }
+	lid-close	{ spawn "notify-send" "The laptop lid is closed!"; }
+	lid-open	{ spawn "notify-send" "The laptop lid is open!"; }
 	tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
 	tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Layout {{{
 layout {
-	gaps 16
-	/-struts {
-		left -16
-		right -16
-		top -16
-		bottom -16
-	}
+	gaps 8
 	center-focused-column "never"
-
-	// switch-preset-column-width (Mod+R) toggles between.
+	default-column-width { proportion 0.5; }
 	preset-column-widths {
 		proportion 0.33333
 		proportion 0.5
@@ -183,50 +99,27 @@ layout {
 		proportion 1.0
 		// fixed 1920
 	}
-
-	// switch-preset-window-height  (Mod+Ctrl+Shift+R) toggles between.
-	preset-window-heights {	proportion 0.5;	}
-	default-column-width { proportion 0.5; }
-
+	preset-window-heights {	
+		proportion 0.33333
+		proportion 0.5;
+		proportion 0.66667;
+		proportion 1.0
+	}
 	focus-ring {
-		on
 		width 1
 		active-color "#7fc8ff"
 		inactive-color "#505050"
 		urgent-color "#9b0000"
 	}
-
-	border {
-		off
-		width 2
-		active-color "#ffc87f"
-		inactive-color "#505050"
-		urgent-color "#9b0000"
-		// active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-		// inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-	}
-
-	shadow {
-		off
-		softness 16
-		spread 4
-		offset x=0 y=4
-		draw-behind-window true
-		color "#0007"
-	}
 	insert-hint {
-		// off
-		on
 		color "#ffc87f80"
-		// gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
 	}
-
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Miscellaneous {{{
 spawn-at-startup "waybar"
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~ %Y%m%d_%H%M%S.png"
 cursor {
 	xcursor-theme "XCursor-Pro-Light"
 	xcursor-size 24
@@ -325,58 +218,6 @@ window-rule {
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Animations {{{
 animations {
-    // Uncomment to turn off all animations.
-    // You can also put "off" into each individual animation to disable it.
-    // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-    // workspace-switch {
-    //     spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    // }
-
-    // window-open {
-    //     duration-ms 150
-    //     curve "ease-out-expo"
-    // }
-
-    // window-close {
-    //     duration-ms 150
-    //     curve "ease-out-quad"
-    // }
-
-    // horizontal-view-movement {
-    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    // }
-
-    // window-movement {
-    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    // }
-
-    // window-resize {
-    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    // }
-
-    // config-notification-open-close {
-    //     spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
-    // }
-
-    // exit-confirmation-open-close {
-    //     spring damping-ratio=0.6 stiffness=500 epsilon=0.01
-    // }
-
-    // screenshot-ui-open {
-    //     duration-ms 200
-    //     curve "ease-out-quad"
-    // }
-
-    // overview-open-close {
-    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    // }
-
-    // recent-windows-close {
-    //     spring damping-ratio=1.0 stiffness=800 epsilon=0.001
-    // }
 }
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Gestures {{{
@@ -406,13 +247,9 @@ recent-windows {
 		Mod+Grave       { next-window     filter="app-id"; }
 		Mod+Shift+grave { previous-window filter="app-id"; }
 	}
-	debounce-ms 750
-	open-delay-ms 150
 	highlight {
-		active-color "#999999ff"
-		urgent-color "#ff9999ff"
-		padding 8
-		corner-radius 4
+		padding 0
+		corner-radius 0
 	}
 	previews {
 		max-height 1080

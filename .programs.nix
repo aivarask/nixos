@@ -19,7 +19,14 @@ in
   # services.swaync.settings = lib.mkForce "${config.xdg.configHome}/swaync/config.json";
   # xdg.configFile."swaync/config.json".source = symlink "${xdgconf}/swaync/config.json";
   # services.swaync.settings = lib.mkForce (symlink "${xdgconf}/swaync/config.json");
-
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
+  };
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.music = "${config.home.homeDirectory}/Music";
@@ -93,12 +100,12 @@ in
   xdg.configFile."lnav".source = symlink "${xdgconf}/lnav";
   xdg.configFile."mimeapps.list".source = symlink "${xdgconf}/mimeapps.list";
   xdg.configFile."niri/config.kdl".source = symlink "${SELF}/niri.kdl";
+  xdg.configFile."niri/binds.kdl".source = symlink "${SELF}/niri_binds.kdl";
   xdg.configFile."niri-session-manager/config.toml".source = symlink "${SELF}/nirisess.toml";
   xdg.configFile."nwg-dock".source = symlink "${xdgconf}/nwg-dock";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
-  xdg.configFile."rofi".source = symlink "${xdgconf}/rofi";
   xdg.configFile."shellcheckrc".source = symlink "${xdgconf}/shellcheckrc";
   xdg.configFile."spotify-flags.conf".source = symlink "${xdgconf}/spotify-flags.conf";
   xdg.configFile."sqlite3".source = symlink "${xdgconf}/sqlite3";
@@ -111,4 +118,5 @@ in
   xdg.configFile."waybar".source = symlink "${SELF}/waybar";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
   xdg.configFile."w3m".source = symlink "${xdgconf}/w3m";
+  xdg.configFile."xdg-terminals.list".source = symlink "${xdgconf}/xdg-terminals.list";
 }
