@@ -118,6 +118,13 @@ layout {
 // }}}
 // https://niri-wm.github.io/niri/Configuration:-Miscellaneous {{{
 spawn-at-startup "waybar"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup "udiskie --tray"
+// spawn-at-startup "hyprpaper"
+// spawn-at-startup "wluma"
+// https://gist.github.com/zkat/beefc09ad8191dc7077290feceb19582
+
 prefer-no-csd
 screenshot-path "~ %Y%m%d_%H%M%S.png"
 cursor {
@@ -137,7 +144,7 @@ clipboard {
 }
 hotkey-overlay { 
 	skip-at-startup
-	hide-not-bound
+	// hide-not-bound
 }
 blur {
 	passes 3

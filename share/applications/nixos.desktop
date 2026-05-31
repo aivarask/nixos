@@ -1,14 +1,20 @@
 [Desktop Entry]
 Type=Application
+Categories=System;
+Terminal=false
+
 Name=/etc/nixos
 Exec=xdg-terminal-exec --dir=/etc/nixos 
-Terminal=false
-Categories=System;
-Actions=nvim;lf;git;nix-tree;manix;apps;test
+
+Actions=nrs;nvim;lf;git;nix-tree;manix;apps;test
+
+[Desktop Action nrs]
+Name=nrs
+Exec=xdg-terminal-exec --hold /usr/bin/env sh -c 'nixos-rebuild switch --no-reexec --verbose && notify-send "nrs ok" && kill -9 $PPID  || notify-send "nrs failed"' 
 
 [Desktop Action test]
 Name=test
-Exec=notify-send 'test'
+Exec=xdg-terminal-exec --hold sh -c ''
 
 [Desktop Action nvim]
 Name=nvim

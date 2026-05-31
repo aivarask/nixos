@@ -17,10 +17,17 @@ binds {
     // Esc {{{
     Mod+Escape	hotkey-overlay-title="toggle-overview"	{ toggle-overview; }
     Mod+F1	hotkey-overlay-title="show-hotkey-overlay"	{ show-hotkey-overlay; }
-    Mod+F9	hotkey-overlay-title=">nix-tree"	{ spawn-sh "nix-tree"; }
-    Mod+F10	hotkey-overlay-title=">swaylock"	{ spawn "swaylock"; }
+    Mod+F2	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F3	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F4	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F5	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F6	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F7	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F8	hotkey-overlay-title=""	{ show-hotkey-overlay; }
+    Mod+F9	hotkey-overlay-title=""	{ spawn-sh ""; }
+    Mod+F10	hotkey-overlay-title="swaylock"	{ spawn "swaylock"; }
     Mod+F11	hotkey-overlay-title="quit"	{ quit skip-confirmation=true; }
-    Mod+F12	hotkey-overlay-title=">loginctl terminate-user"	{ spawn-sh "loginctl terminate-user ''";}
+    Mod+F12	hotkey-overlay-title="loginctl terminate-user"	{ spawn-sh "loginctl terminate-user ''";}
     Print	hotkey-overlay-title="screenshot"	{ screenshot; }
     Ctrl+Print	hotkey-overlay-title="screenshot-screen"	{ screenshot-screen; }
     Alt+Print	hotkey-overlay-title="screenshot-window"	{ screenshot-window; }
@@ -38,9 +45,9 @@ binds {
 
     // Tab {{{
     Mod+Q	hotkey-overlay-title="close-window"	{ close-window; }
-    Mod+W	hotkey-overlay-title=">firefox --new-window"	{ spawn "firefox" "--new-window"; }
-    Mod+Shift+W	hotkey-overlay-title=">firefox --private-window"	{ spawn "firefox" "--private-window" "x.com"; }
-    Mod+E	hotkey-overlay-title=">kitty -d /etc/nixos vim"	{ spawn "kitty" "-d" "/etc/nixos" "vim"; }
+    Mod+W	hotkey-overlay-title=" firefox --new-window"	{ spawn "firefox" "--new-window"; }
+    Mod+Shift+W	hotkey-overlay-title=" firefox --private-window"	{ spawn "firefox" "--private-window" "x.com"; }
+    Mod+E	hotkey-overlay-title=" kitty -d /etc/nixos vim"	{ spawn "kitty" "-d" "/etc/nixos" "vim"; }
     Mod+R	hotkey-overlay-title="switch-preset-column-width"	{ switch-preset-column-width; }
     Mod+BracketLeft	hotkey-overlay-title="consume-or-expel-window-left"	{ consume-or-expel-window-left; }
     Mod+BracketRight	hotkey-overlay-title="consume-or-expel-window-right"	{ consume-or-expel-window-right; }
@@ -56,9 +63,16 @@ binds {
     // }}}
 
     // Shift {{{
-    Mod+Z	allow-when-locked=true	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-    Mod+X	allow-when-locked=true	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+    Mod+Z	hotkey-overlay-title="vol -5"	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    Mod+X	hotkey-overlay-title="vol +5"	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
     Mod+C	hotkey-overlay-title="chromium -incognito"	{ spawn "chromium" "-incognito" "x.com"; }
+    Mod+V	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
+    Mod+B	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
+    Mod+N	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
+    Mod+M	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
+    Mod+Comma	hotkey-overlay-title=" "	{ spawn "notify-send" ""; }
+    Mod+Period	hotkey-overlay-title="-"	{ spawn "notify-send" "period"; }
+    Mod+Slash	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
     // }}}
 
     // Arrow {{{

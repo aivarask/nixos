@@ -113,5 +113,6 @@ in
   xdg.configFile."waybar".source = symlink "${SELF}/waybar";
   xdg.configFile."zathura".source = symlink "${xdgconf}/zathura";
   xdg.configFile."w3m".source = symlink "${xdgconf}/w3m";
+  xdg.configFile."wluma".source = symlink "${xdgconf}/wluma";
   xdg.configFile."xdg-terminals.list".source = symlink "${xdgconf}/xdg-terminals.list";
 }
