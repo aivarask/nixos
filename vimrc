@@ -40,7 +40,6 @@ aug vimrc
 	au VimEnter        *     cwindow
 	au CmdlineEnter /,\? set hlsearch
 	au CmdlineLeave /,\? set nohlsearch
-	" au CursorHold * :exec 'match Search /\V\<' . expand('<cword>') . '\>/'
 	if !has('nvim') 
 		au TerminalOpen,WinEnter "term://*" startinsert  
 	endif
@@ -61,6 +60,7 @@ aug END
 " *lsp
 let g:lsp_use_native_client = 1
 let g:lsp_fold_enabled = 0
+
 if (executable('nixd'))
 	au User lsp_setup call lsp#register_server({
 				\ 'name': 'nixd',
@@ -71,6 +71,7 @@ if (executable('nixd'))
 				\ 'languageId': {server_info->'nix'},
 				\ })
 endif
+
 function! s:on_lsp_buffer_enabled() abort
 	setlocal omnifunc=lsp#complete
 	setlocal signcolumn=yes
@@ -89,7 +90,6 @@ function! s:on_lsp_buffer_enabled() abort
 	nmap <buffer> K <plug>(lsp-hover)
 	nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
 	nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
 	let g:lsp_format_sync_timeout = 1000
 	autocmd! BufWritePre *.nix,*.go call execute('LspDocumentFormatSync')
 endfunction
@@ -98,39 +98,8 @@ augroup lsp_install
 	au!
 	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
 "*
-
-function! Log(...) abort 
-	redir! >vim.log
-	silent echo strftime("%H:%M:%S")
-	silent echo $"Hello, {a:1}!"
-	redir END
-endfunction
-
-function! CompleteInfo()
-	let item = v:event.completed_item
-	let comp_info = complete_info()
-	let id = popup_findinfo()
-	redir! >vim.log
-	silent PP comp_info
-	silent PP item
-	silent echo strftime("%H:%M:%S")
-	silent echo $"info {id}"
-	redir END
-	if id
-		call popup_settext(id, 'async info: ' .. item.info)
-		call popup_show(id)
-	endif
-endfunction
-
-function! Complete(findstart, base)
-	let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] 
-	let compitems = [{'word': 'one', 'abbr': 'on', 'menu':'on_menu', 'info':'on_info', 'kind': 'A'},
-				\{'word': 'two', 'abbr': 'tw', 'menu':'tw_menu', 'info':'tw_info', 'kind': 'Z'}]
-	call complete(col('.'), compitems)
-	let files = glob("**", v:false, v:true)
-	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
-endfunction
 
 " *completion
 set path=.,,**

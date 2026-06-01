@@ -1,9 +1,20 @@
-" vim: foldmethod=indent foldnestmax=1
+" vim: foldmethod=marker foldnestmax=1 foldmarker=func,endfun
+command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
+command! -bang -nargs=* Term call Term(<f-args>)
+command! -nargs=+ Gr execute 'silent grep! <args>' | :exe 'copen ' . &scrolloff
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
+command! -nargs=1 FindFiles call FindFiles(<q-args>)
+command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
 function! Progname()
 	return v:progname
 endfunction
-
+function! Log(...) abort 
+	redir! >vim.log
+	silent echo strftime("%H:%M:%S")
+	silent echo $"Hello, {a:1}!"
+	redir END
+endfunction
 function! SwitchLine(cnt)
 	let tick = b:changedtick
 	let start = getcurpos()
@@ -28,38 +39,29 @@ function! SwitchLine(cnt)
 	endwhile
 	call setpos('.', start)
 endfun
-
-command! -nargs=+ Gr execute 'silent grep! <args>' | :exe 'copen ' . &scrolloff
-command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 function! Grep(...) 
 	return system(join([&grepprg] + a:000), ' ')	      
 endfunction
-
 function FoldText()
 	let line = getline(v:foldstart)
 	let ln = v:foldend - v:foldstart + 1
 	let sub = line
 	return v:folddashes .. ' ' .. ln .. ' ' .. sub
 endfunction
-
 function! FindFunc(cmdarg, cmdcomplete)
 	let files = glob("`fd -H `", 1, 1)
 	" let items = substitute(files, "\n", ",", "g")
 	" let files = glob(".*", 1, 1)
 	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
 endfunc
-
 function! FindFuncGlob(cmdarg, cmdcomplete)
 	let pat = a:cmdcomplete ? $'{a:cmdarg}*' : a:cmdarg
 	return glob(pat, v:false, v:true)
 endfunc
-
 function! FindGitFiles(cmdarg, cmdcomplete)
 	let fnames = systemlist('git ls-files')
 	return fnames->filter('v:val =~? a:cmdarg')
 endfunc
-
-command! -nargs=1 FindFiles call FindFiles(<q-args>)
 function! FindFiles(filename)
 	let error_file = tempname()
 	silent exe '!fd -t f '.a:filename.' | xargs file | sed "s/:/:1:/" > '.error_file
@@ -67,10 +69,6 @@ function! FindFiles(filename)
 	exe "cfile ". error_file
 	copen
 endfunction
-
-command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
-
 function! TabLine()
 	let s = ''
 	" Making a tab list on the right side
@@ -105,13 +103,10 @@ function! TabLine()
 	let s .= '%=' " Spacer
 	return s
 endfunction
-
 function! TermFloat(arg = "zsh")
 	let buf = term_start([a:arg], #{hidden: 1, term_finish: 'close'})
 	let winid = popup_create(buf, #{minwidth: 120, minheight: 40})
 endfunction
-
-command! -bang -nargs=* Term call Term(<f-args>)
 function! Term(arg = "zsh") abort
 	echom a:arg
 	let tname = '!' . a:arg
@@ -128,20 +123,17 @@ function! Term(arg = "zsh") abort
 		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
 	endif
 endfunction
-
 function! Exec(command)
 	redir! >>.vim_ex_log.txt
 	silent exec a:command
 	redir END
 	" return output
 endfunction
-
 function! Woo()
 	echom complete_info()
 	" startinsert
 	return "\<Ignore>"
 endfunction
-
 function! Bclose(bang, buffer)
 	if empty(a:buffer)
 		let btarget = bufnr('%')
@@ -152,23 +144,21 @@ function! Bclose(bang, buffer)
 	endif
 	execute 'bdelete' btarget
 endfunction
-
 if !exists('*SourceLuafile')
+	function! SourceLuafile() abort
+		if &filetype ==?'vim'
+			" :%s/\s\+$//e
+			:silent! write
+			:source %
+		elseif &filetype ==?'lua'
+			:silent! write
+			:luafile %
+		else
+		endif
+		:edit | call feedkeys('zx')
+		return
+	endfunction
 endif
-function! SourceLuafile() abort
-	if &filetype ==?'vim'
-		" :%s/\s\+$//e
-		:silent! write
-		:source %
-	elseif &filetype ==?'lua'
-		:silent! write
-		:luafile %
-	else
-	endif
-	:edit | call feedkeys('zx')
-	return
-endfunction
-
 function! MimeType(filename) abort
 	if !executable('file')
 		throw 'No ''file'' in ' . $PATH
@@ -184,15 +174,12 @@ function! MimeType(filename) abort
 	endif
 	return l:mimetype
 endfunction
-
 function! RuntimepathList() 
 	:exe "new | put =split(" . expand(&runtimepath) . ",  ',')"
 endfunction
-
 function! Ctoggle()
 	if empty(filter(getwininfo(), 'v:val.quickfix')) | copen | else cclose | endif
 endfunction
-
 function! InputFromScript()
 	" https://vim.fandom.com/wiki/User_input_from_a_script
 	let curline = getline('.')
@@ -201,8 +188,6 @@ function! InputFromScript()
 	call inputrestore()
 	call setline('.', curline . ' ' . name)
 endfunction
-
-
 function! RegistersClear()
 	let regs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
 	let i = 0
@@ -212,16 +197,37 @@ function! RegistersClear()
 	endwhile
 	unlet regs
 endfunction
-
 function! RegistersClear_()
 	let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
 	for r in regs
 		call setreg(r, [])
 	endfor
 endfunction
-
 function! Syn()
 	for id in synstack(line('.'), col('.'))
 		echo synIDattr(id, 'name')
 	endfor
+endfunction
+function! CompleteInfo()
+	let item = v:event.completed_item
+	let comp_info = complete_info()
+	let id = popup_findinfo()
+	redir! >vim.log
+	silent PP comp_info
+	silent PP item
+	silent echo strftime("%H:%M:%S")
+	silent echo $"info {id}"
+	redir END
+	if id
+		call popup_settext(id, 'async info: ' .. item.info)
+		call popup_show(id)
+	endif
+endfunction
+function! Complete(findstart, base)
+	let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] 
+	let compitems = [{'word': 'one', 'abbr': 'on', 'menu':'on_menu', 'info':'on_info', 'kind': 'A'},
+				\{'word': 'two', 'abbr': 'tw', 'menu':'tw_menu', 'info':'tw_info', 'kind': 'Z'}]
+	call complete(col('.'), compitems)
+	let files = glob("**", v:false, v:true)
+	return a:cmdarg == '' ? files : matchfuzzy(files, a:cmdarg)
 endfunction

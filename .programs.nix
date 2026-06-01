@@ -160,6 +160,7 @@ in
   xdg.configFile."niri/binds.kdl".source = symlink "${SELF}/niri_binds.kdl";
   xdg.configFile."niri-session-manager/config.toml".source = symlink "${SELF}/nirisess.toml";
   xdg.configFile."nwg-dock".source = symlink "${xdgconf}/nwg-dock";
+  xdg.configFile."nwg-bar".source = symlink "${xdgconf}/nwg-bar";
   xdg.configFile."ncspot".source = symlink "${xdgconf}/ncspot";
   xdg.configFile."pipewire".source = symlink "${xdgconf}/pipewire";
   xdg.configFile."pistol".source = symlink "${xdgconf}/pistol";
