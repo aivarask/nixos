@@ -1,0 +1,6 @@
+{
+	"backend": "wayland",
+	"resolution": "1920x1080",
+	"fps": 60,
+	"upscale": "nearest"
+}

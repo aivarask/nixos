@@ -100,7 +100,6 @@ augroup lsp_install
 augroup END
 
 "*
-
 " *completion
 set path=.,,**
 set wildignorecase

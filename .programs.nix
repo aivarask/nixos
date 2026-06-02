@@ -145,6 +145,7 @@ in
   xdg.configFile."foot".source = symlink "${xdgconf}/foot";
   xdg.configFile."fuzzel".source = symlink "${xdgconf}/fuzzel";
   xdg.configFile."gammastep".source = symlink "${xdgconf}/gammastep";
+  xdg.configFile."gamescope".source = symlink "${xdgconf}/gamescope";
   xdg.configFile."gtk-2.0".source = symlink "${xdgconf}/gtk-2.0";
   xdg.configFile."gtk-3.0".source = symlink "${xdgconf}/gtk-3.0";
   xdg.configFile."gtk-4.0".source = symlink "${xdgconf}/gtk-4.0";

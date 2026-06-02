@@ -49,6 +49,7 @@
           # --retry-attempts <COUNT>      Number of restore attempts (default: 3)
           # --retry-delay <SECONDS>       Delay between retry attempts (default: 2)
         }
+
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -121,6 +122,7 @@
           ./network.nix
           ./dell.nix
           # ./hdmi-cec.nix
+          ./modules/steam.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
