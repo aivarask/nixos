@@ -25,9 +25,8 @@ in
     {
       home.packages = with pkgs; [
         reaper
-        reaper-sws-extension
-        reaper-reapack-extension
         surge-xt
+        vital
       ];
     }
     ./.config/bat/default.nix

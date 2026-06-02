@@ -137,8 +137,8 @@ screenshot-path "~ %Y%m%d_%H%M%S.png"
 cursor {
 	xcursor-theme "XCursor-Pro-Light"
 	xcursor-size 24
-	hide-when-typing
-	hide-after-inactive-ms 2000
+	// hide-when-typing
+	// hide-after-inactive-ms 2000
 }
 overview {
 	zoom 0.3
