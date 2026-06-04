@@ -1,3 +1,2 @@
 setlocal cursorline
-setlocal buflisted
 

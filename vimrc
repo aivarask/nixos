@@ -10,11 +10,7 @@ let g:loaded_matchit=1
 let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
 "*
-
-set sessionoptions=buffers,curdir,folds,help,tabpages
-if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
-set bufhidden=delete
-
+" *autocmd
 runtime ftplugin/man.vim
 aug vimrc
 	au!
@@ -55,8 +51,7 @@ aug vimrc
 	" au CompleteChanged * call CompleteInfo()
 	" au CompleteChanged * call Log('comp')
 aug END
-
-
+"*
 " *lsp
 let g:lsp_use_native_client = 1
 let g:lsp_fold_enabled = 0
@@ -141,7 +136,7 @@ nnoremap <silent> \Q <cmd>%bd\|e#<cr>
 nnoremap <silent> \q <cmd>bd!<CR>
 nnoremap <silent> \a <cmd>call SourceLuafile()<CR>
 nnoremap <silent> \h <cmd>set hlsearch!<cr>
-nmap gs <Plug>(SwitchInLine)
+nnoremap gs <Plug>(SwitchInLine)
 nnoremap /<CR> :execute 'terminal lf ' .. expand("%:h")<CR>
 " nnoremap /<CR> :execute 'terminal ++close lf ' .. expand("%:h")<CR>
 nmap /. :find<space>
@@ -187,7 +182,7 @@ nnoremap <silent> [' :wincmd p<CR>
 "*
 " *terminal
 set termguicolors
-if !has('nvim') | set term=kitty | endif
+" if !has('nvim') | set term=kitty | endif
 if &term =~ '256color' | set t_ut= | endif
 if !has('gui_running') | set t_Co=256 guioptions-=e |endif
 let &t_EI = "\<Esc>[2 q"
@@ -195,10 +190,34 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_kb = "^V<BS>"
 " fixdel
+command! -bang -nargs=* Term call Term(<f-args>)
+function! TermFloat(arg = "zsh")
+	let buf = term_start([a:arg], #{hidden: 1, term_finish: 'close'})
+	let winid = popup_create(buf, #{minwidth: 120, minheight: 40})
+endfunction
+function! Term(arg = "zsh") abort
+	echom a:arg
+	let tname = '!' . a:arg
+	if has('nvim') | let tname = 'term:/' | endif
+	let bnr = bufnr(tname)
+	let wnr = bufwinnr(tname)
+	if wnr > 0 && winnr('$') > 1
+		execute wnr . 'wincmd c'
+	elseif bnr > 0 && bnr != bufnr(@%)
+		execute 'sb ' . bnr
+	elseif bnr == bufnr(@%)
+		execute 'bprevious | sb ' . bnr . ' | wincmd p'
+	else
+		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
+	endif
+endfunction
 "*
 " *settings
 syntax on
 filetype indent plugin on
+set sessionoptions=buffers,curdir,folds,help,tabpages
+if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
+set bufhidden=delete
 set history=50
 set shortmess=oOtTWAIcCF
 set hidden

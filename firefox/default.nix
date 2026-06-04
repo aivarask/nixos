@@ -1,11 +1,7 @@
 {
-  pkgs,
-  lib,
-  config,
   SELF,
-  xdgconf,
   osConfig,
-  inputs,
+  config,
   ...
 }:
 let
@@ -20,21 +16,14 @@ let
 in
 rec {
 
-  # https://github.com/0xc000022070/zen-browser-flake
   imports = [
-    # inputs.zen-browser.homeModules.twilight
   ];
-  # programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
-  # programs.zen-browser.enable = true;
-  # setAsDefaultBrowser = true;
 
-  # home.packages = with pkgs; [
-  #   # inputs.zen-browser.homeModules.twilight
-  #   (inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight-unwrapped.override (
-  #     lib.importJSON ./policies.json
-  #   ))
-  # ];
-  home.file.".mozilla/native-messaging-hosts".enable = false;
+  home-manager.sharedModules = [
+    {
+      home.file.".mozilla/native-messaging-hosts".enable = false;
+    }
+  ];
   programs.firefox.enable = true;
   programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox.languagePacks = [ "en-US" ];

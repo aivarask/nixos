@@ -1,7 +1,6 @@
 " vim: foldmethod=marker foldnestmax=1 foldmarker=func,endfun
 
 command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
-command! -bang -nargs=* Term call Term(<f-args>)
 command! -nargs=+ Gr execute 'silent grep! <args>' | :exe 'copen ' . &scrolloff
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 command! -nargs=1 FindFiles call FindFiles(<q-args>)
@@ -103,26 +102,6 @@ function! TabLine()
 	let s .= '%#TabLineFill#%T'  " Reset highlight
 	let s .= '%=' " Spacer
 	return s
-endfunction
-function! TermFloat(arg = "zsh")
-	let buf = term_start([a:arg], #{hidden: 1, term_finish: 'close'})
-	let winid = popup_create(buf, #{minwidth: 120, minheight: 40})
-endfunction
-function! Term(arg = "zsh") abort
-	echom a:arg
-	let tname = '!' . a:arg
-	if has('nvim') | let tname = 'term:/' | endif
-	let bnr = bufnr(tname)
-	let wnr = bufwinnr(tname)
-	if wnr > 0 && winnr('$') > 1
-		execute wnr . 'wincmd c'
-	elseif bnr > 0 && bnr != bufnr(@%)
-		execute 'sb ' . bnr
-	elseif bnr == bufnr(@%)
-		execute 'bprevious | sb ' . bnr . ' | wincmd p'
-	else
-		if has('nvim') | execute 'sb | edit term://' . a:arg | else | execute 'terminal ++close ' . a:arg | endif
-	endif
 endfunction
 function! Exec(command)
 	redir! >>.vim_ex_log.txt
