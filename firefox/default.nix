@@ -24,8 +24,8 @@ rec {
   imports = [
     # inputs.zen-browser.homeModules.twilight
   ];
-  programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
-  programs.zen-browser.enable = true;
+  # programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
+  # programs.zen-browser.enable = true;
   # setAsDefaultBrowser = true;
 
   # home.packages = with pkgs; [

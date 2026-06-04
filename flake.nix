@@ -123,7 +123,7 @@
           ./network.nix
           ./dell.nix
           # ./hdmi-cec.nix
-          ./modules/steam.nix
+          # ./modules/steam.nix
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
