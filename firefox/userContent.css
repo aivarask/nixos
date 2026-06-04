@@ -3,11 +3,13 @@
 		body {
 			background-color: var(--background-color-neutral-subtle, #f8f9fa);
 			background-color: var(--background-color-neutral-subtle, #000000) !important;
-			color: var(--color-base, #202122);
+			color: var(--color-base, #f8f8f8);
+			/* color: var(--color-base, #202122); */
 		}
 	}
 
 	* {
+		/* color: --color-base !important; */
 		color: red !important;
 		/* display: none !important; */
 	}

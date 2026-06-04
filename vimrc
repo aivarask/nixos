@@ -11,7 +11,7 @@ let g:loaded_EditorConfig=1
 let g:no_vim_maps=1
 "*
 
-set sessionoptions=buffers,curdir,folds,help,tabpages,terminal
+set sessionoptions=buffers,curdir,folds,help,tabpages
 if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
 set bufhidden=delete
 

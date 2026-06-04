@@ -13,9 +13,7 @@
 {
   pkgs,
   modulesPath,
-  config,
   lib,
-  self,
   ...
 }@args:
 {

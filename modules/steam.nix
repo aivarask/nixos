@@ -32,10 +32,9 @@
     capSysNice = false;
   };
   environment.systemPackages = with pkgs; [
-    gamescope-wsi # HDR won't work without this
-    steam-run
     steamcmd
-    steam-tui
+    steam-run
+    gamescope-wsi # HDR won't work without this
     (heroic.override {
       extraPkgs =
         pkgs': with pkgs'; [

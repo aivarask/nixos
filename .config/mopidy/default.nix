@@ -1,0 +1,5 @@
+{ pkgs, ... }:
+{
+  home-manager.sharedModules = [ ];
+
+}

@@ -1,10 +1,15 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }:
 {
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16 GiB
+    }
+  ];
   fileSystems."/" = {
     device = "/dev/disk/by-partlabel/disk-main-root";
     fsType = "ext4";

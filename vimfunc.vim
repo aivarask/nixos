@@ -1,4 +1,5 @@
 " vim: foldmethod=marker foldnestmax=1 foldmarker=func,endfun
+
 command! SC vnew | setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile | nnoremap <buffer> ,s :silent %source<CR> 
 command! -bang -nargs=* Term call Term(<f-args>)
 command! -nargs=+ Gr execute 'silent grep! <args>' | :exe 'copen ' . &scrolloff
