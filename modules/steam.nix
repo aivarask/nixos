@@ -1,9 +1,17 @@
 { pkgs, ... }:
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      steam = prev.steam.override {
+        extraArgs = "-cef-disable-gpu-compositing";
+      };
+    })
+  ];
   users.users."steam".enable = true;
   users.users."steam".isNormalUser = true;
   hardware.graphics.enable32Bit = true;
   programs.steam.enable = true;
+  programs.steam.protontricks.enable = true;
   programs.steam.remotePlay.openFirewall = true;
   programs.steam.dedicatedServer.openFirewall = true;
   programs.steam.extraCompatPackages = with pkgs; [
@@ -22,7 +30,6 @@
         stdenv.cc.cc.lib # Provides libstdc++.so.6
         libkrb5
         keyutils
-        # Add other libraries as needed
       ];
   };
 
@@ -32,6 +39,7 @@
     capSysNice = false;
   };
   environment.systemPackages = with pkgs; [
+    steam
     steamcmd
     steam-run
     gamescope-wsi # HDR won't work without this

@@ -10,6 +10,7 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
+  home.extraOutputsToInstall = [ ];
   manual.json.enable = true;
   programs.man.generateCaches = true;
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;

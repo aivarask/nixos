@@ -9,8 +9,8 @@
 	}
 
 	* {
-		/* color: --color-base !important; */
-		color: red !important;
+		color: --color-base !important;
+		/* color: red !important; */
 		/* display: none !important; */
 	}
 

@@ -78,6 +78,7 @@
           };
         }
         # inputs.disko.nixosModules.disko
+        ./.config/mopidy/default.nix
         ./.config/mpd/default.nix
         ./.config/pipewire/default.nix
         ./environment.nix
