@@ -15,9 +15,6 @@
   inputs.nur.inputs.nixpkgs.follows = "nixpkgs";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.zen-browser.url = "github:0xc000022070/zen-browser-flake";
-  inputs.zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.zen-browser.inputs.home-manager.follows = "home-manager";
   inputs.niri-session-manager.url = "github:MTeaHead/niri-session-manager";
   inputs.nirinit.url = "github:amaanq/nirinit";
   inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,28 +24,6 @@
       SELF = "/etc/nixos";
       xdgconf = "${SELF}/.config";
       commonModules = [
-        inputs.nirinit.nixosModules.nirinit
-        {
-          services.nirinit = {
-            enable = true;
-            settings.skip.apps = [ "steam" ];
-            settings.launch."chromium-example.com__-Default" = "example-web-app";
-
-          };
-        }
-        # inputs.niri-session-manager.nixosModules.niri-session-manager
-        {
-          # services.niri-session-manager.enable = true;
-          # services.niri-session-manager.package = {
-          #   save-interval = 1;
-          #   max-backup-count = 3;
-          # };
-          # --save-interval <MINUTES>     How often to save the session (default: 15)
-          # --max-backup-count <COUNT>    Number of backup files to keep (default: 5)
-          # --spawn-timeout <SECONDS>     How long to wait for windows to spawn (default: 5)
-          # --retry-attempts <COUNT>      Number of restore attempts (default: 3)
-          # --retry-delay <SECONDS>       Delay between retry attempts (default: 2)
-        }
 
         inputs.home-manager.nixosModules.home-manager
         {
@@ -64,38 +39,45 @@
                 home.stateVersion = "26.05";
                 home.enableNixpkgsReleaseCheck = false;
               }
+              inputs.nix-colors.homeManagerModules.default
             ];
-            users.root = {
-              home.username = "root";
-              home.homeDirectory = "/root";
-              imports = [
-                inputs.nix-colors.homeManagerModules.default
-                inputs.zen-browser.homeModules.twilight
-                ./.programs.nix
-                ./vim.nix
-              ];
-            };
+            users.root.home.username = "root";
+            users.roo.home.homeDirectory = "/root";
           };
         }
+        # ./modules/fileSystems.nix
         # inputs.disko.nixosModules.disko
+        ./.config/bat/default.nix
+        ./.config/chromium/default.nix
+        ./.config/direnv/default.nix
+        ./.config/eza/default.nix
+        ./.config/fzf/default.nix
+        ./.config/git/default.nix
         ./.config/mopidy/default.nix
         ./.config/mpd/default.nix
+        ./.config/mpv/default.nix
+        ./.config/ncmpcpp/default.nix
+        ./.config/nicotine/default.nix
         ./.config/pipewire/default.nix
-        ./environment.nix
+        ./.config/ripgrep/default.nix
+        ./.config/starship/default.nix
+        ./.config/zsh/default.nix
+        ./modules/.programs.nix
+        ./modules/environment.nix
+        ./firefox/default.nix
         ./httpd
-        ./vimlua.nix
-        ./modules/torrents.nix
-        ./nix.nix
-        ./services.nix
-        ./niri.nix
         ./modules/autologin.nix
         ./modules/boot.nix
-        # ./modules/fileSystems.nix
         ./modules/gnome.nix
         ./modules/graphics.nix
         ./modules/search.nix
         ./modules/searx.nix
-        ./firefox/default.nix
+        ./modules/torrents.nix
+        ./modules/niri.nix
+        ./modules/nix.nix
+        ./modules/services.nix
+        ./modules/vim.nix
+        ./modulesvimlua.nix
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
