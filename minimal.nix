@@ -125,7 +125,8 @@
     Network.NameResolvingService = "resolvconf"; # Values: resolvconf, **systemd**, none
     Network.EnableIPv6 = false;
     Settings.AutoConnect = true;
-    # Scan.DisablePeriodicScan=true;
+    Scan.DisablePeriodicScan = true;
+    Scan.DisableRoamingScan = true;
   };
   time.timeZone = "Europe/Vilnius";
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH

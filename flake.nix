@@ -120,7 +120,7 @@
           ./modules/bluetooth.nix
           ./modules/pihole.nix
           ./minimal.nix
-          ./network.nix
+          ./modules/network.nix
           ./dell.nix
           # ./hdmi-cec.nix
           # ./modules/steam.nix
@@ -131,7 +131,7 @@
         modules = commonModules ++ [
           ./modules/pihole.nix
           ./minimal.nix
-          ./network.nix
+          ./modules/network.nix
           ./pc.nix
           # ./modules/steam.nix
         ];

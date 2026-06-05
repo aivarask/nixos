@@ -55,8 +55,7 @@ aug END
 " *lsp
 let g:lsp_use_native_client = 1
 let g:lsp_fold_enabled = 0
-
-if (executable('nixd'))
+if (executable('nixd') && 0) 
 	au User lsp_setup call lsp#register_server({
 				\ 'name': 'nixd',
 				\ 'cmd': {server_info->['nixd']},
@@ -66,7 +65,6 @@ if (executable('nixd'))
 				\ 'languageId': {server_info->'nix'},
 				\ })
 endif
-
 function! s:on_lsp_buffer_enabled() abort
 	setlocal omnifunc=lsp#complete
 	setlocal signcolumn=yes
@@ -88,7 +86,6 @@ function! s:on_lsp_buffer_enabled() abort
 	let g:lsp_format_sync_timeout = 1000
 	autocmd! BufWritePre *.nix,*.go call execute('LspDocumentFormatSync')
 endfunction
-
 augroup lsp_install
 	au!
 	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
