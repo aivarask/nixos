@@ -95,6 +95,7 @@
         ./modules/graphics.nix
         ./modules/search.nix
         ./modules/searx.nix
+        ./firefox/default.nix
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {

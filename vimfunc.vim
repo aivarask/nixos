@@ -6,6 +6,21 @@ command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr Grep(<f-args>)
 command! -nargs=1 FindFiles call FindFiles(<q-args>)
 command! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
+if !exists('*SourceLuafile')
+	function! SourceLuafile() abort
+		if &filetype ==?'vim'
+			" :%s/\s\+$//e
+			:silent! write
+			:source %
+		elseif &filetype ==?'lua'
+			:silent! write
+			:luafile %
+		else
+		endif
+		:edit | call feedkeys('zx')
+		return
+	endfunction
+endif
 function! Progname()
 	return v:progname
 endfunction
@@ -124,21 +139,6 @@ function! Bclose(bang, buffer)
 	endif
 	execute 'bdelete' btarget
 endfunction
-if !exists('*SourceLuafile')
-	function! SourceLuafile() abort
-		if &filetype ==?'vim'
-			" :%s/\s\+$//e
-			:silent! write
-			:source %
-		elseif &filetype ==?'lua'
-			:silent! write
-			:luafile %
-		else
-		endif
-		:edit | call feedkeys('zx')
-		return
-	endfunction
-endif
 function! MimeType(filename) abort
 	if !executable('file')
 		throw 'No ''file'' in ' . $PATH

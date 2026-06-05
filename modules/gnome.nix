@@ -18,7 +18,6 @@
     gnome-tweaks
     dconf-editor
 
-
     # https://nwg-piotr.github.io/nwg-shell/
     nwg-hello
     nwg-drawer
