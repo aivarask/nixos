@@ -42,7 +42,7 @@
               inputs.nix-colors.homeManagerModules.default
             ];
             users.root.home.username = "root";
-            users.roo.home.homeDirectory = "/root";
+            users.root.home.homeDirectory = "/root";
           };
         }
         # ./modules/fileSystems.nix
@@ -77,7 +77,7 @@
         ./modules/nix.nix
         ./modules/services.nix
         ./modules/vim.nix
-        ./modulesvimlua.nix
+        ./modules/vimlua.nix
       ];
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
@@ -94,7 +94,7 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = [
           ./modules/iso.nix
-          ./minimal.nix
+          ./modules/minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
@@ -102,9 +102,9 @@
         modules = commonModules ++ [
           ./modules/bluetooth.nix
           ./modules/pihole.nix
-          ./minimal.nix
+          ./modules/minimal.nix
           ./modules/network.nix
-          ./dell.nix
+          ./modules/dell.nix
           # ./hdmi-cec.nix
           # ./modules/steam.nix
         ];
@@ -113,9 +113,9 @@
         specialArgs = { inherit inputs self xdgconf; };
         modules = commonModules ++ [
           ./modules/pihole.nix
-          ./minimal.nix
+          ./modules/minimal.nix
           ./modules/network.nix
-          ./pc.nix
+          ./modules/pc.nix
           # ./modules/steam.nix
         ];
       };

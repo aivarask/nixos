@@ -144,7 +144,7 @@
   ]
   ++ (args.extraPublicKeys or [ ]);
 
-  environment.etc."disko-main.nix".source = ./modules/disko-main.nix;
+  environment.etc."disko-main.nix".source = ./disko-main.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
