@@ -80,7 +80,6 @@
     remarshal
     reptyr
     ripgrep
-    silver-searcher
     systemctl-tui
     sysz
     tldr
