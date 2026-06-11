@@ -61,7 +61,7 @@ output "eDP-1" {
 	mode "3840x2160"
 	scale 2.0
 	position x=0 y=0
-	variable-refresh-rate on-demand=true
+	// variable-refresh-rate on-demand=true
 	focus-at-startup
 	backdrop-color "#001100"
 
@@ -75,7 +75,7 @@ output "HDMI-A-1" {
 	// off
 	mode "1920x1080"
 	position x=0 y=0
-	variable-refresh-rate on-demand=true
+	// variable-refresh-rate on-demand=true
 }
 
 /-output "Sony SONY TV  *00 0x01010101" {
