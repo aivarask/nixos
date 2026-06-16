@@ -132,6 +132,40 @@ vim.lsp.config('*', {
 	}
 })
 
+vim.lsp.config("nixd", {
+	cmd = { "nixd" },
+	filetypes = { "nix" },
+	root_markers = { "flake.nix", ".git" },
+	settings = {
+		nixd = {
+			-- nixpkgs = {expr =  "(builtins.getFlake \"self\").inputs.nixpkgs { }",
+			formatting = { command = { 'nixfmt' } },
+			options = {
+				-- nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
+				nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.' .. uv.os_gethostname() .. '.type.getSubOptions []' },
+				home_manager = { expr = '(builtins.getFlake "self").nixosConfigurations.' .. uv.os_gethostname() .. '.options.home-manager.users.type.getSubOptions []', },
+			},
+			diagnostic = {
+				suppress = {
+					'sema-extra-with',
+					'sema-unused-def-let',
+					'sema-unused-def-lambda-noarg-formal'
+				},
+			},
+			-- options = {
+			-- 	nixos = {
+			-- 		expr =
+			-- 		'(builtins.getFlake "self").nixosConfigurations.<hostname>.options',
+			-- 	},
+			-- 	home_manager = {
+			-- 		expr =
+			-- 		'(builtins.getFlake (toString ./.)).homeConfigurations."<username>@<hostname>".options',
+			-- 	},
+			-- },
+		},
+	},
+})
+vim.lsp.enable("nixd")
 vim.lsp.config.bashls = {
 	cmd = { 'bash-language-server', 'start' },
 	filetypes = { 'bash', 'sh' }

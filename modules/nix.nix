@@ -26,6 +26,8 @@ in
   nix.channel.enable = false;
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   nix.nixPath = (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs) ++ [
+    "nixpkgs=${inputs.nixpkgs}"
+    # "nixos-config=/etc/nixos"
     "nixpkgs-overlays=/etc/nixos/overlays-compat/"
   ];
   nix.extraOptions = ''

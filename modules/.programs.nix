@@ -35,6 +35,7 @@
         ];
 
         home.packages = with pkgs; [
+          roomeqwizard
           xdg-terminal-exec
           xdg-launch
           sqlitebrowser

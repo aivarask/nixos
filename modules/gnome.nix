@@ -2,7 +2,6 @@
 {
 
   environment.systemPackages = with pkgs; [
-    # gst_all_1.gstreamer # https://wiki.nixos.org/wiki/GStreamer
     # seahorse
     # gnome-keyring
     gvfs
@@ -36,7 +35,5 @@
     nwg-wrapper
     autotiling # autotiling-rs
 
-    # launchers
-    ulauncher
   ];
 }

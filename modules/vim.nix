@@ -21,7 +21,7 @@
           vim-gutentags
           vim-vinegar
           vim-nix
-          vim-lsp
+          # vim-lsp
           vim-css-color
           switch-vim
         ];
