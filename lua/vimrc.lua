@@ -132,13 +132,14 @@ vim.lsp.config('*', {
 	}
 })
 
+
+local flake_expr = 'builtins.getFlake (toString ./.)'
 vim.lsp.config("nixd", {
 	cmd = { "nixd" },
 	filetypes = { "nix" },
 	root_markers = { "flake.nix", ".git" },
-	settings = {
-		nixd = {
-			-- nixpkgs = {expr =  "(builtins.getFlake \"self\").inputs.nixpkgs { }",
+		settings = { nixd = { nixpkgs = {
+			expr =  "import (builtins.getFlake \"self\").inputs.nixpkgs { }",
 			formatting = { command = { 'nixfmt' } },
 			options = {
 				-- nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
@@ -166,6 +167,7 @@ vim.lsp.config("nixd", {
 	},
 })
 vim.lsp.enable("nixd")
+
 vim.lsp.config.bashls = {
 	cmd = { 'bash-language-server', 'start' },
 	filetypes = { 'bash', 'sh' }

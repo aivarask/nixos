@@ -89,9 +89,7 @@
           python3
           kdotool
 
-          # internet speed
           ookla-speedtest
-          # speedtest-cli
           iperf3
           traceroute
 

@@ -1,8 +1,10 @@
 {
+  self,
   config,
   pkgs,
   lib,
   inputs,
+  nixpkgs,
   ...
 }:
 let
@@ -18,6 +20,7 @@ in
   nixpkgs.config.nvidia.acceptLicense = true;
   nixpkgs.config.android_sdk.accept_license = true;
   nixpkgs.flake.setNixPath = true;
+  # nixpkgs.flake.source = inputs.nixpkgs;
   nix.optimise.automatic = true;
   # nix.package = pkgs.nixVersions.latest; # stable
   nix.gc.automatic = true;
@@ -27,7 +30,7 @@ in
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
   nix.nixPath = (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs) ++ [
     "nixpkgs=${inputs.nixpkgs}"
-    # "nixos-config=/etc/nixos"
+    "nixos-config=${inputs.self}"
     "nixpkgs-overlays=/etc/nixos/overlays-compat/"
   ];
   nix.extraOptions = ''
