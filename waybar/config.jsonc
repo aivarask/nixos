@@ -35,10 +35,12 @@
 		],
 		"modules-center": [
 			"custom/drawer",
+			"niri/workspaces",
 			"wlr/taskbar"
 		],
 		"modules-right": [
 			// "idle_inhibitor",
+			"pulseaudio/slider",
 			"pulseaudio",
 			// "custom/brightness",
 			"battery",
@@ -92,6 +94,11 @@
 			"on-click-right": "iwctl station wlan0 disconnect"
 			// "on-click-right": "xdg-open http://192.168.0.1"
 		},
+		"pulseaudio/slider": {
+			"min": 0,
+			"max": 100,
+			"orientation": "horizontal"
+		},
 		"niri/language": {
 			"format-en": "🇺🇸",
 			"format-lt": "🇱🇹",
@@ -101,32 +108,18 @@
 			"format": "{:%A %B %d %H:%M %p}",
 			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
 		},
-		"idle_inhibitor": {
-			"format": "{icon} ",
-			"format-icons": {
-				"activated": "",
-				"deactivated": ""
-			},
-			"timeout": 30.5
-		},
 		"custom/drawer": {
 			"format": " {}",
 			"on-click": "nwg-drawer",
-			"on-click-right": "nwg-menu",
-			"tooltip": false,
-			"tooltip-format": "nwg-drawer"
+			"tooltip": false
 		},
-		"custom/brightness": {
-			// waybar-custom
-			"exec": "brightness_monitor",
-			"format": "🔅 {text}",
-			"return-type": "json",
-			"restart-interval": 2,
-			"tooltip": false,
-			"on-scroll-up": "ddcutil setvcp 10 + 5",
-			"on-scroll-down": "ddcutil setvcp 10 - 5",
-			"on-click": "ddcutil setvcp 10 20",
-			"on-click-right": "ddcutil setvcp 10 90"
+		"niri/workspaces": {
+			"hide-empty": true,
+			"format": "{index} {icon} {name}",
+			"format-icons": {
+				"active": "",
+				"default": ""
+			}
 		},
 		"custom/wttrbar": {
 			"format": "{}° ",
@@ -149,13 +142,25 @@
 		},
 		"wlr/taskbar": {
 			// waybar-wlr-taskbar
-			"format": "{icon}",
+			"format": "{icon} {app_id}",
 			"icon-size": 16,
 			"spacing": 4,
 			"on-click-middle": "close",
 			"tooltip-format": "{title}",
 			"ignore-list": [],
-			"on-click": "activate"
+			"on-click": "minimize"
+		},
+		"custom/brightness": {
+			// waybar-custom
+			"exec": "brightness_monitor",
+			"format": "🔅 {text}",
+			"return-type": "json",
+			"restart-interval": 2,
+			"tooltip": false,
+			"on-scroll-up": "ddcutil setvcp 10 + 5",
+			"on-scroll-down": "ddcutil setvcp 10 - 5",
+			"on-click": "ddcutil setvcp 10 20",
+			"on-click-right": "ddcutil setvcp 10 90"
 		}
 	}
 ]

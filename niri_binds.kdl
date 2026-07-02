@@ -43,11 +43,15 @@ binds {
     Mod+Shift+3	hotkey-overlay-title="move-workspace 3"	{ move-column-to-workspace 3; };
     
     // -Tab
+    Mod+Tab	hotkey-overlay-title=""	{ focus-column-right-or-first; }
+    // Mod+Tab	hotkey-overlay-title=""	{ focus-window-down-or-column-right; }
+    Mod+Shift+Tab	hotkey-overlay-title=""	{ focus-window-up-or-column-left; }
     Mod+Q	hotkey-overlay-title="close-window"	{ close-window; }
     Mod+W	hotkey-overlay-title=" firefox --new-window"	{ spawn "firefox" "--new-window"; }
     Mod+Shift+W	hotkey-overlay-title=" firefox --private-window"	{ spawn "firefox" "--private-window" "x.com"; }
     Mod+E	hotkey-overlay-title=" kitty -d /etc/nixos vim"	{ spawn "kitty" "-d" "/etc/nixos" "vim"; }
     Mod+R	hotkey-overlay-title="switch-preset-column-width"	{ switch-preset-column-width; }
+    Mod+T	hotkey-overlay-title="toggle-column-tabbed-display"	{ toggle-column-tabbed-display; }
     Mod+BracketLeft	hotkey-overlay-title="consume-or-expel-window-left"	{ consume-or-expel-window-left; }
     Mod+BracketRight	hotkey-overlay-title="consume-or-expel-window-right"	{ consume-or-expel-window-right; }
     Mod+Shift+BracketLeft	hotkey-overlay-title="consume-window-into-column"	{ consume-window-into-column; }
@@ -57,12 +61,14 @@ binds {
     Mod+A	hotkey-overlay-title="fuzzel"	{ spawn "fuzzel"; }
     Mod+S	hotkey-overlay-title="fuzzel --placeholder='Search'"	{ spawn "fuzzel"; }
     Mod+D	hotkey-overlay-title="fuzzel"	{ spawn "fuzzel"; }
+    Mod+J	hotkey-overlay-title=""	{ focus-window-down-or-top; }
+    Mod+K	hotkey-overlay-title=""	{ focus-window-up-or-bottom; }
     Mod+Return	hotkey-overlay-title="kitty"	{ spawn "kitty"; };
 
     // -Shift
     Mod+Z	hotkey-overlay-title="vol -5"	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     Mod+X	hotkey-overlay-title="vol +5"	{ spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
-    Mod+C	hotkey-overlay-title="chromium -incognito"	{ spawn "chromium" "-incognito" "x.com"; }
+    Mod+C	hotkey-overlay-title="chromium -incognito"	{ spawn "chromium" "-incognito" "lrt.lt"; }
     Mod+V	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
     Mod+B	hotkey-overlay-title=""	{ spawn "notify-send" ""; }
     Mod+N	hotkey-overlay-title=""	{ spawn "notify-send" ""; }

@@ -44,6 +44,7 @@ aug vimrc
 	au FocusLost,InsertLeave,TextChanged * if empty(&buftype) && &readonly == 0 && !empty(&filetype) | update  | endif
 	au FocusGained,CursorHold,CursorHoldI * if empty(&buftype) | checktime | endif
 	au BufWritePost *kitty/kitty.conf :silent !kill -SIGUSR1 $(pgrep kitty)
+	au BufWritePost */waybar/config.jsonc :silent !kill -SIGUSR2 $(pgrep waybar)
 	au BufWritePost *kitty/quick_access_terminal.conf :silent !kill -SIGUSR1 $(pgrep kitty)
 	" au BufHidden,BufLeave * if expand("<afile>") == "" && &modified == 0 && &filetype != "qf" | silent! bd | endif
 	au CmdlineChanged [:\/\?] call wildtrigger()

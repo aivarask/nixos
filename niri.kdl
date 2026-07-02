@@ -50,7 +50,7 @@ input {
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 output "DP-1" {
 	// off
-	mode "3840x2160"
+	mode "3840x2160@59.997"
 	scale 2
 	position x=1920 y=0
 	focus-at-startup
@@ -58,31 +58,15 @@ output "DP-1" {
 
 output "eDP-1" {
 	// off
-	mode "3840x2160"
-	scale 2.0
-	position x=0 y=0
-	// variable-refresh-rate on-demand=true
 	focus-at-startup
-	backdrop-color "#001100"
-
-	layout {
-		// ...layout settings for eDP-1...
-	}
-
+	scale 2
+	position x=0 y=0
 }
 
 output "HDMI-A-1" {
 	// off
-	mode "1920x1080"
+	mode "1920x1080@60"
 	position x=0 y=0
-	// variable-refresh-rate on-demand=true
-}
-
-/-output "Sony SONY TV  *00 0x01010101" {
-	// mode "3840x2160"
-	mode "1920x1080"
-	position x=0 y=0
-
 };
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings
 include "binds.kdl"
@@ -97,20 +81,16 @@ switch-events {
 };
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
-	gaps 8
+	gaps 16
 	center-focused-column "never"
+	default-column-display "tabbed"
 	default-column-width { proportion 0.5; }
 	preset-column-widths {
-		proportion 0.33333
 		proportion 0.5
-		proportion 0.66667
 		proportion 1.0
-		// fixed 1920
 	}
 	preset-window-heights {	
-		proportion 0.33333
 		proportion 0.5;
-		proportion 0.66667;
 		proportion 1.0
 	}
 	focus-ring {
@@ -119,6 +99,17 @@ layout {
 		inactive-color "#505050"
 		urgent-color "#9b0000"
 	}
+	tab-indicator {
+        width 4
+        gap 1
+        length total-proportion=0.5
+        position "left"
+        place-within-column
+		hide-when-single-tab
+		active-color "red"
+        inactive-color "gray"
+        urgent-color "blue"
+    }
 	insert-hint {
 		color "#ffc87f80"
 	}
@@ -129,7 +120,7 @@ spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "udiskie --tray"
 // spawn-at-startup "hyprpaper"
-spawn-at-startup "wluma"
+// spawn-at-startup "wluma"
 // https://gist.github.com/zkat/beefc09ad8191dc7077290feceb19582
 
 prefer-no-csd
@@ -159,78 +150,52 @@ blur {
 	noise 0.02
 	saturation 1.5
 };
-// https://niri-wm.github.io/niri/Configuration:-Window-Rules
-window-rule {
-	geometry-corner-radius 2
-	clip-to-geometry true
-	open-maximized-to-edges false
-	open-maximized true
-}
 
-window-rule {
-	match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-	open-floating true
-}
-
-window-rule {
-	match app-id=r#"^org\.wezfurlong\.wezterm$"#
-	default-column-width {}
-
-}
-
-window-rule {
-	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-	match app-id=r#"^org\.gnome\.World\.Secrets$"#
-	block-out-from "screen-capture"
-	// block-out-from "screencast"
-};
 // https://niri-wm.github.io/niri/Configuration:-Layer-Rules
-/-layer-rule {
-	match namespace="waybar"
-	match at-startup=true
-	match layer="top"
+layer-rule {
+    match namespace="^launcher$"
+    opacity 0.5
+}
 
-	// Properties that apply continuously.
-	opacity 0.5
-	block-out-from "screencast"
-	// block-out-from "screen-capture"
+layer-rule {
 
-	shadow {
-		on
-		// off
-		softness 40
-		spread 5
-		offset x=0 y=5
-		draw-behind-window true
-		color "#00000064"
-		// inactive-color "#00000064"
-	}
-
-	geometry-corner-radius 12
-	place-within-backdrop true
-	baba-is-float true
-
-	background-effect {
-		xray true
-		blur true
-		noise 0.05
-		saturation 3
-	}
-
-	popups {
-		opacity 0.5
-		geometry-corner-radius 6
-
-		background-effect {
-			xray true
-			blur true
-			noise 0.05
-			saturation 3
-		}
-	}
 };
 // https://niri-wm.github.io/niri/Configuration:-Animations
 animations {
+	 // slowdown 9.0
+	 workspace-switch {
+		 duration-ms 100
+		 curve "ease-out-expo"
+	 }
+	 window-open {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
+	window-close {
+        duration-ms 100
+        curve "ease-out-expo"
+    }
+	horizontal-view-movement {
+        duration-ms 100
+        curve "ease-out-expo"
+	}
+	window-movement {
+        duration-ms 100
+        curve "ease-out-expo"
+	}
+	window-resize {
+		 duration-ms 100
+		 curve "ease-out-expo"
+	}
+	 overview-open-close {
+		 duration-ms 100
+		 curve "ease-out-expo"
+    }
+
+	 recent-windows-close {
+		 duration-ms 100
+		 curve "ease-out-expo"
+    }
 };
 // https://niri-wm.github.io/niri/Configuration:-Gestures
 gestures {
@@ -251,11 +216,10 @@ gestures {
 };
 // https://niri-wm.github.io/niri/Configuration:-Recent-Windows
 recent-windows {
+	open-delay-ms 500
 	binds {
-		// Mod+Grave       { next-window     filter="app-id"; }
-		// Mod+Shift+grave { previous-window filter="app-id"; }
-		Mod+Tab         { next-window scope="output"; }
-		Mod+Shift+Tab   { previous-window scope="output"; }
+		// Mod+Tab         { next-window scope="output"; }
+		// Mod+Shift+Tab   { previous-window scope="output"; }
 	}
 	highlight {
 		padding 0
@@ -263,7 +227,7 @@ recent-windows {
 	}
 	previews {
 		max-height 1080
-		max-scale 0.75
+		max-scale 1
 	}
 };
 // https://niri-wm.github.io/niri/Configuration:-Debug-Options
