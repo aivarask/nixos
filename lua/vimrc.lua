@@ -1,20 +1,20 @@
 uv = vim.uv
 
 -- setups {{{
-require('flatten').setup { integrations = { kitty = true } }
-require('kitty-scrollback').setup(
-	{
-		search = {
-			callbacks = {
-				after_ready = function()
-					vim.api.nvim_feedkeys('?', 'n', false)
-				end,
-			},
+require("flatten").setup({ integrations = { kitty = true } })
+require("kitty-scrollback").setup({
+	search = {
+		callbacks = {
+			after_ready = function()
+				vim.api.nvim_feedkeys("?", "n", false)
+			end,
 		},
-	})
+	},
+})
 
-
-if vim.uv.os_getenv('WAYLAND_DISPLAY') then require('image').setup({ backend = 'kitty' }) end
+if vim.uv.os_getenv("WAYLAND_DISPLAY") then
+	require("image").setup({ backend = "kitty" })
+end
 -- require('fidget').setup({})
 -- require('notify').setup({ top_down = false, })
 -- vim.notify = require('notify')
@@ -22,12 +22,12 @@ if vim.uv.os_getenv('WAYLAND_DISPLAY') then require('image').setup({ backend = '
 
 -- rest {{{
 local function BufLsps()
-	local separator = ''
-	local lsps = ''
+	local separator = ""
+	local lsps = ""
 	for index, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
 		lsps = client.config.name .. lsps
-		if client:supports_method('textDocument/formatting') then
-			lsps = lsps .. '[F]'
+		if client:supports_method("textDocument/formatting") then
+			lsps = lsps .. "[F]"
 		end
 		lsps = lsps .. separator
 	end
@@ -35,70 +35,68 @@ local function BufLsps()
 end
 
 local function Shorten()
-	local p = vim.fn.expand('%:p')
-	return p:gsub('/nix/store/[%a%d]+-', ''):gsub(
-		vim.uv.cwd() .. '/' or '', '')
+	local p = vim.fn.expand("%:p")
+	return p:gsub("/nix/store/[%a%d]+-", ""):gsub(vim.uv.cwd() .. "/" or "", "")
 end
 --}}}
 -- lspattach {{{
-vim.api.nvim_create_autocmd('LspAttach', {
-	group = vim.api.nvim_create_augroup('lsp:attach', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp:attach", {}),
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		if client:supports_method('textDocument/implementation') then
+		if client:supports_method("textDocument/implementation") then
 			-- Create a keymap for vim.lsp.buf.implementation ...
 		end
 
 		vim.g.hover = false
-		if client:supports_method('textDocument/hover') then
-			vim.api.nvim_create_autocmd('CursorHold', {
-				group = vim.api.nvim_create_augroup('lsp:hover', { clear = true }),
+		if client:supports_method("textDocument/hover") then
+			vim.api.nvim_create_autocmd("CursorHold", {
+				group = vim.api.nvim_create_augroup("lsp:hover", { clear = true }),
 				buffer = args.buf,
 				callback = function(ev)
 					if vim.g.hover == true then
 						vim.lsp.buf.hover({
 							silent = true,
 							focus = false,
-							relative = 'editor',
+							relative = "editor",
 							-- anchor_bias = 'below', -- relative to cursor
 							max_width = math.ceil(vim.o.columns / 2),
 							max_height = vim.o.lines,
 							offset_x = vim.o.columns,
-							offset_y = vim.fn.line('w$') - 5,
+							offset_y = vim.fn.line("w$") - 5,
 						})
 					end
-				end
-			})
-		end
-
-		if client:supports_method('textDocument/codeLens') then
-		end
-
-		if client:supports_method('textDocument/completion') then
-			vim.lsp.completion.enable(true, client.id, args.buf, {
-				autotrigger = true,
-				convert = function(item)
-					return { abbr = item.label:gsub('%b()', '') }
 				end,
 			})
 		end
 
-		if client:supports_method('textDocument/signatureHelp') then
+		if client:supports_method("textDocument/codeLens") then
 		end
 
-		if client:supports_method('textDocument/formatting') then
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, args.buf, {
+				autotrigger = true,
+				convert = function(item)
+					return { abbr = item.label:gsub("%b()", "") }
+				end,
+			})
+		end
+
+		if client:supports_method("textDocument/signatureHelp") then
+		end
+
+		if client:supports_method("textDocument/formatting") then
 			-- client:supports_method('textDocument/willSaveWaitUntil')
 			vim.api.nvim_create_autocmd({
-				'InsertLeave',
+				"InsertLeave",
 				-- 'TextChanged',
 				-- 'CompleteDone',
-				'BufWritePre'
+				"BufWritePre",
 			}, {
-				group = vim.api.nvim_create_augroup('lsp:format',
-					{ clear = false }),
+				group = vim.api.nvim_create_augroup("lsp:format", { clear = false }),
 				buffer = args.buf,
 				callback = function()
-					local ft = vim.fn.getbufvar(args.buf, '&filetype')
+					local ft = vim.fn.getbufvar(args.buf, "&filetype")
 					vim.lsp.buf.format({
 						bufnr = args.buf,
 						id = client.id,
@@ -114,87 +112,85 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- lsp {{{
 vim.o.pumheight = 16
 vim.o.pumblend = 30
-vim.o.complete = '.,w,o'
+vim.o.complete = ".,w,o"
 vim.o.autocomplete = true
 vim.o.completeopt = "fuzzy,menu,menuone,noselect,popup"
 -- vim.o.wildmode = "noselect,list:lastused"
 -- vim.o.wildoptions = "exacttext,fuzzy,pum"
 -- vim.o.wildignorecase = true
 
-vim.lsp.config('*', {
-	root_markers = { '.git' },
+vim.lsp.config("*", {
+	root_markers = { ".git" },
 	capabilities = {
 		textDocument = {
 			semanticTokens = {
 				multilineTokenSupport = true,
-			}
-		}
-	}
-})
-
-
-local flake_expr = 'builtins.getFlake (toString ./.)'
-vim.lsp.config("nixd", {
-	cmd = { "nixd" },
-	filetypes = { "nix" },
-	root_markers = { "flake.nix", ".git" },
-		settings = { nixd = { nixpkgs = {
-			expr =  "import (builtins.getFlake \"self\").inputs.nixpkgs { }",
-			formatting = { command = { 'nixfmt' } },
-			options = {
-				-- nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.dell.options' },
-				nixos = { expr = '(builtins.getFlake "self").nixosConfigurations.' .. uv.os_gethostname() .. '.type.getSubOptions []' },
-				home_manager = { expr = '(builtins.getFlake "self").nixosConfigurations.' .. uv.os_gethostname() .. '.options.home-manager.users.type.getSubOptions []', },
 			},
-			diagnostic = {
-				suppress = {
-					'sema-extra-with',
-					'sema-unused-def-let',
-					'sema-unused-def-lambda-noarg-formal'
-				},
-			},
-			-- options = {
-			-- 	nixos = {
-			-- 		expr =
-			-- 		'(builtins.getFlake "self").nixosConfigurations.<hostname>.options',
-			-- 	},
-			-- 	home_manager = {
-			-- 		expr =
-			-- 		'(builtins.getFlake (toString ./.)).homeConfigurations."<username>@<hostname>".options',
-			-- 	},
-			-- },
 		},
 	},
 })
+
+local flake_expr = "builtins.getFlake (toString ./.)"
+vim.lsp.config.nixd = {
+	cmd = { "nixd" },
+	filetypes = { "nix" },
+	root_markers = { "flake.nix", ".git" },
+	settings = {
+		nixd = {
+			nixpkgs = {
+				-- expr = "import <nixpkgs> { }",
+				formatting = { command = { "nixfmt" } },
+				options = {
+					nixos = {
+						expr = '(builtins.getFlake "self").nixosConfigurations.'
+							.. uv.os_gethostname()
+							.. ".type.getSubOptions []",
+					},
+					home_manager = {
+						expr = '(builtins.getFlake "self").nixosConfigurations.'
+							.. uv.os_gethostname()
+							.. ".options.home-manager.users.type.getSubOptions []",
+					},
+				},
+				diagnostic = {
+					suppress = {
+						"sema-extra-with",
+						"sema-unused-def-let",
+						"sema-unused-def-lambda-noarg-formal",
+					},
+				},
+			},
+		},
+	},
+}
 vim.lsp.enable("nixd")
 
-vim.lsp.config.bashls = {
-	cmd = { 'bash-language-server', 'start' },
-	filetypes = { 'bash', 'sh' }
-}
-vim.lsp.enable {
-	-- 'bashls',
-	-- 'clangd',
-	'lua_ls',
-	'nixd',
-	-- 'php_ls',
-	-- 'pylsp',
-	-- 'pyright',
-	-- 'stylelint_lsp',
-	'toml_ls',
-	-- 'typescript_ls',
-	'vscode_css',
-	'vscode_html',
-	'vscode_json',
-	'yaml_ls',
-}
--- }}}
+	-- vim.lsp.config.bashls = {
+	-- 	cmd = { 'bash-language-server', 'start' },
+	-- 	filetypes = { 'bash', 'sh' }
+	-- }
+	-- vim.lsp.enable {
+	-- 	-- 'bashls',
+	-- 	-- 'clangd',
+	-- 	'lua_ls',
+	-- 	'nixd',
+	-- 	-- 'php_ls',
+	-- 	-- 'pylsp',
+	-- 	-- 'pyright',
+	-- 	-- 'stylelint_lsp',
+	-- 	'toml_ls',
+	-- 	-- 'typescript_ls',
+	-- 	'vscode_css',
+	-- 	'vscode_html',
+	-- 	'vscode_json',
+	-- 	'yaml_ls',
+	-- }
+	-- }}}
 -- diagnostics {{{
 vim.lsp.inlay_hint.enable(false)
 local severity = {
 	min = vim.diagnostic.severity.WARN,
-	max = vim.diagnostic
-	    .severity.ERROR
+	max = vim.diagnostic.severity.ERROR,
 }
 vim.diagnostic.config({
 	underline = { severity = severity },
@@ -214,7 +210,7 @@ vim.diagnostic.config({
 
 	jump = {
 		severity = severity,
-		wrap = true
+		wrap = true,
 	},
 	loclist = {
 		open = false,
@@ -222,24 +218,19 @@ vim.diagnostic.config({
 	},
 })
 
-
-
-vim.api.nvim_create_autocmd('CursorHold',
-	{
-		group = vim.api.nvim_create_augroup('diagnostic', { clear = true }),
-		callback = function()
-			vim.diagnostic.open_float({
-				scope = 'buffer',
-				close_events = { 'CursorMoved' },
-				severity = severity,
-				foo = '',
-				pos = { 30, 30 },
-				focusable = false
-
-
-			})
-		end,
-	})
+vim.api.nvim_create_autocmd("CursorHold", {
+	group = vim.api.nvim_create_augroup("diagnostic", { clear = true }),
+	callback = function()
+		vim.diagnostic.open_float({
+			scope = "buffer",
+			close_events = { "CursorMoved" },
+			severity = severity,
+			foo = "",
+			pos = { 30, 30 },
+			focusable = false,
+		})
+	end,
+})
 
 if false then
 	vim.diagnostic.handlers.loclist = {
@@ -251,9 +242,7 @@ if false then
 			vim.diagnostic.setloclist(opts.loclist)
 			vim.api.nvim_set_current_win(winid)
 		end,
-		hide = function(namespace, bufnr)
-
-		end
+		hide = function(namespace, bufnr) end,
 	}
 end
 -- }}}

@@ -40,6 +40,7 @@
     fastfetch
     fd
     file
+    frogmouth
     fswatch
     fwupd
     fzf
@@ -48,6 +49,7 @@
     git
     git
     glib
+    glow
     groff
     gzip
     highlight
@@ -101,6 +103,7 @@
   environment.etc."lfrc".text = ''
     set nohidden
   '';
+  
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
   networking.networkmanager.enable = true;
@@ -119,13 +122,13 @@
     # General.RoamThreshold5G = "-76";
     # General.CriticalRoamThreshold = "-80";
     # General.CriticalRoamThreshold5G = "-82";
-    # General.RoamRetryInterval = 60;
+    General.RoamRetryInterval = 10;
     IPv4.SendHostname = true;
     Network.NameResolvingService = "resolvconf"; # Values: resolvconf, **systemd**, none
     Network.EnableIPv6 = false;
     Settings.AutoConnect = true;
-    Scan.DisablePeriodicScan = true;
-    Scan.DisableRoamingScan = true;
+    Scan.DisablePeriodicScan = false;
+    Scan.DisableRoamingScan = false;
   };
   time.timeZone = "Europe/Vilnius";
   # SSH https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#SSH

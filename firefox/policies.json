@@ -31,7 +31,7 @@
 		"NetworkPrediction": false,
 		"DisableFirefoxAccounts": true,
 		"DisplayMenuBar": false,
-		"DisableProfileImport": true,
+		"DisableProfileImport": false,
 		"NewTabPage": true,
 		"Homepage": {
 			"StartPage": "previous-session"
@@ -41,7 +41,7 @@
 			{
 				"Title": "admin",
 				"URL": "https://firefox-admin-docs.mozilla.org/reference/",
-				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.ico",
+				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.png",
 				"Placement": "toolbar"
 			},
 			{
@@ -51,27 +51,28 @@
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "i3",
-				"URL": "https://i3wm.org/docs/userguide.html",
-				"Placement": "toolbar"
-			},
-			{
 				"Title": "home-manager-options",
 				"URL": "https://home-manager-options.extranix.com",
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "Example",
-				"URL": "https://example.com",
-				"Favicon": "https://example.com/favicon.ico",
+				"Title": "YouTube",
+				"URL": "https://www.youtube.com",
+				"Favicon": "https://www.youtube.com/s/desktop/1daead2b/img/favicon_32x32.png",
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "YouTu",
-				"URL": "https://www.youtube.com",
-				"Favicon": "https://www.youtube.com/favicon.ico",
+				"Title": "doc",
+				"URL": "file:///root/doc",
+				"Placement": "toolbar"
+			},
+						{
+				"Title": "LRT",
+				"URL": "https://www.lrt.lt/",
 				"Placement": "toolbar"
 			}
+
+
 		],
 		"SearchEngines": {
 			"Default": "DuckDuckGo",
@@ -126,6 +127,18 @@
 			"uBlock0@raymondhill.net": {
 				"installation_mode": "force_installed",
 				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+				"private_browsing": true,
+				"default_area": "navbar"
+			},
+			"extension@tabliss.io":{
+				"installation_mode": "force_installed",
+				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/extension@tabliss.io/latest.xpi",
+				"private_browsing": true,
+				"default_area": "navbar"
+			},
+			"{f3ee08f8-d4d8-4095-8096-4bb784d082f9}": {
+				"installation_mode": "force_installed",
+				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/markdown-reader-ext/latest.xpi",
 				"private_browsing": true,
 				"default_area": "navbar"
 			}

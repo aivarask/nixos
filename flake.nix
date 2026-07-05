@@ -8,6 +8,7 @@
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.mozid.url = "github:tupakkatapa/mozid";
   inputs.nix-colors.url = "github:misterio77/nix-colors";
   inputs.nix-index-database.url = "github:nix-community/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";

@@ -24,7 +24,7 @@ alias wttr_srv="wttrbar --location Sirvintos"
 alias yt-dlp="yt-dlp --cookies-from-browser firefox"
 # alias vim="vim -S"
 alias nvim="nvim -S"
-# alias firefox="firefox --profile=$XDG_CONFIG_HOME/mozilla/firefox/root"
+# alias firefox="firefox --profile=$XDG_CONFIG_HOME/mozilla/firefox/aiva.profile"
 
 # alias burn_iso_sdc="dd bs=128K if=$SELF/result/iso/$(ls $SELF/result/iso) of=/dev/sdc oflag=direct status=progress"
 alias build_burn_iso_sdc="build_iso && burn_iso_sdc"

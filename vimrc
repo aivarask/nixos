@@ -217,6 +217,7 @@ syntax on
 filetype indent plugin on
 set sessionoptions=buffers,curdir,folds,help,tabpages
 if !has('nvim') && 0 | set sessionoptions+=localoptions| endif
+set number
 set bufhidden=delete
 set history=50
 set shortmess=oOtTWAIcCF
