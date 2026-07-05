@@ -20,7 +20,9 @@
   networking.hostName = lib.mkDefault "minimal";
   system.stateVersion = lib.mkDefault "26.05";
   nixpkgs.hostPlatform = "x86_64-linux";
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-9.15.9"
+  ];
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
@@ -103,7 +105,7 @@
   environment.etc."lfrc".text = ''
     set nohidden
   '';
-  
+
   # dns https://wiki.nixos.org/wiki/NetworkManager#DNS_Management
   # iwd https://nixos.wiki/wiki/Iwd
   networking.networkmanager.enable = true;
