@@ -229,7 +229,7 @@ set modeline
 set splitkeep=topline
 set splitbelow
 set timeoutlen=500
-set conceallevel=2
+set conceallevel=0
 set clipboard=unnamedplus
 set shiftround
 set gdefault

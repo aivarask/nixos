@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   myLua = pkgs.luajit.withPackages (
     ps: with ps; [
@@ -24,7 +24,7 @@ let
 in
 {
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ ];
+  programs.nix-ld.libraries = [ ];
   environment.etc."environment".source = "/etc/nixos/environment";
   environment.etc."profile.local".source = "/etc/nixos/profile.local";
   environment.etc."luajit".source = myLua;
@@ -36,6 +36,7 @@ in
     vscode-json-languageserver
     vscode-css-languageserver
     # vscode-langservers-extracted
+    typescript-language-server
     glibc
     # glibcInfo
     ludtwig
@@ -56,15 +57,15 @@ in
     editorconfig-checker
     editorconfig-core-c
   ];
-  nixpkgs.overlays = [
-    (
-      _: prev:
-      let
-        inherit (prev.vimUtils) buildVimPlugin;
-      in
-      {
-        vimPlugins = with inputs; prev.vimPlugins // { };
-      }
-    )
-  ];
+  # nixpkgs.overlays = [
+  #   (
+  #     _: prev:
+  #     let
+  #       inherit (prev.vimUtils) buildVimPlugin;
+  #     in
+  #     {
+  #       vimPlugins = with inputs; prev.vimPlugins // { };
+  #     }
+  #   )
+  # ];
 }

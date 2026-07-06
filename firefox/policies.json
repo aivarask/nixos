@@ -39,8 +39,8 @@
 		"NoDefaultBookmarks": true,
 		"Bookmarks": [
 			{
-				"Title": "admin",
-				"URL": "https://firefox-admin-docs.mozilla.org/reference/",
+				"Title": "policies",
+				"URL": "https://firefox-admin-docs.mozilla.org/reference/policies/",
 				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.png",
 				"Placement": "toolbar"
 			},
@@ -51,28 +51,22 @@
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "home-manager-options",
-				"URL": "https://home-manager-options.extranix.com",
-				"Placement": "toolbar"
-			},
-			{
 				"Title": "YouTube",
 				"URL": "https://www.youtube.com",
 				"Favicon": "https://www.youtube.com/s/desktop/1daead2b/img/favicon_32x32.png",
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "doc",
+				"Title": "share_doc",
 				"URL": "file:///root/doc",
 				"Placement": "toolbar"
 			},
-						{
+			{
 				"Title": "LRT",
 				"URL": "https://www.lrt.lt/",
+				"Favicon": "https://www.lrt.lt/images/favicons/favicon-32x32.png?v=375",
 				"Placement": "toolbar"
 			}
-
-
 		],
 		"SearchEngines": {
 			"Default": "DuckDuckGo",
@@ -130,7 +124,7 @@
 				"private_browsing": true,
 				"default_area": "navbar"
 			},
-			"extension@tabliss.io":{
+			"extension@tabliss.io": {
 				"installation_mode": "force_installed",
 				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/extension@tabliss.io/latest.xpi",
 				"private_browsing": true,

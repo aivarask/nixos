@@ -27,12 +27,21 @@
         };
         xdg.configFile."${ffprof}/chrome/userContent.css" = {
           force = true;
-          source =           config.lib.file.mkOutOfStoreSymlink "${s}/userContent.css"; 
+          source = config.lib.file.mkOutOfStoreSymlink "${s}/userContent.css";
+        };
+        xdg.configFile."${ffprof}/places.sqlite" = {
+          force = true;
+          source = config.lib.file.mkOutOfStoreSymlink "${s}/places.sqlite";
+        };
+        xdg.configFile."${ffprof}/prefs.js" = {
+          force = true;
+          source = config.lib.file.mkOutOfStoreSymlink "${s}/prefs.js";
         };
         xdg.configFile."${ffprof}/user.js" = {
           force = true;
           source = config.lib.file.mkOutOfStoreSymlink "${s}/user.js";
-        };      }
+        };
+      }
     )
   ];
 }

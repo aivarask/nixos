@@ -19,7 +19,6 @@ end
 -- require('notify').setup({ top_down = false, })
 -- vim.notify = require('notify')
 -- }}}
-
 -- rest {{{
 local function BufLsps()
 	local separator = ""
@@ -118,7 +117,6 @@ vim.o.completeopt = "fuzzy,menu,menuone,noselect,popup"
 -- vim.o.wildmode = "noselect,list:lastused"
 -- vim.o.wildoptions = "exacttext,fuzzy,pum"
 -- vim.o.wildignorecase = true
-
 vim.lsp.config("*", {
 	root_markers = { ".git" },
 	capabilities = {
@@ -129,63 +127,197 @@ vim.lsp.config("*", {
 		},
 	},
 })
-
-local flake_expr = "builtins.getFlake (toString ./.)"
+-- nixd {{{
 vim.lsp.config.nixd = {
 	cmd = { "nixd" },
 	filetypes = { "nix" },
-	root_markers = { "flake.nix", ".git" },
+	root_markers = { "flake.nix" },
 	settings = {
 		nixd = {
 			nixpkgs = {
 				-- expr = "import <nixpkgs> { }",
-				formatting = { command = { "nixfmt" } },
-				options = {
-					nixos = {
-						expr = '(builtins.getFlake "self").nixosConfigurations.'
-							.. uv.os_gethostname()
-							.. ".type.getSubOptions []",
-					},
-					home_manager = {
-						expr = '(builtins.getFlake "self").nixosConfigurations.'
-							.. uv.os_gethostname()
-							.. ".options.home-manager.users.type.getSubOptions []",
-					},
+			},
+			formatting = { command = { "nixfmt" } },
+			options = {
+				nixos = {
+					expr = '(builtins.getFlake (builtins.toString /etc/nixos)).nixosConfigurations.'
+					    .. uv.os_gethostname()
+					    .. ".type.getSubOptions []",
 				},
-				diagnostic = {
-					suppress = {
-						"sema-extra-with",
-						"sema-unused-def-let",
-						"sema-unused-def-lambda-noarg-formal",
-					},
+				home_manager = {
+					expr = '(builtins.getFlake ( builtins.toString /etc/nixos)).nixosConfigurations.'
+					    .. uv.os_gethostname()
+					    .. ".options.home-manager.users.type.getSubOptions []",
+				},
+			},
+			diagnostic = {
+				suppress = {
+					"sema-extra-with",
+					"sema-unused-def-let",
+					"sema-unused-def-lambda-noarg-formal",
 				},
 			},
 		},
 	},
 }
 vim.lsp.enable("nixd")
+-- }}}
+-- bashls {{{
+vim.lsp.config.bashls = {
+	cmd = { 'bash-language-server', 'start' },
+	filetypes = { 'bash', 'sh' }
+}
+vim.lsp.enable("bashls")
+--}}}
+-- typescript {{{
+vim.lsp.config.typescript_ls = {
+	filetypes = { 'javascript', 'typescript' },
+	-- https://github.com/microsoft/TypeScript
+	-- https://github.com/typescript-language-server/typescript-language-server
+	cmd = { 'typescript-language-server', '--stdio' },
+	-- root_dir = vim.fs.root(0, { 'package.json' }),
+	init_options = { hostInfo = 'neovim' },
+	settings = {
+		completions = {
+			completeFunctionCalls = true
+		}
+	}
+}
+vim.lsp.enable('typescript_ls')
 
-	-- vim.lsp.config.bashls = {
-	-- 	cmd = { 'bash-language-server', 'start' },
-	-- 	filetypes = { 'bash', 'sh' }
-	-- }
-	-- vim.lsp.enable {
-	-- 	-- 'bashls',
-	-- 	-- 'clangd',
-	-- 	'lua_ls',
-	-- 	'nixd',
-	-- 	-- 'php_ls',
-	-- 	-- 'pylsp',
-	-- 	-- 'pyright',
-	-- 	-- 'stylelint_lsp',
-	-- 	'toml_ls',
-	-- 	-- 'typescript_ls',
-	-- 	'vscode_css',
-	-- 	'vscode_html',
-	-- 	'vscode_json',
-	-- 	'yaml_ls',
-	-- }
-	-- }}}
+-- }}}
+-- vscode_json {{{
+vim.lsp.config.vscode_json = {
+	cmd = { 'vscode-json-languageserver', '--stdio' },
+	filetypes = { 'json', 'jsonc' },
+	init_options = {
+		provideFormatter = true
+	},
+	settings = {
+		json = {
+			validate = { enable = true },
+			format = { enable = true },
+			schemas = require('schemastore').json.schemas({
+				select = {
+					'.eslintrc',
+					'prettierrc.json',
+					'package.json',
+					'jsconfig.json',
+					'tsconfig.json',
+					'composer.json',
+				},
+				extra = {
+					{
+						fileMatch = { '*/snippets/*.json', '!*/snippets/package.json' },
+						name = 'snippets',
+						url =
+						'https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json',
+					},
+				},
+			}),
+		},
+	},
+}
+vim.lsp.enable("vscode_json")
+
+
+-- }}}
+-- yaml_ls {{{
+vim.lsp.config.yaml_ls = {
+	cmd = { 'yaml-language-server', '--stdio' },
+	filetypes = { 'yaml' },
+	settings = {
+		-- https://github.com/redhat-developer/yaml-language-server#language-server-settings
+		yaml = {
+			format = { enable = true },
+			schemaStore = { enable = true },
+			schemas = require('schemastore').yaml.schemas(),
+		},
+	},
+}
+vim.lsp.enable("yaml_ls")
+
+-- }}}
+-- lua_ls {{{
+local library = {
+	vim.env.VIMRUNTIME,
+}
+
+
+local path = {
+	'lua/?/init.lua',
+	'lua/?.lua',
+	--
+	'?/init.lua',
+	'?.lua',
+}
+
+local pathStrict = true
+
+for i = #library, 1, -1 do
+	local value = library[i]
+	if string.find(value, 'myNeovimPackages') then
+		table.remove(library, i)
+	end
+end
+for _, name in ipairs({
+	-- 'plenary.nvim',
+}) do
+	for _, v in ipairs(vim.api.nvim_list_runtime_paths()) do
+		if string.find(v, name) then
+			table.insert(library, v)
+		end
+	end
+end
+
+vim.lsp.config.lua_ls = {
+	cmd = { 'lua-language-server' },
+	filetypes = { 'lua' },
+	settings = {
+		Lua = {
+			completion = {
+				autoRequire = true,
+				callSnippet = 'Disable',
+				displayContext = 7,
+				enable = true,
+				keywordSnippet = 'Both',
+				postfix = '@',
+
+			},
+			diagnostics = { -- luals.github.io/wiki/diagnostics
+				disable = { 'lowercase-global', 'unudirsed-local', 'unused-vararg', 'unused-function', 'need-check-nil', 'empty-block', 'missing-fields' },
+				globals = { "mp", "client", "root", "screen" },
+				ignoredFiles = "Disable"
+			},
+			format = {
+				enable = true
+			},
+			hint = {
+				enable = true,
+				arrayIndex = 'Auto',
+				setType = true,
+			},
+			runtime = {
+				version = 'LuaJIT',
+				pathStrict = pathStrict,
+				path = path,
+			},
+			workspace = {
+				checkThirdParty = false, -- https://luals.github.io/wiki/settings/#workspacecheckthirdparty
+				library = library,
+				-- library = vim.api.nvim_list_runtime_paths(),
+				preloadFileSize = 600,
+				ignoreDir = { 'node_modules', 'vendor', 'mpv/scripts' },
+				-- https://luals.github.io/wiki/settings/#workspaceuserthirdparty
+				userThirdParty = {},
+			},
+		},
+	}
+}
+vim.lsp.enable("lua_ls")
+-- }}}
+
+-- }}}
 -- diagnostics {{{
 vim.lsp.inlay_hint.enable(false)
 local severity = {
