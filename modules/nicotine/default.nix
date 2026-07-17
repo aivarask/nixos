@@ -5,7 +5,6 @@
       {
         pkgs,
         config,
-        xdgconf,
         ...
       }:
       {
@@ -13,7 +12,7 @@
           nicotine-plus
         ];
         xdg.configFile."nicotine" = {
-          source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nicotine";
+          source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/nicotine";
           enable = true;
           force = true;
           recursive = true;

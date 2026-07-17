@@ -57,7 +57,7 @@
         # ./.config/mopidy/default.nix
         ./modules/mpd/default.nix
         ./modules/mpv/default.nix
-        ./.config/ncmpcpp/default.nix
+        ./modules/ncmpcpp/default.nix
         ./.config/nicotine/default.nix
         ./.config/pipewire/default.nix
         ./modules/ripgrep/default.nix
