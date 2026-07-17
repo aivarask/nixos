@@ -61,8 +61,8 @@
         ./modules/nicotine/default.nix
         ./modules/pipewire/default.nix
         ./modules/ripgrep/default.nix
-        ./.config/starship/default.nix
-        ./.config/zsh/default.nix
+        ./modules/starship/default.nix
+        ./modules/zsh/default.nix
         ./modules/.programs.nix
         ./modules/environment.nix
         ./firefox/default.nix

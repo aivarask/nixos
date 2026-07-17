@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+# shellcheck shell=zsh
+
+setopt extended_glob
+
+export W3M_DIR="$XDG_CONFIG_HOME/w3m"
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+export YDIFF_OPTIONS='-w40'
+export NIXPKGS_ALLOW_BROKEN=1
+#export GTK_THEME=Orchis-Dark-Compact-hdpi
+# export GTK_THEME=Adwaita:dark
+#export QT_STYLE_OVERRIDE=Adwaita-Dark
+export PAPIRUS=/run/current-system/sw/share/icons/Papirus/
+
+typeset -TU PATH path ':'
+path+=(${0:a:h}/bin)
+path+=($XDG_CONFIG_HOME/sway/bin)
+path+=($HOME/.local/bin)
+# path+=( /etc/nixos/*(N-/) )
+
+typeset -TU CPATH cpath ':'
+cpath+=('/run/current-system/sw/include/' '/root/include/')
+
+typeset -TU VST3_PATH vst3path ':'
+vst3path+=('/etc/nixos/audio/vst3')
+
+typeset -TU NIX_PROFILES nix_profiles ' '
+typeset -TU NIX_PATH nix_path ':'
+typeset -TU GTK_PATH gtk_path ':'
+typeset -TU XCURSOR_PATH xcursor_path ':'
+
+typeset -TU LUA_PATH lua_path ';'
+# lua_path+=('/etc/?/lua/init.lua')
+lua_path+=('/etc/nixos/lua/?.lua')
+lua_path+=('/etc/nixos/lua/?/init.lua')
+lua_path+=('/etc/luajit/share/lua/5.1/?/init.lua')
+lua_path+=('/etc/luajit/share/lua/5.1/?.lua')
+
+. /etc/environment
