@@ -5,11 +5,10 @@
   pkgs,
   config,
   lib,
-  xdgconf,
   ...
 }:
 let
-  confDir = "${xdgconf}/mpd";
+  confDir = "/etc/nixos/mpd";
   playlistDir = "${confDir}/playlists";
 in
 # /run/mpd/mpd.conf

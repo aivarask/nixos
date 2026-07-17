@@ -55,7 +55,7 @@
         ./.config/fzf/default.nix
         ./.config/git/default.nix
         # ./.config/mopidy/default.nix
-        ./.config/mpd/default.nix
+        ./modules/mpd/default.nix
         ./.config/mpv/default.nix
         ./.config/ncmpcpp/default.nix
         ./.config/nicotine/default.nix
