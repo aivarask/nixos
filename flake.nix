@@ -56,11 +56,11 @@
         ./.config/git/default.nix
         # ./.config/mopidy/default.nix
         ./modules/mpd/default.nix
-        ./.config/mpv/default.nix
+        ./modules/mpv/default.nix
         ./.config/ncmpcpp/default.nix
         ./.config/nicotine/default.nix
         ./.config/pipewire/default.nix
-        ./.config/ripgrep/default.nix
+        ./modules/ripgrep/default.nix
         ./.config/starship/default.nix
         ./.config/zsh/default.nix
         ./modules/.programs.nix
@@ -90,6 +90,8 @@
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       nixpkgs.hostPlatform = system;
       packages."${system}" = { };
+      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
+      };
       nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs self xdgconf; };

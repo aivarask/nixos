@@ -5,8 +5,6 @@
     (
       {
         pkgs,
-        config,
-        xdgconf,
         osConfig,
         ...
       }:
@@ -18,7 +16,7 @@
           obs-cli
           yt-dlp
         ];
-        xdg.configFile."mpv".source = osConfig.symlink "${xdgconf}/mpv";
+        xdg.configFile."mpv".source = osConfig.symlink "/etc/nixos/modules/mpv";
         programs.mpv.enable = true;
         programs.mpv.package = (
           pkgs.mpv.override {
