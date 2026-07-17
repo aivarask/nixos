@@ -1,0 +1,14 @@
+# vim: ft=gitignore
+
+*.lock
+*lock.{json,yml}
+!flake.lock
+result/
+.direnv/
+
+prefs.js
+viminfo
+tags
+Session.vim
+.session.vim
+log/

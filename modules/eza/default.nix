@@ -3,14 +3,12 @@
   home-manager.sharedModules = [
     (
       {
-        pkgs,
         config,
-        xdgconf,
         ...
       }:
       {
         xdg.configFile."eza" = {
-          source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/eza";
+          source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/eza";
           force = true;
           enable = true;
         };

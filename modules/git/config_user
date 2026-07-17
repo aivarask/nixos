@@ -1,0 +1,41 @@
+# vim: ft=gitconfig
+
+[user]
+  email = "kalesnykas.aivaras@gmail.com"
+  name = "Aivaras Kalesnykas"
+
+[alias]
+  ci = "commit"
+  pr = "pull --rebase"
+
+[core]
+	; pager = ydiff -s
+	; pager = delta
+  ; editor = vim
+  hookspath = .githooks
+	pager = delta --side-by-side --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+	sshCommand = ssh -i ~/.ssh/id_ed25519
+
+[interactive]
+	diffFilter = delta --color-only
+	; diffFilter = diff-so-fancy
+	; diffFilter = diff-highlight
+
+[delta]
+	navigate = true  # n and N 
+	; dark = true
+	; light = true
+	side-by-side = true
+	line-numbers = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[color]
+  ui = false

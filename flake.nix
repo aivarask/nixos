@@ -49,17 +49,17 @@
         # ./modules/fileSystems.nix
         # inputs.disko.nixosModules.disko
         ./modules/bat/default.nix
-        ./.config/chromium/default.nix
-        ./.config/direnv/default.nix
-        ./.config/eza/default.nix
-        ./.config/fzf/default.nix
-        ./.config/git/default.nix
-        # ./.config/mopidy/default.nix
+        ./modules/chromium/default.nix
+        ./modules/direnv/default.nix
+        ./modules/eza/default.nix
+        ./modules/fzf/default.nix
+        ./modules/git/default.nix
+        # ./modules/mopidy/default.nix
         ./modules/mpd/default.nix
         ./modules/mpv/default.nix
         ./modules/ncmpcpp/default.nix
-        ./.config/nicotine/default.nix
-        ./.config/pipewire/default.nix
+        ./modules/nicotine/default.nix
+        ./modules/pipewire/default.nix
         ./modules/ripgrep/default.nix
         ./.config/starship/default.nix
         ./.config/zsh/default.nix

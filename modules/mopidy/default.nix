@@ -5,8 +5,6 @@
   home-manager.sharedModules = [
     (
       {
-        config,
-        xdgconf,
         pkgs,
         ...
       }:
@@ -19,7 +17,7 @@
         ];
         services.mopidy.settings = { };
         # xdg.configFile."mopidy/mopidy.conf".source =
-        #   config.lib.file.mkOutOfStoreSymlink "${xdgconf}/mopidy/mopidy.conf";
+        #   config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/mopidy/mopidy.conf";
       }
     )
   ];
