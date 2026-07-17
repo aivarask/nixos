@@ -48,13 +48,13 @@
         }
         # ./modules/fileSystems.nix
         # inputs.disko.nixosModules.disko
-        ./.config/bat/default.nix
+        ./modules/bat/default.nix
         ./.config/chromium/default.nix
         ./.config/direnv/default.nix
         ./.config/eza/default.nix
         ./.config/fzf/default.nix
         ./.config/git/default.nix
-        ./.config/mopidy/default.nix
+        # ./.config/mopidy/default.nix
         ./.config/mpd/default.nix
         ./.config/mpv/default.nix
         ./.config/ncmpcpp/default.nix
@@ -66,7 +66,7 @@
         ./modules/.programs.nix
         ./modules/environment.nix
         ./firefox/default.nix
-        ./httpd
+        ./modules/httpd/default.nix
         ./modules/autologin.nix
         ./modules/boot.nix
         ./modules/gnome.nix
