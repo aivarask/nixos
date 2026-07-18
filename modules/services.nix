@@ -17,6 +17,7 @@
   services.maddy.ensureCredentials."test@localhost".passwordFile =
     "${pkgs.writeText "postmaster" "l"}";
 
+  programs.thunderbird.enable = true;
   services.maddy.enable = true;
   services.maddy.primaryDomain = "localhost";
   services.maddy.ensureAccounts = [

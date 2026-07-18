@@ -12,7 +12,7 @@
         services.mopidy.enable = true;
 
         services.mopidy.extensionPackages = with pkgs.mopidyPackages; [
-          mopidy-mpd
+          # mopidy-mpd
           mopidy-spotify
         ];
         services.mopidy.settings = { };
