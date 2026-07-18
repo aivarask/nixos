@@ -118,6 +118,12 @@
 			}
 		},
 		"ExtensionSettings": {
+			"{094c428f-8a39-4af8-a4a3-1aff5fb34abc}": {
+				"installation_mode": "force_installed",
+				"install_url": "https://addons.mozilla.org/en-US/firefox/addon/youtube-video-quality/latest.xpi",
+				"private_browsing": true,
+				"default_area": "navbar"
+			},
 			"uBlock0@raymondhill.net": {
 				"installation_mode": "force_installed",
 				"install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
