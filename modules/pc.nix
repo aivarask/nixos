@@ -28,21 +28,27 @@
       "dmask=0022"
     ];
   };
-  fileSystems."/media" = {
+  fileSystems."/hdd" = {
     device = "/dev/disk/by-label/hdd";
     fsType = "ext4";
-    options = [
-      "users" # Allows any user to mount and unmount
-      "nofail" # Prevent system from failing if this drive doesn't mount
-      "exec" # Permit execution of binaries and other executable files
-    ];
+    neededForBoot = false;
+    options = [ "noatime" ];
   };
+  # fileSystems."/media" = {
+  #   device = "/dev/disk/by-label/hdd";
+  #   fsType = "ext4";
+  #   options = [
+  #     "users" # Allows any user to mount and unmount
+  #     "nofail" # Prevent system from failing if this drive doesn't mount
+  #     "exec" # Permit execution of binaries and other executable files
+  #   ];
+  # };
 
-  services.nfs.server.enable = false;
-  services.nfs.server.exports = ''
-    /root/Videos     minimal(rw,nohide,insecure,no_subtree_check)
-    /root/Music     minimal(rw,nohide,insecure,no_subtree_check)
-  '';
+  # services.nfs.server.enable = false;
+  # services.nfs.server.exports = ''
+  #   /root/Videos     minimal(rw,nohide,insecure,no_subtree_check)
+  #   /root/Music     minimal(rw,nohide,insecure,no_subtree_check)
+  # '';
   networking.firewall.allowedTCPPorts = [ 2049 ];
   networking.firewall.allowedUDPPorts = [ 2049 ];
 

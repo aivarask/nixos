@@ -1,4 +1,5 @@
 {
+  SELF,
   ...
 }:
 
@@ -6,7 +7,7 @@
   environment.etc."firefox/policies/policies.json".source = "/etc/nixos/firefox/policies.json";
   home-manager.sharedModules = [
     (
-      { config, SELF, ... }:
+      { config, ... }:
       let
         ff = "mozilla/firefox";
         ffprof = "${ff}/aiva.profile";
@@ -47,7 +48,7 @@
             source = config.lib.file.mkOutOfStoreSymlink "${s}/user.js";
           };
 
-          ## test.profile
+          ## _test.profile
           "${ffproftest}/chrome/userChrome.css" = {
             force = true;
             source = config.lib.file.mkOutOfStoreSymlink "${s}/userChrome.css";

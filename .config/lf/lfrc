@@ -29,6 +29,7 @@ map \\m %{{ xdg-mime query filetype "$f" }}
 map A push $mkdir<space>
 map a push $touch<space>
 map D %trash-put $fx
+map <delete> %rm -rfI $fx
 map E $EDITOR $fx
 map gc $lf -remote "send $id cd $XDG_CONFIG_HOME"
 map gd $lf -remote "send $id cd ~/Downloads"

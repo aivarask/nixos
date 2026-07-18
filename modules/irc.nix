@@ -1,4 +1,4 @@
-# pkgs is used to fetch screen & irssi.
+# https://wiki.nixos.org/wiki/Extend_NixOS#
 { pkgs, ... }:
 {
   # ircSession is the name of the new service we'll be creating
@@ -19,7 +19,7 @@
       # `after=`) before starting
       Type = "notify";
       # username that systemd will look for; if it exists, it will start a service associated with that user
-      User = "aivarask";
+      User = "root";
       # the command to execute when the service starts up
       ExecStart = "${pkgs.screen}/bin/screen -dmS irc ${pkgs.irssi}/bin/irssi";
       # and the command to execute
@@ -29,5 +29,4 @@
 
   environment.systemPackages = [ pkgs.screen ];
 
-  # ... usual configuration ...
 }

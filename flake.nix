@@ -22,12 +22,10 @@
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-      SELF = "/etc/nixos";
-      xdgconf = "${SELF}/.config";
       commonModules = [
-
         inputs.home-manager.nixosModules.home-manager
         ./modules/home-manager.nix
+        ./modules/users_root.nix
         # ./modules/fileSystems.nix
         # inputs.disko.nixosModules.disko
         ./modules/bat/default.nix
@@ -36,6 +34,7 @@
         ./modules/eza/default.nix
         ./modules/fzf/default.nix
         ./modules/git/default.nix
+        # ./modules/irc.nix
         # ./modules/mopidy/default.nix
         ./modules/mpd/default.nix
         ./modules/mpv/default.nix
@@ -62,6 +61,11 @@
         ./modules/vim.nix
         ./modules/vimlua.nix
       ];
+      commonSpecialArgs = rec {
+        inherit inputs self;
+        SELF = "/etc/nixos";
+        xdgconf = "${SELF}/.config";
+      };
     in
     inputs.flake-utils.lib.eachDefaultSystem (system: {
       # checks./*<SYSTEM>.*/"<CHECK>" = /* ... */;
@@ -76,14 +80,14 @@
       };
       nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self xdgconf; };
+        specialArgs = commonSpecialArgs;
         modules = [
           ./modules/iso.nix
           ./modules/minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs self xdgconf; };
+        specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
           ./modules/bluetooth.nix
           ./modules/pihole.nix
@@ -95,7 +99,7 @@
         ];
       };
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs self xdgconf; };
+        specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
           ./modules/pihole.nix
           ./modules/minimal.nix

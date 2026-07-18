@@ -1,7 +1,6 @@
-{ lib, ... }:
+{ lib, SELF, ... }:
 {
   imports = [
-    (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "root" ])
     (lib.mkAliasOptionModule
       [ "symlink" ]
       [
@@ -14,14 +13,14 @@
       ]
     )
   ];
-  environment.variables.SELF = "/etc/nixos";
+  environment.variables.SELF = SELF;
   environment.variables.EDITOR = "vim";
   environment.variables.VISUAL = "nvim";
   # environment.variables.TERMINAL = "kitty";
   environment.pathsToLink = [
     "share/man"
   ];
-  environment.profiles = [ "/etc/nixos" ];
+  environment.profiles = [ SELF ];
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";

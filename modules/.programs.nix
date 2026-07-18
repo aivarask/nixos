@@ -1,17 +1,18 @@
-{ ... }:
+{
+  inputs,
+  SELF,
+  xdgconf,
+  ...
+}:
 {
   home-manager.sharedModules = [
     (
       {
         config,
         pkgs,
-        SELF,
-        xdgconf,
-        inputs,
         ...
       }:
       {
-        home.extraOutputsToInstall = [ ];
         manual.json.enable = true;
         programs.man.generateCaches = true;
         colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;

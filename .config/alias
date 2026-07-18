@@ -34,3 +34,4 @@ alias build_iso="nix build $SELF\#nixosConfigurations.iso-minimal.config.system.
 alias emulate_iso="qemu-system-x86_64 -enable-kvm -m 1G -cdrom $SELF/result/iso/nixos-*.iso"
 alias clang-format="clang-format --style=file:$XDG_CONFIG_HOME/clangd/format.yaml"
 alias ctags="ctags -R --exclude=.git --exclude=node_modules --exclude=vendor --exclude=db --exclude=log --exclude=.config --exclude=httpd --exclude=firefox --exclude=img --exclude=sway ."
+alias mv_rsync_avxP="rsync -avxP"

@@ -1,10 +1,8 @@
 {
-  self,
   config,
   pkgs,
   lib,
   inputs,
-  nixpkgs,
   ...
 }:
 let
@@ -12,7 +10,10 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    nix-sweep
     nix-tree
+    nix-du
+    nix-query-tree-viewer
   ];
   # export NIXPKGS_ALLOW_INSECURE=1
   nixpkgs.config.allowBroken = true;

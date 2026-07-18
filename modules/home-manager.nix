@@ -1,27 +1,21 @@
 {
   inputs,
+  SELF,
+  xdgconf,
   ...
 }:
-let
-  SELF = "/etc/nixos";
-  xdgconf = "${SELF}/.config";
-in
 {
-  home-manager = {
-    startAsUserService = false;
-    backupFileExtension = "backup";
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    verbose = true;
-    extraSpecialArgs = { inherit inputs SELF xdgconf; };
-    sharedModules = [
-      {
-        home.stateVersion = "26.05";
-        home.enableNixpkgsReleaseCheck = false;
-      }
-      inputs.nix-colors.homeManagerModules.default
-    ];
-    users.root.home.username = "root";
-    users.root.home.homeDirectory = "/root";
-  };
+  home-manager.extraSpecialArgs = { inherit inputs SELF xdgconf; };
+  home-manager.startAsUserService = false;
+  home-manager.backupFileExtension = "backup";
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.verbose = true;
+  home-manager.sharedModules = [
+    inputs.nix-colors.homeManagerModules.default
+    {
+      home.stateVersion = "26.05";
+      home.enableNixpkgsReleaseCheck = false;
+    }
+  ];
 }
