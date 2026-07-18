@@ -7,7 +7,7 @@
         ...
       }:
       {
-        xdg.configFile."ripgrep".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/ripgrep";
+        xdg.configFile."ripgrep".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/ripgrep";
       }
     )
   ];
