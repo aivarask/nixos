@@ -27,25 +27,7 @@
       commonModules = [
 
         inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            startAsUserService = false;
-            backupFileExtension = "backup";
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            verbose = true;
-            extraSpecialArgs = { inherit inputs SELF xdgconf; };
-            sharedModules = [
-              {
-                home.stateVersion = "26.05";
-                home.enableNixpkgsReleaseCheck = false;
-              }
-              inputs.nix-colors.homeManagerModules.default
-            ];
-            users.root.home.username = "root";
-            users.root.home.homeDirectory = "/root";
-          };
-        }
+        ./modules/home-manager.nix
         # ./modules/fileSystems.nix
         # inputs.disko.nixosModules.disko
         ./modules/bat/default.nix

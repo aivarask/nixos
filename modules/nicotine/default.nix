@@ -12,7 +12,7 @@
           nicotine-plus
         ];
         xdg.configFile."nicotine" = {
-          source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/nicotine";
+          source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/nicotine";
           enable = true;
           force = true;
           recursive = true;

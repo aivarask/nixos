@@ -10,6 +10,7 @@
       let
         ff = "mozilla/firefox";
         ffprof = "${ff}/aiva.profile";
+        ffproftest = "${ff}/_test.profile";
         s = "${SELF}/firefox";
       in
       {
@@ -17,29 +18,52 @@
         programs.firefox.enable = true;
         programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
         programs.firefox.languagePacks = [ "en-US" ];
-        xdg.configFile."${ff}/profiles.ini" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/profiles.ini";
-        };
-        xdg.configFile."${ffprof}/chrome/userChrome.css" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/userChrome.css";
-        };
-        xdg.configFile."${ffprof}/chrome/userContent.css" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/userContent.css";
-        };
-        xdg.configFile."${ffprof}/places.sqlite" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/places.sqlite";
-        };
-        xdg.configFile."${ffprof}/prefs.js" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/prefs.js";
-        };
-        xdg.configFile."${ffprof}/user.js" = {
-          force = true;
-          source = config.lib.file.mkOutOfStoreSymlink "${s}/user.js";
+
+        xdg.configFile = {
+          "${ff}/profiles.ini" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/profiles.ini";
+          };
+
+          ## aiva.profile
+          "${ffprof}/chrome/userChrome.css" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/userChrome.css";
+          };
+          "${ffprof}/chrome/userContent.css" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/userContent.css";
+          };
+          "${ffprof}/places.sqlite" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/places.sqlite";
+          };
+          "${ffprof}/prefs.js" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/prefs.js";
+          };
+          "${ffprof}/user.js" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/user.js";
+          };
+
+          ## test.profile
+          "${ffproftest}/chrome/userChrome.css" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/userChrome.css";
+          };
+          "${ffproftest}/chrome/userContent.css" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/userContent.css";
+          };
+          "${ffproftest}/prefs.js" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/prefs.js";
+          };
+          "${ffproftest}/user.js" = {
+            force = true;
+            source = config.lib.file.mkOutOfStoreSymlink "${s}/user.js";
+          };
         };
       }
     )

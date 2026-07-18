@@ -153,7 +153,6 @@
         xdg.configFile."nwg-dock".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-dock";
         xdg.configFile."nwg-bar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-bar";
         xdg.configFile."ncspot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/ncspot";
-        xdg.configFile."pipewire".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/pipewire";
         xdg.configFile."pistol".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/pistol";
         xdg.configFile."shellcheckrc".source =
           config.lib.file.mkOutOfStoreSymlink "${xdgconf}/shellcheckrc";
