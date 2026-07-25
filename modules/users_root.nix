@@ -10,11 +10,11 @@
   home-manager.users.root = {
     home.username = "root";
     home.homeDirectory = "/root";
-        home.extraOutputsToInstall =  
-        # osConfig.environment.
-        [
-          "info"
-          "doc"
-        ];
+    home.extraOutputsToInstall =
+      # osConfig.environment.
+      [
+        "info"
+        "doc"
+      ];
   };
 }

@@ -6,11 +6,14 @@
 # pactl list sink-
 { pkgs, ... }:
 {
-  home-manager.sharedModules = [ 
-    ({config, ...}:
-    {
-      xdg.configFile."pipewire".source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/pipewire";
-    })
+  home-manager.sharedModules = [
+    (
+      { config, ... }:
+      {
+        xdg.configFile."pipewire".source =
+          config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/pipewire";
+      }
+    )
   ];
   environment.systemPackages = with pkgs; [
     alsa-utils
