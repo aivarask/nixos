@@ -1,5 +1,9 @@
 uv = vim.uv
 
+-- vim.keymap.set({'n', 'i'}, '<LeftRelease>', function()
+--     mouse_click("buffer")
+-- end, {buffer = popup_buffer})
+
 -- setups {{{
 require("flatten").setup({ integrations = { kitty = true } })
 require("kitty-scrollback").setup({

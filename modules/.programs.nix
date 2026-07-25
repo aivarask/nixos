@@ -2,9 +2,21 @@
   inputs,
   SELF,
   xdgconf,
+  pkgs,
   ...
 }:
 {
+  programs.xfconf.enable = true;
+  programs.thunar.enable = true;
+
+
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+
   home-manager.sharedModules = [
     (
       {
@@ -21,39 +33,39 @@
         xdg.userDirs.music = "${config.home.homeDirectory}/Music";
         home.file."${config.xdg.userDirs.pictures}/img".source =
           config.lib.file.mkOutOfStoreSymlink "${SELF}/img";
-        xdg.userDirs.extraConfig = {
-          MISC = "${config.home.homeDirectory}/Misc";
-        };
+          xdg.userDirs.extraConfig = {
+            MISC = "${config.home.homeDirectory}/Misc";
+          };
 
-        imports = [
-          {
-            home.packages = with pkgs; [
-              reaper
-              surge-xt
-              vital
-            ];
-          }
-        ];
+          imports = [
+            {
+              home.packages = with pkgs; [
+                reaper
+                surge-xt
+                vital
+              ];
+            }
+          ];
 
-        home.packages = with pkgs; [
-          roomeqwizard
-          xdg-terminal-exec
-          xdg-launch
-          sqlitebrowser
-          gcr
-          inkscape-with-extensions
-          lnav
-          htop
-          gtk3
-          gtk4
-          nautilus
-          thunar
-          thunar-volman
-          tumbler
-          kitty
-          gtk-doc
-          vimpager
-          bitwarden-cli
+          home.packages = with pkgs; [
+            roomeqwizard
+            xdg-terminal-exec
+            xdg-launch
+            sqlitebrowser
+            gcr
+            inkscape-with-extensions
+            lnav
+            htop
+            gtk3
+            gtk4
+            nautilus
+            thunar
+            thunar-volman
+            tumbler
+            kitty
+            gtk-doc
+            vimpager
+            bitwarden-cli
           # bitwarden-desktop
           spotify
           ncspot
@@ -125,6 +137,7 @@
         # symlink "/run/current-system/sw/share/icons/Papirus/96x96/apps";
         home.file.".inputrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.inputrc";
         # https://catonmat.net/bash-vi-editing-mode-cheat-sheet
+        xdg.configFile."autostart".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/autostart";
         xdg.configFile."lingot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/lingot";
         xdg.configFile."Thunar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/Thunar";
         xdg.configFile."xfce4".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/xfce4";
@@ -147,35 +160,35 @@
         xdg.configFile."lnav".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/lnav";
         xdg.configFile."mimeapps.list".source =
           config.lib.file.mkOutOfStoreSymlink "${xdgconf}/mimeapps.list";
-        xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/niri.kdl";
-        xdg.configFile."niri/binds.kdl".source =
-          config.lib.file.mkOutOfStoreSymlink "${SELF}/niri_binds.kdl";
-        xdg.configFile."niri-session-manager/config.toml".source =
-          config.lib.file.mkOutOfStoreSymlink "${SELF}/nirisess.toml";
-        xdg.configFile."nwg-dock".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-dock";
-        xdg.configFile."nwg-bar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-bar";
-        xdg.configFile."ncspot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/ncspot";
-        xdg.configFile."pistol".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/pistol";
-        xdg.configFile."shellcheckrc".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/shellcheckrc";
-        xdg.configFile."spotify-flags.conf".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/spotify-flags.conf";
-        xdg.configFile."sqlite3".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/sqlite3";
-        xdg.configFile."stylua".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/stylua";
-        xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sway.config";
-        xdg.configFile."taplo".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/taplo";
-        xdg.configFile."tmux".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/tmux";
-        xdg.configFile."user-dirs.dirs".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/user-dirs.dirs";
-        xdg.configFile."user-dirs.locale".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/user-dirs.locale";
-        xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/waybar";
-        xdg.configFile."zathura".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zathura";
-        xdg.configFile."w3m".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/w3m";
-        xdg.configFile."wluma".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/wluma";
-        xdg.configFile."xdg-terminals.list".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/xdg-terminals.list";
-      }
-    )
-  ];
-}
+          xdg.configFile."niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/niri.kdl";
+          xdg.configFile."niri/binds.kdl".source =
+            config.lib.file.mkOutOfStoreSymlink "${SELF}/niri_binds.kdl";
+            xdg.configFile."niri-session-manager/config.toml".source =
+              config.lib.file.mkOutOfStoreSymlink "${SELF}/nirisess.toml";
+              xdg.configFile."nwg-dock".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-dock";
+              xdg.configFile."nwg-bar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/nwg-bar";
+              xdg.configFile."ncspot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/ncspot";
+              xdg.configFile."pistol".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/pistol";
+              xdg.configFile."shellcheckrc".source =
+                config.lib.file.mkOutOfStoreSymlink "${xdgconf}/shellcheckrc";
+                xdg.configFile."spotify-flags.conf".source =
+                  config.lib.file.mkOutOfStoreSymlink "${xdgconf}/spotify-flags.conf";
+                  xdg.configFile."sqlite3".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/sqlite3";
+                  xdg.configFile."stylua".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/stylua";
+                  xdg.configFile."sway/config".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/sway.config";
+                  xdg.configFile."taplo".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/taplo";
+                  xdg.configFile."tmux".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/tmux";
+                  xdg.configFile."user-dirs.dirs".source =
+                    config.lib.file.mkOutOfStoreSymlink "${xdgconf}/user-dirs.dirs";
+                    xdg.configFile."user-dirs.locale".source =
+                      config.lib.file.mkOutOfStoreSymlink "${xdgconf}/user-dirs.locale";
+                      xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/waybar";
+                      xdg.configFile."zathura".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zathura";
+                      xdg.configFile."w3m".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/w3m";
+                      xdg.configFile."wluma".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/wluma";
+                      xdg.configFile."xdg-terminals.list".source =
+                        config.lib.file.mkOutOfStoreSymlink "${xdgconf}/xdg-terminals.list";
+                      }
+                      )
+                    ];
+                  }
