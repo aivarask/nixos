@@ -32,11 +32,6 @@
   services.pipewire.wireplumber.enable = true;
   services.pipewire.systemWide = true;
   systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
-  users.users."root".linger = true;
-  users.users."root".extraGroups = [
-    "audio"
-    "pipewire"
-  ];
 
   services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
     "context.properties" = [
@@ -57,21 +52,21 @@
       "resample.quality" = 1;
     };
   };
-  services.pipewire.extraConfig.pipewire = {
-    "98-crackling-fix" = {
-      "context.properties" = {
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 1024;
-        "default.clock.max-quantum" = 8192;
-      };
-    };
-  };
+  # services.pipewire.extraConfig.pipewire = {
+  #   "98-crackling-fix" = {
+  #     "context.properties" = {
+  #       "default.clock.quantum" = 1024;
+  #       "default.clock.min-quantum" = 1024;
+  #       "default.clock.max-quantum" = 8192;
+  #     };
+  #   };
+  # };
 
   # additional fix for very bad devices or VM.
-  services.pipewire.wireplumber.extraConfig = {
-    "99-crackling-fix" = {
-      "api.alsa.period-size" = 1024;
-      "api.alsa.headroom" = 8192;
-    };
-  };
+  # services.pipewire.wireplumber.extraConfig = {
+  #   "99-crackling-fix" = {
+  #     "api.alsa.period-size" = 1024;
+  #     "api.alsa.headroom" = 8192;
+  #   };
+  # };
 }

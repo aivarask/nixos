@@ -127,6 +127,7 @@
         # https://catonmat.net/bash-vi-editing-mode-cheat-sheet
         xdg.configFile."lingot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/lingot";
         xdg.configFile."Thunar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/Thunar";
+        xdg.configFile."xfce4".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/xfce4";
         xdg.configFile."alias".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/alias";
         xdg.configFile."clangd".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/clangd";
         xdg.configFile."fd".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/fd";
