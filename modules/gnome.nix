@@ -2,37 +2,6 @@
 {
 
   environment.systemPackages = with pkgs; [
-    # seahorse
-    # gnome-keyring
-    gvfs
-    gcr
-    gparted
-    gnome-disk-utility
-    file-roller
-    gnome-calculator
-    gnome-network-displays
-    gnome-system-monitor
-    gnome-themes-extra
-    orchis-theme
-    gnome-tweaks
-    dconf-editor
-
-    # https://nwg-piotr.github.io/nwg-shell/
-    nwg-hello
-    nwg-drawer
-    nwg-dock
-    nwg-menu
-    swaynotificationcenter
-    gtklock
-    nwg-look
-    nwg-displays
-
-    # utils
-    nwg-bar
-    nwg-clipman
-    nwg-icon-picker
-    nwg-wrapper
-    autotiling # autotiling-rs
 
   ];
 }

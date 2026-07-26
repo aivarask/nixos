@@ -18,6 +18,14 @@
   services.tumbler.enable = true; # Thumbnail support for images
 
   home-manager.sharedModules = [
+    {
+      home.packages = with pkgs; [
+        reaper
+        surge-xt
+        vital
+      ];
+    }
+
     (
       {
         config,
@@ -38,100 +46,114 @@
         };
 
         imports = [
-          {
-            home.packages = with pkgs; [
-              reaper
-              surge-xt
-              vital
-            ];
-          }
         ];
 
         home.packages = with pkgs; [
-          roomeqwizard
-          xdg-terminal-exec
-          xdg-launch
-          sqlitebrowser
+
+          # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
+          # mako
+          # sway
+          # sway-overfocus
+          # wireplumber
+          # xdg-desktop-portal-wlr
+          bemoji
+          bitwarden-cli
+          catt
+          clipman
+          evtest
+          eww
+          fuzzel
+          gammastep
           gcr
-          inkscape-with-extensions
-          lnav
-          htop
+          # glib-networking
+          grim
+          gtk-doc
           gtk3
           gtk4
-          nautilus
-          thunar
-          thunar-volman
-          tumbler
-          kitty
-          gtk-doc
-          vimpager
-          bitwarden-cli
-          # bitwarden-desktop
-          spotify
-          ncspot
-          lingot # guitar tuner
-          mixxx
-          #################### from sway
-          clipman
-          mcat
-          keyd
-          wshowkeys
-          libinput
-          # sway-overfocus
-          showmethekey
-          fuzzel
-          x11perf
-          waypipe
-          ydotool
-          hyprmagnifier
-          bemoji
-          catt
-          eww
-          gammastep
-          glib-networking
-          grim
+          htop
           ifwifi
+          inkscape-with-extensions
+          iperf3
           kanshi
+          kdotool
+          keyd
+          kitty
+          libinput
+          lingot # guitar tuner
+          lnav
           localsend
-          # mako
+          mcat
           miraclecast
+          mixxx
+          nautilus
+          ncspot
+          ookla-speedtest
           papirus-icon-theme
           pavucontrol
           pipewire
           playerctl
           python3
-          kdotool
-
-          ookla-speedtest
-          iperf3
-          traceroute
-
-          # sway
+          roomeqwizard
+          setxkbmap
+          spotify
+          sqlitebrowser
           swayidle
           swaylock
           swayr
+          thunar
+          thunar-volman
+          traceroute
+          tumbler
+          vimpager
           waybar
+          waypipe
           wayvnc
           wdisplays
           wev
-          wtype
-          evtest
-          # wireplumber
           wl-clipboard
           wlr-randr
+          wshowkeys
           wttrbar
+          wtype
+          x11perf
           xcursor-pro
-          xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
+          xdg-launch
+          xdg-terminal-exec
           xdg-terminal-exec
           xdg-user-dirs
           xdg-user-dirs-gtk
-          # xdg-desktop-portal-wlr
-          xkeyboard-config
+          xdg-utils # https://www.freedesktop.org/wiki/Software/xdg-utils/
           xkbcomp
+          xkeyboard-config
           xmodmap
-          setxkbmap
-          # https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#bar-content-generators
-
+          ydotool
+          # https://nwg-piotr.github.io/nwg-shell/
+          # seahorse
+          autotiling # autotiling-rs
+          dconf-editor
+          file-roller
+          gcr
+          gnome-calculator
+          gnome-disk-utility
+          gnome-network-displays
+          gnome-system-monitor
+          gnome-themes-extra
+          gnome-tweaks
+          gparted
+          gtklock
+          gvfs
+          nwg-bar
+          nwg-clipman
+          nwg-displays
+          nwg-dock
+          nwg-drawer
+          nwg-hello
+          nwg-icon-picker
+          nwg-look
+          nwg-menu
+          nwg-wrapper
+          orchis-theme
+          swaynotificationcenter
         ];
         xdg.dataFile."nwg-dock/images/grid.svg".source = "${pkgs.nwg-dock-hyprland.out}/images/grid.svg";
         # symlink "/run/current-system/sw/share/icons/Papirus/96x96/apps";
