@@ -59,7 +59,6 @@
     hyperfine
     imagemagick
     inotify-tools
-    jmtpfs
     jq
     kmon
     lazygit

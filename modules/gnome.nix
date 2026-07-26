@@ -28,7 +28,6 @@
     nwg-displays
 
     # utils
-    swappy
     nwg-bar
     nwg-clipman
     nwg-icon-picker

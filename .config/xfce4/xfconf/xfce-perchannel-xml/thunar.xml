@@ -9,10 +9,10 @@
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="default-view" type="string" value="ThunarDetailsView"/>
-  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_GROUP"/>
+  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,125,116,87,91,97,178,187,308,114,72,50,743"/>
-  <property name="last-separator-position" type="int" value="170"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,125,116,87,174,97,178,187,308,114,72,50,747"/>
+  <property name="last-separator-position" type="int" value="218"/>
   <property name="misc-text-beside-icons" type="bool" value="true"/>
   <property name="misc-folders-first" type="bool" value="false"/>
   <property name="misc-file-size-binary" type="bool" value="false"/>
@@ -23,7 +23,15 @@
   <property name="last-show-hidden" type="bool" value="true"/>
   <property name="misc-expandable-folders" type="bool" value="true"/>
   <property name="misc-image-preview-mode" type="string" value="THUNAR_IMAGE_PREVIEW_MODE_STANDALONE"/>
-  <property name="misc-show-delete-action" type="bool" value="true"/>
+  <property name="misc-show-delete-action" type="bool" value="false"/>
   <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_GROUP,THUNAR_COLUMN_MIME_TYPE,THUNAR_COLUMN_NAME,THUNAR_COLUMN_OWNER,THUNAR_COLUMN_PERMISSIONS,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
   <property name="last-toolbar-items" type="string" value="menu:0,back:1,forward:1,open-parent:1,open-home:1,new-tab:1,new-window:1,toggle-split-view:1,undo:0,redo:0,zoom-out:0,zoom-in:0,zoom-reset:0,view-as-icons:0,view-as-detailed-list:0,view-as-compact-list:0,view-switcher:0,location-bar:1,reload:1,search:1,uca-action-1770187399925496-1:1"/>
+  <property name="misc-highlighting-enabled" type="bool" value="true"/>
+  <property name="last-location-bar" type="string" value="ThunarLocationEntry"/>
+  <property name="last-image-preview-visible" type="bool" value="true"/>
+  <property name="last-side-pane" type="string" value="THUNAR_SIDEPANE_TYPE_SHORTCUTS"/>
+  <property name="misc-status-bar-active-info" type="uint" value="53"/>
+  <property name="last-renamer-dialog-width" type="int" value="936"/>
+  <property name="last-renamer-dialog-height" type="int" value="1016"/>
+  <property name="last-renamer-dialog-maximized" type="bool" value="false"/>
 </channel>

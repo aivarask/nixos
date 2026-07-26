@@ -9,8 +9,9 @@
   programs.xfconf.enable = true;
   programs.thunar.enable = true;
 
-  programs.thunar.plugins = with pkgs.xfce; [
+  programs.thunar.plugins = with pkgs; [
     thunar-archive-plugin
+    thunar-media-tags-plugin
     thunar-volman
   ];
   services.gvfs.enable = true; # Mount, trash, and other functionalities
@@ -136,6 +137,7 @@
         # symlink "/run/current-system/sw/share/icons/Papirus/96x96/apps";
         home.file.".inputrc".source = config.lib.file.mkOutOfStoreSymlink "${SELF}/.inputrc";
         # https://catonmat.net/bash-vi-editing-mode-cheat-sheet
+        xdg.configFile."gpu-viewer".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/gpu-viewer";
         xdg.configFile."autostart".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/autostart";
         xdg.configFile."lingot".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/lingot";
         xdg.configFile."Thunar".source = config.lib.file.mkOutOfStoreSymlink "${xdgconf}/Thunar";
