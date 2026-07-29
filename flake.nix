@@ -50,7 +50,6 @@
         ./modules/httpd/default.nix
         ./modules/autologin.nix
         ./modules/boot.nix
-        ./modules/gnome.nix
         ./modules/graphics.nix
         ./modules/search.nix
         ./modules/searx.nix
