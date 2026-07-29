@@ -142,13 +142,16 @@
 		},
 		"wlr/taskbar": {
 			// waybar-wlr-taskbar
-			"format": "{icon} {app_id}",
+			"format": "{icon} {short_state} {app_id}",
 			"icon-size": 16,
 			"spacing": 4,
-			"on-click-middle": "close",
 			"tooltip-format": "{title}",
 			"ignore-list": [],
-			"on-click": "minimize"
+			"on-click": "activate",
+			"on-click-right": "fullscreen",
+			"on-dblclick": "maximize",
+
+			"on-click-middle": "close"
 		},
 		"custom/brightness": {
 			// waybar-custom

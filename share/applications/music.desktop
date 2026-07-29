@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Categories=AudioVideo;
+Categories=AudioVideo;Education;
 Name=music 
 Exec=xdg-terminal-exec --dir=~/Music
 Terminal=false
