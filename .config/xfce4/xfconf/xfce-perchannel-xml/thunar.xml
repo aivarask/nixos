@@ -11,7 +11,7 @@
   <property name="default-view" type="string" value="ThunarDetailsView"/>
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,125,116,87,174,97,178,472,308,114,72,50,735"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,125,116,87,174,97,178,472,308,114,72,50,752"/>
   <property name="last-separator-position" type="int" value="218"/>
   <property name="misc-text-beside-icons" type="bool" value="true"/>
   <property name="misc-folders-first" type="bool" value="false"/>
