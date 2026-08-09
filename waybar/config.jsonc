@@ -1,4 +1,5 @@
 // -*- mode: jsonc -*-
+// vim: iskeyword+=-
 [
 	// {
 	// 	"name": "bottom_bar",
@@ -59,19 +60,20 @@
 		},
 		"battery": {
 			// waybar-battery
-			"format": "{icon} {capacity}",
-			"format-alt": "{icon} {time}",
+			"bat": "BAT0",
+			"format": "{icon}  {capacity}",
+			"format-alt": "{icon}  {time}",
 			"format-time": "{H}h{M}m",
-			"format-full": "{icon} {capacity}",
-			"format-charging": "{icon} ⚡{capacity}",
-			"format-plugged": "{icon} 🔌{capacity}",
-			"format-icons": [
-				"",
-				"",
-				"",
-				"",
-				""
-			]
+			"format-full": "{capacity}",
+			"format-charging": "{icon}  ⚡{capacity}",
+			"format-plugged": "{icon}  🔌{capacity}",
+			// "format-icons": [
+			// "",
+			// "",
+			// "",
+			// "",
+			// ""
+			// ]
 		},
 		"backlight": {
 			// waybar-backlight
@@ -85,8 +87,8 @@
 			// waybar-network
 			"format-ethernet": "🌐",
 			"tooltip-format-ethernet": "{ipaddr} {ifname}",
-			"format-wifi": "  {essid} {signalStrength} {signaldBm}",
-			"tooltip-format-wifi": "{ipaddr} {ifname} \n left reconnect \n middle disconnect \n right 192.168.0.1",
+			"format-wifi": "  {essid}",
+			"tooltip-format-wifi": "{signalStrength} {signaldBm} \n {ipaddr} {ifname} \n left reconnect \n middle disconnect \n right 192.168.0.1",
 			"format-disconnected": " ",
 			"tooltip-format-disconnected": "click to connect",
 			"on-click": "iwctl station wlan0 connect zte",
@@ -114,12 +116,26 @@
 			"tooltip": false
 		},
 		"niri/workspaces": {
+			// waybar-niri-workspaces
+			"all-outputs": true,
 			"hide-empty": true,
-			"format": "{index} {icon} {name}",
+			"format": "{icon}  {output}/{value}",
 			"format-icons": {
 				"active": "",
 				"default": ""
 			}
+		},
+		"wlr/taskbar": {
+			// waybar-wlr-taskbar
+			"format": "{icon} {short_state} {app_id}",
+			"icon-size": 16,
+			"spacing": 4,
+			"tooltip-format": "{title}",
+			"ignore-list": [],
+			"on-click": "activate",
+			"on-click-right": "fullscreen",
+			"on-dblclick": "maximize",
+			"on-click-middle": "close"
 		},
 		"custom/wttrbar": {
 			"format": "{}° ",
@@ -139,19 +155,6 @@
 				"reboot": "systemctl reboot",
 				"poweroff": "systemctl poweroff"
 			}
-		},
-		"wlr/taskbar": {
-			// waybar-wlr-taskbar
-			"format": "{icon} {short_state} {app_id}",
-			"icon-size": 16,
-			"spacing": 4,
-			"tooltip-format": "{title}",
-			"ignore-list": [],
-			"on-click": "activate",
-			"on-click-right": "fullscreen",
-			"on-dblclick": "maximize",
-
-			"on-click-middle": "close"
 		},
 		"custom/brightness": {
 			// waybar-custom

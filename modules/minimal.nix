@@ -28,6 +28,7 @@
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
+    upower
     brightnessctl
     grc
     chafa
