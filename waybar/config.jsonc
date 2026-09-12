@@ -24,7 +24,7 @@
 		"name": "top_bar",
 		"layer": "top",
 		"position": "top",
-		"height": 32,
+		// "height": 64,
 		"spacing": 12,
 		"ipc": true,
 		"reload_style_on_change": true,
@@ -35,8 +35,8 @@
 			"tray"
 		],
 		"modules-center": [
-			"custom/drawer",
 			"niri/workspaces",
+			"custom/drawer",
 			"wlr/taskbar"
 		],
 		"modules-right": [
@@ -66,7 +66,7 @@
 			"format-time": "{H}h{M}m",
 			"format-full": "{capacity}",
 			"format-charging": "{icon}  ⚡{capacity}",
-			"format-plugged": "{icon}  🔌{capacity}",
+			"format-plugged": "{icon}  🔌{capacity}"
 			// "format-icons": [
 			// "",
 			// "",
@@ -130,7 +130,7 @@
 			"format": "{icon} {short_state} {app_id}",
 			"icon-size": 16,
 			"spacing": 4,
-			"tooltip-format": "{title}",
+			"tooltip-format": "{title} | {app_id}",
 			"ignore-list": [],
 			"on-click": "activate",
 			"on-click-right": "fullscreen",

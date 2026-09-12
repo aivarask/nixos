@@ -266,8 +266,8 @@ set foldtext=FoldText()
 "*
 " *title/tabline/statusline
 " let &titleold=getcwd()
-set title 
-set titlestring=%{Progname()}\ %{getcwd()}\ %f\ 
+" set title 
+" set titlestring=%{Progname()}\ %{getcwd()}\ %f\ 
 set showtabline=2
 set tabline=%!TabLine()
 set showcmdloc=statusline

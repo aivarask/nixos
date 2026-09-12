@@ -1,5 +1,4 @@
 // vim: sw=4 tabstop=4 invlist foldmarker=//\ https\://niri,};
-
 // https://niri-wm.github.io/niri/Configuration:-Input
 input {
 	keyboard {
@@ -42,7 +41,10 @@ input {
 
 	disable-power-key-handling
 	warp-mouse-to-focus
-	focus-follows-mouse max-scroll-amount="0%"
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="0%"
 	// workspace-auto-back-and-forth
 	mod-key "Super"
 	mod-key-nested "Alt"
@@ -66,7 +68,7 @@ output "eDP-1" {
 output "HDMI-A-1" {
 	// off
 	// mode "1920x1080@60"
-	position x=0 y=0
+	// position x=0 y=0
 };
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings
 include "binds.kdl"
@@ -79,12 +81,14 @@ switch-events {
 	tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
 	tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
 };
+prefer-no-csd
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
 	gaps 16
 	center-focused-column "never"
+	always-center-single-column
 	default-column-display "tabbed"
-	default-column-width { proportion 0.5; }
+	default-column-width { proportion 0.75; }
 	preset-column-widths {
 		proportion 0.5
 		proportion 1.0
@@ -103,16 +107,45 @@ layout {
         width 4
         gap 1
         length total-proportion=0.5
-        position "left"
+        position "bottom"
         place-within-column
-		hide-when-single-tab
-		active-color "red"
+		// hide-when-single-tab
+		active-color "white"
         inactive-color "gray"
-        urgent-color "blue"
+        urgent-color "red"
     }
 	insert-hint {
 		color "#ffc87f80"
 	}
+};
+// https://niri-wm.github.io/niri/Configuration:-Layer-Rules
+layer-rule {
+    match namespace="^launcher$"
+    opacity 0.5
+};
+// https://niri-wm.github.io/niri/Configuration:-Window-Rules
+window-rule {
+	geometry-corner-radius 15
+    clip-to-geometry true
+}
+window-rule {
+    match app-id="firefox$"
+    scroll-factor 1.5
+}
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    default-floating-position x=32 y=32 relative-to="bottom-left"
+}
+window-rule {
+    match app-id="wev"
+    open-maximized false
+	open-floating true
+	default-column-width { proportion 0.25; }
+    default-window-height { fixed 500; }
+}
+window-rule {
+	match app-id="nvim-nixos"
+	default-column-width { proportion 0.5; }
 };
 // https://niri-wm.github.io/niri/Configuration:-Miscellaneous
 spawn-at-startup "waybar"
@@ -123,7 +156,6 @@ spawn-sh-at-startup "udiskie --tray"
 // spawn-at-startup "wluma"
 // https://gist.github.com/zkat/beefc09ad8191dc7077290feceb19582
 
-prefer-no-csd
 screenshot-path "~ %Y%m%d_%H%M%S.png"
 cursor {
 	xcursor-theme "XCursor-Pro-Light"
@@ -149,16 +181,6 @@ blur {
 	offset 3
 	noise 0.02
 	saturation 1.5
-};
-
-// https://niri-wm.github.io/niri/Configuration:-Layer-Rules
-layer-rule {
-    match namespace="^launcher$"
-    opacity 0.5
-}
-
-layer-rule {
-
 };
 // https://niri-wm.github.io/niri/Configuration:-Animations
 animations {

@@ -33,14 +33,69 @@
 @define-color 	orange2	#fe8019;
 
 
-window#waybar.bottom_bar {
-	background: @bg0h;
+
+#waybar {
+	font-size: 12px;
+	color: @fg0;
+	background-color: @bg0h;
 }
 
+#workspaces button {
+	margin: 4px 8px;
+	padding: 8px 8px;
+	font-size: 12px;
+}
+#workspaces button:hover {
+	font-size: 14px;
+}
+#workspaces button.active {
+	font-size: 14px;
+	color: @green; 
+}
 
+/* drawer */
+#custom-drawer:hover {
+	font-size: 18px;
+	color: @green;
+}
 
-#battery.full {
-	color: @red;
+/* taskbar */
+#taskbar button {
+	margin: 8px 8px;
+	padding: 3px 7px;
+	font-size: 12px;
+}
+#taskbar button:hover {
+	font-size: 14px;
+}
+#taskbar button.active {
+	font-size: 14px;
+	color: @green; 
+}
+
+/*pulseaudio-slider */
+#pulseaudio-slider {
+	padding: 8;
+	margin: 0;
+}
+#pulseaudio-slider slider {
+	min-height: 0px;
+	min-width: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+#pulseaudio-slider trough {
+	min-height: 12px;
+	min-width: 100px;
+	border-radius: 5px;
+	background: @bg2;
+}
+#pulseaudio-slider highlight {
+	min-width: 10px;
+	border-radius: 5px;
+	background: @green;
 }
 
 #battery {
@@ -56,61 +111,12 @@ window#waybar.bottom_bar {
 /*   margin-right: 5px; */
 /* } */
 
+#battery.full {
+	color: @red;
+}
 #battery.discharging { color: @blue; }
 
 #clock {
 	font-size: 12px;
-	color: @bg_color;
-}
-/* #clock::before { */
-/*   content: "🔗"; */
-/* } */
-
-#workspaces button:nth-child(2) { color: red; }
-#workspaces button {
-	font-size: 12px;
-}
-
-#workspaces button.active {
-	font-size: 18px;
-}
-
-/* Misc */
-
-#custom-firefox {
-	background-image: url('/run/current-system/sw/share/icons/Papirus/64x64/apps/firefox-icon.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: auto 70%;
-}
-
-#custom-firefox:hover {
-	background-size: contain;
-}
-
-#pulseaudio-slider {
-	padding: 0;
-	margin: 0;
-}
-
-#pulseaudio-slider slider {
-	min-height: 0px;
-	min-width: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
-}
-
-#pulseaudio-slider trough {
-	min-height: 10px;
-	min-width: 80px;
-	border-radius: 5px;
-	background: black;
-}
-
-#pulseaudio-slider highlight {
-	min-width: 10px;
-	border-radius: 5px;
-	background: green;
+	color: @fg3;
 }

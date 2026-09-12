@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+current="$(niri msg -j workspaces | jq ".[] | select(.is_focused == true ) | .idx")"
+count="$(niri msg -j workspaces | jq "[.[] | select(.is_urgent == false|true )] | length")"
+
+moveTo=0
+
+if [[ $@ == 'next' ]]; then
+	moveTo=$(($current + 1))
+	if [[ $moveTo -gt $count ]]; then
+		moveTo=1
+	fi
+fi
+
+if [[ $@ == 'prev' ]]; then
+	moveTo=$(($current - 1))
+	if [[ $moveTo -eq 0 ]]; then
+		moveTo=$count
+	fi
+fi
+
+move=$(niri msg action focus-workspace $moveTo)

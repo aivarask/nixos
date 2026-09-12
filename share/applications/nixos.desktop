@@ -22,7 +22,7 @@ Exec=xdg-terminal-exec --dir=/etc/nixos vim
 
 [Desktop Action nvim]
 Name=nvim
-Exec=xdg-terminal-exec --dir=/etc/nixos nvim 
+Exec=xdg-terminal-exec --dir=/etc/nixos --app-id=nvim-nixos nvim 
 
 [Desktop Action lf]
 Name=lf
