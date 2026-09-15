@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs,lib, ... }:
 let
   username = "root";
 in
 {
-  services.getty.autologinUser = "${username}";
+  services.getty.autologinUser = lib.mkForce "${username}";
   services.getty.autologinOnce = false;
   environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] &&

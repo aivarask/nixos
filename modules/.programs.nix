@@ -17,6 +17,10 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
+  xdg.portal.config.niri = {
+    "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+  };
+
   home-manager.sharedModules = [
     {
       home.packages = with pkgs; [
@@ -64,7 +68,7 @@
           eww
           fuzzel
           gammastep
-          gcr
+          # gcr
           # glib-networking
           grim
           gtk-doc
@@ -132,7 +136,7 @@
           autotiling # autotiling-rs
           dconf-editor
           file-roller
-          gcr
+          # gcr
           gnome-calculator
           gnome-disk-utility
           gnome-network-displays

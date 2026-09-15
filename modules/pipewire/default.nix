@@ -4,7 +4,7 @@
 # pactl list sink-inputs
 # https://github.com/mikeroyal/PipeWire-Guide
 # pactl list sink-
-{ pkgs, ... }:
+{ pkgs, inputs,... }:
 {
   home-manager.sharedModules = [
     (
@@ -16,6 +16,8 @@
     )
   ];
   environment.systemPackages = with pkgs; [
+    inputs.ableton
+    pipewire
     alsa-utils
     pavucontrol
     pulsemixer
@@ -28,33 +30,33 @@
   ];
   security.rtkit.enable = true;
   services.pipewire.enable = true;
-  services.pipewire.alsa.enable = true;
-  services.pipewire.alsa.support32Bit = true;
-  services.pipewire.pulse.enable = true;
-  services.pipewire.jack.enable = true;
-  services.pipewire.wireplumber.enable = true;
+  # services.pipewire.alsa.enable = true;
+  # services.pipewire.alsa.support32Bit = true;
+  # services.pipewire.pulse.enable = true;
+  # services.pipewire.jack.enable = true;
+  # services.pipewire.wireplumber.enable = true;
   services.pipewire.systemWide = true;
-  systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
+  # systemd.user.services.wireplumber.wantedBy = [ "default.target" ];
 
-  services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
-    "context.properties" = [
-      {
-        name = "libpipewire-module-protocol-pulse";
-        args = { };
-      }
-    ];
-    "pulse.properties" = {
-      "pulse.min.req" = "32/48000";
-      "pulse.default.req" = "32/48000";
-      "pulse.max.req" = "32/48000";
-      "pulse.min.quantum" = "32/48000";
-      "pulse.max.quantum" = "32/48000";
-    };
-    "stream.properties" = {
-      "node.latency" = "32/48000";
-      "resample.quality" = 1;
-    };
-  };
+  # services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
+  #   "context.properties" = [
+  #     {
+  #       name = "libpipewire-module-protocol-pulse";
+  #       args = { };
+  #     }
+  #   ];
+  #   "pulse.properties" = {
+  #     "pulse.min.req" = "32/48000";
+  #     "pulse.default.req" = "32/48000";
+  #     "pulse.max.req" = "32/48000";
+  #     "pulse.min.quantum" = "32/48000";
+  #     "pulse.max.quantum" = "32/48000";
+  #   };
+  #   "stream.properties" = {
+  #     "node.latency" = "32/48000";
+  #     "resample.quality" = 1;
+  #   };
+  # };
   # services.pipewire.extraConfig.pipewire = {
   #   "98-crackling-fix" = {
   #     "context.properties" = {

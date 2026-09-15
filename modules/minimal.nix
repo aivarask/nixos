@@ -18,16 +18,17 @@
 }@args:
 {
   networking.hostName = lib.mkDefault "minimal";
-  system.stateVersion = lib.mkDefault "26.05";
+  system.stateVersion = lib.mkForce "26.05";
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [
     "pnpm-9.15.9"
   ];
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
+    # (modulesPath + "/installer/scan/not-detected.nix")
+    # (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
+
     upower
     brightnessctl
     grc
@@ -67,6 +68,7 @@
     libnotify
     libwebp
     lm_sensors
+    lsof
     man-pages
     man-pages-posix
     manix
@@ -152,7 +154,11 @@
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = "nix-command flakes pipe-operators";
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+    "pipe-operators"
+  ];
   programs.git.enable = true;
   # environment.etc."gitconfig".source = ./.config/git/config_global;
   # programs.git.package = pkgs.gitFull;

@@ -10,6 +10,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    nixos-enter
     nix-sweep
     nix-tree
     nix-du
@@ -51,7 +52,11 @@ in
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
-  nix.settings.experimental-features = "nix-command flakes pipe-operators";
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+    "pipe-operators"
+  ];
   nix.settings.flake-registry = "";
   nix.settings.nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
   nix.distributedBuilds = true; # required, otherwise remote buildMachines above aren't used

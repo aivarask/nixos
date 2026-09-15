@@ -1,4 +1,6 @@
+/* vim: sw=4 */
 /* https: //github.com/kamlendras/waybar-macos-sequoia/tree/main */
+/* https://github.com/Alexays/Waybar/blob/master/resources/style.css */
 
 @define-color 	bg	#282828;
 @define-color	bg0h	#1d2021;
@@ -31,57 +33,112 @@
 @define-color 	aqua2	#8ec07c;
 @define-color 	orange	#d65d0e;
 @define-color 	orange2	#fe8019;
+@define-color 	o2 rgba(0, 255, 0, 0.2);
 
 
-
-#waybar {
-	font-size: 12px;
-	color: @fg0;
-	background-color: @bg0h;
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
 
+window#waybar {
+    color: @fg0;
+    background-color: @bg0h;
+    border-bottom: 2px solid @yellow;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    box-shadow: inset 0 -2px transparent;
+    border: none;
+    border-radius: 0;
+}
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px @orange;
+}
+label:focus {
+    background-color: #000000;
+}
+
+/* margins */
+#window,
+#workspaces,
+#taskbar {
+    margin: 0 32px;
+}
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+/* tray */
+#tray {
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+/* workspaces */
 #workspaces button {
-	margin: 4px 8px;
-	padding: 8px 8px;
-	font-size: 12px;
+	padding: 0px 8px;
+	background-color: transparent;
+	color: @fg3;
 }
 #workspaces button:hover {
-	font-size: 14px;
 }
-#workspaces button.active {
-	font-size: 14px;
+#workspaces button.focused, #workspaces button.active {
 	color: @green; 
+	box-shadow: inset 0 -3px @green;
 }
 
+@keyframes blink {
+    to {
+        /* background-color: @bg; */
+        color: @green;
+    }
+}
 /* drawer */
+#custom-drawer {
+	color: @fg;
+	/* animation-name: blink; */
+	/* animation-duration: 0.9s; */
+	/* animation-timing-function: steps(12); */
+	/* animation-iteration-count: infinite; */
+	/* animation-direction: alternate; */
+
+}
 #custom-drawer:hover {
-	font-size: 18px;
 	color: @green;
 }
 
 /* taskbar */
 #taskbar button {
-	margin: 8px 8px;
-	padding: 3px 7px;
-	font-size: 12px;
 }
 #taskbar button:hover {
-	font-size: 14px;
 }
-#taskbar button.active {
-	font-size: 14px;
+#taskbar button.focused, #taskbar button.active {
 	color: @green; 
 }
 
-/*pulseaudio-slider */
+/* pulseaudio */
 #pulseaudio-slider {
-	padding: 8;
-	margin: 0;
+	padding: 0px 8px;
 }
 #pulseaudio-slider slider {
 	min-height: 0px;
 	min-width: 0px;
-	opacity: 0;
+	opacity: 0.6;
 	background-image: none;
 	border: none;
 	box-shadow: none;
@@ -98,6 +155,10 @@
 	background: @green;
 }
 
+
+
+
+/* battery */
 #battery {
 
 	  -gtk-icon-source: -gtk-scaled(url("/etc/profiles/per-user/root/share/icons/Papirus/32x32@2x/status/battery-100.svg"), url('my-arrow@2.png'));

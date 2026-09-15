@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 {
 
+  services.nohang.enable = true;
+  # services.nohang.configPath = "";
   services.udisks2.enable = true;
   services.udisks2.settings = { };
   services.udisks2.mountOnMedia = true;

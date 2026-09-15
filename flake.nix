@@ -19,9 +19,12 @@
   inputs.niri-session-manager.url = "github:MTeaHead/niri-session-manager";
   inputs.nirinit.url = "github:amaanq/nirinit";
   inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.ableton.url = "github:shibco/ableton-linux";
+  inputs.ableton.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
+      vitalModules = [];
       commonModules = [
         inputs.home-manager.nixosModules.home-manager
         ./modules/home-manager.nix
@@ -88,6 +91,7 @@
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
+          ./modules/iso.nix
           ./modules/bluetooth.nix
           ./modules/pihole.nix
           ./modules/minimal.nix

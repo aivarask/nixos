@@ -40,9 +40,11 @@ binds {
     Mod+1	hotkey-overlay-title="focus-workspace 1"	{ focus-workspace 1; }
     Mod+2	hotkey-overlay-title="focus-workspace 2"	{ focus-workspace 2; }
     Mod+3	hotkey-overlay-title="focus-workspace 3"	{ focus-workspace 3; }
+    Mod+4	hotkey-overlay-title="focus-workspace 4"	{ focus-workspace 4; }
     Mod+Shift+1	hotkey-overlay-title="move-column-to-workspace 1"	{ move-column-to-workspace 1; }
     Mod+Shift+2	hotkey-overlay-title="move-column-to-workspace 2"	{ move-column-to-workspace 2; }
     Mod+Shift+3	hotkey-overlay-title="move-column-to-workspace 3"	{ move-column-to-workspace 3; }
+    Mod+Shift+4	hotkey-overlay-title="move-column-to-workspace 4"	{ move-column-to-workspace 4; }
     Mod+Minus	hotkey-overlay-title=""	{ spawn-sh ""; }
     Mod+Equal	hotkey-overlay-title=""	{ spawn-sh ""; }
     Mod+Backspace	hotkey-overlay-title=""	{ spawn-sh "notify-send backspace"; };
