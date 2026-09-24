@@ -91,7 +91,7 @@
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
-          ./modules/iso.nix
+          # ./modules/iso.nix
           ./modules/bluetooth.nix
           ./modules/pihole.nix
           ./modules/minimal.nix

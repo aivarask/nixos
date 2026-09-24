@@ -24,8 +24,8 @@
     "pnpm-9.15.9"
   ];
   imports = [
-    # (modulesPath + "/installer/scan/not-detected.nix")
-    # (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
 
