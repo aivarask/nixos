@@ -21,10 +21,13 @@
   inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
   inputs.ableton.url = "github:shibco/ableton-linux";
   inputs.ableton.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.pyproject-nix.url = "github:pyproject-nix/pyproject.nix";
+  inputs.pyproject-nix.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.mkpl.url = "github:MatteoGuadrini/mkpl";
+  inputs.mkpl.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-      vitalModules = [];
       commonModules = [
         inputs.home-manager.nixosModules.home-manager
         ./modules/home-manager.nix
