@@ -21,10 +21,11 @@
   inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
   inputs.ableton.url = "github:shibco/ableton-linux";
   inputs.ableton.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.pyproject-nix.url = "github:pyproject-nix/pyproject.nix";
-  inputs.pyproject-nix.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.mkpl.url = "github:MatteoGuadrini/mkpl";
-  inputs.mkpl.inputs.nixpkgs.follows = "nixpkgs";
+  # https://pyproject-nix.gitaivaraskt.nix/use-cases/pyproject.html
+  # inputs.pyproject-nix.inputs.nixpkgs.follows = "nixpkgs";
+  # https://github.com/MatteoGuadrini/mkpl
+  # inputs.mkpl.url = "github:aivarask/mkpl";
+  # inputs.mkpl.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
@@ -80,6 +81,8 @@
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       nixpkgs.hostPlatform = system;
+      nixpkgs.overlays = [
+      ];
       packages."${system}" = { };
       nixosConfigurations.base = nixpkgs.lib.nixosSystem {
       };

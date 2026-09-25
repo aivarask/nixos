@@ -28,6 +28,7 @@
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
   ];
   environment.systemPackages = with pkgs; [
+    # python3Packages.mkpl
 
     upower
     brightnessctl

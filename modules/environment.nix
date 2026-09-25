@@ -13,6 +13,7 @@
       ]
     )
   ];
+  environment.localBinInPath = true;
   environment.variables.SELF = SELF;
   environment.variables.EDITOR = "vim";
   environment.variables.VISUAL = "nvim";
