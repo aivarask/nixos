@@ -19,6 +19,8 @@
 {
   networking.hostName = lib.mkDefault "minimal";
   system.stateVersion = lib.mkForce "26.05";
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.permittedInsecurePackages = [
     "pnpm-9.15.9"
@@ -142,9 +144,11 @@
   systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
 
   console.useXkbConfig = true;
+  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users."root".shell = pkgs.zsh;
   users.users."root".extraGroups = [ ];
+  users.users."root".initialPassword = "";
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIrYp7DZHd8mJjmtXwrrjQW5e207eCU/KTROwxl2jdnf"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"

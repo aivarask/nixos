@@ -81,12 +81,11 @@
     // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
       formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
       nixpkgs.hostPlatform = system;
-      nixpkgs.overlays = [
-      ];
+      # nixpkgs.overlays = [ ];
       packages."${system}" = { };
       nixosConfigurations.base = nixpkgs.lib.nixosSystem {
       };
-      nixosConfigurations.iso-minimal = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = commonSpecialArgs;
         modules = [
