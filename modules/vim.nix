@@ -22,7 +22,7 @@
           vim-vinegar
           vim-nix
           # vim-lsp
-          vim-css-color
+          # vim-css-color
           switch-vim
         ];
       in
@@ -82,8 +82,6 @@
           lib.mkMerge [
             COMMON
             (with pkgs.vimPlugins; [
-              # nvim-treesitter.withAllGrammars
-              # (nvim-treesitter.withPlugins (ps: [ ps.nix ]))
               nvim-nio
               SchemaStore-nvim
               flatten-nvim

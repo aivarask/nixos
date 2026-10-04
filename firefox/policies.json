@@ -39,9 +39,21 @@
 		"NoDefaultBookmarks": true,
 		"Bookmarks": [
 			{
-				"Title": "policies",
-				"URL": "https://firefox-admin-docs.mozilla.org/reference/policies/",
-				"Favicon": "https://firefox-admin-docs.mozilla.org/favicon.png",
+				"Title": "YT",
+				"URL": "https://www.youtube.com",
+				"Favicon": "https://www.youtube.com/s/desktop/1daead2b/img/favicon_32x32.png",
+				"Placement": "toolbar"
+			},
+			{
+				"Title": "LRT",
+				"URL": "https://www.lrt.lt/",
+				"Favicon": "https://www.lrt.lt/images/favicons/favicon-32x32.png?v=375",
+				"Placement": "toolbar"
+			},
+			{
+				"Title": "nixos",
+				"URL": "file:///run/current-system/sw/share/doc/nixos",
+				"Favicon": "https://wiki.nixos.org/favicon.ico",
 				"Placement": "toolbar"
 			},
 			{
@@ -51,20 +63,15 @@
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "YouTube",
-				"URL": "https://www.youtube.com",
-				"Favicon": "https://www.youtube.com/s/desktop/1daead2b/img/favicon_32x32.png",
+				"Title": "nix",
+				"URL": "file:///run/current-system/sw/share/doc/nix",
+				"Favicon": "https://wiki.nixos.org/favicon.ico",
 				"Placement": "toolbar"
 			},
 			{
-				"Title": "share_doc",
-				"URL": "file:///root/doc",
-				"Placement": "toolbar"
-			},
-			{
-				"Title": "LRT",
-				"URL": "https://www.lrt.lt/",
-				"Favicon": "https://www.lrt.lt/images/favicons/favicon-32x32.png?v=375",
+				"Title": "policies",
+				"URL": "https://firefox-admin-docs.mozilla.org/reference/policies/",
+				"Favicon": "/etc/profiles/per-user/root/share/icons/Papirus/96x96/apps/firefox.svg",
 				"Placement": "toolbar"
 			}
 		],

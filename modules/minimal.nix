@@ -1,15 +1,3 @@
-# https://nixos.wiki/wiki/Creating_a_NixOS_live_CD
-# wireless https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
-# build nix build .\#nixosConfigurations.exampleIso.config.system.build.isoImage
-# test https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Testing_the_image
-# emulate qemu-system-x86_64 -enable-kvm -m 256 -cdrom result/iso/nixos-*.iso
-#     https://wiki.nixos.org/wiki/QEMU
-#     https://wiki.gentoo.org/wiki/QEMU/Bridge_with_Wifi_Routing
-# build nix build .\#nixosConfigurations.exampleIso.config.system.build.isoImage &&
-# partition
-# UEFI(GPT) https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning-UEFI
-# format https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning-formatting
-# install https://nixos.org/manual/nixos/stable/#sec-installation-manual-installing
 {
   pkgs,
   modulesPath,
@@ -25,6 +13,10 @@
   nixpkgs.config.permittedInsecurePackages = [
     "pnpm-9.15.9"
   ];
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
@@ -146,14 +138,14 @@
   users.defaultUserShell = pkgs.zsh;
   users.users."root".shell = pkgs.zsh;
   users.users."root".extraGroups = [ ];
-  users.users."root".initialPassword = "";
+  users.users."root".hashedPassword =
+    "$y$j9T$sM9eJybyF90j82au86NjJ1$I5pgKF4XLfFRTa2HvsJoDOzCYIxDJg0tkz8BDQzSiz7";
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIrYp7DZHd8mJjmtXwrrjQW5e207eCU/KTROwxl2jdnf"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRxm8QUHcJJmYlI1vzlKsukRm05WuTCZ85rJZgzB2sh"
   ]
   ++ (args.extraPublicKeys or [ ]);
 
-  environment.etc."disko-main.nix".source = ./disko-main.nix;
   # static_ip https://nixos.wiki/wiki/Creating_a_NixOS_live_CD#Static_IP_Address
   # wifi https://nixos.org/manual/nixos/stable/index.html#sec-building-image-drivers
   nixpkgs.config.allowUnfree = true;

@@ -83,22 +83,35 @@
       nixpkgs.hostPlatform = system;
       # nixpkgs.overlays = [ ];
       packages."${system}" = { };
-      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.iso-image = nixpkgs.lib.nixosSystem {
+        # nixos-rebuild build-image --image-variant iso --flake .\#iso-image && qemu-system-x86_64 -enable-kvm -m 2048 -cdrom result/iso/nixos-*.iso
+        inherit system;
+        specialArgs = commonSpecialArgs;
+        modules = commonModules ++ [
+          inputs.disko.nixosModules.disko
+          ./modules/minimal.nix
+          ({ modulesPath, ... }: {
+            imports = [ (modulesPath + "/installer/cd-dvd/iso-image.nix") ];
+            image.modules.iso = { };
+          })
+        ];
       };
-      nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = commonSpecialArgs;
         modules = [
+          inputs.disko.nixosModules.disko
+          ./disko-udisk.nix
+          { disko.devices.disk.udisk.device = nixpkgs.lib.mkForce "/dev/sda"; }
           ./modules/iso.nix
-          ./modules/minimal.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
-          # ./modules/iso.nix
           ./modules/bluetooth.nix
-          ./modules/pihole.nix
+          # ./modules/pihole.nix
+          ./modules/dnsmasq.nix
           ./modules/minimal.nix
           ./modules/network.nix
           ./modules/dell.nix

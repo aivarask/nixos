@@ -61,19 +61,12 @@
 		"battery": {
 			// waybar-battery
 			"bat": "BAT0",
-			"format": "{icon}  {capacity}",
-			"format-alt": "{icon}  {time}",
+			"format": "{capacity}",
+			"format-alt": "{time}",
 			"format-time": "{H}h{M}m",
 			"format-full": "{capacity}",
-			"format-charging": "{icon}  ⚡{capacity}",
-			"format-plugged": "{icon}  🔌{capacity}"
-			// "format-icons": [
-			// "",
-			// "",
-			// "",
-			// "",
-			// ""
-			// ]
+			"format-charging": "⚡{capacity}",
+			"format-plugged": "{capacity}"
 		},
 		"backlight": {
 			// waybar-backlight

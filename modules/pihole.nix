@@ -1,9 +1,9 @@
 # https://docs.pi-hole.net/ftldns/configfile/
-{ pkgs, ... }:
+{ ... }:
 {
   services.pihole-web.enable = true;
   services.pihole-web.ports = [ "443s" ];
-  services.pihole-ftl.enable = true;
+  services.pihole-ftl.enable = false;
   services.pihole-ftl.settings.dns.upstreams = [
     # "192.168.0.142"
     # "192.168.0.1"

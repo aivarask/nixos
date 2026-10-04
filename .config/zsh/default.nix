@@ -5,9 +5,6 @@
       {
         pkgs,
         config,
-        lib,
-        SELF,
-        homeManager,
         xdgconf,
         ...
       }:
@@ -22,13 +19,13 @@
           zoxide
         ];
 
-        xdg.configFile."zsh/zshenv.local".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zsh/zshenv.local";
-        xdg.configFile."zsh/zshrc.local".source =
-          config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zsh/zshrc.local";
-        programs.zsh.envExtra = builtins.concatStringsSep "\n" [
-          "source $ZDOTDIR/zshenv.local"
-        ];
+        # xdg.configFile."zsh/zshenv.local".source =
+        #   config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zsh/zshenv.local";
+        # xdg.configFile."zsh/zshrc.local".source =
+        #   config.lib.file.mkOutOfStoreSymlink "${xdgconf}/zsh/zshrc.local";
+        # programs.zsh.envExtra = builtins.concatStringsSep "\n" [
+          # "[[ -e $ZDOTDIR/zshenv.local ]] && source $ZDOTDIR/zshenv.local"
+        # ];
         programs.zsh.initContent = builtins.concatStringsSep "\n" [
           "source $XDG_CONFIG_HOME/alias"
           "source $ZDOTDIR/zshrc.local"

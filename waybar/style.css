@@ -161,8 +161,8 @@ label:focus {
 /* battery */
 #battery {
 
-	  -gtk-icon-source: -gtk-scaled(url("/etc/profiles/per-user/root/share/icons/Papirus/32x32@2x/status/battery-100.svg"), url('my-arrow@2.png'));
-			}
+	  /* -gtk-icon-source: -gtk-scaled(url("/etc/profiles/per-user/root/share/icons/Papirus/32x32@2x/status/battery-100.svg")); */
+		    }
 
 /* #battery::before { */
 /*   content: url("/etc/profiles/per-user/root/share/icons/Papirus/32x32@2x/status/battery-100.svg"); */
@@ -172,10 +172,15 @@ label:focus {
 /*   margin-right: 5px; */
 /* } */
 
-#battery.full {
-	color: @red;
+#battery.discharging { 
+	color: @yellow; 
 }
-#battery.discharging { color: @blue; }
+#battery.charging {
+	color: @yellow;
+}
+#battery.full {
+	color: @green;
+}
 
 #clock {
 	font-size: 12px;

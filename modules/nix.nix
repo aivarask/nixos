@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -30,7 +29,7 @@ in
   nix.gc.options = "--delete-older-than 7d";
   nix.channel.enable = false;
   nix.registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-  nix.nixPath = (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs) ++ [
+  nix.settings.nix-path = (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs) ++ [
     "nixpkgs=${inputs.nixpkgs}"
     "nixos-config=${inputs.self}"
     "nixpkgs-overlays=/etc/nixos/overlays-compat/"
@@ -58,7 +57,6 @@ in
     "pipe-operators"
   ];
   nix.settings.flake-registry = "";
-  nix.settings.nix-path = config.nix.nixPath; # Workaround for https://github.com/NixOS/nix/issues/9574
   nix.distributedBuilds = true; # required, otherwise remote buildMachines above aren't used
   nix.settings.builders-use-substitutes = true; # optional, useful when the builder has a faster internet connection than yours
 

@@ -70,6 +70,7 @@ output "eDP-1" {
 // laptop hdmi
 output "DP-3" {
 	// off
+	// scale 2
 };
 // https://niri-wm.github.io/niri/Configuration:-Key-Bindings
 include "binds.kdl"
@@ -88,10 +89,15 @@ layout {
 	center-focused-column "never"
 	always-center-single-column
 	default-column-display "tabbed"
-	default-column-width { proportion 0.75; }
+	default-column-width { 
+	proportion 0.6; }
 	preset-column-widths {
-		proportion 0.5
+		proportion 0.4
+		proportion 0.6
+		proportion 0.8
 		proportion 1.0
+		proportion 0.8
+		proportion 0.6
 	}
 	preset-window-heights {	
 		proportion 0.5;
@@ -121,7 +127,7 @@ layout {
 // https://niri-wm.github.io/niri/Configuration:-Layer-Rules
 layer-rule {
     match namespace="^launcher$"
-    opacity 0.5
+    opacity 1.0
 };
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 window-rule {
