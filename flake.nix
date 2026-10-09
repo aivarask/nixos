@@ -30,44 +30,12 @@
   outputs =
     inputs@{ flake-parts, ... }:
     # https://flake.parts/module-arguments.html
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      top@{
-        config,
-        withSystem,
-        moduleWithSystem,
-        ...
-      }:
+    flake-parts.lib.mkFlake { inherit inputs; } 
       {
+        systems = [ "x86_64-linux" ];
         imports = [
           inputs.home-manager.nixosModules.home-manager
+          ./flake_nixos.nix
         ];
-        flake = {
-          # Put your original flake attributes here.
-          nixosConfigurations.iso-min = inputs.nixpkgs.lib.nixosSystem {
-            # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
-            # inherit system;
-            modules = [
-              ({ modulesPath, ... }: {
-                imports = [
-                  (modulesPath + "/installer/cd-dvd/iso-image.nix")
-                  (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
-                ];
-              })
-            ];
-
-          };
-        };
-        systems = [
-          "x86_64-linux"
-        ];
-        perSystem = { config, pkgs, ... }: {
-          # Recommended: move all package definitions here.
-          # e.g. (assuming you have a nixpkgs input)
-          # packages.foo = pkgs.callPackage ./foo/package.nix { };
-          # packages.bar = pkgs.callPackage ./bar/package.nix {
-          #   foo = config.packages.foo;
-          # };
-        };
       }
-    );
 }
