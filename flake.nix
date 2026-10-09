@@ -26,121 +26,48 @@
   # https://github.com/MatteoGuadrini/mkpl
   # inputs.mkpl.url = "github:aivarask/mkpl";
   # inputs.mkpl.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs =
-    { nixpkgs, self, ... }@inputs:
-    let
-      commonModules = [
-        inputs.home-manager.nixosModules.home-manager
-        ./modules/home-manager.nix
-        ./modules/users_root.nix
-        # ./modules/fileSystems.nix
-        # inputs.disko.nixosModules.disko
-        ./modules/bat/default.nix
-        ./modules/chromium/default.nix
-        ./modules/direnv/default.nix
-        ./modules/eza/default.nix
-        ./modules/fzf/default.nix
-        ./modules/git/default.nix
-        # ./modules/irc.nix
-        # ./modules/mopidy/default.nix
-        ./modules/mpd/default.nix
-        ./modules/mpv/default.nix
-        ./modules/ncmpcpp/default.nix
-        ./modules/nicotine/default.nix
-        ./modules/pipewire/default.nix
-        ./modules/ripgrep/default.nix
-        ./modules/starship/default.nix
-        ./modules/zsh/default.nix
-        ./modules/.programs.nix
-        ./modules/environment.nix
-        ./firefox/default.nix
-        ./modules/httpd/default.nix
-        ./modules/autologin.nix
-        ./modules/boot.nix
-        ./modules/graphics.nix
-        ./modules/search.nix
-        ./modules/searx.nix
-        ./modules/torrents.nix
-        ./modules/niri.nix
-        ./modules/nix.nix
-        ./modules/services.nix
-        ./modules/vim.nix
-        ./modules/vimlua.nix
-      ];
-      commonSpecialArgs = rec {
-        inherit inputs self;
-        SELF = "/etc/nixos";
-        xdgconf = "${SELF}/.config";
-      };
-    in
-    inputs.flake-utils.lib.eachDefaultSystem (system: {
-      # checks./*<SYSTEM>.*/"<CHECK>" = /* ... */;
-      # devShells./*<SYSTEM>.*/"<DEV_SHELL>" = /* ... */;
-      # packages./*<SYSTEM>.*/"<PACKAGE>" = /* ... */;
-    })
-    // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: {
-      formatter."${system}" = nixpkgs.legacyPackages."${system}".nixfmt-tree;
-      nixpkgs.hostPlatform = system;
-      # nixpkgs.overlays = [ ];
-      packages."${system}" = { };
-
-      nixosConfigurations.iso-min = nixpkgs.lib.nixosSystem {
-        # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
-        inherit system;
-        modules = [
-          ({ modulesPath, ... }: {
-            imports = [
-              (modulesPath + "/installer/cd-dvd/iso-image.nix")
-              (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+    inputs@{ flake-parts, ... }:
+    # https://flake.parts/module-arguments.html
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      top@{
+        config,
+        withSystem,
+        moduleWithSystem,
+        ...
+      }:
+      {
+        imports = [
+          inputs.home-manager.nixosModules.home-manager
+        ];
+        flake = {
+          # Put your original flake attributes here.
+          nixosConfigurations.iso-min = inputs.nixpkgs.lib.nixosSystem {
+            # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
+            # inherit system;
+            modules = [
+              ({ modulesPath, ... }: {
+                imports = [
+                  (modulesPath + "/installer/cd-dvd/iso-image.nix")
+                  (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+                ];
+              })
             ];
-          })
-        ];
 
-      };
-      nixosConfigurations.iso-image = nixpkgs.lib.nixosSystem {
-        # nixos-rebuild build-image --image-variant iso --flake .\#iso-image && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
-        inherit system;
-        specialArgs = commonSpecialArgs;
-        modules = commonModules ++ [
-          inputs.disko.nixosModules.disko
-          ./modules/minimal.nix
-          ({ modulesPath, ... }: {
-            imports = [ (modulesPath + "/installer/cd-dvd/iso-image.nix") ];
-          })
+          };
+        };
+        systems = [
+          "x86_64-linux"
         ];
-      };
-      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = commonSpecialArgs;
-        modules = [
-          inputs.disko.nixosModules.disko
-          ./disko-udisk.nix
-          { disko.devices.disk.udisk.device = nixpkgs.lib.mkForce "/dev/sda"; }
-          ./modules/iso.nix
-        ];
-      };
-      nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        specialArgs = commonSpecialArgs;
-        modules = commonModules ++ [
-          ./modules/bluetooth.nix
-          # ./modules/pihole.nix
-          ./modules/dnsmasq.nix
-          ./modules/minimal.nix
-          ./modules/network.nix
-          ./modules/dell.nix
-          # ./hdmi-cec.nix
-          # ./modules/steam.nix
-        ];
-      };
-      nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = commonSpecialArgs;
-        modules = commonModules ++ [
-          ./modules/pihole.nix
-          ./modules/minimal.nix
-          ./modules/network.nix
-          ./modules/pc.nix
-          # ./modules/steam.nix
-        ];
-      };
-    });
+        perSystem = { config, pkgs, ... }: {
+          # Recommended: move all package definitions here.
+          # e.g. (assuming you have a nixpkgs input)
+          # packages.foo = pkgs.callPackage ./foo/package.nix { };
+          # packages.bar = pkgs.callPackage ./bar/package.nix {
+          #   foo = config.packages.foo;
+          # };
+        };
+      }
+    );
 }
