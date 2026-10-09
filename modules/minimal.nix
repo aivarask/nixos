@@ -16,7 +16,7 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
   systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+  # isoImage.squashfsCompression = "gzip -Xcompression-level 1";
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/installer/cd-dvd/latest-kernel.nix")
@@ -155,35 +155,31 @@
     "pipe-operators"
   ];
   programs.git.enable = true;
-  # environment.etc."gitconfig".source = ./.config/git/config_global;
-  # programs.git.package = pkgs.gitFull;
   # programs.git.lfs.enable = true;
   programs.git.config = [
     {
-      core = {
-        sshCommand = "ssh -i ~/.ssh/id_ed25519";
-      };
-      user = {
-        email = "kalesnykas.aivaras@gmail.com";
-        name = "Aivaras Kalesnykas";
-      };
-      # credential = {
-      # helper = "manager";
-      # "https://github.com".username = "kalesnykas.aivaras@gmail.com";
-      # "https://github.com".username = "aivarask";
-      # credentialStore = "cache";
-      # };
-      init = {
-        defaultBranch = "main";
-      };
-      url = {
-        "https://github.com/" = {
-          insteadOf = [
-            "gh:"
-            "github:"
-          ];
-        };
-      };
+      color.ui = false;
+      core.editor = "vim";
+      core.hookspath = ".githooks";
+      core.pager = "delta --side-by-side --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+      core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
+      credential.helper = "manager";
+      credential."https://github.com".username = "aivarask";
+      credential.credentialStore = "cache";
+      delta.line-numbers = true;
+      delta.navigate = true;
+      delta.side-by-side = true;
+      init.defaultBranch = "main";
+      interactive.diffFilter = "delta --color-only";
+      merge.conflictstyle = "zdiff3";
+      pull.rebase = true;
+      url."git@github.com:".insteadOf = [
+        "https://github.com/"
+        "github:"
+        "gh:"
+      ];
+      user.email = "kalesnykas.aivaras@gmail.com";
+      user.name = "Aivaras Kalesnykas";
     }
   ];
 
