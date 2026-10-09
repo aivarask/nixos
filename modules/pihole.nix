@@ -7,12 +7,12 @@
   services.pihole-ftl.settings.dns.upstreams = [
     # "192.168.0.142"
     # "192.168.0.1"
-    "9.9.9.9"
+    # "9.9.9.9"
     "1.1.1.1"
   ];
   services.pihole-ftl.settings.dns.hosts = [
     "192.168.1.188 hostname.domain"
-    "9.9.9.9 linkomanija.net"
+    "1.1.1.1 linkomanija.net"
     "62.72.23.210 dserv"
   ];
   services.pihole-ftl.lists = [

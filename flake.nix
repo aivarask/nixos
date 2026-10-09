@@ -83,8 +83,22 @@
       nixpkgs.hostPlatform = system;
       # nixpkgs.overlays = [ ];
       packages."${system}" = { };
+
+      nixosConfigurations.iso-min = nixpkgs.lib.nixosSystem {
+        # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
+        inherit system;
+        modules = [
+          ({ modulesPath, ... }: {
+            imports = [
+              (modulesPath + "/installer/cd-dvd/iso-image.nix")
+              (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+            ];
+          })
+        ];
+
+      };
       nixosConfigurations.iso-image = nixpkgs.lib.nixosSystem {
-        # nixos-rebuild build-image --image-variant iso --flake .\#iso-image && qemu-system-x86_64 -enable-kvm -m 2048 -cdrom result/iso/nixos-*.iso
+        # nixos-rebuild build-image --image-variant iso --flake .\#iso-image && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
         inherit system;
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
@@ -92,7 +106,6 @@
           ./modules/minimal.nix
           ({ modulesPath, ... }: {
             imports = [ (modulesPath + "/installer/cd-dvd/iso-image.nix") ];
-            image.modules.iso = { };
           })
         ];
       };
