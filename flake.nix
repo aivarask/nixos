@@ -21,11 +21,6 @@
   inputs.nirinit.inputs.nixpkgs.follows = "nixpkgs";
   inputs.ableton.url = "github:shibco/ableton-linux";
   inputs.ableton.inputs.nixpkgs.follows = "nixpkgs";
-  # https://pyproject-nix.gitaivaraskt.nix/use-cases/pyproject.html
-  # inputs.pyproject-nix.inputs.nixpkgs.follows = "nixpkgs";
-  # https://github.com/MatteoGuadrini/mkpl
-  # inputs.mkpl.url = "github:aivarask/mkpl";
-  # inputs.mkpl.inputs.nixpkgs.follows = "nixpkgs";
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
@@ -84,6 +79,7 @@
       packages."${system}" = { };
 
       nixosConfigurations.iso-min = nixpkgs.lib.nixosSystem {
+        # nix build .\#nixosConfigurations.iso-min.config.system.build.isoImage
         # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
         inherit system;
         modules = [
