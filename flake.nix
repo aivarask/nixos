@@ -26,6 +26,7 @@
     let
       commonModules = [
         inputs.home-manager.nixosModules.home-manager
+        inputs.disko.nixosModules.disko
         ./modules/home-manager.nix
         ./modules/users_root.nix
         # ./modules/fileSystems.nix
@@ -81,7 +82,6 @@
       nixosConfigurations.iso-min = nixpkgs.lib.nixosSystem {
         # nix build .\#nixosConfigurations.iso-min.config.system.build.isoImage
         # nixos-rebuild build-image --image-variant iso --flake .\#iso-min && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
-        inherit system;
         modules = [
           ({ modulesPath, ... }: {
             imports = [
@@ -94,10 +94,8 @@
       };
       nixosConfigurations.iso-image = nixpkgs.lib.nixosSystem {
         # nixos-rebuild build-image --image-variant iso --flake .\#iso-image && qemu-system-x86_64 -enable-kvm -m 10240 -cdrom result/iso/nixos-*.iso
-        inherit system;
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
-          inputs.disko.nixosModules.disko
           ./modules/minimal.nix
           ({ modulesPath, ... }: {
             imports = [ (modulesPath + "/installer/cd-dvd/iso-image.nix") ];
@@ -105,36 +103,37 @@
         ];
       };
       nixosConfigurations.base = nixpkgs.lib.nixosSystem {
-        inherit system;
         specialArgs = commonSpecialArgs;
-        modules = [
-          inputs.disko.nixosModules.disko
+        modules =commonModules ++ [ 
           ./disko-udisk.nix
           { disko.devices.disk.udisk.device = nixpkgs.lib.mkForce "/dev/sda"; }
-          ./modules/iso.nix
         ];
       };
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
-          ./modules/bluetooth.nix
-          # ./modules/pihole.nix
-          ./modules/dnsmasq.nix
           ./modules/minimal.nix
           ./modules/network.nix
+          ./modules/dnsmasq.nix
+          ./modules/bluetooth.nix
           ./modules/dell.nix
-          # ./hdmi-cec.nix
-          # ./modules/steam.nix
+          ({ modulesPath, ... }: {
+            isoImage.compressImage = false;
+            imports = [ 
+              (modulesPath + "/installer/cd-dvd/iso-image.nix") 
+              # (modulesPath + "/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+            ];
+          })
         ];
       };
+
       nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = commonModules ++ [
-          ./modules/pihole.nix
           ./modules/minimal.nix
+          ./modules/dnsmasq.nix
           ./modules/network.nix
           ./modules/pc.nix
-          # ./modules/steam.nix
         ];
       };
     });
